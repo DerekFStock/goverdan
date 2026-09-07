@@ -1,0 +1,227 @@
+schema_version: 1
+
+work:
+  id: work.mathura-mahatmya
+  title: "Śrī Mathurā-māhātmyam"
+  short_title: "Mathurā-māhātmya"
+  abbreviation: "MM"
+  author: "Śrī Rūpa Gosvāmī"
+  source_layer: A_PRIMARY_GOSVAMI
+  language: sa
+  status: NORMALIZED
+
+edition:
+  id: edition.mathura-mahatmya.project-reading-v1
+  work_id: work.mathura-mahatmya
+  title: "Govardhana Pilgrimage Project Reading Edition"
+  representation: normalized_text
+  version: "0.9.0"
+  status: NORMALIZED
+  preferred: true
+  text_provenance:
+    primary_witness:
+      id: witness.mathura-mahatmya.project-docx
+      file_name: "mathura_mahatmya_-_rupa_gosvamin.docx"
+      source_location: "MM 416–425; source pages 57–58"
+    normalization:
+      - "Unicode NFC normalization."
+      - "Verse boundaries and pāda lineation normalized for app reading."
+      - "The witness's unaccented forms 'visnos' are normalized to 'viṣṇos' where unambiguous."
+      - "Rūpa's source attributions are preserved as attributions recorded in Mathurā-māhātmya; they are not treated as independent verification of every extant Purāṇa recension."
+  translation_provenance:
+    approved_project:
+      source_document: "Radhakunda_RS-01_Manifestation_Textual_Genealogy_and_Quotation_Packet_v1.0_RECONSTRUCTED"
+      passages: ["418", "420", "421b"]
+    corroborating_project:
+      source_document: "Radhakunda_RS-03_Sri_Caitanya_at_Radhakunda_Recognition_Remembrance_and_Revelation_v1.0"
+      passages: ["421b", "422a"]
+    working_project:
+      note: "Literal working translations supplied for passages not already translated in the controlled project packets; these require user approval before APP_READY status."
+
+witnesses:
+  - id: witness.mathura-mahatmya.project-docx
+    work_id: work.mathura-mahatmya
+    type: docx
+    file_name: "mathura_mahatmya_-_rupa_gosvamin.docx"
+    status: VERIFIED
+    notes: "Clean searchable project witness; MM 418–423 occurs across source pages 57–58."
+
+core_range:
+  start_locus: "418"
+  end_locus: "423"
+
+context_range:
+  start_locus: "416"
+  end_locus: "425"
+
+passages:
+  - id: passage.mathura-mahatmya.416
+    locus: "416"
+    display_locus: "416"
+    order: 416
+    role: CONTEXT
+    verification_status: VERIFIED
+    rupa_attribution: "Mathurā-khaṇḍa"
+    transliteration: |
+      yatrābhiṣikto bhagavān
+      maghonā yadu-vairiṇā |
+      govinda-kuṇḍaṁ taj-jātaṁ
+      snāna-mātreṇa mokṣa-dam ||416||
+
+  - id: passage.mathura-mahatmya.417
+    locus: "417"
+    display_locus: "417"
+    order: 417
+    role: CONTEXT
+    verification_status: VERIFIED
+    rupa_attribution: "Ādi-varāha"
+    transliteration: |
+      anna-kūṭasya sānnidhye
+      tīrthaṁ śakra-vinirmitam |
+      tasmin snāne tarpaṇe ca
+      śata-kratu-phalaṁ labhet ||417||
+
+  - id: passage.mathura-mahatmya.418
+    locus: "418"
+    display_locus: "418"
+    order: 418
+    role: CORE
+    verification_status: VERIFIED
+    rupa_attribution: "Ādi-varāha"
+    transliteration: |
+      ariṣṭa-rādhā-kuṇḍābhyāṁ
+      snānāt phalam avāpyate |
+      rājasūyaśvamedhābhyāṁ
+      nātra kāryā vicāraṇā ||418||
+    translation_status: APPROVED_PROJECT
+    translation: |
+      By bathing in Ariṣṭa-kuṇḍa and Rādhā-kuṇḍa one obtains a fruit
+      comparable to the great royal sacrifices; there is no need for doubt
+      on this point.
+
+  - id: passage.mathura-mahatmya.419
+    locus: "419"
+    display_locus: "419"
+    order: 419
+    role: CORE
+    verification_status: VERIFIED
+    rupa_attribution: "Mathurā-khaṇḍa"
+    transliteration: |
+      dīpotsave kārttike ca
+      rādhā-kuṇḍe yudhiṣṭhira |
+      dṛśyate sakalaṁ viśvaṁ
+      bhṛtyair viṣṇu-parāyaṇaiḥ ||419||
+    translation_status: WORKING_PROJECT
+    translation: |
+      At the festival of lamps in Kārttika, at Rādhā-kuṇḍa, O Yudhiṣṭhira,
+      the whole world is beheld by servants devoted to Viṣṇu.
+    translation_note: "Literal working translation; requires approval before APP_READY release."
+
+  - id: passage.mathura-mahatmya.420
+    locus: "420"
+    display_locus: "420"
+    order: 420
+    role: CORE
+    verification_status: VERIFIED
+    rupa_attribution: "Padma Purāṇa, Kārttika-māhātmya"
+    transliteration: |
+      govardhane girau ramye
+      rādhā-kuṇḍaṁ priyaṁ hareḥ |
+      kārttike bahulāṣṭamyāṁ
+      tatra snātvā hareḥ priyaḥ ||420||
+    translation_status: APPROVED_PROJECT
+    translation: |
+      On lovely Govardhana is Rādhā-kuṇḍa, dear to Hari; bathing there on
+      Bahulāṣṭamī in Kārttika makes one dear to Hari.
+
+  - id: passage.mathura-mahatmya.421
+    locus: "421"
+    display_locus: "421"
+    order: 421
+    role: CORE
+    verification_status: VERIFIED
+    rupa_attribution: "Padma Purāṇa, Kārttika-māhātmya (continued)"
+    transliteration: |
+      naro bhakto bhaved vipras
+      tat-sthitasya pratoṣaṇam |
+      yathā rādhā priyā viṣṇos
+      tasyāḥ kuṇḍaṁ priyaṁ tathā ||421||
+    translation_status: PARTIAL_APPROVED_PROJECT
+    translation: |
+      [First half: working translation pending final approval.]
+      As Rādhā is dear to Viṣṇu/Kṛṣṇa, so Her kuṇḍa is dear to Him.
+
+  - id: passage.mathura-mahatmya.422
+    locus: "422"
+    display_locus: "422"
+    order: 422
+    role: CORE
+    verification_status: VERIFIED
+    rupa_attribution: "Padma Purāṇa, Kārttika-māhātmya (continued)"
+    transliteration: |
+      sarva-gopīṣu saivaikā
+      viṣṇor atyanta-vallabhā |
+      tat-kuṇḍe kārttikāṣṭamyāṁ
+      tatra snātvā hareḥ priyaḥ ||422||
+    translation_status: PARTIAL_APPROVED_PROJECT
+    translation: |
+      Among all the gopīs, She alone is supremely beloved of Viṣṇu/Kṛṣṇa.
+      By bathing in Her kuṇḍa on Kārttikāṣṭamī, one becomes dear to Hari.
+    translation_note: "First half controlled in RS-03; second half is a literal working translation pending approval."
+
+  - id: passage.mathura-mahatmya.423
+    locus: "423"
+    display_locus: "423"
+    order: 423
+    role: CORE
+    verification_status: VERIFIED
+    rupa_attribution: "Padma Purāṇa, Kārttika-māhātmya (continued)"
+    transliteration: |
+      natvā stutvā ca sampūjyo
+      deva-deva-janārdanaḥ |
+      prabodhinyāṁ yathā prītas
+      tathā prītas tato bhavet ||423||
+    translation_status: WORKING_PROJECT
+    translation: |
+      Having bowed to, praised, and fully worshiped Janārdana, the God of
+      gods, He becomes as pleased there as He is on Prabodhinī.
+    translation_note: "Literal working translation; requires approval before APP_READY release."
+
+  - id: passage.mathura-mahatmya.424
+    locus: "424"
+    display_locus: "424"
+    order: 424
+    role: CONTEXT
+    verification_status: VERIFIED
+    rupa_attribution: "Saura Purāṇa"
+    transliteration: |
+      ananta-vasati-śreṣṭhaṁ
+      sarva-pāpa-vināśanam |
+      akrūra-tīrtham atyartham
+      asti priyataraṁ hareḥ ||424||
+
+  - id: passage.mathura-mahatmya.425
+    locus: "425"
+    display_locus: "425"
+    order: 425
+    role: CONTEXT
+    verification_status: VERIFIED
+    rupa_attribution: "Saura Purāṇa (continued)"
+    transliteration: |
+      pūrṇimāyāṁ tu yaḥ snāyāt
+      tatra tīrtha-vare naraḥ |
+      sa mukta eva saṁsārāt
+      kārttikyāṁ tu viśeṣataḥ ||425||
+
+validation:
+  expected_core_passage_count: 6
+  expected_total_passage_count: 10
+  all_passage_ids_unique: true
+  all_core_root_text_verified: true
+  all_core_translations_approved: false
+  app_ready: false
+  blockers:
+    - "Approve or revise working translation of MM 419."
+    - "Philologically review and translate the first half of MM 421."
+    - "Approve or revise the second-half working translation of MM 422."
+    - "Approve or revise working translation of MM 423."

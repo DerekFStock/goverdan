@@ -1,0 +1,11 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+build/DerivedData/
+*.xcuserstate
+xcuserdata/
+build/*
+!build/.gitkeep
+!build/fixture-content.json
+!build/build-report.json
+!build/radhakunda-content.sqlite

@@ -1,0 +1,11 @@
+{
+  "id": "manifest.fixture",
+  "schema_version": 1,
+  "story_files": [
+    "content/fixtures/story.md"
+  ],
+  "source_files": [
+    "content/fixtures/source.json"
+  ]
+}
+

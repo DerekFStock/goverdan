@@ -1,0 +1,203 @@
+schema_version: 1
+
+work:
+  id: work.radha-kundastaka
+  title: "Śrī Rādhā-kuṇḍāṣṭakam"
+  short_title: "Rādhā-kuṇḍāṣṭaka"
+  abbreviation: "RKA"
+  author: "Śrī Raghunātha dāsa Gosvāmī"
+  parent_work_id: work.stavavali
+  source_layer: A_PRIMARY_GOSVAMI
+  language: sa
+  status: APP_READY
+
+edition:
+  id: edition.radha-kundastaka.project-reading-v1
+  work_id: work.radha-kundastaka
+  title: "Govardhana Pilgrimage Project Reading Edition"
+  representation: normalized_text
+  version: "1.0.0"
+  status: APP_READY
+  preferred: true
+  text_provenance:
+    primary_witness:
+      id: witness.stavavali.project-pdf
+      file_name: "stavavali_-_raghunatha_dasa_gosvamin 2.docx.pdf"
+      source_location: "PDF pages 8–9"
+    normalization:
+      - "Unicode NFC normalization."
+      - "Verse boundaries and pāda lineation normalized for app reading."
+      - "The project-controlled reading uccaiḥ is used in verse 3; the searchable Stavāvalī witness contains an apparent transcription/OCR form 'ucaaiḥ'."
+  translation_provenance:
+    type: APPROVED_PROJECT
+    translator: "Govardhana Pilgrimage Project"
+    source_document: "Radhakunda_RS-02_Theological_Architecture_of_the_Manifestation_Lila_v1.0"
+    source_location: "Primary quotation packet, pp. 12–14"
+    note: "Research translations intended to identify theological content rather than reproduce a metrical literary translation."
+
+witnesses:
+  - id: witness.stavavali.project-pdf
+    work_id: work.stavavali
+    type: pdf
+    file_name: "stavavali_-_raghunatha_dasa_gosvamin 2.docx.pdf"
+    status: VERIFIED
+    notes: "Rādhā-kuṇḍāṣṭaka begins on PDF page 8 and continues on PDF page 9."
+
+passages:
+  - id: passage.radha-kundastaka.1
+    locus: "1"
+    display_locus: "Verse 1"
+    order: 1
+    verification_status: VERIFIED
+    witness_mapping:
+      witness_id: witness.stavavali.project-pdf
+      pdf_page: 8
+    transliteration: |
+      vṛṣabha-danuja-nāśān narma-dharmokti-raṅgair
+      nikhila-nija-sakhībhir yat sva-hastena pūrṇam |
+      prakaṭitam api vṛndāraṇya-rājñā pramodais
+      tad ati-surabhi rādhā-kuṇḍam evāśrayo me ||1||
+    translation: |
+      After the destruction of the bull demon, the Queen of Vṛndāvana,
+      together with all Her own companions, joyfully manifested the complete
+      lake with their own hands amid the delights of playful speech concerning
+      dharma. May that exquisitely fragrant Rādhā-kuṇḍa be my shelter.
+
+  - id: passage.radha-kundastaka.2
+    locus: "2"
+    display_locus: "Verse 2"
+    order: 2
+    verification_status: VERIFIED
+    witness_mapping:
+      witness_id: witness.stavavali.project-pdf
+      pdf_page: 8
+    transliteration: |
+      vraja-bhuvi mura-śatroḥ preyasīnāṁ nikāmair
+      asulabham api tūrṇaṁ prema-kalpa-drumaṁ tam |
+      janayati hṛdi bhūmau snātur uccair priyaṁ yat
+      tad ati-surabhi rādhā-kuṇḍam evāśrayo me ||2||
+    translation: |
+      It swiftly causes the cherished wish-fulfilling tree of prema to arise
+      in the heart-land of one who bathes there—a treasure difficult to obtain
+      even for the beloved companions of Kṛṣṇa in Vraja. May that exquisitely
+      fragrant Rādhā-kuṇḍa be my shelter.
+
+  - id: passage.radha-kundastaka.3
+    locus: "3"
+    display_locus: "Verse 3"
+    order: 3
+    verification_status: VERIFIED
+    witness_mapping:
+      witness_id: witness.stavavali.project-pdf
+      pdf_page: 8
+    transliteration: |
+      agha-ripur api yatnād atra devyāḥ prasāda-
+      prasara-kṛta-kaṭākṣa-prāpti-kāmaḥ prakāmam |
+      anusarati yad uccaiḥ snāna-sevānubandhais
+      tad ati-surabhi rādhā-kuṇḍam evāśrayo me ||3||
+    translation: |
+      Even Kṛṣṇa, the enemy of Agha, eagerly follows this lake through bonds
+      of bathing and service, desiring to obtain the gracious sidelong glance
+      flowing from the Goddess. May that exquisitely fragrant Rādhā-kuṇḍa be
+      my shelter.
+
+  - id: passage.radha-kundastaka.4
+    locus: "4"
+    display_locus: "Verse 4"
+    order: 4
+    verification_status: VERIFIED
+    witness_mapping:
+      witness_id: witness.stavavali.project-pdf
+      pdf_page: 9
+    transliteration: |
+      vraja-bhuvana-sudhāṁśoḥ prema-bhūmir nikāmaṁ
+      vraja-madhura-kiśorī-mauli-ratna-priyeva |
+      paricitam api nāmnā yā ca tenaiva tasyās
+      tad ati-surabhi rādhā-kuṇḍam evāśrayo me ||4||
+    translation: |
+      It is supremely the field of love of the moon of Vraja; it is as dear
+      to Him as the crown jewel among Vraja’s sweet young heroines, and it is
+      known by Her very name. May that exquisitely fragrant Rādhā-kuṇḍa be my
+      shelter.
+
+  - id: passage.radha-kundastaka.5
+    locus: "5"
+    display_locus: "Verse 5"
+    order: 5
+    verification_status: VERIFIED
+    witness_mapping:
+      witness_id: witness.stavavali.project-pdf
+      pdf_page: 9
+    transliteration: |
+      api jana iha kaścid yasya sevā-prasādaiḥ
+      praṇaya-sura-latā syāt tasya goṣṭhendra-sūnoḥ |
+      sapadi kila mad-īśā-dāsya-puṣpa-praśasyā
+      tad ati-surabhi rādhā-kuṇḍam evāśrayo me ||5||
+    translation: |
+      For anyone who receives the grace of serving it, the divine creeper of
+      affection for the son of the lord of the cowherds arises and is quickly
+      adorned with the celebrated blossom of service to my Mistress. May that
+      exquisitely fragrant Rādhā-kuṇḍa be my shelter.
+
+  - id: passage.radha-kundastaka.6
+    locus: "6"
+    display_locus: "Verse 6"
+    order: 6
+    verification_status: VERIFIED
+    witness_mapping:
+      witness_id: witness.stavavali.project-pdf
+      pdf_page: 9
+    transliteration: |
+      taṭa-madhura-nikuñjaḥ kḷpta-nāmāna uccair
+      nija-parijana-vargaiḥ saṁvibhajyāśritas taiḥ |
+      madhukara-ruta-ramyā yasya rājanti kāmyās
+      tad ati-surabhi rādhā-kuṇḍam evāśrayo me ||6||
+    translation: |
+      On its bank shine enchanting, desirable groves, sweet with the humming
+      of bees, bearing established names and apportioned among Her own circle
+      of companions, who take shelter there. May that exquisitely fragrant
+      Rādhā-kuṇḍa be my shelter.
+
+  - id: passage.radha-kundastaka.7
+    locus: "7"
+    display_locus: "Verse 7"
+    order: 7
+    verification_status: VERIFIED
+    witness_mapping:
+      witness_id: witness.stavavali.project-pdf
+      pdf_page: 9
+    transliteration: |
+      taṭa-bhuvi vara-vedyāṁ yasya narmāti-hṛdyāṁ
+      madhura-madhura-vārtāṁ goṣṭha-candrasya bhaṅgyā |
+      praṭhayati mitha īśā prāṇa-sakhyālibhiḥ sā
+      tad ati-surabhi rādhā-kuṇḍam evāśrayo me ||7||
+    translation: |
+      On a splendid terrace upon its bank, my Mistress and Her intimate
+      life-companions disclose to one another, through expressive gestures,
+      ever-sweeter and charmingly playful conversation about the Moon of Vraja.
+      May that exquisitely fragrant Rādhā-kuṇḍa be my shelter.
+
+  - id: passage.radha-kundastaka.8
+    locus: "8"
+    display_locus: "Verse 8"
+    order: 8
+    verification_status: VERIFIED
+    witness_mapping:
+      witness_id: witness.stavavali.project-pdf
+      pdf_page: 9
+    transliteration: |
+      anudinam ati-raṅgaiḥ prema-mattāli-saṅghair
+      vara-sarasija-gandhair hāri-vāri-prapūrṇe |
+      viharata iha yasmin dam-patī tau pramattau
+      tad ati-surabhi rādhā-kuṇḍam evāśrayo me ||8||
+    translation: |
+      Every day, in its captivating waters filled with the fragrance of
+      excellent lotuses, the intoxicated Divine Couple sport amid assemblies
+      of companions maddened by love and absorbed in ever-fresh play. May that
+      exquisitely fragrant Rādhā-kuṇḍa be my shelter.
+
+validation:
+  expected_passage_count: 8
+  all_passage_ids_unique: true
+  all_passages_verified: true
+  visible_release_ready: true

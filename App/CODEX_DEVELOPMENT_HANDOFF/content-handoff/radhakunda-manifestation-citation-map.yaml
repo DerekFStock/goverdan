@@ -1,0 +1,260 @@
+schema_version: 1
+story_section:
+  id: story.radhakunda.manifestation
+  story_id: story.radhakunda
+  part_id: story.radhakunda.part-1-manifestation-and-meaning
+  section_number: 3
+  title: The Manifestation of Rādhā-kuṇḍa and Kṛṣṇa-kuṇḍa
+  slug: manifestation-of-radhakunda-and-krsnakunda
+  status: DEVELOPMENT_DRAFT
+  prose_status: DRAFT_V0_1
+  renderable: true
+  note: RKST-03 reader-facing prose exists as development draft v0.1. The eight stable Content Block IDs remain
+    the citation anchors through revision.
+  story_markdown_file: 03-manifestation.md
+  literary_archive_file: RKST-03_The_Manifestation_of_Radhakunda_and_Krsnakunda_Draft_v0.1.docx
+block_anchors:
+- id: rk-manifestation-block-01-dharma-challenge
+  order: 1
+  movement_id: movement.rkma.playful-dharma-challenge
+  intended_block_type: paragraph
+  development_summary: Rādhā and the gopīs frame Ariṣṭa's bull-form killing as a playful dharma challenge and require
+    Kṛṣṇa to bathe in all holy waters.
+  prose_status: DRAFTED_V0_1
+  citation_group_id: citation-group.rk.manifestation.01
+- id: rk-manifestation-block-02-krsna-manifests-pond
+  order: 2
+  movement_id: movement.rkma.krsna-manifests-pond
+  intended_block_type: paragraph
+  development_summary: Kṛṣṇa strikes the earth, summons the tīrthas, has them identify themselves, bathes, and presents
+    His pond as containing the holy places.
+  prose_status: DRAFTED_V0_1
+  citation_group_id: citation-group.rk.manifestation.02
+- id: rk-manifestation-block-03-radha-manifests-pond
+  order: 3
+  movement_id: movement.rkma.radha-manifests-pond
+  intended_block_type: paragraph
+  development_summary: Rādhā and the sakhīs choose Ariṣṭa's hoofprint depression west of Kṛṣṇa's pond and excavate
+    their own lake with their own hands; Rādhā refuses Kṛṣṇa-kuṇḍa water and proposes Mānasa-gaṅgā water.
+  prose_status: DRAFTED_V0_1
+  citation_group_id: citation-group.rk.manifestation.03
+- id: rk-manifestation-block-04-tirthas-petition
+  order: 4
+  movement_id: movement.rkma.tirthas-petition
+  intended_block_type: paragraph
+  development_summary: At Kṛṣṇa's indication, the personified tīrthas approach Rādhā, praise Her, ask what boon
+    they may receive, and request permission to enter Her lake; Rādhā grants consent.
+  prose_status: DRAFTED_V0_1
+  citation_group_id: citation-group.rk.manifestation.04
+- id: rk-manifestation-block-05-waters-join
+  order: 5
+  movement_id: movement.rkma.waters-join
+  intended_block_type: paragraph
+  development_summary: After receiving Rādhā's grace, the tīrthas in Kṛṣṇa-kuṇḍa break through the dividing bank
+    and fill Rādhā-kuṇḍa with their waters.
+  prose_status: DRAFTED_V0_1
+  citation_group_id: citation-group.rk.manifestation.05
+- id: rk-manifestation-block-06-krsna-declaration
+  order: 6
+  movement_id: movement.rkma.krsna-declaration
+  intended_block_type: paragraph
+  development_summary: Kṛṣṇa declares Rādhā's kuṇḍa more glorious than His own, says He will bathe and sport there
+    daily, and loves it as He loves Rādhā.
+  prose_status: DRAFTED_V0_1
+  citation_group_id: citation-group.rk.manifestation.06
+- id: rk-manifestation-block-07-radha-declaration
+  order: 7
+  movement_id: movement.rkma.radha-declaration
+  intended_block_type: paragraph
+  development_summary: Rādhā reciprocally declares Her daily bathing with the sakhīs in the pond of Ariṣṭa's subduer
+    and blesses those devoted to it.
+  prose_status: DRAFTED_V0_1
+  citation_group_id: citation-group.rk.manifestation.07
+- id: rk-manifestation-block-08-rasa-night
+  order: 8
+  movement_id: movement.rkma.rasa
+  intended_block_type: paragraph
+  development_summary: That same night Rādhā and Kṛṣṇa celebrate rāsa, spreading the glory of the kuṇḍas through
+    the three worlds.
+  prose_status: DRAFTED_V0_1
+  citation_group_id: citation-group.rk.manifestation.08
+citations:
+- id: citation.rk.manifestation.rkma.1-2
+  storySectionId: story.radhakunda.manifestation
+  contentBlockId: rk-manifestation-block-01-dharma-challenge
+  startPassageId: passage.radhakunda-manifestation-puranic-unit.1
+  endPassageId: passage.radhakunda-manifestation-puranic-unit.2
+  citationRole: primary_support
+  displayMode: compact
+  order: 1
+  note: Primary transmitted narrative for the opening dharma challenge.
+- id: citation.rk.manifestation.rka.1.challenge
+  storySectionId: story.radhakunda.manifestation
+  contentBlockId: rk-manifestation-block-01-dharma-challenge
+  sourcePassageId: passage.radha-kundastaka.1
+  citationRole: parallel_support
+  displayMode: details
+  order: 2
+  note: 'Independent Gosvāmī reception: narma-dharmokti-raṅgaiḥ controls the exchange as playful speech concerning
+    dharma.'
+- id: citation.rk.manifestation.rkma.3-6
+  storySectionId: story.radhakunda.manifestation
+  contentBlockId: rk-manifestation-block-02-krsna-manifests-pond
+  startPassageId: passage.radhakunda-manifestation-puranic-unit.3
+  endPassageId: passage.radhakunda-manifestation-puranic-unit.6
+  citationRole: primary_support
+  displayMode: compact
+  order: 1
+  note: Primary transmitted narrative for Kṛṣṇa's pond, the tīrthas' manifestation, and Kṛṣṇa's bath.
+- id: citation.rk.manifestation.rkma.7-10
+  storySectionId: story.radhakunda.manifestation
+  contentBlockId: rk-manifestation-block-03-radha-manifests-pond
+  startPassageId: passage.radhakunda-manifestation-puranic-unit.7
+  endPassageId: passage.radhakunda-manifestation-puranic-unit.10
+  citationRole: primary_support
+  displayMode: compact
+  order: 1
+  note: Primary transmitted narrative for Rādhā's excavation, own-hands wording, refusal of Kṛṣṇa-kuṇḍa water, and
+    proposed Mānasa-gaṅgā filling.
+- id: citation.rk.manifestation.rka.1.own-hands
+  storySectionId: story.radhakunda.manifestation
+  contentBlockId: rk-manifestation-block-03-radha-manifests-pond
+  sourcePassageId: passage.radha-kundastaka.1
+  citationRole: parallel_support
+  displayMode: details
+  order: 2
+  note: 'Independent Gosvāmī reception: sva-hastena corroborates manifestation by Rādhā and Her companions with
+    their own hands.'
+- id: citation.rk.manifestation.rkma.11-16
+  storySectionId: story.radhakunda.manifestation
+  contentBlockId: rk-manifestation-block-04-tirthas-petition
+  startPassageId: passage.radhakunda-manifestation-puranic-unit.11
+  endPassageId: passage.radhakunda-manifestation-puranic-unit.16
+  citationRole: primary_support
+  displayMode: compact
+  order: 1
+  note: Primary transmitted narrative for the tīrthas' praise, petition, and Rādhā's consent.
+- id: citation.rk.manifestation.rkma.17
+  storySectionId: story.radhakunda.manifestation
+  contentBlockId: rk-manifestation-block-05-waters-join
+  sourcePassageId: passage.radhakunda-manifestation-puranic-unit.17
+  citationRole: primary_support
+  displayMode: compact
+  order: 1
+  note: Direct source for prasāda/permission followed by breaking the dividing bank and filling Rādhā-kuṇḍa.
+- id: citation.rk.manifestation.rkma.18
+  storySectionId: story.radhakunda.manifestation
+  contentBlockId: rk-manifestation-block-06-krsna-declaration
+  sourcePassageId: passage.radhakunda-manifestation-puranic-unit.18
+  citationRole: primary_support
+  displayMode: compact
+  order: 1
+  note: Direct source for Kṛṣṇa's declaration of greater glory, daily bathing/water-play, and equal dearness.
+- id: citation.rk.manifestation.mm.421
+  storySectionId: story.radhakunda.manifestation
+  contentBlockId: rk-manifestation-block-06-krsna-declaration
+  sourcePassageId: passage.mathura-mahatmya.421
+  citationRole: parallel_support
+  displayMode: details
+  order: 2
+  note: 'Rūpa''s parallel dearness formula: as Rādhā is dear to Kṛṣṇa, so Her kuṇḍa is dear to Him. MM 421''s package
+    translation is not yet fully APP_READY, so this citation is development-only until approval.'
+- id: citation.rk.manifestation.rkma.19
+  storySectionId: story.radhakunda.manifestation
+  contentBlockId: rk-manifestation-block-07-radha-declaration
+  sourcePassageId: passage.radhakunda-manifestation-puranic-unit.19
+  citationRole: primary_support
+  displayMode: compact
+  order: 1
+  note: Direct source for Rādhā's reciprocal declaration and blessing of devotion/residence at Ariṣṭa-mardana-saras.
+- id: citation.rk.manifestation.rkma.20
+  storySectionId: story.radhakunda.manifestation
+  contentBlockId: rk-manifestation-block-08-rasa-night
+  sourcePassageId: passage.radhakunda-manifestation-puranic-unit.20
+  citationRole: primary_support
+  displayMode: compact
+  order: 1
+  note: Direct source for rāsa that night and the spreading glory of the kuṇḍas.
+citation_groups:
+- id: citation-group.rk.manifestation.01
+  contentBlockId: rk-manifestation-block-01-dharma-challenge
+  citationIds:
+  - citation.rk.manifestation.rkma.1-2
+  - citation.rk.manifestation.rka.1.challenge
+- id: citation-group.rk.manifestation.02
+  contentBlockId: rk-manifestation-block-02-krsna-manifests-pond
+  citationIds:
+  - citation.rk.manifestation.rkma.3-6
+- id: citation-group.rk.manifestation.03
+  contentBlockId: rk-manifestation-block-03-radha-manifests-pond
+  citationIds:
+  - citation.rk.manifestation.rkma.7-10
+  - citation.rk.manifestation.rka.1.own-hands
+- id: citation-group.rk.manifestation.04
+  contentBlockId: rk-manifestation-block-04-tirthas-petition
+  citationIds:
+  - citation.rk.manifestation.rkma.11-16
+- id: citation-group.rk.manifestation.05
+  contentBlockId: rk-manifestation-block-05-waters-join
+  citationIds:
+  - citation.rk.manifestation.rkma.17
+- id: citation-group.rk.manifestation.06
+  contentBlockId: rk-manifestation-block-06-krsna-declaration
+  citationIds:
+  - citation.rk.manifestation.rkma.18
+  - citation.rk.manifestation.mm.421
+- id: citation-group.rk.manifestation.07
+  contentBlockId: rk-manifestation-block-07-radha-declaration
+  citationIds:
+  - citation.rk.manifestation.rkma.19
+- id: citation-group.rk.manifestation.08
+  contentBlockId: rk-manifestation-block-08-rasa-night
+  citationIds:
+  - citation.rk.manifestation.rkma.20
+research_notes:
+- id: research-note.rk.manifestation.provenance
+  storySectionId: story.radhakunda.manifestation
+  scope: section
+  note_type: source_critical
+  text: The twenty-verse unit is treated as a Purāṇic account preserved/transmitted by Viśvanātha Cakravartī in
+    connection with Śrīmad-Bhāgavatam 10.36.16. The exact underlying Purāṇa and recension remain unresolved; the
+    Story must not assign a named Purāṇa without direct verification.
+- id: research-note.rk.manifestation.naming
+  storySectionId: story.radhakunda.manifestation
+  scope: section
+  note_type: terminology_control
+  text: Preserve source-specific Kṛṣṇa-kuṇḍa / Ariṣṭa-mardana-saras terminology in quoted or closely source-bound
+    prose; do not silently retroject the later/common name Śyāma-kuṇḍa into the early transmitted wording.
+- id: research-note.rk.manifestation.own-hands
+  storySectionId: story.radhakunda.manifestation
+  contentBlockId: rk-manifestation-block-03-radha-manifests-pond
+  scope: block
+  note_type: omission_control
+  text: Use 'with their own hands.' Do not add bangles as digging implements unless a separately checked source
+    is explicitly introduced.
+- id: research-note.rk.manifestation.dividing-bank
+  storySectionId: story.radhakunda.manifestation
+  contentBlockId: rk-manifestation-block-05-waters-join
+  scope: block
+  note_type: localization_control
+  text: Verse 17's dividing bhitti belongs to the līlā narrative; do not equate it automatically with the exact
+    footprint or engineering history of the modern causeway/bank.
+validation:
+  expected_block_anchor_count: 8
+  block_anchor_count: 8
+  expected_primary_movement_count: 8
+  primary_movement_count: 8
+  all_block_ids_unique: true
+  all_citation_ids_unique: true
+  all_citation_group_ids_unique: true
+  all_citation_passage_targets_exist_in_phase_a_packages: true
+  all_range_endpoints_exist_and_are_ordered: true
+  all_primary_movements_have_primary_support: true
+  source_registry_id: registry.radhakunda-mvp.sources
+  development_ready: true
+  renderable_story_ready: true
+  next_artifact: CODEX_TASK_010 real-content integration after explicit user approval
+  all_content_block_references_resolve_to_stable_anchors: true
+  story_prose_present: true
+  story_markdown_file_exists: true
+  development_vertical_slice_wired: true

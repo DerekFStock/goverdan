@@ -1,0 +1,450 @@
+from __future__ import annotations
+
+import copy
+import hashlib
+import json
+import shutil
+import sqlite3
+import sys
+import tempfile
+import unicodedata
+import unittest
+from unittest import mock
+from pathlib import Path
+
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "tools"))
+
+from content_tooling import (  # noqa: E402
+    ContentValidationError,
+    compile_manifest,
+    deterministic_json,
+)
+import content_tooling  # noqa: E402
+from sqlite_builder import build_sqlite, inspect_database  # noqa: E402
+
+
+class ContentToolingTests(unittest.TestCase):
+    def setUp(self) -> None:
+        self.temp_dir = tempfile.TemporaryDirectory()
+        self.root = Path(self.temp_dir.name)
+        shutil.copytree(ROOT / "content", self.root / "content")
+        shutil.copytree(ROOT / "docs", self.root / "docs")
+
+    def tearDown(self) -> None:
+        self.temp_dir.cleanup()
+
+    def source(self) -> dict:
+        path = self.root / "content" / "fixtures" / "source.json"
+        return json.loads(path.read_text(encoding="utf-8"))
+
+    def write_source(self, source: dict) -> None:
+        path = self.root / "content" / "fixtures" / "source.json"
+        path.write_text(json.dumps(source, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+    def refresh_real_checksum(self, filename: str, path: Path) -> None:
+        checksum_path = self.root / "content/manifests/SHA256SUMS.json"
+        checksums = json.loads(checksum_path.read_text(encoding="utf-8"))
+        checksums[filename] = hashlib.sha256(path.read_bytes()).hexdigest()
+        checksum_path.write_text(json.dumps(checksums, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+    def test_valid_fixture_builds_successfully(self) -> None:
+        result = compile_manifest(self.root, "fixture")
+        self.assertEqual("success", result.report["status"])
+        self.assertEqual(1, result.report["counts"]["stories"])
+        self.assertEqual(3, result.report["counts"]["passages"])
+        self.assertEqual(3, result.report["counts"]["passage_representations"])
+        self.assertEqual(5, result.report["counts"]["content_blocks"])
+        self.assertEqual(
+            ["heading", "paragraph", "quotation", "verse", "paragraph"],
+            [block["block_type"] for block in sorted(result.content["content_blocks"], key=lambda block: block["order"])],
+        )
+        self.assertEqual(
+            "passage.fixture.2",
+            result.content["citations"][0]["source_passage_id"],
+        )
+
+    def test_duplicate_id_fails(self) -> None:
+        source = self.source()
+        duplicate = copy.deepcopy(source["passages"][0])
+        source["passages"].append(duplicate)
+        self.write_source(source)
+        with self.assertRaisesRegex(ContentValidationError, "Duplicate ID 'passage.fixture.1'"):
+            compile_manifest(self.root, "fixture")
+
+    def test_missing_citation_target_fails(self) -> None:
+        story_path = self.root / "content" / "fixtures" / "story.md"
+        story = story_path.read_text(encoding="utf-8").replace(
+            "passage=passage.fixture.2", "passage=passage.fixture.missing"
+        )
+        story_path.write_text(story, encoding="utf-8")
+        with self.assertRaisesRegex(ContentValidationError, "missing canonical Passage 'passage.fixture.missing'"):
+            compile_manifest(self.root, "fixture")
+
+    def test_missing_work_edition_relationship_fails(self) -> None:
+        source = self.source()
+        source["edition"]["work_id"] = "work.missing"
+        self.write_source(source)
+        with self.assertRaisesRegex(ContentValidationError, "references missing Work 'work.missing'"):
+            compile_manifest(self.root, "fixture")
+
+    def test_canonical_passage_is_not_edition_owned(self) -> None:
+        result = compile_manifest(self.root, "fixture")
+        passage = next(item for item in result.content["passages"] if item["id"] == "passage.fixture.2")
+        representation = next(
+            item
+            for item in result.content["passage_representations"]
+            if item["passage_id"] == passage["id"]
+        )
+        self.assertNotIn("edition_id", passage)
+        self.assertNotIn("text", passage)
+        self.assertEqual("edition.fixture.reading-v1", representation["edition_id"])
+        self.assertIn("Rādhā-kuṇḍa", representation["text"])
+
+    def test_edition_owned_text_on_canonical_passage_fails(self) -> None:
+        source = self.source()
+        source["passages"][0]["translation"] = "This must belong to a representation."
+        self.write_source(source)
+        with self.assertRaisesRegex(ContentValidationError, "edition-owned fields: translation"):
+            compile_manifest(self.root, "fixture")
+
+    def test_unicode_input_is_normalized_to_nfc(self) -> None:
+        source = self.source()
+        decomposed = unicodedata.normalize("NFD", "Rādhā-kuṇḍa")
+        source["representations"][1]["text"] = decomposed
+        self.write_source(source)
+        result = compile_manifest(self.root, "fixture")
+        text = result.content["passage_representations"][1]["text"]
+        self.assertEqual("Rādhā-kuṇḍa", text)
+        self.assertTrue(unicodedata.is_normalized("NFC", deterministic_json(result.content)))
+
+    def test_story_fixture_preserves_multiscript_unicode(self) -> None:
+        result = compile_manifest(self.root, "fixture")
+        text = "\n".join(block["text"] for block in result.content["content_blocks"])
+        self.assertIn("Rādhā-kuṇḍa", text)
+        self.assertIn("राधा-कुण्ड", text)
+        self.assertIn("রাধা-কুণ্ড", text)
+
+    def test_deterministic_output(self) -> None:
+        first = deterministic_json(compile_manifest(self.root, "fixture").content)
+        second = deterministic_json(compile_manifest(self.root, "fixture").content)
+        self.assertEqual(first, second)
+
+    def build_database(self) -> tuple[Path, dict]:
+        result = compile_manifest(self.root, "fixture")
+        path = self.root / "build" / "radhakunda-content.sqlite"
+        report = build_sqlite(path, result)
+        return path, report
+
+    def test_database_creation_and_integrity(self) -> None:
+        path, report = self.build_database()
+        self.assertTrue(path.is_file())
+        self.assertEqual("ok", report["integrity_check"])
+        self.assertEqual(0, report["foreign_key_violation_count"])
+        connection = sqlite3.connect(path)
+        try:
+            self.assertEqual(4, connection.execute("PRAGMA user_version").fetchone()[0])
+            self.assertEqual(3, connection.execute("SELECT count(*) FROM source_passages").fetchone()[0])
+            self.assertEqual(5, connection.execute("SELECT count(*) FROM story_blocks").fetchone()[0])
+        finally:
+            connection.close()
+
+    def test_sqlite_foreign_keys_are_enforced(self) -> None:
+        path, _ = self.build_database()
+        connection = sqlite3.connect(path)
+        try:
+            connection.execute("PRAGMA foreign_keys = ON")
+            with self.assertRaises(sqlite3.IntegrityError):
+                connection.execute(
+                    "INSERT INTO citations(id, content_block_id, source_passage_id, start_passage_id, end_passage_id, role, sort_order) "
+                    "VALUES ('citation.broken', 'block.fixture.opening', 'passage.missing', NULL, NULL, 'primary_support', 1)"
+                )
+            with self.assertRaises(sqlite3.IntegrityError):
+                connection.execute(
+                    "INSERT INTO citations(id, content_block_id, source_passage_id, start_passage_id, end_passage_id, role, sort_order) "
+                    "VALUES ('citation.broken-start', 'block.fixture.opening', NULL, 'passage.missing', 'passage.fixture.2', 'primary_support', 1)"
+                )
+            with self.assertRaises(sqlite3.IntegrityError):
+                connection.execute(
+                    "INSERT INTO citations(id, content_block_id, source_passage_id, start_passage_id, end_passage_id, role, sort_order) "
+                    "VALUES ('citation.broken-end', 'block.fixture.opening', NULL, 'passage.fixture.1', 'passage.missing', 'primary_support', 1)"
+                )
+            with self.assertRaises(sqlite3.IntegrityError):
+                connection.execute(
+                    "INSERT INTO citations(id, content_block_id, source_passage_id, start_passage_id, end_passage_id, role, sort_order) "
+                    "VALUES ('citation.ambiguous', 'block.fixture.opening', 'passage.fixture.1', 'passage.fixture.1', 'passage.fixture.2', 'primary_support', 1)"
+                )
+        finally:
+            connection.close()
+
+    def test_sqlite_citation_resolves_to_canonical_passage_and_work(self) -> None:
+        path, _ = self.build_database()
+        connection = sqlite3.connect(path)
+        try:
+            row = connection.execute(
+                "SELECT c.id, p.id, w.id FROM citations c "
+                "JOIN source_passages p ON p.id = c.source_passage_id "
+                "JOIN source_works w ON w.id = p.work_id"
+            ).fetchone()
+            self.assertEqual(("citation.fixture.opening", "passage.fixture.2", "work.fixture"), row)
+        finally:
+            connection.close()
+
+    def test_preferred_edition_contains_source_details_provenance(self) -> None:
+        path, _ = self.build_database()
+        connection = sqlite3.connect(path)
+        try:
+            row = connection.execute(
+                "SELECT translator, translation_provenance FROM source_editions WHERE preferred = 1"
+            ).fetchone()
+            self.assertEqual("Neutral Fixture Translator", row[0])
+            self.assertIn("neutral fixture translation", row[1])
+        finally:
+            connection.close()
+
+    def test_sqlite_canonical_passage_is_independent_of_representation(self) -> None:
+        path, _ = self.build_database()
+        connection = sqlite3.connect(path)
+        try:
+            passage_columns = {row[1] for row in connection.execute("PRAGMA table_info(source_passages)")}
+            self.assertNotIn("edition_id", passage_columns)
+            self.assertNotIn("text", passage_columns)
+            row = connection.execute(
+                "SELECT p.id, r.edition_id, r.search_text FROM source_passages p "
+                "JOIN passage_representations r ON r.passage_id = p.id WHERE p.id = 'passage.fixture.2'"
+            ).fetchone()
+            self.assertEqual("passage.fixture.2", row[0])
+            self.assertEqual("edition.fixture.reading-v1", row[1])
+            self.assertIn("Rādhā-kuṇḍa", row[2])
+        finally:
+            connection.close()
+
+    def test_story_text_is_searchable_with_fts5(self) -> None:
+        path, _ = self.build_database()
+        connection = sqlite3.connect(path)
+        try:
+            rows = connection.execute(
+                "SELECT target_id FROM search_documents_fts "
+                "WHERE search_documents_fts MATCH 'Unicode' AND content_type = 'story_block'"
+            ).fetchall()
+            self.assertEqual([("block.fixture.following",)], rows)
+        finally:
+            connection.close()
+
+    def test_preferred_source_representation_is_searchable_with_fts5(self) -> None:
+        path, _ = self.build_database()
+        connection = sqlite3.connect(path)
+        try:
+            rows = connection.execute(
+                "SELECT target_id FROM search_documents_fts "
+                "WHERE search_documents_fts MATCH 'cited' AND content_type = 'source_passage'"
+            ).fetchall()
+            self.assertEqual([("passage.fixture.2",)], rows)
+        finally:
+            connection.close()
+
+    def test_repeated_sqlite_builds_are_logically_deterministic(self) -> None:
+        first_path, first_report = self.build_database()
+        second_path = self.root / "build" / "second.sqlite"
+        second_report = build_sqlite(second_path, compile_manifest(self.root, "fixture"))
+        self.assertTrue(first_path.exists())
+        self.assertEqual(first_report["logical_content_sha256"], second_report["logical_content_sha256"])
+
+    def test_neutral_witness_mapping_preserves_pdf_index_and_printed_label(self) -> None:
+        path, _ = self.build_database()
+        connection = sqlite3.connect(path)
+        try:
+            row = connection.execute(
+                "SELECT w.title, w.file_path, w.page_count, m.passage_id, "
+                "m.pdf_page_index, m.printed_page_label FROM witness_mappings m "
+                "JOIN witnesses w ON w.id=m.witness_id"
+            ).fetchone()
+            self.assertEqual(
+                ("Neutral Original Witness", "task012-neutral-witness.pdf", 3, "passage.fixture.2", 2, "1"),
+                row,
+            )
+            self.assertIsNone(
+                connection.execute(
+                    "SELECT m.id FROM witness_mappings m WHERE m.passage_id='passage.fixture.1'"
+                ).fetchone()
+            )
+        finally:
+            connection.close()
+
+    def test_real_development_slice_passes_task_010_gate_and_splits_compact_passages(self) -> None:
+        result = compile_manifest(self.root, "radhakunda-mvp-development-manifest")
+        self.assertEqual(0, result.report["validation"]["broken_citation_targets"])
+        self.assertEqual(0, result.report["validation"]["visible_unverified_citation_targets"])
+        self.assertEqual(0, result.report["validation"]["duplicate_canonical_ids"])
+        self.assertEqual(54, len(result.content["passages"]))
+        self.assertEqual(54, len(result.content["passage_representations"]))
+        self.assertEqual([], result.content["witnesses"])
+        self.assertEqual([], result.content["witness_mappings"])
+        self.assertTrue(all("text" not in passage for passage in result.content["passages"]))
+        rkma = [
+            passage for passage in result.content["passages"]
+            if passage["work_id"] == "work.radhakunda-manifestation-puranic-unit"
+        ]
+        self.assertEqual(20, len(rkma))
+        self.assertTrue(all(passage["verification_status"] == "VERIFIED" for passage in rkma))
+        ranges = [citation for citation in result.content["citations"] if citation["start_passage_id"]]
+        self.assertEqual(5, len(ranges))
+        self.assertTrue(all(citation["source_passage_id"] is None for citation in ranges))
+        singletons = [citation for citation in result.content["citations"] if citation["source_passage_id"]]
+        self.assertEqual(7, len(singletons))
+        self.assertTrue(all(citation["start_passage_id"] is None and citation["end_passage_id"] is None for citation in singletons))
+
+    def test_task_013_srimad_bhagavatam_expansion_compiles_exactly(self) -> None:
+        result = compile_manifest(self.root, "radhakunda-mvp-development-manifest")
+        passages = [
+            passage for passage in result.content["passages"]
+            if passage["work_id"] == "work.srimad-bhagavatam"
+        ]
+        representations = [
+            representation for representation in result.content["passage_representations"]
+            if representation["edition_id"] == "edition.srimad-bhagavatam.vedabase-project-reading-v1"
+        ]
+        self.assertEqual(16, len(passages))
+        self.assertEqual(list(range(1, 17)), [passage["order"] for passage in sorted(passages, key=lambda item: item["order"])])
+        self.assertEqual(16, len(representations))
+        self.assertTrue(all(representation["original_text"] for representation in representations))
+        self.assertTrue(all(representation["transliteration"] for representation in representations))
+        self.assertTrue(all(representation["translation"] for representation in representations))
+        citation = next(
+            item for item in result.content["citations"]
+            if item["id"] == "citation.rk.manifestation.sb.10.36.1-15"
+        )
+        self.assertEqual("passage.srimad-bhagavatam.10.36.1", citation["start_passage_id"])
+        self.assertEqual("passage.srimad-bhagavatam.10.36.15", citation["end_passage_id"])
+        self.assertEqual("background", citation["role"])
+        self.assertIsNone(citation["source_passage_id"])
+
+    def test_real_packages_follow_manifest_source_package_order(self) -> None:
+        loaded_packages = []
+        original_load_yaml = content_tooling.load_yaml
+
+        def recording_load_yaml(path: Path) -> dict:
+            value = original_load_yaml(path)
+            if path.name == "package.yaml":
+                loaded_packages.append(value["work"]["id"])
+            return value
+
+        with mock.patch.object(content_tooling, "load_yaml", side_effect=recording_load_yaml):
+            compile_manifest(self.root, "radhakunda-mvp-development-manifest")
+        self.assertEqual(
+            [
+                "work.radha-kundastaka",
+                "work.mathura-mahatmya",
+                "work.radhakunda-manifestation-puranic-unit",
+                "work.srimad-bhagavatam",
+            ],
+            loaded_packages,
+        )
+
+    def test_real_manifest_missing_package_fails_explicitly(self) -> None:
+        package_path = self.root / "content/sources/mathura-mahatmya/package.yaml"
+        package_path.unlink()
+        with self.assertRaisesRegex(ContentValidationError, "Development manifest target is missing"):
+            compile_manifest(self.root, "radhakunda-mvp-development-manifest")
+
+    def test_real_manifest_work_id_mismatch_fails_explicitly(self) -> None:
+        manifest_path = self.root / "content/manifests/radhakunda-mvp-development-manifest.yaml"
+        text = manifest_path.read_text(encoding="utf-8").replace(
+            "work_id: work.mathura-mahatmya", "work_id: work.not-mathura-mahatmya", 1
+        )
+        manifest_path.write_text(text, encoding="utf-8")
+        with self.assertRaisesRegex(ContentValidationError, "SOURCE_PACKAGE work_id mismatch"):
+            compile_manifest(self.root, "radhakunda-mvp-development-manifest")
+
+    def test_real_manifest_duplicate_source_package_work_fails_explicitly(self) -> None:
+        manifest_path = self.root / "content/manifests/radhakunda-mvp-development-manifest.yaml"
+        text = manifest_path.read_text(encoding="utf-8").replace(
+            "work_id: work.mathura-mahatmya", "work_id: work.radha-kundastaka", 1
+        )
+        manifest_path.write_text(text, encoding="utf-8")
+        with self.assertRaisesRegex(ContentValidationError, "Duplicate SOURCE_PACKAGE Work declaration"):
+            compile_manifest(self.root, "radhakunda-mvp-development-manifest")
+
+    def test_real_registry_package_disagreement_fails_explicitly(self) -> None:
+        registry_path = self.root / "content/sources/registry.yaml"
+        text = registry_path.read_text(encoding="utf-8").replace(
+            "title: Śrī Mathurā-māhātmyam", "title: Incorrect registry title", 1
+        )
+        registry_path.write_text(text, encoding="utf-8")
+        self.refresh_real_checksum("radhakunda-mvp-source-registry.yaml", registry_path)
+        with self.assertRaisesRegex(ContentValidationError, "Source registry/package disagreement"):
+            compile_manifest(self.root, "radhakunda-mvp-development-manifest")
+
+    def test_undeclared_yaml_package_is_not_silently_compiled(self) -> None:
+        undeclared = self.root / "content/sources/undeclared/package.yaml"
+        undeclared.parent.mkdir(parents=True)
+        undeclared.write_text(
+            "work:\n  id: work.undeclared\n  title: Undeclared\n"
+            "edition:\n  id: edition.undeclared\npassages: []\n",
+            encoding="utf-8",
+        )
+        result = compile_manifest(self.root, "radhakunda-mvp-development-manifest")
+        self.assertNotIn("work.undeclared", {work["id"] for work in result.content["works"]})
+
+    def test_real_development_slice_builds_integral_searchable_sqlite(self) -> None:
+        result = compile_manifest(self.root, "radhakunda-mvp-development-manifest")
+        path = self.root / "build" / "radhakunda-content.sqlite"
+        report = build_sqlite(path, result)
+        self.assertEqual("ok", report["integrity_check"])
+        self.assertEqual(0, report["foreign_key_violation_count"])
+        connection = sqlite3.connect(path)
+        try:
+            rows = connection.execute(
+                "SELECT target_id FROM search_documents_fts "
+                "WHERE search_documents_fts MATCH '\"narma-dharmokti\"' ORDER BY content_type"
+            ).fetchall()
+            self.assertEqual(2, len(rows))
+            self.assertIn(("passage.radha-kundastaka.1",), rows)
+            self.assertEqual(
+                12,
+                connection.execute(
+                    "SELECT count(*) FROM citations c JOIN source_passages p "
+                    "ON p.id = COALESCE(c.source_passage_id, c.start_passage_id)"
+                ).fetchone()[0],
+            )
+            ranges = connection.execute(
+                "SELECT id, start_passage_id, end_passage_id FROM citations "
+                "WHERE start_passage_id IS NOT NULL ORDER BY id"
+            ).fetchall()
+            self.assertEqual(
+                [
+                    ("citation.rk.manifestation.rkma.1-2", "passage.radhakunda-manifestation-puranic-unit.1", "passage.radhakunda-manifestation-puranic-unit.2"),
+                    ("citation.rk.manifestation.rkma.11-16", "passage.radhakunda-manifestation-puranic-unit.11", "passage.radhakunda-manifestation-puranic-unit.16"),
+                    ("citation.rk.manifestation.rkma.3-6", "passage.radhakunda-manifestation-puranic-unit.3", "passage.radhakunda-manifestation-puranic-unit.6"),
+                    ("citation.rk.manifestation.rkma.7-10", "passage.radhakunda-manifestation-puranic-unit.7", "passage.radhakunda-manifestation-puranic-unit.10"),
+                    ("citation.rk.manifestation.sb.10.36.1-15", "passage.srimad-bhagavatam.10.36.1", "passage.srimad-bhagavatam.10.36.15"),
+                ],
+                ranges,
+            )
+            self.assertEqual(
+                7,
+                connection.execute(
+                    "SELECT count(*) FROM citations WHERE source_passage_id IS NOT NULL "
+                    "AND start_passage_id IS NULL AND end_passage_id IS NULL"
+                ).fetchone()[0],
+            )
+        finally:
+            connection.close()
+
+    def test_real_development_slice_rejects_visible_unverified_target_without_upgrading_it(self) -> None:
+        package_path = self.root / "content/sources/radhakunda-manifestation-puranic-unit/package.yaml"
+        package = package_path.read_text(encoding="utf-8").replace(
+            "verification_status: VERIFIED", "verification_status: TRANSCRIPTION_COLLATED", 1
+        )
+        package_path.write_text(package, encoding="utf-8")
+        checksum_path = self.root / "content/manifests/SHA256SUMS.json"
+        checksum = json.loads(checksum_path.read_text(encoding="utf-8"))
+        checksum["radhakunda-manifestation-puranic-unit.yaml"] = hashlib.sha256(package_path.read_bytes()).hexdigest()
+        checksum_path.write_text(json.dumps(checksum, indent=2) + "\n", encoding="utf-8")
+        with self.assertRaisesRegex(ContentValidationError, "Visible unverified citation targets"):
+            compile_manifest(self.root, "radhakunda-mvp-development-manifest")
+
+
+if __name__ == "__main__":
+    unittest.main()

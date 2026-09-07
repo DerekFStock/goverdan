@@ -1,0 +1,155 @@
+{
+  "citations": [
+    {
+      "content_block_id": "block.fixture.opening",
+      "id": "citation.fixture.opening",
+      "role": "primary_support",
+      "source_passage_id": "passage.fixture.2"
+    }
+  ],
+  "content_blocks": [
+    {
+      "block_type": "paragraph",
+      "id": "block.fixture.following",
+      "order": 5,
+      "section_id": "section.fixture.opening",
+      "text": "This second neutral paragraph proves deterministic block ordering and Unicode preservation: Rādhā-kuṇḍa."
+    },
+    {
+      "block_type": "heading",
+      "id": "block.fixture.heading",
+      "order": 1,
+      "section_id": "section.fixture.opening",
+      "text": "A Neutral Demonstration"
+    },
+    {
+      "block_type": "paragraph",
+      "id": "block.fixture.opening",
+      "order": 2,
+      "section_id": "section.fixture.opening",
+      "text": "This neutral paragraph demonstrates stable Story and Content Block identity without presenting a devotional or scriptural claim."
+    },
+    {
+      "block_type": "quotation",
+      "id": "block.fixture.quotation",
+      "order": 3,
+      "section_id": "section.fixture.opening",
+      "text": "“This neutral quotation exercises a distinct native reading style and Devanāgarī: राधा-कुण्ड.”"
+    },
+    {
+      "block_type": "verse",
+      "id": "block.fixture.verse",
+      "order": 4,
+      "section_id": "section.fixture.opening",
+      "text": "Neutral fixture verse — Rādhā-kuṇḍa\nনিরপেক্ষ পাঠ — রাধা-কুণ্ড"
+    }
+  ],
+  "editions": [
+    {
+      "id": "edition.fixture.reading-v1",
+      "normalization_provenance": "Normalized from the neutral fixture source package.",
+      "preferred": true,
+      "status": "fixture",
+      "title": "Neutral Fixture Reading Edition",
+      "translation_provenance": "Project-authored neutral fixture translation for automated testing only.",
+      "translator": "Neutral Fixture Translator",
+      "work_id": "work.fixture"
+    }
+  ],
+  "manifest_id": "manifest.fixture",
+  "passage_representations": [
+    {
+      "edition_id": "edition.fixture.reading-v1",
+      "id": "representation.fixture.1.reading-v1",
+      "original_text": "निष्पक्ष-पाठः प्रथमः।",
+      "passage_id": "passage.fixture.1",
+      "text": "Neutral surrounding passage one.",
+      "translation": "Neutral surrounding passage one.",
+      "transliteration": "niṣpakṣa-pāṭhaḥ prathamaḥ"
+    },
+    {
+      "edition_id": "edition.fixture.reading-v1",
+      "id": "representation.fixture.2.reading-v1",
+      "original_text": "निष्पक्ष-पाठः राधा-कुण्ड।",
+      "passage_id": "passage.fixture.2",
+      "text": "Neutral cited passage preserving Unicode: Rādhā-kuṇḍa.",
+      "translation": "Neutral cited passage preserving Unicode: Rādhā-kuṇḍa.",
+      "transliteration": "niṣpakṣa-pāṭhaḥ Rādhā-kuṇḍa"
+    },
+    {
+      "edition_id": "edition.fixture.reading-v1",
+      "id": "representation.fixture.3.reading-v1",
+      "original_text": "নিরপেক্ষ পাঠ তৃতীয়।",
+      "passage_id": "passage.fixture.3",
+      "text": "Neutral surrounding passage three.",
+      "translation": "Neutral surrounding passage three.",
+      "transliteration": "nirapekṣa pāṭha tṛtīya"
+    }
+  ],
+  "passages": [
+    {
+      "id": "passage.fixture.1",
+      "locus": "1",
+      "order": 1,
+      "work_id": "work.fixture"
+    },
+    {
+      "id": "passage.fixture.2",
+      "locus": "2",
+      "order": 2,
+      "work_id": "work.fixture"
+    },
+    {
+      "id": "passage.fixture.3",
+      "locus": "3",
+      "order": 3,
+      "work_id": "work.fixture"
+    }
+  ],
+  "schema_version": 1,
+  "stories": [
+    {
+      "id": "story.fixture",
+      "status": "fixture",
+      "title": "Neutral Fixture Story"
+    }
+  ],
+  "story_sections": [
+    {
+      "id": "section.fixture.opening",
+      "order": 1,
+      "story_id": "story.fixture",
+      "title": "A Neutral Demonstration"
+    }
+  ],
+  "witness_mappings": [
+    {
+      "id": "witness-mapping.fixture.passage-2",
+      "passage_id": "passage.fixture.2",
+      "pdf_page_index": 2,
+      "printed_page_label": "1",
+      "representation_id": "representation.fixture.2.reading-v1",
+      "witness_id": "witness.fixture.neutral-pdf"
+    }
+  ],
+  "witnesses": [
+    {
+      "edition_id": "edition.fixture.reading-v1",
+      "file_path": "task012-neutral-witness.pdf",
+      "id": "witness.fixture.neutral-pdf",
+      "media_type": "application/pdf",
+      "page_count": 3,
+      "title": "Neutral Original Witness",
+      "work_id": "work.fixture"
+    }
+  ],
+  "works": [
+    {
+      "author": "Neutral Fixture Author",
+      "id": "work.fixture",
+      "source_layer": "fixture",
+      "status": "fixture",
+      "title": "Neutral Fixture Work"
+    }
+  ]
+}

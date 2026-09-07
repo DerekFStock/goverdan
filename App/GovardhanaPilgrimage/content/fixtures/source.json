@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "work": {
+    "id": "work.fixture",
+    "title": "Neutral Fixture Work",
+    "status": "fixture",
+    "author": "Neutral Fixture Author",
+    "source_layer": "fixture"
+  },
+  "edition": {
+    "id": "edition.fixture.reading-v1",
+    "work_id": "work.fixture",
+    "title": "Neutral Fixture Reading Edition",
+    "status": "fixture",
+    "preferred": true,
+    "translator": "Neutral Fixture Translator",
+    "translation_provenance": "Project-authored neutral fixture translation for automated testing only.",
+    "normalization_provenance": "Normalized from the neutral fixture source package."
+  },
+  "passages": [
+    {
+      "id": "passage.fixture.1",
+      "work_id": "work.fixture",
+      "locus": "1",
+      "order": 1
+    },
+    {
+      "id": "passage.fixture.2",
+      "work_id": "work.fixture",
+      "locus": "2",
+      "order": 2
+    },
+    {
+      "id": "passage.fixture.3",
+      "work_id": "work.fixture",
+      "locus": "3",
+      "order": 3
+    }
+  ],
+  "representations": [
+    {
+      "id": "representation.fixture.1.reading-v1",
+      "passage_id": "passage.fixture.1",
+      "edition_id": "edition.fixture.reading-v1",
+      "text": "Neutral surrounding passage one.",
+      "original_text": "निष्पक्ष-पाठः प्रथमः।",
+      "transliteration": "niṣpakṣa-pāṭhaḥ prathamaḥ",
+      "translation": "Neutral surrounding passage one."
+    },
+    {
+      "id": "representation.fixture.2.reading-v1",
+      "passage_id": "passage.fixture.2",
+      "edition_id": "edition.fixture.reading-v1",
+      "text": "Neutral cited passage preserving Unicode: Rādhā-kuṇḍa.",
+      "original_text": "निष्पक्ष-पाठः राधा-कुण्ड।",
+      "transliteration": "niṣpakṣa-pāṭhaḥ Rādhā-kuṇḍa",
+      "translation": "Neutral cited passage preserving Unicode: Rādhā-kuṇḍa."
+    },
+    {
+      "id": "representation.fixture.3.reading-v1",
+      "passage_id": "passage.fixture.3",
+      "edition_id": "edition.fixture.reading-v1",
+      "text": "Neutral surrounding passage three.",
+      "original_text": "নিরপেক্ষ পাঠ তৃতীয়।",
+      "transliteration": "nirapekṣa pāṭha tṛtīya",
+      "translation": "Neutral surrounding passage three."
+    }
+  ],
+  "witnesses": [
+    {
+      "id": "witness.fixture.neutral-pdf",
+      "work_id": "work.fixture",
+      "edition_id": "edition.fixture.reading-v1",
+      "title": "Neutral Original Witness",
+      "file_path": "task012-neutral-witness.pdf",
+      "media_type": "application/pdf",
+      "page_count": 3
+    }
+  ],
+  "witness_mappings": [
+    {
+      "id": "witness-mapping.fixture.passage-2",
+      "witness_id": "witness.fixture.neutral-pdf",
+      "passage_id": "passage.fixture.2",
+      "representation_id": "representation.fixture.2.reading-v1",
+      "pdf_page_index": 2,
+      "printed_page_label": "1"
+    }
+  ]
+}

@@ -1,0 +1,486 @@
+schema_version: 1
+
+work:
+  id: work.radhakunda-manifestation-puranic-unit
+  title: "Twenty-Verse Rādhā-kuṇḍa Manifestation Account"
+  short_title: "Twenty-Verse Manifestation Account"
+  abbreviation: "RKMA"
+  author: "Unknown / unresolved Purāṇic source"
+  transmitter: "Śrī Viśvanātha Cakravartī Ṭhākura"
+  attribution_note: "Purāṇic account preserved/transmitted by Śrī Viśvanātha Cakravartī Ṭhākura in connection with his commentary on Śrīmad-Bhāgavatam 10.36.16; the exact underlying Purāṇa and recension remain unverified."
+  source_layer: A_PRIMARY_GOSVAMI
+  language: sa
+  status: NORMALIZED
+
+edition:
+  id: edition.radhakunda-manifestation-puranic-unit.project-reading-v1
+  work_id: work.radhakunda-manifestation-puranic-unit
+  title: "Govardhana Pilgrimage Project Reading Edition"
+  representation: normalized_text
+  version: "0.9.0"
+  status: NORMALIZED
+  preferred: true
+  text_provenance:
+    controlling_transcription:
+      id: witness.vedabase-sb-10.36.16-purport
+      description: "Clean IAST transcription of the twenty quoted verses displayed with ŚB 10.36.16."
+      source_location: "Śrīmad-Bhāgavatam 10.36.16, purport"
+    corroborating_transcriptions:
+      - id: witness.bvmlu-conversation-radha-krsna
+        description: "Independent ASCII transliteration of the complete twenty-verse sequence."
+      - id: witness.ananta-dasa-glory-heritage-radhakund
+        description: "Later devotional print/transcription witness preserving the manifestation sequence; OCR is noisy."
+    normalization:
+      - "Unicode NFC normalization."
+      - "Verse boundaries and four-pāda lineation normalized for app reading."
+      - "IAST diacritics follow the controlling clean transcription."
+      - "Uncertain or editorially awkward segmentation is not silently emended; verse 7 preserves the transmitted reading 'paścima-diśya-mando'."
+      - "Early-source names are preserved as Kṛṣṇa-kuṇḍa / Ariṣṭa-mardana-saras rather than retroactively replaced by Śyāma-kuṇḍa."
+  translation_provenance:
+    type: WORKING_PROJECT
+    translator: "Govardhana Pilgrimage Project"
+    method: "Fresh literal research translation from the normalized Sanskrit; not copied from the English translations in the transcription witnesses."
+    status: PENDING_PROJECT_APPROVAL
+    note: "Suitable for development/testing. Must be approved or revised before APP_READY release."
+
+witnesses:
+  - id: witness.vedabase-sb-10.36.16-purport
+    work_id: work.radhakunda-manifestation-puranic-unit
+    type: web_transcription
+    title: "Vedabase — Śrīmad-Bhāgavatam 10.36.16 purport"
+    url: "https://vedabase.io/en/library/sb/10/36/16/"
+    status: CHECKED
+    notes: "Provides a clean IAST transcription of all twenty verses. This is a modern transmission witness, not independent verification of the unidentified Purāṇic source."
+  - id: witness.bvmlu-conversation-radha-krsna
+    work_id: work.radhakunda-manifestation-puranic-unit
+    type: web_transcription
+    title: "BVMLU — Conversation Between Radha and Krishna"
+    url: "https://www.bvmlu.org/VS/SVCT_cbrak.html"
+    status: CHECKED
+    notes: "Complete ASCII transliteration; used as a second transcription witness for sequence and wording."
+  - id: witness.ananta-dasa-glory-heritage-radhakund
+    work_id: work.radhakunda-manifestation-puranic-unit
+    type: pdf
+    file_name: "The Glory and Heritage of Radhakund by Anant Das Babaji Maharaj - Krishna Chaitanya Shastra Mandir_text.pdf"
+    source_location: "PDF pp. 41–47 (printed pp. 29–35)"
+    status: CHECKED_WITH_OCR_LIMITATIONS
+    source_layer: C_LATER_LOCAL
+    notes: "Later received devotional witness. Useful for corroboration and transmission history; OCR/transliteration is too noisy to control publication-critical Sanskrit."
+
+provenance:
+  controlled_locus: "Viśvanātha Cakravartī's commentary tradition connected with ŚB 10.36.16"
+  exact_purana: UNRESOLVED
+  exact_recension: UNRESOLVED
+  safe_citation_formula: "Twenty-verse Purāṇic account preserved/transmitted by Viśvanātha Cakravartī in his commentary on Śrīmad-Bhāgavatam 10.36.16."
+  prohibited_claims:
+    - "Do not assign the unit to Padma Purāṇa, Varāha Purāṇa, or another named Purāṇa without direct recension verification."
+    - "Do not claim that the twenty verses occur in the root text of Śrīmad-Bhāgavatam 10.36."
+    - "Do not replace Kṛṣṇa-kuṇḍa / Ariṣṭa-mardana-saras with Śyāma-kuṇḍa inside quoted early-source wording."
+    - "Do not add bangles as digging implements; this unit explicitly says the sakhīs lifted the mud with their own hands."
+
+movements:
+  - id: movement.rkma.playful-dharma-challenge
+    label: "Playful dharma challenge"
+    start_locus: "1"
+    end_locus: "2"
+  - id: movement.rkma.krsna-manifests-pond
+    label: "Kṛṣṇa manifests His pond"
+    start_locus: "3"
+    end_locus: "6"
+  - id: movement.rkma.radha-manifests-pond
+    label: "Rādhā and the sakhīs manifest Her pond"
+    start_locus: "7"
+    end_locus: "10"
+  - id: movement.rkma.tirthas-petition
+    label: "The tīrthas petition Rādhā"
+    start_locus: "11"
+    end_locus: "16"
+  - id: movement.rkma.waters-join
+    label: "The waters join"
+    start_locus: "17"
+    end_locus: "17"
+  - id: movement.rkma.krsna-declaration
+    label: "Kṛṣṇa's declaration"
+    start_locus: "18"
+    end_locus: "18"
+  - id: movement.rkma.radha-declaration
+    label: "Rādhā's reciprocal declaration"
+    start_locus: "19"
+    end_locus: "19"
+  - id: movement.rkma.rasa
+    label: "Rāsa that night"
+    start_locus: "20"
+    end_locus: "20"
+
+passages:
+  - id: passage.radhakunda-manifestation-puranic-unit.1
+    locus: "1"
+    display_locus: "Verse 1"
+    order: 1
+    movement_id: movement.rkma.playful-dharma-challenge
+    verification_status: VERIFIED
+    transliteration: |
+      māsmān spṛśādya vṛṣabhārdana hanta mugdhā
+      ghoro ’suro ’yam ayi kṛṣṇa tad apy ayaṁ gauḥ |
+      vṛtro yathā dvija ihāsty ayi niṣkṛtiḥ kiṁ
+      śudhyed bhavāṁs tri-bhuvana-sthita-tīrtha-kṛcchrāt ||1||
+    translation_status: WORKING_PROJECT
+    translation: |
+      “Do not touch us today, O killer of a bull! Alas, innocent Kṛṣṇa—
+      although this terrible Ariṣṭa was a demon, he was nevertheless a bull.
+      As with Vṛtra, who was a brāhmaṇa, there must be atonement. How will
+      You become purified except by the hardship of visiting the holy places
+      situated throughout the three worlds?”
+
+  - id: passage.radhakunda-manifestation-puranic-unit.2
+    locus: "2"
+    display_locus: "Verse 2"
+    order: 2
+    movement_id: movement.rkma.playful-dharma-challenge
+    verification_status: VERIFIED
+    transliteration: |
+      kiṁ paryaṭāmi bhuvanāny adhunaiva sarvā
+      ānīya tīrtha-vitatīḥ karavāṇi tāsu |
+      snānaṁ vilokayata tāvad idaṁ mukundaḥ
+      procyaiva tatra kṛtavān bata pārṣṇi-ghātam ||2||
+    translation_status: WORKING_PROJECT
+    translation: |
+      “Why should I wander through all the worlds? I shall bring the entire
+      host of tīrthas here at once and bathe in them. Just watch.” Saying this,
+      Mukunda struck the ground there with His heel.
+
+  - id: passage.radhakunda-manifestation-puranic-unit.3
+    locus: "3"
+    display_locus: "Verse 3"
+    order: 3
+    movement_id: movement.rkma.krsna-manifests-pond
+    verification_status: VERIFIED
+    transliteration: |
+      pātālato jalam idaṁ kila bhogavatyā
+      āyātam atra nikhilā api tīrtha-saṅghāḥ |
+      āgacchateti bhagavad-vacasā ta etya
+      tatraiva rejur atha kṛṣṇa uvāca gopīḥ ||3||
+    translation_status: WORKING_PROJECT
+    translation: |
+      “This water has come here from Bhogavatī in Pātāla. And now let all the
+      assemblies of holy places come here.” At the Lord's command they came
+      and manifested there; then Kṛṣṇa addressed the gopīs.
+
+  - id: passage.radhakunda-manifestation-puranic-unit.4
+    locus: "4"
+    display_locus: "Verse 4"
+    order: 4
+    movement_id: movement.rkma.krsna-manifests-pond
+    verification_status: VERIFIED
+    transliteration: |
+      tīrthāni paśyata harer vacasā tavaivaṁ
+      naiva pratīma iti tā atha tīrtha-varyāḥ |
+      procuḥ kṛtāñjali-puṭā lavaṇābdhir asmi
+      kṣīrābdhir asmi śṛṇutāmara-dīrghikāsmi ||4||
+    translation_status: WORKING_PROJECT
+    translation: |
+      Hari said, “See the holy places.” The gopīs replied, “We do not believe
+      it.” Then the foremost tīrthas, standing with folded palms, spoke:
+      “I am the Salt Ocean. I am the Ocean of Milk. Hear: I am Amara-dīrghikā.”
+
+  - id: passage.radhakunda-manifestation-puranic-unit.5
+    locus: "5"
+    display_locus: "Verse 5"
+    order: 5
+    movement_id: movement.rkma.krsna-manifests-pond
+    verification_status: VERIFIED
+    transliteration: |
+      śoṇo ’pi sindhur aham asmi bhavāmi tāmra-
+      parṇī ca puṣkaram ahaṁ ca sarasvatī ca |
+      godāvarī ravi-sutā sarayuḥ prayāgo
+      revāsmi paśyata jalaṁ kuruta pratītim ||5||
+    translation_status: WORKING_PROJECT
+    translation: |
+      “I am Śoṇa; I am Sindhu; I am Tāmraparṇī; I am Puṣkara; I am Sarasvatī;
+      I am Godāvarī; I am the daughter of the Sun [Yamunā]; I am Sarayū; I am
+      Prayāga; I am Revā. Look at our waters and be convinced.”
+
+  - id: passage.radhakunda-manifestation-puranic-unit.6
+    locus: "6"
+    display_locus: "Verse 6"
+    order: 6
+    movement_id: movement.rkma.krsna-manifests-pond
+    verification_status: VERIFIED
+    transliteration: |
+      snātvā tato harir ati-prajagalbha eva
+      śuddhaḥ saro ’py akaravaṁ sthita-sarva-tīrtham |
+      yuṣmābhir ātma-januṣīha kṛto na dharmaḥ
+      ko ’pi kṣitāv atha sakhīr nijagāda rādhā ||6||
+    translation_status: WORKING_PROJECT
+    translation: |
+      After bathing, Hari became exceedingly bold: “I am purified, and I have
+      made a lake in which all the tīrthas reside. In your whole lives you have
+      performed no such dharma on this earth.” Then Rādhā addressed Her sakhīs.
+
+  - id: passage.radhakunda-manifestation-puranic-unit.7
+    locus: "7"
+    display_locus: "Verse 7"
+    order: 7
+    movement_id: movement.rkma.radha-manifests-pond
+    verification_status: VERIFIED
+    transliteration: |
+      kāryaṁ mayāpy ati-manohara-kuṇḍam ekaṁ
+      tasmād yatadhvam iti tad-vacanena tābhiḥ |
+      śrī-kṛṣṇa-kuṇḍa-taṭa-paścima-diśya-mando
+      gartaḥ kṛto vṛṣabha-daitya-khurair vyaloki ||7||
+    reading_note: "The project preserves the controlling transcription's segmentation 'paścima-diśya-mando' pending a publication-critical witness; no silent emendation is made."
+    translation_status: WORKING_PROJECT
+    translation: |
+      “I too must make one exceedingly beautiful pond; therefore make the
+      effort.” At Her words, the sakhīs noticed to the west of the bank of
+      Śrī Kṛṣṇa-kuṇḍa a depression made by the hooves of the bull demon.
+
+  - id: passage.radhakunda-manifestation-puranic-unit.8
+    locus: "8"
+    display_locus: "Verse 8"
+    order: 8
+    movement_id: movement.rkma.radha-manifests-pond
+    verification_status: VERIFIED
+    transliteration: |
+      tatrārdra-mṛn-mṛdula-gola-tatīḥ prati-sva-
+      hastoddhṛtā anati-dūra-gatā vidhāya |
+      divyaṁ saraḥ prakaṭitaṁ ghaṭikā-dvayena
+      tābhir vilokya sarasaṁ smarate sma kṛṣṇaḥ ||8||
+    translation_status: WORKING_PROJECT
+    translation: |
+      There each of them lifted out with her own hands rows of soft balls of
+      moist earth and placed them not far away. In two ghaṭikās they manifested
+      a divine lake. Seeing that beautiful pond, Kṛṣṇa was astonished.
+
+  - id: passage.radhakunda-manifestation-puranic-unit.9
+    locus: "9"
+    display_locus: "Verse 9"
+    order: 9
+    movement_id: movement.rkma.radha-manifests-pond
+    verification_status: VERIFIED
+    transliteration: |
+      proce ca tīrtha-salilaiḥ paripūrayaitan
+      mat-kuṇḍataḥ sarasijākṣi sahālibhis tvam |
+      rādhā tadā na na na neti jagāda yasmāt
+      tvat-kuṇḍa-nīram uru-go-vadha-pātakāktam ||9||
+    translation_status: WORKING_PROJECT
+    translation: |
+      Kṛṣṇa said, “Lotus-eyed one, You and Your companions may fill this pond
+      from My kuṇḍa with the waters of the tīrthas.” Rādhā replied, “No, no,
+      no, no—because the water of Your pond is stained by the grave sin of
+      killing a cow.”
+
+  - id: passage.radhakunda-manifestation-puranic-unit.10
+    locus: "10"
+    display_locus: "Verse 10"
+    order: 10
+    movement_id: movement.rkma.radha-manifests-pond
+    verification_status: VERIFIED
+    transliteration: |
+      āhṛtya puṇya-salilaṁ śata-koṭi-kumbhaiḥ
+      sakhy-arbudena saha mānasa-jāhnavītaḥ |
+      etat saraḥ sva-madhunā paripūrayāmi
+      tenaiva kīrtim atulāṁ tanavāni loke ||10||
+    translation_status: WORKING_PROJECT
+    translation: |
+      “Together with countless sakhīs, I shall bring sacred water from
+      Mānasa-Jāhnavī in innumerable pots and fill this lake with that sweet
+      water. By this alone I shall spread its incomparable fame throughout
+      the world.”
+
+  - id: passage.radhakunda-manifestation-puranic-unit.11
+    locus: "11"
+    display_locus: "Verse 11"
+    order: 11
+    movement_id: movement.rkma.tirthas-petition
+    verification_status: VERIFIED
+    transliteration: |
+      kṛṣṇeṅgitena sahasaitya samasta-tīrtha-
+      sakhyas tadīya-saraso dhṛta-divya-mūrtiḥ |
+      tuṣṭāva tatra vṛṣabhānu-sutāṁ praṇamya
+      bhaktyā kṛtāñjali-puṭaḥ sravad-asra-dhāraḥ ||11||
+    translation_status: WORKING_PROJECT
+    translation: |
+      At Kṛṣṇa's signal, the companion and representative of all the tīrthas
+      suddenly came forth from His lake in a divine form. Bowing to the daughter
+      of Vṛṣabhānu, he praised Her with devotion, palms joined and streams of
+      tears flowing.
+
+  - id: passage.radhakunda-manifestation-puranic-unit.12
+    locus: "12"
+    display_locus: "Verse 12"
+    order: 12
+    movement_id: movement.rkma.tirthas-petition
+    verification_status: VERIFIED
+    transliteration: |
+      devi tvadīya-mahimānam avaiti sarva
+      śāstrārtha-vin na ca vidhir na haro na lakṣmīḥ |
+      kintv eka eva puruṣārtha-śiromaṇis tvat-
+      prasveda-mārjana-paraḥ svayam eva kṛṣṇaḥ ||12||
+    translation_status: WORKING_PROJECT
+    translation: |
+      “O Goddess, neither Brahmā—the knower of the meaning of all śāstras—nor
+      Śiva nor Lakṣmī knows the measure of Your greatness. Only Kṛṣṇa Himself,
+      the crown jewel of all goals of life, knows it, He who is intent upon
+      wiping away Your perspiration.”
+
+  - id: passage.radhakunda-manifestation-puranic-unit.13
+    locus: "13"
+    display_locus: "Verse 13"
+    order: 13
+    movement_id: movement.rkma.tirthas-petition
+    verification_status: VERIFIED
+    transliteration: |
+      yaś cāru-yāvaka-rasena bhavat-padābjam
+      ārajya nūpuram aho nidadhāti nityam |
+      prāpya tvadīya-nayanābja-taṭa-prasādaṁ
+      svaṁ manyate parama-dhanyatamaṁ prahṛṣyan ||13||
+    translation_status: WORKING_PROJECT
+    translation: |
+      “He continually reddens Your lotus feet with beautiful yāvaka dye and
+      places anklets upon them. Receiving the grace that comes from the edge of
+      Your lotus eyes, He rejoices and considers Himself supremely fortunate.”
+
+  - id: passage.radhakunda-manifestation-puranic-unit.14
+    locus: "14"
+    display_locus: "Verse 14"
+    order: 14
+    movement_id: movement.rkma.tirthas-petition
+    verification_status: VERIFIED
+    transliteration: |
+      tasyājñayaiva sahasā vayam ājagāma
+      tat-pārṣṇi-ghāta-kṛta-kuṇḍa-vare vasāmaḥ |
+      tvaṁ cet prasīdasi karoṣi kṛpā-kaṭākṣaṁ
+      tarhy eva tarṣa-viṭapī phalito bhaven naḥ ||14||
+    reading_note: >-
+      Vedabase currently reads `tat-pārṣṇi-ghāṭa-kṛta`; BVMLU and the Ananta Dāsa
+      transmission preserve undiacriticized `ghata`; the project normalized reading
+      remains `tat-pārṣṇi-ghāta-kṛta`. This normalization does not resolve
+      publication-critical textual criticism and must be rechecked against a stable
+      printed/manuscript witness before APP_READY release.
+    translation_status: WORKING_PROJECT
+    translation: |
+      “By His command alone we came here at once and dwell in the excellent
+      pond made by the blow of His heel. But only if You are pleased and cast
+      Your merciful sidelong glance upon us will the tree of our longing bear
+      fruit.”
+
+  - id: passage.radhakunda-manifestation-puranic-unit.15
+    locus: "15"
+    display_locus: "Verse 15"
+    order: 15
+    movement_id: movement.rkma.tirthas-petition
+    verification_status: VERIFIED
+    transliteration: |
+      śrutvā stutiṁ nikhila-tīrtha-gaṇasya tuṣṭā
+      prāha sma tarṣam ayi vedayateti rādhā |
+      yāma tvadīya-sarasīṁ sa-phalā bhavāma
+      ity eva no vara iti prakaṭaṁ tadocuḥ ||15||
+    translation_status: WORKING_PROJECT
+    translation: |
+      Hearing the praise of the entire assembly of tīrthas, Rādhā was pleased
+      and said, “Tell Me your longing.” They openly replied, “May we enter Your
+      lake and thereby become fulfilled—this alone is the boon we desire.”
+
+  - id: passage.radhakunda-manifestation-puranic-unit.16
+    locus: "16"
+    display_locus: "Verse 16"
+    order: 16
+    movement_id: movement.rkma.tirthas-petition
+    verification_status: VERIFIED
+    transliteration: |
+      āgacchateti vṛṣabhānu-sutā smitāsyā
+      provāca kānta-vadanābja-dhṛtākṣi-koṇā |
+      sakhyo ’pi tatra kṛta-sammatayaḥ sukhābdhau
+      magnā virejur akhilā sthira-jaṅgamāś ca ||16||
+    translation_status: WORKING_PROJECT
+    translation: |
+      The smiling daughter of Vṛṣabhānu, holding the corner of Her eye upon the
+      lotus face of Her beloved, said, “Come.” Her sakhīs also gave their assent,
+      and all moving and nonmoving beings shone, immersed in an ocean of joy.
+
+  - id: passage.radhakunda-manifestation-puranic-unit.17
+    locus: "17"
+    display_locus: "Verse 17"
+    order: 17
+    movement_id: movement.rkma.waters-join
+    verification_status: VERIFIED
+    transliteration: |
+      prāpya prasādam atha te vṛṣabhānujāyāḥ
+      śrī-kṛṣṇa-kuṇḍa-gata-tīrtha-varāḥ prasahya |
+      bhittveva bhittim ati-vegata eva rādhā-
+      kuṇḍaṁ vyadhuḥ sva-salilaiḥ paripūrṇam eva ||17||
+    translation_status: WORKING_PROJECT
+    translation: |
+      Having received the grace of Vṛṣabhānu's daughter, the foremost tīrthas
+      dwelling in Śrī Kṛṣṇa-kuṇḍa forcefully broke through the dividing bank
+      and, rushing with great speed, completely filled Rādhā-kuṇḍa with their
+      own waters.
+
+  - id: passage.radhakunda-manifestation-puranic-unit.18
+    locus: "18"
+    display_locus: "Verse 18"
+    order: 18
+    movement_id: movement.rkma.krsna-declaration
+    verification_status: VERIFIED
+    transliteration: |
+      proce hariḥ priyatame tava kuṇḍam etan
+      mat-kuṇḍato ’pi mahimādhikam astu loke |
+      atraiva me salila-kelir ihaiva nityaṁ
+      snānaṁ yathā tvam asi tadvad idaṁ saro me ||18||
+    translation_status: WORKING_PROJECT
+    translation: |
+      Hari said, “My dearest, may this kuṇḍa of Yours possess even greater
+      glory in the world than My kuṇḍa. Here alone shall My water-play be;
+      here alone shall I bathe eternally. As You are dear to Me, so is this
+      lake dear to Me.”
+
+  - id: passage.radhakunda-manifestation-puranic-unit.19
+    locus: "19"
+    display_locus: "Verse 19"
+    order: 19
+    movement_id: movement.rkma.radha-declaration
+    verification_status: VERIFIED
+    transliteration: |
+      rādhābravīd aham api sva-sakhībhir etya
+      snāsyāmy ariṣṭa-śata-mardanam astu tasya |
+      yo ’riṣṭa-mardana-sarasy uru-bhaktir atra
+      snāyād vasen mama sa eva mahā-priyo ’stu ||19||
+    translation_status: WORKING_PROJECT
+    translation: |
+      Rādhā said, “I too shall come with My sakhīs and bathe there—even if He
+      should crush a hundred Ariṣṭas. Whoever has deep devotion for this lake
+      of Ariṣṭa's subduer, and bathes or resides here, may that person become
+      exceedingly dear to Me.”
+
+  - id: passage.radhakunda-manifestation-puranic-unit.20
+    locus: "20"
+    display_locus: "Verse 20"
+    order: 20
+    movement_id: movement.rkma.rasa
+    verification_status: VERIFIED
+    transliteration: |
+      rāsotsavaṁ prakurute sma ca tatra rātrau
+      kṛṣṇāmbudaḥ kṛta-mahā-rasa-harṣa-varṣaḥ |
+      śrī-rādhikā-pravara-vidyud alaṅkṛta-śrīs
+      trailokya-madhya-vitatī-kṛta-divya-kīrtiḥ ||20||
+    translation_status: WORKING_PROJECT
+    translation: |
+      That very night the Kṛṣṇa-cloud celebrated the festival of rāsa there,
+      showering the joy of the great rasa, His splendor adorned by the brilliant
+      lightning of Śrī Rādhikā. Thus Their divine fame spread throughout the
+      expanse of the three worlds.
+
+validation:
+  expected_passage_count: 20
+  all_passage_ids_unique: true
+  all_passages_have_transliteration: true
+  all_passages_have_translation: true
+  all_translations_approved: false
+  primary_puranic_witness_secured: false
+  development_ready: true
+  app_ready: false
+  blockers:
+    - "Project approval/revision of the twenty fresh literal translations."
+    - "Before publication-critical release, collate the Sanskrit against a stable printed or manuscript witness of Viśvanātha's commentary or the underlying Purāṇic unit."
+    - "Do not resolve the exact Purāṇa/recension until directly verified."

@@ -1,0 +1,187 @@
+schema_version: 1
+manifest:
+  id: manifest.radhakunda-mvp.development-v1
+  title: Rādhā-kuṇḍa MVP Development Content Manifest
+  version: 0.3.0
+  mode: DEVELOPMENT
+  target_path: content/manifests/radhakunda-mvp-development-manifest.yaml
+  entry_story_section_id: story.radhakunda.manifestation
+  development_ready: true
+  release_ready: false
+  purpose: Authoritative development content package for the first real Story → Citation → Source vertical slice;
+    preserved during Tasks 001–009 and installed only under explicitly approved CODEX_TASK_010.
+  current_authorized_task: TASK_SEQUENCE_CONTROLLED_BY_USER
+  real_content_integration_status: AUTHORIZED_ONLY_IN_CODEX_TASK_010
+compile_sequence:
+- order: 1
+  role: SOURCE_REGISTRY
+  file: radhakunda-mvp-source-registry.yaml
+  target_path: content/sources/registry.yaml
+  required: true
+- order: 2
+  role: STORY_METADATA
+  file: story.yaml
+  target_path: content/stories/radhakunda/story.yaml
+  story_id: story.radhakunda
+  required: true
+- order: 3
+  role: SOURCE_PACKAGE
+  work_id: work.radha-kundastaka
+  file: radha-kundastaka.yaml
+  target_path: content/sources/radha-kundastaka/package.yaml
+  required: true
+  development_eligible: true
+  release_eligible: true
+- order: 4
+  role: SOURCE_PACKAGE
+  work_id: work.mathura-mahatmya
+  file: mathura-mahatmya.yaml
+  target_path: content/sources/mathura-mahatmya/package.yaml
+  required: true
+  development_eligible: true
+  release_eligible: false
+- order: 5
+  role: SOURCE_PACKAGE
+  work_id: work.radhakunda-manifestation-puranic-unit
+  file: radhakunda-manifestation-puranic-unit.yaml
+  target_path: content/sources/radhakunda-manifestation-puranic-unit/package.yaml
+  required: true
+  development_eligible: true
+  release_eligible: false
+- order: 6
+  role: CITATION_MAP
+  file: radhakunda-manifestation-citation-map.yaml
+  target_path: content/metadata/radhakunda-manifestation-citation-map.yaml
+  story_section_id: story.radhakunda.manifestation
+  required: true
+- order: 7
+  role: STORY_SECTION
+  file: 03-manifestation.md
+  target_path: content/stories/radhakunda/03-manifestation.md
+  story_section_id: story.radhakunda.manifestation
+  required: true
+  renderable: true
+non_runtime_assets:
+- role: SOURCE_PROVENANCE
+  file: radha-kundastaka_PROVENANCE.md
+  required_for_runtime: false
+  target_path: content/sources/radha-kundastaka/PROVENANCE.md
+- role: SOURCE_PROVENANCE
+  file: mathura-mahatmya_PROVENANCE.md
+  required_for_runtime: false
+  target_path: content/sources/mathura-mahatmya/PROVENANCE.md
+- role: SOURCE_PROVENANCE
+  file: radhakunda-manifestation-puranic-unit_PROVENANCE.md
+  required_for_runtime: false
+  target_path: content/sources/radhakunda-manifestation-puranic-unit/PROVENANCE.md
+- role: LITERARY_ARCHIVE
+  file: RKST-03_The_Manifestation_of_Radhakunda_and_Krsnakunda_Draft_v0.1.docx
+  required_for_runtime: false
+  target_path: docs/content-archives/RKST-03_The_Manifestation_of_Radhakunda_and_Krsnakunda_Draft_v0.1.docx
+- role: CHECKSUM_REGISTRY
+  file: SHA256SUMS.json
+  required_for_runtime: false
+  target_path: content/manifests/SHA256SUMS.json
+runtime_contract:
+  source_registry_id: registry.radhakunda-mvp.sources
+  story_section_id: story.radhakunda.manifestation
+  expected_packaged_work_ids:
+  - work.radha-kundastaka
+  - work.mathura-mahatmya
+  - work.radhakunda-manifestation-puranic-unit
+  expected_content_block_ids:
+  - rk-manifestation-block-01-dharma-challenge
+  - rk-manifestation-block-02-krsna-manifests-pond
+  - rk-manifestation-block-03-radha-manifests-pond
+  - rk-manifestation-block-04-tirthas-petition
+  - rk-manifestation-block-05-waters-join
+  - rk-manifestation-block-06-krsna-declaration
+  - rk-manifestation-block-07-radha-declaration
+  - rk-manifestation-block-08-rasa-night
+  required_navigation_flow:
+  - story
+  - content_block
+  - citation
+  - source_passage
+  - source_work
+  - return_to_story
+development_policy:
+  allow_non_release_source_packages: true
+  must_surface_source_status: true
+  must_not_label_working_translations_as_final: true
+  must_preserve_source_specific_names: true
+  must_not_infer_missing_provenance: true
+release_blockers:
+- Mathurā-māhātmya core translations are not all approved.
+- Twenty-Verse Manifestation Account translations are not yet approved.
+- Twenty-Verse Sanskrit still requires publication-critical collation against a stable printed/manuscript witness.
+- Exact Purāṇa/recension of the Twenty-Verse unit remains unresolved.
+validation:
+  expected_runtime_file_count: 7
+  expected_source_package_count: 3
+  expected_story_section_count: 1
+  expected_content_block_count: 8
+  development_gate_passed: true
+  release_gate_passed: false
+  next_step: PRESERVE_UNTIL_EXPLICIT_CODEX_TASK_010
+  development_gate_meaning: The real-content handoff is internally development-ready but does not authorize integration
+    before CODEX_TASK_010.
+  expected_story_metadata_count: 1
+authoring_serialization_contract:
+  status: REQUIRED
+  applies_to_source_packages:
+  - radha-kundastaka.yaml
+  - mathura-mahatmya.yaml
+  - radhakunda-manifestation-puranic-unit.yaml
+  authoring_form: COMPACT_PASSAGE_RECORDS
+  rule: The top-level passages[] records are compact human-authoring records, not the runtime domain serialization.
+    The compiler MUST split each record into an edition-independent canonical Passage and one edition-owned Passage
+    Representation.
+  canonical_passage_projection:
+    id: passages[].id
+    work_id: work.id (inferred)
+    canonical_locus: passages[].locus
+    display_locus: passages[].display_locus
+    order: passages[].order
+    parent_passage_id: passages[].parent_passage_id when present
+    previous_passage_id: derived/optional
+    next_passage_id: derived/optional
+    verification_status: passages[].verification_status
+    allowed_authoring_extensions:
+    - role
+    - movement_id
+  passage_representation_projection:
+    one_representation_per_passage_per_declared_edition: true
+    passage_id: passages[].id
+    edition_id: edition.id
+    representation_id_rule: representation.<canonical passage suffix>.<edition key>; e.g. passage.radha-kundastaka.1
+      + edition.radha-kundastaka.project-reading-v1 → representation.radha-kundastaka.1.project-reading-v1
+    edition_owned_fields_from_passage_record:
+    - original_text
+    - original
+    - transliteration
+    - translation
+    - translation_status
+    - translation_note
+    - witness_mapping
+    - reading_note
+    - commentary
+    - source_notes
+    - rupa_attribution
+    edition_level_provenance:
+    - edition.text_provenance
+    - edition.translation_provenance
+    search_text: derived from representation text fields
+  identity_invariants:
+  - Canonical Passage IDs MUST remain unchanged when an Edition or preferred representation changes.
+  - Citations MUST target canonical Passage IDs, never Passage Representation IDs.
+  - Text, transliteration, translation, witness locators, commentary, and translation provenance MUST NOT become
+    canonical Passage identity.
+  - The compiler MUST emit separate Passage and Passage Representation objects in deterministic intermediate JSON.
+  task_001_test_requirement: The neutral fixture must prove this split before any real Rādhā-kuṇḍa corpus integration
+    is authorized.
+task_sequence_policy:
+  tasks_001_through_009: NEUTRAL_FIXTURE_OR_APP_ARCHITECTURE_ONLY; REAL_CORPUS_NOT_IMPORTED
+  first_real_content_task: CODEX_TASK_010
+  task_index: docs/app-specs/CODEX_TASK_INDEX.md
+  installation_map: docs/app-specs/CODEX_HANDOFF_INSTALLATION_MAP.md

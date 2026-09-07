@@ -1,0 +1,32 @@
+schema_version: 1
+story:
+  id: story.radhakunda
+  title: The Story of Śrī Rādhā-kuṇḍa
+  short_title: Rādhā-kuṇḍa Story
+  version: 0.1.0
+  status: DEVELOPMENT
+  scope_note: Phase-A development package currently includes only the Manifestation section; later Story sections
+    remain outside this handoff until explicitly prepared and authorized.
+parts:
+- id: story.radhakunda.part-1-manifestation-and-meaning
+  story_id: story.radhakunda
+  title: Manifestation and Meaning
+  order: 1
+  section_ids:
+  - story.radhakunda.manifestation
+sections:
+- id: story.radhakunda.manifestation
+  story_id: story.radhakunda
+  part_id: story.radhakunda.part-1-manifestation-and-meaning
+  section_number: 3
+  title: The Manifestation of Rādhā-kuṇḍa and Kṛṣṇa-kuṇḍa
+  slug: manifestation-of-radhakunda-and-krsnakunda
+  file: 03-manifestation.md
+  order: 3
+  version: 0.1.0
+  status: DEVELOPMENT_DRAFT
+validation:
+  expected_section_count_in_this_package: 1
+  all_section_ids_unique: true
+  all_section_files_declared: true
+  complete_story_corpus: false

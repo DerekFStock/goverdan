@@ -1,0 +1,404 @@
+import GRDB
+import PDFKit
+import XCTest
+@testable import GovardhanaPilgrimage
+
+final class FoundationTests: XCTestCase {
+    private func bundledContentURL() throws -> URL {
+        try XCTUnwrap(Bundle.main.url(forResource: "radhakunda-content", withExtension: "sqlite"))
+    }
+
+    func testContentDatabaseInitializesAndReadsRealSliceMetadata() throws {
+        let content = try ContentDatabase(url: bundledContentURL())
+        let repository = SQLiteContentRepository(database: content)
+
+        XCTAssertEqual(
+            [StorySummary(id: StoryID(rawValue: "story.radhakunda"), title: "The Story of Śrī Rādhā-kuṇḍa", status: "DEVELOPMENT")],
+            try repository.stories()
+        )
+        let works = try repository.works()
+        XCTAssertEqual(4, works.count)
+        XCTAssertEqual(
+            Set(["work.radha-kundastaka", "work.mathura-mahatmya", "work.radhakunda-manifestation-puranic-unit", "work.srimad-bhagavatam"]),
+            Set(works.map(\.id.rawValue))
+        )
+        XCTAssertFalse(works.contains { $0.id.rawValue == "work.stavavali" })
+    }
+
+    func testNeutralFixtureWitnessMappingOpensExactPDFPageAndPreservesPrintedLabel() throws {
+        let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
+        guard try repository.stories().first?.id == StoryID(rawValue: "story.fixture") else {
+            throw XCTSkip("Neutral witness architecture test runs against the fixture database build")
+        }
+        let mapping = try XCTUnwrap(
+            try repository.originalWitnessMapping(passageID: SourcePassageID(rawValue: "passage.fixture.2"))
+        )
+        XCTAssertEqual(2, mapping.pdfPageIndex)
+        XCTAssertEqual("1", mapping.printedPageLabel)
+        XCTAssertNotEqual(String(mapping.pdfPageIndex), mapping.printedPageLabel)
+        XCTAssertNil(
+            try repository.originalWitnessMapping(passageID: SourcePassageID(rawValue: "passage.fixture.1"))
+        )
+        let url = try XCTUnwrap(Bundle.main.url(forResource: "task012-neutral-witness", withExtension: "pdf"))
+        let document = try XCTUnwrap(PDFDocument(url: url))
+        XCTAssertEqual(3, document.pageCount)
+        XCTAssertTrue(try XCTUnwrap(document.page(at: mapping.pdfPageIndex)?.string).contains("Neutral Witness Mapped Page"))
+    }
+
+    func testBundledContentDatabaseIsReadOnly() throws {
+        let content = try ContentDatabase(url: bundledContentURL())
+        XCTAssertThrowsError(
+            try content.reader.write { database in
+                try database.execute(sql: "INSERT INTO stories(id, title, status) VALUES ('story.write-test', 'Write Test', 'fixture')")
+            }
+        )
+        let repository = SQLiteContentRepository(database: content)
+        XCTAssertEqual([StoryID(rawValue: "story.radhakunda")], try repository.stories().map(\.id))
+    }
+
+    func testUserStateDatabaseIsSeparateAndWritable() throws {
+        let directory = FileManager.default.temporaryDirectory.appending(path: UUID().uuidString, directoryHint: .isDirectory)
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: directory) }
+
+        let userState = try UserStateDatabase(url: directory.appending(path: "user-state.sqlite"))
+        try userState.setSetting(key: "fixture.setting", value: "enabled")
+
+        XCTAssertEqual("enabled", try userState.setting(key: "fixture.setting"))
+        XCTAssertNotEqual(try bundledContentURL().standardizedFileURL, userState.url.standardizedFileURL)
+    }
+
+    func testTypedIdentifiersAndRoutesRemainDistinctAndHashable() {
+        let story = StoryID(rawValue: "shared.raw-value")
+        let work = SourceWorkID(rawValue: "shared.raw-value")
+        XCTAssertEqual("shared.raw-value", story.rawValue)
+        XCTAssertEqual("shared.raw-value", work.rawValue)
+
+        let routes: Set<AppRoute> = [.storyTOC(story), .library, .search, .bookmarks]
+        XCTAssertEqual(4, routes.count)
+    }
+
+    func testStoryReaderLoadsOrderedRealProseBlocksFromDatabase() throws {
+        let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
+        let storyID = try XCTUnwrap(try repository.stories().first?.id)
+        let section = try XCTUnwrap(try repository.storySections(storyID: storyID).first)
+        let blocks = try repository.storyBlocks(sectionID: section.id)
+
+        XCTAssertEqual(
+            [
+                "rk-manifestation-block-01-dharma-challenge", "rk-manifestation-block-02-krsna-manifests-pond",
+                "rk-manifestation-block-03-radha-manifests-pond", "rk-manifestation-block-04-tirthas-petition",
+                "rk-manifestation-block-05-waters-join", "rk-manifestation-block-06-krsna-declaration",
+                "rk-manifestation-block-07-radha-declaration", "rk-manifestation-block-08-rasa-night"
+            ],
+            blocks.map(\.id.rawValue)
+        )
+        XCTAssertEqual(Array(repeating: .paragraph, count: 8), blocks.map(\.type))
+        XCTAssertTrue(blocks[0].text.contains("narma-dharmokti-raṅgaiḥ"))
+        XCTAssertTrue(blocks[1].text.contains("Bhogavatī"))
+    }
+
+    func testStoryCitationRowIsStructuredDatabaseContent() throws {
+        let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
+        let rows = try repository.storyCitations(blockID: StoryBlockID(rawValue: "rk-manifestation-block-01-dharma-challenge"))
+        XCTAssertEqual(3, rows.count)
+        XCTAssertEqual(
+            .range(
+                start: SourcePassageID(rawValue: "passage.radhakunda-manifestation-puranic-unit.1"),
+                end: SourcePassageID(rawValue: "passage.radhakunda-manifestation-puranic-unit.2")
+            ),
+            rows.first?.target
+        )
+        XCTAssertEqual("Twenty-Verse Rādhā-kuṇḍa Manifestation Account Verses 1–2", rows.first?.label)
+        let singleton = try XCTUnwrap(rows.first { $0.id.rawValue == "citation.rk.manifestation.rka.1.challenge" })
+        XCTAssertEqual(.singleton(SourcePassageID(rawValue: "passage.radha-kundastaka.1")), singleton.target)
+        XCTAssertEqual("Śrī Rādhā-kuṇḍāṣṭakam Verse 1", singleton.label)
+        XCTAssertEqual(SourcePassageID(rawValue: "passage.radha-kundastaka.1"), singleton.passageID)
+        let background = try XCTUnwrap(rows.first { $0.id.rawValue == "citation.rk.manifestation.sb.10.36.1-15" })
+        XCTAssertEqual(
+            .range(
+                start: SourcePassageID(rawValue: "passage.srimad-bhagavatam.10.36.1"),
+                end: SourcePassageID(rawValue: "passage.srimad-bhagavatam.10.36.15")
+            ),
+            background.target
+        )
+        XCTAssertEqual("Śrīmad-Bhāgavatam Verses 1–15", background.label)
+        XCTAssertEqual(SourcePassageID(rawValue: "passage.srimad-bhagavatam.10.36.1"), background.passageID)
+    }
+
+    func testAllAuthoredRKMARangesSurviveRepositoryWithCompleteLabels() throws {
+        let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
+        let expectations: [(String, String, String, String)] = [
+            ("rk-manifestation-block-01-dharma-challenge", "1", "2", "Verses 1–2"),
+            ("rk-manifestation-block-02-krsna-manifests-pond", "3", "6", "Verses 3–6"),
+            ("rk-manifestation-block-03-radha-manifests-pond", "7", "10", "Verses 7–10"),
+            ("rk-manifestation-block-04-tirthas-petition", "11", "16", "Verses 11–16"),
+        ]
+        for (blockID, start, end, label) in expectations {
+            let rows = try repository.storyCitations(blockID: StoryBlockID(rawValue: blockID))
+            let range = try XCTUnwrap(rows.first { if case .range = $0.target { return true }; return false })
+            XCTAssertEqual(
+                .range(
+                    start: SourcePassageID(rawValue: "passage.radhakunda-manifestation-puranic-unit.\(start)"),
+                    end: SourcePassageID(rawValue: "passage.radhakunda-manifestation-puranic-unit.\(end)")
+                ),
+                range.target
+            )
+            XCTAssertTrue(range.label.hasSuffix(label))
+            XCTAssertEqual(SourcePassageID(rawValue: "passage.radhakunda-manifestation-puranic-unit.\(start)"), range.passageID)
+        }
+    }
+
+    func testCitationResolverTargetsExactCanonicalPassage() throws {
+        let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
+        XCTAssertEqual(
+            SourcePassageID(rawValue: "passage.radha-kundastaka.1"),
+            try repository.resolveCitation(citationID: CitationID(rawValue: "citation.rk.manifestation.rka.1.challenge"))
+        )
+    }
+
+    func testSourceReaderUsesPreferredEditionAndLoadsAdjacentPassages() throws {
+        let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
+        let targetID = SourcePassageID(rawValue: "passage.radha-kundastaka.1")
+        let content = try repository.sourceReaderContent(targetPassageID: targetID)
+
+        XCTAssertEqual(targetID, content.targetPassageID)
+        XCTAssertEqual("Śrī Rādhā-kuṇḍāṣṭakam", content.work.title)
+        XCTAssertEqual("Govardhana Pilgrimage Project Reading Edition", content.work.preferredEdition.title)
+        XCTAssertEqual(8, content.passages.count)
+        XCTAssertTrue(content.passages[0].transliteration?.contains("narma-dharmokti-raṅgair") == true)
+        XCTAssertTrue(content.passages[0].translation?.contains("Queen of Vṛndāvana") == true)
+        XCTAssertNil(try repository.originalWitnessMapping(passageID: targetID))
+    }
+
+    func testTranslationProvenanceIsAvailableInSourceDetails() throws {
+        let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
+        let content = try repository.sourceReaderContent(
+            targetPassageID: SourcePassageID(rawValue: "passage.radha-kundastaka.1")
+        )
+        XCTAssertEqual("Govardhana Pilgrimage Project", content.work.preferredEdition.translator)
+        XCTAssertTrue(content.work.preferredEdition.translationProvenance?.contains("APPROVED_PROJECT") == true)
+    }
+
+    func testWorkingTranslationStatusAndAuthorizedVerse14ReadingNoteAreSurfaced() throws {
+        let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
+        let content = try repository.sourceReaderContent(
+            targetPassageID: SourcePassageID(rawValue: "passage.radhakunda-manifestation-puranic-unit.14")
+        )
+        let passage = try XCTUnwrap(content.passages.first { $0.id.rawValue.hasSuffix(".14") })
+        XCTAssertEqual("VERIFIED", passage.verificationStatus)
+        XCTAssertEqual("WORKING_PROJECT", passage.translationStatus)
+        XCTAssertTrue(passage.readingNote?.contains("tat-pārṣṇi-ghāṭa-kṛta") == true)
+        XCTAssertTrue(passage.readingNote?.contains("tat-pārṣṇi-ghāta-kṛta") == true)
+        XCTAssertTrue(passage.readingNote?.contains("APP_READY") == true)
+    }
+
+    func testLibraryLoadsCanonicalWorkFromBeginningWithPassageTOC() throws {
+        let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
+        let workID = SourceWorkID(rawValue: "work.radha-kundastaka")
+        let content = try repository.sourceReaderContent(workID: workID)
+
+        XCTAssertEqual("Śrī Raghunātha dāsa Gosvāmī", content.work.author)
+        XCTAssertEqual("A_PRIMARY_GOSVAMI", content.work.sourceLayer)
+        XCTAssertEqual(SourcePassageID(rawValue: "passage.radha-kundastaka.1"), content.targetPassageID)
+        XCTAssertEqual((1...8).map { "Verse \($0)" }, content.passages.map(\.displayLocus))
+    }
+
+    func testSrimadBhagavatamReaderProvidesNativeScriptAndSixteenOrderedPassages() throws {
+        let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
+        let content = try repository.sourceReaderContent(workID: SourceWorkID(rawValue: "work.srimad-bhagavatam"))
+        XCTAssertEqual("Śrīmad-Bhāgavatam", content.work.title)
+        XCTAssertEqual(16, content.passages.count)
+        XCTAssertEqual((1...16).map { "10.36.\($0)" }, content.passages.map(\.displayLocus))
+        XCTAssertTrue(content.passages[0].originalText?.contains("श्री बादरायणिरुवाच") == true)
+        XCTAssertTrue(content.passages[0].transliteration?.contains("atha tarhy āgato goṣṭham") == true)
+        XCTAssertEqual("WORKING_PROJECT", content.passages[0].translationStatus)
+    }
+
+    func testGlobalFTSSearchReturnsTypedStoryAndSourceResultsWithSnippets() throws {
+        let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
+        let results = try repository.search("narma-dharmokti", in: nil)
+
+        XCTAssertEqual(2, results.count)
+        XCTAssertTrue(results.allSatisfy { $0.snippet.contains("‹narma-dharmokti›") })
+        XCTAssertTrue(results.contains {
+            $0.target == .story(
+                storyID: StoryID(rawValue: "story.radhakunda"),
+                sectionID: StorySectionID(rawValue: "story.radhakunda.manifestation"),
+                blockID: StoryBlockID(rawValue: "rk-manifestation-block-01-dharma-challenge")
+            )
+        })
+        XCTAssertTrue(results.contains {
+            $0.target == .source(
+                passageID: SourcePassageID(rawValue: "passage.radha-kundastaka.1"),
+                workID: SourceWorkID(rawValue: "work.radha-kundastaka")
+            )
+        })
+    }
+
+    func testWorkScopedFTSSearchExcludesStoryResults() throws {
+        let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
+        let workID = SourceWorkID(rawValue: "work.radha-kundastaka")
+        let results = try repository.search("rādhā-kuṇḍam", in: workID)
+
+        XCTAssertEqual(8, results.count)
+        XCTAssertTrue(results.allSatisfy {
+            if case let .source(_, resultWorkID) = $0.target { return resultWorkID == workID }
+            return false
+        })
+    }
+
+    func testFTSUsesCompiledUnicodeTokenizerWithoutRuntimeNormalization() throws {
+        let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
+        let results = try repository.search("Rādhā", in: nil)
+
+        XCTAssertTrue(results.contains { if case .story = $0.target { return true }; return false })
+        XCTAssertTrue(results.contains { if case .source = $0.target { return true }; return false })
+    }
+
+    func testMissingCitationAndPassageFailSafely() throws {
+        let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
+        XCTAssertThrowsError(
+            try repository.resolveCitation(citationID: CitationID(rawValue: "citation.fixture.missing"))
+        )
+        XCTAssertThrowsError(
+            try repository.sourceReaderContent(targetPassageID: SourcePassageID(rawValue: "passage.fixture.missing"))
+        )
+    }
+
+    @MainActor
+    func testSourceExcursionTracksCurrentPassageAndReturnsTypedPathToExactOrigin() throws {
+        let model = AppModel()
+        let origin = StoryOrigin(
+            storyID: StoryID(rawValue: "story.fixture"),
+            sectionID: StorySectionID(rawValue: "section.fixture.opening"),
+            blockID: StoryBlockID(rawValue: "block.fixture.opening"),
+            citationID: CitationID(rawValue: "citation.fixture.opening")
+        )
+        let excursion = SourceExcursion(
+            origin: origin,
+            citedPassageID: SourcePassageID(rawValue: "passage.fixture.2"),
+            currentPassageID: SourcePassageID(rawValue: "passage.fixture.2")
+        )
+        model.navigationPath = [
+            .storyTOC(origin.storyID),
+            .storySection(storyID: origin.storyID, sectionID: origin.sectionID, blockID: origin.blockID),
+            .sourcePassage(excursion),
+        ]
+
+        model.beginSourceExcursion(excursion)
+        model.updateSourceExcursion(currentPassageID: SourcePassageID(rawValue: "passage.fixture.3"))
+        XCTAssertEqual(SourcePassageID(rawValue: "passage.fixture.3"), model.sourceExcursion?.currentPassageID)
+        XCTAssertEqual(origin.citationID, model.sourceExcursion?.origin.citationID)
+
+        model.returnToStory(from: excursion)
+        XCTAssertNil(model.sourceExcursion)
+        XCTAssertEqual(
+            [
+                .storyTOC(origin.storyID),
+                .storySection(storyID: origin.storyID, sectionID: origin.sectionID, blockID: origin.blockID),
+            ],
+            model.navigationPath
+        )
+        XCTAssertEqual(
+            StoryReadingPosition(storyID: origin.storyID, sectionID: origin.sectionID, blockID: origin.blockID),
+            model.storyPosition
+        )
+    }
+
+    func testSemanticStoryPositionSurvivesDatabaseRelaunch() throws {
+        let directory = FileManager.default.temporaryDirectory.appending(path: UUID().uuidString, directoryHint: .isDirectory)
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let url = directory.appending(path: "user-state.sqlite")
+        let expected = StoryReadingPosition(
+            storyID: StoryID(rawValue: "story.fixture"),
+            sectionID: StorySectionID(rawValue: "section.fixture.opening"),
+            blockID: StoryBlockID(rawValue: "block.fixture.verse")
+        )
+
+        try UserStateDatabase(url: url).saveStoryPosition(expected)
+        XCTAssertEqual(expected, try UserStateDatabase(url: url).storyPosition(storyID: expected.storyID))
+    }
+
+    func testIndependentWorkPositionSurvivesDatabaseRelaunchAndDoesNotReplaceStoryState() throws {
+        let directory = FileManager.default.temporaryDirectory.appending(path: UUID().uuidString, directoryHint: .isDirectory)
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let url = directory.appending(path: "user-state.sqlite")
+        let workPosition = WorkReadingPosition(
+            workID: SourceWorkID(rawValue: "work.fixture"),
+            passageID: SourcePassageID(rawValue: "passage.fixture.3")
+        )
+        let storyPosition = StoryReadingPosition(
+            storyID: StoryID(rawValue: "story.fixture"),
+            sectionID: StorySectionID(rawValue: "section.fixture.opening"),
+            blockID: StoryBlockID(rawValue: "block.fixture.opening")
+        )
+
+        let firstSession = try UserStateDatabase(url: url)
+        try firstSession.saveStoryPosition(storyPosition)
+        try firstSession.saveWorkPosition(workPosition)
+
+        let reopened = try UserStateDatabase(url: url)
+        XCTAssertEqual(workPosition, try reopened.workPosition(workID: workPosition.workID))
+        XCTAssertEqual(storyPosition, try reopened.storyPosition(storyID: storyPosition.storyID))
+    }
+
+    func testStoryAndSourceBookmarksCreateRemoveAndSurviveDatabaseRelaunch() throws {
+        let directory = FileManager.default.temporaryDirectory.appending(path: UUID().uuidString, directoryHint: .isDirectory)
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let url = directory.appending(path: "user-state.sqlite")
+        let storyTarget = BookmarkTarget.story(
+            StoryReadingPosition(
+                storyID: StoryID(rawValue: "story.fixture"),
+                sectionID: StorySectionID(rawValue: "section.fixture.opening"),
+                blockID: StoryBlockID(rawValue: "block.fixture.following")
+            )
+        )
+        let sourceTarget = BookmarkTarget.source(SourcePassageID(rawValue: "passage.fixture.3"))
+
+        let firstSession = try UserStateDatabase(url: url)
+        try firstSession.saveBookmark(storyTarget)
+        try firstSession.saveBookmark(sourceTarget)
+        try firstSession.saveBookmark(storyTarget)
+
+        let reopened = try UserStateDatabase(url: url)
+        XCTAssertEqual(Set([storyTarget, sourceTarget]), Set(try reopened.bookmarks().map(\.target)))
+        XCTAssertEqual(2, try reopened.bookmarks().count)
+
+        try reopened.removeBookmark(storyTarget)
+        XCTAssertEqual([sourceTarget], try UserStateDatabase(url: url).bookmarks().map(\.target))
+        try reopened.removeBookmark(sourceTarget)
+        XCTAssertTrue(try reopened.bookmarks().isEmpty)
+    }
+
+    func testUserStateOperationsDoNotMutateGeneratedContentDatabase() throws {
+        let contentURL = try bundledContentURL()
+        let contentBefore = try Data(contentsOf: contentURL)
+        let directory = FileManager.default.temporaryDirectory.appending(path: UUID().uuidString, directoryHint: .isDirectory)
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let userState = try UserStateDatabase(url: directory.appending(path: "user-state.sqlite"))
+
+        try userState.saveBookmark(.source(SourcePassageID(rawValue: "passage.fixture.2")))
+        try userState.saveWorkPosition(
+            WorkReadingPosition(
+                workID: SourceWorkID(rawValue: "work.fixture"),
+                passageID: SourcePassageID(rawValue: "passage.fixture.3")
+            )
+        )
+
+        XCTAssertEqual(contentBefore, try Data(contentsOf: contentURL))
+        XCTAssertNotEqual(contentURL.standardizedFileURL, userState.url.standardizedFileURL)
+    }
+
+    @MainActor
+    func testLiveAppContainerInitializes() throws {
+        let container = try AppContainer.live()
+        XCTAssertEqual("The Story of Śrī Rādhā-kuṇḍa", try container.contentRepository.stories().first?.title)
+        XCTAssertEqual(4, try container.contentRepository.works().count)
+        XCTAssertTrue(container.userStateDatabase.url.lastPathComponent == "user-state.sqlite")
+    }
+}

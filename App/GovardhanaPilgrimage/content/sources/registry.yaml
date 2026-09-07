@@ -1,0 +1,134 @@
+schema_version: 1
+registry:
+  id: registry.radhakunda-mvp.sources
+  title: Rādhā-kuṇḍa MVP Source Registry
+  version: 0.2.0
+  target_path: content/sources/registry.yaml
+  scope: Phase A / first real-content vertical slice
+  mode: DEVELOPMENT
+  checksum_registry: SHA256SUMS.json
+works:
+- id: work.stavavali
+  title: Śrī Stavāvalī
+  short_title: Stavāvalī
+  abbreviation: STAV
+  author: Śrī Raghunātha dāsa Gosvāmī
+  parent_work_id: null
+  source_layer: A_PRIMARY_GOSVAMI
+  preferred_reading_edition: null
+  status: STRUCTURED
+  registry_role: METADATA_ONLY_PARENT
+  package_file: null
+  package_eligible: false
+  development_eligible: false
+  release_eligible: false
+  note: Registered only to resolve the parent relationship of work.radha-kundastaka in Phase A; the full Stavāvalī
+    is not part of this three-Work vertical slice.
+- id: work.radha-kundastaka
+  title: Śrī Rādhā-kuṇḍāṣṭakam
+  short_title: Rādhā-kuṇḍāṣṭaka
+  abbreviation: RKA
+  author: Śrī Raghunātha dāsa Gosvāmī
+  parent_work_id: work.stavavali
+  source_layer: A_PRIMARY_GOSVAMI
+  preferred_reading_edition: edition.radha-kundastaka.project-reading-v1
+  status: APP_READY
+  registry_role: PACKAGED_WORK
+  package_file: radha-kundastaka/package.yaml
+  provenance_file: radha-kundastaka/PROVENANCE.md
+  passage_scope: 1–8
+  development_eligible: true
+  release_eligible: true
+- id: work.mathura-mahatmya
+  title: Śrī Mathurā-māhātmyam
+  short_title: Mathurā-māhātmya
+  abbreviation: MM
+  author: Śrī Rūpa Gosvāmī
+  parent_work_id: null
+  source_layer: A_PRIMARY_GOSVAMI
+  preferred_reading_edition: edition.mathura-mahatmya.project-reading-v1
+  status: NORMALIZED
+  registry_role: PACKAGED_WORK
+  package_file: mathura-mahatmya/package.yaml
+  provenance_file: mathura-mahatmya/PROVENANCE.md
+  passage_scope: 418–423 core; 416–417 and 424–425 context
+  development_eligible: true
+  release_eligible: false
+  release_blockers:
+  - Approve or revise working translation of MM 419.
+  - Philologically review and translate the first half of MM 421.
+  - Approve or revise the second-half working translation of MM 422.
+  - Approve or revise working translation of MM 423.
+- id: work.radhakunda-manifestation-puranic-unit
+  title: Twenty-Verse Rādhā-kuṇḍa Manifestation Account
+  short_title: Twenty-Verse Manifestation Account
+  abbreviation: RKMA
+  author: Unknown / unresolved Purāṇic source
+  transmitter: Śrī Viśvanātha Cakravartī Ṭhākura
+  parent_work_id: null
+  source_layer: A_PRIMARY_GOSVAMI
+  preferred_reading_edition: edition.radhakunda-manifestation-puranic-unit.project-reading-v1
+  status: NORMALIZED
+  registry_role: PACKAGED_WORK
+  package_file: radhakunda-manifestation-puranic-unit/package.yaml
+  provenance_file: radhakunda-manifestation-puranic-unit/PROVENANCE.md
+  passage_scope: 1–20
+  development_eligible: true
+  release_eligible: false
+  source_identity_note: Purāṇic account preserved/transmitted by Viśvanātha Cakravartī in connection with Śrīmad-Bhāgavatam
+    10.36.16; exact Purāṇa and recension unresolved.
+  release_blockers:
+  - Approve or revise the twenty working project translations.
+  - Before publication-critical release, collate the Sanskrit against a stable printed or manuscript witness of
+    Viśvanātha’s commentary or the underlying Purāṇic unit.
+  - Keep the exact Purāṇa/recension unresolved until directly verified.
+- id: work.srimad-bhagavatam
+  title: Śrīmad-Bhāgavatam
+  short_title: Śrīmad-Bhāgavatam
+  abbreviation: ŚB
+  author: Śrī Kṛṣṇa-Dvaipāyana Vyāsa
+  parent_work_id: null
+  source_layer: A_PRIMARY_GOSVAMI
+  preferred_reading_edition: edition.srimad-bhagavatam.vedabase-project-reading-v1
+  status: NORMALIZED
+  registry_role: PACKAGED_WORK
+  package_file: srimad-bhagavatam/package.yaml
+  provenance_file: srimad-bhagavatam/PROVENANCE.md
+  passage_scope: 10.36.1–16
+  development_eligible: true
+  release_eligible: false
+  source_identity_note: Verses 1–15 supply the Ariṣṭāsura narrative foundation; verse 16 transitions to Nārada and does not itself narrate the manifestation of the two kuṇḍas.
+  release_blockers:
+  - Review and approve or revise the sixteen working project translations.
+  - Preserve this package as a controlled project reading rather than a critical edition claim.
+phase_a:
+  packaged_work_ids:
+  - work.radha-kundastaka
+  - work.mathura-mahatmya
+  - work.radhakunda-manifestation-puranic-unit
+  - work.srimad-bhagavatam
+  development_ready: true
+  release_ready: false
+  next_artifact: CODEX_TASK_010 real-content integration after Tasks 001–009 and explicit user approval
+  citation_map_file: radhakunda-manifestation-citation-map.yaml
+  citation_map_status: WIRED_TO_STORY_DRAFT
+  story_section_file: 03-manifestation.md
+  story_section_status: DEVELOPMENT_DRAFT
+  literary_archive_file: RKST-03_The_Manifestation_of_Radhakunda_and_Krsnakunda_Draft_v0.1.docx
+  development_manifest_file: radhakunda-mvp-development-manifest.yaml
+  development_manifest_status: READY_AS_TASK_010_REAL_CONTENT_INPUT
+  current_authorized_task: USER_CONTROLLED_VIA_CODEX_TASK_INDEX
+  real_content_integration_status: AUTHORIZED_ONLY_IN_CODEX_TASK_010
+  story_metadata_file: story.yaml
+validation:
+  expected_packaged_work_count: 4
+  packaged_work_count: 4
+  all_packaged_work_ids_unique: true
+  all_package_files_exist: true
+  all_parent_work_ids_resolve: true
+  all_preferred_edition_ids_match_packages: true
+  all_packaged_works_development_eligible: true
+  all_packaged_works_release_eligible: false
+  note: The registry is sufficient for the first development vertical slice. Release readiness remains gated by
+    source-package approval/verification statuses.
+  all_package_paths_follow_mvp05_work_directories: true

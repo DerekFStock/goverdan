@@ -1,0 +1,292 @@
+schema_version: 1
+
+work:
+  id: work.srimad-bhagavatam
+  title: "Śrīmad-Bhāgavatam"
+  short_title: "Śrīmad-Bhāgavatam"
+  abbreviation: "ŚB"
+  author: "Śrī Kṛṣṇa-Dvaipāyana Vyāsa"
+  parent_work_id: null
+  source_layer: A_PRIMARY_GOSVAMI
+  language: sa
+  status: NORMALIZED
+
+edition:
+  id: edition.srimad-bhagavatam.vedabase-project-reading-v1
+  work_id: work.srimad-bhagavatam
+  title: "Vedabase-Controlled Govardhana Pilgrimage Project Reading"
+  representation: normalized_text
+  version: "1.0.0"
+  status: NORMALIZED
+  preferred: true
+  text_provenance:
+    primary_witness:
+      title: "Bhaktivedanta Vedabase, Śrīmad-Bhāgavatam 10.36.1–16"
+      chapter_url: "https://vedabase.io/en/library/sb/10/36/"
+      verse_url_pattern: "https://vedabase.io/en/library/sb/10/36/{verse}/"
+      accessed: "2026-08-28"
+    normalization:
+      - "Unicode NFC normalization and app-reading lineation only."
+      - "Vedabase/BBT numbering controls the canonical loci 10.36.1–16."
+    critical_status: "Controlled project reading; not a critical edition of the Śrīmad-Bhāgavatam."
+  translation_provenance:
+    type: WORKING_PROJECT
+    translator: "Govardhana Pilgrimage Project"
+    status: WORKING_PROJECT
+    note: "Fresh literal development translations prepared from the Sanskrit; not Vedabase/BBT English translations and not approved for release."
+
+passages:
+  - id: passage.srimad-bhagavatam.10.36.1
+    locus: "10.36.1"
+    display_locus: "10.36.1"
+    order: 1
+    verification_status: VERIFIED
+    original_text: |
+      श्री बादरायणिरुवाच
+      अथ तर्ह्यागतो गोष्ठमरिष्टो वृषभासुरः ।
+      महीं महाककुत्कायः कम्पयन् खुरविक्षताम् ॥ १ ॥
+    transliteration: |
+      śrī bādarāyaṇir uvāca
+      atha tarhy āgato goṣṭham ariṣṭo vṛṣabhāsuraḥ |
+      mahīṁ mahā-kakut-kāyaḥ kampayan khura-vikṣatām || 1 ||
+    translation: |
+      Śrī Śukadeva said: Then Ariṣṭa, the bull demon, came into the cowherd settlement. His huge, high-humped body made the earth tremble as his hooves tore it open.
+    translation_status: WORKING_PROJECT
+
+  - id: passage.srimad-bhagavatam.10.36.2
+    locus: "10.36.2"
+    display_locus: "10.36.2"
+    order: 2
+    verification_status: VERIFIED
+    original_text: |
+      रम्भमाणः खरतरं पदा च विलिखन् महीम् ।
+      उद्यम्य पुच्छं वप्राणि विषाणाग्रेण चोद्धरन् ।
+      किञ्चित् किञ्चिच्छकृन् मुञ्चन् मूत्रयन् स्तब्धलोचनः ॥ २ ॥
+    transliteration: |
+      rambhamāṇaḥ kharataraṁ padā ca vilikhan mahīm |
+      udyamya pucchaṁ vaprāṇi viṣāṇāgreṇa coddharan |
+      kiñcit kiñcic chakṛn muñcan mūtrayan stabdha-locanaḥ || 2 ||
+    translation: |
+      Bellowing most harshly and scraping the earth with his hoof, he raised his tail and tore up the embankments with the tips of his horns. Now and again he discharged dung and urine, his eyes fixed in a glare.
+    translation_status: WORKING_PROJECT
+
+  - id: passage.srimad-bhagavatam.10.36.3
+    locus: "10.36.3"
+    display_locus: "10.36.3"
+    order: 3
+    verification_status: VERIFIED
+    original_text: |
+      यस्य निर्ह्रादितेनाङ्ग निष्ठुरेण गवां नृणाम् ।
+      पतन्त्यकालतो गर्भाः स्रवन्ति स्म भयेन वै ॥ ३ ॥
+    transliteration: |
+      yasya nirhrāditenāṅga niṣṭhureṇa gavāṁ nṛṇām |
+      patanty akālato garbhāḥ sravanti sma bhayena vai || 3 ||
+    translation: |
+      Dear King, at his cruel, reverberating roar, the pregnancies of cows and women were lost before their time; indeed, they miscarried from fear.
+    translation_status: WORKING_PROJECT
+
+  - id: passage.srimad-bhagavatam.10.36.4
+    locus: "10.36.4"
+    display_locus: "10.36.4"
+    order: 4
+    verification_status: VERIFIED
+    original_text: |
+      निर्विशन्ति घना यस्य ककुद्यचलशङ्कया ।
+      तं तीक्ष्णशृङ्गमुद्वीक्ष्य गोप्यो गोपाश्च तत्रसुः ॥ ४ ॥
+    transliteration: |
+      nirviśanti ghanā yasya kakudy acala-śaṅkayā |
+      taṁ tīkṣṇa-śṛṅgam udvīkṣya gopyo gopāś ca tatrasuḥ || 4 ||
+    translation: |
+      Clouds settled upon his hump, mistaking it for a mountain. Seeing that sharp-horned creature, the cowherd women and men became terrified.
+    translation_status: WORKING_PROJECT
+
+  - id: passage.srimad-bhagavatam.10.36.5
+    locus: "10.36.5"
+    display_locus: "10.36.5"
+    order: 5
+    verification_status: VERIFIED
+    original_text: |
+      पशवो दुद्रुवुर्भीता राजन् सन्त्यज्य गोकुलम् ।
+      कृष्ण कृष्णेति ते सर्वे गोविन्दं शरणं ययुः ॥ ५ ॥
+    transliteration: |
+      paśavo dudruvur bhītā rājan santyajya go-kulam |
+      kṛṣṇa kṛṣṇeti te sarve govindaṁ śaraṇaṁ yayuḥ || 5 ||
+    translation: |
+      The frightened animals fled, abandoning the cow pasture, O King, and all the people went to Govinda for shelter, crying, “Kṛṣṇa! Kṛṣṇa!”
+    translation_status: WORKING_PROJECT
+
+  - id: passage.srimad-bhagavatam.10.36.6
+    locus: "10.36.6"
+    display_locus: "10.36.6"
+    order: 6
+    verification_status: VERIFIED
+    original_text: |
+      भगवानपि तद् वीक्ष्य गोकुलं भयविद्रुतम् ।
+      मा भैष्टेति गिराश्वास्य वृषासुरमुपाह्वयत् ॥ ६ ॥
+    transliteration: |
+      bhagavān api tad vīkṣya go-kulaṁ bhaya-vidrutam |
+      mā bhaiṣṭeti girāśvāsya vṛṣāsuram upāhvayat || 6 ||
+    translation: |
+      Seeing the cowherd community scattered by fear, the Lord reassured them with the words “Do not be afraid,” and called out to the bull demon.
+    translation_status: WORKING_PROJECT
+
+  - id: passage.srimad-bhagavatam.10.36.7
+    locus: "10.36.7"
+    display_locus: "10.36.7"
+    order: 7
+    verification_status: VERIFIED
+    original_text: |
+      गोपालैः पशुभिर्मन्द त्रासितैः किमसत्तम ।
+      मयि शास्तरि दुष्टानां त्वद्विधानां दुरात्मनाम् ॥ ७ ॥
+    transliteration: |
+      gopālaiḥ paśubhir manda trāsitaiḥ kim asattama |
+      mayi śāstari duṣṭānāṁ tvad-vidhānāṁ durātmanām || 7 ||
+    translation: |
+      “Fool, most wicked one, what is gained by frightening the cowherds and their animals while I am here to punish evil-minded wrongdoers such as you?”
+    translation_status: WORKING_PROJECT
+
+  - id: passage.srimad-bhagavatam.10.36.8
+    locus: "10.36.8"
+    display_locus: "10.36.8"
+    order: 8
+    verification_status: VERIFIED
+    original_text: |
+      इत्यास्फोट्याच्युतोऽरिष्टं तलशब्देन कोपयन् ।
+      सख्युरंसे भुजाभोगं प्रसार्यावस्थितो हरिः ॥ ८ ॥
+    transliteration: |
+      ity āsphotyācyuto 'riṣṭaṁ tala-śabdena kopayan |
+      sakhyur aṁse bhujābhogaṁ prasāryāvasthito hariḥ || 8 ||
+    translation: |
+      Speaking thus, Acyuta slapped His arms and provoked Ariṣṭa with the sound of His palms. Hari stood there with the length of His arm extended over a friend’s shoulder.
+    translation_status: WORKING_PROJECT
+
+  - id: passage.srimad-bhagavatam.10.36.9
+    locus: "10.36.9"
+    display_locus: "10.36.9"
+    order: 9
+    verification_status: VERIFIED
+    original_text: |
+      सोऽप्येवं कोपितोऽरिष्टः खुरेणावनिमुल्लिखन् ।
+      उद्यत्पुच्छभ्रमन्मेघः क्रुद्धः कृष्णमुपाद्रवत् ॥ ९ ॥
+    transliteration: |
+      so 'py evaṁ kopito 'riṣṭaḥ khureṇāvanim ullikhan |
+      udyat-puccha-bhraman-meghaḥ kruddhaḥ kṛṣṇam upādravat || 9 ||
+    translation: |
+      Thus enraged, Ariṣṭa scratched the earth with his hoof. With clouds circling his raised tail, he charged Kṛṣṇa in fury.
+    translation_status: WORKING_PROJECT
+
+  - id: passage.srimad-bhagavatam.10.36.10
+    locus: "10.36.10"
+    display_locus: "10.36.10"
+    order: 10
+    verification_status: VERIFIED
+    original_text: |
+      अग्रन्यस्तविषाणाग्रः स्तब्धासृग्लोचनोऽच्युतम् ।
+      कटाक्षिप्याद्रवत्तूर्णमिन्द्रमुक्तोऽशनिर्यथा ॥ १० ॥
+    transliteration: |
+      agra-nyasta-viṣāṇāgraḥ stabdhāsṛg-locano 'cyutam |
+      kaṭākṣipyādravat tūrṇam indra-mukto 'śanir yathā || 10 ||
+    translation: |
+      Pointing the tips of his horns forward and casting a fixed sidelong glare from bloodshot eyes at Acyuta, he rushed swiftly like a thunderbolt released by Indra.
+    translation_status: WORKING_PROJECT
+
+  - id: passage.srimad-bhagavatam.10.36.11
+    locus: "10.36.11"
+    display_locus: "10.36.11"
+    order: 11
+    verification_status: VERIFIED
+    original_text: |
+      गृहीत्वा शृङ्गयोस्तं वा अष्टादश पदानि सः ।
+      प्रत्यपोवाह भगवान् गजः प्रतिगजं यथा ॥ ११ ॥
+    transliteration: |
+      gṛhītvā śṛṅgayos taṁ vā aṣṭādaśa padāni saḥ |
+      pratyapovāha bhagavān gajaḥ prati-gajaṁ yathā || 11 ||
+    translation: |
+      Seizing him by the horns, the Lord drove him back eighteen steps, as one elephant drives back a rival elephant.
+    translation_status: WORKING_PROJECT
+
+  - id: passage.srimad-bhagavatam.10.36.12
+    locus: "10.36.12"
+    display_locus: "10.36.12"
+    order: 12
+    verification_status: VERIFIED
+    original_text: |
+      सोऽपविद्धो भगवता पुनरुत्थाय सत्वरम् ।
+      आपतत् स्विन्नसर्वाङ्गो निःश्वसन् क्रोधमूर्च्छितः ॥ १२ ॥
+    transliteration: |
+      so 'paviddho bhagavatā punar utthāya satvaram |
+      āpatat svinna-sarvāṅgo niḥśvasan krodha-mūrcchitaḥ || 12 ||
+    translation: |
+      Thrown back by the Lord, he quickly rose again and attacked, sweating over every limb, breathing heavily, and senseless with rage.
+    translation_status: WORKING_PROJECT
+
+  - id: passage.srimad-bhagavatam.10.36.13
+    locus: "10.36.13"
+    display_locus: "10.36.13"
+    order: 13
+    verification_status: VERIFIED
+    original_text: |
+      तमापतन्तं स निगृह्य शृङ्गयोः
+      पदा समाक्रम्य निपात्य भूतले ।
+      निष्पीडयामास यथार्द्रमम्बरं
+      कृत्वा विषाणेन जघान सोऽपतत् ॥ १३ ॥
+    transliteration: |
+      tam āpatantaṁ sa nigṛhya śṛṅgayoḥ
+      padā samākramya nipātya bhū-tale |
+      niṣpīḍayām āsa yathārdram ambaraṁ
+      kṛtvā viṣāṇena jaghāna so 'patat || 13 ||
+    translation: |
+      As he attacked, Kṛṣṇa seized him by the horns, pressed him down with His foot, and cast him upon the ground. He wrung him as one would a wet cloth, then struck him with a horn, and the demon fell.
+    translation_status: WORKING_PROJECT
+
+  - id: passage.srimad-bhagavatam.10.36.14
+    locus: "10.36.14"
+    display_locus: "10.36.14"
+    order: 14
+    verification_status: VERIFIED
+    original_text: |
+      असृग् वमन् मूत्रशकृत् समुत्सृजन्
+      क्षिपंश्च पादाननवस्थितेक्षणः ।
+      जगाम कृच्छ्रं निरृतेरथ क्षयं
+      पुष्पैः किरन्तो हरिमीडिरे सुराः ॥ १४ ॥
+    transliteration: |
+      asṛg vaman mūtra-śakṛt samutsṛjan
+      kṣipaṁś ca pādān anavasthitekṣaṇaḥ |
+      jagāma kṛcchraṁ nirṛter atha kṣayaṁ
+      puṣpaiḥ kiranto harim īḍire surāḥ || 14 ||
+    translation: |
+      Vomiting blood, discharging urine and dung, flinging his legs, and with unsteady eyes, he painfully went to the abode of death. Scattering flowers, the gods praised Hari.
+    translation_status: WORKING_PROJECT
+
+  - id: passage.srimad-bhagavatam.10.36.15
+    locus: "10.36.15"
+    display_locus: "10.36.15"
+    order: 15
+    verification_status: VERIFIED
+    original_text: |
+      एवं कुकुद्मिनं हत्वा स्तूयमानः द्विजातिभिः ।
+      विवेश गोष्ठं सबलो गोपीनां नयनोत्सवः ॥ १५ ॥
+    transliteration: |
+      evaṁ kukudminaṁ hatvā stūyamānaḥ dvijātibhiḥ |
+      viveśa goṣṭhaṁ sa-balo gopīnāṁ nayanotsavaḥ || 15 ||
+    translation: |
+      Having thus killed the humped demon and being praised by the twice-born, He entered the cowherd settlement with Balarāma—a festival for the eyes of the gopīs.
+    translation_status: WORKING_PROJECT
+
+  - id: passage.srimad-bhagavatam.10.36.16
+    locus: "10.36.16"
+    display_locus: "10.36.16"
+    order: 16
+    verification_status: VERIFIED
+    original_text: |
+      अरिष्टे निहते दैत्ये कृष्णेनाद्भुतकर्मणा ।
+      कंसायाथाह भगवान् नारदो देवदर्शनः ॥ १६ ॥
+    transliteration: |
+      ariṣṭe nihate daitye kṛṣṇenādbhuta-karmaṇā |
+      kaṁsāyāthāha bhagavān nārado deva-darśanaḥ || 16 ||
+    translation: |
+      When the demon Ariṣṭa had been killed by Kṛṣṇa of wondrous deeds, the powerful, divine-seeing Nārada then spoke to Kaṁsa.
+    translation_status: WORKING_PROJECT
+    source_notes:
+      - "This root verse is the transition to Nārada. It does not narrate the manifestation of Rādhā-kuṇḍa and Kṛṣṇa-kuṇḍa."
+      - "The Vedabase commentary at this locus transmits the separate twenty-verse manifestation account represented independently as work.radhakunda-manifestation-puranic-unit."

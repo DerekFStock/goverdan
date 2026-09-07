@@ -1,0 +1,73 @@
+{
+  "counts": {
+    "citations": 12,
+    "content_blocks": 8,
+    "editions": 4,
+    "passage_representations": 54,
+    "passages": 54,
+    "stories": 1,
+    "story_sections": 1,
+    "witness_mappings": 0,
+    "witnesses": 0,
+    "works": 5
+  },
+  "manifest_id": "manifest.radhakunda-mvp.development-v1",
+  "schema_version": 1,
+  "sqlite": {
+    "citation_resolution_count": 12,
+    "filename": "radhakunda-content.sqlite",
+    "foreign_key_violation_count": 0,
+    "indexes": [
+      "citations_by_block",
+      "citations_by_end_passage",
+      "citations_by_source_passage",
+      "citations_by_start_passage",
+      "source_editions_one_preferred_per_work",
+      "sqlite_autoindex_passage_representations_2",
+      "sqlite_autoindex_search_documents_1",
+      "sqlite_autoindex_source_passages_2",
+      "sqlite_autoindex_story_blocks_2",
+      "sqlite_autoindex_story_parts_2",
+      "sqlite_autoindex_story_sections_2"
+    ],
+    "integrity_check": "ok",
+    "logical_content_sha256": "750ab3463cddefc23b09133e109326cd9c1877b295346fd6095189f2bc66d23a",
+    "schema_version": 4,
+    "search_document_count": 62,
+    "source_fts_result_count": 54,
+    "story_fts_result_count": 8,
+    "tables": [
+      "citations",
+      "images",
+      "package_metadata",
+      "passage_representations",
+      "search_documents",
+      "search_documents_fts",
+      "search_documents_fts_config",
+      "search_documents_fts_data",
+      "search_documents_fts_docsize",
+      "search_documents_fts_idx",
+      "source_editions",
+      "source_passages",
+      "source_sections",
+      "source_works",
+      "stories",
+      "story_blocks",
+      "story_parts",
+      "story_sections",
+      "witness_mappings",
+      "witnesses"
+    ]
+  },
+  "status": "success",
+  "validation": {
+    "broken_citation_targets": 0,
+    "citation_targets_resolve": true,
+    "compact_authoring_split": true,
+    "duplicate_canonical_ids": 0,
+    "ids_unique": true,
+    "passages_are_edition_independent": true,
+    "unicode_normalization": "NFC",
+    "visible_unverified_citation_targets": 0
+  }
+}

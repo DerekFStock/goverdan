@@ -1,0 +1,707 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0C79FB9B83E476B99049E57C /* MetadataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A024FD4C80146EAB8EA0C651 /* MetadataModels.swift */; };
+		22BA054691A541DF95D64AE5 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 5DD9F69563D7DE99A5D26B62 /* GRDB */; };
+		2A9726BE3196C234458C6D13 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = 5DD9F69563D7DE99A5D26B62 /* GRDB */; };
+		3A940AD5C15D3116A2C25568 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AD0D55B3C9AC2A0E0181969 /* Foundation.framework */; };
+		41D406278EEE991B1C44EDC1 /* radhakunda-content.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 61B52ACDF8AC2EA49F8493B3 /* radhakunda-content.sqlite */; };
+		4A87814C3F687A280A70E865 /* PlaceholderDestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387C87C0E706D3437A69E489 /* PlaceholderDestinationView.swift */; };
+		5D03BD5A02792BD1B90840DC /* ContentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC93031F975BA495F7A92BF8 /* ContentRepository.swift */; };
+		6914249B383CA41D27736640 /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9B894A7CB140BBF4291773 /* Identifiers.swift */; };
+		6A437547FE1158C27BF5C6E4 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FDC49233E7A35BEB17BD7E /* AppModel.swift */; };
+		702F5995802131676ED74506 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AD0D55B3C9AC2A0E0181969 /* Foundation.framework */; };
+		7046317D36D01D1A8ED1E30E /* AppRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD371EDB6852DF58314620F /* AppRoute.swift */; };
+		8479D8A5D93B865FB23080BC /* FoundationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72BC10384635675DE5747465 /* FoundationTests.swift */; };
+		84A59DE5BF6E5277F238E3E8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE3DE9EBA54B052F443B46D /* HomeView.swift */; };
+		9AC2314401BE23CCE4A68E9B /* ContentDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866D722D3CBE7E5A4A08DD51 /* ContentDatabase.swift */; };
+		AA2B2C0EB9BD5AD6FB59FDC6 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AA9C05005D09A574F3AB09 /* RootView.swift */; };
+		B1D1E4C96E7F32F8D32C979A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AD0D55B3C9AC2A0E0181969 /* Foundation.framework */; };
+		BC00D6EB72B370DAEF55807C /* GovardhanaPilgrimageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F310158DD53536F6987C9D /* GovardhanaPilgrimageApp.swift */; };
+		BD8AC2C2DCBDD7FACD38AE12 /* UserStateDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8141E16C6C8B589741A4B3CC /* UserStateDatabase.swift */; };
+		D008D900778C9A9E20A08B92 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74D79A2A128E43DD59F9D11 /* AppContainer.swift */; };
+		FF33A7F988C1DD513F07E548 /* GovardhanaPilgrimageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112867B021146C26A6735430 /* GovardhanaPilgrimageUITests.swift */; };
+		A12000000000000000000001 /* OriginalWitnessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12000000000000000000002 /* OriginalWitnessView.swift */; };
+		A12000000000000000000003 /* task012-neutral-witness.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A12000000000000000000004 /* task012-neutral-witness.pdf */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B9E612A67FFA75608EE766FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 53FA695D4175653937D232DB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2358320DFF8F5F3254B8A530;
+			remoteInfo = GovardhanaPilgrimage;
+		};
+		BDF718597626B11D5476770D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 53FA695D4175653937D232DB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2358320DFF8F5F3254B8A530;
+			remoteInfo = GovardhanaPilgrimage;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0AD0D55B3C9AC2A0E0181969 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		112867B021146C26A6735430 /* GovardhanaPilgrimageUITests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GovardhanaPilgrimageUITests.swift; sourceTree = "<group>"; };
+		26BFA58C4F98FD35D1C213D9 /* GovardhanaPilgrimage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GovardhanaPilgrimage.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B4DC4C696D6E9DB85DA9DD1 /* GovardhanaPilgrimageUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GovardhanaPilgrimageUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3163C85C587FFF00A87B38AC /* GovardhanaPilgrimageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GovardhanaPilgrimageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		387C87C0E706D3437A69E489 /* PlaceholderDestinationView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PlaceholderDestinationView.swift; sourceTree = "<group>"; };
+		61B52ACDF8AC2EA49F8493B3 /* radhakunda-content.sqlite */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; path = "radhakunda-content.sqlite"; sourceTree = "<group>"; };
+		6DD371EDB6852DF58314620F /* AppRoute.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppRoute.swift; sourceTree = "<group>"; };
+		72BC10384635675DE5747465 /* FoundationTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FoundationTests.swift; sourceTree = "<group>"; };
+		8141E16C6C8B589741A4B3CC /* UserStateDatabase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UserStateDatabase.swift; sourceTree = "<group>"; };
+		866D722D3CBE7E5A4A08DD51 /* ContentDatabase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ContentDatabase.swift; sourceTree = "<group>"; };
+		9BE3DE9EBA54B052F443B46D /* HomeView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		A024FD4C80146EAB8EA0C651 /* MetadataModels.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MetadataModels.swift; sourceTree = "<group>"; };
+		A1AA9C05005D09A574F3AB09 /* RootView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		BC9B894A7CB140BBF4291773 /* Identifiers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
+		D6F310158DD53536F6987C9D /* GovardhanaPilgrimageApp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GovardhanaPilgrimageApp.swift; sourceTree = "<group>"; };
+		D7FDC49233E7A35BEB17BD7E /* AppModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		EC93031F975BA495F7A92BF8 /* ContentRepository.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ContentRepository.swift; sourceTree = "<group>"; };
+		F74D79A2A128E43DD59F9D11 /* AppContainer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
+		A12000000000000000000002 /* OriginalWitnessView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OriginalWitnessView.swift; sourceTree = "<group>"; };
+		A12000000000000000000004 /* task012-neutral-witness.pdf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.pdf; name = "task012-neutral-witness.pdf"; path = "../content/fixtures/task012-neutral-witness.pdf"; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0438C452688E0BA9CB1B2088 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A940AD5C15D3116A2C25568 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C02552816EFB725A8A25A79A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				702F5995802131676ED74506 /* Foundation.framework in Frameworks */,
+				2A9726BE3196C234458C6D13 /* GRDB in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2B063AD6D44ACDC6C6A4E27 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1D1E4C96E7F32F8D32C979A /* Foundation.framework in Frameworks */,
+				22BA054691A541DF95D64AE5 /* GRDB in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0C84E2A52566A15A10A53AA6 /* Generated Content */ = {
+			isa = PBXGroup;
+			children = (
+				61B52ACDF8AC2EA49F8493B3 /* radhakunda-content.sqlite */,
+			);
+			name = "Generated Content";
+			path = ../build;
+			sourceTree = "<group>";
+		};
+		121BC79620C80C6CD193B36D /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				866D722D3CBE7E5A4A08DD51 /* ContentDatabase.swift */,
+				EC93031F975BA495F7A92BF8 /* ContentRepository.swift */,
+				8141E16C6C8B589741A4B3CC /* UserStateDatabase.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		2AF9556E5561502493445C85 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				0AD0D55B3C9AC2A0E0181969 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		3EDD15AC7B03244744AF4490 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				BC9B894A7CB140BBF4291773 /* Identifiers.swift */,
+				A024FD4C80146EAB8EA0C651 /* MetadataModels.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		4E3C3D63A219F7D03A945C58 /* GovardhanaPilgrimageTests */ = {
+			isa = PBXGroup;
+			children = (
+				72BC10384635675DE5747465 /* FoundationTests.swift */,
+			);
+			path = GovardhanaPilgrimageTests;
+			sourceTree = "<group>";
+		};
+		524FB8074CD7CA14B614A454 = {
+			isa = PBXGroup;
+			children = (
+				967E8B20FF50B94290797293 /* Products */,
+				E4E8FA5CAE8AB4C7F0B38834 /* Frameworks */,
+				F693BE5F5C96964F05280F21 /* App */,
+			);
+			sourceTree = "<group>";
+		};
+		55897B841FE6724AECA22D20 /* GovardhanaPilgrimage */ = {
+			isa = PBXGroup;
+			children = (
+				DCC8A9A24B20D3216CE254CF /* App */,
+				121BC79620C80C6CD193B36D /* Data */,
+				3EDD15AC7B03244744AF4490 /* Domain */,
+				D9BEE91BE48AA2299A9C410E /* Features */,
+				9B7FF1DF11521875C6B51FB3 /* Navigation */,
+			);
+			path = GovardhanaPilgrimage;
+			sourceTree = "<group>";
+		};
+		967E8B20FF50B94290797293 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				26BFA58C4F98FD35D1C213D9 /* GovardhanaPilgrimage.app */,
+				3163C85C587FFF00A87B38AC /* GovardhanaPilgrimageTests.xctest */,
+				2B4DC4C696D6E9DB85DA9DD1 /* GovardhanaPilgrimageUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9B7FF1DF11521875C6B51FB3 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				6DD371EDB6852DF58314620F /* AppRoute.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		D6DC1AD0F4AB5360163211B5 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				9BE3DE9EBA54B052F443B46D /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		D9BEE91BE48AA2299A9C410E /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				D6DC1AD0F4AB5360163211B5 /* Home */,
+				387C87C0E706D3437A69E489 /* PlaceholderDestinationView.swift */,
+				A12000000000000000000002 /* OriginalWitnessView.swift */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		DCC8A9A24B20D3216CE254CF /* App */ = {
+			isa = PBXGroup;
+			children = (
+				F74D79A2A128E43DD59F9D11 /* AppContainer.swift */,
+				D7FDC49233E7A35BEB17BD7E /* AppModel.swift */,
+				D6F310158DD53536F6987C9D /* GovardhanaPilgrimageApp.swift */,
+				A1AA9C05005D09A574F3AB09 /* RootView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		E27122CBCC6062C4D5D02508 /* GovardhanaPilgrimageUITests */ = {
+			isa = PBXGroup;
+			children = (
+				112867B021146C26A6735430 /* GovardhanaPilgrimageUITests.swift */,
+			);
+			path = GovardhanaPilgrimageUITests;
+			sourceTree = "<group>";
+		};
+		E4E8FA5CAE8AB4C7F0B38834 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2AF9556E5561502493445C85 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F693BE5F5C96964F05280F21 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				55897B841FE6724AECA22D20 /* GovardhanaPilgrimage */,
+				4E3C3D63A219F7D03A945C58 /* GovardhanaPilgrimageTests */,
+				E27122CBCC6062C4D5D02508 /* GovardhanaPilgrimageUITests */,
+				0C84E2A52566A15A10A53AA6 /* Generated Content */,
+				A12000000000000000000004 /* task012-neutral-witness.pdf */,
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2358320DFF8F5F3254B8A530 /* GovardhanaPilgrimage */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1073D43C11BE7BA9FC21C601 /* Build configuration list for PBXNativeTarget "GovardhanaPilgrimage" */;
+			buildPhases = (
+				23DDEF844117F2EAD4C396DB /* Sources */,
+				D2B063AD6D44ACDC6C6A4E27 /* Frameworks */,
+				5CB88DB24F86B11E2816A8A2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GovardhanaPilgrimage;
+			packageProductDependencies = (
+				5DD9F69563D7DE99A5D26B62 /* GRDB */,
+			);
+			productName = GovardhanaPilgrimage;
+			productReference = 26BFA58C4F98FD35D1C213D9 /* GovardhanaPilgrimage.app */;
+			productType = "com.apple.product-type.application";
+		};
+		42D850034E485B27FCC6DBE6 /* GovardhanaPilgrimageTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C3F21ECCD163F4F93FCF8E40 /* Build configuration list for PBXNativeTarget "GovardhanaPilgrimageTests" */;
+			buildPhases = (
+				61B8BC09D2363B9782F2CC52 /* Sources */,
+				C02552816EFB725A8A25A79A /* Frameworks */,
+				331946E113A93C4C5AD7B450 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4AF956AD5298B69C24C0EA8F /* PBXTargetDependency */,
+			);
+			name = GovardhanaPilgrimageTests;
+			packageProductDependencies = (
+				5DD9F69563D7DE99A5D26B62 /* GRDB */,
+			);
+			productName = GovardhanaPilgrimageTests;
+			productReference = 3163C85C587FFF00A87B38AC /* GovardhanaPilgrimageTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CAC9BB045D1EC35A8862FF28 /* GovardhanaPilgrimageUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B7C43777F5179677DF4A2AF9 /* Build configuration list for PBXNativeTarget "GovardhanaPilgrimageUITests" */;
+			buildPhases = (
+				B3565C622E1D1B3E1DC60137 /* Sources */,
+				0438C452688E0BA9CB1B2088 /* Frameworks */,
+				E1ACEA3499752AA6FB36D36F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BA8B0CF785604ADD2CC842DC /* PBXTargetDependency */,
+			);
+			name = GovardhanaPilgrimageUITests;
+			productName = GovardhanaPilgrimageUITests;
+			productReference = 2B4DC4C696D6E9DB85DA9DD1 /* GovardhanaPilgrimageUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		53FA695D4175653937D232DB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 2620;
+				LastUpgradeCheck = 2620;
+			};
+			buildConfigurationList = A34B38CA02B6BBFF1BE24575 /* Build configuration list for PBXProject "GovardhanaPilgrimage" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 524FB8074CD7CA14B614A454;
+			packageReferences = (
+				7C608F867CD018817F50FD72 /* XCRemoteSwiftPackageReference "GRDB.swift" */,
+			);
+			productRefGroup = 967E8B20FF50B94290797293 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2358320DFF8F5F3254B8A530 /* GovardhanaPilgrimage */,
+				42D850034E485B27FCC6DBE6 /* GovardhanaPilgrimageTests */,
+				CAC9BB045D1EC35A8862FF28 /* GovardhanaPilgrimageUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		331946E113A93C4C5AD7B450 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CB88DB24F86B11E2816A8A2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				41D406278EEE991B1C44EDC1 /* radhakunda-content.sqlite in Resources */,
+				A12000000000000000000003 /* task012-neutral-witness.pdf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1ACEA3499752AA6FB36D36F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		23DDEF844117F2EAD4C396DB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D008D900778C9A9E20A08B92 /* AppContainer.swift in Sources */,
+				6A437547FE1158C27BF5C6E4 /* AppModel.swift in Sources */,
+				BC00D6EB72B370DAEF55807C /* GovardhanaPilgrimageApp.swift in Sources */,
+				AA2B2C0EB9BD5AD6FB59FDC6 /* RootView.swift in Sources */,
+				9AC2314401BE23CCE4A68E9B /* ContentDatabase.swift in Sources */,
+				5D03BD5A02792BD1B90840DC /* ContentRepository.swift in Sources */,
+				BD8AC2C2DCBDD7FACD38AE12 /* UserStateDatabase.swift in Sources */,
+				6914249B383CA41D27736640 /* Identifiers.swift in Sources */,
+				0C79FB9B83E476B99049E57C /* MetadataModels.swift in Sources */,
+				84A59DE5BF6E5277F238E3E8 /* HomeView.swift in Sources */,
+				4A87814C3F687A280A70E865 /* PlaceholderDestinationView.swift in Sources */,
+				7046317D36D01D1A8ED1E30E /* AppRoute.swift in Sources */,
+				A12000000000000000000001 /* OriginalWitnessView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61B8BC09D2363B9782F2CC52 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8479D8A5D93B865FB23080BC /* FoundationTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3565C622E1D1B3E1DC60137 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF33A7F988C1DD513F07E548 /* GovardhanaPilgrimageUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4AF956AD5298B69C24C0EA8F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GovardhanaPilgrimage;
+			target = 2358320DFF8F5F3254B8A530 /* GovardhanaPilgrimage */;
+			targetProxy = B9E612A67FFA75608EE766FB /* PBXContainerItemProxy */;
+		};
+		BA8B0CF785604ADD2CC842DC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GovardhanaPilgrimage;
+			target = 2358320DFF8F5F3254B8A530 /* GovardhanaPilgrimage */;
+			targetProxy = BDF718597626B11D5476770D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		150CFF534D369E7A0A9C76D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 26L4JL4UW9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.derekstock.GovardhanaPilgrimageUITests;
+				SDKROOT = iphoneos;
+				TEST_TARGET_NAME = GovardhanaPilgrimage;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		281B827092163601042DECE2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		3939A01B60B662B4EBE4A00E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		39BB3797ED726D00572E2907 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 26L4JL4UW9;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Rādhā-kuṇḍa Story";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.derekstock.GovardhanaPilgrimage;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		D1ADC5994810E2D2A296FE21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 26L4JL4UW9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.derekstock.GovardhanaPilgrimageUITests;
+				SDKROOT = iphoneos;
+				TEST_TARGET_NAME = GovardhanaPilgrimage;
+			};
+			name = Debug;
+		};
+		D1B8ED8A6A785BE187BD1FC5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 26L4JL4UW9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.derekstock.GovardhanaPilgrimageTests;
+				SDKROOT = iphoneos;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GovardhanaPilgrimage.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GovardhanaPilgrimage";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EAA05B27BD4C537FC3C402DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 26L4JL4UW9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.derekstock.GovardhanaPilgrimageTests;
+				SDKROOT = iphoneos;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GovardhanaPilgrimage.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GovardhanaPilgrimage";
+			};
+			name = Debug;
+		};
+		FDBFA4667D9914BCB9670F4A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 26L4JL4UW9;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Rādhā-kuṇḍa Story";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.derekstock.GovardhanaPilgrimage;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1073D43C11BE7BA9FC21C601 /* Build configuration list for PBXNativeTarget "GovardhanaPilgrimage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FDBFA4667D9914BCB9670F4A /* Release */,
+				39BB3797ED726D00572E2907 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A34B38CA02B6BBFF1BE24575 /* Build configuration list for PBXProject "GovardhanaPilgrimage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3939A01B60B662B4EBE4A00E /* Debug */,
+				281B827092163601042DECE2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B7C43777F5179677DF4A2AF9 /* Build configuration list for PBXNativeTarget "GovardhanaPilgrimageUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				150CFF534D369E7A0A9C76D5 /* Release */,
+				D1ADC5994810E2D2A296FE21 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C3F21ECCD163F4F93FCF8E40 /* Build configuration list for PBXNativeTarget "GovardhanaPilgrimageTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D1B8ED8A6A785BE187BD1FC5 /* Release */,
+				EAA05B27BD4C537FC3C402DF /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7C608F867CD018817F50FD72 /* XCRemoteSwiftPackageReference "GRDB.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/groue/GRDB.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.8.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5DD9F69563D7DE99A5D26B62 /* GRDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7C608F867CD018817F50FD72 /* XCRemoteSwiftPackageReference "GRDB.swift" */;
+			productName = GRDB;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 53FA695D4175653937D232DB /* Project object */;
+}
