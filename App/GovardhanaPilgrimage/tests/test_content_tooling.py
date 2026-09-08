@@ -153,7 +153,7 @@ class ContentToolingTests(unittest.TestCase):
         self.assertEqual(0, report["foreign_key_violation_count"])
         connection = sqlite3.connect(path)
         try:
-            self.assertEqual(5, connection.execute("PRAGMA user_version").fetchone()[0])
+            self.assertEqual(6, connection.execute("PRAGMA user_version").fetchone()[0])
             self.assertEqual(3, connection.execute("SELECT count(*) FROM source_passages").fetchone()[0])
             self.assertEqual(5, connection.execute("SELECT count(*) FROM story_blocks").fetchone()[0])
         finally:
@@ -205,16 +205,17 @@ class ContentToolingTests(unittest.TestCase):
         self.assertEqual(0, report["foreign_key_violation_count"])
         connection = sqlite3.connect(path)
         try:
-            self.assertEqual(9, connection.execute("SELECT count(*) FROM pilgrimage_places").fetchone()[0])
-            self.assertEqual(23, connection.execute("SELECT count(*) FROM pilgrimage_place_aliases").fetchone()[0])
-            self.assertEqual(20, connection.execute("SELECT count(*) FROM pilgrimage_place_provenance").fetchone()[0])
+            self.assertEqual(14, connection.execute("SELECT count(*) FROM pilgrimage_places").fetchone()[0])
+            self.assertEqual(40, connection.execute("SELECT count(*) FROM pilgrimage_place_aliases").fetchone()[0])
+            self.assertEqual(34, connection.execute("SELECT count(*) FROM pilgrimage_place_provenance").fetchone()[0])
         finally:
             connection.close()
 
     def test_task_016_approved_place_batch_compiles_exactly(self) -> None:
         result = compile_manifest(self.root, "radhakunda-mvp-development-manifest")
         places = result.content["pilgrimage_places"]
-        self.assertEqual([1, 2, 3, 4, 5, 6, 7, 8, 20], [place["map_number"] for place in places])
+        task_016_places = [place for place in places if place["map_number"] in {1, 2, 3, 4, 5, 6, 7, 8, 20}]
+        self.assertEqual([1, 2, 3, 4, 5, 6, 7, 8, 20], [place["map_number"] for place in task_016_places])
         expected = {
             4: ("place.mukharai", 27.51031, 77.49956, "PROBABLE", "MEDIUM"),
             5: ("place.kusumasarovara", 27.51209, 77.47834, "VERIFIED", "HIGH"),
@@ -239,6 +240,80 @@ class ContentToolingTests(unittest.TestCase):
         self.assertIn("Uddhav Temple", by_number[6]["alternate_names"])
         self.assertIn("Radha Bana Bihari Mandir", by_number[7]["alternate_names"])
         self.assertIn("Narada Muni's Temple", by_number[8]["alternate_names"])
+
+    def test_task_017_coordinate_less_places_and_approved_batch_compile_exactly(self) -> None:
+        result = compile_manifest(self.root, "radhakunda-mvp-development-manifest")
+        places = result.content["pilgrimage_places"]
+        self.assertEqual(list(range(1, 14)) + [20], [place["map_number"] for place in places])
+        by_number = {place["map_number"]: place for place in places}
+        expected = {
+            9: ("place.ratna-kunda", 27.5101778, 77.4755889, "VERIFIED", "HIGH"),
+            11: ("place.ratna-simhasana", 27.5098368, 77.4756396, "PROBABLE", "HIGH"),
+            13: ("place.gvala-pokhara", 27.5078333, 77.4737194, "VERIFIED", "HIGH"),
+        }
+        for number, values in expected.items():
+            place = by_number[number]
+            self.assertEqual(values, (
+                place["id"], place["latitude"], place["longitude"],
+                place["coordinate_status"], place["coordinate_confidence"],
+            ))
+        for number in (10, 12):
+            place = by_number[number]
+            self.assertIsNone(place.get("latitude"))
+            self.assertIsNone(place.get("longitude"))
+            self.assertEqual("UNVERIFIED", place["coordinate_status"])
+            self.assertEqual("UNKNOWN", place["coordinate_confidence"])
+            self.assertEqual("place.ratna-simhasana", place["navigation_anchor_place_id"])
+            self.assertTrue(place["location_guidance"])
+
+    def test_task_017_rejects_half_coordinate(self) -> None:
+        path, registry = self.pilgrimage_registry()
+        registry["places"][9]["latitude"] = 27.5
+        self.write_pilgrimage_registry(path, registry)
+        with self.assertRaisesRegex(ContentValidationError, "half-coordinate"):
+            compile_manifest(self.root, "radhakunda-mvp-development-manifest")
+
+    def test_task_017_rejects_coordinate_less_non_unverified_place(self) -> None:
+        path, registry = self.pilgrimage_registry()
+        registry["places"][9]["coordinate_status"] = "PROBABLE"
+        self.write_pilgrimage_registry(path, registry)
+        with self.assertRaisesRegex(ContentValidationError, "must have coordinate_status UNVERIFIED"):
+            compile_manifest(self.root, "radhakunda-mvp-development-manifest")
+
+    def test_task_017_rejects_invalid_navigation_anchors(self) -> None:
+        cases = [
+            (123, "invalid navigation_anchor_place_id"),
+            ("place.missing", "references missing navigation anchor"),
+            ("place.rasa-sthali", "cannot use itself as navigation anchor"),
+            ("place.krsna-footprint", "has no coordinate"),
+        ]
+        for anchor, error in cases:
+            with self.subTest(anchor=anchor):
+                path, registry = self.pilgrimage_registry()
+                registry["places"][9]["navigation_anchor_place_id"] = anchor
+                self.write_pilgrimage_registry(path, registry)
+                with self.assertRaisesRegex(ContentValidationError, error):
+                    compile_manifest(self.root, "radhakunda-mvp-development-manifest")
+
+    def test_task_017_sqlite_preserves_null_coordinates_anchor_and_guidance(self) -> None:
+        result = compile_manifest(self.root, "radhakunda-mvp-development-manifest")
+        path = self.root / "build/task017.sqlite"
+        report = build_sqlite(path, result)
+        self.assertEqual("ok", report["integrity_check"])
+        self.assertEqual(0, report["foreign_key_violation_count"])
+        connection = sqlite3.connect(path)
+        try:
+            rows = connection.execute(
+                "SELECT map_number, latitude, longitude, coordinate_status, coordinate_confidence, navigation_anchor_place_id, location_guidance FROM pilgrimage_places WHERE map_number IN (10, 12) ORDER BY map_number"
+            ).fetchall()
+            self.assertEqual([10, 12], [row[0] for row in rows])
+            for row in rows:
+                self.assertIsNone(row[1])
+                self.assertIsNone(row[2])
+                self.assertEqual(("UNVERIFIED", "UNKNOWN", "place.ratna-simhasana"), row[3:6])
+                self.assertTrue(row[6])
+        finally:
+            connection.close()
 
     def test_sqlite_foreign_keys_are_enforced(self) -> None:
         path, _ = self.build_database()

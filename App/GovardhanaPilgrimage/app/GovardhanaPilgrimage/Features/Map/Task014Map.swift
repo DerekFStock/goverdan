@@ -3,7 +3,10 @@ import MapLibre
 import SwiftUI
 
 extension PilgrimagePlace {
-    var coordinate: CLLocationCoordinate2D { .init(latitude: latitude, longitude: longitude) }
+    var coordinate: CLLocationCoordinate2D? {
+        guard let latitude, let longitude else { return nil }
+        return .init(latitude: latitude, longitude: longitude)
+    }
 }
 
 struct LocationSample: Sendable {
@@ -132,7 +135,8 @@ enum GeoMath {
     }
 
     static func nearest(to coordinate: CLLocationCoordinate2D, places: [PilgrimagePlace]) -> PilgrimagePlace? {
-        places.min { distance(from: coordinate, to: $0.coordinate) < distance(from: coordinate, to: $1.coordinate) }
+        places.compactMap { place in place.coordinate.map { (place, $0) } }
+            .min { distance(from: coordinate, to: $0.1) < distance(from: coordinate, to: $1.1) }?.0
     }
 }
 
@@ -151,21 +155,31 @@ final class PilgrimageMapModel: ObservableObject {
 
     init(places: [PilgrimagePlace]) {
         precondition(!places.isEmpty, "Pilgrimage registry must contain at least one place")
+        precondition(places.contains { $0.coordinate != nil }, "Pilgrimage registry must contain a coordinate-bearing place")
         self.places = places
-        activeDestination = places.first(where: { $0.mapNumber == 2 }) ?? places[0]
+        activeDestination = places.first(where: { $0.mapNumber == 2 && $0.coordinate != nil })
+            ?? places.first(where: { $0.coordinate != nil })!
         simulated = SimulatedLocationProvider(route: SimulationRoute.task014Coordinates(places: places))
         selectProvider()
     }
 
-    var destinationDistance: Double? { sample.map { GeoMath.distance(from: $0.coordinate, to: activeDestination.coordinate) } }
-    var destinationBearing: Double? { sample.map { GeoMath.bearing(from: $0.coordinate, to: activeDestination.coordinate) } }
+    var destinationDistance: Double? {
+        guard let destination = activeDestination.coordinate else { return nil }
+        return sample.map { GeoMath.distance(from: $0.coordinate, to: destination) }
+    }
+    var destinationBearing: Double? {
+        guard let destination = activeDestination.coordinate else { return nil }
+        return sample.map { GeoMath.bearing(from: $0.coordinate, to: destination) }
+    }
     var arrived: Bool { (destinationDistance ?? .greatestFiniteMagnitude) <= GeoMath.arrivalRadius }
     var nearest: PilgrimagePlace? { sample.flatMap { GeoMath.nearest(to: $0.coordinate, places: places) } }
+    var mappablePlaces: [PilgrimagePlace] { places.filter { $0.coordinate != nil } }
 
     func jump(_ place: PilgrimagePlace) {
+        guard let coordinate = place.coordinate else { return }
         source = .simulation
-        simulated.jump(to: place.coordinate)
-        requestedCenter = place.coordinate
+        simulated.jump(to: coordinate)
+        requestedCenter = coordinate
         shouldRecenter += 1
     }
 
@@ -199,7 +213,7 @@ struct GovardhanaMapScreen: View {
 
     var body: some View {
         ZStack(alignment: .bottom) {
-            OfflineMapLibreView(places: model.places, sample: model.sample, recenterCoordinate: model.requestedCenter, recenterToken: model.shouldRecenter) { selectedPlace = $0 }
+            OfflineMapLibreView(places: model.mappablePlaces, sample: model.sample, recenterCoordinate: model.requestedCenter, recenterToken: model.shouldRecenter) { selectedPlace = $0 }
                 .ignoresSafeArea(edges: .bottom)
             VStack(spacing: 8) {
                 destinationPanel
@@ -228,7 +242,13 @@ struct GovardhanaMapScreen: View {
         DisclosureGroup("Location & Offline Debug", isExpanded: $debugExpanded) {
             Picker("Location Source", selection: $model.source) { ForEach(PilgrimageMapModel.Source.allCases, id: \.self) { Text($0.rawValue) } }
             LazyVGrid(columns: [GridItem(.adaptive(minimum: 44))], spacing: 6) {
-                ForEach(model.places) { place in Button("#\(place.mapNumber)") { model.jump(place) } }
+                ForEach(model.places) { place in
+                    if place.coordinate != nil {
+                        Button("#\(place.mapNumber)") { model.jump(place) }
+                    } else {
+                        Button("#\(place.mapNumber) Details") { selectedPlace = place }
+                    }
+                }
             }
             HStack {
                 Button("Start Test Walk") { model.source = .simulation; model.simulated.walk(speed: 5) }
@@ -252,7 +272,11 @@ struct PlaceDetailView: View {
             Section("Mapping Test") {
                 Text("#\(place.mapNumber)").font(.largeTitle.bold())
                 Text(place.canonicalName).font(.title2)
-                Text(String(format: "%.6f, %.6f", place.latitude, place.longitude)).monospaced()
+                if let latitude = place.latitude, let longitude = place.longitude {
+                    Text(String(format: "%.6f, %.6f", latitude, longitude)).monospaced()
+                } else {
+                    Text("Coordinate not yet established").foregroundStyle(.secondary)
+                }
                 Text("Registry coordinate — \(place.coordinateStatus.rawValue) / \(place.coordinateConfidence.rawValue)")
                     .foregroundStyle(.secondary)
             }
@@ -268,6 +292,12 @@ struct PlaceDetailView: View {
                     LabeledContent("Aliases", value: place.alternateNames.joined(separator: ", "))
                 }
                 Text(place.verificationNotes)
+                if let anchor = place.navigationAnchorPlaceID {
+                    LabeledContent("Navigation anchor", value: anchor.rawValue)
+                }
+                if let guidance = place.locationGuidance {
+                    LabeledContent("Location guidance", value: guidance)
+                }
                 ForEach(Array(place.provenance.enumerated()), id: \.offset) { _, evidence in
                     VStack(alignment: .leading) {
                         Text(evidence.sourceType).font(.caption.bold())
@@ -282,7 +312,12 @@ struct PlaceDetailView: View {
 
 private final class PlaceAnnotation: MLNPointAnnotation {
     let place: PilgrimagePlace
-    init(_ place: PilgrimagePlace) { self.place = place; super.init(); coordinate = place.coordinate; title = place.canonicalName }
+    init(_ place: PilgrimagePlace, coordinate: CLLocationCoordinate2D) {
+        self.place = place
+        super.init()
+        self.coordinate = coordinate
+        title = place.canonicalName
+    }
     required init?(coder: NSCoder) { nil }
 }
 
@@ -322,7 +357,9 @@ struct OfflineMapLibreView: UIViewRepresentable {
         map.delegate = context.coordinator
         map.logoView.isHidden = true
         map.setCenter(.init(latitude: 27.5252, longitude: 77.4920), zoomLevel: 15.4, animated: false)
-        map.addAnnotations(places.map(PlaceAnnotation.init))
+        map.addAnnotations(places.compactMap { place in
+            place.coordinate.map { PlaceAnnotation(place, coordinate: $0) }
+        })
         context.coordinator.map = map
         return map
     }
@@ -367,7 +404,7 @@ struct OfflineMapLibreView: UIViewRepresentable {
                 let features = root["features"] as? [[String: Any]]
             else { return [] }
 
-            let sacredNames = Set(pilgrimagePlaces.flatMap { place in
+            let sacredNames = Set(pilgrimagePlaces.filter { $0.coordinate != nil }.flatMap { place in
                 [place.canonicalName, place.asciiName].compactMap { $0 } + place.alternateNames
             }.map { $0.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: .current) })
             var seen = Set<String>()

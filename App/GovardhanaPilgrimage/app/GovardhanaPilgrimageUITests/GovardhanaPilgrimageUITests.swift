@@ -65,6 +65,26 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
         app.swipeUp()
         XCTAssertTrue(app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@", "Rādhā Bana Bihārī")).firstMatch.exists)
     }
+
+    func testTask017CoordinateLessPlaceHasDetailsButNoMapPin() {
+        let app = launch()
+        app.buttons["home.map"].tap()
+        XCTAssertTrue(app.navigationBars["Govardhana Map"].waitForExistence(timeout: 8))
+        app.buttons["Location & Offline Debug"].tap()
+        XCTAssertTrue(app.buttons["#10 Details"].waitForExistence(timeout: 3))
+        XCTAssertFalse(app.buttons["map.pin.10"].exists)
+        XCTAssertFalse(app.buttons["map.pin.12"].exists)
+        XCTAssertTrue(app.buttons["#9"].exists)
+        XCTAssertTrue(app.buttons["#11"].exists)
+        XCTAssertTrue(app.buttons["#13"].exists)
+        app.buttons["#10 Details"].tap()
+        XCTAssertTrue(app.navigationBars["Rāsa-sthalī"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Coordinate not yet established"].exists)
+        XCTAssertTrue(app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@", "UNVERIFIED")).firstMatch.exists)
+        app.swipeUp()
+        XCTAssertTrue(app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@", "place.ratna-simhasana")).firstMatch.exists)
+        XCTAssertTrue(app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@", "Exact coordinate requires field verification")).firstMatch.exists)
+    }
     private let sectionID = "story.radhakunda.manifestation"
     private let storyTitle = "The Story of Śrī Rādhā-kuṇḍa"
     private let sectionTitle = "The Manifestation of Rādhā-kuṇḍa and Kṛṣṇa-kuṇḍa"

@@ -183,12 +183,14 @@ struct PilgrimagePlace: Identifiable, Hashable, Sendable {
     let canonicalName: String
     let asciiName: String?
     let alternateNames: [String]
-    let latitude: Double
-    let longitude: Double
+    let latitude: Double?
+    let longitude: Double?
     let coordinateStatus: CoordinateVerificationStatus
     let coordinateConfidence: CoordinateConfidence
     let coordinateAccuracyMeters: Double?
     let verificationNotes: String
+    let navigationAnchorPlaceID: PilgrimagePlaceID?
+    let locationGuidance: String?
     let provenance: [PilgrimagePlaceProvenance]
     let contentDestination: PilgrimageContentDestination?
 }
