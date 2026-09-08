@@ -13,6 +13,7 @@ final class AppModel {
     private(set) var storyPosition: StoryReadingPosition?
     private(set) var workPositions: [SourceWorkID: WorkReadingPosition] = [:]
     private(set) var bookmarks: [BookmarkRecord] = []
+    private(set) var pilgrimagePlaces: [PilgrimagePlace] = []
     var navigationPath: [AppRoute] = []
     private(set) var sourceExcursion: SourceExcursion?
     private(set) var errorMessage: String?
@@ -23,6 +24,7 @@ final class AppModel {
             self.container = container
             stories = try container.contentRepository.stories()
             works = try container.contentRepository.works()
+            pilgrimagePlaces = try container.contentRepository.pilgrimagePlaces()
             bookmarks = try container.userStateDatabase.bookmarks()
             for work in works {
                 workPositions[work.id] = try container.userStateDatabase.workPosition(workID: work.id)

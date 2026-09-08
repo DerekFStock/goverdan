@@ -1,0 +1,21 @@
+{
+  "version": 8,
+  "name": "Govardhana Task 014 Offline",
+  "sources": {
+    "govardhana": {
+      "type": "geojson",
+      "data": "govardhana-base.geojson",
+      "attribution": "© OpenStreetMap contributors"
+    }
+  },
+  "layers": [
+    {"id":"background","type":"background","paint":{"background-color":"#f6f0dd"}},
+    {"id":"land","type":"fill","source":"govardhana","filter":["==","kind","park"],"minzoom":9,"paint":{"fill-color":"#d8e6be","fill-opacity":0.8}},
+    {"id":"water","type":"fill","source":"govardhana","filter":["==","kind","water"],"minzoom":9,"paint":{"fill-color":"#74b9dc","fill-outline-color":"#397f9f","fill-opacity":0.95}},
+    {"id":"waterways","type":"line","source":"govardhana","filter":["==","kind","water"],"minzoom":9,"paint":{"line-color":"#4b9fc5","line-width":["interpolate",["linear"],["zoom"],10,1.0,16,3.0]}},
+    {"id":"road-casing","type":"line","source":"govardhana","filter":["==","kind","road"],"minzoom":10,"paint":{"line-color":"#a38d73","line-width":["interpolate",["linear"],["zoom"],10,1.4,14,3.0,17,7.0],"line-opacity":0.9}},
+    {"id":"major-roads","type":"line","source":"govardhana","filter":["all",["==","kind","road"],["in","class","secondary","secondary_link","tertiary"]],"minzoom":9,"paint":{"line-color":"#fff6e3","line-width":["interpolate",["linear"],["zoom"],10,1.2,14,2.8,17,6.0]}},
+    {"id":"local-roads","type":"line","source":"govardhana","filter":["all",["==","kind","road"],["in","class","residential","living_street","service","unclassified"]],"minzoom":12,"paint":{"line-color":"#fffdf6","line-width":["interpolate",["linear"],["zoom"],12,0.8,15,2.0,18,5.0]}},
+    {"id":"paths","type":"line","source":"govardhana","filter":["all",["==","kind","road"],["in","class","track","footway","steps"]],"minzoom":13,"paint":{"line-color":"#b68f69","line-width":["interpolate",["linear"],["zoom"],13,0.7,17,2.2],"line-dasharray":[2,1.5]}}
+  ]
+}

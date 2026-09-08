@@ -41,3 +41,8 @@ struct WitnessMappingID: CanonicalIdentifier {
     let rawValue: String
     init(rawValue: String) { self.rawValue = rawValue }
 }
+
+struct PilgrimagePlaceID: CanonicalIdentifier {
+    let rawValue: String
+    init(rawValue: String) { self.rawValue = rawValue }
+}

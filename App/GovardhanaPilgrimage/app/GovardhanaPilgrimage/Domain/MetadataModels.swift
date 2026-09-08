@@ -151,3 +151,44 @@ struct SourceExcursion: Hashable, Codable, Sendable {
     let citedPassageID: SourcePassageID
     var currentPassageID: SourcePassageID
 }
+
+enum CoordinateVerificationStatus: String, Hashable, Sendable {
+    case unverified = "UNVERIFIED"
+    case provisional = "PROVISIONAL"
+    case probable = "PROBABLE"
+    case verified = "VERIFIED"
+}
+
+enum CoordinateConfidence: String, Hashable, Sendable {
+    case unknown = "UNKNOWN"
+    case low = "LOW"
+    case medium = "MEDIUM"
+    case high = "HIGH"
+}
+
+struct PilgrimagePlaceProvenance: Hashable, Sendable {
+    let sourceType: String
+    let description: String
+    let sourceReference: String?
+}
+
+enum PilgrimageContentDestination: Hashable, Sendable {
+    case storySection(StorySectionID)
+    case sourcePassage(SourcePassageID)
+}
+
+struct PilgrimagePlace: Identifiable, Hashable, Sendable {
+    let id: PilgrimagePlaceID
+    let mapNumber: Int
+    let canonicalName: String
+    let asciiName: String?
+    let alternateNames: [String]
+    let latitude: Double
+    let longitude: Double
+    let coordinateStatus: CoordinateVerificationStatus
+    let coordinateConfidence: CoordinateConfidence
+    let coordinateAccuracyMeters: Double?
+    let verificationNotes: String
+    let provenance: [PilgrimagePlaceProvenance]
+    let contentDestination: PilgrimageContentDestination?
+}

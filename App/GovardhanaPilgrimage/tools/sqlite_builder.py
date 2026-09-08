@@ -11,12 +11,12 @@ from typing import Any
 from content_tooling import BuildResult, ContentValidationError
 
 
-SCHEMA_VERSION = 4
+SCHEMA_VERSION = 5
 DATABASE_FILENAME = "radhakunda-content.sqlite"
 
 SCHEMA_SQL = """
 PRAGMA foreign_keys = ON;
-PRAGMA user_version = 4;
+PRAGMA user_version = 5;
 
 CREATE TABLE package_metadata (
     key TEXT PRIMARY KEY NOT NULL,
@@ -156,6 +156,37 @@ CREATE TABLE images (
     alt_text TEXT
 ) WITHOUT ROWID;
 
+CREATE TABLE pilgrimage_places (
+    id TEXT PRIMARY KEY NOT NULL,
+    map_number INTEGER NOT NULL UNIQUE CHECK (map_number > 0),
+    canonical_name TEXT NOT NULL CHECK (length(trim(canonical_name)) > 0),
+    ascii_name TEXT,
+    latitude REAL NOT NULL CHECK (latitude BETWEEN -90 AND 90),
+    longitude REAL NOT NULL CHECK (longitude BETWEEN -180 AND 180),
+    coordinate_status TEXT NOT NULL CHECK (coordinate_status IN ('UNVERIFIED', 'PROVISIONAL', 'PROBABLE', 'VERIFIED')),
+    coordinate_confidence TEXT NOT NULL CHECK (coordinate_confidence IN ('UNKNOWN', 'LOW', 'MEDIUM', 'HIGH')),
+    coordinate_accuracy_meters REAL CHECK (coordinate_accuracy_meters > 0),
+    verification_notes TEXT NOT NULL,
+    content_destination_kind TEXT CHECK (content_destination_kind IN ('STORY_SECTION', 'SOURCE_PASSAGE')),
+    content_destination_id TEXT,
+    CHECK ((content_destination_kind IS NULL) = (content_destination_id IS NULL))
+) WITHOUT ROWID;
+
+CREATE TABLE pilgrimage_place_aliases (
+    place_id TEXT NOT NULL REFERENCES pilgrimage_places(id),
+    alias TEXT NOT NULL CHECK (length(trim(alias)) > 0),
+    PRIMARY KEY (place_id, alias)
+) WITHOUT ROWID;
+
+CREATE TABLE pilgrimage_place_provenance (
+    place_id TEXT NOT NULL REFERENCES pilgrimage_places(id),
+    sort_order INTEGER NOT NULL CHECK (sort_order > 0),
+    source_type TEXT NOT NULL CHECK (length(trim(source_type)) > 0),
+    description TEXT NOT NULL CHECK (length(trim(description)) > 0),
+    source_reference TEXT,
+    PRIMARY KEY (place_id, sort_order)
+) WITHOUT ROWID;
+
 CREATE TABLE search_documents (
     rowid INTEGER PRIMARY KEY,
     id TEXT NOT NULL UNIQUE,
@@ -291,6 +322,32 @@ def _insert_content(connection: sqlite3.Connection, result: BuildResult) -> None
                 item["pdf_page_index"], item.get("printed_page_label")
             )
             for item in content.get("witness_mappings", [])
+        ],
+    )
+    pilgrimage_places = content.get("pilgrimage_places", [])
+    connection.executemany(
+        "INSERT INTO pilgrimage_places(id, map_number, canonical_name, ascii_name, latitude, longitude, coordinate_status, coordinate_confidence, coordinate_accuracy_meters, verification_notes, content_destination_kind, content_destination_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        [
+            (
+                item["id"], item["map_number"], item["canonical_name"], item.get("ascii_name"),
+                item["latitude"], item["longitude"], item["coordinate_status"],
+                item["coordinate_confidence"], item.get("coordinate_accuracy_meters"),
+                item["verification_notes"],
+                item.get("content_destination", {}).get("kind") if item.get("content_destination") else None,
+                item.get("content_destination", {}).get("id") if item.get("content_destination") else None,
+            )
+            for item in pilgrimage_places
+        ],
+    )
+    connection.executemany(
+        "INSERT INTO pilgrimage_place_aliases(place_id, alias) VALUES (?, ?)",
+        [(item["id"], alias) for item in pilgrimage_places for alias in item["alternate_names"]],
+    )
+    connection.executemany(
+        "INSERT INTO pilgrimage_place_provenance(place_id, sort_order, source_type, description, source_reference) VALUES (?, ?, ?, ?, ?)",
+        [
+            (item["id"], order, evidence["source_type"], evidence["description"], evidence.get("source_reference"))
+            for item in pilgrimage_places for order, evidence in enumerate(item["provenance"], 1)
         ],
     )
 

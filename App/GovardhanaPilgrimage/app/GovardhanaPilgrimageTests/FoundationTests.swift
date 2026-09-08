@@ -1,9 +1,85 @@
 import GRDB
+import CoreLocation
 import PDFKit
 import XCTest
 @testable import GovardhanaPilgrimage
 
 final class FoundationTests: XCTestCase {
+    private final class FixtureLocationProvider: LocationProvider {
+        let coordinate: CLLocationCoordinate2D
+        init(coordinate: CLLocationCoordinate2D) { self.coordinate = coordinate }
+        var onLocation: ((LocationSample) -> Void)?
+        func start() { onLocation?(.init(coordinate: coordinate, horizontalAccuracy: 3, timestamp: Date(), course: 0, speed: 0)) }
+        func stop() {}
+    }
+
+    @MainActor
+    func testTask014DistanceBearingNearestArrivalAndProviderAbstraction() throws {
+        let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
+        let places = try repository.pilgrimagePlaces()
+        let distance = GeoMath.distance(from: places[0].coordinate, to: places[1].coordinate)
+        XCTAssertGreaterThan(distance, 100)
+        XCTAssertLessThan(distance, 125)
+        let bearing = GeoMath.bearing(from: places[0].coordinate, to: places[1].coordinate)
+        XCTAssertGreaterThan(bearing, 85)
+        XCTAssertLessThan(bearing, 100)
+        XCTAssertEqual("E", GeoMath.direction(for: bearing))
+        XCTAssertEqual(places[1], GeoMath.nearest(to: places[1].coordinate, places: places))
+        XCTAssertFalse(distance <= GeoMath.arrivalRadius)
+        XCTAssertTrue(GeoMath.distance(from: places[1].coordinate, to: .init(latitude: 27.52521, longitude: 77.49251)) <= GeoMath.arrivalRadius)
+
+        let provider: LocationProvider = FixtureLocationProvider(coordinate: places[0].coordinate)
+        var received: LocationSample?
+        provider.onLocation = { received = $0 }
+        provider.start()
+        XCTAssertEqual(places[0].latitude, received?.coordinate.latitude)
+    }
+
+    func testTask015PermanentPilgrimageRegistryIdentityMetadataAndSimulationProjection() throws {
+        let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
+        let allPlaces = try repository.pilgrimagePlaces()
+        let places = allPlaces.filter { [1, 2, 3, 20].contains($0.mapNumber) }
+        XCTAssertEqual([1, 2, 3, 20], places.map(\.mapNumber))
+        XCTAssertEqual(
+            ["place.radhakunda", "place.syamakunda", "place.lalitakunda", "place.manasiganga"],
+            places.map(\.id.rawValue)
+        )
+        XCTAssertTrue(places.allSatisfy { $0.coordinateStatus == .provisional && $0.coordinateConfidence == .low })
+        XCTAssertTrue(places.allSatisfy { $0.provenance.first?.sourceType == "PROJECT_FIXTURE" })
+        let route = SimulationRoute.task014Coordinates(places: allPlaces)
+        XCTAssertEqual(places[0].coordinate.latitude, route.first?.latitude)
+        XCTAssertEqual(places[2].coordinate.longitude, route.last?.longitude)
+    }
+
+    @MainActor
+    func testTask016ApprovedPlacesSurviveSQLiteAndMapModelWithoutChangingSimulation() throws {
+        let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
+        let places = try repository.pilgrimagePlaces()
+        XCTAssertEqual([1, 2, 3, 4, 5, 6, 7, 8, 20], places.map(\.mapNumber))
+        let expected: [Int: (String, Double, Double, CoordinateVerificationStatus, CoordinateConfidence)] = [
+            4: ("place.mukharai", 27.51031, 77.49956, .probable, .medium),
+            5: ("place.kusumasarovara", 27.51209, 77.47834, .verified, .high),
+            6: ("place.uddhava-temple", 27.51141, 77.47705, .probable, .high),
+            7: ("place.asoka-vana", 27.5111752, 77.4785779, .probable, .high),
+            8: ("place.narada-kunda", 27.50819, 77.47980, .probable, .high),
+        ]
+        for place in places where expected[place.mapNumber] != nil {
+            let value = try XCTUnwrap(expected[place.mapNumber])
+            XCTAssertEqual(value.0, place.id.rawValue)
+            XCTAssertEqual(value.1, place.latitude, accuracy: 0.00000001)
+            XCTAssertEqual(value.2, place.longitude, accuracy: 0.00000001)
+            XCTAssertEqual(value.3, place.coordinateStatus)
+            XCTAssertEqual(value.4, place.coordinateConfidence)
+            XCTAssertFalse(place.alternateNames.isEmpty)
+            XCTAssertFalse(place.provenance.isEmpty)
+            XCTAssertNil(place.contentDestination)
+        }
+        let model = PilgrimageMapModel(places: places)
+        XCTAssertEqual(9, model.places.count)
+        let route = SimulationRoute.task014Coordinates(places: places)
+        XCTAssertEqual(places.first { $0.mapNumber == 1 }?.coordinate.latitude, route.first?.latitude)
+        XCTAssertEqual(places.first { $0.mapNumber == 3 }?.coordinate.longitude, route.last?.longitude)
+    }
     private func bundledContentURL() throws -> URL {
         try XCTUnwrap(Bundle.main.url(forResource: "radhakunda-content", withExtension: "sqlite"))
     }

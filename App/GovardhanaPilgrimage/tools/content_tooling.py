@@ -29,6 +29,8 @@ BLOCK_PATTERN = re.compile(
 APPROVED_BLOCK_TYPES = {"heading", "paragraph", "quotation", "verse"}
 CITATION_PATTERN = re.compile(r"\[\[cite:([^\]]+)\]\]")
 REAL_CITATION_PATTERN = re.compile(r"\[\[(?:cite|cite-group):[^\]]+\]\]")
+PILGRIMAGE_COORDINATE_STATUSES = {"UNVERIFIED", "PROVISIONAL", "PROBABLE", "VERIFIED"}
+PILGRIMAGE_COORDINATE_CONFIDENCE = {"UNKNOWN", "LOW", "MEDIUM", "HIGH"}
 
 
 def normalize(value: Any) -> Any:
@@ -190,6 +192,85 @@ def _typed(entity_type: str, values: list[dict[str, Any]]) -> list[dict[str, Any
     return [{"entity_type": entity_type, **value} for value in values]
 
 
+def validate_pilgrimage_places(document: dict[str, Any], label: str) -> list[dict[str, Any]]:
+    """Validate durable pilgrimage identity separately from geographic basemap data."""
+    _require_fields(document, {"schema_version", "registry", "places"}, label)
+    places = document["places"]
+    if not isinstance(places, list):
+        raise ContentValidationError(f"{label} places must be a list")
+    seen_ids: set[str] = set()
+    seen_numbers: set[int] = set()
+    seen_names: set[str] = set()
+    for place in places:
+        if not isinstance(place, dict):
+            raise ContentValidationError(f"{label} contains a non-object place record")
+        _require_fields(
+            place,
+            {
+                "id", "map_number", "canonical_name", "alternate_names", "latitude", "longitude",
+                "coordinate_status", "coordinate_confidence", "verification_notes", "provenance",
+                "content_destination",
+            },
+            f"Pilgrimage Place {place.get('id', '<unknown>')}",
+        )
+        place_id = place["id"]
+        map_number = place["map_number"]
+        canonical_name = place["canonical_name"]
+        if not isinstance(place_id, str) or not place_id:
+            raise ContentValidationError("Pilgrimage Place ID must be a non-empty string")
+        if place_id in seen_ids:
+            raise ContentValidationError(f"Duplicate Pilgrimage Place ID: {place_id}")
+        seen_ids.add(place_id)
+        if not isinstance(map_number, int) or isinstance(map_number, bool) or map_number < 1:
+            raise ContentValidationError(f"Pilgrimage Place '{place_id}' has invalid map_number")
+        if map_number in seen_numbers:
+            raise ContentValidationError(f"Duplicate Pilgrimage Place map_number: {map_number}")
+        seen_numbers.add(map_number)
+        if not isinstance(canonical_name, str) or not canonical_name.strip():
+            raise ContentValidationError(f"Pilgrimage Place '{place_id}' has an empty canonical_name")
+        normalized_name = canonical_name.casefold()
+        if normalized_name in seen_names:
+            raise ContentValidationError(f"Duplicate Pilgrimage Place canonical_name: {canonical_name}")
+        seen_names.add(normalized_name)
+        latitude, longitude = place["latitude"], place["longitude"]
+        if not isinstance(latitude, (int, float)) or isinstance(latitude, bool) or not -90 <= latitude <= 90:
+            raise ContentValidationError(f"Pilgrimage Place '{place_id}' has invalid latitude")
+        if not isinstance(longitude, (int, float)) or isinstance(longitude, bool) or not -180 <= longitude <= 180:
+            raise ContentValidationError(f"Pilgrimage Place '{place_id}' has invalid longitude")
+        if place["coordinate_status"] not in PILGRIMAGE_COORDINATE_STATUSES:
+            raise ContentValidationError(f"Pilgrimage Place '{place_id}' has invalid coordinate_status")
+        if place["coordinate_confidence"] not in PILGRIMAGE_COORDINATE_CONFIDENCE:
+            raise ContentValidationError(f"Pilgrimage Place '{place_id}' has invalid coordinate_confidence")
+        accuracy = place.get("coordinate_accuracy_meters")
+        if accuracy is not None and (
+            not isinstance(accuracy, (int, float)) or isinstance(accuracy, bool) or accuracy <= 0
+        ):
+            raise ContentValidationError(f"Pilgrimage Place '{place_id}' has invalid coordinate_accuracy_meters")
+        aliases = place["alternate_names"]
+        if not isinstance(aliases, list) or any(not isinstance(alias, str) or not alias.strip() for alias in aliases):
+            raise ContentValidationError(f"Pilgrimage Place '{place_id}' has malformed alternate_names")
+        if len({alias.casefold() for alias in aliases}) != len(aliases):
+            raise ContentValidationError(f"Pilgrimage Place '{place_id}' has duplicate alternate_names")
+        provenance = place["provenance"]
+        if not isinstance(provenance, list) or not provenance:
+            raise ContentValidationError(f"Pilgrimage Place '{place_id}' requires coordinate provenance")
+        for evidence in provenance:
+            if not isinstance(evidence, dict) or not all(
+                isinstance(evidence.get(key), str) and evidence[key].strip()
+                for key in ("source_type", "description")
+            ):
+                raise ContentValidationError(f"Pilgrimage Place '{place_id}' has malformed provenance")
+        destination = place["content_destination"]
+        if destination is not None and (
+            not isinstance(destination, dict)
+            or destination.get("kind") not in {"STORY_SECTION", "SOURCE_PASSAGE"}
+            or not isinstance(destination.get("id"), str)
+            or not destination["id"]
+        ):
+            raise ContentValidationError(f"Pilgrimage Place '{place_id}' has invalid content_destination")
+    return places
+
+
 def compile_manifest(root: Path, manifest_name: str) -> BuildResult:
     real_manifest_path = root / "content" / "manifests" / f"{manifest_name}.yaml"
     if real_manifest_path.exists():
@@ -213,6 +294,7 @@ def compile_manifest(root: Path, manifest_name: str) -> BuildResult:
     representations = [rep for item in sources for rep in item.get("representations", [])]
     witnesses = [witness for item in sources for witness in item.get("witnesses", [])]
     witness_mappings = [mapping for item in sources for mapping in item.get("witness_mappings", [])]
+    pilgrimage_places: list[dict[str, Any]] = []
 
     for work in works:
         _require_fields(work, {"id", "title"}, f"Work {work.get('id', '<unknown>')}")
@@ -253,6 +335,7 @@ def compile_manifest(root: Path, manifest_name: str) -> BuildResult:
         + _typed("passage_representation", representations)
         + _typed("witness", witnesses)
         + _typed("witness_mapping", witness_mappings)
+        + _typed("pilgrimage_place", pilgrimage_places)
     )
     _check_unique(all_entities)
 
@@ -339,6 +422,7 @@ def compile_manifest(root: Path, manifest_name: str) -> BuildResult:
         "passage_representations": sorted(representations, key=lambda item: item["id"]),
         "witnesses": sorted(witnesses, key=lambda item: item["id"]),
         "witness_mappings": sorted(witness_mappings, key=lambda item: item["id"]),
+        "pilgrimage_places": pilgrimage_places,
     }
     counts = {key: len(value) for key, value in content.items() if isinstance(value, list)}
     report = {
@@ -374,6 +458,17 @@ def compile_development_manifest(root: Path, manifest_path: Path) -> BuildResult
     source_entries = [
         item for item in manifest["compile_sequence"] if item.get("role") == "SOURCE_PACKAGE"
     ]
+    pilgrimage_entries = [
+        item for item in manifest["compile_sequence"] if item.get("role") == "PILGRIMAGE_PLACE_REGISTRY"
+    ]
+    if len(pilgrimage_entries) != 1:
+        raise ContentValidationError("Development manifest must declare exactly one PILGRIMAGE_PLACE_REGISTRY")
+    pilgrimage_entry = pilgrimage_entries[0]
+    if pilgrimage_entry.get("required") is not True or pilgrimage_entry.get("development_eligible") is not True:
+        raise ContentValidationError("PILGRIMAGE_PLACE_REGISTRY must be required and development eligible")
+    pilgrimage_places = validate_pilgrimage_places(
+        load_yaml(root / pilgrimage_entry["target_path"]), "Pilgrimage Place Registry"
+    )
     declared_work_ids = [item.get("work_id") for item in source_entries]
     duplicate_work_ids = sorted(
         {work_id for work_id in declared_work_ids if declared_work_ids.count(work_id) > 1}
@@ -612,11 +707,20 @@ def compile_development_manifest(root: Path, manifest_path: Path) -> BuildResult
         _typed("story", story_entities) + _typed("story_section", sections) + _typed("content_block", blocks)
         + _typed("citation", citations) + _typed("work", works) + _typed("edition", editions)
         + _typed("passage", passages) + _typed("passage_representation", representations)
+        + _typed("pilgrimage_place", pilgrimage_places)
     )
     _check_unique(all_entities)
     block_ids = {item["id"] for item in blocks}
     if any(item["content_block_id"] not in block_ids for item in citations):
         raise ContentValidationError("Citation sidecar references a missing Story Content Block")
+    for place in pilgrimage_places:
+        destination = place.get("content_destination")
+        if destination and destination["kind"] == "STORY_SECTION" and destination["id"] not in {
+            item["id"] for item in sections
+        }:
+            raise ContentValidationError(f"Pilgrimage Place '{place['id']}' references a missing Story Section")
+        if destination and destination["kind"] == "SOURCE_PASSAGE" and destination["id"] not in passage_by_id:
+            raise ContentValidationError(f"Pilgrimage Place '{place['id']}' references a missing Source Passage")
 
     content = {
         "schema_version": 1,
@@ -631,6 +735,7 @@ def compile_development_manifest(root: Path, manifest_path: Path) -> BuildResult
         "passage_representations": sorted(representations, key=lambda item: item["id"]),
         "witnesses": [],
         "witness_mappings": [],
+        "pilgrimage_places": sorted(pilgrimage_places, key=lambda item: item["map_number"]),
     }
     counts = {key: len(value) for key, value in content.items() if isinstance(value, list)}
     report = {

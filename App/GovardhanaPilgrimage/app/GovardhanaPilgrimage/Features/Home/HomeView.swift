@@ -4,6 +4,7 @@ struct HomeView: View {
     let stories: [StorySummary]
     let works: [SourceWorkSummary]
     let storyPosition: StoryReadingPosition?
+    let pilgrimagePlaces: [PilgrimagePlace]
 
     private let columns = [GridItem(.flexible()), GridItem(.flexible())]
 
@@ -24,6 +25,18 @@ struct HomeView: View {
                     destination("Library", systemImage: "books.vertical", route: .library)
                     destination("Search", systemImage: "magnifyingglass", route: .search)
                     destination("Bookmarks", systemImage: "bookmark", route: .bookmarks)
+                    NavigationLink {
+                        GovardhanaMapScreen(places: pilgrimagePlaces)
+                    } label: {
+                        VStack(spacing: 10) {
+                            Image(systemName: "map").font(.title2)
+                            Text("Map").font(.headline)
+                        }
+                        .frame(maxWidth: .infinity, minHeight: 96)
+                        .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 16))
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityIdentifier("home.map")
                 }
 
                 if let position = storyPosition {

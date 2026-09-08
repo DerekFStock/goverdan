@@ -11,6 +11,7 @@ import unicodedata
 import unittest
 from unittest import mock
 from pathlib import Path
+import yaml
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -48,6 +49,14 @@ class ContentToolingTests(unittest.TestCase):
         checksums = json.loads(checksum_path.read_text(encoding="utf-8"))
         checksums[filename] = hashlib.sha256(path.read_bytes()).hexdigest()
         checksum_path.write_text(json.dumps(checksums, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+    def pilgrimage_registry(self) -> tuple[Path, dict]:
+        path = self.root / "content/pilgrimage/places.yaml"
+        return path, yaml.safe_load(path.read_text(encoding="utf-8"))
+
+    def write_pilgrimage_registry(self, path: Path, registry: dict) -> None:
+        path.write_text(yaml.safe_dump(registry, allow_unicode=True, sort_keys=False), encoding="utf-8")
+        self.refresh_real_checksum("govardhana-pilgrimage-places.yaml", path)
 
     def test_valid_fixture_builds_successfully(self) -> None:
         result = compile_manifest(self.root, "fixture")
@@ -144,11 +153,92 @@ class ContentToolingTests(unittest.TestCase):
         self.assertEqual(0, report["foreign_key_violation_count"])
         connection = sqlite3.connect(path)
         try:
-            self.assertEqual(4, connection.execute("PRAGMA user_version").fetchone()[0])
+            self.assertEqual(5, connection.execute("PRAGMA user_version").fetchone()[0])
             self.assertEqual(3, connection.execute("SELECT count(*) FROM source_passages").fetchone()[0])
             self.assertEqual(5, connection.execute("SELECT count(*) FROM story_blocks").fetchone()[0])
         finally:
             connection.close()
+
+    def test_task_015_original_registry_records_remain_unchanged(self) -> None:
+        result = compile_manifest(self.root, "radhakunda-mvp-development-manifest")
+        places = [place for place in result.content["pilgrimage_places"] if place["map_number"] in {1, 2, 3, 20}]
+        self.assertEqual([1, 2, 3, 20], [place["map_number"] for place in places])
+        self.assertEqual(
+            ["place.radhakunda", "place.syamakunda", "place.lalitakunda", "place.manasiganga"],
+            [place["id"] for place in places],
+        )
+        self.assertTrue(all(place["coordinate_status"] == "PROVISIONAL" for place in places))
+
+    def test_task_015_registry_rejects_invalid_coordinate(self) -> None:
+        path, registry = self.pilgrimage_registry()
+        registry["places"][0]["latitude"] = 91
+        self.write_pilgrimage_registry(path, registry)
+        with self.assertRaisesRegex(ContentValidationError, "invalid latitude"):
+            compile_manifest(self.root, "radhakunda-mvp-development-manifest")
+
+    def test_task_015_registry_rejects_duplicate_id(self) -> None:
+        path, registry = self.pilgrimage_registry()
+        registry["places"][1]["id"] = registry["places"][0]["id"]
+        self.write_pilgrimage_registry(path, registry)
+        with self.assertRaisesRegex(ContentValidationError, "Duplicate Pilgrimage Place ID"):
+            compile_manifest(self.root, "radhakunda-mvp-development-manifest")
+
+    def test_task_015_registry_rejects_duplicate_map_number(self) -> None:
+        path, registry = self.pilgrimage_registry()
+        registry["places"][1]["map_number"] = registry["places"][0]["map_number"]
+        self.write_pilgrimage_registry(path, registry)
+        with self.assertRaisesRegex(ContentValidationError, "Duplicate Pilgrimage Place map_number"):
+            compile_manifest(self.root, "radhakunda-mvp-development-manifest")
+
+    def test_task_015_registry_rejects_invalid_verification_state(self) -> None:
+        path, registry = self.pilgrimage_registry()
+        registry["places"][0]["coordinate_status"] = "CERTAINISH"
+        self.write_pilgrimage_registry(path, registry)
+        with self.assertRaisesRegex(ContentValidationError, "invalid coordinate_status"):
+            compile_manifest(self.root, "radhakunda-mvp-development-manifest")
+
+    def test_task_015_sqlite_preserves_registry_aliases_and_provenance(self) -> None:
+        result = compile_manifest(self.root, "radhakunda-mvp-development-manifest")
+        path = self.root / "build/task015.sqlite"
+        report = build_sqlite(path, result)
+        self.assertEqual("ok", report["integrity_check"])
+        self.assertEqual(0, report["foreign_key_violation_count"])
+        connection = sqlite3.connect(path)
+        try:
+            self.assertEqual(9, connection.execute("SELECT count(*) FROM pilgrimage_places").fetchone()[0])
+            self.assertEqual(23, connection.execute("SELECT count(*) FROM pilgrimage_place_aliases").fetchone()[0])
+            self.assertEqual(20, connection.execute("SELECT count(*) FROM pilgrimage_place_provenance").fetchone()[0])
+        finally:
+            connection.close()
+
+    def test_task_016_approved_place_batch_compiles_exactly(self) -> None:
+        result = compile_manifest(self.root, "radhakunda-mvp-development-manifest")
+        places = result.content["pilgrimage_places"]
+        self.assertEqual([1, 2, 3, 4, 5, 6, 7, 8, 20], [place["map_number"] for place in places])
+        expected = {
+            4: ("place.mukharai", 27.51031, 77.49956, "PROBABLE", "MEDIUM"),
+            5: ("place.kusumasarovara", 27.51209, 77.47834, "VERIFIED", "HIGH"),
+            6: ("place.uddhava-temple", 27.51141, 77.47705, "PROBABLE", "HIGH"),
+            7: ("place.asoka-vana", 27.5111752, 77.4785779, "PROBABLE", "HIGH"),
+            8: ("place.narada-kunda", 27.50819, 77.47980, "PROBABLE", "HIGH"),
+        }
+        for place in places:
+            if place["map_number"] not in expected:
+                continue
+            self.assertEqual(expected[place["map_number"]], (
+                place["id"], place["latitude"], place["longitude"],
+                place["coordinate_status"], place["coordinate_confidence"],
+            ))
+            self.assertIsNone(place["coordinate_accuracy_meters"])
+            self.assertIsNone(place["content_destination"])
+            self.assertGreaterEqual(len(place["provenance"]), 3)
+
+        by_number = {place["map_number"]: place for place in places}
+        self.assertIn("Mukhara", by_number[4]["alternate_names"])
+        self.assertIn("Kusum Sarovar", by_number[5]["alternate_names"])
+        self.assertIn("Uddhav Temple", by_number[6]["alternate_names"])
+        self.assertIn("Radha Bana Bihari Mandir", by_number[7]["alternate_names"])
+        self.assertIn("Narada Muni's Temple", by_number[8]["alternate_names"])
 
     def test_sqlite_foreign_keys_are_enforced(self) -> None:
         path, _ = self.build_database()

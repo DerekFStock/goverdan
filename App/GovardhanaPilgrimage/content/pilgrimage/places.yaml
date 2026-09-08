@@ -1,0 +1,187 @@
+schema_version: 1
+registry:
+  id: registry.govardhana-pilgrimage-places.development-v1
+  status: DEVELOPMENT
+places:
+  - id: place.radhakunda
+    map_number: 1
+    canonical_name: Rādhā-kuṇḍa
+    ascii_name: Radha-kunda
+    alternate_names:
+      - Radha Kund
+      - Radhakunda
+    latitude: 27.525256
+    longitude: 77.491353
+    coordinate_status: PROVISIONAL
+    coordinate_confidence: LOW
+    coordinate_accuracy_meters:
+    verification_notes: Research-approved working coordinate; not yet supported by stronger verified provenance.
+    provenance:
+      - source_type: PROJECT_FIXTURE
+        description: Task 014 mapping fixture accepted for development testing.
+    content_destination:
+      kind: STORY_SECTION
+      id: story.radhakunda.manifestation
+  - id: place.syamakunda
+    map_number: 2
+    canonical_name: Śyāma-kuṇḍa
+    ascii_name: Syama-kunda
+    alternate_names:
+      - Shyama Kunda
+      - Syama Kund
+    latitude: 27.525200
+    longitude: 77.492500
+    coordinate_status: PROVISIONAL
+    coordinate_confidence: LOW
+    coordinate_accuracy_meters:
+    verification_notes: Research-approved working coordinate; not yet supported by stronger verified provenance.
+    provenance:
+      - source_type: PROJECT_FIXTURE
+        description: Task 014 mapping fixture accepted for development testing.
+    content_destination:
+  - id: place.lalitakunda
+    map_number: 3
+    canonical_name: Lalitā-kuṇḍa
+    ascii_name: Lalita-kunda
+    alternate_names:
+      - Lalita Kunda
+      - Lalita Kund
+    latitude: 27.526200
+    longitude: 77.493100
+    coordinate_status: PROVISIONAL
+    coordinate_confidence: LOW
+    coordinate_accuracy_meters:
+    verification_notes: Research-approved working coordinate; not yet supported by stronger verified provenance.
+    provenance:
+      - source_type: PROJECT_FIXTURE
+        description: Task 014 mapping fixture accepted for development testing.
+    content_destination:
+  - id: place.mukharai
+    map_number: 4
+    canonical_name: Mukharai
+    ascii_name: Mukharai
+    alternate_names:
+      - Mukhara
+      - Mukhrai
+      - Mukharā
+    latitude: 27.51031
+    longitude: 77.49956
+    coordinate_status: PROBABLE
+    coordinate_confidence: MEDIUM
+    coordinate_accuracy_meters:
+    verification_notes: Strong village and sacred-site identification for the Mukhara Devī and Rādhārāṇī maternal-family pilgrimage area; the ideal pilgrim arrival point versus sacred-site centroid has not been field verified.
+    provenance:
+      - source_type: PILGRIMAGE_GUIDE
+        description: Traditional pilgrimage descriptions and directions identify Mukharai, Mukhara Devī temple, and the associated kuṇḍa southeast of Rādhā-kuṇḍa.
+      - source_type: MODERN_MAP
+        description: The mapped Mridula Radharani Nanihal pilgrimage temple in Mukhrai village, location code GF6X+4R, agrees with the traditional relative position.
+      - source_type: PROJECT_RESEARCH
+        description: Approved Task 016 research decision; position also agrees with the relative placement on the project’s original 71-place pilgrimage map.
+    content_destination:
+  - id: place.kusumasarovara
+    map_number: 5
+    canonical_name: Kusuma-sarovara
+    ascii_name: Kusuma-sarovara
+    alternate_names:
+      - Kusum Sarovar
+      - Kusuma Sarovara
+    latitude: 27.51209
+    longitude: 77.47834
+    coordinate_status: VERIFIED
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: Major geographically unmistakable reservoir with strong independent coordinate agreement; a separate practical pilgrim arrival point may still be established later.
+    provenance:
+      - source_type: OFFICIAL_OR_INSTITUTIONAL_DOCUMENT
+        description: The Braj Development Plan gives approximately 27°30'43.52\"N, 77°28'42.04\"E, corresponding to the approved decimal coordinate.
+      - source_type: MODERN_MAP
+        description: Current geographic mapping independently identifies the same major reservoir as Kusum Sarovar.
+      - source_type: PROJECT_RESEARCH
+        description: Approved Task 016 research decision; the site also agrees with the project’s original pilgrimage-map position.
+    content_destination:
+  - id: place.uddhava-temple
+    map_number: 6
+    canonical_name: Uddhava Temple
+    ascii_name: Uddhava Temple
+    alternate_names:
+      - Uddhav Temple
+    latitude: 27.51141
+    longitude: 77.47705
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: This is specifically the Uddhava-associated temple in the Kusuma-sarovara cluster represented by map #6, not Uddhava-kuṇḍa, Uddhav Kund, the Uddhava Bihari complex, or future map place #69; field verification remains outstanding.
+    provenance:
+      - source_type: PILGRIMAGE_GUIDE
+        description: Traditional pilgrimage descriptions identify an Uddhava-associated temple in the immediate Kusuma-sarovara area.
+      - source_type: MODERN_MAP
+        description: Current mapping identifies Uddhav Temple at location code GF6G+HR7, consistent with map-place #6.
+      - source_type: PROJECT_RESEARCH
+        description: Approved Task 016 research decision preserving the explicit distinction from the separate Uddhava-kuṇḍa and future map #69.
+    content_destination:
+  - id: place.asoka-vana
+    map_number: 7
+    canonical_name: Aśoka-vana
+    ascii_name: Asoka-vana
+    alternate_names:
+      - Ashoka-vana
+      - Aśoka-latā
+      - Ashoka-lata
+      - Radha Bana Bihari Mandir
+      - Sri Sri Radha Bana Bihari Mandir Kusum Sarovar
+    latitude: 27.5111752
+    longitude: 77.4785779
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: Strong modern shrine identification within the traditional Aśoka-vana landscape, but the relationship between the exact shrine footprint and the larger sacred landscape has not been field verified.
+    provenance:
+      - source_type: PILGRIMAGE_GUIDE
+        description: Traditional accounts identify Aśoka-vana or Aśoka-latā in the Kusuma-sarovara landscape and associate it with Kṛṣṇa decorating or braiding Śrī Rādhā’s hair.
+      - source_type: MODERN_MAP
+        description: The mapped destination for Śrī Śrī Rādhā Bana Bihārī Mandir at Kusuma-sarovara resolves to 27.5111752, 77.4785779.
+      - source_type: PROJECT_RESEARCH
+        description: Approved Task 016 research decision based on the mutually corroborated modern shrine identification and original pilgrimage-map relationship.
+    content_destination:
+  - id: place.narada-kunda
+    map_number: 8
+    canonical_name: Nārada-kuṇḍa
+    ascii_name: Narada-kunda
+    alternate_names:
+      - Narada Kund
+      - Narad Kund
+      - Nārada Kund
+      - Narada Muni's Temple
+    latitude: 27.50819
+    longitude: 77.47980
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: Sacred-site identity is strong, but the eventual choice among sacred-water-body coordinate, temple coordinate, and practical pilgrim arrival point has not been field verified.
+    provenance:
+      - source_type: PILGRIMAGE_GUIDE
+        description: Traditional pilgrimage descriptions locate Nārada-kuṇḍa southeast of the Kusuma-sarovara area.
+      - source_type: MODERN_MAP
+        description: Current mapping identifies Narada Muni's Temple or Narada Kund at location code GF5H+7WF.
+      - source_type: GEOGRAPHIC_SURVEY
+        description: Independent geographic and water-body research corroborates Nārada-kuṇḍa in the same immediate area.
+      - source_type: PROJECT_RESEARCH
+        description: Approved Task 016 research decision; its relation to Kusuma-sarovara agrees with the project’s original pilgrimage map.
+    content_destination:
+  - id: place.manasiganga
+    map_number: 20
+    canonical_name: Mānasī-gaṅgā
+    ascii_name: Manasi-ganga
+    alternate_names:
+      - Manasi Ganga
+      - Mansi Ganga
+    latitude: 27.498556
+    longitude: 77.464333
+    coordinate_status: PROVISIONAL
+    coordinate_confidence: LOW
+    coordinate_accuracy_meters:
+    verification_notes: Research-approved working coordinate; not yet supported by stronger verified provenance.
+    provenance:
+      - source_type: PROJECT_FIXTURE
+        description: Task 014 mapping fixture accepted for development testing.
+    content_destination:

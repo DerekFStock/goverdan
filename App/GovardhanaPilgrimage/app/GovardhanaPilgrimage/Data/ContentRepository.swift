@@ -2,6 +2,7 @@ import Foundation
 import GRDB
 
 protocol ContentRepository: Sendable {
+    func pilgrimagePlaces() throws -> [PilgrimagePlace]
     func stories() throws -> [StorySummary]
     func works() throws -> [SourceWorkSummary]
     func storySections(storyID: StoryID) throws -> [StorySectionSummary]
@@ -16,6 +17,61 @@ protocol ContentRepository: Sendable {
 
 struct SQLiteContentRepository: ContentRepository {
     let database: ContentDatabase
+
+    func pilgrimagePlaces() throws -> [PilgrimagePlace] {
+        try database.reader.read { db in
+            try Row.fetchAll(
+                db,
+                sql: "SELECT * FROM pilgrimage_places ORDER BY map_number"
+            ).map { row in
+                let placeID: String = row["id"]
+                let aliases = try String.fetchAll(
+                    db,
+                    sql: "SELECT alias FROM pilgrimage_place_aliases WHERE place_id = ? ORDER BY alias",
+                    arguments: [placeID]
+                )
+                let provenance = try Row.fetchAll(
+                    db,
+                    sql: "SELECT source_type, description, source_reference FROM pilgrimage_place_provenance WHERE place_id = ? ORDER BY sort_order",
+                    arguments: [placeID]
+                ).map { evidence in
+                    PilgrimagePlaceProvenance(
+                        sourceType: evidence["source_type"],
+                        description: evidence["description"],
+                        sourceReference: evidence["source_reference"]
+                    )
+                }
+                guard
+                    let status = CoordinateVerificationStatus(rawValue: row["coordinate_status"]),
+                    let confidence = CoordinateConfidence(rawValue: row["coordinate_confidence"])
+                else { throw ContentRepositoryError.invalidPilgrimagePlace(placeID) }
+                let destinationKind: String? = row["content_destination_kind"]
+                let destinationID: String? = row["content_destination_id"]
+                let destination: PilgrimageContentDestination?
+                switch (destinationKind, destinationID) {
+                case let ("STORY_SECTION", id?): destination = .storySection(StorySectionID(rawValue: id))
+                case let ("SOURCE_PASSAGE", id?): destination = .sourcePassage(SourcePassageID(rawValue: id))
+                case (nil, nil): destination = nil
+                default: throw ContentRepositoryError.invalidPilgrimagePlace(placeID)
+                }
+                return PilgrimagePlace(
+                    id: PilgrimagePlaceID(rawValue: placeID),
+                    mapNumber: row["map_number"],
+                    canonicalName: row["canonical_name"],
+                    asciiName: row["ascii_name"],
+                    alternateNames: aliases,
+                    latitude: row["latitude"],
+                    longitude: row["longitude"],
+                    coordinateStatus: status,
+                    coordinateConfidence: confidence,
+                    coordinateAccuracyMeters: row["coordinate_accuracy_meters"],
+                    verificationNotes: row["verification_notes"],
+                    provenance: provenance,
+                    contentDestination: destination
+                )
+            }
+        }
+    }
 
     func stories() throws -> [StorySummary] {
         try database.reader.read { db in
@@ -351,6 +407,7 @@ struct SQLiteContentRepository: ContentRepository {
 }
 
 enum ContentRepositoryError: LocalizedError {
+    case invalidPilgrimagePlace(String)
     case unsupportedStoryBlockType(String)
     case citationNotFound(CitationID)
     case passageNotFound(SourcePassageID)
@@ -360,6 +417,7 @@ enum ContentRepositoryError: LocalizedError {
 
     var errorDescription: String? {
         switch self {
+        case let .invalidPilgrimagePlace(id): "Invalid compiled Pilgrimage Place: \(id)"
         case let .unsupportedStoryBlockType(type): "Unsupported Story block type: \(type)"
         case let .citationNotFound(id): "Citation not found: \(id.rawValue)"
         case let .passageNotFound(id): "Canonical Passage not found: \(id.rawValue)"

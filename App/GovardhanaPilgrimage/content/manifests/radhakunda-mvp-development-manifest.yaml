@@ -69,6 +69,12 @@ compile_sequence:
   story_section_id: story.radhakunda.manifestation
   required: true
   renderable: true
+- order: 9
+  role: PILGRIMAGE_PLACE_REGISTRY
+  file: govardhana-pilgrimage-places.yaml
+  target_path: content/pilgrimage/places.yaml
+  required: true
+  development_eligible: true
 non_runtime_assets:
 - role: SOURCE_PROVENANCE
   file: srimad-bhagavatam-10.36_PROVENANCE.md
@@ -130,7 +136,7 @@ release_blockers:
 - Twenty-Verse Sanskrit still requires publication-critical collation against a stable printed/manuscript witness.
 - Exact Purāṇa/recension of the Twenty-Verse unit remains unresolved.
 validation:
-  expected_runtime_file_count: 8
+  expected_runtime_file_count: 9
   expected_source_package_count: 4
   expected_story_section_count: 1
   expected_content_block_count: 8

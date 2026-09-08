@@ -29,6 +29,10 @@
 		FF33A7F988C1DD513F07E548 /* GovardhanaPilgrimageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112867B021146C26A6735430 /* GovardhanaPilgrimageUITests.swift */; };
 		A12000000000000000000001 /* OriginalWitnessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12000000000000000000002 /* OriginalWitnessView.swift */; };
 		A12000000000000000000003 /* task012-neutral-witness.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A12000000000000000000004 /* task012-neutral-witness.pdf */; };
+		B14000000000000000000001 /* Task014Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14000000000000000000002 /* Task014Map.swift */; };
+		B14000000000000000000003 /* govardhana-offline-style.json in Resources */ = {isa = PBXBuildFile; fileRef = B14000000000000000000004 /* govardhana-offline-style.json */; };
+		B14000000000000000000005 /* govardhana-base.geojson in Resources */ = {isa = PBXBuildFile; fileRef = B14000000000000000000006 /* govardhana-base.geojson */; };
+		B14000000000000000000007 /* MapLibre in Frameworks */ = {isa = PBXBuildFile; productRef = B14000000000000000000008 /* MapLibre */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +74,9 @@
 		F74D79A2A128E43DD59F9D11 /* AppContainer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
 		A12000000000000000000002 /* OriginalWitnessView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OriginalWitnessView.swift; sourceTree = "<group>"; };
 		A12000000000000000000004 /* task012-neutral-witness.pdf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.pdf; name = "task012-neutral-witness.pdf"; path = "../content/fixtures/task012-neutral-witness.pdf"; sourceTree = SOURCE_ROOT; };
+		B14000000000000000000002 /* Task014Map.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Map/Task014Map.swift; sourceTree = "<group>"; };
+		B14000000000000000000004 /* govardhana-offline-style.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ../Resources/Map/govardhana-offline-style.json; sourceTree = "<group>"; };
+		B14000000000000000000006 /* govardhana-base.geojson */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ../Resources/Map/govardhana-base.geojson; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +103,7 @@
 			files = (
 				B1D1E4C96E7F32F8D32C979A /* Foundation.framework in Frameworks */,
 				22BA054691A541DF95D64AE5 /* GRDB in Frameworks */,
+				B14000000000000000000007 /* MapLibre in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,6 +207,9 @@
 				D6DC1AD0F4AB5360163211B5 /* Home */,
 				387C87C0E706D3437A69E489 /* PlaceholderDestinationView.swift */,
 				A12000000000000000000002 /* OriginalWitnessView.swift */,
+				B14000000000000000000002 /* Task014Map.swift */,
+				B14000000000000000000004 /* govardhana-offline-style.json */,
+				B14000000000000000000006 /* govardhana-base.geojson */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -260,6 +271,7 @@
 			name = GovardhanaPilgrimage;
 			packageProductDependencies = (
 				5DD9F69563D7DE99A5D26B62 /* GRDB */,
+				B14000000000000000000008 /* MapLibre */,
 			);
 			productName = GovardhanaPilgrimage;
 			productReference = 26BFA58C4F98FD35D1C213D9 /* GovardhanaPilgrimage.app */;
@@ -324,6 +336,7 @@
 			mainGroup = 524FB8074CD7CA14B614A454;
 			packageReferences = (
 				7C608F867CD018817F50FD72 /* XCRemoteSwiftPackageReference "GRDB.swift" */,
+				B14000000000000000000009 /* XCRemoteSwiftPackageReference "maplibre-gl-native-distribution" */,
 			);
 			productRefGroup = 967E8B20FF50B94290797293 /* Products */;
 			projectDirPath = "";
@@ -350,6 +363,8 @@
 			files = (
 				41D406278EEE991B1C44EDC1 /* radhakunda-content.sqlite in Resources */,
 				A12000000000000000000003 /* task012-neutral-witness.pdf in Resources */,
+				B14000000000000000000003 /* govardhana-offline-style.json in Resources */,
+				B14000000000000000000005 /* govardhana-base.geojson in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,6 +395,7 @@
 				4A87814C3F687A280A70E865 /* PlaceholderDestinationView.swift in Sources */,
 				7046317D36D01D1A8ED1E30E /* AppRoute.swift in Sources */,
 				A12000000000000000000001 /* OriginalWitnessView.swift in Sources */,
+				B14000000000000000000001 /* Task014Map.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -557,6 +573,7 @@
 				DEVELOPMENT_TEAM = 26L4JL4UW9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Rādhā-kuṇḍa Story";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Use your location to show your position on the offline Govardhana pilgrimage map.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
@@ -627,6 +644,7 @@
 				DEVELOPMENT_TEAM = 26L4JL4UW9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Rādhā-kuṇḍa Story";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Use your location to show your position on the offline Govardhana pilgrimage map.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
@@ -693,6 +711,14 @@
 				minimumVersion = 7.8.0;
 			};
 		};
+		B14000000000000000000009 /* XCRemoteSwiftPackageReference "maplibre-gl-native-distribution" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/maplibre/maplibre-gl-native-distribution.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.28.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -700,6 +726,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7C608F867CD018817F50FD72 /* XCRemoteSwiftPackageReference "GRDB.swift" */;
 			productName = GRDB;
+		};
+		B14000000000000000000008 /* MapLibre */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B14000000000000000000009 /* XCRemoteSwiftPackageReference "maplibre-gl-native-distribution" */;
+			productName = MapLibre;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

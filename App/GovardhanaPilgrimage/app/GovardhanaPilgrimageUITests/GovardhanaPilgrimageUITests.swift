@@ -2,6 +2,69 @@ import XCTest
 
 @MainActor
 final class GovardhanaPilgrimageUITests: XCTestCase {
+    func testTask014OfflineMapRendersAllFixturePins() {
+        let app = launch()
+        app.buttons["home.map"].tap()
+        XCTAssertTrue(app.navigationBars["Govardhana Map"].waitForExistence(timeout: 8))
+        XCTAssertTrue(app.otherElements["govardhana.map"].exists)
+        for number in [1, 2, 3] {
+            XCTAssertTrue(app.descendants(matching: .any)["map.pin.\(number)"].waitForExistence(timeout: 5))
+        }
+        let screenshot = XCTAttachment(screenshot: app.screenshot())
+        screenshot.name = "Task 014 Rādhā-kuṇḍa offline basemap"
+        screenshot.lifetime = .keepAlways
+        add(screenshot)
+    }
+
+    func testTask014OfflineMapRendersGovardhanAtPin20() {
+        let app = launch()
+        app.buttons["home.map"].tap()
+        XCTAssertTrue(app.navigationBars["Govardhana Map"].waitForExistence(timeout: 8))
+        app.buttons["Location & Offline Debug"].tap()
+        XCTAssertTrue(app.buttons["#20"].waitForExistence(timeout: 3))
+        app.buttons["#20"].tap()
+        _ = app.otherElements["govardhana.map"].waitForExistence(timeout: 2)
+        let screenshot = XCTAttachment(screenshot: app.screenshot())
+        screenshot.name = "Task 014 Mānasī-gaṅgā and Govardhan offline basemap"
+        screenshot.lifetime = .keepAlways
+        add(screenshot)
+    }
+
+    func testTask015RegistryPinOpensResearchMetadataAndReturnsToMap() {
+        let app = launch()
+        app.buttons["home.map"].tap()
+        XCTAssertTrue(app.navigationBars["Govardhana Map"].waitForExistence(timeout: 8))
+        let pin = app.buttons["map.pin.3"]
+        XCTAssertTrue(pin.waitForExistence(timeout: 5))
+        XCTAssertEqual("#3 Lalitā-kuṇḍa", pin.label)
+        pin.tap()
+        XCTAssertTrue(app.navigationBars["Lalitā-kuṇḍa"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@", "PROVISIONAL")).firstMatch.exists)
+        app.swipeUp()
+        XCTAssertTrue(app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@", "PROJECT_FIXTURE")).firstMatch.exists)
+        app.navigationBars["Lalitā-kuṇḍa"].buttons.firstMatch.tap()
+        XCTAssertTrue(app.navigationBars["Govardhana Map"].waitForExistence(timeout: 5))
+    }
+
+    func testTask016NewPlacePinOpensApprovedResearchMetadata() {
+        let app = launch()
+        app.buttons["home.map"].tap()
+        XCTAssertTrue(app.navigationBars["Govardhana Map"].waitForExistence(timeout: 8))
+        app.buttons["Location & Offline Debug"].tap()
+        XCTAssertTrue(app.buttons["#7"].waitForExistence(timeout: 3))
+        app.buttons["#7"].tap()
+        app.buttons["Location & Offline Debug"].tap()
+        let pin = app.buttons["map.pin.7"]
+        XCTAssertTrue(pin.waitForExistence(timeout: 5))
+        XCTAssertEqual("#7 Aśoka-vana", pin.label)
+        pin.tap()
+        XCTAssertTrue(app.navigationBars["Aśoka-vana"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["27.511175, 77.478578"].exists)
+        XCTAssertTrue(app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@", "PROBABLE")).firstMatch.exists)
+        XCTAssertTrue(app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@", "HIGH")).firstMatch.exists)
+        app.swipeUp()
+        XCTAssertTrue(app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@", "Rādhā Bana Bihārī")).firstMatch.exists)
+    }
     private let sectionID = "story.radhakunda.manifestation"
     private let storyTitle = "The Story of Śrī Rādhā-kuṇḍa"
     private let sectionTitle = "The Manifestation of Rādhā-kuṇḍa and Kṛṣṇa-kuṇḍa"
