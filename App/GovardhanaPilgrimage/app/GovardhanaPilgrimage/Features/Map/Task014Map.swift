@@ -197,6 +197,7 @@ enum GeoMath {
 @MainActor
 final class PilgrimageMapModel: ObservableObject {
     enum Source: String, CaseIterable { case simulation = "Govardhana Simulation", real = "Real iPhone Location" }
+    enum ArrivalPresentationState: Equatable { case enRoute, exactArrival, navigationAnchorArrival }
     @Published var source: Source = .simulation { didSet { selectProvider() } }
     @Published var sample: LocationSample?
     @Published var activeDestination: PilgrimagePlace
@@ -218,14 +219,18 @@ final class PilgrimageMapModel: ObservableObject {
     }
 
     var destinationDistance: Double? {
-        guard let destination = activeDestination.coordinate ?? activeNavigationAnchor?.coordinate else { return nil }
+        guard let destination = navigationCoordinate else { return nil }
         return sample.map { GeoMath.distance(from: $0.coordinate, to: destination) }
     }
     var destinationBearing: Double? {
-        guard let destination = activeDestination.coordinate ?? activeNavigationAnchor?.coordinate else { return nil }
+        guard let destination = navigationCoordinate else { return nil }
         return sample.map { GeoMath.bearing(from: $0.coordinate, to: destination) }
     }
     var arrived: Bool { (destinationDistance ?? .greatestFiniteMagnitude) <= GeoMath.arrivalRadius }
+    var arrivalPresentationState: ArrivalPresentationState {
+        guard arrived else { return .enRoute }
+        return activeNavigationAnchor == nil ? .exactArrival : .navigationAnchorArrival
+    }
     var nearest: PilgrimagePlace? { sample.flatMap { GeoMath.nearest(to: $0.coordinate, places: places) } }
     var mappablePlaces: [PilgrimagePlace] { places.filter { $0.coordinate != nil } }
     var mapPresentations: [PilgrimageMapPresentation] { PilgrimageMapProjection.presentations(for: places) }
@@ -233,15 +238,13 @@ final class PilgrimageMapModel: ObservableObject {
         guard activeDestination.coordinate == nil, let anchorID = activeDestination.navigationAnchorPlaceID else { return nil }
         return places.first { $0.id == anchorID }
     }
+    var navigationCoordinate: CLLocationCoordinate2D? {
+        activeDestination.coordinate ?? activeNavigationAnchor?.coordinate
+    }
 
     func navigate(to place: PilgrimagePlace) {
         activeDestination = place
-        let destination = place.coordinate ?? place.navigationAnchorPlaceID.flatMap { anchorID in
-            places.first { $0.id == anchorID }?.coordinate
-        }
-        guard let destination else { return }
-        source = .simulation
-        simulated.jump(to: destination)
+        guard let destination = navigationCoordinate else { return }
         requestedCenter = destination
         shouldRecenter += 1
     }
@@ -300,16 +303,27 @@ struct GovardhanaMapScreen: View {
 
     private var destinationPanel: some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text(model.arrived ? "Arrived at" : "Next").font(.caption).foregroundStyle(.secondary)
+            Text(destinationHeading).font(.caption).foregroundStyle(.secondary)
             Text("#\(model.activeDestination.mapNumber) \(model.activeDestination.canonicalName)").font(.headline)
             if let anchor = model.activeNavigationAnchor {
-                Text("Approximate location · navigating via #\(anchor.mapNumber) \(anchor.canonicalName)")
-                    .font(.caption).foregroundStyle(.secondary)
+                Text("Approximate location").font(.caption.bold())
+                Text("Via #\(anchor.mapNumber) \(anchor.canonicalName)").font(.caption).foregroundStyle(.secondary)
+                if let guidance = model.activeDestination.locationGuidance {
+                    Text(guidance).font(.caption).foregroundStyle(.secondary).lineLimit(3)
+                }
             }
             if let distance = model.destinationDistance, let bearing = model.destinationBearing {
                 Text("\(Int(distance.rounded())) m  •  \(Int(bearing.rounded()))° \(GeoMath.direction(for: bearing))")
             }
         }.frame(maxWidth: .infinity, alignment: .leading).padding().background(.regularMaterial, in: RoundedRectangle(cornerRadius: 14))
+    }
+
+    private var destinationHeading: String {
+        switch model.arrivalPresentationState {
+        case .exactArrival: "Arrived at"
+        case .navigationAnchorArrival: "At navigation anchor"
+        case .enRoute: model.activeNavigationAnchor == nil ? "Next" : "Target"
+        }
     }
 
     #if DEBUG

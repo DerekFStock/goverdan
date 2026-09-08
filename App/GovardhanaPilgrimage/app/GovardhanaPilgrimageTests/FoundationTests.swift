@@ -127,6 +127,57 @@ final class FoundationTests: XCTestCase {
         XCTAssertEqual(byNumber[1]?.coordinate?.latitude, route.first?.latitude)
         XCTAssertEqual(byNumber[3]?.coordinate?.longitude, route.last?.longitude)
     }
+
+    @MainActor
+    func testTask017PilgrimageNavigationPreservesLocationSourceAndDistinguishesAnchorArrival() throws {
+        let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
+        let places = try repository.pilgrimagePlaces()
+        let byNumber = Dictionary(uniqueKeysWithValues: places.map { ($0.mapNumber, $0) })
+        let model = PilgrimageMapModel(places: places)
+        let original = LocationSample(
+            coordinate: .init(latitude: 27.525256, longitude: 77.491353),
+            horizontalAccuracy: 4,
+            timestamp: Date(timeIntervalSince1970: 123),
+            course: 90,
+            speed: 1
+        )
+
+        model.source = .real
+        model.sample = original
+        model.navigate(to: try XCTUnwrap(byNumber[13]))
+        XCTAssertEqual(.real, model.source)
+        XCTAssertEqual(13, model.activeDestination.mapNumber)
+        XCTAssertEqual(original.coordinate.latitude, model.sample?.coordinate.latitude)
+        XCTAssertEqual(original.timestamp, model.sample?.timestamp)
+        XCTAssertEqual(byNumber[13]?.coordinate?.latitude, model.requestedCenter?.latitude)
+
+        model.navigate(to: try XCTUnwrap(byNumber[10]))
+        XCTAssertEqual(.real, model.source)
+        XCTAssertEqual(10, model.activeDestination.mapNumber)
+        XCTAssertEqual(11, model.activeNavigationAnchor?.mapNumber)
+        XCTAssertEqual(byNumber[11]?.coordinate?.longitude, model.navigationCoordinate?.longitude)
+        XCTAssertEqual(original.coordinate.longitude, model.sample?.coordinate.longitude)
+        XCTAssertEqual(original.timestamp, model.sample?.timestamp)
+
+        model.source = .simulation
+        model.sample = original
+        model.navigate(to: try XCTUnwrap(byNumber[9]))
+        XCTAssertEqual(.simulation, model.source)
+        XCTAssertEqual(original.coordinate.latitude, model.sample?.coordinate.latitude)
+        XCTAssertEqual(original.timestamp, model.sample?.timestamp)
+
+        model.sample = .init(
+            coordinate: try XCTUnwrap(byNumber[9]?.coordinate), horizontalAccuracy: 1,
+            timestamp: original.timestamp, course: 0, speed: 0
+        )
+        XCTAssertEqual(.exactArrival, model.arrivalPresentationState)
+        model.navigate(to: try XCTUnwrap(byNumber[10]))
+        model.sample = .init(
+            coordinate: try XCTUnwrap(byNumber[11]?.coordinate), horizontalAccuracy: 1,
+            timestamp: original.timestamp, course: 0, speed: 0
+        )
+        XCTAssertEqual(.navigationAnchorArrival, model.arrivalPresentationState)
+    }
     private func bundledContentURL() throws -> URL {
         try XCTUnwrap(Bundle.main.url(forResource: "radhakunda-content", withExtension: "sqlite"))
     }
