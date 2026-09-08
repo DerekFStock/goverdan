@@ -87,7 +87,7 @@ final class FoundationTests: XCTestCase {
     }
 
     @MainActor
-    func testTask017CoordinateLessPlacesLoadButAreExcludedFromMapAndGeoCalculations() throws {
+    func testTask017CoordinateLessPlacesUseAnchoredPresentationAndStayOutOfGeoCalculations() throws {
         let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
         let places = try repository.pilgrimagePlaces()
         XCTAssertEqual(Array(1...13) + [20], places.map(\.mapNumber))
@@ -105,10 +105,24 @@ final class FoundationTests: XCTestCase {
         let model = PilgrimageMapModel(places: places)
         XCTAssertEqual(12, model.mappablePlaces.count)
         XCTAssertFalse(model.mappablePlaces.contains { [10, 12].contains($0.mapNumber) })
+        XCTAssertEqual(14, model.mapPresentations.count)
+        let approximate = model.mapPresentations.filter(\.isApproximate)
+        XCTAssertEqual([10, 12], approximate.map { $0.place.mapNumber })
+        XCTAssertTrue(approximate.allSatisfy { $0.anchor?.mapNumber == 11 })
+        XCTAssertEqual([0, 1], approximate.compactMap(\.approximateOffsetIndex))
+        XCTAssertTrue(approximate.allSatisfy { $0.coordinate.latitude == byNumber[11]?.coordinate?.latitude })
+        let rows = PilgrimagePlaceNavigation.rows(for: places)
+        XCTAssertEqual(Array(1...13) + [20], rows.map { $0.place.mapNumber })
+        XCTAssertEqual("APPROXIMATE · anchored to #11 Ratna-siṁhāsana", rows.first { $0.place.mapNumber == 10 }?.statusText)
+        XCTAssertEqual("Go to anchor", rows.first { $0.place.mapNumber == 12 }?.goTitle)
         let anchor = try XCTUnwrap(byNumber[11]?.coordinate)
         XCTAssertNotEqual(10, GeoMath.nearest(to: anchor, places: places)?.mapNumber)
         XCTAssertNotEqual(12, GeoMath.nearest(to: anchor, places: places)?.mapNumber)
         XCTAssertEqual(11, GeoMath.nearest(to: anchor, places: places)?.mapNumber)
+        model.navigate(to: try XCTUnwrap(byNumber[10]))
+        XCTAssertEqual(10, model.activeDestination.mapNumber)
+        XCTAssertEqual(11, model.activeNavigationAnchor?.mapNumber)
+        XCTAssertEqual(anchor.latitude, model.requestedCenter?.latitude)
         let route = SimulationRoute.task014Coordinates(places: places)
         XCTAssertEqual(byNumber[1]?.coordinate?.latitude, route.first?.latitude)
         XCTAssertEqual(byNumber[3]?.coordinate?.longitude, route.last?.longitude)
