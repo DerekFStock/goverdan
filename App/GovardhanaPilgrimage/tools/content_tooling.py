@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import hashlib
+import math
 import re
 import unicodedata
 from dataclasses import dataclass
@@ -207,7 +208,7 @@ def validate_pilgrimage_places(document: dict[str, Any], label: str) -> list[dic
         _require_fields(
             place,
             {
-                "id", "map_number", "canonical_name", "alternate_names", "latitude", "longitude",
+                "id", "map_number", "canonical_name", "alternate_names",
                 "coordinate_status", "coordinate_confidence", "verification_notes", "provenance",
                 "content_destination",
             },
@@ -232,15 +233,27 @@ def validate_pilgrimage_places(document: dict[str, Any], label: str) -> list[dic
         if normalized_name in seen_names:
             raise ContentValidationError(f"Duplicate Pilgrimage Place canonical_name: {canonical_name}")
         seen_names.add(normalized_name)
-        latitude, longitude = place["latitude"], place["longitude"]
-        if not isinstance(latitude, (int, float)) or isinstance(latitude, bool) or not -90 <= latitude <= 90:
+        latitude, longitude = place.get("latitude"), place.get("longitude")
+        if (latitude is None) != (longitude is None):
+            raise ContentValidationError(f"Pilgrimage Place '{place_id}' has a half-coordinate")
+        if latitude is not None and (
+            not isinstance(latitude, (int, float)) or isinstance(latitude, bool)
+            or not math.isfinite(latitude) or not -90 <= latitude <= 90
+        ):
             raise ContentValidationError(f"Pilgrimage Place '{place_id}' has invalid latitude")
-        if not isinstance(longitude, (int, float)) or isinstance(longitude, bool) or not -180 <= longitude <= 180:
+        if longitude is not None and (
+            not isinstance(longitude, (int, float)) or isinstance(longitude, bool)
+            or not math.isfinite(longitude) or not -180 <= longitude <= 180
+        ):
             raise ContentValidationError(f"Pilgrimage Place '{place_id}' has invalid longitude")
         if place["coordinate_status"] not in PILGRIMAGE_COORDINATE_STATUSES:
             raise ContentValidationError(f"Pilgrimage Place '{place_id}' has invalid coordinate_status")
         if place["coordinate_confidence"] not in PILGRIMAGE_COORDINATE_CONFIDENCE:
             raise ContentValidationError(f"Pilgrimage Place '{place_id}' has invalid coordinate_confidence")
+        if latitude is None and place["coordinate_status"] != "UNVERIFIED":
+            raise ContentValidationError(
+                f"Coordinate-less Pilgrimage Place '{place_id}' must have coordinate_status UNVERIFIED"
+            )
         accuracy = place.get("coordinate_accuracy_meters")
         if accuracy is not None and (
             not isinstance(accuracy, (int, float)) or isinstance(accuracy, bool) or accuracy <= 0
@@ -268,6 +281,28 @@ def validate_pilgrimage_places(document: dict[str, Any], label: str) -> list[dic
             or not destination["id"]
         ):
             raise ContentValidationError(f"Pilgrimage Place '{place_id}' has invalid content_destination")
+        anchor_id = place.get("navigation_anchor_place_id")
+        if anchor_id is not None and (not isinstance(anchor_id, str) or not anchor_id):
+            raise ContentValidationError(f"Pilgrimage Place '{place_id}' has invalid navigation_anchor_place_id")
+        guidance = place.get("location_guidance")
+        if guidance is not None and (not isinstance(guidance, str) or not guidance.strip()):
+            raise ContentValidationError(f"Pilgrimage Place '{place_id}' has invalid location_guidance")
+    places_by_id = {place["id"]: place for place in places}
+    for place in places:
+        anchor_id = place.get("navigation_anchor_place_id")
+        if anchor_id is None:
+            continue
+        if anchor_id == place["id"]:
+            raise ContentValidationError(f"Pilgrimage Place '{place['id']}' cannot use itself as navigation anchor")
+        anchor = places_by_id.get(anchor_id)
+        if anchor is None:
+            raise ContentValidationError(
+                f"Pilgrimage Place '{place['id']}' references missing navigation anchor '{anchor_id}'"
+            )
+        if anchor.get("latitude") is None or anchor.get("longitude") is None:
+            raise ContentValidationError(
+                f"Pilgrimage Place '{place['id']}' navigation anchor '{anchor_id}' has no coordinate"
+            )
     return places
 
 

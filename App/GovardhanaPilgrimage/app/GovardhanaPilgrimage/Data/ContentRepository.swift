@@ -66,6 +66,8 @@ struct SQLiteContentRepository: ContentRepository {
                     coordinateConfidence: confidence,
                     coordinateAccuracyMeters: row["coordinate_accuracy_meters"],
                     verificationNotes: row["verification_notes"],
+                    navigationAnchorPlaceID: (row["navigation_anchor_place_id"] as String?).map(PilgrimagePlaceID.init(rawValue:)),
+                    locationGuidance: row["location_guidance"],
                     provenance: provenance,
                     contentDestination: destination
                 )

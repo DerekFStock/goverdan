@@ -11,12 +11,12 @@ from typing import Any
 from content_tooling import BuildResult, ContentValidationError
 
 
-SCHEMA_VERSION = 5
+SCHEMA_VERSION = 6
 DATABASE_FILENAME = "radhakunda-content.sqlite"
 
 SCHEMA_SQL = """
 PRAGMA foreign_keys = ON;
-PRAGMA user_version = 5;
+PRAGMA user_version = 6;
 
 CREATE TABLE package_metadata (
     key TEXT PRIMARY KEY NOT NULL,
@@ -161,14 +161,19 @@ CREATE TABLE pilgrimage_places (
     map_number INTEGER NOT NULL UNIQUE CHECK (map_number > 0),
     canonical_name TEXT NOT NULL CHECK (length(trim(canonical_name)) > 0),
     ascii_name TEXT,
-    latitude REAL NOT NULL CHECK (latitude BETWEEN -90 AND 90),
-    longitude REAL NOT NULL CHECK (longitude BETWEEN -180 AND 180),
+    latitude REAL CHECK (latitude BETWEEN -90 AND 90),
+    longitude REAL CHECK (longitude BETWEEN -180 AND 180),
     coordinate_status TEXT NOT NULL CHECK (coordinate_status IN ('UNVERIFIED', 'PROVISIONAL', 'PROBABLE', 'VERIFIED')),
     coordinate_confidence TEXT NOT NULL CHECK (coordinate_confidence IN ('UNKNOWN', 'LOW', 'MEDIUM', 'HIGH')),
     coordinate_accuracy_meters REAL CHECK (coordinate_accuracy_meters > 0),
     verification_notes TEXT NOT NULL,
+    navigation_anchor_place_id TEXT REFERENCES pilgrimage_places(id),
+    location_guidance TEXT,
     content_destination_kind TEXT CHECK (content_destination_kind IN ('STORY_SECTION', 'SOURCE_PASSAGE')),
     content_destination_id TEXT,
+    CHECK ((latitude IS NULL) = (longitude IS NULL)),
+    CHECK (latitude IS NOT NULL OR coordinate_status = 'UNVERIFIED'),
+    CHECK (navigation_anchor_place_id IS NULL OR navigation_anchor_place_id <> id),
     CHECK ((content_destination_kind IS NULL) = (content_destination_id IS NULL))
 ) WITHOUT ROWID;
 
@@ -326,17 +331,25 @@ def _insert_content(connection: sqlite3.Connection, result: BuildResult) -> None
     )
     pilgrimage_places = content.get("pilgrimage_places", [])
     connection.executemany(
-        "INSERT INTO pilgrimage_places(id, map_number, canonical_name, ascii_name, latitude, longitude, coordinate_status, coordinate_confidence, coordinate_accuracy_meters, verification_notes, content_destination_kind, content_destination_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        "INSERT INTO pilgrimage_places(id, map_number, canonical_name, ascii_name, latitude, longitude, coordinate_status, coordinate_confidence, coordinate_accuracy_meters, verification_notes, navigation_anchor_place_id, location_guidance, content_destination_kind, content_destination_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
         [
             (
                 item["id"], item["map_number"], item["canonical_name"], item.get("ascii_name"),
-                item["latitude"], item["longitude"], item["coordinate_status"],
+                item.get("latitude"), item.get("longitude"), item["coordinate_status"],
                 item["coordinate_confidence"], item.get("coordinate_accuracy_meters"),
                 item["verification_notes"],
+                None, item.get("location_guidance"),
                 item.get("content_destination", {}).get("kind") if item.get("content_destination") else None,
                 item.get("content_destination", {}).get("id") if item.get("content_destination") else None,
             )
             for item in pilgrimage_places
+        ],
+    )
+    connection.executemany(
+        "UPDATE pilgrimage_places SET navigation_anchor_place_id = ? WHERE id = ?",
+        [
+            (item["navigation_anchor_place_id"], item["id"])
+            for item in pilgrimage_places if item.get("navigation_anchor_place_id") is not None
         ],
     )
     connection.executemany(

@@ -20,9 +20,10 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
         let app = launch()
         app.buttons["home.map"].tap()
         XCTAssertTrue(app.navigationBars["Govardhana Map"].waitForExistence(timeout: 8))
-        app.buttons["Location & Offline Debug"].tap()
-        XCTAssertTrue(app.buttons["#20"].waitForExistence(timeout: 3))
-        app.buttons["#20"].tap()
+        app.buttons["map.places"].tap()
+        let go = app.buttons["places.go.20"]
+        reveal(go, in: app)
+        go.tap()
         _ = app.otherElements["govardhana.map"].waitForExistence(timeout: 2)
         let screenshot = XCTAttachment(screenshot: app.screenshot())
         screenshot.name = "Task 014 Mānasī-gaṅgā and Govardhan offline basemap"
@@ -50,10 +51,10 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
         let app = launch()
         app.buttons["home.map"].tap()
         XCTAssertTrue(app.navigationBars["Govardhana Map"].waitForExistence(timeout: 8))
-        app.buttons["Location & Offline Debug"].tap()
-        XCTAssertTrue(app.buttons["#7"].waitForExistence(timeout: 3))
-        app.buttons["#7"].tap()
-        app.buttons["Location & Offline Debug"].tap()
+        app.buttons["map.places"].tap()
+        let go = app.buttons["places.go.7"]
+        reveal(go, in: app)
+        go.tap()
         let pin = app.buttons["map.pin.7"]
         XCTAssertTrue(pin.waitForExistence(timeout: 5))
         XCTAssertEqual("#7 Aśoka-vana", pin.label)
@@ -64,6 +65,41 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
         XCTAssertTrue(app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@", "HIGH")).firstMatch.exists)
         app.swipeUp()
         XCTAssertTrue(app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@", "Rādhā Bana Bihārī")).firstMatch.exists)
+    }
+
+    func testTask017ApproximateMarkersPlaceListAndAnchorNavigation() {
+        let app = launch()
+        app.buttons["home.map"].tap()
+        XCTAssertTrue(app.navigationBars["Govardhana Map"].waitForExistence(timeout: 8))
+        XCTAssertTrue(app.buttons["map.places"].exists)
+        app.buttons["map.places"].tap()
+        XCTAssertTrue(app.navigationBars["Pilgrimage Places"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["#1 Rādhā-kuṇḍa"].exists)
+        let goToAnchor = app.buttons["places.go.10"]
+        reveal(goToAnchor, in: app)
+        XCTAssertTrue(app.staticTexts["#10 Rāsa-sthalī"].exists)
+        XCTAssertTrue(app.staticTexts["APPROXIMATE · anchored to #11 Ratna-siṁhāsana"].exists)
+        goToAnchor.tap()
+        XCTAssertTrue(app.navigationBars["Govardhana Map"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["#10 Rāsa-sthalī"].exists)
+        XCTAssertTrue(app.staticTexts["Approximate location"].exists)
+        XCTAssertTrue(app.staticTexts["Via #11 Ratna-siṁhāsana"].exists)
+        XCTAssertFalse(app.buttons["map.pin.10"].exists)
+        XCTAssertFalse(app.buttons["map.pin.12"].exists)
+        XCTAssertTrue(app.buttons["map.pin.9"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["map.pin.11"].exists)
+        XCTAssertTrue(app.buttons["map.pin.13"].exists)
+        let approximate10 = app.buttons["map.approximate-pin.10"]
+        XCTAssertTrue(approximate10.waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["map.approximate-pin.12"].exists)
+        XCTAssertEqual("#10 Rāsa-sthalī — approximate location", approximate10.label)
+        approximate10.tap()
+        XCTAssertTrue(app.navigationBars["Rāsa-sthalī"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Coordinate not yet established"].exists)
+        XCTAssertTrue(app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@", "UNVERIFIED")).firstMatch.exists)
+        app.swipeUp()
+        XCTAssertTrue(app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@", "place.ratna-simhasana")).firstMatch.exists)
+        XCTAssertTrue(app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@", "Exact coordinate requires field verification")).firstMatch.exists)
     }
     private let sectionID = "story.radhakunda.manifestation"
     private let storyTitle = "The Story of Śrī Rādhā-kuṇḍa"

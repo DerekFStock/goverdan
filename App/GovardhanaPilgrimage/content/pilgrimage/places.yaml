@@ -168,6 +168,123 @@ places:
       - source_type: PROJECT_RESEARCH
         description: Approved Task 016 research decision; its relation to Kusuma-sarovara agrees with the project’s original pilgrimage map.
     content_destination:
+  - id: place.ratna-kunda
+    map_number: 9
+    canonical_name: Ratna-kuṇḍa
+    ascii_name: Ratna-kunda
+    alternate_names:
+      - Ratna Kund
+      - Ratna Kunda
+    latitude: 27.5101778
+    longitude: 77.4755889
+    coordinate_status: VERIFIED
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: Official coordinate evidence and independent pilgrimage-landscape corroboration support this coordinate.
+    provenance:
+      - source_type: OFFICIAL_OR_INSTITUTIONAL_DOCUMENT
+        description: The Braj Development Plan provides the approved coordinate evidence for Ratna-kuṇḍa.
+        source_reference: https://www.upbtvp.in/pdf/Braj_Development_plan.pdf
+      - source_type: PILGRIMAGE_GUIDE
+        description: Independent pilgrimage and landscape descriptions corroborate the Ratna-kuṇḍa identity and location.
+      - source_type: PROJECT_RESEARCH
+        description: Approved Task 017 project research decision.
+    content_destination:
+  - id: place.rasa-sthali
+    map_number: 10
+    canonical_name: Rāsa-sthalī
+    ascii_name: Rasa-sthali
+    alternate_names:
+      - Rasa-sthali
+      - Rāsa-sthali
+      - Rasa Sthali
+    coordinate_status: UNVERIFIED
+    coordinate_confidence: UNKNOWN
+    coordinate_accuracy_meters:
+    verification_notes: Sacred-site identity is strongly supported in the Ratna-kuṇḍa / Śyāma-kuṭī complex, but no defensible exact GPS coordinate has been established.
+    navigation_anchor_place_id: place.ratna-simhasana
+    location_guidance: Locate the distinct rāsa platform within the Ratna-kuṇḍa / Śyāma-kuṭī sacred complex near Ratna-siṁhāsana. Exact coordinate requires field verification.
+    provenance:
+      - source_type: PILGRIMAGE_GUIDE
+        description: Pilgrimage descriptions identify the discrete rāsa platform in the Ratna-kuṇḍa / Śyāma-kuṭī complex.
+        source_reference: https://brajdham000.wordpress.com/govardhan-shyama-kuti/
+      - source_type: PILGRIMAGE_GUIDE
+        description: Independent pilgrimage guidance corroborates the distinct rāsa platform near Ratna-siṁhāsana.
+        source_reference: https://www.holydham.com/shyamavan-and-shyama-kutir-ratna-simhasana/
+      - source_type: PROJECT_RESEARCH
+        description: Approved Task 017 coordinate-less sacred-place decision.
+    content_destination:
+  - id: place.ratna-simhasana
+    map_number: 11
+    canonical_name: Ratna-siṁhāsana
+    ascii_name: Ratna-simhasana
+    alternate_names:
+      - Ratna Simhasana
+      - Śyāma-kuṭī
+      - Shyama Kuti
+      - Shyama Kutir
+    latitude: 27.5098368
+    longitude: 77.4756396
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: Coordinate represents the modern Śyāma-kuṭī / Ratna-siṁhāsana shrine complex; exact sacred-feature footprint has not been field verified.
+    provenance:
+      - source_type: PILGRIMAGE_GUIDE
+        description: Pilgrimage descriptions identify the modern Śyāma-kuṭī / Ratna-siṁhāsana shrine complex.
+        source_reference: https://brajdham000.wordpress.com/govardhan-shyama-kuti/
+      - source_type: PILGRIMAGE_GUIDE
+        description: Contemporary location evidence supports the approved shrine-complex coordinate.
+        source_reference: https://www.holydham.com/shyamavan-and-shyama-kutir-ratna-simhasana/
+      - source_type: PROJECT_RESEARCH
+        description: Approved Task 017 project research decision, without claiming a field-verified sacred-feature footprint.
+    content_destination:
+  - id: place.krsna-footprint
+    map_number: 12
+    canonical_name: Kṛṣṇa’s footprint
+    ascii_name: Krishna's footprint
+    alternate_names:
+      - Krishna's footprint
+      - Kṛṣṇa-caraṇa-cihna
+      - Krishna charan chinha
+      - Caraṇa-cihna
+    coordinate_status: UNVERIFIED
+    coordinate_confidence: UNKNOWN
+    coordinate_accuracy_meters:
+    verification_notes: Sacred-site identity is strongly supported in the Śyāma-kuṭī complex, but no defensible exact GPS coordinate has been established.
+    navigation_anchor_place_id: place.ratna-simhasana
+    location_guidance: From the Śyāma-kuṭī / Ratna-siṁhāsana area, look outside the ashram entrance; traditional pilgrimage guidance places the footprint roughly 7 m before the entrance and about 7 m into the trees. Exact coordinate requires field verification.
+    provenance:
+      - source_type: PILGRIMAGE_GUIDE
+        description: Pilgrimage guidance identifies the footprint outside the Śyāma-kuṭī ashram entrance, roughly 7 m before it and about 7 m into the trees.
+        source_reference: https://www.holydham.com/shyamavan-and-shyama-kutir-ratna-simhasana/
+      - source_type: PROJECT_RESEARCH
+        description: Approved Task 017 coordinate-less sacred-place decision.
+    content_destination:
+  - id: place.gvala-pokhara
+    map_number: 13
+    canonical_name: Gvāla-pokhara
+    ascii_name: Gvala-pokhara
+    alternate_names:
+      - Gwal Pokhar
+      - Gwal Pokhra
+      - Gopāl Pokhar
+      - Gopal Pokhar
+    latitude: 27.5078333
+    longitude: 77.4737194
+    coordinate_status: VERIFIED
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: Official coordinate evidence and modern geographic corroboration support this coordinate.
+    provenance:
+      - source_type: OFFICIAL_OR_INSTITUTIONAL_DOCUMENT
+        description: The Braj Development Plan provides the approved coordinate evidence for Gvāla-pokhara.
+        source_reference: https://www.upbtvp.in/pdf/Braj_Development_plan.pdf
+      - source_type: GEOGRAPHIC_SURVEY
+        description: Modern geographic evidence corroborates the approved sacred water-body location.
+      - source_type: PROJECT_RESEARCH
+        description: Approved Task 017 project research decision.
+    content_destination:
   - id: place.manasiganga
     map_number: 20
     canonical_name: Mānasī-gaṅgā
