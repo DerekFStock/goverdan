@@ -109,6 +109,34 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
         XCTAssertTrue(app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@", "place.ratna-simhasana")).firstMatch.exists)
         XCTAssertTrue(app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@", "Exact coordinate requires field verification")).firstMatch.exists)
     }
+
+    func testTask019SantNivasUsesApproximateAnchorAndOpensOwnDetails() {
+        let app = launch()
+        app.buttons["home.map"].tap()
+        XCTAssertTrue(app.navigationBars["Govardhana Map"].waitForExistence(timeout: 8))
+        app.buttons["map.places"].tap()
+
+        let goToAnchor = app.buttons["places.go.14"]
+        reveal(goToAnchor, in: app)
+        XCTAssertTrue(app.staticTexts["#14 Sant Nivas"].exists)
+        XCTAssertTrue(app.staticTexts["APPROXIMATE · via #13 Gvāla-pokhara"].exists)
+        goToAnchor.tap()
+
+        XCTAssertTrue(app.navigationBars["Govardhana Map"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["#14 Sant Nivas"].exists)
+        XCTAssertTrue(app.staticTexts["Approximate · via #13 Gvāla-pokhara"].exists)
+        let approximate14 = app.buttons["map.approximate-pin.14"]
+        XCTAssertTrue(approximate14.waitForExistence(timeout: 5))
+        XCTAssertEqual("#14 Sant Nivas — approximate location", approximate14.label)
+        approximate14.tap()
+
+        XCTAssertTrue(app.navigationBars["Sant Nivas"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Coordinate not yet established"].exists)
+        app.swipeUp()
+        XCTAssertTrue(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "approximately 170 m")
+        ).firstMatch.exists)
+    }
     private let sectionID = "story.radhakunda.manifestation"
     private let storyTitle = "The Story of Śrī Rādhā-kuṇḍa"
     private let sectionTitle = "The Manifestation of Rādhā-kuṇḍa and Kṛṣṇa-kuṇḍa"

@@ -5,7 +5,7 @@
     "editions": 4,
     "passage_representations": 54,
     "passages": 54,
-    "pilgrimage_places": 14,
+    "pilgrimage_places": 19,
     "stories": 1,
     "story_sections": 1,
     "witness_mappings": 0,
@@ -33,7 +33,7 @@
       "sqlite_autoindex_story_sections_2"
     ],
     "integrity_check": "ok",
-    "logical_content_sha256": "855e3fc90f578d7a5502e36eb192cf61a9926ba31758c0f0e24722dd054fc53a",
+    "logical_content_sha256": "c6f642991355e0a83af5f93f2ffd88db6d004c74dba3613bdbf4b0b686dce116",
     "schema_version": 6,
     "search_document_count": 62,
     "source_fts_result_count": 54,

@@ -80,7 +80,7 @@ final class FoundationTests: XCTestCase {
             XCTAssertNil(place.contentDestination)
         }
         let model = PilgrimageMapModel(places: places)
-        XCTAssertEqual(14, model.places.count)
+        XCTAssertEqual(places.count, model.places.count)
         let route = SimulationRoute.task014Coordinates(places: places)
         XCTAssertEqual(places.first { $0.mapNumber == 1 }?.coordinate?.latitude, route.first?.latitude)
         XCTAssertEqual(places.first { $0.mapNumber == 3 }?.coordinate?.longitude, route.last?.longitude)
@@ -89,7 +89,8 @@ final class FoundationTests: XCTestCase {
     @MainActor
     func testTask017CoordinateLessPlacesUseAnchoredPresentationAndStayOutOfGeoCalculations() throws {
         let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
-        let places = try repository.pilgrimagePlaces()
+        let allPlaces = try repository.pilgrimagePlaces()
+        let places = allPlaces.filter { (1...13).contains($0.mapNumber) || $0.mapNumber == 20 }
         XCTAssertEqual(Array(1...13) + [20], places.map(\.mapNumber))
         let byNumber = Dictionary(uniqueKeysWithValues: places.map { ($0.mapNumber, $0) })
         for number in [10, 12] {
@@ -126,6 +127,69 @@ final class FoundationTests: XCTestCase {
         let route = SimulationRoute.task014Coordinates(places: places)
         XCTAssertEqual(byNumber[1]?.coordinate?.latitude, route.first?.latitude)
         XCTAssertEqual(byNumber[3]?.coordinate?.longitude, route.last?.longitude)
+    }
+
+    @MainActor
+    func testTask019ApprovedPlacesSurviveSQLiteAndProjectGenericallyToMap() throws {
+        let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
+        let places = try repository.pilgrimagePlaces()
+        XCTAssertEqual(19, places.count)
+        XCTAssertEqual(Array(1...18) + [20], places.map(\.mapNumber))
+        let byNumber = Dictionary(uniqueKeysWithValues: places.map { ($0.mapNumber, $0) })
+
+        let santNivas = try XCTUnwrap(byNumber[14])
+        XCTAssertNil(santNivas.latitude)
+        XCTAssertNil(santNivas.longitude)
+        XCTAssertEqual(.unverified, santNivas.coordinateStatus)
+        XCTAssertEqual(.unknown, santNivas.coordinateConfidence)
+        XCTAssertEqual("place.gvala-pokhara", santNivas.navigationAnchorPlaceID?.rawValue)
+        XCTAssertTrue(try XCTUnwrap(santNivas.locationGuidance).contains("approximately 170 m"))
+
+        let expected: [Int: (String, Double, Double, CoordinateVerificationStatus, CoordinateConfidence)] = [
+            15: ("place.jugal-kunda", 27.5049625, 77.4736094, .probable, .high),
+            16: ("place.kilola-kunda", 27.4997625, 77.4716094, .probable, .high),
+            17: ("place.panca-tirtha-kunda", 27.4992222, 77.4655167, .verified, .high),
+            18: ("place.mukharavinda-manasi-ganga", 27.4982875, 77.4654219, .verified, .high),
+        ]
+        for (number, value) in expected {
+            let place = try XCTUnwrap(byNumber[number])
+            XCTAssertEqual(value.0, place.id.rawValue)
+            XCTAssertEqual(value.1, try XCTUnwrap(place.latitude), accuracy: 0.00000001)
+            XCTAssertEqual(value.2, try XCTUnwrap(place.longitude), accuracy: 0.00000001)
+            XCTAssertEqual(value.3, place.coordinateStatus)
+            XCTAssertEqual(value.4, place.coordinateConfidence)
+        }
+        XCTAssertTrue(try XCTUnwrap(byNumber[18]?.verificationNotes).contains("map place #61"))
+
+        let presentations = PilgrimageMapProjection.presentations(for: places)
+        let expectedPresentationCount = places.filter { place in
+            if place.coordinate != nil { return true }
+            guard let anchorID = place.navigationAnchorPlaceID else { return false }
+            return places.first { $0.id == anchorID }?.coordinate != nil
+        }.count
+        XCTAssertEqual(expectedPresentationCount, presentations.count)
+        XCTAssertEqual(19, presentations.count)
+        let approximate14 = try XCTUnwrap(presentations.first { $0.place.mapNumber == 14 })
+        XCTAssertTrue(approximate14.isApproximate)
+        XCTAssertEqual(13, approximate14.anchor?.mapNumber)
+        XCTAssertEqual(byNumber[13]?.coordinate?.latitude, approximate14.coordinate.latitude)
+
+        let rows = PilgrimagePlaceNavigation.rows(for: places)
+        XCTAssertEqual("APPROXIMATE · via #13 Gvāla-pokhara", rows.first { $0.place.mapNumber == 14 }?.statusText)
+        XCTAssertEqual("Go to anchor", rows.first { $0.place.mapNumber == 14 }?.goTitle)
+
+        let model = PilgrimageMapModel(places: places)
+        let original = LocationSample(
+            coordinate: .init(latitude: 27.525256, longitude: 77.491353),
+            horizontalAccuracy: 4, timestamp: Date(timeIntervalSince1970: 123), course: 90, speed: 1
+        )
+        model.source = .real
+        model.sample = original
+        model.navigate(to: santNivas)
+        XCTAssertEqual(.real, model.source)
+        XCTAssertEqual(14, model.activeDestination.mapNumber)
+        XCTAssertEqual(13, model.activeNavigationAnchor?.mapNumber)
+        XCTAssertEqual(original.timestamp, model.sample?.timestamp)
     }
 
     @MainActor

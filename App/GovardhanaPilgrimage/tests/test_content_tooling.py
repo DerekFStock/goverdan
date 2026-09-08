@@ -205,9 +205,9 @@ class ContentToolingTests(unittest.TestCase):
         self.assertEqual(0, report["foreign_key_violation_count"])
         connection = sqlite3.connect(path)
         try:
-            self.assertEqual(14, connection.execute("SELECT count(*) FROM pilgrimage_places").fetchone()[0])
-            self.assertEqual(40, connection.execute("SELECT count(*) FROM pilgrimage_place_aliases").fetchone()[0])
-            self.assertEqual(34, connection.execute("SELECT count(*) FROM pilgrimage_place_provenance").fetchone()[0])
+            self.assertEqual(19, connection.execute("SELECT count(*) FROM pilgrimage_places").fetchone()[0])
+            self.assertEqual(58, connection.execute("SELECT count(*) FROM pilgrimage_place_aliases").fetchone()[0])
+            self.assertEqual(50, connection.execute("SELECT count(*) FROM pilgrimage_place_provenance").fetchone()[0])
         finally:
             connection.close()
 
@@ -243,7 +243,10 @@ class ContentToolingTests(unittest.TestCase):
 
     def test_task_017_coordinate_less_places_and_approved_batch_compile_exactly(self) -> None:
         result = compile_manifest(self.root, "radhakunda-mvp-development-manifest")
-        places = result.content["pilgrimage_places"]
+        places = [
+            place for place in result.content["pilgrimage_places"]
+            if place["map_number"] in set(range(1, 14)) | {20}
+        ]
         self.assertEqual(list(range(1, 14)) + [20], [place["map_number"] for place in places])
         by_number = {place["map_number"]: place for place in places}
         expected = {
@@ -312,6 +315,52 @@ class ContentToolingTests(unittest.TestCase):
                 self.assertIsNone(row[2])
                 self.assertEqual(("UNVERIFIED", "UNKNOWN", "place.ratna-simhasana"), row[3:6])
                 self.assertTrue(row[6])
+        finally:
+            connection.close()
+
+    def test_task_019_approved_places_compile_and_sqlite_preserves_anchor(self) -> None:
+        result = compile_manifest(self.root, "radhakunda-mvp-development-manifest")
+        places = result.content["pilgrimage_places"]
+        self.assertEqual(19, len(places))
+        self.assertEqual(list(range(1, 19)) + [20], [place["map_number"] for place in places])
+        by_number = {place["map_number"]: place for place in places}
+
+        sant_nivas = by_number[14]
+        self.assertEqual("place.sant-nivas", sant_nivas["id"])
+        self.assertIsNone(sant_nivas.get("latitude"))
+        self.assertIsNone(sant_nivas.get("longitude"))
+        self.assertEqual("UNVERIFIED", sant_nivas["coordinate_status"])
+        self.assertEqual("UNKNOWN", sant_nivas["coordinate_confidence"])
+        self.assertEqual("place.gvala-pokhara", sant_nivas["navigation_anchor_place_id"])
+        self.assertIn("approximately 170 m", sant_nivas["location_guidance"])
+
+        expected = {
+            15: ("place.jugal-kunda", 27.5049625, 77.4736094, "PROBABLE", "HIGH"),
+            16: ("place.kilola-kunda", 27.4997625, 77.4716094, "PROBABLE", "HIGH"),
+            17: ("place.panca-tirtha-kunda", 27.4992222, 77.4655167, "VERIFIED", "HIGH"),
+            18: ("place.mukharavinda-manasi-ganga", 27.4982875, 77.4654219, "VERIFIED", "HIGH"),
+        }
+        for number, values in expected.items():
+            place = by_number[number]
+            self.assertEqual(values, (
+                place["id"], place["latitude"], place["longitude"],
+                place["coordinate_status"], place["coordinate_confidence"],
+            ))
+        self.assertIn("map place #61", by_number[18]["verification_notes"])
+
+        path = self.root / "build/task019.sqlite"
+        report = build_sqlite(path, result)
+        self.assertEqual("ok", report["integrity_check"])
+        self.assertEqual(0, report["foreign_key_violation_count"])
+        connection = sqlite3.connect(path)
+        try:
+            row = connection.execute(
+                "SELECT latitude, longitude, coordinate_status, coordinate_confidence, "
+                "navigation_anchor_place_id, location_guidance "
+                "FROM pilgrimage_places WHERE map_number = 14"
+            ).fetchone()
+            self.assertEqual((None, None, "UNVERIFIED", "UNKNOWN", "place.gvala-pokhara"), row[:5])
+            self.assertIn("approximately 170 m", row[5])
         finally:
             connection.close()
 
