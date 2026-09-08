@@ -78,12 +78,20 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
         let goToAnchor = app.buttons["places.go.10"]
         reveal(goToAnchor, in: app)
         XCTAssertTrue(app.staticTexts["#10 Rāsa-sthalī"].exists)
-        XCTAssertTrue(app.staticTexts["APPROXIMATE · anchored to #11 Ratna-siṁhāsana"].exists)
+        XCTAssertTrue(app.staticTexts["APPROXIMATE · via #11 Ratna-siṁhāsana"].exists)
         goToAnchor.tap()
         XCTAssertTrue(app.navigationBars["Govardhana Map"].waitForExistence(timeout: 5))
         XCTAssertTrue(app.staticTexts["#10 Rāsa-sthalī"].exists)
-        XCTAssertTrue(app.staticTexts["Approximate location"].exists)
-        XCTAssertTrue(app.staticTexts["Via #11 Ratna-siṁhāsana"].exists)
+        XCTAssertTrue(app.staticTexts["Approximate · via #11 Ratna-siṁhāsana"].exists)
+        let guidance = app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "Locate the distinct rāsa platform")
+        ).firstMatch
+        XCTAssertFalse(guidance.exists)
+        app.buttons["map.target.guidance"].tap()
+        XCTAssertTrue(guidance.waitForExistence(timeout: 3))
+        XCTAssertTrue(app.staticTexts["Navigation anchor: #11 Ratna-siṁhāsana"].exists)
+        app.buttons["map.target.guidance"].tap()
+        XCTAssertFalse(guidance.exists)
         XCTAssertFalse(app.buttons["map.pin.10"].exists)
         XCTAssertFalse(app.buttons["map.pin.12"].exists)
         XCTAssertTrue(app.buttons["map.pin.9"].waitForExistence(timeout: 5))

@@ -113,7 +113,7 @@ final class FoundationTests: XCTestCase {
         XCTAssertTrue(approximate.allSatisfy { $0.coordinate.latitude == byNumber[11]?.coordinate?.latitude })
         let rows = PilgrimagePlaceNavigation.rows(for: places)
         XCTAssertEqual(Array(1...13) + [20], rows.map { $0.place.mapNumber })
-        XCTAssertEqual("APPROXIMATE · anchored to #11 Ratna-siṁhāsana", rows.first { $0.place.mapNumber == 10 }?.statusText)
+        XCTAssertEqual("APPROXIMATE · via #11 Ratna-siṁhāsana", rows.first { $0.place.mapNumber == 10 }?.statusText)
         XCTAssertEqual("Go to anchor", rows.first { $0.place.mapNumber == 12 }?.goTitle)
         let anchor = try XCTUnwrap(byNumber[11]?.coordinate)
         XCTAssertNotEqual(10, GeoMath.nearest(to: anchor, places: places)?.mapNumber)
@@ -177,6 +177,46 @@ final class FoundationTests: XCTestCase {
             timestamp: original.timestamp, course: 0, speed: 0
         )
         XCTAssertEqual(.navigationAnchorArrival, model.arrivalPresentationState)
+    }
+
+    @MainActor
+    func testTask018MapLabelPriorityAndCompactApproximateCard() throws {
+        let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
+        let places = try repository.pilgrimagePlaces()
+        let byNumber = Dictionary(uniqueKeysWithValues: places.map { ($0.mapNumber, $0) })
+        let presentations = PilgrimageMapProjection.presentations(for: places)
+        let presentationByNumber = Dictionary(uniqueKeysWithValues: presentations.map { ($0.place.mapNumber, $0) })
+
+        let target10 = try XCTUnwrap(byNumber[10])
+        XCTAssertEqual(.activeTarget, PilgrimageMapProjection.labelPriority(
+            for: try XCTUnwrap(presentationByNumber[10]), activeTarget: target10
+        ))
+        XCTAssertEqual(.navigationAnchor, PilgrimageMapProjection.labelPriority(
+            for: try XCTUnwrap(presentationByNumber[11]), activeTarget: target10
+        ))
+        XCTAssertEqual(.none, PilgrimageMapProjection.labelPriority(
+            for: try XCTUnwrap(presentationByNumber[12]), activeTarget: target10
+        ))
+
+        let target13 = try XCTUnwrap(byNumber[13])
+        XCTAssertEqual(.activeTarget, PilgrimageMapProjection.labelPriority(
+            for: try XCTUnwrap(presentationByNumber[13]), activeTarget: target13
+        ))
+        XCTAssertTrue(presentations.filter { $0.place.mapNumber != 13 }.allSatisfy {
+            PilgrimageMapProjection.labelPriority(for: $0, activeTarget: target13) == .none
+        })
+
+        let model = PilgrimageMapModel(places: places)
+        model.navigate(to: target10)
+        let card = model.targetCardPresentation
+        XCTAssertEqual(10, card.place.mapNumber)
+        XCTAssertTrue(card.isApproximate)
+        XCTAssertEqual("#11 Ratna-siṁhāsana", card.anchorDisplayName)
+        XCTAssertEqual("Approximate · via #11 Ratna-siṁhāsana", card.compactContext)
+        XCTAssertTrue(card.hasExpandableGuidance)
+        XCTAssertFalse(try XCTUnwrap(card.guidance).isEmpty)
+        XCTAssertNil(target10.latitude)
+        XCTAssertNil(target10.longitude)
     }
     private func bundledContentURL() throws -> URL {
         try XCTUnwrap(Bundle.main.url(forResource: "radhakunda-content", withExtension: "sqlite"))
