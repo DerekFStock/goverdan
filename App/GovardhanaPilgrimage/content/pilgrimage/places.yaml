@@ -233,7 +233,7 @@ places:
       - source_type: PILGRIMAGE_GUIDE
         description: Pilgrimage descriptions identify the modern Śyāma-kuṭī / Ratna-siṁhāsana shrine complex.
         source_reference: https://brajdham000.wordpress.com/govardhan-shyama-kuti/
-      - source_type: MODERN_MAP
+      - source_type: PILGRIMAGE_GUIDE
         description: Contemporary location evidence supports the approved shrine-complex coordinate.
         source_reference: https://www.holydham.com/shyamavan-and-shyama-kutir-ratna-simhasana/
       - source_type: PROJECT_RESEARCH

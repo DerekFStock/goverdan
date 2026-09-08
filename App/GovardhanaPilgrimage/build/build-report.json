@@ -33,7 +33,7 @@
       "sqlite_autoindex_story_sections_2"
     ],
     "integrity_check": "ok",
-    "logical_content_sha256": "05557645c7ec1ca824a3674bd7762b76b94120118da790e9b48cfba1bf0550cc",
+    "logical_content_sha256": "855e3fc90f578d7a5502e36eb192cf61a9926ba31758c0f0e24722dd054fc53a",
     "schema_version": 6,
     "search_document_count": 62,
     "source_fts_result_count": 54,
