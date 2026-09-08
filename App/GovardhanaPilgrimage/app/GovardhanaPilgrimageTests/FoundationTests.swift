@@ -258,7 +258,7 @@ final class FoundationTests: XCTestCase {
         XCTAssertEqual(.navigationAnchor, PilgrimageMapProjection.labelPriority(
             for: try XCTUnwrap(presentationByNumber[11]), activeTarget: target10
         ))
-        XCTAssertEqual(.none, PilgrimageMapProjection.labelPriority(
+        XCTAssertEqual(.ordinary, PilgrimageMapProjection.labelPriority(
             for: try XCTUnwrap(presentationByNumber[12]), activeTarget: target10
         ))
 
@@ -267,7 +267,7 @@ final class FoundationTests: XCTestCase {
             for: try XCTUnwrap(presentationByNumber[13]), activeTarget: target13
         ))
         XCTAssertTrue(presentations.filter { $0.place.mapNumber != 13 }.allSatisfy {
-            PilgrimageMapProjection.labelPriority(for: $0, activeTarget: target13) == .none
+            PilgrimageMapProjection.labelPriority(for: $0, activeTarget: target13) == .ordinary
         })
 
         let model = PilgrimageMapModel(places: places)
@@ -281,6 +281,52 @@ final class FoundationTests: XCTestCase {
         XCTAssertFalse(try XCTUnwrap(card.guidance).isEmpty)
         XCTAssertNil(target10.latitude)
         XCTAssertNil(target10.longitude)
+    }
+
+    @MainActor
+    func testAdaptivePilgrimageLabelsAndApproximateOffsetsRespondToZoom() throws {
+        let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
+        let places = try repository.pilgrimagePlaces()
+        let byNumber = Dictionary(uniqueKeysWithValues: places.map { ($0.mapNumber, $0) })
+        let presentations = PilgrimageMapProjection.presentations(for: places)
+        let byPresentationNumber = Dictionary(uniqueKeysWithValues: presentations.map { ($0.place.mapNumber, $0) })
+        let target13 = try XCTUnwrap(byNumber[13])
+        let ordinary = PilgrimageMapProjection.labelPriority(
+            for: try XCTUnwrap(byPresentationNumber[15]), activeTarget: target13
+        )
+        let active = PilgrimageMapProjection.labelPriority(
+            for: try XCTUnwrap(byPresentationNumber[13]), activeTarget: target13
+        )
+
+        XCTAssertFalse(PilgrimageMapProjection.showsNameLabel(priority: ordinary, zoomLevel: 13.0))
+        XCTAssertTrue(PilgrimageMapProjection.showsNameLabel(priority: ordinary, zoomLevel: 15.4))
+        XCTAssertTrue(PilgrimageMapProjection.showsNameLabel(priority: ordinary, zoomLevel: 17.0))
+        XCTAssertTrue(PilgrimageMapProjection.showsNameLabel(priority: active, zoomLevel: 10.0))
+
+        let approximate10 = try XCTUnwrap(byPresentationNumber[10])
+        let approximate12 = try XCTUnwrap(byPresentationNumber[12])
+        XCTAssertTrue(approximate10.isApproximate)
+        XCTAssertTrue(approximate12.isApproximate)
+        XCTAssertNil(byNumber[10]?.coordinate)
+        XCTAssertNil(byNumber[12]?.coordinate)
+
+        let far10 = PilgrimageMapProjection.approximateOffset(
+            index: try XCTUnwrap(approximate10.approximateOffsetIndex), zoomLevel: 13.0
+        )
+        let close10 = PilgrimageMapProjection.approximateOffset(
+            index: try XCTUnwrap(approximate10.approximateOffsetIndex), zoomLevel: 17.0
+        )
+        let close12 = PilgrimageMapProjection.approximateOffset(
+            index: try XCTUnwrap(approximate12.approximateOffsetIndex), zoomLevel: 17.0
+        )
+        XCTAssertGreaterThan(hypot(close10.dx, close10.dy), hypot(far10.dx, far10.dy))
+        XCTAssertGreaterThan(hypot(close10.dx - close12.dx, close10.dy - close12.dy), 90)
+        XCTAssertEqual(close10.dx, PilgrimageMapProjection.approximateOffset(index: 0, zoomLevel: 17.0).dx)
+        XCTAssertEqual(close10.dy, PilgrimageMapProjection.approximateOffset(index: 0, zoomLevel: 17.0).dy)
+        XCTAssertLessThanOrEqual(hypot(
+            PilgrimageMapProjection.approximateOffset(index: 0, zoomLevel: 30).dx,
+            PilgrimageMapProjection.approximateOffset(index: 0, zoomLevel: 30).dy
+        ), 72.000001)
     }
     private func bundledContentURL() throws -> URL {
         try XCTUnwrap(Bundle.main.url(forResource: "radhakunda-content", withExtension: "sqlite"))

@@ -21,6 +21,8 @@ struct PilgrimageMapPresentation: Identifiable {
 }
 
 enum PilgrimageMapProjection {
+    static let mediumLabelZoom = 14.5
+
     static func presentations(for places: [PilgrimagePlace]) -> [PilgrimageMapPresentation] {
         let ordered = places.sorted { $0.mapNumber < $1.mapNumber }
         let byID = Dictionary(uniqueKeysWithValues: ordered.map { ($0.id, $0) })
@@ -41,7 +43,7 @@ enum PilgrimageMapProjection {
     }
 
     enum LabelPriority: Int, Comparable {
-        case none, navigationAnchor, activeTarget
+        case ordinary, navigationAnchor, activeTarget
         static func < (lhs: LabelPriority, rhs: LabelPriority) -> Bool { lhs.rawValue < rhs.rawValue }
     }
 
@@ -52,7 +54,19 @@ enum PilgrimageMapProjection {
         if presentation.place.id == activeTarget.id { return .activeTarget }
         if activeTarget.coordinate == nil,
            activeTarget.navigationAnchorPlaceID == presentation.place.id { return .navigationAnchor }
-        return .none
+        return .ordinary
+    }
+
+    static func showsNameLabel(priority: LabelPriority, zoomLevel: Double) -> Bool {
+        priority == .activeTarget || zoomLevel >= mediumLabelZoom
+    }
+
+    static func approximateOffset(index: Int, zoomLevel: Double) -> CGVector {
+        let minimumRadius = 18.0
+        let maximumRadius = 72.0
+        let radius = min(maximumRadius, max(minimumRadius, minimumRadius + (zoomLevel - 13.0) * 12.0))
+        let angle = (-135.0 + Double(index % 8) * 90.0) * .pi / 180.0
+        return CGVector(dx: cos(angle) * radius, dy: sin(angle) * radius)
     }
 }
 
@@ -636,13 +650,10 @@ struct OfflineMapLibreView: UIViewRepresentable {
             if let placeAnnotation {
                 let place = placeAnnotation.place
                 if let offsetIndex = placeAnnotation.presentation.approximateOffsetIndex {
-                    let offsets: [CGVector] = [
-                        .init(dx: -27, dy: -27), .init(dx: 27, dy: -27),
-                        .init(dx: -27, dy: 27), .init(dx: 27, dy: 27),
-                        .init(dx: 0, dy: -38), .init(dx: 38, dy: 0),
-                        .init(dx: 0, dy: 38), .init(dx: -38, dy: 0),
-                    ]
-                    view.centerOffset = offsets[offsetIndex % offsets.count]
+                    view.centerOffset = PilgrimageMapProjection.approximateOffset(
+                        index: offsetIndex,
+                        zoomLevel: mapView.zoomLevel
+                    )
                 }
                 view.activate = { [weak self] in self?.parent.onSelect(place) }
                 view.isAccessibilityElement = false
@@ -655,7 +666,7 @@ struct OfflineMapLibreView: UIViewRepresentable {
                 let index = orderedPlaces.firstIndex(where: { $0.id == place.id }) ?? 0
                 let name = UILabel()
                 name.tag = 15_016
-                name.text = "#\(place.mapNumber) \(place.canonicalName)\(isApproximate ? " ?" : "")"
+                name.text = "#\(place.mapNumber) \(place.canonicalName)"
                 name.font = .systemFont(ofSize: 12, weight: .semibold)
                 name.textColor = .label
                 name.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.88)
@@ -690,7 +701,14 @@ struct OfflineMapLibreView: UIViewRepresentable {
         func updatePlaceLabels(in mapView: MLNMapView) {
             for annotation in mapView.annotations ?? [] {
                 guard let placeAnnotation = annotation as? PlaceAnnotation,
-                      let name = mapView.view(for: annotation)?.viewWithTag(15_016) as? UILabel else { continue }
+                      let annotationView = mapView.view(for: annotation),
+                      let name = annotationView.viewWithTag(15_016) as? UILabel else { continue }
+                if let offsetIndex = placeAnnotation.presentation.approximateOffsetIndex {
+                    annotationView.centerOffset = PilgrimageMapProjection.approximateOffset(
+                        index: offsetIndex,
+                        zoomLevel: mapView.zoomLevel
+                    )
+                }
                 updateLabel(name, for: placeAnnotation.presentation, zoomLevel: mapView.zoomLevel)
             }
         }
@@ -704,7 +722,7 @@ struct OfflineMapLibreView: UIViewRepresentable {
                 for: presentation,
                 activeTarget: parent.activeTarget
             )
-            label.isHidden = priority == .none || (priority == .navigationAnchor && zoomLevel < 14.5)
+            label.isHidden = !PilgrimageMapProjection.showsNameLabel(priority: priority, zoomLevel: zoomLevel)
             label.font = .systemFont(
                 ofSize: priority == .activeTarget ? 12 : 11,
                 weight: priority == .activeTarget ? .bold : .semibold
