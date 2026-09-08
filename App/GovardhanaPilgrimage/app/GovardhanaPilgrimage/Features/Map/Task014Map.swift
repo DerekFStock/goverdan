@@ -39,6 +39,31 @@ enum PilgrimageMapProjection {
             return PilgrimageMapPresentation(place: place, coordinate: coordinate, anchor: anchor, approximateOffsetIndex: index)
         }
     }
+
+    enum LabelPriority: Int, Comparable {
+        case none, navigationAnchor, activeTarget
+        static func < (lhs: LabelPriority, rhs: LabelPriority) -> Bool { lhs.rawValue < rhs.rawValue }
+    }
+
+    static func labelPriority(
+        for presentation: PilgrimageMapPresentation,
+        activeTarget: PilgrimagePlace
+    ) -> LabelPriority {
+        if presentation.place.id == activeTarget.id { return .activeTarget }
+        if activeTarget.coordinate == nil,
+           activeTarget.navigationAnchorPlaceID == presentation.place.id { return .navigationAnchor }
+        return .none
+    }
+}
+
+struct PilgrimageTargetCardPresentation {
+    let place: PilgrimagePlace
+    let anchor: PilgrimagePlace?
+    var isApproximate: Bool { anchor != nil }
+    var anchorDisplayName: String? { anchor.map { "#\($0.mapNumber) \($0.canonicalName)" } }
+    var compactContext: String? { anchorDisplayName.map { "Approximate · via \($0)" } }
+    var guidance: String? { isApproximate ? place.locationGuidance : nil }
+    var hasExpandableGuidance: Bool { guidance != nil }
 }
 
 struct PilgrimagePlaceNavigationRow: Identifiable {
@@ -46,7 +71,7 @@ struct PilgrimagePlaceNavigationRow: Identifiable {
     let anchor: PilgrimagePlace?
     var id: PilgrimagePlaceID { place.id }
     var statusText: String {
-        if let anchor { return "APPROXIMATE · anchored to #\(anchor.mapNumber) \(anchor.canonicalName)" }
+        if let anchor { return "APPROXIMATE · via #\(anchor.mapNumber) \(anchor.canonicalName)" }
         return "\(place.coordinateStatus.rawValue) · \(place.coordinateConfidence.rawValue)"
     }
     var goTitle: String { anchor == nil ? "Go" : "Go to anchor" }
@@ -241,6 +266,9 @@ final class PilgrimageMapModel: ObservableObject {
     var navigationCoordinate: CLLocationCoordinate2D? {
         activeDestination.coordinate ?? activeNavigationAnchor?.coordinate
     }
+    var targetCardPresentation: PilgrimageTargetCardPresentation {
+        .init(place: activeDestination, anchor: activeNavigationAnchor)
+    }
 
     func navigate(to place: PilgrimagePlace) {
         activeDestination = place
@@ -273,6 +301,7 @@ struct GovardhanaMapScreen: View {
     @State private var selectedPlace: PilgrimagePlace?
     @State private var debugExpanded = false
     @State private var showingPlaces = false
+    @State private var guidanceExpanded = false
 
     init(places: [PilgrimagePlace]) {
         _model = StateObject(wrappedValue: PilgrimageMapModel(places: places))
@@ -280,7 +309,13 @@ struct GovardhanaMapScreen: View {
 
     var body: some View {
         ZStack(alignment: .bottom) {
-            OfflineMapLibreView(presentations: model.mapPresentations, sample: model.sample, recenterCoordinate: model.requestedCenter, recenterToken: model.shouldRecenter) { selectedPlace = $0 }
+            OfflineMapLibreView(
+                presentations: model.mapPresentations,
+                activeTarget: model.activeDestination,
+                sample: model.sample,
+                recenterCoordinate: model.requestedCenter,
+                recenterToken: model.shouldRecenter
+            ) { selectedPlace = $0 }
                 .ignoresSafeArea(edges: .bottom)
             VStack(spacing: 8) {
                 destinationPanel
@@ -299,21 +334,31 @@ struct GovardhanaMapScreen: View {
             }
         }
         .navigationDestination(item: $selectedPlace) { PlaceDetailView(place: $0) }
+        .onChange(of: model.activeDestination.id) { guidanceExpanded = false }
     }
 
     private var destinationPanel: some View {
         VStack(alignment: .leading, spacing: 4) {
             Text(destinationHeading).font(.caption).foregroundStyle(.secondary)
             Text("#\(model.activeDestination.mapNumber) \(model.activeDestination.canonicalName)").font(.headline)
-            if let anchor = model.activeNavigationAnchor {
-                Text("Approximate location").font(.caption.bold())
-                Text("Via #\(anchor.mapNumber) \(anchor.canonicalName)").font(.caption).foregroundStyle(.secondary)
-                if let guidance = model.activeDestination.locationGuidance {
-                    Text(guidance).font(.caption).foregroundStyle(.secondary).lineLimit(3)
-                }
+            if let context = model.targetCardPresentation.compactContext {
+                Text(context).font(.caption).foregroundStyle(.secondary)
             }
             if let distance = model.destinationDistance, let bearing = model.destinationBearing {
                 Text("\(Int(distance.rounded())) m  •  \(Int(bearing.rounded()))° \(GeoMath.direction(for: bearing))")
+            }
+            if let guidance = model.targetCardPresentation.guidance {
+                Button(guidanceExpanded ? "Hide guidance" : "Show guidance") {
+                    guidanceExpanded.toggle()
+                }
+                .font(.caption.bold())
+                .accessibilityIdentifier("map.target.guidance")
+                if guidanceExpanded {
+                    if let anchor = model.targetCardPresentation.anchorDisplayName {
+                        Text("Navigation anchor: \(anchor)").font(.caption.bold())
+                    }
+                    Text(guidance).font(.caption).foregroundStyle(.secondary)
+                }
             }
         }.frame(maxWidth: .infinity, alignment: .leading).padding().background(.regularMaterial, in: RoundedRectangle(cornerRadius: 14))
     }
@@ -452,6 +497,7 @@ private final class AccessibleAnnotationView: MLNAnnotationView {
 
 struct OfflineMapLibreView: UIViewRepresentable {
     let presentations: [PilgrimageMapPresentation]
+    let activeTarget: PilgrimagePlace
     let sample: LocationSample?
     let recenterCoordinate: CLLocationCoordinate2D?
     let recenterToken: Int
@@ -474,6 +520,7 @@ struct OfflineMapLibreView: UIViewRepresentable {
     func updateUIView(_ map: MLNMapView, context: Context) {
         context.coordinator.parent = self
         context.coordinator.updateUser(sample)
+        context.coordinator.updatePlaceLabels(in: map)
         if context.coordinator.lastRecenter != recenterToken, let recenterCoordinate {
             context.coordinator.lastRecenter = recenterToken
             map.setCenter(recenterCoordinate, zoomLevel: 15.4, animated: true)
@@ -606,22 +653,25 @@ struct OfflineMapLibreView: UIViewRepresentable {
                 view.addSubview(button)
                 let orderedPlaces = parent.presentations.map(\.place).sorted { $0.mapNumber < $1.mapNumber }
                 let index = orderedPlaces.firstIndex(where: { $0.id == place.id }) ?? 0
-                let offsets: [CGPoint] = [
-                    .init(x: 38, y: -8), .init(x: 38, y: 18),
-                    .init(x: -129, y: -8), .init(x: -129, y: 18),
-                ]
-                let offset = offsets[index % offsets.count]
-                let name = UILabel(frame: CGRect(x: offset.x, y: offset.y, width: 125, height: 24))
+                let name = UILabel()
                 name.tag = 15_016
-                name.isHidden = mapView.zoomLevel < 14.5
                 name.text = "#\(place.mapNumber) \(place.canonicalName)\(isApproximate ? " ?" : "")"
-                name.font = .systemFont(ofSize: 11, weight: .bold)
+                name.font = .systemFont(ofSize: 12, weight: .semibold)
                 name.textColor = .label
                 name.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.88)
                 name.layer.cornerRadius = 5
                 name.clipsToBounds = true
                 name.textAlignment = .center
+                name.sizeToFit()
+                let width = min(name.frame.width + 12, 190)
+                let position = index % 4
+                name.frame = CGRect(
+                    x: position < 2 ? 38 : -(width + 4),
+                    y: position.isMultiple(of: 2) ? -8 : 18,
+                    width: width, height: 24
+                )
                 view.addSubview(name)
+                updateLabel(name, for: placeAnnotation.presentation, zoomLevel: mapView.zoomLevel)
             } else {
                 view.accessibilityIdentifier = "map.user-location"
                 view.accessibilityLabel = "Current simulated location"
@@ -634,11 +684,32 @@ struct OfflineMapLibreView: UIViewRepresentable {
         }
 
         func mapView(_ mapView: MLNMapView, regionDidChangeAnimated animated: Bool) {
+            updatePlaceLabels(in: mapView)
+        }
+
+        func updatePlaceLabels(in mapView: MLNMapView) {
             for annotation in mapView.annotations ?? [] {
-                guard annotation is PlaceAnnotation,
-                      let name = mapView.view(for: annotation)?.viewWithTag(15_016) else { continue }
-                name.isHidden = mapView.zoomLevel < 14.5
+                guard let placeAnnotation = annotation as? PlaceAnnotation,
+                      let name = mapView.view(for: annotation)?.viewWithTag(15_016) as? UILabel else { continue }
+                updateLabel(name, for: placeAnnotation.presentation, zoomLevel: mapView.zoomLevel)
             }
+        }
+
+        private func updateLabel(
+            _ label: UILabel,
+            for presentation: PilgrimageMapPresentation,
+            zoomLevel: Double
+        ) {
+            let priority = PilgrimageMapProjection.labelPriority(
+                for: presentation,
+                activeTarget: parent.activeTarget
+            )
+            label.isHidden = priority == .none || (priority == .navigationAnchor && zoomLevel < 14.5)
+            label.font = .systemFont(
+                ofSize: priority == .activeTarget ? 12 : 11,
+                weight: priority == .activeTarget ? .bold : .semibold
+            )
+            label.backgroundColor = UIColor.systemBackground.withAlphaComponent(priority == .activeTarget ? 0.94 : 0.82)
         }
     }
 }
