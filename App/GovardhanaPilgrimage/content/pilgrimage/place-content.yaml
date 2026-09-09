@@ -1,22 +1,169 @@
 schema_version: 1
 contents:
-  - place_id: place.kusumasarovara
-    category: Sacred reservoir
-    summary: Kusuma-sarovara is a large, geographically unmistakable sacred reservoir and the central landmark for this part of the Govardhana pilgrimage landscape.
-    why_sacred: Traditional pilgrimage geography treats Kusuma-sarovara as the center of a cluster of remembered sacred places, including the nearby Uddhava-associated temple and Aśoka-vana.
+  - place_id: place.radhakunda
+    category: Supreme sacred kuṇḍa
+    summary: Śrī Rādhā-kuṇḍa is the sacred lake of Śrī Rādhā at the foot of Govardhana. Gauḍīya texts place it at the summit of Vraja’s sacred geography because it is filled with the prema of Śrī Rādhā and Kṛṣṇa.
+    why_sacred: Rādhā-kuṇḍa belongs to the manifestation līlā following Kṛṣṇa’s killing of Ariṣṭāsura. During a playful dispute about purification after the killing of the bull demon, Śrī Rādhā and Her sakhīs created Her kuṇḍa. Rūpa Gosvāmī’s Upadeśāmṛta 9–11 ranks it above Mathurā, Vṛndāvana, and Govardhana, while Caitanya-caritāmṛta, Madhya 18.5–14 records Śrī Caitanya Mahāprabhu’s rediscovery and glorification of the two lakes.
     what_to_see:
-      - The large reservoir itself is the primary physical feature.
-      - Nearby places have their own numbered markers; do not treat the whole surrounding cluster as a single site.
-    lila: 'At nearby Aśoka-vana (#7), traditional accounts remember Kṛṣṇa decorating or braiding Śrī Rādhā’s hair.'
-    pilgrim_guidance: Use the unmistakable reservoir to orient yourself. The registry coordinate identifies the reservoir; a separate practical pilgrim arrival point has not yet been field verified.
+      - The present Rādhā-kuṇḍa itself and its immediate relationship with adjoining Śyāma-kuṇḍa.
+      - When the water is low, pilgrims traditionally identify a small enclosed, deeper feature as Kañcana-kuṇḍa; this is a pilgrimage identification, not a newly verified archaeological claim.
+      - Remember the surrounding landscape as the sacred setting of the sakhīs’ kuñjas without assigning exact locations that have not been verified.
+    lila: After Kṛṣṇa killed Ariṣṭāsura, Śrī Rādhā and Her sakhīs jokingly accused Him of impurity for killing a bull. Kṛṣṇa summoned the holy tīrthas and created His own lake; Rādhā and Her companions then created Her lake with their own hands. The paired kuṇḍas became an intimate setting for the Divine Couple’s pastimes.
+    pilgrim_guidance: Mahāprabhu came to Ariṭ-grāma asking for Rādhā-kuṇḍa, but local people could not identify it. He recognized Rādhā-kuṇḍa and Śyāma-kuṇḍa in two shallow paddy fields, bathed there, placed the earth on His body as tilaka, and carried some with Him. Visit #1 and #2 as a paired sacred landscape while preserving their distinct identities.
     references:
-      - id: reference.kusumasarovara.braj-development-plan
-        source_title: Braj Development Plan
-        locus: Kusuma Sarovara coordinate listing
-        explanation: 'Institutional coordinate evidence identifies the same major reservoir represented by map place #5.'
+      - id: reference.radhakunda.upadesamrta-9-11
+        source_title: Rūpa Gosvāmī — Upadeśāmṛta
+        locus: Verses 9–11
+        explanation: Ranks Rādhā-kuṇḍa at the summit of the sequence Mathurā, Vṛndāvana, Govardhana, and Rādhā-kuṇḍa.
+        quotation: “Above all, the superexcellent Śrī Rādhā-kuṇḍa stands supreme.”
+      - id: reference.radhakunda.radhakundastakam-1
+        source_title: Raghunātha Dāsa Gosvāmī — Rādhā-kuṇḍāṣṭakam
+        locus: Verse 1
+        explanation: Directly remembers Rādhā-kuṇḍa’s manifestation after the playful exchange concerning Ariṣṭāsura.
+        destination:
+          kind: SOURCE_PASSAGE
+          id: passage.radha-kundastaka.1
+      - id: reference.radhakunda.caitanya-caritamrta-madhya-18
+        source_title: Caitanya-caritāmṛta, Madhya-līlā
+        locus: 18.5–14
+        explanation: Records Mahāprabhu’s rediscovery of the two kuṇḍas, His bathing and glorification, His dancing on the bank, and His taking earth from Rādhā-kuṇḍa.
+        quotation: “Just as Śrīmatī Rādhārāṇī is most dear to Lord Kṛṣṇa, so Her lake is also very dear to Him.”
+      - id: reference.radhakunda.govinda-lilamrta-7-102
+        source_title: Govinda-līlāmṛta
+        locus: '7.102'
+        explanation: Caitanya-caritāmṛta, Madhya 18.12 quotes this verse as a direct glorification of Rādhā-kuṇḍa.
+      - id: reference.radhakunda.local-manifestation-story
+        source_title: The Story of Śrī Rādhā-kuṇḍa
+        locus: The Manifestation of Rādhā-kuṇḍa and Kṛṣṇa-kuṇḍa
+        explanation: Opens the project’s compiled narrative of the paired manifestation without duplicating the full story here.
+        destination:
+          kind: STORY_SECTION
+          id: story.radhakunda.manifestation
+    related_place_ids:
+      - place.syamakunda
+      - place.lalitakunda
+
+  - place_id: place.syamakunda
+    category: Sacred Kṛṣṇa kuṇḍa
+    summary: Śyāma-kuṇḍa is Kṛṣṇa’s sacred lake adjoining Rādhā-kuṇḍa. Traditional texts also call it Kṛṣṇa-kuṇḍa and Ariṣṭa-saras or Ariṣṭa-kuṇḍa, linking it with Kṛṣṇa’s killing of Ariṣṭāsura and the paired manifestation of the two kuṇḍas.
+    why_sacred: Śyāma-kuṇḍa belongs to the same manifestation episode as Rādhā-kuṇḍa. Vraja-vilāsa-stava 58 praises Ariṣṭa-saras as arising from Kṛṣṇa’s lotus foot after Ariṣṭa’s destruction and describes Rādhā’s beloved lake in intimate relation with it. Garga-saṁhitā 3.7.8 lists Kṛṣṇa-kuṇḍa among Govardhana’s holy places, and Mahāprabhu rediscovered it together with Rādhā-kuṇḍa.
+    what_to_see:
+      - Śyāma-kuṇḍa itself and its junction with adjoining Rādhā-kuṇḍa.
+      - When the basin is drained or low, pilgrimage accounts traditionally identify a deeper enclosed feature as Vajranābha-kuṇḍa; this is not presented as a verified archaeological conclusion.
+    lila: After Ariṣṭāsura’s death, Śrī Rādhā playfully told Kṛṣṇa that He should purify Himself. Kṛṣṇa summoned the sacred tīrthas and created His kuṇḍa, after which Rādhā and Her sakhīs created Rādhā-kuṇḍa.
+    pilgrim_guidance: Look at Śyāma-kuṇḍa together with Rādhā-kuṇḍa to understand the paired manifestation, but notice their distinct basins and identities. Mahāprabhu recognized and bathed in both when they appeared to others as shallow fields.
+    references:
+      - id: reference.syamakunda.vraja-vilasa-stava-58
+        source_title: Raghunātha Dāsa Gosvāmī — Vraja-vilāsa-stava
+        locus: Verse 58
+        explanation: Praises Ariṣṭa-saras as arising from Kṛṣṇa’s lotus foot after Ariṣṭa’s destruction and places Rādhā’s dear lake in intimate relation with it.
+        quotation: After wicked Ariṣṭa was killed, the beloved lake called Ariṣṭa arose from Kṛṣṇa’s lotus foot; Rādhā’s dear lake lovingly embraces it.
+      - id: reference.syamakunda.garga-samhita-3-7-8
+        source_title: Garga-saṁhitā
+        locus: 3.7.8
+        explanation: Lists Rādhā-kuṇḍa, Kṛṣṇa-kuṇḍa, Lalitā-kuṇḍa, Gopāla-kuṇḍa, and Kusuma-sarovara among Govardhana’s holy places.
+      - id: reference.syamakunda.caitanya-caritamrta-madhya-18-5
+        source_title: Caitanya-caritāmṛta, Madhya-līlā
+        locus: '18.5'
+        explanation: Records Mahāprabhu’s discovery of Rādhā-kuṇḍa and Śyāma-kuṇḍa in two shallow paddy fields.
+      - id: reference.syamakunda.local-manifestation-story
+        source_title: The Story of Śrī Rādhā-kuṇḍa
+        locus: The Manifestation of Rādhā-kuṇḍa and Kṛṣṇa-kuṇḍa
+        explanation: Opens the project’s compiled narrative of Kṛṣṇa creating His tīrtha-filled lake and Rādhā creating Hers.
+        destination:
+          kind: STORY_SECTION
+          id: story.radhakunda.manifestation
+    related_place_ids:
+      - place.radhakunda
+      - place.lalitakunda
+
+  - place_id: place.lalitakunda
+    category: Sacred sakhī kuṇḍa
+    summary: Lalitā-kuṇḍa is associated with Śrī Lalitā-sakhī, foremost among Śrī Rādhā’s intimate companions. This place is remembered through Lalitā’s service in arranging and nourishing the meetings, moods, and service of Rādhā and Kṛṣṇa.
+    why_sacred: Garga-saṁhitā 3.8.6 places Lalitā-kuṇḍa within Govardhana’s sacred-body geography and calls it Govardhana’s cheeks. Vraja-vilāsa-stava 29 praises Lalitā as filled with dense prema, bold through intimacy with the Divine Couple, expert in arranging Their meetings, and expert in teaching her friend the moods of māna.
+    what_to_see:
+      - Lalitā-kuṇḍa itself.
+      - Pilgrimage guides traditionally identify Lalitā-Mohana Temple and Mohana-kuṇḍa in the temple area.
+      - Pilgrimage guides also describe Jīva Gosvāmī’s bhajana-kuṭīra and a small Rādhā-Dāmodara temple across the road or nearby; these descriptions do not establish new coordinate precision.
+    lila: Remember Lalitā’s intimate service mood here. She boldly arranges meetings of Rādhā and Kṛṣṇa and guides the movements of māna and reconciliation. A traditional pilgrimage account also associates Lalitā and Mohana with calling sacred tīrthas to reside here; this is presented as pilgrimage tradition rather than a newly established primary textual locus.
+    pilgrim_guidance: Center your remembrance on Lalitā-sakhī’s personal service to the Divine Couple. Use the kuṇḍa and traditionally identified temple area as visible orientation points without treating every guide-described feature as independently GPS verified.
+    references:
+      - id: reference.lalitakunda.vraja-vilasa-stava-29
+        source_title: Raghunātha Dāsa Gosvāmī — Vraja-vilāsa-stava
+        locus: Verse 29
+        explanation: Gives a direct Gosvāmī meditation on Lalitā’s prema, intimacy, skill in arranging meetings, and guidance in the moods of māna.
+        quotation: Lalitā, immersed in dense prema and bold through intimacy with the two dearest friends, skillfully arranges Their meetings and instructs her friend in the moods of māna.
+      - id: reference.lalitakunda.garga-samhita-3-8-6
+        source_title: Garga-saṁhitā
+        locus: 3.8.6
+        explanation: Places Lalitā-kuṇḍa in Govardhana’s sacred-body geography.
+        quotation: “Lalitā-kuṇḍa its cheeks.”
+      - id: reference.lalitakunda.traditional-pilgrimage-guide
+        source_title: Traditional Rādhā-kuṇḍa pilgrimage guide
+        locus: Lalitā-kuṇḍa area
+        explanation: Supports present physical-site descriptions only and is not used as a substitute for the Gosvāmī references.
+    related_place_ids:
+      - place.radhakunda
+      - place.syamakunda
+
+  - place_id: place.mukharai
+    category: Śrī Rādhā’s maternal-family village
+    summary: Mukharai is traditionally identified with Mukhara-devī, Śrī Rādhā’s maternal grandmother. A pilgrim enters a sacred place connected with Rādhā’s intimate family world rather than merely another geographic stop.
+    why_sacred: Rūpa Gosvāmī’s Rādhā-Kṛṣṇa-gaṇoddeśa-dīpikā identifies Mukhara as Śrī Rādhā’s maternal grandmother. Vraja-vilāsa-stava 28 directly glorifies the venerable Mukhara and presents a subtle family mood—she may outwardly seem angry or obstructive during the young couple’s first romantic play, yet her behavior increases the happiness of her two young grandchildren.
+    what_to_see:
+      - Traditional and local pilgrimage descriptions identify Mukhara-kuṇḍa and a Mukhara Devī temple.
+      - Look for images or deities connected with Rādhā, Kīrtidā, and Mukhara where locally identified.
+      - A locally described bhajana-śilā or resonant stone is a traditional physical identification rather than a project-verified archaeological feature.
+    lila: Mukhara represents the elder maternal household surrounding Śrī Rādhā. Raghunātha Dāsa Gosvāmī captures the rasa of an elder who can appear to oppose the young Divine Couple while actually increasing Their delight; she should not be reduced to a generic helpful-grandmother role.
+    pilgrim_guidance: Approach Mukharai as Śrī Rādhā’s maternal-family village. Ask locally for the traditionally identified Mukhara-kuṇḍa and Mukhara Devī temple, while recognizing that the app has not independently verified the precise position of every described feature.
+    references:
+      - id: reference.mukharai.vraja-vilasa-stava-28
+        source_title: Raghunātha Dāsa Gosvāmī — Vraja-vilāsa-stava
+        locus: Verse 28
+        explanation: Glorifies Mukhara through the nuanced family mood in which apparent opposition increases the young Divine Couple’s happiness.
+        quotation: Though she outwardly seems to oppose the young couple in anger, Mukhara increases the happiness of her two young grandchildren; I place that venerable elder upon my head.
+      - id: reference.mukharai.radha-krsna-ganoddesa-dipika
+        source_title: Rūpa Gosvāmī — Rādhā-Kṛṣṇa-gaṇoddeśa-dīpikā
+        explanation: Identifies Mukhara as Śrī Rādhā’s maternal grandmother; no verse number is asserted because the current project source does not establish one.
+      - id: reference.mukharai.local-description
+        source_title: Local and traditional Mukharai pilgrimage description
+        locus: Mukharai village
+        explanation: Supports present physical-feature descriptions and is distinguished from the primary Gosvāmī references.
+    related_place_ids: []
+
+  - place_id: place.kusumasarovara
+    category: Sacred flower-gathering reservoir
+    summary: Kusuma-sarovara is a major sacred reservoir in the Govardhana landscape associated with flowers, kuñjas, and the confidential pastimes of Rādhā and Kṛṣṇa. Its sacred identity is older and deeper than the later monumental architecture that now dominates a pilgrim’s first visual impression.
+    why_sacred: Vraja-rīti-cintāmaṇi directly describes Kusuma-sarovara and its flower-filled landscape; verse 1.27 remembers Nārada attaining a gopī form after bathing here. Garga-saṁhitā 3.8.6 identifies Kusuma-sarovara as Govardhana’s inner ear. Vraja-vilāsa-stava 70 supplies a complementary flower-gathering meditation, although that verse does not itself name Kusuma-sarovara.
+    what_to_see:
+      - The large rectangular reservoir is the primary physical feature.
+      - Remember the surrounding flower and kuñja landscape described in the texts.
+      - Notice the prominent later sandstone and chhatri architecture as a visible historical layer, not as the origin of the place’s sacred identity.
+      - 'Nearby registered places #6 Uddhava Temple, #7 Aśoka-vana, and #8 Nārada-kuṇḍa form a connected sacred landscape rather than unrelated pins.'
+    lila: Kusuma-sarovara is remembered as a flower-rich meeting landscape of Rādhā and Kṛṣṇa. Vraja-rīti-cintāmaṇi emphasizes its flowers and kuñjas and connects Nārada’s attainment of a gopī form with bathing here. Vraja-vilāsa-stava 70 may support flower-līlā meditation, but it is not direct geographic evidence because it does not name Kusuma-sarovara.
+    pilgrim_guidance: Use the unmistakable reservoir to orient yourself, then understand #5–8 as a connected sacred landscape. Look beyond the later monumental architecture to remember the flower and kuñja associations; a separate practical pilgrim arrival point has not yet been field verified.
+    references:
+      - id: reference.kusumasarovara.vraja-riti-cintamani-1-26-27
+        source_title: Viśvanātha Cakravartī Ṭhākura — Vraja-rīti-cintāmaṇi
+        locus: 1.26–27
+        explanation: Directly describes Kusuma-sarovara’s flower-filled landscape and the tradition of Nārada attaining a gopī form after bathing here.
+      - id: reference.kusumasarovara.garga-samhita-3-8-6
+        source_title: Garga-saṁhitā
+        locus: 3.8.6
+        explanation: Identifies Kusuma-sarovara as Govardhana’s inner ear in its sacred-body geography.
+      - id: reference.kusumasarovara.vraja-vilasa-stava-70
+        source_title: Raghunātha Dāsa Gosvāmī — Vraja-vilāsa-stava
+        locus: Verse 70
+        explanation: Offers a supporting meditation on Rādhā and Kṛṣṇa gathering flowers amid smiling sakhīs; the verse does not explicitly name Kusuma-sarovara and is not direct place-identification evidence.
+      - id: reference.kusumasarovara.govinda-lilamrta-6
+        source_title: Govinda-līlāmṛta
+        locus: Chapter 6
+        explanation: Project research associates this chapter with the Kusuma-sarovara flower and kuñja landscape; no verse-level locus is asserted.
     related_place_ids:
       - place.uddhava-temple
       - place.asoka-vana
+      - place.narada-kunda
+
   - place_id: place.rasa-sthali
     category: Sacred līlā platform
     summary: Rāsa-sthalī is the discrete rāsa platform remembered within the Ratna-kuṇḍa and Śyāma-kuṭī sacred complex. Its sacred-place identity is strong even though its exact GPS coordinate is not established.
@@ -37,6 +184,7 @@ contents:
         explanation: Independently corroborates the distinct rāsa platform near Ratna-siṁhāsana.
     related_place_ids:
       - place.ratna-simhasana
+
   - place_id: place.mukharavinda-manasi-ganga
     category: Shrine and sacred śilās
     summary: 'This is the Mukuṭa-Mukhāravinda shrine on the bank of Mānasī-gaṅgā represented by map place #18.'

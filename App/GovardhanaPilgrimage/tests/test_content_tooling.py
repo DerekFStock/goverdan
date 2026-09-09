@@ -364,14 +364,50 @@ class ContentToolingTests(unittest.TestCase):
         finally:
             connection.close()
 
-    def test_task_020a_place_content_is_separate_generic_and_integral(self) -> None:
+    def test_task_020a_1_place_content_is_separate_generic_and_integral(self) -> None:
         result = compile_manifest(self.root, "radhakunda-mvp-development-manifest")
         contents = result.content["pilgrimage_place_contents"]
         self.assertEqual(
-            ["place.kusumasarovara", "place.mukharavinda-manasi-ganga", "place.rasa-sthali"],
+            [
+                "place.kusumasarovara", "place.lalitakunda", "place.mukharai",
+                "place.mukharavinda-manasi-ganga", "place.radhakunda",
+                "place.rasa-sthali", "place.syamakunda",
+            ],
             [item["place_id"] for item in contents],
         )
         by_place = {item["place_id"]: item for item in contents}
+        for place_id in [
+            "place.radhakunda", "place.syamakunda", "place.lalitakunda",
+            "place.mukharai", "place.kusumasarovara",
+        ]:
+            item = by_place[place_id]
+            for field in ["summary", "why_sacred", "lila", "pilgrim_guidance"]:
+                self.assertTrue(item[field])
+            self.assertTrue(item["what_to_see"])
+            self.assertTrue(item["references"])
+        self.assertEqual(
+            [
+                "reference.radhakunda.upadesamrta-9-11",
+                "reference.radhakunda.radhakundastakam-1",
+                "reference.radhakunda.caitanya-caritamrta-madhya-18",
+                "reference.radhakunda.govinda-lilamrta-7-102",
+                "reference.radhakunda.local-manifestation-story",
+            ],
+            [item["id"] for item in by_place["place.radhakunda"]["references"]],
+        )
+        destinations = [
+            reference["destination"]
+            for item in contents for reference in item["references"]
+            if reference.get("destination")
+        ]
+        self.assertEqual(
+            [
+                {"kind": "SOURCE_PASSAGE", "id": "passage.radha-kundastaka.1"},
+                {"kind": "STORY_SECTION", "id": "story.radhakunda.manifestation"},
+                {"kind": "STORY_SECTION", "id": "story.radhakunda.manifestation"},
+            ],
+            destinations,
+        )
         self.assertIn("exact GPS coordinate is not established", by_place["place.rasa-sthali"]["summary"])
         self.assertEqual(["place.ratna-simhasana"], by_place["place.rasa-sthali"]["related_place_ids"])
         self.assertIn("map place #61", by_place["place.mukharavinda-manasi-ganga"]["what_to_see"][2])
@@ -386,10 +422,10 @@ class ContentToolingTests(unittest.TestCase):
         connection = sqlite3.connect(path)
         try:
             self.assertEqual(7, connection.execute("PRAGMA user_version").fetchone()[0])
-            self.assertEqual(3, connection.execute("SELECT count(*) FROM pilgrimage_place_contents").fetchone()[0])
-            self.assertEqual(7, connection.execute("SELECT count(*) FROM pilgrimage_place_features").fetchone()[0])
-            self.assertEqual(5, connection.execute("SELECT count(*) FROM pilgrimage_place_references").fetchone()[0])
-            self.assertEqual(4, connection.execute("SELECT count(*) FROM pilgrimage_place_relationships").fetchone()[0])
+            self.assertEqual(7, connection.execute("SELECT count(*) FROM pilgrimage_place_contents").fetchone()[0])
+            self.assertEqual(20, connection.execute("SELECT count(*) FROM pilgrimage_place_features").fetchone()[0])
+            self.assertEqual(23, connection.execute("SELECT count(*) FROM pilgrimage_place_references").fetchone()[0])
+            self.assertEqual(11, connection.execute("SELECT count(*) FROM pilgrimage_place_relationships").fetchone()[0])
         finally:
             connection.close()
 

@@ -367,16 +367,43 @@ final class FoundationTests: XCTestCase {
         ), 72.000001)
     }
 
-    func testTask020ARepositoryLoadsOnlyThreePilgrimContentPrototypes() throws {
+    func testTask020A1RepositoryLoadsPlacesOneThroughFiveAndPreservesPrototypes() throws {
         let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
         let places = try repository.pilgrimagePlaces()
         let byNumber = Dictionary(uniqueKeysWithValues: places.map { ($0.mapNumber, $0) })
 
+        for number in 1...5 {
+            let place = try XCTUnwrap(byNumber[number])
+            let content = try XCTUnwrap(try repository.pilgrimagePlaceContent(placeID: place.id))
+            XCTAssertFalse(content.summary.isEmpty)
+            XCTAssertFalse(content.whySacred.isEmpty)
+            XCTAssertFalse(content.whatToSee.isEmpty)
+            XCTAssertFalse(content.lila.isEmpty)
+            XCTAssertFalse(content.pilgrimGuidance.isEmpty)
+            XCTAssertFalse(content.references.isEmpty)
+            XCTAssertFalse(place.verificationNotes.isEmpty)
+        }
+
+        let radhakunda = try XCTUnwrap(try repository.pilgrimagePlaceContent(placeID: XCTUnwrap(byNumber[1]).id))
+        XCTAssertEqual("Supreme sacred kuṇḍa", radhakunda.category)
+        XCTAssertEqual(
+            [
+                "reference.radhakunda.upadesamrta-9-11",
+                "reference.radhakunda.radhakundastakam-1",
+                "reference.radhakunda.caitanya-caritamrta-madhya-18",
+                "reference.radhakunda.govinda-lilamrta-7-102",
+                "reference.radhakunda.local-manifestation-story",
+            ],
+            radhakunda.references.map(\.id)
+        )
+        XCTAssertEqual(.sourcePassage(SourcePassageID(rawValue: "passage.radha-kundastaka.1")), radhakunda.references[1].destination)
+        XCTAssertEqual(.storySection(StorySectionID(rawValue: "story.radhakunda.manifestation")), radhakunda.references[4].destination)
+
         let kusuma = try XCTUnwrap(try repository.pilgrimagePlaceContent(placeID: XCTUnwrap(byNumber[5]).id))
-        XCTAssertEqual("Sacred reservoir", kusuma.category)
+        XCTAssertEqual("Sacred flower-gathering reservoir", kusuma.category)
         XCTAssertFalse(kusuma.summary.isEmpty)
-        XCTAssertEqual(2, kusuma.whatToSee.count)
-        XCTAssertEqual([6, 7], kusuma.relatedPlaceIDs.compactMap { id in
+        XCTAssertEqual(4, kusuma.whatToSee.count)
+        XCTAssertEqual([6, 7, 8], kusuma.relatedPlaceIDs.compactMap { id in
             places.first { $0.id == id }?.mapNumber
         })
 
@@ -389,7 +416,7 @@ final class FoundationTests: XCTestCase {
         let mukharavinda = try XCTUnwrap(try repository.pilgrimagePlaceContent(placeID: XCTUnwrap(byNumber[18]).id))
         XCTAssertTrue(mukharavinda.whatToSee.contains { $0.contains("map place #61") })
         XCTAssertEqual(20, places.first { $0.id == mukharavinda.relatedPlaceIDs.first }?.mapNumber)
-        XCTAssertNil(try repository.pilgrimagePlaceContent(placeID: XCTUnwrap(byNumber[1]).id))
+        XCTAssertNil(try repository.pilgrimagePlaceContent(placeID: XCTUnwrap(byNumber[6]).id))
     }
     private func bundledContentURL() throws -> URL {
         try XCTUnwrap(Bundle.main.url(forResource: "radhakunda-content", withExtension: "sqlite"))

@@ -58,12 +58,16 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
         XCTAssertEqual("#3 Lalitā-kuṇḍa", pin.label)
         pin.tap()
         XCTAssertTrue(app.navigationBars["Lalitā-kuṇḍa"].waitForExistence(timeout: 5))
-        XCTAssertTrue(app.staticTexts["Pilgrim-facing guide content has not yet been authored for this place."].exists)
+        XCTAssertTrue(app.staticTexts["Sacred sakhī kuṇḍa"].exists)
+        XCTAssertTrue(app.staticTexts["Sacred Summary"].exists)
         let research = app.buttons["Research & location information"]
         reveal(research, in: app)
         research.tap()
         XCTAssertTrue(app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@", "PROVISIONAL")).firstMatch.exists)
-        XCTAssertTrue(app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@", "Project Fixture")).firstMatch.exists)
+        let projectFixture = app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "Project Fixture")
+        ).firstMatch
+        reveal(projectFixture, in: app)
         app.navigationBars["Lalitā-kuṇḍa"].buttons.firstMatch.tap()
         XCTAssertTrue(app.navigationBars["Govardhana Map"].waitForExistence(timeout: 5))
     }
@@ -180,10 +184,10 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
         var app = launch()
         openPlaceDetails(5, in: app)
         XCTAssertTrue(app.navigationBars["Kusuma-sarovara"].waitForExistence(timeout: 5))
-        XCTAssertTrue(app.staticTexts["Sacred reservoir"].exists)
+        XCTAssertTrue(app.staticTexts["Sacred flower-gathering reservoir"].exists)
         XCTAssertTrue(app.staticTexts["Sacred Summary"].exists)
         XCTAssertTrue(app.staticTexts["Why This Place Is Sacred"].exists)
-        revealForReading(app.staticTexts["The large reservoir itself is the primary physical feature."], in: app)
+        revealForReading(app.staticTexts["The large rectangular reservoir is the primary physical feature."], in: app)
         XCTAssertFalse(app.staticTexts["27.512090, 77.478340"].exists)
         let kusumaResearch = app.buttons["Research & location information"]
         reveal(kusumaResearch, in: app)
