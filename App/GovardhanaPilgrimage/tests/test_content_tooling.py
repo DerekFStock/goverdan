@@ -364,7 +364,7 @@ class ContentToolingTests(unittest.TestCase):
         finally:
             connection.close()
 
-    def test_task_020a_2_place_content_is_separate_generic_and_integral(self) -> None:
+    def test_task_020a_3_place_content_is_separate_generic_and_integral(self) -> None:
         result = compile_manifest(self.root, "radhakunda-mvp-development-manifest")
         contents = result.content["pilgrimage_place_contents"]
         self.assertEqual(
@@ -372,7 +372,9 @@ class ContentToolingTests(unittest.TestCase):
                 "place.radhakunda", "place.syamakunda", "place.lalitakunda",
                 "place.mukharai", "place.kusumasarovara", "place.uddhava-temple",
                 "place.asoka-vana", "place.narada-kunda", "place.ratna-kunda",
-                "place.rasa-sthali", "place.mukharavinda-manasi-ganga",
+                "place.rasa-sthali", "place.ratna-simhasana", "place.krsna-footprint",
+                "place.gvala-pokhara", "place.sant-nivas", "place.jugal-kunda",
+                "place.mukharavinda-manasi-ganga",
             },
             {item["place_id"] for item in contents},
         )
@@ -381,7 +383,8 @@ class ContentToolingTests(unittest.TestCase):
             "place.radhakunda", "place.syamakunda", "place.lalitakunda",
             "place.mukharai", "place.kusumasarovara", "place.uddhava-temple",
             "place.asoka-vana", "place.narada-kunda", "place.ratna-kunda",
-            "place.rasa-sthali",
+            "place.rasa-sthali", "place.ratna-simhasana", "place.krsna-footprint",
+            "place.gvala-pokhara", "place.sant-nivas", "place.jugal-kunda",
         ]:
             item = by_place[place_id]
             for field in ["summary", "why_sacred", "lila", "pilgrim_guidance"]:
@@ -430,6 +433,13 @@ class ContentToolingTests(unittest.TestCase):
         )
         self.assertIn("#9 together with #10", by_place["place.ratna-kunda"]["summary"])
         self.assertIn("near #11 Ratna-siṁhāsana", by_place["place.rasa-sthali"]["pilgrim_guidance"])
+        self.assertIn("not proof of this exact modern shrine", by_place["place.ratna-simhasana"]["why_sacred"])
+        self.assertIn("exact modern GPS position", by_place["place.krsna-footprint"]["summary"])
+        self.assertIn("does not identify this particular modern rock", by_place["place.krsna-footprint"]["references"][0]["explanation"])
+        self.assertIn("do not name this pond", by_place["place.gvala-pokhara"]["why_sacred"])
+        self.assertIn("not a claim that it is an ancient Kṛṣṇa-līlā site", by_place["place.sant-nivas"]["summary"])
+        self.assertIn("No ancient Kṛṣṇa-līlā", by_place["place.sant-nivas"]["lila"])
+        self.assertIn("without inventing a separate yugala-līlā", by_place["place.jugal-kunda"]["summary"])
         self.assertIn("map place #61", by_place["place.mukharavinda-manasi-ganga"]["what_to_see"][2])
         self.assertNotIn("summary", next(
             place for place in result.content["pilgrimage_places"] if place["id"] == "place.kusumasarovara"
@@ -442,10 +452,10 @@ class ContentToolingTests(unittest.TestCase):
         connection = sqlite3.connect(path)
         try:
             self.assertEqual(7, connection.execute("PRAGMA user_version").fetchone()[0])
-            self.assertEqual(11, connection.execute("SELECT count(*) FROM pilgrimage_place_contents").fetchone()[0])
-            self.assertEqual(33, connection.execute("SELECT count(*) FROM pilgrimage_place_features").fetchone()[0])
-            self.assertEqual(33, connection.execute("SELECT count(*) FROM pilgrimage_place_references").fetchone()[0])
-            self.assertEqual(25, connection.execute("SELECT count(*) FROM pilgrimage_place_relationships").fetchone()[0])
+            self.assertEqual(16, connection.execute("SELECT count(*) FROM pilgrimage_place_contents").fetchone()[0])
+            self.assertEqual(51, connection.execute("SELECT count(*) FROM pilgrimage_place_features").fetchone()[0])
+            self.assertEqual(47, connection.execute("SELECT count(*) FROM pilgrimage_place_references").fetchone()[0])
+            self.assertEqual(36, connection.execute("SELECT count(*) FROM pilgrimage_place_relationships").fetchone()[0])
         finally:
             connection.close()
 

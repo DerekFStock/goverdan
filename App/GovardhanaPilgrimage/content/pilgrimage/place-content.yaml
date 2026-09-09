@@ -293,6 +293,142 @@ contents:
       - place.ratna-simhasana
       - place.krsna-footprint
 
+  - place_id: place.ratna-simhasana
+    category: Sacred throne-place and Śyāmavana shrine
+    summary: 'Ratna-siṁhāsana is the jeweled-throne place in Śyāmavana where Śrī Rādhā is remembered seated among Her companions. It is the central navigation anchor of the compact sacred complex containing #9 Ratna-kuṇḍa, #10 Rāsa-sthalī, and #12 Kṛṣṇa’s footprint.'
+    why_sacred: 'Bhakti-ratnākara directly identifies a place called Ratna-siṁhāsana where Śrī Rādhā used to sit on a throne. The same local sacred landscape is associated in pilgrimage tradition with the Śaṅkhacūḍa episode. Raghunātha Dāsa Gosvāmī’s Govardhana-vāsa-prārthanā-daśakam 3 gives a supporting Govardhana-wide meditation on jeweled altars and thrones among Govardhana’s caves, waterfalls, peaks, and valleys; it is not proof of this exact modern shrine.'
+    what_to_see:
+      - The modern Śyāma-kuṭī / Ratna-siṁhāsana shrine complex.
+      - The throne-place or shrine identified by local pilgrimage guides.
+      - 'Notice that #9 Ratna-kuṇḍa, #10 Rāsa-sthalī, #11 Ratna-siṁhāsana, and #12 Kṛṣṇa’s footprint remain distinct sacred features within one dense cluster.'
+    lila: Śrī Rādhā is remembered seated here upon the jeweled throne amid Her companions. The surrounding Śyāmavana landscape is also linked by traditional pilgrimage accounts with the Śaṅkhacūḍa episode and the nearby rāsa-sthalī.
+    pilgrim_guidance: 'Use #11 as the practical anchor for the #9–12 complex, then visit #9, #10, and #12 as distinct sacred features. Reaching #11 does not mean exact arrival at the coordinate-less locations of #10 or #12.'
+    references:
+      - id: reference.ratna-simhasana.bhakti-ratnakara
+        source_title: Bhakti-ratnākara
+        locus: Ratna-siṁhāsana description
+        explanation: Directly identifies the Ratna-siṁhāsana place and Śrī Rādhā’s throne; no unestablished chapter or verse numbering is asserted.
+        quotation: “In a place called Ratna-siṁhāsana, Rādhā used to sit on a throne.”
+      - id: reference.ratna-simhasana.govardhana-vasa-prarthana-dasakam-3
+        source_title: Raghunātha Dāsa Gosvāmī — Govardhana-vāsa-prārthanā-daśakam
+        locus: Verse 3
+        explanation: 'Supporting Govardhana meditation; not direct proof of the exact modern #11 shrine.'
+    related_place_ids:
+      - place.ratna-kunda
+      - place.rasa-sthali
+      - place.krsna-footprint
+
+  - place_id: place.krsna-footprint
+    category: Sacred Govardhana footprint rock
+    summary: Near Śyāma-kuṭī, local Vraja pilgrimage tradition preserves a Govardhana rock bearing what is revered as the impression of Kṛṣṇa’s foot. The sacred importance of Kṛṣṇa’s footprints on Govardhana has strong śāstric support, while the exact modern GPS position of this particular rock remains unverified.
+    why_sacred: Śrīmad-Bhāgavatam 10.21.18 praises Govardhana because its grasses, waters, caves, and roots are sanctified by the feet of Kṛṣṇa and Balarāma. Caitanya-caritāmṛta, Madhya 18.34 records Mahāprabhu’s reverence for a Govardhana stone bearing Kṛṣṇa’s footprints, and Garga-saṁhitā 3.4.13 describes Govardhana’s stones marked with divine footprints. These texts establish the sacred meaning of footprints on Govardhana; the identification of this particular modern rock comes from local pilgrimage tradition.
+    what_to_see:
+      - The locally revered footprint-bearing rock near the Śyāma-kuṭī complex.
+      - Traditional accounts describe the footprint as marked or painted; its present appearance may vary.
+      - 'Because its exact coordinate is unverified, navigate first to #11 Ratna-siṁhāsana and follow the approved local guidance from the ashram entrance.'
+    lila: Here the pilgrim remembers Govardhana as ground personally touched by Kṛṣṇa and Balarāma while They tended the cows. The project does not assign an additional specific event to this particular rock without stronger evidence.
+    pilgrim_guidance: 'Navigate to #11 Ratna-siṁhāsana, then look outside the ashram entrance. Traditional guidance places the footprint roughly 7 m before the entrance and about 7 m into the trees. Reaching #11 is arrival at the navigation anchor, not exact arrival at #12; the rock’s coordinate still requires field verification.'
+    references:
+      - id: reference.krsna-footprint.srimad-bhagavatam-10-21-18
+        source_title: Śrīmad-Bhāgavatam
+        locus: '10.21.18'
+        explanation: Praises Govardhana because its landscape is sanctified by the feet of Kṛṣṇa and Balarāma; it does not identify this particular modern rock.
+      - id: reference.krsna-footprint.caitanya-caritamrta-madhya-18-34
+        source_title: Caitanya-caritāmṛta, Madhya-līlā
+        locus: '18.34'
+        explanation: Records Mahāprabhu’s reverence for a Govardhana stone bearing Kṛṣṇa’s footprints; it supports the sacred class of object rather than this exact modern location.
+      - id: reference.krsna-footprint.garga-samhita-3-4-13
+        source_title: Garga-saṁhitā
+        locus: '3.4.13'
+        explanation: Describes Govardhana’s stones marked with divine footprints; equivalence with this particular rock remains a local identification.
+      - id: reference.krsna-footprint.traditional-guide
+        source_title: Traditional Śyāma-kuṭī pilgrimage guide
+        locus: Kṛṣṇa’s footprint near the ashram entrance
+        explanation: Supports the present-site identification and practical directions, not an independently verified exact GPS position.
+    related_place_ids:
+      - place.ratna-simhasana
+      - place.rasa-sthali
+      - place.ratna-kunda
+
+  - place_id: place.gvala-pokhara
+    category: Cowherd-boys’ sacred pond
+    summary: Gvāla-pokhara is remembered as a pond where Kṛṣṇa and the cowherd boys rested and ate together while tending the cows. Pilgrimage tradition explains its name through this cowherd association and also preserves Gopāla-kuṇḍa as a traditional alias.
+    why_sacred: Local pilgrimage tradition remembers the cowherd boys eating and resting here and tells of Kṛṣṇa slipping away from His companions. Śrīmad-Bhāgavatam 10.21.18–19 supplies the broader canonical world of Kṛṣṇa and Balarāma tending cows around Govardhana, but those verses do not name this pond or prove its modern coordinate.
+    what_to_see:
+      - The pond itself and its pastoral setting near Govardhana.
+      - Trees, fields, and the surrounding landscape that help evoke the cowherding setting.
+      - Pilgrimage tradition says sacred stones may emerge here; treat any such identification as local tradition rather than a project-certified archaeological finding.
+      - 'Use #13 as the navigation anchor for coordinate-less #14 Sant Nivas, while preserving the two places as distinct identities.'
+    lila: Pilgrimage tradition remembers Kṛṣṇa and His cowherd friends sharing a meal and resting here during their daily grazing. The broader Bhāgavatam passages support this pastoral devotional setting without naming Gvāla-pokhara itself.
+    pilgrim_guidance: 'Use the verified #13 coordinate to orient at the pond. #14 Sant Nivas is a separate modern ashram landmark reached by returning toward the main parikramā road; arrival at #13 is only the navigation anchor for #14.'
+    references:
+      - id: reference.gvala-pokhara.srimad-bhagavatam-10-21-18
+        source_title: Śrīmad-Bhāgavatam
+        locus: '10.21.18'
+        explanation: Provides broad canonical context for Kṛṣṇa and Balarāma’s cowherding on Govardhana; it does not name Gvāla-pokhara.
+      - id: reference.gvala-pokhara.srimad-bhagavatam-10-21-19
+        source_title: Śrīmad-Bhāgavatam
+        locus: '10.21.19'
+        explanation: Continues the Govardhana cowherding meditation and supports the pastoral setting, not the exact modern pond identification.
+      - id: reference.gvala-pokhara.traditional-guide
+        source_title: Traditional Govardhana pilgrimage guide
+        locus: Gvāla-pokhara
+        explanation: Supports the local meal-and-rest tradition, the present pond identity, and Gopāla-kuṇḍa as an alias; it is distinct from direct scriptural place-name evidence.
+    related_place_ids:
+      - place.sant-nivas
+      - place.jugal-kunda
+
+  - place_id: place.sant-nivas
+    category: Modern parikramā ashram and landmark
+    summary: Sant Nivas is a living modern ashram and practical pilgrimage landmark near Gvāla-pokhara. Its importance here is devotional service and orientation on the parikramā route, not a claim that it is an ancient Kṛṣṇa-līlā site.
+    why_sacred: The ashram’s official history says it was established in 1982 by Śrī Śrī 108 Sant K. P. Ramanujdas Ji as a place of devotional service. The living complex includes worship of Brajeśvarī Devī and Brajeśvara Mahādeva, the founder’s samādhi and prayer space, and a small gauśālā. Traditional pilgrimage directions also use Sant Nivas as the roadside landmark for approaching Gvāla-pokhara.
+    what_to_see:
+      - The active Sant Nivas ashram and its devotional community.
+      - The shrines of Brajeśvarī Devī and Brajeśvara Mahādeva.
+      - The founder’s samādhi and prayer space.
+      - The small gauśālā maintained as part of the ashram’s service.
+      - 'Notice its practical relationship to the approach for #13 Gvāla-pokhara while keeping the ashram and pond distinct.'
+    lila: Sant Nivas belongs to Govardhana’s living modern devotional layer. No ancient Kṛṣṇa-līlā is assigned to the ashram; pilgrims may honor its worship, service, founder lineage, and continuing care for cows.
+    pilgrim_guidance: 'Navigate first to #13 Gvāla-pokhara. From the pond, return approximately 170 m along the dirt approach path toward the main parikramā road; Sant Nivas is described as directly across from that approach. Reaching #13 means arriving at the navigation anchor, not the exact ashram, whose independent coordinate remains unverified.'
+    references:
+      - id: reference.sant-nivas.official-history
+        source_title: Sant Nivas official institutional history
+        locus: Ashram history and services
+        explanation: Supports the 1982 foundation, founder identity, shrines, samādhi, prayer space, and gauśālā as modern institutional history.
+      - id: reference.sant-nivas.traditional-guide
+        source_title: Traditional Govardhana pilgrimage directions
+        locus: Sant Nivas and the Gvāla-pokhara approach
+        explanation: Supports the ashram’s present landmark role and practical directions; it does not establish an ancient līlā identity or an exact GPS coordinate.
+    related_place_ids:
+      - place.gvala-pokhara
+
+  - place_id: place.jugal-kunda
+    category: Sacred pastoral encampment kuṇḍa
+    summary: Jugal-kuṇḍa is a secluded sacred pond remembered in pilgrimage tradition as a place where Nanda Mahārāja and the cowherd community camped during their movements through Vraja. The name is preserved without inventing a separate yugala-līlā unsupported by the current evidence.
+    why_sacred: Traditional pilgrimage guides associate this kuṇḍa with a pastoral encampment of Nanda Mahārāja, Kṛṣṇa, and the cowherd community. Śrīmad-Bhāgavatam 10.11.21–30 narrates the community’s migration with its carts, herds, elders, women, and children; verse 28 vividly describes their departure. This is broad canonical migration context and does not name Jugal-kuṇḍa.
+    what_to_see:
+      - The small, secluded kuṇḍa set away from the main road.
+      - The surrounding trees and fields that retain a pastoral character.
+      - The relationship of the pond to the nearby Gvāla-pokhara and Sant Nivas landscape, without merging their identities.
+    lila: Remember the moving pastoral world of Vraja here—the cowherd community traveling together with carts and cattle under Nanda Mahārāja’s care. The specific association of their camp with this pond belongs to pilgrimage tradition.
+    pilgrim_guidance: The kuṇḍa is small, secluded, and slightly off the main parikramā road. Approach attentively and ask locally when needed; the app does not assert unverified footpaths or a more precise arrival point than the approved coordinate.
+    references:
+      - id: reference.jugal-kunda.srimad-bhagavatam-10-11-21-30
+        source_title: Śrīmad-Bhāgavatam
+        locus: 10.11.21–30
+        explanation: Provides broad canonical context for the cowherd community’s migration through Vraja; it does not name Jugal-kuṇḍa.
+      - id: reference.jugal-kunda.srimad-bhagavatam-10-11-28
+        source_title: Śrīmad-Bhāgavatam
+        locus: '10.11.28'
+        explanation: Describes the community departing with carts, families, and cattle, supporting the pastoral migration meditation rather than the exact modern-site identity.
+      - id: reference.jugal-kunda.traditional-guide
+        source_title: Traditional Govardhana pilgrimage guide
+        locus: Jugal-kuṇḍa
+        explanation: Supports the local encampment tradition and present sacred-water-body identification; it remains distinct from direct scriptural naming.
+    related_place_ids:
+      - place.gvala-pokhara
+      - place.sant-nivas
+
   - place_id: place.mukharavinda-manasi-ganga
     category: Shrine and sacred śilās
     summary: 'This is the Mukuṭa-Mukhāravinda shrine on the bank of Mānasī-gaṅgā represented by map place #18.'

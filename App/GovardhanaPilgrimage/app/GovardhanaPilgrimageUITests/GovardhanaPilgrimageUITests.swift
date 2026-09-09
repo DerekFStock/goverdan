@@ -174,10 +174,14 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
         approximate14.tap()
 
         XCTAssertTrue(app.navigationBars["Sant Nivas"].waitForExistence(timeout: 5))
-        XCTAssertTrue(app.staticTexts["Pilgrim-facing guide content has not yet been authored for this place."].exists)
+        XCTAssertTrue(app.staticTexts["Modern parikramā ashram and landmark"].exists)
+        XCTAssertTrue(app.staticTexts["Sacred Summary"].exists)
         XCTAssertTrue(app.descendants(matching: .any).matching(
-            NSPredicate(format: "label CONTAINS %@", "approximately 170 m")
+            NSPredicate(format: "label CONTAINS %@", "not a claim that it is an ancient Kṛṣṇa-līlā site")
         ).firstMatch.exists)
+        revealForReading(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "approximately 170 m")
+        ).firstMatch, in: app)
     }
 
     func testTask020APilgrimFirstPrototypePagesAndSecondaryResearch() {
