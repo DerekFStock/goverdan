@@ -16,6 +16,24 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
         add(screenshot)
     }
 
+    func testTask020BLongPressSetsManualSimulationAndCanReturnToRealLocation() {
+        let app = launch()
+        app.buttons["home.map"].tap()
+        XCTAssertTrue(app.navigationBars["Govardhana Map"].waitForExistence(timeout: 8))
+        let map = app.otherElements["govardhana.map"]
+        XCTAssertTrue(map.waitForExistence(timeout: 5))
+
+        map.press(forDuration: 1.0)
+        XCTAssertTrue(app.staticTexts["SIMULATED LOCATION"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["map.nearby-place"].waitForExistence(timeout: 5))
+
+        app.buttons["Location & Offline Debug"].tap()
+        let useReal = app.buttons["map.use-real-location"]
+        reveal(useReal, in: app)
+        useReal.tap()
+        XCTAssertFalse(app.staticTexts["SIMULATED LOCATION"].exists)
+    }
+
     func testTask014OfflineMapRendersGovardhanAtPin20() {
         let app = launch()
         app.buttons["home.map"].tap()

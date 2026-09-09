@@ -209,6 +209,7 @@ enum SimulationRoute {
 
 enum GeoMath {
     static let arrivalRadius = 30.0
+    static let nearbyPlaceRadius = 150.0
 
     static func distance(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D) -> Double {
         CLLocation(latitude: from.latitude, longitude: from.longitude)
@@ -237,8 +238,14 @@ enum GeoMath {
 final class PilgrimageMapModel: ObservableObject {
     enum Source: String, CaseIterable { case simulation = "Govardhana Simulation", real = "Real iPhone Location" }
     enum ArrivalPresentationState: Equatable { case enRoute, exactArrival, navigationAnchorArrival }
-    @Published var source: Source = .simulation { didSet { selectProvider() } }
+    @Published var source: Source = .simulation {
+        didSet {
+            if source == .real { manualSimulatedLocationActive = false }
+            selectProvider()
+        }
+    }
     @Published var sample: LocationSample?
+    @Published private(set) var manualSimulatedLocationActive = false
     @Published var activeDestination: PilgrimagePlace
     @Published var shouldRecenter = 0
     @Published var requestedCenter: CLLocationCoordinate2D?
@@ -271,6 +278,14 @@ final class PilgrimageMapModel: ObservableObject {
         return activeNavigationAnchor == nil ? .exactArrival : .navigationAnchorArrival
     }
     var nearest: PilgrimagePlace? { sample.flatMap { GeoMath.nearest(to: $0.coordinate, places: places) } }
+    var nearestDistance: Double? {
+        guard let sample, let nearestCoordinate = nearest?.coordinate else { return nil }
+        return GeoMath.distance(from: sample.coordinate, to: nearestCoordinate)
+    }
+    var nearbyPlace: PilgrimagePlace? {
+        guard let distance = nearestDistance, distance <= GeoMath.nearbyPlaceRadius else { return nil }
+        return nearest
+    }
     var mappablePlaces: [PilgrimagePlace] { places.filter { $0.coordinate != nil } }
     var mapPresentations: [PilgrimageMapPresentation] { PilgrimageMapProjection.presentations(for: places) }
     var activeNavigationAnchor: PilgrimagePlace? {
@@ -292,10 +307,21 @@ final class PilgrimageMapModel: ObservableObject {
     }
 
     func resetSimulation() {
+        manualSimulatedLocationActive = false
         simulated.reset()
         requestedCenter = places.first(where: { $0.mapNumber == 1 })?.coordinate
         shouldRecenter += 1
     }
+
+    func setManualSimulatedLocation(_ coordinate: CLLocationCoordinate2D) {
+        guard source == .simulation else { return }
+        manualSimulatedLocationActive = true
+        simulated.jump(to: coordinate)
+        requestedCenter = coordinate
+        shouldRecenter += 1
+    }
+
+    func useRealLocation() { source = .real }
 
     func recenter() {
         requestedCenter = sample?.coordinate
@@ -330,10 +356,35 @@ struct GovardhanaMapScreen: View {
                 activeTarget: model.activeDestination,
                 sample: model.sample,
                 recenterCoordinate: model.requestedCenter,
-                recenterToken: model.shouldRecenter
+                recenterToken: model.shouldRecenter,
+                onLongPress: { model.setManualSimulatedLocation($0) }
             ) { selectedPlace = $0 }
                 .ignoresSafeArea(edges: .bottom)
             VStack(spacing: 8) {
+                if model.manualSimulatedLocationActive {
+                    Text("SIMULATED LOCATION")
+                        .font(.caption.bold())
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 5)
+                        .background(.orange, in: Capsule())
+                        .accessibilityIdentifier("map.simulated-location-indicator")
+                }
+                if let nearby = model.nearbyPlace, let distance = model.nearestDistance {
+                    Button {
+                        selectedPlace = nearby
+                    } label: {
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("Nearby sacred place").font(.caption).foregroundStyle(.secondary)
+                            Text("#\(nearby.mapNumber) \(nearby.canonicalName)").font(.headline)
+                            Text("\(Int(distance.rounded())) m · Open place").font(.caption)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                    .buttonStyle(.plain)
+                    .padding()
+                    .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 14))
+                    .accessibilityIdentifier("map.nearby-place")
+                }
                 destinationPanel
                 #if DEBUG
                 controls
@@ -385,7 +436,7 @@ struct GovardhanaMapScreen: View {
         switch model.arrivalPresentationState {
         case .exactArrival: "Arrived at"
         case .navigationAnchorArrival: "At navigation anchor"
-        case .enRoute: model.activeNavigationAnchor == nil ? "Next" : "Target"
+        case .enRoute: "Target"
         }
     }
 
@@ -399,6 +450,13 @@ struct GovardhanaMapScreen: View {
                 Button("Reset") { model.resetSimulation() }
                 Button("Recenter") { model.recenter() }
             }.buttonStyle(.bordered)
+            if model.source == .simulation {
+                Text("Long-press anywhere on the map to set the simulated iPhone location.")
+                    .font(.caption)
+                Button("Use Real iPhone Location") { model.useRealLocation() }
+                    .buttonStyle(.borderedProminent)
+                    .accessibilityIdentifier("map.use-real-location")
+            }
             if let sample = model.sample {
                 Text(String(format: "LOCATION SOURCE: %@\n%.6f, %.6f  accuracy %.0f m\ncourse %.0f° speed %.1f m/s\nnearest: %@\nMap source: LOCAL\nNetwork map dependency: NONE", model.source == .simulation ? "SIMULATED" : "REAL", sample.coordinate.latitude, sample.coordinate.longitude, sample.horizontalAccuracy, sample.course, sample.speed, model.nearest?.canonicalName ?? "—"))
                     .font(.caption.monospaced())
@@ -599,6 +657,7 @@ struct OfflineMapLibreView: UIViewRepresentable {
     let sample: LocationSample?
     let recenterCoordinate: CLLocationCoordinate2D?
     let recenterToken: Int
+    let onLongPress: (CLLocationCoordinate2D) -> Void
     let onSelect: (PilgrimagePlace) -> Void
 
     func makeCoordinator() -> Coordinator { Coordinator(self) }
@@ -612,6 +671,14 @@ struct OfflineMapLibreView: UIViewRepresentable {
         map.setCenter(.init(latitude: 27.5252, longitude: 77.4920), zoomLevel: 15.4, animated: false)
         map.addAnnotations(presentations.map(PlaceAnnotation.init))
         context.coordinator.map = map
+        #if DEBUG
+        let longPress = UILongPressGestureRecognizer(
+            target: context.coordinator,
+            action: #selector(Coordinator.handleLongPress(_:))
+        )
+        longPress.minimumPressDuration = 0.7
+        map.addGestureRecognizer(longPress)
+        #endif
         return map
     }
 
@@ -633,6 +700,13 @@ struct OfflineMapLibreView: UIViewRepresentable {
         var lastRecenter = 0
         private var installedBasemapLabels = false
         init(_ parent: OfflineMapLibreView) { self.parent = parent }
+
+        #if DEBUG
+        @objc func handleLongPress(_ recognizer: UILongPressGestureRecognizer) {
+            guard recognizer.state == .began, let map else { return }
+            parent.onLongPress(map.convert(recognizer.location(in: map), toCoordinateFrom: map))
+        }
+        #endif
 
         func mapView(_ mapView: MLNMapView, didFinishLoading style: MLNStyle) {
             // A relative GeoJSON string in a file-based style did not resolve reliably in

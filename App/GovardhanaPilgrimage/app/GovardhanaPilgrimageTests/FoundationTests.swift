@@ -37,6 +37,44 @@ final class FoundationTests: XCTestCase {
         XCTAssertEqual(places[0].latitude, received?.coordinate.latitude)
     }
 
+    @MainActor
+    func testTask020BManualLocationUsesProviderContextAndCannotReplaceRealGPS() async throws {
+        let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
+        let places = try repository.pilgrimagePlaces()
+        let model = PilgrimageMapModel(places: places)
+        let place5 = try XCTUnwrap(places.first { $0.mapNumber == 5 })
+        let manualCoordinate = CLLocationCoordinate2D(latitude: 27.51210, longitude: 77.47835)
+
+        model.setManualSimulatedLocation(manualCoordinate)
+        await Task.yield()
+        XCTAssertTrue(model.manualSimulatedLocationActive)
+        XCTAssertEqual(.simulation, model.source)
+        XCTAssertEqual(manualCoordinate.latitude, model.sample?.coordinate.latitude)
+        XCTAssertEqual(manualCoordinate.longitude, model.sample?.coordinate.longitude)
+        XCTAssertEqual(place5.id, model.nearest?.id)
+        XCTAssertEqual(place5.id, model.nearbyPlace?.id)
+        XCTAssertLessThan(try XCTUnwrap(model.nearestDistance), GeoMath.nearbyPlaceRadius)
+        XCTAssertNotNil(model.destinationDistance)
+        XCTAssertNotNil(model.destinationBearing)
+
+        let realSample = LocationSample(
+            coordinate: .init(latitude: 34.0, longitude: -118.0),
+            horizontalAccuracy: 4,
+            timestamp: Date(),
+            course: 0,
+            speed: 0
+        )
+        model.source = .real
+        model.sample = realSample
+        model.setManualSimulatedLocation(.init(latitude: 27.5, longitude: 77.5))
+        await Task.yield()
+        XCTAssertFalse(model.manualSimulatedLocationActive)
+        XCTAssertEqual(.real, model.source)
+        XCTAssertEqual(realSample.coordinate.latitude, model.sample?.coordinate.latitude)
+        XCTAssertEqual(realSample.coordinate.longitude, model.sample?.coordinate.longitude)
+        XCTAssertNil(model.nearbyPlace)
+    }
+
     func testTask015PermanentPilgrimageRegistryIdentityMetadataAndSimulationProjection() throws {
         let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
         let allPlaces = try repository.pilgrimagePlaces()
