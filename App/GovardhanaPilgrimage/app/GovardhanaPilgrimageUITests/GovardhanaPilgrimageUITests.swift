@@ -138,7 +138,7 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["Why This Place Is Sacred"].exists)
         revealForReading(app.staticTexts["Look for the distinct rāsa platform within the Ratna-kuṇḍa and Śyāma-kuṭī complex."], in: app)
         let pilgrimGuidance = app.descendants(matching: .any).matching(
-            NSPredicate(format: "label CONTAINS %@", "Exact coordinate requires field verification")
+            NSPredicate(format: "label CONTAINS %@", "exact GPS coordinate has not yet been field verified")
         ).firstMatch
         revealForReading(pilgrimGuidance, in: app)
         let research = app.buttons["Research & location information"]

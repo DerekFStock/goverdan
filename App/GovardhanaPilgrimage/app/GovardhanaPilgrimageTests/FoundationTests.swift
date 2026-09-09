@@ -367,12 +367,12 @@ final class FoundationTests: XCTestCase {
         ), 72.000001)
     }
 
-    func testTask020A1RepositoryLoadsPlacesOneThroughFiveAndPreservesPrototypes() throws {
+    func testTask020A2RepositoryLoadsPlacesOneThroughTenAndPreservesPrototype18() throws {
         let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
         let places = try repository.pilgrimagePlaces()
         let byNumber = Dictionary(uniqueKeysWithValues: places.map { ($0.mapNumber, $0) })
 
-        for number in 1...5 {
+        for number in 1...10 {
             let place = try XCTUnwrap(byNumber[number])
             let content = try XCTUnwrap(try repository.pilgrimagePlaceContent(placeID: place.id))
             XCTAssertFalse(content.summary.isEmpty)
@@ -407,16 +407,29 @@ final class FoundationTests: XCTestCase {
             places.first { $0.id == id }?.mapNumber
         })
 
+        let uddhava = try XCTUnwrap(try repository.pilgrimagePlaceContent(placeID: XCTUnwrap(byNumber[6]).id))
+        XCTAssertTrue(uddhava.whatToSee.contains { $0.contains("future map place #69") })
+        let asoka = try XCTUnwrap(try repository.pilgrimagePlaceContent(placeID: XCTUnwrap(byNumber[7]).id))
+        XCTAssertTrue(asoka.references.contains { $0.explanation.contains("exact verse-to-modern-site identification not yet verified") })
+        let narada = try XCTUnwrap(try repository.pilgrimagePlaceContent(placeID: XCTUnwrap(byNumber[8]).id))
+        XCTAssertEqual([5, 6, 7], narada.relatedPlaceIDs.compactMap { id in places.first { $0.id == id }?.mapNumber })
+        let ratna = try XCTUnwrap(try repository.pilgrimagePlaceContent(placeID: XCTUnwrap(byNumber[9]).id))
+        XCTAssertTrue(ratna.references.contains { $0.explanation.contains("geographic association with this modern sacred landscape") })
+
         let rasa = try XCTUnwrap(try repository.pilgrimagePlaceContent(placeID: XCTUnwrap(byNumber[10]).id))
-        XCTAssertTrue(rasa.summary.contains("exact GPS coordinate is not established"))
-        XCTAssertTrue(rasa.pilgrimGuidance.contains("Exact coordinate requires field verification"))
-        XCTAssertEqual(11, places.first { $0.id == rasa.relatedPlaceIDs.first }?.mapNumber)
-        XCTAssertEqual(2, rasa.references.count)
+        XCTAssertTrue(rasa.summary.contains("exact modern GPS coordinate remains unverified"))
+        XCTAssertTrue(rasa.pilgrimGuidance.contains("exact GPS coordinate has not yet been field verified"))
+        XCTAssertEqual([9, 11, 12], rasa.relatedPlaceIDs.compactMap { id in places.first { $0.id == id }?.mapNumber })
+        XCTAssertEqual(3, rasa.references.count)
+        let rasaPlace = try XCTUnwrap(byNumber[10])
+        XCTAssertNil(rasaPlace.latitude)
+        XCTAssertNil(rasaPlace.longitude)
+        XCTAssertEqual(11, rasaPlace.navigationAnchorPlaceID.flatMap { id in places.first { $0.id == id } }?.mapNumber)
 
         let mukharavinda = try XCTUnwrap(try repository.pilgrimagePlaceContent(placeID: XCTUnwrap(byNumber[18]).id))
         XCTAssertTrue(mukharavinda.whatToSee.contains { $0.contains("map place #61") })
         XCTAssertEqual(20, places.first { $0.id == mukharavinda.relatedPlaceIDs.first }?.mapNumber)
-        XCTAssertNil(try repository.pilgrimagePlaceContent(placeID: XCTUnwrap(byNumber[6]).id))
+        XCTAssertNil(try repository.pilgrimagePlaceContent(placeID: XCTUnwrap(byNumber[11]).id))
     }
     private func bundledContentURL() throws -> URL {
         try XCTUnwrap(Bundle.main.url(forResource: "radhakunda-content", withExtension: "sqlite"))
