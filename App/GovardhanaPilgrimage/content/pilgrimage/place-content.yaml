@@ -1,0 +1,60 @@
+schema_version: 1
+contents:
+  - place_id: place.kusumasarovara
+    category: Sacred reservoir
+    summary: Kusuma-sarovara is a large, geographically unmistakable sacred reservoir and the central landmark for this part of the Govardhana pilgrimage landscape.
+    why_sacred: Traditional pilgrimage geography treats Kusuma-sarovara as the center of a cluster of remembered sacred places, including the nearby Uddhava-associated temple and Aśoka-vana.
+    what_to_see:
+      - The large reservoir itself is the primary physical feature.
+      - Nearby places have their own numbered markers; do not treat the whole surrounding cluster as a single site.
+    lila: 'At nearby Aśoka-vana (#7), traditional accounts remember Kṛṣṇa decorating or braiding Śrī Rādhā’s hair.'
+    pilgrim_guidance: Use the unmistakable reservoir to orient yourself. The registry coordinate identifies the reservoir; a separate practical pilgrim arrival point has not yet been field verified.
+    references:
+      - id: reference.kusumasarovara.braj-development-plan
+        source_title: Braj Development Plan
+        locus: Kusuma Sarovara coordinate listing
+        explanation: 'Institutional coordinate evidence identifies the same major reservoir represented by map place #5.'
+    related_place_ids:
+      - place.uddhava-temple
+      - place.asoka-vana
+  - place_id: place.rasa-sthali
+    category: Sacred līlā platform
+    summary: Rāsa-sthalī is the discrete rāsa platform remembered within the Ratna-kuṇḍa and Śyāma-kuṭī sacred complex. Its sacred-place identity is strong even though its exact GPS coordinate is not established.
+    why_sacred: Pilgrimage descriptions identify this as a distinct rāsa platform in the sacred landscape near Ratna-siṁhāsana.
+    what_to_see:
+      - Look for the distinct rāsa platform within the Ratna-kuṇḍa and Śyāma-kuṭī complex.
+      - 'The map marker is approximate and uses #11 Ratna-siṁhāsana only as a navigation anchor.'
+    lila: This place is remembered as a rāsa-sthalī, a site for remembrance of the sacred rāsa pastimes.
+    pilgrim_guidance: Locate the distinct rāsa platform within the Ratna-kuṇḍa / Śyāma-kuṭī sacred complex near Ratna-siṁhāsana. Exact coordinate requires field verification.
+    references:
+      - id: reference.rasa-sthali.brajdham
+        source_title: Govardhan Śyāma-kuṭī pilgrimage description
+        locus: Ratna-kuṇḍa / Śyāma-kuṭī complex
+        explanation: Identifies the rāsa platform as a discrete place in the complex rather than as the navigation anchor itself.
+      - id: reference.rasa-sthali.holydham
+        source_title: Śyāmavana and Śyāma-kuṭī pilgrimage guide
+        locus: Ratna-siṁhāsana area
+        explanation: Independently corroborates the distinct rāsa platform near Ratna-siṁhāsana.
+    related_place_ids:
+      - place.ratna-simhasana
+  - place_id: place.mukharavinda-manasi-ganga
+    category: Shrine and sacred śilās
+    summary: 'This is the Mukuṭa-Mukhāravinda shrine on the bank of Mānasī-gaṅgā represented by map place #18.'
+    why_sacred: Detailed pilgrimage descriptions identify the Mukhāravinda-śilā and Mukuṭa-śilā at this Mānasī-gaṅgā shrine.
+    what_to_see:
+      - Look for the Mukuṭa-Mukhāravinda shrine on the bank of Mānasī-gaṅgā.
+      - The sacred features described here are the Mukhāravinda-śilā and Mukuṭa-śilā.
+      - 'Do not confuse this site with the separate Jatipura Mukhāravinda represented later by map place #61.'
+    lila: Pilgrimage remembrance here centers on Govardhana’s sacred face and crown forms represented by the Mukhāravinda and Mukuṭa śilās.
+    pilgrim_guidance: 'Confirm that you are at the Mānasī-gaṅgā-bank shrine marked #18. The later Jatipura Mukhāravinda is a different pilgrimage place.'
+    references:
+      - id: reference.mukharavinda-manasi-ganga.pilgrimage-description
+        source_title: Mānasī-gaṅgā Mukhāravinda pilgrimage description
+        locus: Mukhāravinda-śilā and Mukuṭa-śilā
+        explanation: 'Identifies the shrine and the sacred śilās that a pilgrim should look for at map place #18.'
+      - id: reference.mukharavinda-manasi-ganga.project-map
+        source_title: Original Govardhana pilgrimage map
+        locus: 'Map place #18'
+        explanation: 'Places this shrine immediately before Cakra-tīrtha and Mānasī-gaṅgā and distinguishes it from map place #61 at Jatipura.'
+    related_place_ids:
+      - place.manasiganga

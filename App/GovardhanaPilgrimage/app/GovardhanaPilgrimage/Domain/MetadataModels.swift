@@ -194,3 +194,24 @@ struct PilgrimagePlace: Identifiable, Hashable, Sendable {
     let provenance: [PilgrimagePlaceProvenance]
     let contentDestination: PilgrimageContentDestination?
 }
+
+struct PilgrimagePlaceReference: Identifiable, Hashable, Sendable {
+    let id: String
+    let sourceTitle: String
+    let locus: String?
+    let explanation: String
+    let quotation: String?
+    let destination: PilgrimageContentDestination?
+}
+
+struct PilgrimagePlaceContent: Hashable, Sendable {
+    let placeID: PilgrimagePlaceID
+    let category: String?
+    let summary: String
+    let whySacred: String
+    let whatToSee: [String]
+    let lila: String
+    let pilgrimGuidance: String
+    let references: [PilgrimagePlaceReference]
+    let relatedPlaceIDs: [PilgrimagePlaceID]
+}

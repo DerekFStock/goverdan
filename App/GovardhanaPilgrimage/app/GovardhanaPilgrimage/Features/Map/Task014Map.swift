@@ -316,9 +316,11 @@ struct GovardhanaMapScreen: View {
     @State private var debugExpanded = false
     @State private var showingPlaces = false
     @State private var guidanceExpanded = false
+    let appModel: AppModel
 
-    init(places: [PilgrimagePlace]) {
+    init(places: [PilgrimagePlace], appModel: AppModel) {
         _model = StateObject(wrappedValue: PilgrimageMapModel(places: places))
+        self.appModel = appModel
     }
 
     var body: some View {
@@ -342,12 +344,14 @@ struct GovardhanaMapScreen: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar { Button("Places") { showingPlaces = true }.accessibilityIdentifier("map.places") }
         .sheet(isPresented: $showingPlaces) {
-            PilgrimagePlaceList(places: model.places) { place in
+            PilgrimagePlaceList(places: model.places, appModel: appModel) { place in
                 model.navigate(to: place)
                 showingPlaces = false
             }
         }
-        .navigationDestination(item: $selectedPlace) { PlaceDetailView(place: $0) }
+        .navigationDestination(item: $selectedPlace) {
+            PlaceDetailView(place: $0, allPlaces: model.places, model: appModel)
+        }
         .onChange(of: model.activeDestination.id) { guidanceExpanded = false }
     }
 
@@ -407,6 +411,7 @@ struct GovardhanaMapScreen: View {
 private struct PilgrimagePlaceList: View {
     @Environment(\.dismiss) private var dismiss
     let places: [PilgrimagePlace]
+    let appModel: AppModel
     let onGo: (PilgrimagePlace) -> Void
 
     var body: some View {
@@ -419,7 +424,9 @@ private struct PilgrimagePlaceList: View {
                         Button(row.goTitle) { onGo(row.place) }
                             .buttonStyle(.borderedProminent)
                             .accessibilityIdentifier("places.go.\(row.place.mapNumber)")
-                        NavigationLink("Details") { PlaceDetailView(place: row.place) }
+                        NavigationLink("Details") {
+                            PlaceDetailView(place: row.place, allPlaces: places, model: appModel)
+                        }
                             .accessibilityIdentifier("places.details.\(row.place.mapNumber)")
                     }
                 }
@@ -427,6 +434,9 @@ private struct PilgrimagePlaceList: View {
             }
             .navigationTitle("Pilgrimage Places")
             .toolbar { Button("Done") { dismiss() } }
+            .navigationDestination(for: AppRoute.self) { route in
+                DestinationView(route: route, model: appModel)
+            }
         }
     }
 
@@ -434,46 +444,120 @@ private struct PilgrimagePlaceList: View {
 
 struct PlaceDetailView: View {
     let place: PilgrimagePlace
+    let allPlaces: [PilgrimagePlace]
+    let model: AppModel
+    private var content: PilgrimagePlaceContent? { model.pilgrimagePlaceContent(for: place.id) }
+
     var body: some View {
         Form {
-            Section("Mapping Test") {
+            Section {
                 Text("#\(place.mapNumber)").font(.largeTitle.bold())
                 Text(place.canonicalName).font(.title2)
-                if let latitude = place.latitude, let longitude = place.longitude {
-                    Text(String(format: "%.6f, %.6f", latitude, longitude)).monospaced()
-                } else {
-                    Text("Coordinate not yet established").foregroundStyle(.secondary)
+                if let category = content?.category {
+                    Text(category).font(.subheadline).foregroundStyle(.secondary)
                 }
-                Text("Registry coordinate — \(place.coordinateStatus.rawValue) / \(place.coordinateConfidence.rawValue)")
-                    .foregroundStyle(.secondary)
             }
-            #if DEBUG
-            Section("Research Metadata") {
-                LabeledContent("Stable ID", value: place.id.rawValue)
-                LabeledContent("Status", value: place.coordinateStatus.rawValue)
-                LabeledContent("Confidence", value: place.coordinateConfidence.rawValue)
-                if let accuracy = place.coordinateAccuracyMeters {
-                    LabeledContent("Accuracy", value: "\(Int(accuracy.rounded())) m")
-                }
-                if !place.alternateNames.isEmpty {
-                    LabeledContent("Aliases", value: place.alternateNames.joined(separator: ", "))
-                }
-                Text(place.verificationNotes)
-                if let anchor = place.navigationAnchorPlaceID {
-                    LabeledContent("Navigation anchor", value: anchor.rawValue)
-                }
-                if let guidance = place.locationGuidance {
-                    LabeledContent("Location guidance", value: guidance)
-                }
-                ForEach(Array(place.provenance.enumerated()), id: \.offset) { _, evidence in
-                    VStack(alignment: .leading) {
-                        Text(evidence.sourceType).font(.caption.bold())
-                        Text(evidence.description)
+            if let content {
+                pilgrimSection("Sacred Summary", text: content.summary)
+                pilgrimSection("Why This Place Is Sacred", text: content.whySacred)
+                Section("What To See Here") {
+                    ForEach(Array(content.whatToSee.enumerated()), id: \.offset) { _, feature in
+                        Label(feature, systemImage: "eye")
                     }
                 }
+                pilgrimSection("Līlā / Sacred Association", text: content.lila)
+                pilgrimSection("Pilgrim Guidance", text: content.pilgrimGuidance)
+                if !content.references.isEmpty {
+                    Section("Textual References") {
+                        ForEach(content.references) { reference in
+                            VStack(alignment: .leading, spacing: 5) {
+                                Text(reference.sourceTitle).font(.headline)
+                                if let locus = reference.locus {
+                                    Text(locus).font(.subheadline).foregroundStyle(.secondary)
+                                }
+                                Text(reference.explanation)
+                                if let quotation = reference.quotation {
+                                    Text(quotation).italic().padding(.leading, 8)
+                                }
+                                if let route = route(for: reference.destination) {
+                                    NavigationLink("Read in the app", value: route)
+                                }
+                            }
+                            .padding(.vertical, 3)
+                        }
+                    }
+                }
+                let related = content.relatedPlaceIDs.compactMap { relatedID in
+                    allPlaces.first { $0.id == relatedID }
+                }
+                if !related.isEmpty {
+                    Section("Related Places") {
+                        ForEach(related) { relatedPlace in
+                            NavigationLink {
+                                PlaceDetailView(place: relatedPlace, allPlaces: allPlaces, model: model)
+                            } label: {
+                                Text("#\(relatedPlace.mapNumber) \(relatedPlace.canonicalName)")
+                            }
+                        }
+                    }
+                }
+            } else {
+                Section("Pilgrim Guide") {
+                    Text("Pilgrim-facing guide content has not yet been authored for this place.")
+                        .foregroundStyle(.secondary)
+                    if let guidance = place.locationGuidance { Text(guidance) }
+                }
             }
-            #endif
-        }.navigationTitle(place.canonicalName)
+            Section {
+                DisclosureGroup("Research & location information") {
+                    LabeledContent("Coordinate status", value: place.coordinateStatus.rawValue)
+                    LabeledContent("Confidence", value: place.coordinateConfidence.rawValue)
+                    if let latitude = place.latitude, let longitude = place.longitude {
+                        LabeledContent("Coordinate", value: String(format: "%.6f, %.6f", latitude, longitude))
+                    } else {
+                        LabeledContent("Coordinate", value: "Not yet established")
+                    }
+                    if let anchor = place.navigationAnchorPlaceID {
+                        LabeledContent("Navigation anchor", value: anchor.rawValue)
+                    }
+                    if !place.alternateNames.isEmpty {
+                        LabeledContent("Aliases", value: place.alternateNames.joined(separator: ", "))
+                    }
+                    Text(place.verificationNotes)
+                    ForEach(Array(place.provenance.enumerated()), id: \.offset) { _, evidence in
+                        VStack(alignment: .leading, spacing: 3) {
+                            Text(evidence.sourceType.replacingOccurrences(of: "_", with: " ").capitalized)
+                                .font(.caption.bold())
+                            Text(evidence.description)
+                            if let sourceReference = evidence.sourceReference,
+                               let url = URL(string: sourceReference) {
+                                Link("Source reference", destination: url)
+                            }
+                        }
+                    }
+                    LabeledContent("Stable ID", value: place.id.rawValue)
+                }
+            }
+        }
+        .navigationTitle(place.canonicalName)
+        .accessibilityIdentifier("place.detail.\(place.mapNumber)")
+    }
+
+    @ViewBuilder
+    private func pilgrimSection(_ title: String, text: String) -> some View {
+        Section(title) { Text(text) }
+    }
+
+    private func route(for destination: PilgrimageContentDestination?) -> AppRoute? {
+        switch destination {
+        case let .storySection(sectionID):
+            guard let section = model.storySections.first(where: { $0.id == sectionID }) else { return nil }
+            return .storySection(storyID: section.storyID, sectionID: sectionID, blockID: nil)
+        case let .sourcePassage(passageID):
+            return .searchSource(passageID)
+        case nil:
+            return nil
+        }
     }
 }
 

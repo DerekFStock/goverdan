@@ -13,7 +13,7 @@ struct RootView: View {
                         description: Text(errorMessage)
                     )
                 } else {
-                    HomeView(stories: model.stories, works: model.works, storyPosition: model.storyPosition, pilgrimagePlaces: model.pilgrimagePlaces)
+                    HomeView(model: model)
                 }
             }
             .navigationDestination(for: AppRoute.self) { route in

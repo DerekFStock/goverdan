@@ -63,6 +63,10 @@ final class AppModel {
         try? container?.contentRepository.sourceReaderContent(workID: workID)
     }
 
+    func pilgrimagePlaceContent(for placeID: PilgrimagePlaceID) -> PilgrimagePlaceContent? {
+        try? container?.contentRepository.pilgrimagePlaceContent(placeID: placeID)
+    }
+
     func saveWorkPosition(workID: SourceWorkID, passageID: SourcePassageID) {
         let position = WorkReadingPosition(workID: workID, passageID: passageID)
         guard workPositions[workID] != position, let container else { return }

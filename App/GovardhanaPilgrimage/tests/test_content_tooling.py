@@ -153,7 +153,7 @@ class ContentToolingTests(unittest.TestCase):
         self.assertEqual(0, report["foreign_key_violation_count"])
         connection = sqlite3.connect(path)
         try:
-            self.assertEqual(6, connection.execute("PRAGMA user_version").fetchone()[0])
+            self.assertEqual(7, connection.execute("PRAGMA user_version").fetchone()[0])
             self.assertEqual(3, connection.execute("SELECT count(*) FROM source_passages").fetchone()[0])
             self.assertEqual(5, connection.execute("SELECT count(*) FROM story_blocks").fetchone()[0])
         finally:
@@ -361,6 +361,35 @@ class ContentToolingTests(unittest.TestCase):
             ).fetchone()
             self.assertEqual((None, None, "UNVERIFIED", "UNKNOWN", "place.gvala-pokhara"), row[:5])
             self.assertIn("approximately 170 m", row[5])
+        finally:
+            connection.close()
+
+    def test_task_020a_place_content_is_separate_generic_and_integral(self) -> None:
+        result = compile_manifest(self.root, "radhakunda-mvp-development-manifest")
+        contents = result.content["pilgrimage_place_contents"]
+        self.assertEqual(
+            ["place.kusumasarovara", "place.mukharavinda-manasi-ganga", "place.rasa-sthali"],
+            [item["place_id"] for item in contents],
+        )
+        by_place = {item["place_id"]: item for item in contents}
+        self.assertIn("exact GPS coordinate is not established", by_place["place.rasa-sthali"]["summary"])
+        self.assertEqual(["place.ratna-simhasana"], by_place["place.rasa-sthali"]["related_place_ids"])
+        self.assertIn("map place #61", by_place["place.mukharavinda-manasi-ganga"]["what_to_see"][2])
+        self.assertNotIn("summary", next(
+            place for place in result.content["pilgrimage_places"] if place["id"] == "place.kusumasarovara"
+        ))
+
+        path = self.root / "build/task020a.sqlite"
+        report = build_sqlite(path, result)
+        self.assertEqual("ok", report["integrity_check"])
+        self.assertEqual(0, report["foreign_key_violation_count"])
+        connection = sqlite3.connect(path)
+        try:
+            self.assertEqual(7, connection.execute("PRAGMA user_version").fetchone()[0])
+            self.assertEqual(3, connection.execute("SELECT count(*) FROM pilgrimage_place_contents").fetchone()[0])
+            self.assertEqual(7, connection.execute("SELECT count(*) FROM pilgrimage_place_features").fetchone()[0])
+            self.assertEqual(5, connection.execute("SELECT count(*) FROM pilgrimage_place_references").fetchone()[0])
+            self.assertEqual(4, connection.execute("SELECT count(*) FROM pilgrimage_place_relationships").fetchone()[0])
         finally:
             connection.close()
 

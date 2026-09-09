@@ -306,6 +306,76 @@ def validate_pilgrimage_places(document: dict[str, Any], label: str) -> list[dic
     return places
 
 
+def validate_pilgrimage_place_contents(document: dict[str, Any], label: str) -> list[dict[str, Any]]:
+    """Validate pilgrim-facing prose separately from geographic registry records."""
+    _require_fields(document, {"schema_version", "contents"}, label)
+    contents = document["contents"]
+    if not isinstance(contents, list):
+        raise ContentValidationError(f"{label} contents must be a list")
+    seen_places: set[str] = set()
+    seen_references: set[str] = set()
+    for content in contents:
+        if not isinstance(content, dict):
+            raise ContentValidationError(f"{label} contains a non-object content record")
+        _require_fields(
+            content,
+            {
+                "place_id", "summary", "why_sacred", "what_to_see", "lila",
+                "pilgrim_guidance", "references", "related_place_ids",
+            },
+            "Pilgrimage Place Content",
+        )
+        place_id = content["place_id"]
+        if not isinstance(place_id, str) or not place_id:
+            raise ContentValidationError("Pilgrimage Place Content place_id must be a non-empty string")
+        if place_id in seen_places:
+            raise ContentValidationError(f"Duplicate Pilgrimage Place Content: {place_id}")
+        seen_places.add(place_id)
+        for field in ("summary", "why_sacred", "lila", "pilgrim_guidance"):
+            if not isinstance(content[field], str) or not content[field].strip():
+                raise ContentValidationError(f"Pilgrimage Place Content '{place_id}' has invalid {field}")
+        category = content.get("category")
+        if category is not None and (not isinstance(category, str) or not category.strip()):
+            raise ContentValidationError(f"Pilgrimage Place Content '{place_id}' has invalid category")
+        features = content["what_to_see"]
+        if not isinstance(features, list) or not features or any(
+            not isinstance(feature, str) or not feature.strip() for feature in features
+        ):
+            raise ContentValidationError(f"Pilgrimage Place Content '{place_id}' has invalid what_to_see")
+        related = content["related_place_ids"]
+        if not isinstance(related, list) or any(not isinstance(item, str) or not item for item in related):
+            raise ContentValidationError(f"Pilgrimage Place Content '{place_id}' has invalid related_place_ids")
+        if place_id in related or len(set(related)) != len(related):
+            raise ContentValidationError(f"Pilgrimage Place Content '{place_id}' has invalid related-place relationship")
+        references = content["references"]
+        if not isinstance(references, list):
+            raise ContentValidationError(f"Pilgrimage Place Content '{place_id}' has invalid references")
+        for reference in references:
+            if not isinstance(reference, dict):
+                raise ContentValidationError(f"Pilgrimage Place Content '{place_id}' has malformed reference")
+            _require_fields(reference, {"id", "source_title", "explanation"}, "Pilgrimage Place Reference")
+            reference_id = reference["id"]
+            if not isinstance(reference_id, str) or not reference_id or reference_id in seen_references:
+                raise ContentValidationError(f"Duplicate or invalid Pilgrimage Place Reference ID: {reference_id}")
+            seen_references.add(reference_id)
+            for field in ("source_title", "explanation"):
+                if not isinstance(reference[field], str) or not reference[field].strip():
+                    raise ContentValidationError(f"Pilgrimage Place Reference '{reference_id}' has invalid {field}")
+            for field in ("locus", "quotation"):
+                value = reference.get(field)
+                if value is not None and (not isinstance(value, str) or not value.strip()):
+                    raise ContentValidationError(f"Pilgrimage Place Reference '{reference_id}' has invalid {field}")
+            destination = reference.get("destination")
+            if destination is not None and (
+                not isinstance(destination, dict)
+                or destination.get("kind") not in {"STORY_SECTION", "SOURCE_PASSAGE"}
+                or not isinstance(destination.get("id"), str)
+                or not destination["id"]
+            ):
+                raise ContentValidationError(f"Pilgrimage Place Reference '{reference_id}' has invalid destination")
+    return contents
+
+
 def compile_manifest(root: Path, manifest_name: str) -> BuildResult:
     real_manifest_path = root / "content" / "manifests" / f"{manifest_name}.yaml"
     if real_manifest_path.exists():
@@ -496,6 +566,9 @@ def compile_development_manifest(root: Path, manifest_path: Path) -> BuildResult
     pilgrimage_entries = [
         item for item in manifest["compile_sequence"] if item.get("role") == "PILGRIMAGE_PLACE_REGISTRY"
     ]
+    pilgrimage_content_entries = [
+        item for item in manifest["compile_sequence"] if item.get("role") == "PILGRIMAGE_PLACE_CONTENT"
+    ]
     if len(pilgrimage_entries) != 1:
         raise ContentValidationError("Development manifest must declare exactly one PILGRIMAGE_PLACE_REGISTRY")
     pilgrimage_entry = pilgrimage_entries[0]
@@ -503,6 +576,14 @@ def compile_development_manifest(root: Path, manifest_path: Path) -> BuildResult
         raise ContentValidationError("PILGRIMAGE_PLACE_REGISTRY must be required and development eligible")
     pilgrimage_places = validate_pilgrimage_places(
         load_yaml(root / pilgrimage_entry["target_path"]), "Pilgrimage Place Registry"
+    )
+    if len(pilgrimage_content_entries) != 1:
+        raise ContentValidationError("Development manifest must declare exactly one PILGRIMAGE_PLACE_CONTENT")
+    pilgrimage_content_entry = pilgrimage_content_entries[0]
+    if pilgrimage_content_entry.get("required") is not True or pilgrimage_content_entry.get("development_eligible") is not True:
+        raise ContentValidationError("PILGRIMAGE_PLACE_CONTENT must be required and development eligible")
+    pilgrimage_place_contents = validate_pilgrimage_place_contents(
+        load_yaml(root / pilgrimage_content_entry["target_path"]), "Pilgrimage Place Content"
     )
     declared_work_ids = [item.get("work_id") for item in source_entries]
     duplicate_work_ids = sorted(
@@ -757,6 +838,32 @@ def compile_development_manifest(root: Path, manifest_path: Path) -> BuildResult
         if destination and destination["kind"] == "SOURCE_PASSAGE" and destination["id"] not in passage_by_id:
             raise ContentValidationError(f"Pilgrimage Place '{place['id']}' references a missing Source Passage")
 
+    place_ids = {item["id"] for item in pilgrimage_places}
+    content_place_ids = {item["place_id"] for item in pilgrimage_place_contents}
+    missing_content_places = sorted(content_place_ids - place_ids)
+    if missing_content_places:
+        raise ContentValidationError(
+            f"Pilgrimage Place Content references missing Places: {', '.join(missing_content_places)}"
+        )
+    for item in pilgrimage_place_contents:
+        missing_related = sorted(set(item["related_place_ids"]) - place_ids)
+        if missing_related:
+            raise ContentValidationError(
+                f"Pilgrimage Place Content '{item['place_id']}' references missing related Places: {', '.join(missing_related)}"
+            )
+        for reference in item["references"]:
+            destination = reference.get("destination")
+            if destination and destination["kind"] == "STORY_SECTION" and destination["id"] not in {
+                section["id"] for section in sections
+            }:
+                raise ContentValidationError(
+                    f"Pilgrimage Place Reference '{reference['id']}' references a missing Story Section"
+                )
+            if destination and destination["kind"] == "SOURCE_PASSAGE" and destination["id"] not in passage_by_id:
+                raise ContentValidationError(
+                    f"Pilgrimage Place Reference '{reference['id']}' references a missing Source Passage"
+                )
+
     content = {
         "schema_version": 1,
         "manifest_id": manifest["manifest"]["id"],
@@ -771,6 +878,7 @@ def compile_development_manifest(root: Path, manifest_path: Path) -> BuildResult
         "witnesses": [],
         "witness_mappings": [],
         "pilgrimage_places": sorted(pilgrimage_places, key=lambda item: item["map_number"]),
+        "pilgrimage_place_contents": sorted(pilgrimage_place_contents, key=lambda item: item["place_id"]),
     }
     counts = {key: len(value) for key, value in content.items() if isinstance(value, list)}
     report = {

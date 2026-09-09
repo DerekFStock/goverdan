@@ -3,6 +3,7 @@ import GRDB
 
 protocol ContentRepository: Sendable {
     func pilgrimagePlaces() throws -> [PilgrimagePlace]
+    func pilgrimagePlaceContent(placeID: PilgrimagePlaceID) throws -> PilgrimagePlaceContent?
     func stories() throws -> [StorySummary]
     func works() throws -> [SourceWorkSummary]
     func storySections(storyID: StoryID) throws -> [StorySectionSummary]
@@ -72,6 +73,60 @@ struct SQLiteContentRepository: ContentRepository {
                     contentDestination: destination
                 )
             }
+        }
+    }
+
+    func pilgrimagePlaceContent(placeID: PilgrimagePlaceID) throws -> PilgrimagePlaceContent? {
+        try database.reader.read { db in
+            guard let row = try Row.fetchOne(
+                db,
+                sql: "SELECT * FROM pilgrimage_place_contents WHERE place_id = ?",
+                arguments: [placeID.rawValue]
+            ) else { return nil }
+            let features = try String.fetchAll(
+                db,
+                sql: "SELECT text FROM pilgrimage_place_features WHERE place_id = ? ORDER BY sort_order",
+                arguments: [placeID.rawValue]
+            )
+            let references = try Row.fetchAll(
+                db,
+                sql: "SELECT * FROM pilgrimage_place_references WHERE place_id = ? ORDER BY sort_order",
+                arguments: [placeID.rawValue]
+            ).map { reference -> PilgrimagePlaceReference in
+                let kind: String? = reference["destination_kind"]
+                let destinationID: String? = reference["destination_id"]
+                let destination: PilgrimageContentDestination?
+                switch (kind, destinationID) {
+                case let ("STORY_SECTION", id?): destination = .storySection(StorySectionID(rawValue: id))
+                case let ("SOURCE_PASSAGE", id?): destination = .sourcePassage(SourcePassageID(rawValue: id))
+                case (nil, nil): destination = nil
+                default: throw ContentRepositoryError.invalidPilgrimagePlace(placeID.rawValue)
+                }
+                return PilgrimagePlaceReference(
+                    id: reference["id"],
+                    sourceTitle: reference["source_title"],
+                    locus: reference["locus"],
+                    explanation: reference["explanation"],
+                    quotation: reference["quotation"],
+                    destination: destination
+                )
+            }
+            let relatedIDs = try String.fetchAll(
+                db,
+                sql: "SELECT related_place_id FROM pilgrimage_place_relationships WHERE place_id = ? ORDER BY sort_order",
+                arguments: [placeID.rawValue]
+            ).map(PilgrimagePlaceID.init(rawValue:))
+            return PilgrimagePlaceContent(
+                placeID: placeID,
+                category: row["category"],
+                summary: row["summary"],
+                whySacred: row["why_sacred"],
+                whatToSee: features,
+                lila: row["lila"],
+                pilgrimGuidance: row["pilgrim_guidance"],
+                references: references,
+                relatedPlaceIDs: relatedIDs
+            )
         }
     }
 

@@ -1,10 +1,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    let stories: [StorySummary]
-    let works: [SourceWorkSummary]
-    let storyPosition: StoryReadingPosition?
-    let pilgrimagePlaces: [PilgrimagePlace]
+    let model: AppModel
 
     private let columns = [GridItem(.flexible()), GridItem(.flexible())]
 
@@ -19,14 +16,14 @@ struct HomeView: View {
                 }
 
                 LazyVGrid(columns: columns, spacing: 12) {
-                    if let story = stories.first {
+                    if let story = model.stories.first {
                         destination("Story", systemImage: "book.pages", route: .storyTOC(story.id))
                     }
                     destination("Library", systemImage: "books.vertical", route: .library)
                     destination("Search", systemImage: "magnifyingglass", route: .search)
                     destination("Bookmarks", systemImage: "bookmark", route: .bookmarks)
                     NavigationLink {
-                        GovardhanaMapScreen(places: pilgrimagePlaces)
+                        GovardhanaMapScreen(places: model.pilgrimagePlaces, appModel: model)
                     } label: {
                         VStack(spacing: 10) {
                             Image(systemName: "map").font(.title2)
@@ -39,7 +36,7 @@ struct HomeView: View {
                     .accessibilityIdentifier("home.map")
                 }
 
-                if let position = storyPosition {
+                if let position = model.storyPosition {
                     NavigationLink(
                         "Continue Reading",
                         value: AppRoute.storySection(
@@ -52,10 +49,10 @@ struct HomeView: View {
                     .accessibilityIdentifier("home.continue-reading")
                 }
 
-                if let story = stories.first {
+                if let story = model.stories.first {
                     metadataCard(label: "Story", title: story.title)
                 }
-                if let work = works.first {
+                if let work = model.works.first {
                     metadataCard(label: "Featured Source", title: work.title)
                 }
             }
