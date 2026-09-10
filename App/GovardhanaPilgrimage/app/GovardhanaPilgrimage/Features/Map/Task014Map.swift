@@ -805,6 +805,21 @@ struct OfflineMapLibreView: UIViewRepresentable {
             let placeAnnotation = annotation as? PlaceAnnotation
             let isApproximate = placeAnnotation?.presentation.isApproximate == true
             let view = AccessibleAnnotationView(reuseIdentifier: annotation is UserAnnotation ? "user" : isApproximate ? "approximate-place" : "place")
+            let halo: UIView?
+            if placeAnnotation != nil {
+                let selectedHalo = UIView(frame: CGRect(x: -6, y: -6, width: 46, height: 46))
+                selectedHalo.tag = 15_019
+                selectedHalo.backgroundColor = UIColor.systemYellow.withAlphaComponent(0.16)
+                selectedHalo.layer.borderColor = UIColor.systemYellow.withAlphaComponent(0.8).cgColor
+                selectedHalo.layer.borderWidth = 2
+                selectedHalo.layer.cornerRadius = 23
+                selectedHalo.isHidden = true
+                selectedHalo.isUserInteractionEnabled = false
+                view.addSubview(selectedHalo)
+                halo = selectedHalo
+            } else {
+                halo = nil
+            }
             let label = UILabel(frame: CGRect(x: 0, y: 0, width: 34, height: 34))
             label.tag = 15_017
             label.textAlignment = .center; label.font = .boldSystemFont(ofSize: isApproximate ? 13 : 15)
@@ -853,7 +868,7 @@ struct OfflineMapLibreView: UIViewRepresentable {
                 )
                 view.addSubview(name)
                 updateLabel(name, for: placeAnnotation.presentation, zoomLevel: mapView.zoomLevel)
-                updateMarker(label, button: button, for: placeAnnotation.presentation)
+                updateMarker(label, halo: halo!, button: button, for: placeAnnotation.presentation)
             } else {
                 view.accessibilityIdentifier = "map.user-location"
                 view.accessibilityLabel = "Current simulated location"
@@ -882,27 +897,42 @@ struct OfflineMapLibreView: UIViewRepresentable {
                 }
                 updateLabel(name, for: placeAnnotation.presentation, zoomLevel: mapView.zoomLevel)
                 if let marker = annotationView.viewWithTag(15_017) as? UILabel,
+                   let halo = annotationView.viewWithTag(15_019),
                    let button = annotationView.viewWithTag(15_018) as? UIButton {
-                    updateMarker(marker, button: button, for: placeAnnotation.presentation)
+                    updateMarker(marker, halo: halo, button: button, for: placeAnnotation.presentation)
                 }
             }
         }
 
         private func updateMarker(
             _ marker: UILabel,
+            halo: UIView,
             button: UIButton,
             for presentation: PilgrimageMapPresentation
         ) {
             let active = presentation.place.id == parent.activeTarget.id
             let approximate = presentation.isApproximate
-            marker.layer.borderWidth = active ? 4 : approximate ? 2 : 0
-            marker.layer.borderColor = active ? UIColor.systemYellow.cgColor : approximate ? UIColor.systemRed.cgColor : nil
-            marker.layer.shadowColor = active ? UIColor.black.cgColor : nil
-            marker.layer.shadowOpacity = active ? 0.35 : 0
-            marker.layer.shadowRadius = active ? 5 : 0
-            marker.layer.shadowOffset = .zero
-            marker.layer.masksToBounds = false
-            marker.transform = active ? CGAffineTransform(scaleX: 1.18, y: 1.18) : .identity
+            marker.layer.borderWidth = approximate ? 2 : 0
+            marker.layer.borderColor = approximate ? UIColor.systemRed.cgColor : nil
+            marker.layer.masksToBounds = true
+            marker.transform = .identity
+            halo.isHidden = !active
+            if active, halo.layer.animationKeys()?.isEmpty != false {
+                halo.alpha = 0.85
+                halo.transform = .identity
+                UIView.animate(
+                    withDuration: 1.25,
+                    delay: 0,
+                    options: [.autoreverse, .repeat, .allowUserInteraction, .curveEaseInOut]
+                ) {
+                    halo.alpha = 0.25
+                    halo.transform = CGAffineTransform(scaleX: 1.18, y: 1.18)
+                }
+            } else if !active {
+                halo.layer.removeAllAnimations()
+                halo.alpha = 0.85
+                halo.transform = .identity
+            }
             button.accessibilityValue = active ? "Selected destination" : nil
             if active {
                 button.accessibilityTraits.insert(.selected)
