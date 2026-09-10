@@ -602,6 +602,8 @@ struct PlaceDetailView: View {
                 }
             }
         }
+        .scrollContentBackground(.hidden)
+        .background(AppTheme.canvas)
         .navigationTitle(place.canonicalName)
         .accessibilityIdentifier("place.detail.\(place.mapNumber)")
     }

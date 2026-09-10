@@ -6,11 +6,14 @@ struct HomeView: View {
     private let columns = [GridItem(.flexible()), GridItem(.flexible())]
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 24) {
+        ZStack {
+            AppTheme.canvas.ignoresSafeArea()
+            ScrollView {
+                VStack(alignment: .leading, spacing: 24) {
                 VStack(alignment: .leading, spacing: 6) {
                     Text("Rādhā-kuṇḍa Story")
                         .font(.largeTitle.weight(.semibold))
+                        .foregroundStyle(AppTheme.deepForest)
                     Text("Private offline reading and source study")
                         .foregroundStyle(.secondary)
                 }
@@ -26,11 +29,15 @@ struct HomeView: View {
                         GovardhanaMapScreen(places: model.pilgrimagePlaces, appModel: model)
                     } label: {
                         VStack(spacing: 10) {
-                            Image(systemName: "map").font(.title2)
-                            Text("Map").font(.headline)
+                            Image(systemName: "map").font(.title2).foregroundStyle(AppTheme.coral)
+                            Text("Map").font(.headline).foregroundStyle(AppTheme.deepForest)
                         }
                         .frame(maxWidth: .infinity, minHeight: 96)
-                        .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 16))
+                        .background(AppTheme.surface, in: RoundedRectangle(cornerRadius: 16))
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 16)
+                                .stroke(AppTheme.forest.opacity(0.12), lineWidth: 1)
+                        }
                     }
                     .buttonStyle(.plain)
                     .accessibilityIdentifier("home.map")
@@ -46,6 +53,8 @@ struct HomeView: View {
                         )
                     )
                     .buttonStyle(.borderedProminent)
+                    .tint(AppTheme.saffron)
+                    .foregroundStyle(AppTheme.deepForest)
                     .accessibilityIdentifier("home.continue-reading")
                 }
 
@@ -55,8 +64,9 @@ struct HomeView: View {
                 if let work = model.works.first {
                     metadataCard(label: "Featured Source", title: work.title)
                 }
+                }
+                .padding()
             }
-            .padding()
         }
         .navigationTitle("Home")
     }
@@ -64,11 +74,15 @@ struct HomeView: View {
     private func destination(_ title: String, systemImage: String, route: AppRoute) -> some View {
         NavigationLink(value: route) {
             VStack(spacing: 10) {
-                Image(systemName: systemImage).font(.title2)
-                Text(title).font(.headline)
+                Image(systemName: systemImage).font(.title2).foregroundStyle(AppTheme.coral)
+                Text(title).font(.headline).foregroundStyle(AppTheme.deepForest)
             }
             .frame(maxWidth: .infinity, minHeight: 96)
-            .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 16))
+            .background(AppTheme.surface, in: RoundedRectangle(cornerRadius: 16))
+            .overlay {
+                RoundedRectangle(cornerRadius: 16)
+                    .stroke(AppTheme.forest.opacity(0.12), lineWidth: 1)
+            }
         }
         .buttonStyle(.plain)
         .accessibilityIdentifier("home.\(title.lowercased())")
@@ -81,6 +95,10 @@ struct HomeView: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
-        .background(Color.secondary.opacity(0.08), in: RoundedRectangle(cornerRadius: 12))
+        .background(AppTheme.surface, in: RoundedRectangle(cornerRadius: 12))
+        .overlay {
+            RoundedRectangle(cornerRadius: 12)
+                .stroke(AppTheme.saffron.opacity(0.35), lineWidth: 1)
+        }
     }
 }
