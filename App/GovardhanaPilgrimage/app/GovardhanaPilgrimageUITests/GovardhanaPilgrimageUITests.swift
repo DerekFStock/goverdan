@@ -211,6 +211,30 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
         ).firstMatch
         reveal(distinction, in: app)
     }
+
+    func testPlaceReferenceReaderRemainsVisibleAndBackReturnsToPlaceDetails() {
+        let app = launch()
+        app.buttons["home.map"].tap()
+        XCTAssertTrue(app.navigationBars["Govardhana Map"].waitForExistence(timeout: 8))
+        let pin = app.buttons["map.pin.1"]
+        XCTAssertTrue(pin.waitForExistence(timeout: 5))
+        pin.tap()
+        XCTAssertTrue(app.navigationBars["Rādhā-kuṇḍa"].waitForExistence(timeout: 5))
+
+        let read = app.buttons["place.reference.reference.radhakunda.radhakundastakam-1.read"]
+        reveal(read, in: app)
+        read.tap()
+
+        let sourceTitle = app.navigationBars["Śrī Rādhā-kuṇḍāṣṭakam"]
+        XCTAssertTrue(sourceTitle.waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Passage Verse 1"].exists)
+        sleep(2)
+        XCTAssertTrue(sourceTitle.exists)
+        XCTAssertFalse(app.navigationBars["Rādhā-kuṇḍa"].exists)
+
+        app.navigationBars["Śrī Rādhā-kuṇḍāṣṭakam"].buttons["Rādhā-kuṇḍa"].tap()
+        XCTAssertTrue(app.navigationBars["Rādhā-kuṇḍa"].waitForExistence(timeout: 5))
+    }
     private let sectionID = "story.radhakunda.manifestation"
     private let storyTitle = "The Story of Śrī Rādhā-kuṇḍa"
     private let sectionTitle = "The Manifestation of Rādhā-kuṇḍa and Kṛṣṇa-kuṇḍa"

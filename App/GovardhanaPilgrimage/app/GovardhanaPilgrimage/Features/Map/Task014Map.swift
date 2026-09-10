@@ -538,7 +538,12 @@ struct PlaceDetailView: View {
                                     Text(quotation).italic().padding(.leading, 8)
                                 }
                                 if let route = route(for: reference.destination) {
-                                    NavigationLink("Read in the app", value: route)
+                                    NavigationLink {
+                                        DestinationView(route: route, model: model)
+                                    } label: {
+                                        Text("Read in the app")
+                                    }
+                                    .accessibilityIdentifier("place.reference.\(reference.id).read")
                                 }
                             }
                             .padding(.vertical, 3)
