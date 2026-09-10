@@ -1,0 +1,452 @@
+schema_version: 1
+contents:
+  - place_id: place.radhakunda
+    category: Supreme sacred kuṇḍa
+    summary: Śrī Rādhā-kuṇḍa is the sacred lake of Śrī Rādhā at the foot of Govardhana. Gauḍīya texts place it at the summit of Vraja’s sacred geography because it is filled with the prema of Śrī Rādhā and Kṛṣṇa.
+    why_sacred: Rādhā-kuṇḍa belongs to the manifestation līlā following Kṛṣṇa’s killing of Ariṣṭāsura. During a playful dispute about purification after the killing of the bull demon, Śrī Rādhā and Her sakhīs created Her kuṇḍa. Rūpa Gosvāmī’s Upadeśāmṛta 9–11 ranks it above Mathurā, Vṛndāvana, and Govardhana, while Caitanya-caritāmṛta, Madhya 18.5–14 records Śrī Caitanya Mahāprabhu’s rediscovery and glorification of the two lakes.
+    what_to_see:
+      - The present Rādhā-kuṇḍa itself and its immediate relationship with adjoining Śyāma-kuṇḍa.
+      - When the water is low, pilgrims traditionally identify a small enclosed, deeper feature as Kañcana-kuṇḍa; this is a pilgrimage identification, not a newly verified archaeological claim.
+      - Remember the surrounding landscape as the sacred setting of the sakhīs’ kuñjas without assigning exact locations that have not been verified.
+    lila: After Kṛṣṇa killed Ariṣṭāsura, Śrī Rādhā and Her sakhīs jokingly accused Him of impurity for killing a bull. Kṛṣṇa summoned the holy tīrthas and created His own lake; Rādhā and Her companions then created Her lake with their own hands. The paired kuṇḍas became an intimate setting for the Divine Couple’s pastimes.
+    pilgrim_guidance: 'Mahāprabhu came to Ariṭ-grāma asking for Rādhā-kuṇḍa, but local people could not identify it. He recognized Rādhā-kuṇḍa and Śyāma-kuṇḍa in two shallow paddy fields, bathed there, placed the earth on His body as tilaka, and carried some with Him. Visit #1 and #2 as a paired sacred landscape while preserving their distinct identities.'
+    references:
+      - id: reference.radhakunda.upadesamrta-9-11
+        source_title: Rūpa Gosvāmī — Upadeśāmṛta
+        locus: Verses 9–11
+        explanation: Ranks Rādhā-kuṇḍa at the summit of the sequence Mathurā, Vṛndāvana, Govardhana, and Rādhā-kuṇḍa.
+        quotation: “Above all, the superexcellent Śrī Rādhā-kuṇḍa stands supreme.”
+      - id: reference.radhakunda.radhakundastakam-1
+        source_title: Raghunātha Dāsa Gosvāmī — Rādhā-kuṇḍāṣṭakam
+        locus: Verse 1
+        explanation: Directly remembers Rādhā-kuṇḍa’s manifestation after the playful exchange concerning Ariṣṭāsura.
+        destination:
+          kind: SOURCE_PASSAGE
+          id: passage.radha-kundastaka.1
+      - id: reference.radhakunda.caitanya-caritamrta-madhya-18
+        source_title: Caitanya-caritāmṛta, Madhya-līlā
+        locus: 18.5–14
+        explanation: Records Mahāprabhu’s rediscovery of the two kuṇḍas, His bathing and glorification, His dancing on the bank, and His taking earth from Rādhā-kuṇḍa.
+        quotation: “Just as Śrīmatī Rādhārāṇī is most dear to Lord Kṛṣṇa, so Her lake is also very dear to Him.”
+      - id: reference.radhakunda.govinda-lilamrta-7-102
+        source_title: Govinda-līlāmṛta
+        locus: '7.102'
+        explanation: Caitanya-caritāmṛta, Madhya 18.12 quotes this verse as a direct glorification of Rādhā-kuṇḍa.
+      - id: reference.radhakunda.local-manifestation-story
+        source_title: The Story of Śrī Rādhā-kuṇḍa
+        locus: The Manifestation of Rādhā-kuṇḍa and Kṛṣṇa-kuṇḍa
+        explanation: Opens the project’s compiled narrative of the paired manifestation without duplicating the full story here.
+        destination:
+          kind: STORY_SECTION
+          id: story.radhakunda.manifestation
+    related_place_ids:
+      - place.syamakunda
+      - place.lalitakunda
+
+  - place_id: place.syamakunda
+    category: Sacred Kṛṣṇa kuṇḍa
+    summary: Śyāma-kuṇḍa is Kṛṣṇa’s sacred lake adjoining Rādhā-kuṇḍa. Traditional texts also call it Kṛṣṇa-kuṇḍa and Ariṣṭa-saras or Ariṣṭa-kuṇḍa, linking it with Kṛṣṇa’s killing of Ariṣṭāsura and the paired manifestation of the two kuṇḍas.
+    why_sacred: Śyāma-kuṇḍa belongs to the same manifestation episode as Rādhā-kuṇḍa. Vraja-vilāsa-stava 58 praises Ariṣṭa-saras as arising from Kṛṣṇa’s lotus foot after Ariṣṭa’s destruction and describes Rādhā’s beloved lake in intimate relation with it. Garga-saṁhitā 3.7.8 lists Kṛṣṇa-kuṇḍa among Govardhana’s holy places, and Mahāprabhu rediscovered it together with Rādhā-kuṇḍa.
+    what_to_see:
+      - Śyāma-kuṇḍa itself and its junction with adjoining Rādhā-kuṇḍa.
+      - When the basin is drained or low, pilgrimage accounts traditionally identify a deeper enclosed feature as Vajranābha-kuṇḍa; this is not presented as a verified archaeological conclusion.
+    lila: After Ariṣṭāsura’s death, Śrī Rādhā playfully told Kṛṣṇa that He should purify Himself. Kṛṣṇa summoned the sacred tīrthas and created His kuṇḍa, after which Rādhā and Her sakhīs created Rādhā-kuṇḍa.
+    pilgrim_guidance: Look at Śyāma-kuṇḍa together with Rādhā-kuṇḍa to understand the paired manifestation, but notice their distinct basins and identities. Mahāprabhu recognized and bathed in both when they appeared to others as shallow fields.
+    references:
+      - id: reference.syamakunda.vraja-vilasa-stava-58
+        source_title: Raghunātha Dāsa Gosvāmī — Vraja-vilāsa-stava
+        locus: Verse 58
+        explanation: Praises Ariṣṭa-saras as arising from Kṛṣṇa’s lotus foot after Ariṣṭa’s destruction and places Rādhā’s dear lake in intimate relation with it.
+        quotation: After wicked Ariṣṭa was killed, the beloved lake called Ariṣṭa arose from Kṛṣṇa’s lotus foot; Rādhā’s dear lake lovingly embraces it.
+      - id: reference.syamakunda.garga-samhita-3-7-8
+        source_title: Garga-saṁhitā
+        locus: 3.7.8
+        explanation: Lists Rādhā-kuṇḍa, Kṛṣṇa-kuṇḍa, Lalitā-kuṇḍa, Gopāla-kuṇḍa, and Kusuma-sarovara among Govardhana’s holy places.
+      - id: reference.syamakunda.caitanya-caritamrta-madhya-18-5
+        source_title: Caitanya-caritāmṛta, Madhya-līlā
+        locus: '18.5'
+        explanation: Records Mahāprabhu’s discovery of Rādhā-kuṇḍa and Śyāma-kuṇḍa in two shallow paddy fields.
+      - id: reference.syamakunda.local-manifestation-story
+        source_title: The Story of Śrī Rādhā-kuṇḍa
+        locus: The Manifestation of Rādhā-kuṇḍa and Kṛṣṇa-kuṇḍa
+        explanation: Opens the project’s compiled narrative of Kṛṣṇa creating His tīrtha-filled lake and Rādhā creating Hers.
+        destination:
+          kind: STORY_SECTION
+          id: story.radhakunda.manifestation
+    related_place_ids:
+      - place.radhakunda
+      - place.lalitakunda
+
+  - place_id: place.lalitakunda
+    category: Sacred sakhī kuṇḍa
+    summary: Lalitā-kuṇḍa is associated with Śrī Lalitā-sakhī, foremost among Śrī Rādhā’s intimate companions. This place is remembered through Lalitā’s service in arranging and nourishing the meetings, moods, and service of Rādhā and Kṛṣṇa.
+    why_sacred: Garga-saṁhitā 3.8.6 places Lalitā-kuṇḍa within Govardhana’s sacred-body geography and calls it Govardhana’s cheeks. Vraja-vilāsa-stava 29 praises Lalitā as filled with dense prema, bold through intimacy with the Divine Couple, expert in arranging Their meetings, and expert in teaching her friend the moods of māna.
+    what_to_see:
+      - Lalitā-kuṇḍa itself.
+      - Pilgrimage guides traditionally identify Lalitā-Mohana Temple and Mohana-kuṇḍa in the temple area.
+      - Pilgrimage guides also describe Jīva Gosvāmī’s bhajana-kuṭīra and a small Rādhā-Dāmodara temple across the road or nearby; these descriptions do not establish new coordinate precision.
+    lila: Remember Lalitā’s intimate service mood here. She boldly arranges meetings of Rādhā and Kṛṣṇa and guides the movements of māna and reconciliation. A traditional pilgrimage account also associates Lalitā and Mohana with calling sacred tīrthas to reside here; this is presented as pilgrimage tradition rather than a newly established primary textual locus.
+    pilgrim_guidance: Center your remembrance on Lalitā-sakhī’s personal service to the Divine Couple. Use the kuṇḍa and traditionally identified temple area as visible orientation points without treating every guide-described feature as independently GPS verified.
+    references:
+      - id: reference.lalitakunda.vraja-vilasa-stava-29
+        source_title: Raghunātha Dāsa Gosvāmī — Vraja-vilāsa-stava
+        locus: Verse 29
+        explanation: Gives a direct Gosvāmī meditation on Lalitā’s prema, intimacy, skill in arranging meetings, and guidance in the moods of māna.
+        quotation: Lalitā, immersed in dense prema and bold through intimacy with the two dearest friends, skillfully arranges Their meetings and instructs her friend in the moods of māna.
+      - id: reference.lalitakunda.garga-samhita-3-8-6
+        source_title: Garga-saṁhitā
+        locus: 3.8.6
+        explanation: Places Lalitā-kuṇḍa in Govardhana’s sacred-body geography.
+        quotation: “Lalitā-kuṇḍa its cheeks.”
+      - id: reference.lalitakunda.traditional-pilgrimage-guide
+        source_title: Traditional Rādhā-kuṇḍa pilgrimage guide
+        locus: Lalitā-kuṇḍa area
+        explanation: Supports present physical-site descriptions only and is not used as a substitute for the Gosvāmī references.
+    related_place_ids:
+      - place.radhakunda
+      - place.syamakunda
+
+  - place_id: place.mukharai
+    category: Śrī Rādhā’s maternal-family village
+    summary: Mukharai is traditionally identified with Mukhara-devī, Śrī Rādhā’s maternal grandmother. A pilgrim enters a sacred place connected with Rādhā’s intimate family world rather than merely another geographic stop.
+    why_sacred: Rūpa Gosvāmī’s Rādhā-Kṛṣṇa-gaṇoddeśa-dīpikā identifies Mukhara as Śrī Rādhā’s maternal grandmother. Vraja-vilāsa-stava 28 directly glorifies the venerable Mukhara and presents a subtle family mood—she may outwardly seem angry or obstructive during the young couple’s first romantic play, yet her behavior increases the happiness of her two young grandchildren.
+    what_to_see:
+      - Traditional and local pilgrimage descriptions identify Mukhara-kuṇḍa and a Mukhara Devī temple.
+      - Look for images or deities connected with Rādhā, Kīrtidā, and Mukhara where locally identified.
+      - A locally described bhajana-śilā or resonant stone is a traditional physical identification rather than a project-verified archaeological feature.
+    lila: Mukhara represents the elder maternal household surrounding Śrī Rādhā. Raghunātha Dāsa Gosvāmī captures the rasa of an elder who can appear to oppose the young Divine Couple while actually increasing Their delight; she should not be reduced to a generic helpful-grandmother role.
+    pilgrim_guidance: Approach Mukharai as Śrī Rādhā’s maternal-family village. Ask locally for the traditionally identified Mukhara-kuṇḍa and Mukhara Devī temple, while recognizing that the app has not independently verified the precise position of every described feature.
+    references:
+      - id: reference.mukharai.vraja-vilasa-stava-28
+        source_title: Raghunātha Dāsa Gosvāmī — Vraja-vilāsa-stava
+        locus: Verse 28
+        explanation: Glorifies Mukhara through the nuanced family mood in which apparent opposition increases the young Divine Couple’s happiness.
+        quotation: Though she outwardly seems to oppose the young couple in anger, Mukhara increases the happiness of her two young grandchildren; I place that venerable elder upon my head.
+      - id: reference.mukharai.radha-krsna-ganoddesa-dipika
+        source_title: Rūpa Gosvāmī — Rādhā-Kṛṣṇa-gaṇoddeśa-dīpikā
+        explanation: Identifies Mukhara as Śrī Rādhā’s maternal grandmother; no verse number is asserted because the current project source does not establish one.
+      - id: reference.mukharai.local-description
+        source_title: Local and traditional Mukharai pilgrimage description
+        locus: Mukharai village
+        explanation: Supports present physical-feature descriptions and is distinguished from the primary Gosvāmī references.
+    related_place_ids: []
+
+  - place_id: place.kusumasarovara
+    category: Sacred flower-gathering reservoir
+    summary: Kusuma-sarovara is a major sacred reservoir in the Govardhana landscape associated with flowers, kuñjas, and the confidential pastimes of Rādhā and Kṛṣṇa. Its sacred identity is older and deeper than the later monumental architecture that now dominates a pilgrim’s first visual impression.
+    why_sacred: Vraja-rīti-cintāmaṇi directly describes Kusuma-sarovara and its flower-filled landscape; verse 1.27 remembers Nārada attaining a gopī form after bathing here. Garga-saṁhitā 3.8.6 identifies Kusuma-sarovara as Govardhana’s inner ear. Vraja-vilāsa-stava 70 supplies a complementary flower-gathering meditation, although that verse does not itself name Kusuma-sarovara.
+    what_to_see:
+      - The large rectangular reservoir is the primary physical feature.
+      - Remember the surrounding flower and kuñja landscape described in the texts.
+      - Notice the prominent later sandstone and chhatri architecture as a visible historical layer, not as the origin of the place’s sacred identity.
+      - 'Nearby registered places #6 Uddhava Temple, #7 Aśoka-vana, and #8 Nārada-kuṇḍa form a connected sacred landscape rather than unrelated pins.'
+    lila: Kusuma-sarovara is remembered as a flower-rich meeting landscape of Rādhā and Kṛṣṇa. Vraja-rīti-cintāmaṇi emphasizes its flowers and kuñjas and connects Nārada’s attainment of a gopī form with bathing here. Vraja-vilāsa-stava 70 may support flower-līlā meditation, but it is not direct geographic evidence because it does not name Kusuma-sarovara.
+    pilgrim_guidance: 'Use the unmistakable reservoir to orient yourself, then understand #5–8 as a connected sacred landscape. Look beyond the later monumental architecture to remember the flower and kuñja associations; a separate practical pilgrim arrival point has not yet been field verified.'
+    references:
+      - id: reference.kusumasarovara.vraja-riti-cintamani-1-26-27
+        source_title: Viśvanātha Cakravartī Ṭhākura — Vraja-rīti-cintāmaṇi
+        locus: 1.26–27
+        explanation: Directly describes Kusuma-sarovara’s flower-filled landscape and the tradition of Nārada attaining a gopī form after bathing here.
+      - id: reference.kusumasarovara.garga-samhita-3-8-6
+        source_title: Garga-saṁhitā
+        locus: 3.8.6
+        explanation: Identifies Kusuma-sarovara as Govardhana’s inner ear in its sacred-body geography.
+      - id: reference.kusumasarovara.vraja-vilasa-stava-70
+        source_title: Raghunātha Dāsa Gosvāmī — Vraja-vilāsa-stava
+        locus: Verse 70
+        explanation: Offers a supporting meditation on Rādhā and Kṛṣṇa gathering flowers amid smiling sakhīs; the verse does not explicitly name Kusuma-sarovara and is not direct place-identification evidence.
+      - id: reference.kusumasarovara.govinda-lilamrta-6
+        source_title: Govinda-līlāmṛta
+        locus: Chapter 6
+        explanation: Project research associates this chapter with the Kusuma-sarovara flower and kuñja landscape; no verse-level locus is asserted.
+    related_place_ids:
+      - place.uddhava-temple
+      - place.asoka-vana
+      - place.narada-kunda
+
+  - place_id: place.uddhava-temple
+    category: Uddhava shrine
+    summary: Uddhava Temple beside Kusuma-sarovara is a local sacred shrine remembering Uddhava’s realization of the extraordinary prema of the Vraja-gopīs. After Kṛṣṇa sent him to Vraja, Uddhava desired birth as grass, bushes, or creepers so that he might receive the dust of the gopīs’ feet.
+    why_sacred: Kṛṣṇa sent Uddhava to Vraja, where his encounter with the gopīs revealed the incomparable depth of their prema. Śrīmad-Bhāgavatam 10.47.61 anchors the shrine’s devotional meaning in Uddhava’s humble prayer. Kusuma-sarovara pilgrimage tradition associates this landscape with Uddhava remaining in vegetation or grass form in remembrance of that prayer; the attribution of the present temple to Vajranābha belongs to traditional temple history rather than independently established project evidence.
+    what_to_see:
+      - Look for the small Uddhava-associated temple or shrine within the Kusuma-sarovara cluster.
+      - 'Use the major reservoir at #5 Kusuma-sarovara to understand the shrine’s physical setting while preserving #6 as a distinct sacred place.'
+      - 'Do not confuse this Uddhava Temple with the separate future map place #69 Uddhava-kuṇḍa.'
+    lila: Kṛṣṇa sent Uddhava to Vraja, where Uddhava witnessed the gopīs’ extraordinary love. Rather than aspiring to imitate their position, he prayed for the lowly birth of vegetation in Vraja so that the dust of their feet might touch him.
+    pilgrim_guidance: 'While standing here, remember Uddhava’s humility before the gopīs’ prema. Use #5 Kusuma-sarovara as the major orientation landmark and understand #6 as a distinct shrine within that sacred cluster.'
+    references:
+      - id: reference.uddhava-temple.srimad-bhagavatam-10-47-61
+        source_title: Śrīmad-Bhāgavatam
+        locus: '10.47.61'
+        explanation: Uddhava prays to become a bush, creeper, or herb in Vraja so that he may receive the dust of the gopīs’ feet.
+        quotation: “Let me become one of the bushes, creepers or herbs in Vṛndāvana.”
+      - id: reference.uddhava-temple.kusumasarovara-tradition
+        source_title: Traditional Kusuma-sarovara pilgrimage tradition
+        locus: Uddhava shrine in the Kusuma-sarovara landscape
+        explanation: Associates Uddhava’s prayer with this local landscape and shrine; it supports present site identity rather than replacing the Bhāgavatam’s textual authority.
+    related_place_ids:
+      - place.kusumasarovara
+      - place.asoka-vana
+      - place.narada-kunda
+
+  - place_id: place.asoka-vana
+    category: Sacred grove and shrine
+    summary: Aśoka-vana is the small grove and shrine in the Kusuma-sarovara sacred landscape where local parikramā tradition remembers Kṛṣṇa personally arranging and decorating Śrī Rādhā’s hair. This identification belongs to traditional local līlā geography.
+    why_sacred: Local Vraja pilgrimage tradition remembers this as the hair-decoration place, and the shrine’s deity presentation communicates that līlā. Traditional guides connect the pastime with the broader adornment world described in Govinda-līlāmṛta, but an exact Govinda-līlāmṛta verse proving the location of the modern pin has not been independently verified.
+    what_to_see:
+      - Look for the small Aśoka-vana or Rādhā Bana Bihārī shrine within the Kusuma-sarovara cluster.
+      - The local shrine or deity presentation traditionally shows Rādhā with Kṛṣṇa arranging or decorating Her hair.
+      - 'Use nearby #5 Kusuma-sarovara for orientation, but do not treat #7 as another name for the reservoir.'
+    lila: Local tradition remembers Kṛṣṇa arranging or decorating Śrī Rādhā’s hair in this grove. The scene belongs to the intimate adornment and sevā world of the Divine Couple. Gosvāmī literature supplies the wider līlā context, while the identification of this precise modern spot comes from local pilgrimage tradition.
+    pilgrim_guidance: 'Look for the small shrine marking the hair-decoration tradition. Treat #7 as a distinct sacred feature within the larger Kusuma-sarovara landscape and avoid reading the modern pin as textual proof of an exact ancient location.'
+    references:
+      - id: reference.asoka-vana.traditional-pilgrimage-description
+        source_title: Traditional Aśoka-vana pilgrimage description
+        locus: Rādhā Bana Bihārī shrine near Kusuma-sarovara
+        explanation: Identifies this modern sacred spot with Kṛṣṇa decorating Śrī Rādhā’s hair; this is local site tradition rather than a primary textual geographic claim.
+      - id: reference.asoka-vana.govinda-lilamrta-context
+        source_title: Govinda-līlāmṛta
+        explanation: Supporting līlā context; exact verse-to-modern-site identification not yet verified.
+    related_place_ids:
+      - place.kusumasarovara
+      - place.uddhava-temple
+      - place.narada-kunda
+
+  - place_id: place.narada-kunda
+    category: Sacred tapasya kuṇḍa
+    summary: Nārada-kuṇḍa is the secluded sacred place where Vraja tradition remembers Nārada Muni performing tapasya under Vṛndā-devī’s direction because he desired entrance into the confidential Rādhā-Kṛṣṇa līlā.
+    why_sacred: 'Bhakti-ratnākara explicitly identifies Nārada’s tapasya here and says that his desire was fulfilled; it also transmits Purāṇic tradition describing his tapasya on Vṛndā’s order. Vraja-rīti-cintāmaṇi 1.27 gives the connected tradition that Nārada attained a gopī form after bathing at Kusuma-sarovara, linking #8 with nearby #5 without overstating later lore as primary history.'
+    what_to_see:
+      - Nārada-kuṇḍa itself and the nearby Nārada temple or shrine.
+      - Notice the secluded Nārada-vana character of the site described by pilgrimage guides.
+      - The claim that Nārada composed Nārada-bhakti-sūtra here belongs to local site lore and is not presented as established textual history.
+    lila: Nārada longed for entrance into confidential Vraja-līlā and performed tapasya under Vṛndā-devī’s direction. The connected Kusuma-sarovara tradition remembers his bathing and attainment of a gopī form. Nārada-kuṇḍa therefore evokes longing, tapasya, and qualification for confidential Vraja-sevā.
+    pilgrim_guidance: 'Understand #8 together with nearby #5 Kusuma-sarovara. Nārada-kuṇḍa is remembered as the tapasya place, while the Kusuma-sarovara tradition supplies the connected bathing and transformation episode.'
+    references:
+      - id: reference.narada-kunda.bhakti-ratnakara
+        source_title: Bhakti-ratnākara
+        locus: Nārada-kuṇḍa pilgrimage description
+        explanation: Directly names Nārada’s tapasya here and states that his desire was fulfilled; no chapter or verse number is asserted beyond the locus established in current project research.
+      - id: reference.narada-kunda.vraja-riti-cintamani-1-27
+        source_title: Viśvanātha Cakravartī Ṭhākura — Vraja-rīti-cintāmaṇi
+        locus: '1.27'
+        explanation: Connects Nārada with bathing at Kusuma-sarovara and attaining a gopī form.
+      - id: reference.narada-kunda.transmitted-puranic-tradition
+        source_title: Traditional Purāṇic account transmitted in later Gauḍīya literature
+        explanation: Records the tradition of Nārada’s tapasya under Vṛndā’s direction; the project does not claim possession of the unidentified primary Purāṇic edition.
+    related_place_ids:
+      - place.kusumasarovara
+      - place.uddhava-temple
+      - place.asoka-vana
+
+  - place_id: place.ratna-kunda
+    category: Sacred kuṇḍa in the Śyāmavana complex
+    summary: 'Ratna-kuṇḍa belongs to the dense Śyāmavana and Ratna-siṁhāsana sacred landscape. Understand #9 together with #10 Rāsa-sthalī, #11 Ratna-siṁhāsana, and #12 Kṛṣṇa’s footprint while preserving each as a distinct remembered feature.'
+    why_sacred: Bhakti-ratnākara describes Ratna-siṁhāsana as a place where Śrī Rādhā sat upon a throne. Pilgrimage tradition also connects this sacred landscape with the Śaṅkhacūḍa episode. Śrīmad-Bhāgavatam 10.34.20–32 provides the canonical līlā narrative, but it does not name the modern Ratna-kuṇḍa; the geographic association comes through Vraja pilgrimage tradition and Bhakti-ratnākara-related sacred geography.
+    what_to_see:
+      - Ratna-kuṇḍa itself within a compact and densely marked sacred cluster.
+      - 'Visit nearby #10 Rāsa-sthalī, #11 Ratna-siṁhāsana, and #12 Kṛṣṇa’s footprint as separate remembered features.'
+      - Do not merge the kuṇḍa, throne, rāsa platform, and footprint into one marker or identity.
+    lila: 'The Śyāmavana and Ratna-siṁhāsana landscape is remembered as a place of Śrī Rādhā’s throne and is linked by pilgrimage accounts with Kṛṣṇa’s pursuit and killing of Śaṅkhacūḍa. Ratna-kuṇḍa itself remains distinct from #11 Ratna-siṁhāsana.'
+    pilgrim_guidance: 'Use the map to recognize that #9–12 form one compact sacred landscape. Visit each numbered feature separately rather than assuming that reaching one pin means the entire cluster has been seen.'
+    references:
+      - id: reference.ratna-kunda.bhakti-ratnakara
+        source_title: Bhakti-ratnākara
+        locus: Ratna-siṁhāsana and Śyāmavana pilgrimage description
+        explanation: Describes Śrī Rādhā seated at Ratna-siṁhāsana and supports the sacred identity of the immediate landscape; no unestablished numbering is asserted.
+      - id: reference.ratna-kunda.srimad-bhagavatam-10-34-20-32
+        source_title: Śrīmad-Bhāgavatam
+        locus: 10.34.20–32
+        explanation: The Bhāgavatam narrates the Śaṅkhacūḍa līlā; the geographic association with this modern sacred landscape comes from Vraja pilgrimage tradition.
+        quotation: “Govinda chased the demon, eager to take away his crest jewel.”
+    related_place_ids:
+      - place.rasa-sthali
+      - place.ratna-simhasana
+      - place.krsna-footprint
+
+  - place_id: place.rasa-sthali
+    category: Sacred rāsa platform
+    summary: Rāsa-sthalī is the remembered springtime rāsa ground in the Śyāmavana and Ratna-siṁhāsana landscape. Its sacred identity has strong traditional and Gosvāmī textual support even though its exact modern GPS coordinate remains unverified.
+    why_sacred: Raghunātha Dāsa Gosvāmī’s Govardhanāśraya-daśakam 7 directly describes a rāsa-sthalī at Govardhana where Śrī Rādhā dances in spring surrounded by sakhīs and embraced by Kṛṣṇa. Bhakti-ratnākara invokes that work when describing the Govardhana rāsa-sthalī, while traditional guides identify the concrete or circular platform in the Śyāma-kuṭī and Ratna-siṁhāsana complex.
+    what_to_see:
+      - Look for the distinct rāsa platform within the Ratna-kuṇḍa and Śyāma-kuṭī complex.
+      - 'The stored coordinate remains absent; the hollow question-mark marker is a cartographic presentation derived from #11 Ratna-siṁhāsana.'
+      - 'Treat #11 only as a navigation anchor: reaching it is not exact arrival at #10.'
+    lila: Śrī Rādhā dances beautifully upon the spring rāsa ground, surrounded by Her sakhīs, while Kṛṣṇa embraces Her with His fragrant arm.
+    pilgrim_guidance: 'Locate the distinct rāsa platform within the Ratna-kuṇḍa and Śyāma-kuṭī sacred complex near #11 Ratna-siṁhāsana. The exact GPS coordinate has not yet been field verified.'
+    references:
+      - id: reference.rasa-sthali.govardhanasraya-dasakam-7
+        source_title: Raghunātha Dāsa Gosvāmī — Govardhanāśraya-daśakam
+        locus: Verse 7
+        explanation: Directly describes the Govardhana rāsa-sthalī and Śrī Rādhā’s springtime dance surrounded by sakhīs and embraced by Kṛṣṇa.
+        quotation: Śrī Rādhā dances upon the spring rāsa ground among Her sakhīs while Kṛṣṇa embraces Her with His fragrant arm.
+      - id: reference.rasa-sthali.bhakti-ratnakara
+        source_title: Bhakti-ratnākara
+        locus: Govardhana rāsa-sthalī description
+        explanation: Connects the Govardhana rāsa-sthalī with Raghunātha Dāsa Gosvāmī’s Govardhanāśraya-daśakam; no unestablished numbering is asserted.
+      - id: reference.rasa-sthali.traditional-site-identification
+        source_title: Traditional Śyāma-kuṭī and Ratna-siṁhāsana pilgrimage guide
+        locus: Concrete or circular rāsa platform in the sacred complex
+        explanation: Identifies the feature that a modern pilgrim should physically locate; this site identification does not replace the Gosvāmī verse’s textual authority.
+    related_place_ids:
+      - place.ratna-kunda
+      - place.ratna-simhasana
+      - place.krsna-footprint
+
+  - place_id: place.ratna-simhasana
+    category: Sacred throne-place and Śyāmavana shrine
+    summary: 'Ratna-siṁhāsana is the jeweled-throne place in Śyāmavana where Śrī Rādhā is remembered seated among Her companions. It is the central navigation anchor of the compact sacred complex containing #9 Ratna-kuṇḍa, #10 Rāsa-sthalī, and #12 Kṛṣṇa’s footprint.'
+    why_sacred: 'Bhakti-ratnākara directly identifies a place called Ratna-siṁhāsana where Śrī Rādhā used to sit on a throne. The same local sacred landscape is associated in pilgrimage tradition with the Śaṅkhacūḍa episode. Raghunātha Dāsa Gosvāmī’s Govardhana-vāsa-prārthanā-daśakam 3 gives a supporting Govardhana-wide meditation on jeweled altars and thrones among Govardhana’s caves, waterfalls, peaks, and valleys; it is not proof of this exact modern shrine.'
+    what_to_see:
+      - The modern Śyāma-kuṭī / Ratna-siṁhāsana shrine complex.
+      - The throne-place or shrine identified by local pilgrimage guides.
+      - 'Notice that #9 Ratna-kuṇḍa, #10 Rāsa-sthalī, #11 Ratna-siṁhāsana, and #12 Kṛṣṇa’s footprint remain distinct sacred features within one dense cluster.'
+    lila: Śrī Rādhā is remembered seated here upon the jeweled throne amid Her companions. The surrounding Śyāmavana landscape is also linked by traditional pilgrimage accounts with the Śaṅkhacūḍa episode and the nearby rāsa-sthalī.
+    pilgrim_guidance: 'Use #11 as the practical anchor for the #9–12 complex, then visit #9, #10, and #12 as distinct sacred features. Reaching #11 does not mean exact arrival at the coordinate-less locations of #10 or #12.'
+    references:
+      - id: reference.ratna-simhasana.bhakti-ratnakara
+        source_title: Bhakti-ratnākara
+        locus: Ratna-siṁhāsana description
+        explanation: Directly identifies the Ratna-siṁhāsana place and Śrī Rādhā’s throne; no unestablished chapter or verse numbering is asserted.
+        quotation: “In a place called Ratna-siṁhāsana, Rādhā used to sit on a throne.”
+      - id: reference.ratna-simhasana.govardhana-vasa-prarthana-dasakam-3
+        source_title: Raghunātha Dāsa Gosvāmī — Govardhana-vāsa-prārthanā-daśakam
+        locus: Verse 3
+        explanation: 'Supporting Govardhana meditation; not direct proof of the exact modern #11 shrine.'
+    related_place_ids:
+      - place.ratna-kunda
+      - place.rasa-sthali
+      - place.krsna-footprint
+
+  - place_id: place.krsna-footprint
+    category: Sacred Govardhana footprint rock
+    summary: Near Śyāma-kuṭī, local Vraja pilgrimage tradition preserves a Govardhana rock bearing what is revered as the impression of Kṛṣṇa’s foot. The sacred importance of Kṛṣṇa’s footprints on Govardhana has strong śāstric support, while the exact modern GPS position of this particular rock remains unverified.
+    why_sacred: Śrīmad-Bhāgavatam 10.21.18 praises Govardhana because its grasses, waters, caves, and roots are sanctified by the feet of Kṛṣṇa and Balarāma. Caitanya-caritāmṛta, Madhya 18.34 records Mahāprabhu’s reverence for a Govardhana stone bearing Kṛṣṇa’s footprints, and Garga-saṁhitā 3.4.13 describes Govardhana’s stones marked with divine footprints. These texts establish the sacred meaning of footprints on Govardhana; the identification of this particular modern rock comes from local pilgrimage tradition.
+    what_to_see:
+      - The locally revered footprint-bearing rock near the Śyāma-kuṭī complex.
+      - Traditional accounts describe the footprint as marked or painted; its present appearance may vary.
+      - 'Because its exact coordinate is unverified, navigate first to #11 Ratna-siṁhāsana and follow the approved local guidance from the ashram entrance.'
+    lila: Here the pilgrim remembers Govardhana as ground personally touched by Kṛṣṇa and Balarāma while They tended the cows. The project does not assign an additional specific event to this particular rock without stronger evidence.
+    pilgrim_guidance: 'Navigate to #11 Ratna-siṁhāsana, then look outside the ashram entrance. Traditional guidance places the footprint roughly 7 m before the entrance and about 7 m into the trees. Reaching #11 is arrival at the navigation anchor, not exact arrival at #12; the rock’s coordinate still requires field verification.'
+    references:
+      - id: reference.krsna-footprint.srimad-bhagavatam-10-21-18
+        source_title: Śrīmad-Bhāgavatam
+        locus: '10.21.18'
+        explanation: Praises Govardhana because its landscape is sanctified by the feet of Kṛṣṇa and Balarāma; it does not identify this particular modern rock.
+      - id: reference.krsna-footprint.caitanya-caritamrta-madhya-18-34
+        source_title: Caitanya-caritāmṛta, Madhya-līlā
+        locus: '18.34'
+        explanation: Records Mahāprabhu’s reverence for a Govardhana stone bearing Kṛṣṇa’s footprints; it supports the sacred class of object rather than this exact modern location.
+      - id: reference.krsna-footprint.garga-samhita-3-4-13
+        source_title: Garga-saṁhitā
+        locus: '3.4.13'
+        explanation: Describes Govardhana’s stones marked with divine footprints; equivalence with this particular rock remains a local identification.
+      - id: reference.krsna-footprint.traditional-guide
+        source_title: Traditional Śyāma-kuṭī pilgrimage guide
+        locus: Kṛṣṇa’s footprint near the ashram entrance
+        explanation: Supports the present-site identification and practical directions, not an independently verified exact GPS position.
+    related_place_ids:
+      - place.ratna-simhasana
+      - place.rasa-sthali
+      - place.ratna-kunda
+
+  - place_id: place.gvala-pokhara
+    category: Cowherd-boys’ sacred pond
+    summary: Gvāla-pokhara is remembered as a pond where Kṛṣṇa and the cowherd boys rested and ate together while tending the cows. Pilgrimage tradition explains its name through this cowherd association and also preserves Gopāla-kuṇḍa as a traditional alias.
+    why_sacred: Local pilgrimage tradition remembers the cowherd boys eating and resting here and tells of Kṛṣṇa slipping away from His companions. Śrīmad-Bhāgavatam 10.21.18–19 supplies the broader canonical world of Kṛṣṇa and Balarāma tending cows around Govardhana, but those verses do not name this pond or prove its modern coordinate.
+    what_to_see:
+      - The pond itself and its pastoral setting near Govardhana.
+      - Trees, fields, and the surrounding landscape that help evoke the cowherding setting.
+      - Pilgrimage tradition says sacred stones may emerge here; treat any such identification as local tradition rather than a project-certified archaeological finding.
+      - 'Use #13 as the navigation anchor for coordinate-less #14 Sant Nivas, while preserving the two places as distinct identities.'
+    lila: Pilgrimage tradition remembers Kṛṣṇa and His cowherd friends sharing a meal and resting here during their daily grazing. The broader Bhāgavatam passages support this pastoral devotional setting without naming Gvāla-pokhara itself.
+    pilgrim_guidance: 'Use the verified #13 coordinate to orient at the pond. #14 Sant Nivas is a separate modern ashram landmark reached by returning toward the main parikramā road; arrival at #13 is only the navigation anchor for #14.'
+    references:
+      - id: reference.gvala-pokhara.srimad-bhagavatam-10-21-18
+        source_title: Śrīmad-Bhāgavatam
+        locus: '10.21.18'
+        explanation: Provides broad canonical context for Kṛṣṇa and Balarāma’s cowherding on Govardhana; it does not name Gvāla-pokhara.
+      - id: reference.gvala-pokhara.srimad-bhagavatam-10-21-19
+        source_title: Śrīmad-Bhāgavatam
+        locus: '10.21.19'
+        explanation: Continues the Govardhana cowherding meditation and supports the pastoral setting, not the exact modern pond identification.
+      - id: reference.gvala-pokhara.traditional-guide
+        source_title: Traditional Govardhana pilgrimage guide
+        locus: Gvāla-pokhara
+        explanation: Supports the local meal-and-rest tradition, the present pond identity, and Gopāla-kuṇḍa as an alias; it is distinct from direct scriptural place-name evidence.
+    related_place_ids:
+      - place.sant-nivas
+      - place.jugal-kunda
+
+  - place_id: place.sant-nivas
+    category: Modern parikramā ashram and landmark
+    summary: Sant Nivas is a living modern ashram and practical pilgrimage landmark near Gvāla-pokhara. Its importance here is devotional service and orientation on the parikramā route, not a claim that it is an ancient Kṛṣṇa-līlā site.
+    why_sacred: The ashram’s official history says it was established in 1982 by Śrī Śrī 108 Sant K. P. Ramanujdas Ji as a place of devotional service. The living complex includes worship of Brajeśvarī Devī and Brajeśvara Mahādeva, the founder’s samādhi and prayer space, and a small gauśālā. Traditional pilgrimage directions also use Sant Nivas as the roadside landmark for approaching Gvāla-pokhara.
+    what_to_see:
+      - The active Sant Nivas ashram and its devotional community.
+      - The shrines of Brajeśvarī Devī and Brajeśvara Mahādeva.
+      - The founder’s samādhi and prayer space.
+      - The small gauśālā maintained as part of the ashram’s service.
+      - 'Notice its practical relationship to the approach for #13 Gvāla-pokhara while keeping the ashram and pond distinct.'
+    lila: Sant Nivas belongs to Govardhana’s living modern devotional layer. No ancient Kṛṣṇa-līlā is assigned to the ashram; pilgrims may honor its worship, service, founder lineage, and continuing care for cows.
+    pilgrim_guidance: 'Navigate first to #13 Gvāla-pokhara. From the pond, return approximately 170 m along the dirt approach path toward the main parikramā road; Sant Nivas is described as directly across from that approach. Reaching #13 means arriving at the navigation anchor, not the exact ashram, whose independent coordinate remains unverified.'
+    references:
+      - id: reference.sant-nivas.official-history
+        source_title: Sant Nivas official institutional history
+        locus: Ashram history and services
+        explanation: Supports the 1982 foundation, founder identity, shrines, samādhi, prayer space, and gauśālā as modern institutional history.
+      - id: reference.sant-nivas.traditional-guide
+        source_title: Traditional Govardhana pilgrimage directions
+        locus: Sant Nivas and the Gvāla-pokhara approach
+        explanation: Supports the ashram’s present landmark role and practical directions; it does not establish an ancient līlā identity or an exact GPS coordinate.
+    related_place_ids:
+      - place.gvala-pokhara
+
+  - place_id: place.jugal-kunda
+    category: Sacred pastoral encampment kuṇḍa
+    summary: Jugal-kuṇḍa is a secluded sacred pond remembered in pilgrimage tradition as a place where Nanda Mahārāja and the cowherd community camped during their movements through Vraja. The name is preserved without inventing a separate yugala-līlā unsupported by the current evidence.
+    why_sacred: Traditional pilgrimage guides associate this kuṇḍa with a pastoral encampment of Nanda Mahārāja, Kṛṣṇa, and the cowherd community. Śrīmad-Bhāgavatam 10.11.21–30 narrates the community’s migration with its carts, herds, elders, women, and children; verse 28 vividly describes their departure. This is broad canonical migration context and does not name Jugal-kuṇḍa.
+    what_to_see:
+      - The small, secluded kuṇḍa set away from the main road.
+      - The surrounding trees and fields that retain a pastoral character.
+      - The relationship of the pond to the nearby Gvāla-pokhara and Sant Nivas landscape, without merging their identities.
+    lila: Remember the moving pastoral world of Vraja here—the cowherd community traveling together with carts and cattle under Nanda Mahārāja’s care. The specific association of their camp with this pond belongs to pilgrimage tradition.
+    pilgrim_guidance: The kuṇḍa is small, secluded, and slightly off the main parikramā road. Approach attentively and ask locally when needed; the app does not assert unverified footpaths or a more precise arrival point than the approved coordinate.
+    references:
+      - id: reference.jugal-kunda.srimad-bhagavatam-10-11-21-30
+        source_title: Śrīmad-Bhāgavatam
+        locus: 10.11.21–30
+        explanation: Provides broad canonical context for the cowherd community’s migration through Vraja; it does not name Jugal-kuṇḍa.
+      - id: reference.jugal-kunda.srimad-bhagavatam-10-11-28
+        source_title: Śrīmad-Bhāgavatam
+        locus: '10.11.28'
+        explanation: Describes the community departing with carts, families, and cattle, supporting the pastoral migration meditation rather than the exact modern-site identity.
+      - id: reference.jugal-kunda.traditional-guide
+        source_title: Traditional Govardhana pilgrimage guide
+        locus: Jugal-kuṇḍa
+        explanation: Supports the local encampment tradition and present sacred-water-body identification; it remains distinct from direct scriptural naming.
+    related_place_ids:
+      - place.gvala-pokhara
+      - place.sant-nivas
+
+  - place_id: place.mukharavinda-manasi-ganga
+    category: Shrine and sacred śilās
+    summary: 'This is the Mukuṭa-Mukhāravinda shrine on the bank of Mānasī-gaṅgā represented by map place #18.'
+    why_sacred: Detailed pilgrimage descriptions identify the Mukhāravinda-śilā and Mukuṭa-śilā at this Mānasī-gaṅgā shrine.
+    what_to_see:
+      - Look for the Mukuṭa-Mukhāravinda shrine on the bank of Mānasī-gaṅgā.
+      - The sacred features described here are the Mukhāravinda-śilā and Mukuṭa-śilā.
+      - 'Do not confuse this site with the separate Jatipura Mukhāravinda represented later by map place #61.'
+    lila: Pilgrimage remembrance here centers on Govardhana’s sacred face and crown forms represented by the Mukhāravinda and Mukuṭa śilās.
+    pilgrim_guidance: 'Confirm that you are at the Mānasī-gaṅgā-bank shrine marked #18. The later Jatipura Mukhāravinda is a different pilgrimage place.'
+    references:
+      - id: reference.mukharavinda-manasi-ganga.pilgrimage-description
+        source_title: Mānasī-gaṅgā Mukhāravinda pilgrimage description
+        locus: Mukhāravinda-śilā and Mukuṭa-śilā
+        explanation: 'Identifies the shrine and the sacred śilās that a pilgrim should look for at map place #18.'
+      - id: reference.mukharavinda-manasi-ganga.project-map
+        source_title: Original Govardhana pilgrimage map
+        locus: 'Map place #18'
+        explanation: 'Places this shrine immediately before Cakra-tīrtha and Mānasī-gaṅgā and distinguishes it from map place #61 at Jatipura.'
+    related_place_ids:
+      - place.manasiganga

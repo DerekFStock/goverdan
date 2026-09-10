@@ -21,6 +21,8 @@ struct PilgrimageMapPresentation: Identifiable {
 }
 
 enum PilgrimageMapProjection {
+    static let mediumLabelZoom = 14.5
+
     static func presentations(for places: [PilgrimagePlace]) -> [PilgrimageMapPresentation] {
         let ordered = places.sorted { $0.mapNumber < $1.mapNumber }
         let byID = Dictionary(uniqueKeysWithValues: ordered.map { ($0.id, $0) })
@@ -41,7 +43,7 @@ enum PilgrimageMapProjection {
     }
 
     enum LabelPriority: Int, Comparable {
-        case none, navigationAnchor, activeTarget
+        case ordinary, navigationAnchor, activeTarget
         static func < (lhs: LabelPriority, rhs: LabelPriority) -> Bool { lhs.rawValue < rhs.rawValue }
     }
 
@@ -52,7 +54,19 @@ enum PilgrimageMapProjection {
         if presentation.place.id == activeTarget.id { return .activeTarget }
         if activeTarget.coordinate == nil,
            activeTarget.navigationAnchorPlaceID == presentation.place.id { return .navigationAnchor }
-        return .none
+        return .ordinary
+    }
+
+    static func showsNameLabel(priority: LabelPriority, zoomLevel: Double) -> Bool {
+        priority == .activeTarget || zoomLevel >= mediumLabelZoom
+    }
+
+    static func approximateOffset(index: Int, zoomLevel: Double) -> CGVector {
+        let minimumRadius = 18.0
+        let maximumRadius = 72.0
+        let radius = min(maximumRadius, max(minimumRadius, minimumRadius + (zoomLevel - 13.0) * 12.0))
+        let angle = (-135.0 + Double(index % 8) * 90.0) * .pi / 180.0
+        return CGVector(dx: cos(angle) * radius, dy: sin(angle) * radius)
     }
 }
 
@@ -195,6 +209,7 @@ enum SimulationRoute {
 
 enum GeoMath {
     static let arrivalRadius = 30.0
+    static let nearbyPlaceRadius = 150.0
 
     static func distance(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D) -> Double {
         CLLocation(latitude: from.latitude, longitude: from.longitude)
@@ -223,8 +238,14 @@ enum GeoMath {
 final class PilgrimageMapModel: ObservableObject {
     enum Source: String, CaseIterable { case simulation = "Govardhana Simulation", real = "Real iPhone Location" }
     enum ArrivalPresentationState: Equatable { case enRoute, exactArrival, navigationAnchorArrival }
-    @Published var source: Source = .simulation { didSet { selectProvider() } }
+    @Published var source: Source = .simulation {
+        didSet {
+            if source == .real { manualSimulatedLocationActive = false }
+            selectProvider()
+        }
+    }
     @Published var sample: LocationSample?
+    @Published private(set) var manualSimulatedLocationActive = false
     @Published var activeDestination: PilgrimagePlace
     @Published var shouldRecenter = 0
     @Published var requestedCenter: CLLocationCoordinate2D?
@@ -257,6 +278,14 @@ final class PilgrimageMapModel: ObservableObject {
         return activeNavigationAnchor == nil ? .exactArrival : .navigationAnchorArrival
     }
     var nearest: PilgrimagePlace? { sample.flatMap { GeoMath.nearest(to: $0.coordinate, places: places) } }
+    var nearestDistance: Double? {
+        guard let sample, let nearestCoordinate = nearest?.coordinate else { return nil }
+        return GeoMath.distance(from: sample.coordinate, to: nearestCoordinate)
+    }
+    var nearbyPlace: PilgrimagePlace? {
+        guard let distance = nearestDistance, distance <= GeoMath.nearbyPlaceRadius else { return nil }
+        return nearest
+    }
     var mappablePlaces: [PilgrimagePlace] { places.filter { $0.coordinate != nil } }
     var mapPresentations: [PilgrimageMapPresentation] { PilgrimageMapProjection.presentations(for: places) }
     var activeNavigationAnchor: PilgrimagePlace? {
@@ -278,10 +307,21 @@ final class PilgrimageMapModel: ObservableObject {
     }
 
     func resetSimulation() {
+        manualSimulatedLocationActive = false
         simulated.reset()
         requestedCenter = places.first(where: { $0.mapNumber == 1 })?.coordinate
         shouldRecenter += 1
     }
+
+    func setManualSimulatedLocation(_ coordinate: CLLocationCoordinate2D) {
+        guard source == .simulation else { return }
+        manualSimulatedLocationActive = true
+        simulated.jump(to: coordinate)
+        requestedCenter = coordinate
+        shouldRecenter += 1
+    }
+
+    func useRealLocation() { source = .real }
 
     func recenter() {
         requestedCenter = sample?.coordinate
@@ -302,9 +342,11 @@ struct GovardhanaMapScreen: View {
     @State private var debugExpanded = false
     @State private var showingPlaces = false
     @State private var guidanceExpanded = false
+    let appModel: AppModel
 
-    init(places: [PilgrimagePlace]) {
+    init(places: [PilgrimagePlace], appModel: AppModel) {
         _model = StateObject(wrappedValue: PilgrimageMapModel(places: places))
+        self.appModel = appModel
     }
 
     var body: some View {
@@ -314,10 +356,35 @@ struct GovardhanaMapScreen: View {
                 activeTarget: model.activeDestination,
                 sample: model.sample,
                 recenterCoordinate: model.requestedCenter,
-                recenterToken: model.shouldRecenter
+                recenterToken: model.shouldRecenter,
+                onLongPress: { model.setManualSimulatedLocation($0) }
             ) { selectedPlace = $0 }
                 .ignoresSafeArea(edges: .bottom)
             VStack(spacing: 8) {
+                if model.manualSimulatedLocationActive {
+                    Text("SIMULATED LOCATION")
+                        .font(.caption.bold())
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 5)
+                        .background(.orange, in: Capsule())
+                        .accessibilityIdentifier("map.simulated-location-indicator")
+                }
+                if let nearby = model.nearbyPlace, let distance = model.nearestDistance {
+                    Button {
+                        selectedPlace = nearby
+                    } label: {
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("Nearby sacred place").font(.caption).foregroundStyle(.secondary)
+                            Text("#\(nearby.mapNumber) \(nearby.canonicalName)").font(.headline)
+                            Text("\(Int(distance.rounded())) m · Open place").font(.caption)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                    .buttonStyle(.plain)
+                    .padding()
+                    .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 14))
+                    .accessibilityIdentifier("map.nearby-place")
+                }
                 destinationPanel
                 #if DEBUG
                 controls
@@ -328,12 +395,14 @@ struct GovardhanaMapScreen: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar { Button("Places") { showingPlaces = true }.accessibilityIdentifier("map.places") }
         .sheet(isPresented: $showingPlaces) {
-            PilgrimagePlaceList(places: model.places) { place in
+            PilgrimagePlaceList(places: model.places, appModel: appModel) { place in
                 model.navigate(to: place)
                 showingPlaces = false
             }
         }
-        .navigationDestination(item: $selectedPlace) { PlaceDetailView(place: $0) }
+        .navigationDestination(item: $selectedPlace) {
+            PlaceDetailView(place: $0, allPlaces: model.places, model: appModel)
+        }
         .onChange(of: model.activeDestination.id) { guidanceExpanded = false }
     }
 
@@ -367,7 +436,7 @@ struct GovardhanaMapScreen: View {
         switch model.arrivalPresentationState {
         case .exactArrival: "Arrived at"
         case .navigationAnchorArrival: "At navigation anchor"
-        case .enRoute: model.activeNavigationAnchor == nil ? "Next" : "Target"
+        case .enRoute: "Target"
         }
     }
 
@@ -381,6 +450,13 @@ struct GovardhanaMapScreen: View {
                 Button("Reset") { model.resetSimulation() }
                 Button("Recenter") { model.recenter() }
             }.buttonStyle(.bordered)
+            if model.source == .simulation {
+                Text("Long-press anywhere on the map to set the simulated iPhone location.")
+                    .font(.caption)
+                Button("Use Real iPhone Location") { model.useRealLocation() }
+                    .buttonStyle(.borderedProminent)
+                    .accessibilityIdentifier("map.use-real-location")
+            }
             if let sample = model.sample {
                 Text(String(format: "LOCATION SOURCE: %@\n%.6f, %.6f  accuracy %.0f m\ncourse %.0f° speed %.1f m/s\nnearest: %@\nMap source: LOCAL\nNetwork map dependency: NONE", model.source == .simulation ? "SIMULATED" : "REAL", sample.coordinate.latitude, sample.coordinate.longitude, sample.horizontalAccuracy, sample.course, sample.speed, model.nearest?.canonicalName ?? "—"))
                     .font(.caption.monospaced())
@@ -393,6 +469,7 @@ struct GovardhanaMapScreen: View {
 private struct PilgrimagePlaceList: View {
     @Environment(\.dismiss) private var dismiss
     let places: [PilgrimagePlace]
+    let appModel: AppModel
     let onGo: (PilgrimagePlace) -> Void
 
     var body: some View {
@@ -405,7 +482,9 @@ private struct PilgrimagePlaceList: View {
                         Button(row.goTitle) { onGo(row.place) }
                             .buttonStyle(.borderedProminent)
                             .accessibilityIdentifier("places.go.\(row.place.mapNumber)")
-                        NavigationLink("Details") { PlaceDetailView(place: row.place) }
+                        NavigationLink("Details") {
+                            PlaceDetailView(place: row.place, allPlaces: places, model: appModel)
+                        }
                             .accessibilityIdentifier("places.details.\(row.place.mapNumber)")
                     }
                 }
@@ -413,6 +492,9 @@ private struct PilgrimagePlaceList: View {
             }
             .navigationTitle("Pilgrimage Places")
             .toolbar { Button("Done") { dismiss() } }
+            .navigationDestination(for: AppRoute.self) { route in
+                DestinationView(route: route, model: appModel)
+            }
         }
     }
 
@@ -420,46 +502,127 @@ private struct PilgrimagePlaceList: View {
 
 struct PlaceDetailView: View {
     let place: PilgrimagePlace
+    let allPlaces: [PilgrimagePlace]
+    let model: AppModel
+    private var content: PilgrimagePlaceContent? { model.pilgrimagePlaceContent(for: place.id) }
+
     var body: some View {
         Form {
-            Section("Mapping Test") {
+            Section {
                 Text("#\(place.mapNumber)").font(.largeTitle.bold())
                 Text(place.canonicalName).font(.title2)
-                if let latitude = place.latitude, let longitude = place.longitude {
-                    Text(String(format: "%.6f, %.6f", latitude, longitude)).monospaced()
-                } else {
-                    Text("Coordinate not yet established").foregroundStyle(.secondary)
+                if let category = content?.category {
+                    Text(category).font(.subheadline).foregroundStyle(.secondary)
                 }
-                Text("Registry coordinate — \(place.coordinateStatus.rawValue) / \(place.coordinateConfidence.rawValue)")
-                    .foregroundStyle(.secondary)
             }
-            #if DEBUG
-            Section("Research Metadata") {
-                LabeledContent("Stable ID", value: place.id.rawValue)
-                LabeledContent("Status", value: place.coordinateStatus.rawValue)
-                LabeledContent("Confidence", value: place.coordinateConfidence.rawValue)
-                if let accuracy = place.coordinateAccuracyMeters {
-                    LabeledContent("Accuracy", value: "\(Int(accuracy.rounded())) m")
-                }
-                if !place.alternateNames.isEmpty {
-                    LabeledContent("Aliases", value: place.alternateNames.joined(separator: ", "))
-                }
-                Text(place.verificationNotes)
-                if let anchor = place.navigationAnchorPlaceID {
-                    LabeledContent("Navigation anchor", value: anchor.rawValue)
-                }
-                if let guidance = place.locationGuidance {
-                    LabeledContent("Location guidance", value: guidance)
-                }
-                ForEach(Array(place.provenance.enumerated()), id: \.offset) { _, evidence in
-                    VStack(alignment: .leading) {
-                        Text(evidence.sourceType).font(.caption.bold())
-                        Text(evidence.description)
+            if let content {
+                pilgrimSection("Sacred Summary", text: content.summary)
+                pilgrimSection("Why This Place Is Sacred", text: content.whySacred)
+                Section("What To See Here") {
+                    ForEach(Array(content.whatToSee.enumerated()), id: \.offset) { _, feature in
+                        Label(feature, systemImage: "eye")
                     }
                 }
+                pilgrimSection("Līlā / Sacred Association", text: content.lila)
+                pilgrimSection("Pilgrim Guidance", text: content.pilgrimGuidance)
+                if !content.references.isEmpty {
+                    Section("Textual References") {
+                        ForEach(content.references) { reference in
+                            VStack(alignment: .leading, spacing: 5) {
+                                Text(reference.sourceTitle).font(.headline)
+                                if let locus = reference.locus {
+                                    Text(locus).font(.subheadline).foregroundStyle(.secondary)
+                                }
+                                Text(reference.explanation)
+                                if let quotation = reference.quotation {
+                                    Text(quotation).italic().padding(.leading, 8)
+                                }
+                                if let route = route(for: reference.destination) {
+                                    NavigationLink {
+                                        DestinationView(route: route, model: model)
+                                    } label: {
+                                        Text("Read in the app")
+                                    }
+                                    .accessibilityIdentifier("place.reference.\(reference.id).read")
+                                }
+                            }
+                            .padding(.vertical, 3)
+                        }
+                    }
+                }
+                let related = content.relatedPlaceIDs.compactMap { relatedID in
+                    allPlaces.first { $0.id == relatedID }
+                }
+                if !related.isEmpty {
+                    Section("Related Places") {
+                        ForEach(related) { relatedPlace in
+                            NavigationLink {
+                                PlaceDetailView(place: relatedPlace, allPlaces: allPlaces, model: model)
+                            } label: {
+                                Text("#\(relatedPlace.mapNumber) \(relatedPlace.canonicalName)")
+                            }
+                        }
+                    }
+                }
+            } else {
+                Section("Pilgrim Guide") {
+                    Text("Pilgrim-facing guide content has not yet been authored for this place.")
+                        .foregroundStyle(.secondary)
+                    if let guidance = place.locationGuidance { Text(guidance) }
+                }
             }
-            #endif
-        }.navigationTitle(place.canonicalName)
+            Section {
+                DisclosureGroup("Research & location information") {
+                    LabeledContent("Coordinate status", value: place.coordinateStatus.rawValue)
+                    LabeledContent("Confidence", value: place.coordinateConfidence.rawValue)
+                    if let latitude = place.latitude, let longitude = place.longitude {
+                        LabeledContent("Coordinate", value: String(format: "%.6f, %.6f", latitude, longitude))
+                    } else {
+                        LabeledContent("Coordinate", value: "Not yet established")
+                    }
+                    if let anchor = place.navigationAnchorPlaceID {
+                        LabeledContent("Navigation anchor", value: anchor.rawValue)
+                    }
+                    if !place.alternateNames.isEmpty {
+                        LabeledContent("Aliases", value: place.alternateNames.joined(separator: ", "))
+                    }
+                    Text(place.verificationNotes)
+                    ForEach(Array(place.provenance.enumerated()), id: \.offset) { _, evidence in
+                        VStack(alignment: .leading, spacing: 3) {
+                            Text(evidence.sourceType.replacingOccurrences(of: "_", with: " ").capitalized)
+                                .font(.caption.bold())
+                            Text(evidence.description)
+                            if let sourceReference = evidence.sourceReference,
+                               let url = URL(string: sourceReference) {
+                                Link("Source reference", destination: url)
+                            }
+                        }
+                    }
+                    LabeledContent("Stable ID", value: place.id.rawValue)
+                }
+            }
+        }
+        .scrollContentBackground(.hidden)
+        .background(AppTheme.canvas)
+        .navigationTitle(place.canonicalName)
+        .accessibilityIdentifier("place.detail.\(place.mapNumber)")
+    }
+
+    @ViewBuilder
+    private func pilgrimSection(_ title: String, text: String) -> some View {
+        Section(title) { Text(text) }
+    }
+
+    private func route(for destination: PilgrimageContentDestination?) -> AppRoute? {
+        switch destination {
+        case let .storySection(sectionID):
+            guard let section = model.storySections.first(where: { $0.id == sectionID }) else { return nil }
+            return .storySection(storyID: section.storyID, sectionID: sectionID, blockID: nil)
+        case let .sourcePassage(passageID):
+            return .searchSource(passageID)
+        case nil:
+            return nil
+        }
     }
 }
 
@@ -501,6 +664,7 @@ struct OfflineMapLibreView: UIViewRepresentable {
     let sample: LocationSample?
     let recenterCoordinate: CLLocationCoordinate2D?
     let recenterToken: Int
+    let onLongPress: (CLLocationCoordinate2D) -> Void
     let onSelect: (PilgrimagePlace) -> Void
 
     func makeCoordinator() -> Coordinator { Coordinator(self) }
@@ -514,6 +678,14 @@ struct OfflineMapLibreView: UIViewRepresentable {
         map.setCenter(.init(latitude: 27.5252, longitude: 77.4920), zoomLevel: 15.4, animated: false)
         map.addAnnotations(presentations.map(PlaceAnnotation.init))
         context.coordinator.map = map
+        #if DEBUG
+        let longPress = UILongPressGestureRecognizer(
+            target: context.coordinator,
+            action: #selector(Coordinator.handleLongPress(_:))
+        )
+        longPress.minimumPressDuration = 0.7
+        map.addGestureRecognizer(longPress)
+        #endif
         return map
     }
 
@@ -535,6 +707,13 @@ struct OfflineMapLibreView: UIViewRepresentable {
         var lastRecenter = 0
         private var installedBasemapLabels = false
         init(_ parent: OfflineMapLibreView) { self.parent = parent }
+
+        #if DEBUG
+        @objc func handleLongPress(_ recognizer: UILongPressGestureRecognizer) {
+            guard recognizer.state == .began, let map else { return }
+            parent.onLongPress(map.convert(recognizer.location(in: map), toCoordinateFrom: map))
+        }
+        #endif
 
         func mapView(_ mapView: MLNMapView, didFinishLoading style: MLNStyle) {
             // A relative GeoJSON string in a file-based style did not resolve reliably in
@@ -636,13 +815,10 @@ struct OfflineMapLibreView: UIViewRepresentable {
             if let placeAnnotation {
                 let place = placeAnnotation.place
                 if let offsetIndex = placeAnnotation.presentation.approximateOffsetIndex {
-                    let offsets: [CGVector] = [
-                        .init(dx: -27, dy: -27), .init(dx: 27, dy: -27),
-                        .init(dx: -27, dy: 27), .init(dx: 27, dy: 27),
-                        .init(dx: 0, dy: -38), .init(dx: 38, dy: 0),
-                        .init(dx: 0, dy: 38), .init(dx: -38, dy: 0),
-                    ]
-                    view.centerOffset = offsets[offsetIndex % offsets.count]
+                    view.centerOffset = PilgrimageMapProjection.approximateOffset(
+                        index: offsetIndex,
+                        zoomLevel: mapView.zoomLevel
+                    )
                 }
                 view.activate = { [weak self] in self?.parent.onSelect(place) }
                 view.isAccessibilityElement = false
@@ -655,7 +831,7 @@ struct OfflineMapLibreView: UIViewRepresentable {
                 let index = orderedPlaces.firstIndex(where: { $0.id == place.id }) ?? 0
                 let name = UILabel()
                 name.tag = 15_016
-                name.text = "#\(place.mapNumber) \(place.canonicalName)\(isApproximate ? " ?" : "")"
+                name.text = "#\(place.mapNumber) \(place.canonicalName)"
                 name.font = .systemFont(ofSize: 12, weight: .semibold)
                 name.textColor = .label
                 name.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.88)
@@ -690,7 +866,14 @@ struct OfflineMapLibreView: UIViewRepresentable {
         func updatePlaceLabels(in mapView: MLNMapView) {
             for annotation in mapView.annotations ?? [] {
                 guard let placeAnnotation = annotation as? PlaceAnnotation,
-                      let name = mapView.view(for: annotation)?.viewWithTag(15_016) as? UILabel else { continue }
+                      let annotationView = mapView.view(for: annotation),
+                      let name = annotationView.viewWithTag(15_016) as? UILabel else { continue }
+                if let offsetIndex = placeAnnotation.presentation.approximateOffsetIndex {
+                    annotationView.centerOffset = PilgrimageMapProjection.approximateOffset(
+                        index: offsetIndex,
+                        zoomLevel: mapView.zoomLevel
+                    )
+                }
                 updateLabel(name, for: placeAnnotation.presentation, zoomLevel: mapView.zoomLevel)
             }
         }
@@ -704,7 +887,7 @@ struct OfflineMapLibreView: UIViewRepresentable {
                 for: presentation,
                 activeTarget: parent.activeTarget
             )
-            label.isHidden = priority == .none || (priority == .navigationAnchor && zoomLevel < 14.5)
+            label.isHidden = !PilgrimageMapProjection.showsNameLabel(priority: priority, zoomLevel: zoomLevel)
             label.font = .systemFont(
                 ofSize: priority == .activeTarget ? 12 : 11,
                 weight: priority == .activeTarget ? .bold : .semibold

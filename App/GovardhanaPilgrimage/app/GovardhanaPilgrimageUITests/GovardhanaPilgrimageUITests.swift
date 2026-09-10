@@ -16,6 +16,24 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
         add(screenshot)
     }
 
+    func testTask020BLongPressSetsManualSimulationAndCanReturnToRealLocation() {
+        let app = launch()
+        app.buttons["home.map"].tap()
+        XCTAssertTrue(app.navigationBars["Govardhana Map"].waitForExistence(timeout: 8))
+        let map = app.otherElements["govardhana.map"]
+        XCTAssertTrue(map.waitForExistence(timeout: 5))
+
+        map.press(forDuration: 1.0)
+        XCTAssertTrue(app.staticTexts["SIMULATED LOCATION"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["map.nearby-place"].waitForExistence(timeout: 5))
+
+        app.buttons["Location & Offline Debug"].tap()
+        let useReal = app.buttons["map.use-real-location"]
+        reveal(useReal, in: app)
+        useReal.tap()
+        XCTAssertFalse(app.staticTexts["SIMULATED LOCATION"].exists)
+    }
+
     func testTask014OfflineMapRendersGovardhanAtPin20() {
         let app = launch()
         app.buttons["home.map"].tap()
@@ -40,9 +58,16 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
         XCTAssertEqual("#3 Lalitā-kuṇḍa", pin.label)
         pin.tap()
         XCTAssertTrue(app.navigationBars["Lalitā-kuṇḍa"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Sacred sakhī kuṇḍa"].exists)
+        XCTAssertTrue(app.staticTexts["Sacred Summary"].exists)
+        let research = app.buttons["Research & location information"]
+        reveal(research, in: app)
+        research.tap()
         XCTAssertTrue(app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@", "PROVISIONAL")).firstMatch.exists)
-        app.swipeUp()
-        XCTAssertTrue(app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@", "PROJECT_FIXTURE")).firstMatch.exists)
+        let projectFixture = app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "Project Fixture")
+        ).firstMatch
+        reveal(projectFixture, in: app)
         app.navigationBars["Lalitā-kuṇḍa"].buttons.firstMatch.tap()
         XCTAssertTrue(app.navigationBars["Govardhana Map"].waitForExistence(timeout: 5))
     }
@@ -60,7 +85,13 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
         XCTAssertEqual("#7 Aśoka-vana", pin.label)
         pin.tap()
         XCTAssertTrue(app.navigationBars["Aśoka-vana"].waitForExistence(timeout: 5))
-        XCTAssertTrue(app.staticTexts["27.511175, 77.478578"].exists)
+        let research = app.buttons["Research & location information"]
+        reveal(research, in: app)
+        research.tap()
+        let coordinate = app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "27.511175, 77.478578")
+        ).firstMatch
+        reveal(coordinate, in: app)
         XCTAssertTrue(app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@", "PROBABLE")).firstMatch.exists)
         XCTAssertTrue(app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@", "HIGH")).firstMatch.exists)
         app.swipeUp()
@@ -103,11 +134,106 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
         XCTAssertEqual("#10 Rāsa-sthalī — approximate location", approximate10.label)
         approximate10.tap()
         XCTAssertTrue(app.navigationBars["Rāsa-sthalī"].waitForExistence(timeout: 5))
-        XCTAssertTrue(app.staticTexts["Coordinate not yet established"].exists)
+        XCTAssertTrue(app.staticTexts["Sacred Summary"].exists)
+        XCTAssertTrue(app.staticTexts["Why This Place Is Sacred"].exists)
+        revealForReading(app.staticTexts["Look for the distinct rāsa platform within the Ratna-kuṇḍa and Śyāma-kuṭī complex."], in: app)
+        let pilgrimGuidance = app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "exact GPS coordinate has not yet been field verified")
+        ).firstMatch
+        revealForReading(pilgrimGuidance, in: app)
+        let research = app.buttons["Research & location information"]
+        reveal(research, in: app)
+        research.tap()
+        let missingCoordinate = app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "Not yet established")
+        ).firstMatch
+        reveal(missingCoordinate, in: app)
         XCTAssertTrue(app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@", "UNVERIFIED")).firstMatch.exists)
         app.swipeUp()
         XCTAssertTrue(app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@", "place.ratna-simhasana")).firstMatch.exists)
-        XCTAssertTrue(app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@", "Exact coordinate requires field verification")).firstMatch.exists)
+    }
+
+    func testTask019SantNivasUsesApproximateAnchorAndOpensOwnDetails() {
+        let app = launch()
+        app.buttons["home.map"].tap()
+        XCTAssertTrue(app.navigationBars["Govardhana Map"].waitForExistence(timeout: 8))
+        app.buttons["map.places"].tap()
+
+        let goToAnchor = app.buttons["places.go.14"]
+        reveal(goToAnchor, in: app)
+        XCTAssertTrue(app.staticTexts["#14 Sant Nivas"].exists)
+        XCTAssertTrue(app.staticTexts["APPROXIMATE · via #13 Gvāla-pokhara"].exists)
+        goToAnchor.tap()
+
+        XCTAssertTrue(app.navigationBars["Govardhana Map"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["#14 Sant Nivas"].exists)
+        XCTAssertTrue(app.staticTexts["Approximate · via #13 Gvāla-pokhara"].exists)
+        let approximate14 = app.buttons["map.approximate-pin.14"]
+        XCTAssertTrue(approximate14.waitForExistence(timeout: 5))
+        XCTAssertEqual("#14 Sant Nivas — approximate location", approximate14.label)
+        approximate14.tap()
+
+        XCTAssertTrue(app.navigationBars["Sant Nivas"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Modern parikramā ashram and landmark"].exists)
+        XCTAssertTrue(app.staticTexts["Sacred Summary"].exists)
+        XCTAssertTrue(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "not a claim that it is an ancient Kṛṣṇa-līlā site")
+        ).firstMatch.exists)
+        revealForReading(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "approximately 170 m")
+        ).firstMatch, in: app)
+    }
+
+    func testTask020APilgrimFirstPrototypePagesAndSecondaryResearch() {
+        var app = launch()
+        openPlaceDetails(5, in: app)
+        XCTAssertTrue(app.navigationBars["Kusuma-sarovara"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Sacred flower-gathering reservoir"].exists)
+        XCTAssertTrue(app.staticTexts["Sacred Summary"].exists)
+        XCTAssertTrue(app.staticTexts["Why This Place Is Sacred"].exists)
+        revealForReading(app.staticTexts["The large rectangular reservoir is the primary physical feature."], in: app)
+        XCTAssertFalse(app.staticTexts["27.512090, 77.478340"].exists)
+        let kusumaResearch = app.buttons["Research & location information"]
+        reveal(kusumaResearch, in: app)
+        kusumaResearch.tap()
+        let kusumaCoordinate = app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "27.512090, 77.478340")
+        ).firstMatch
+        reveal(kusumaCoordinate, in: app)
+
+        app.terminate()
+        app = launch()
+        openPlaceDetails(18, in: app)
+        XCTAssertTrue(app.navigationBars["Mukhāravinda — Mānasī-gaṅgā"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Shrine and sacred śilās"].exists)
+        let distinction = app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "separate Jatipura Mukhāravinda")
+        ).firstMatch
+        reveal(distinction, in: app)
+    }
+
+    func testPlaceReferenceReaderRemainsVisibleAndBackReturnsToPlaceDetails() {
+        let app = launch()
+        app.buttons["home.map"].tap()
+        XCTAssertTrue(app.navigationBars["Govardhana Map"].waitForExistence(timeout: 8))
+        let pin = app.buttons["map.pin.1"]
+        XCTAssertTrue(pin.waitForExistence(timeout: 5))
+        pin.tap()
+        XCTAssertTrue(app.navigationBars["Rādhā-kuṇḍa"].waitForExistence(timeout: 5))
+
+        let read = app.buttons["place.reference.reference.radhakunda.radhakundastakam-1.read"]
+        reveal(read, in: app)
+        read.tap()
+
+        let sourceTitle = app.navigationBars["Śrī Rādhā-kuṇḍāṣṭakam"]
+        XCTAssertTrue(sourceTitle.waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Passage Verse 1"].exists)
+        sleep(2)
+        XCTAssertTrue(sourceTitle.exists)
+        XCTAssertFalse(app.navigationBars["Rādhā-kuṇḍa"].exists)
+
+        app.navigationBars["Śrī Rādhā-kuṇḍāṣṭakam"].buttons["Rādhā-kuṇḍa"].tap()
+        XCTAssertTrue(app.navigationBars["Rādhā-kuṇḍa"].waitForExistence(timeout: 5))
     }
     private let sectionID = "story.radhakunda.manifestation"
     private let storyTitle = "The Story of Śrī Rādhā-kuṇḍa"
@@ -136,9 +262,23 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
         XCTAssertTrue(element.isHittable)
     }
 
+    private func revealForReading(_ element: XCUIElement, in app: XCUIApplication, attempts: Int = 12) {
+        for _ in 0..<attempts where !element.exists { app.swipeUp() }
+        XCTAssertTrue(element.waitForExistence(timeout: 5))
+    }
+
+    private func openPlaceDetails(_ number: Int, in app: XCUIApplication) {
+        app.buttons["home.map"].tap()
+        XCTAssertTrue(app.navigationBars["Govardhana Map"].waitForExistence(timeout: 8))
+        app.buttons["map.places"].tap()
+        let details = app.buttons["places.details.\(number)"]
+        reveal(details, in: app)
+        details.tap()
+    }
+
     func testAppLaunchesWithRealContentAndApprovedDestinations() {
         let app = launch()
-        XCTAssertTrue(app.navigationBars["Home"].waitForExistence(timeout: 10))
+        XCTAssertTrue(app.navigationBars["Govardhana Pilgrimage"].waitForExistence(timeout: 10))
         XCTAssertTrue(app.buttons["home.story"].exists)
         XCTAssertTrue(app.buttons["home.library"].exists)
         XCTAssertTrue(app.buttons["home.search"].exists)

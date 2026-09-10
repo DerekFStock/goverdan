@@ -11,12 +11,12 @@ from typing import Any
 from content_tooling import BuildResult, ContentValidationError
 
 
-SCHEMA_VERSION = 6
+SCHEMA_VERSION = 7
 DATABASE_FILENAME = "radhakunda-content.sqlite"
 
 SCHEMA_SQL = """
 PRAGMA foreign_keys = ON;
-PRAGMA user_version = 6;
+PRAGMA user_version = 7;
 
 CREATE TABLE package_metadata (
     key TEXT PRIMARY KEY NOT NULL,
@@ -192,6 +192,45 @@ CREATE TABLE pilgrimage_place_provenance (
     PRIMARY KEY (place_id, sort_order)
 ) WITHOUT ROWID;
 
+CREATE TABLE pilgrimage_place_contents (
+    place_id TEXT PRIMARY KEY NOT NULL REFERENCES pilgrimage_places(id),
+    category TEXT,
+    summary TEXT NOT NULL CHECK (length(trim(summary)) > 0),
+    why_sacred TEXT NOT NULL CHECK (length(trim(why_sacred)) > 0),
+    lila TEXT NOT NULL CHECK (length(trim(lila)) > 0),
+    pilgrim_guidance TEXT NOT NULL CHECK (length(trim(pilgrim_guidance)) > 0)
+) WITHOUT ROWID;
+
+CREATE TABLE pilgrimage_place_features (
+    place_id TEXT NOT NULL REFERENCES pilgrimage_place_contents(place_id),
+    sort_order INTEGER NOT NULL CHECK (sort_order > 0),
+    text TEXT NOT NULL CHECK (length(trim(text)) > 0),
+    PRIMARY KEY (place_id, sort_order)
+) WITHOUT ROWID;
+
+CREATE TABLE pilgrimage_place_references (
+    id TEXT PRIMARY KEY NOT NULL,
+    place_id TEXT NOT NULL REFERENCES pilgrimage_place_contents(place_id),
+    sort_order INTEGER NOT NULL CHECK (sort_order > 0),
+    source_title TEXT NOT NULL CHECK (length(trim(source_title)) > 0),
+    locus TEXT,
+    explanation TEXT NOT NULL CHECK (length(trim(explanation)) > 0),
+    quotation TEXT,
+    destination_kind TEXT CHECK (destination_kind IN ('STORY_SECTION', 'SOURCE_PASSAGE')),
+    destination_id TEXT,
+    UNIQUE (place_id, sort_order),
+    CHECK ((destination_kind IS NULL) = (destination_id IS NULL))
+) WITHOUT ROWID;
+
+CREATE TABLE pilgrimage_place_relationships (
+    place_id TEXT NOT NULL REFERENCES pilgrimage_place_contents(place_id),
+    related_place_id TEXT NOT NULL REFERENCES pilgrimage_places(id),
+    sort_order INTEGER NOT NULL CHECK (sort_order > 0),
+    PRIMARY KEY (place_id, related_place_id),
+    UNIQUE (place_id, sort_order),
+    CHECK (place_id <> related_place_id)
+) WITHOUT ROWID;
+
 CREATE TABLE search_documents (
     rowid INTEGER PRIMARY KEY,
     id TEXT NOT NULL UNIQUE,
@@ -361,6 +400,45 @@ def _insert_content(connection: sqlite3.Connection, result: BuildResult) -> None
         [
             (item["id"], order, evidence["source_type"], evidence["description"], evidence.get("source_reference"))
             for item in pilgrimage_places for order, evidence in enumerate(item["provenance"], 1)
+        ],
+    )
+    pilgrimage_place_contents = content.get("pilgrimage_place_contents", [])
+    connection.executemany(
+        "INSERT INTO pilgrimage_place_contents(place_id, category, summary, why_sacred, lila, pilgrim_guidance) VALUES (?, ?, ?, ?, ?, ?)",
+        [
+            (
+                item["place_id"], item.get("category"), item["summary"], item["why_sacred"],
+                item["lila"], item["pilgrim_guidance"],
+            )
+            for item in pilgrimage_place_contents
+        ],
+    )
+    connection.executemany(
+        "INSERT INTO pilgrimage_place_features(place_id, sort_order, text) VALUES (?, ?, ?)",
+        [
+            (item["place_id"], order, text)
+            for item in pilgrimage_place_contents for order, text in enumerate(item["what_to_see"], 1)
+        ],
+    )
+    connection.executemany(
+        "INSERT INTO pilgrimage_place_references(id, place_id, sort_order, source_title, locus, explanation, quotation, destination_kind, destination_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        [
+            (
+                reference["id"], item["place_id"], order, reference["source_title"],
+                reference.get("locus"), reference["explanation"], reference.get("quotation"),
+                reference.get("destination", {}).get("kind") if reference.get("destination") else None,
+                reference.get("destination", {}).get("id") if reference.get("destination") else None,
+            )
+            for item in pilgrimage_place_contents
+            for order, reference in enumerate(item["references"], 1)
+        ],
+    )
+    connection.executemany(
+        "INSERT INTO pilgrimage_place_relationships(place_id, related_place_id, sort_order) VALUES (?, ?, ?)",
+        [
+            (item["place_id"], related_place_id, order)
+            for item in pilgrimage_place_contents
+            for order, related_place_id in enumerate(item["related_place_ids"], 1)
         ],
     )
 

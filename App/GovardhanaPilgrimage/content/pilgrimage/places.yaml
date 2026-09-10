@@ -285,6 +285,126 @@ places:
       - source_type: PROJECT_RESEARCH
         description: Approved Task 017 project research decision.
     content_destination:
+  - id: place.sant-nivas
+    map_number: 14
+    canonical_name: Sant Nivas
+    ascii_name: Sant Nivas
+    alternate_names:
+      - Sant Nivas Ashram
+      - Sant Niwas
+      - Sant Niwas Ashram
+    coordinate_status: UNVERIFIED
+    coordinate_confidence: UNKNOWN
+    coordinate_accuracy_meters:
+    verification_notes: Sant Nivas Ashram is strongly identified as the roadside landmark opposite the dirt approach path to Gvāla-pokhara, but no sufficiently defensible independent GPS coordinate has yet been established.
+    navigation_anchor_place_id: place.gvala-pokhara
+    location_guidance: 'From #13 Gvāla-pokhara, return approximately 170 m along the dirt approach path toward the main parikramā road. Sant Nivas Ashram is described as being directly across from that path. Exact coordinate requires field verification.'
+    provenance:
+      - source_type: PILGRIMAGE_GUIDE
+        description: Traditional pilgrimage directions identify Sant Nivas Ashram as the main-road landmark directly opposite the approach path to Gvāla-pokhara.
+        source_reference: https://www.isvara.org/archive/gvala-pokhara/
+      - source_type: PILGRIMAGE_GUIDE
+        description: Independent Govardhana pilgrimage directions use Sant Nivas Ashram as a local landmark in this sacred landscape.
+        source_reference: https://padmanabhdas.wordpress.com/2012/11/21/
+      - source_type: PROJECT_RESEARCH
+        description: Approved project decision to preserve Sant Nivas as a coordinate-less anchored pilgrimage place rather than fabricate a GPS point.
+    content_destination:
+  - id: place.jugal-kunda
+    map_number: 15
+    canonical_name: Jugal-kuṇḍa
+    ascii_name: Jugal-kunda
+    alternate_names:
+      - Jugal Kund
+      - Yugal Kund
+      - Yugal Kunda
+      - Yugala-kuṇḍa
+    latitude: 27.5049625
+    longitude: 77.4736094
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: The sacred-water-body identity and mapped location strongly agree with traditional pilgrimage directions and the sequential geography of the illustrated Govardhana pilgrimage map. Exact pilgrim arrival point has not been field verified.
+    provenance:
+      - source_type: PILGRIMAGE_GUIDE
+        description: Traditional pilgrimage directions identify Jugal/Yugal-kuṇḍa just off the parikramā road before the Govardhan-town cluster and associate it with Nanda Mahārāja and the cowherd community.
+        source_reference: https://kashimathura.wordpress.com/a-complete-guide-to-brijmandal/15-govardhana-hill/
+      - source_type: MODERN_MAP
+        description: Modern mapped geographic evidence supports the approved Jugal-kuṇḍa coordinate in the expected pilgrimage sequence.
+      - source_type: PROJECT_RESEARCH
+        description: Approved project coordinate/status decision based on agreement between traditional directions, modern mapping, and the original numbered pilgrimage map.
+    content_destination:
+  - id: place.kilola-kunda
+    map_number: 16
+    canonical_name: Kilola-kuṇḍa
+    ascii_name: Kilola-kunda
+    alternate_names:
+      - Kilol Kund
+      - Kilola Kund
+      - Kilol Kunda
+    latitude: 27.4997625
+    longitude: 77.4716094
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: This record identifies the Kilola-kuṇḍa in the Jugal-kuṇḍa → Pañca-tīrtha → Mānasī-gaṅgā pilgrimage sequence. It must not be confused with another namesake Kilol Kund associated with Adeeng in institutional listings.
+    provenance:
+      - source_type: PILGRIMAGE_GUIDE
+        description: Govardhana pilgrimage descriptions identify Kilola-kuṇḍa in the Jugal-kuṇḍa / Govardhan-town approach landscape and associate it with Kṛṣṇa’s playful water and ball pastimes.
+        source_reference: https://brajdham000.home.blog/govardhan-jugal-kund-kilol-kund-panch-tirth-kund/
+      - source_type: OFFICIAL_OR_INSTITUTIONAL_DOCUMENT
+        description: Institutional Braj listings contain another Kilol Kund associated with Adeeng; this namesake distinction is explicitly preserved so map #16 is not misidentified.
+      - source_type: PROJECT_RESEARCH
+        description: Approved project identification and coordinate decision based on the traditional sequence, modern mapped location, and original numbered pilgrimage map.
+    content_destination:
+  - id: place.panca-tirtha-kunda
+    map_number: 17
+    canonical_name: Pañca-tīrtha-kuṇḍa
+    ascii_name: Panca-tirtha-kunda
+    alternate_names:
+      - Pancha Tirtha Kund
+      - Panch Tirth Kund
+      - Panca Tirtha Kund
+    latitude: 27.4992222
+    longitude: 77.4655167
+    coordinate_status: VERIFIED
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: The Braj Development Plan provides a direct coordinate for Pancha Tirtha Kund, and the location independently matches traditional pilgrimage descriptions at the entrance to Govardhan town near Mānasī-gaṅgā.
+    provenance:
+      - source_type: OFFICIAL_OR_INSTITUTIONAL_DOCUMENT
+        description: The Braj Development Plan lists Pancha Tirtha Kund at approximately 27°29′57.20″N, 77°27′55.86″E, matching the approved decimal coordinate.
+        source_reference: https://www.upbtvp.in/pdf/Braj_Development_plan.pdf
+      - source_type: PILGRIMAGE_GUIDE
+        description: Traditional pilgrimage descriptions place Pañca-tīrtha-kuṇḍa beside the palace/chhatri area on entering Govardhan town, near Mānasī-gaṅgā.
+      - source_type: PROJECT_RESEARCH
+        description: Approved VERIFIED/HIGH project decision based on agreement between institutional coordinate evidence and pilgrimage geography.
+    content_destination:
+  - id: place.mukharavinda-manasi-ganga
+    map_number: 18
+    canonical_name: Mukhāravinda — Mānasī-gaṅgā
+    ascii_name: Mukharavinda - Manasi-ganga
+    alternate_names:
+      - Mukharavinda
+      - Mukut Mukharvind
+      - Mukuṭa-Mukhāravinda
+      - Mukut Mukharavind
+      - Manasi Ganga Mukharavinda
+    latitude: 27.4982875
+    longitude: 77.4654219
+    coordinate_status: VERIFIED
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: 'This is specifically the Mukuṭa-Mukhāravinda shrine on the bank of Mānasī-gaṅgā represented by map place #18. It must not be confused with the separate Jatipura Mukhāravinda represented later by map place #61.'
+    provenance:
+      - source_type: PILGRIMAGE_GUIDE
+        description: Detailed pilgrimage descriptions identify this Mukhāravinda shrine on the bank of Mānasī-gaṅgā and describe the Mukhāravinda-śilā and Mukuṭa-śilā.
+      - source_type: PROJECT_MAP
+        description: 'The original project pilgrimage map places #18 Mukhāravinda immediately before Cakra-tīrtha and Mānasī-gaṅgā, distinguishing it from later #61 at Jatipura.'
+      - source_type: MODERN_MAP
+        description: Modern mapped temple evidence identifies the Mānasī-gaṅgā Mukuṭ/Mukhāravinda shrine at the approved coordinate.
+      - source_type: PROJECT_RESEARCH
+        description: 'Approved VERIFIED/HIGH identification explicitly distinguishing the Mānasī-gaṅgā shrine from Jatipura map place #61.'
+    content_destination:
   - id: place.manasiganga
     map_number: 20
     canonical_name: Mānasī-gaṅgā
