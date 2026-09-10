@@ -449,3 +449,126 @@ places:
       - source_type: PROJECT_FIXTURE
         description: Task 014 mapping fixture accepted for development testing.
     content_destination:
+
+  - id: place.brahma-kunda
+    map_number: 21
+    canonical_name: Brahma-kuṇḍa
+    ascii_name: Brahma-kunda
+    alternate_names:
+      - Brahma Kund
+      - Brahma Kunda
+    latitude: 27.4973806
+    longitude: 77.4640917
+    coordinate_status: VERIFIED
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: The Braj Development Plan provides a direct coordinate for Brahma Kund, and the location agrees with the traditional Mānasī-gaṅgā / Harideva sacred precinct.
+    provenance:
+      - source_type: OFFICIAL_OR_INSTITUTIONAL_DOCUMENT
+        description: The Braj Development Plan lists Brahma Kund at approximately 27°29′50.57″N, 77°27′50.73″E, corresponding to the approved decimal coordinate.
+        source_reference: https://www.upbtvp.in/pdf/Braj_Development_plan.pdf
+      - source_type: PILGRIMAGE_GUIDE
+        description: Traditional Govardhana pilgrimage descriptions identify Brahma-kuṇḍa in the Mānasī-gaṅgā / Harideva precinct.
+      - source_type: PROJECT_RESEARCH
+        description: Approved project decision based on agreement between institutional coordinate evidence, Caitanya-caritāmṛta pilgrimage context, and the original numbered pilgrimage map.
+    content_destination:
+
+  - id: place.manasi-devi-temple
+    map_number: 22
+    canonical_name: Mānasī-devī Temple
+    ascii_name: Manasi-devi Temple
+    alternate_names:
+      - Mansa Devi Temple
+      - Manasa Devi Temple
+      - Mānasā-devī Temple
+      - Mansa Devi
+    latitude: 27.4973694
+    longitude: 77.4645500
+    coordinate_status: VERIFIED
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: The Braj Development Plan provides a direct coordinate for the Mansa Devi temple in the Mānasī-gaṅgā precinct. The project preserves Mānasī-devī as the canonical pilgrimage-map name while retaining Manasā/Mansa variants as aliases.
+    provenance:
+      - source_type: OFFICIAL_OR_INSTITUTIONAL_DOCUMENT
+        description: The Braj Development Plan lists Maa Mansa Devi Temple at approximately 27°29′50.53″N, 77°27′52.38″E.
+        source_reference: https://www.upbtvp.in/pdf/Braj_Development_plan.pdf
+      - source_type: PILGRIMAGE_GUIDE
+        description: Traditional pilgrimage descriptions identify the Devī shrine beside the Mānasī-gaṅgā / Brahma-kuṇḍa precinct.
+      - source_type: PROJECT_RESEARCH
+        description: Approved project decision preserving the pilgrimage-map name Mānasī-devī while recording Mansa/Manasā name variants without forcing a simplified historical identification.
+    content_destination:
+
+  - id: place.harideva-temple
+    map_number: 23
+    canonical_name: Harideva Temple
+    ascii_name: Harideva Temple
+    alternate_names:
+      - Haridev Temple
+      - Harideva Mandir
+      - Shri Haridev Ji
+      - Thakur Haridev Ji
+    latitude: 27.4968194
+    longitude: 77.4643333
+    coordinate_status: VERIFIED
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: The Braj Development Plan provides a direct coordinate for Harideva Temple, and the identification is strongly corroborated by Caitanya-caritāmṛta’s explicit Harideva pilgrimage narrative at Govardhana.
+    provenance:
+      - source_type: OFFICIAL_OR_INSTITUTIONAL_DOCUMENT
+        description: The Braj Development Plan lists Harideva Temple at approximately 27°29′48.55″N, 77°27′51.60″E.
+        source_reference: https://www.upbtvp.in/pdf/Braj_Development_plan.pdf
+      - source_type: PRIMARY_GAUDIYA_TEXT
+        description: Caitanya-caritāmṛta, Madhya 18.17–22 explicitly records Śrī Caitanya Mahāprabhu visiting Harideva at Govardhana.
+      - source_type: PROJECT_RESEARCH
+        description: Approved project decision based on direct textual identity and strong modern geographic corroboration.
+    content_destination:
+
+  - id: place.govardhan-town
+    map_number: 24
+    canonical_name: Govardhan Town
+    ascii_name: Govardhan Town
+    alternate_names:
+      - Govardhan
+      - Govardhana
+      - Govardhan-grāma
+      - Govardhana-grāma
+    latitude: 27.4973
+    longitude: 77.4612
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: Govardhan Town is a geographic sacred settlement rather than a single point-object. The coordinate is a representative map marker within the modern town, not an exact sacred-feature coordinate.
+    provenance:
+      - source_type: PRIMARY_GAUDIYA_TEXT
+        description: Caitanya-caritāmṛta, Madhya 18.17 explicitly refers to Govardhana-grāma when Mahāprabhu comes to see Harideva.
+      - source_type: MODERN_MAP
+        description: Modern geographic mapping confirms the settlement and supports the representative town marker.
+      - source_type: PROJECT_RESEARCH
+        description: 'Approved project decision to represent the sacred settlement itself as map place #24 while explicitly distinguishing an area-marker from a sacred-object coordinate.'
+    content_destination:
+
+  - id: place.rna-mocana-kunda
+    map_number: 25
+    canonical_name: Ṛṇa-mocana-kuṇḍa
+    ascii_name: Rna-mocana-kunda
+    alternate_names:
+      - Rin Mochan Kund
+      - Rinmochan Kund
+      - Rina-mocana-kunda
+      - Rina Mochan Kund
+    latitude: 27.49419
+    longitude: 77.46617
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: Current mapped/restoration evidence supports this location for Ṛṇa-mocana-kuṇḍa in Govardhan, including reports placing the restored kuṇḍa opposite the electricity house. Older pilgrimage accounts that described the kuṇḍa as lost or dried up are historical context rather than current location evidence.
+    provenance:
+      - source_type: MODERN_MAP
+        description: Current mapping identifies Rinmochan Kunda at the approved working coordinate in Govardhan.
+      - source_type: MODERN_RESTORATION_REPORT
+        description: Local reporting from the restoration period identifies Ṛṇa-mocana-kuṇḍa opposite the Govardhan electricity house and documents its rediscovery/restoration.
+      - source_type: PILGRIMAGE_GUIDE
+        description: Older pilgrimage reporting described the kuṇḍa as difficult to locate or dried up; retain as historical context only.
+      - source_type: PROJECT_RESEARCH
+        description: 'Approved project decision treating the restored modern site as PROBABLE/HIGH while preserving strict separation from future #31 Pāpa-mocana-kuṇḍa.'
+    content_destination:

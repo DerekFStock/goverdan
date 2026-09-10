@@ -227,6 +227,25 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
         revealForReading(guidance, in: app)
     }
 
+    func testTask020A5NewPilgrimagePlacesOpenWithApprovedIdentity() {
+        var app = launch()
+        openPlaceDetails(21, in: app)
+        XCTAssertTrue(app.navigationBars["Brahma-kuṇḍa"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Sacred kuṇḍa of Mahāprabhu’s Govardhana pilgrimage"].exists)
+        revealForReading(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "Mahāprabhu bathed")
+        ).firstMatch, in: app)
+
+        app.terminate()
+        app = launch()
+        openPlaceDetails(25, in: app)
+        XCTAssertTrue(app.navigationBars["Ṛṇa-mocana-kuṇḍa"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Sacred ancestral-obligation kuṇḍa"].exists)
+        revealForReading(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "strictly distinct from future #31 Pāpa-mocana-kuṇḍa")
+        ).firstMatch, in: app)
+    }
+
     func testPlaceReferenceReaderRemainsVisibleAndBackReturnsToPlaceDetails() {
         let app = launch()
         app.buttons["home.map"].tap()
