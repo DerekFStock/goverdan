@@ -405,6 +405,33 @@ places:
       - source_type: PROJECT_RESEARCH
         description: 'Approved VERIFIED/HIGH identification explicitly distinguishing the Mānasī-gaṅgā shrine from Jatipura map place #61.'
     content_destination:
+  - id: place.cakra-tirtha
+    map_number: 19
+    canonical_name: Cakra-tīrtha
+    ascii_name: Cakra-tirtha
+    alternate_names:
+      - Chakra Tirtha
+      - Cakra Tirtha
+      - Cakaleśvara
+      - Chakaleshwar
+      - Chakaleshvara Mahadeva
+      - Cakaleśvara Mahādeva
+    latitude: 27.4985111
+    longitude: 77.4641639
+    coordinate_status: VERIFIED
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: The approved coordinate represents Cakaleśvara Mahādeva Temple as the documented practical arrival point within the Cakra-tīrtha sacred complex. It is not claimed to be the geometric center of the tīrtha or the exact coordinate of Sanātana Gosvāmī’s separate bhajana-kuṭīra.
+    provenance:
+      - source_type: OFFICIAL_OR_INSTITUTIONAL_DOCUMENT
+        description: The Braj Development Plan lists Cakaleśvara Mahādeva Temple at approximately 27°29′54.64″N, 77°27′50.99″E, corresponding to the approved practical-arrival coordinate.
+        source_reference: https://www.upbtvp.in/pdf/Braj_Development_plan.pdf
+      - source_type: PILGRIMAGE_GUIDE
+        description: Traditional Govardhana pilgrimage descriptions identify Cakra-tīrtha together with Cakaleśvara Mahādeva and Sanātana Gosvāmī’s nearby bhajana-kuṭīra.
+      - source_type: PROJECT_RESEARCH
+        description: 'Approved Task 020A.4 decision to model map #19 as one pilgrimage stop / sacred complex, using Cakaleśvara Temple as the practical arrival point while preserving Sanātana Gosvāmī’s bhajana-kuṭīra as a separate feature within the stop.'
+    content_destination:
+
   - id: place.manasiganga
     map_number: 20
     canonical_name: Mānasī-gaṅgā

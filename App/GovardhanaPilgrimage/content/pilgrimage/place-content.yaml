@@ -429,24 +429,136 @@ contents:
       - place.gvala-pokhara
       - place.sant-nivas
 
-  - place_id: place.mukharavinda-manasi-ganga
-    category: Shrine and sacred śilās
-    summary: 'This is the Mukuṭa-Mukhāravinda shrine on the bank of Mānasī-gaṅgā represented by map place #18.'
-    why_sacred: Detailed pilgrimage descriptions identify the Mukhāravinda-śilā and Mukuṭa-śilā at this Mānasī-gaṅgā shrine.
+  - place_id: place.kilola-kunda
+    category: Sacred play-kuṇḍa
+    summary: Kilola-kuṇḍa is a secluded sacred pond in the Govardhana parikramā landscape. Traditional Vraja pilgrimage accounts associate it with Kṛṣṇa’s playful pastimes—ball play with the cowherd boys and water play with Śrī Rādhā and the gopīs.
+    why_sacred: Traditional parikramā sources consistently identify Kilola-kuṇḍa or Kilol-kuṇḍa with playful water and ball pastimes. This is a traditional Vraja site identification; the project has not established a securely verified early Gosvāmī passage explicitly naming this exact kuṇḍa. Broader water-play or cowherd-play texts therefore cannot serve as direct geographic proof, and this place remains distinct from the namesake Kilol Kund associated with Adeeng.
     what_to_see:
-      - Look for the Mukuṭa-Mukhāravinda shrine on the bank of Mānasī-gaṅgā.
-      - The sacred features described here are the Mukhāravinda-śilā and Mukuṭa-śilā.
-      - 'Do not confuse this site with the separate Jatipura Mukhāravinda represented later by map place #61.'
-    lila: Pilgrimage remembrance here centers on Govardhana’s sacred face and crown forms represented by the Mukhāravinda and Mukuṭa śilās.
-    pilgrim_guidance: 'Confirm that you are at the Mānasī-gaṅgā-bank shrine marked #18. The later Jatipura Mukhāravinda is a different pilgrimage place.'
+      - The small sacred kuṇḍa itself.
+      - Its slightly secluded position relative to the main parikramā route.
+      - 'Recognize this as the Kilola-kuṇḍa in the #15 Jugal-kuṇḍa → #17 Pañca-tīrtha-kuṇḍa → Mānasī-gaṅgā sequence, not the Adeeng namesake.'
+    lila: Traditional Vraja accounts remember this as a place of playful recreation—Kṛṣṇa sporting with the cowherd boys and enjoying water pastimes with Rādhā and the gopīs. The project does not assign a more specific canonical episode.
+    pilgrim_guidance: 'Look for the secluded kuṇḍa between #15 Jugal-kuṇḍa and the Govardhan-town and Mānasī-gaṅgā cluster. Do not confuse it with the separate Kilol Kund associated with Adeeng.'
     references:
-      - id: reference.mukharavinda-manasi-ganga.pilgrimage-description
-        source_title: Mānasī-gaṅgā Mukhāravinda pilgrimage description
-        locus: Mukhāravinda-śilā and Mukuṭa-śilā
-        explanation: 'Identifies the shrine and the sacred śilās that a pilgrim should look for at map place #18.'
-      - id: reference.mukharavinda-manasi-ganga.project-map
-        source_title: Original Govardhana pilgrimage map
-        locus: 'Map place #18'
-        explanation: 'Places this shrine immediately before Cakra-tīrtha and Mānasī-gaṅgā and distinguishes it from map place #61 at Jatipura.'
+      - id: reference.kilola-kunda.traditional-guide
+        source_title: Traditional Govardhana pilgrimage guide
+        locus: Jugal-kuṇḍa, Kilola-kuṇḍa, and Pañca-tīrtha-kuṇḍa sequence
+        explanation: Traditional Vraja site identification; no early direct textual locus naming this exact modern kuṇḍa has yet been established by the project.
     related_place_ids:
+      - place.jugal-kunda
+      - place.panca-tirtha-kunda
+
+  - place_id: place.panca-tirtha-kunda
+    category: Five-tīrtha sacred kuṇḍa
+    summary: Pañca-tīrtha-kuṇḍa is a sacred pond at the entrance to the Govardhan-town and Mānasī-gaṅgā cluster. Vraja pilgrimage tradition understands its waters as containing five sacred tīrthas, making the kuṇḍa a local confluence of holy waters.
+    why_sacred: One commonly transmitted list names Gomatī, Narmadā, Sarayū, Vetrī, and Kāñcī. Another local tradition instead names Gaṅgā, Puṣkara, Prayāga, Kurukṣetra, and Gayā. The project preserves both received lists rather than silently choosing one. Current research has not established a securely verified early Gosvāmī passage explicitly naming this exact kuṇḍa.
+    what_to_see:
+      - The Pañca-tīrtha kuṇḍa itself.
+      - The nearby Bharatpur ruler’s palace or chhatri area described in pilgrimage literature.
+      - Its position at the approach to the Mānasī-gaṅgā cluster.
+      - 'Use it to orient toward #18 Mukhāravinda, #19 Cakra-tīrtha, and #20 Mānasī-gaṅgā.'
+    lila: This is primarily remembered as a tīrtha-confluence place whose water gathers the sanctity of five holy places. The project does not invent a separate Kṛṣṇa-līlā here.
+    pilgrim_guidance: 'You are approaching the dense Govardhan-town sacred zone. Visit #18, #19, and #20 as distinct but closely related places rather than treating the cluster as a single stop.'
+    references:
+      - id: reference.panca-tirtha-kunda.traditional-guide
+        source_title: Traditional Pañca-tīrtha pilgrimage description
+        locus: Pañca-tīrtha-kuṇḍa
+        explanation: Preserves the five-tīrtha sacred tradition, including its differing locally transmitted lists; no early direct Gosvāmī locus has yet been established.
+      - id: reference.panca-tirtha-kunda.braj-development-plan
+        source_title: Braj Development Plan
+        locus: Pancha Tirtha Kund geographic listing
+        explanation: Supports the modern geographic identification and coordinate only; it is not sacred textual authority.
+    related_place_ids:
+      - place.kilola-kunda
+      - place.mukharavinda-manasi-ganga
       - place.manasiganga
+
+  - place_id: place.mukharavinda-manasi-ganga
+    category: Girirāja Mukhāravinda shrine
+    summary: 'This is the Mukuṭa-Mukhāravinda shrine on the bank of Mānasī-gaṅgā, where Girirāja Govardhana is worshiped personally through sacred śilās identified with His face and crown. It is map place #18 and must not be confused with the separate Jatipura Mukhāravinda at future map place #61.'
+    why_sacred: The Mukhāravinda tradition approaches Govardhana as the living sacred person Girirāja. Pilgrimage descriptions identify the Mukhāravinda-śilā and Mukuṭa-śilā here, with the Mukuṭa-śilā traditionally associated with Kṛṣṇa’s crown and form. Śrīmad-Bhāgavatam 10.24.35–36 supplies broad scriptural context for Kṛṣṇa’s identification with Govardhana during Govardhana worship; it does not name this modern shrine, whose specific identity comes through pilgrimage tradition.
+    what_to_see:
+      - The Mukuṭa-Mukhāravinda shrine on the bank of Mānasī-gaṅgā.
+      - The Mukhāravinda-śilā, worshiped as Girirāja’s face.
+      - The Mukuṭa-śilā, traditionally associated with Kṛṣṇa’s crown and form.
+      - The traditional offering of milk or abhiṣeka to Girirāja where locally practiced.
+      - '#18 Mānasī-gaṅgā Mukhāravinda is not #61 Jatipura Mukhāravinda.'
+    lila: Pilgrimage remembrance here centers on Girirāja’s personal form and Kṛṣṇa’s identity with Govardhana. The project does not invent a separate event for the shrine.
+    pilgrim_guidance: 'Confirm that you are at the Mukhāravinda shrine on the Mānasī-gaṅgā bank, then look specifically for the Mukhāravinda and Mukuṭa śilās. This #18 shrine is distinct from future map place #61 at Jatipura.'
+    references:
+      - id: reference.mukharavinda-manasi-ganga.srimad-bhagavatam-10-24-35-36
+        source_title: Śrīmad-Bhāgavatam
+        locus: 10.24.35–36
+        explanation: Describes Kṛṣṇa manifesting a great Govardhana form and identifying Himself with the Hill during Govardhana worship; it does not identify this modern shrine.
+      - id: reference.mukharavinda-manasi-ganga.pilgrimage-description
+        source_title: Traditional Mānasī-gaṅgā Mukhāravinda pilgrimage description
+        locus: Mukhāravinda-śilā and Mukuṭa-śilā
+        explanation: Identifies this specific shrine, its two sacred śilās, and its worship practice on the Mānasī-gaṅgā bank.
+    related_place_ids:
+      - place.cakra-tirtha
+      - place.manasiganga
+
+  - place_id: place.cakra-tirtha
+    category: Cakra-tīrtha, Cakaleśvara, and Sanātana Gosvāmī sacred complex
+    summary: Cakra-tīrtha is a major sacred stop beside Mānasī-gaṅgā bringing together three closely related features—Cakra-tīrtha itself, Cakaleśvara Mahādeva, and the nearby bhajana-kuṭīra of Sanātana Gosvāmī. Bhakti-ratnākara directly remembers the tīrtha and Sanātana’s residence in this landscape.
+    why_sacred: Bhakti-ratnākara 5.724–725 directly describes Cakra-tīrtha at Govardhana and associates it with Rādhā-Kṛṣṇa pastimes. Verses 5.728–741 describe Sanātana Gosvāmī residing at Cakra-tīrtha, his kuṭīra, and his daily Govardhana parikramā. Cakaleśvara Mahādeva is the Śiva shrine within this sacred complex. The mosquito story in which Cakaleśvara appears as a brāhmaṇa and asks Sanātana not to leave is preserved as later traditional pilgrimage narration rather than an established early textual event.
+    what_to_see:
+      - Cakaleśvara Mahādeva Temple, the practical map arrival point.
+      - The Cakra-tīrtha sacred area within the immediate complex.
+      - Sanātana Gosvāmī’s nearby bhajana-kuṭīra.
+      - The single map pin does not claim the exact coordinate of every feature in this sacred complex.
+    lila: Cakra-tīrtha is remembered in Bhakti-ratnākara as a place of Rādhā-Kṛṣṇa pastimes. It later became deeply associated with Sanātana Gosvāmī, who resided here and performed daily Govardhana parikramā; the exact nature of the Rādhā-Kṛṣṇa pastime is not invented.
+    pilgrim_guidance: Navigate to Cakaleśvara Mahādeva Temple as the practical arrival point, then identify Cakra-tīrtha and Sanātana Gosvāmī’s bhajana-kuṭīra within the immediate complex. The map pin is not the exact coordinate of every feature.
+    references:
+      - id: reference.cakra-tirtha.bhakti-ratnakara-5-724-725
+        source_title: Bhakti-ratnākara
+        locus: 5.724–725
+        explanation: Directly identifies Cakra-tīrtha at Govardhana and associates it with Rādhā-Kṛṣṇa pastimes without specifying the pastime’s nature.
+        quotation: “Please see this Cakra-tīrtha.”
+      - id: reference.cakra-tirtha.bhakti-ratnakara-5-728-741
+        source_title: Bhakti-ratnākara
+        locus: 5.728–741
+        explanation: Describes Sanātana Gosvāmī’s residence and kuṭīra at Cakra-tīrtha and his daily Govardhana parikramā.
+      - id: reference.cakra-tirtha.traditional-account
+        source_title: Traditional Cakaleśvara and Sanātana pilgrimage account
+        locus: Cakra-tīrtha sacred complex
+        explanation: Supports the living tradition surrounding Cakaleśvara Mahādeva, Sanātana’s residence, and the later mosquito story; it is not presented as an established early textual locus.
+    related_place_ids:
+      - place.mukharavinda-manasi-ganga
+      - place.manasiganga
+
+  - place_id: place.manasiganga
+    category: Sacred lake and naukā-vilāsa tīrtha
+    summary: Mānasī-gaṅgā is the great sacred lake at Govardhan town and one of the major orientation centers of Govardhana parikramā. Gauḍīya literature remembers it especially as a place of Rādhā and Kṛṣṇa’s boating pastimes, and Śrī Caitanya Mahāprabhu bathed here before beginning His circumambulation of Govardhana.
+    why_sacred: Raghunātha Dāsa Gosvāmī’s Vraja-vilāsa-stava 64 directly praises Mānasī-gaṅgā and remembers Rādhā-Kṛṣṇa’s boating pastimes. Viśvanātha Cakravartī Ṭhākura’s Govardhanāṣṭakam 7 describes Rādhā in Kṛṣṇa’s boat, clinging to Him when He playfully makes it appear to sink. Garga-saṁhitā 3.7.7 names Mānasī-gaṅgā among Govardhana’s great tīrthas, and Caitanya-caritāmṛta, Madhya 18.32 records Mahāprabhu bathing here before continuing around Govardhana. Later traditions preserve varying manifestation accounts rather than one exclusive narrative.
+    what_to_see:
+      - The large Mānasī-gaṅgā lake.
+      - The ghāṭa and temple-lined sacred urban environment, without assigning unsupported names to individual ghāṭas.
+      - 'Its immediate relationship with #18 Mukhāravinda and #19 Cakra-tīrtha.'
+      - The lake as a major sacred hub and orientation center rather than an isolated map pin.
+    lila: Rādhā and Kṛṣṇa enjoy playful boating on Mānasī-gaṅgā. In Viśvanātha Cakravartī Ṭhākura’s meditation, Kṛṣṇa makes the boat appear endangered and Rādhā clings to Him. Śrī Caitanya Mahāprabhu later bathed here before beginning His Govardhana parikramā.
+    pilgrim_guidance: 'Use Mānasī-gaṅgā as a major orientation center in Govardhan town. Visit #18, #19, and #20 as distinct but tightly connected sacred stops; the current provisional coordinate confidence remains visible in the collapsed research section.'
+    references:
+      - id: reference.manasiganga.vraja-vilasa-stava-64
+        source_title: Raghunātha Dāsa Gosvāmī — Vraja-vilāsa-stava
+        locus: Verse 64
+        explanation: Directly praises Mānasī-gaṅgā and remembers the Divine Couple’s boating pastimes there.
+      - id: reference.manasiganga.govardhanastakam-7
+        source_title: Viśvanātha Cakravartī Ṭhākura — Govardhanāṣṭakam
+        locus: Verse 7
+        explanation: Describes the playful boating meditation in which Rādhā clings to Kṛṣṇa as He makes the boat appear endangered.
+      - id: reference.manasiganga.garga-samhita-3-7-7
+        source_title: Garga-saṁhitā
+        locus: '3.7.7'
+        explanation: Explicitly names Mānasī-gaṅgā among Govardhana’s great tīrthas.
+      - id: reference.manasiganga.caitanya-caritamrta-madhya-18-32
+        source_title: Caitanya-caritāmṛta, Madhya-līlā
+        locus: '18.32'
+        explanation: Records Śrī Caitanya Mahāprabhu bathing in Mānasī-gaṅgā before continuing His Govardhana circumambulation.
+      - id: reference.manasiganga.variant-manifestation-traditions
+        source_title: Later Mānasī-gaṅgā manifestation traditions
+        locus: Variant pilgrimage accounts
+        explanation: Records that multiple later origin narratives are received; no one variant is presented as the exclusive canonical account.
+    related_place_ids:
+      - place.mukharavinda-manasi-ganga
+      - place.cakra-tirtha

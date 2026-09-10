@@ -205,11 +205,26 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
         app = launch()
         openPlaceDetails(18, in: app)
         XCTAssertTrue(app.navigationBars["Mukhāravinda — Mānasī-gaṅgā"].waitForExistence(timeout: 5))
-        XCTAssertTrue(app.staticTexts["Shrine and sacred śilās"].exists)
+        XCTAssertTrue(app.staticTexts["Girirāja Mukhāravinda shrine"].exists)
         let distinction = app.descendants(matching: .any).matching(
             NSPredicate(format: "label CONTAINS %@", "separate Jatipura Mukhāravinda")
         ).firstMatch
         reveal(distinction, in: app)
+    }
+
+    func testTask020A4CakraTirthaOpensAsDistinctPilgrimageComplex() {
+        let app = launch()
+        openPlaceDetails(19, in: app)
+        XCTAssertTrue(app.navigationBars["Cakra-tīrtha"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Cakra-tīrtha, Cakaleśvara, and Sanātana Gosvāmī sacred complex"].exists)
+        let distinction = app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "three closely related features")
+        ).firstMatch
+        revealForReading(distinction, in: app)
+        let guidance = app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "not the exact coordinate of every feature")
+        ).firstMatch
+        revealForReading(guidance, in: app)
     }
 
     func testPlaceReferenceReaderRemainsVisibleAndBackReturnsToPlaceDetails() {
@@ -336,7 +351,7 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
         XCTAssertTrue(origin.isHittable)
 
         app.navigationBars[sectionTitle].buttons[storyTitle].tap()
-        app.navigationBars[storyTitle].buttons["Home"].tap()
+        app.navigationBars[storyTitle].buttons.firstMatch.tap()
         app.buttons["home.search"].tap()
         let field = app.searchFields.firstMatch
         field.tap()
