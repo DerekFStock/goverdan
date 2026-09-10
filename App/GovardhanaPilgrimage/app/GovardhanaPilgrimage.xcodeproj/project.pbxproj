@@ -33,6 +33,7 @@
 		B14000000000000000000003 /* govardhana-offline-style.json in Resources */ = {isa = PBXBuildFile; fileRef = B14000000000000000000004 /* govardhana-offline-style.json */; };
 		B14000000000000000000005 /* govardhana-base.geojson in Resources */ = {isa = PBXBuildFile; fileRef = B14000000000000000000006 /* govardhana-base.geojson */; };
 		B14000000000000000000007 /* MapLibre in Frameworks */ = {isa = PBXBuildFile; productRef = B14000000000000000000008 /* MapLibre */; };
+		C20000000000000000000001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C20000000000000000000002 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		B14000000000000000000002 /* Task014Map.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Map/Task014Map.swift; sourceTree = "<group>"; };
 		B14000000000000000000004 /* govardhana-offline-style.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ../Resources/Map/govardhana-offline-style.json; sourceTree = "<group>"; };
 		B14000000000000000000006 /* govardhana-base.geojson */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ../Resources/Map/govardhana-base.geojson; sourceTree = "<group>"; };
+		C20000000000000000000002 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 		55897B841FE6724AECA22D20 /* GovardhanaPilgrimage */ = {
 			isa = PBXGroup;
 			children = (
+				C20000000000000000000002 /* Assets.xcassets */,
 				DCC8A9A24B20D3216CE254CF /* App */,
 				121BC79620C80C6CD193B36D /* Data */,
 				3EDD15AC7B03244744AF4490 /* Domain */,
@@ -361,6 +364,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C20000000000000000000001 /* Assets.xcassets in Resources */,
 				41D406278EEE991B1C44EDC1 /* radhakunda-content.sqlite in Resources */,
 				A12000000000000000000003 /* task012-neutral-witness.pdf in Resources */,
 				B14000000000000000000003 /* govardhana-offline-style.json in Resources */,
