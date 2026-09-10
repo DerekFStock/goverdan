@@ -278,7 +278,7 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
 
     func testAppLaunchesWithRealContentAndApprovedDestinations() {
         let app = launch()
-        XCTAssertTrue(app.navigationBars["Home"].waitForExistence(timeout: 10))
+        XCTAssertTrue(app.navigationBars["Govardhana Pilgrimage"].waitForExistence(timeout: 10))
         XCTAssertTrue(app.buttons["home.story"].exists)
         XCTAssertTrue(app.buttons["home.library"].exists)
         XCTAssertTrue(app.buttons["home.search"].exists)
