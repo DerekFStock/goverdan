@@ -358,7 +358,10 @@ struct GovardhanaMapScreen: View {
                 recenterCoordinate: model.requestedCenter,
                 recenterToken: model.shouldRecenter,
                 onLongPress: { model.setManualSimulatedLocation($0) }
-            ) { selectedPlace = $0 }
+            ) { place in
+                model.navigate(to: place)
+                selectedPlace = place
+            }
                 .ignoresSafeArea(edges: .bottom)
             VStack(spacing: 8) {
                 if model.manualSimulatedLocationActive {
@@ -803,6 +806,7 @@ struct OfflineMapLibreView: UIViewRepresentable {
             let isApproximate = placeAnnotation?.presentation.isApproximate == true
             let view = AccessibleAnnotationView(reuseIdentifier: annotation is UserAnnotation ? "user" : isApproximate ? "approximate-place" : "place")
             let label = UILabel(frame: CGRect(x: 0, y: 0, width: 34, height: 34))
+            label.tag = 15_017
             label.textAlignment = .center; label.font = .boldSystemFont(ofSize: isApproximate ? 13 : 15)
             label.textColor = isApproximate ? .systemRed : .white
             label.backgroundColor = annotation is UserAnnotation ? .systemBlue : isApproximate ? UIColor.systemBackground.withAlphaComponent(0.94) : .systemRed
@@ -823,6 +827,7 @@ struct OfflineMapLibreView: UIViewRepresentable {
                 view.activate = { [weak self] in self?.parent.onSelect(place) }
                 view.isAccessibilityElement = false
                 let button = UIButton(frame: label.frame)
+                button.tag = 15_018
                 button.accessibilityIdentifier = isApproximate ? "map.approximate-pin.\(place.mapNumber)" : "map.pin.\(place.mapNumber)"
                 button.accessibilityLabel = "#\(place.mapNumber) \(place.canonicalName)\(isApproximate ? " — approximate location" : "")"
                 button.addAction(UIAction { [weak self] _ in self?.parent.onSelect(place) }, for: .touchUpInside)
@@ -848,6 +853,7 @@ struct OfflineMapLibreView: UIViewRepresentable {
                 )
                 view.addSubview(name)
                 updateLabel(name, for: placeAnnotation.presentation, zoomLevel: mapView.zoomLevel)
+                updateMarker(label, button: button, for: placeAnnotation.presentation)
             } else {
                 view.accessibilityIdentifier = "map.user-location"
                 view.accessibilityLabel = "Current simulated location"
@@ -875,6 +881,33 @@ struct OfflineMapLibreView: UIViewRepresentable {
                     )
                 }
                 updateLabel(name, for: placeAnnotation.presentation, zoomLevel: mapView.zoomLevel)
+                if let marker = annotationView.viewWithTag(15_017) as? UILabel,
+                   let button = annotationView.viewWithTag(15_018) as? UIButton {
+                    updateMarker(marker, button: button, for: placeAnnotation.presentation)
+                }
+            }
+        }
+
+        private func updateMarker(
+            _ marker: UILabel,
+            button: UIButton,
+            for presentation: PilgrimageMapPresentation
+        ) {
+            let active = presentation.place.id == parent.activeTarget.id
+            let approximate = presentation.isApproximate
+            marker.layer.borderWidth = active ? 4 : approximate ? 2 : 0
+            marker.layer.borderColor = active ? UIColor.systemYellow.cgColor : approximate ? UIColor.systemRed.cgColor : nil
+            marker.layer.shadowColor = active ? UIColor.black.cgColor : nil
+            marker.layer.shadowOpacity = active ? 0.35 : 0
+            marker.layer.shadowRadius = active ? 5 : 0
+            marker.layer.shadowOffset = .zero
+            marker.layer.masksToBounds = false
+            marker.transform = active ? CGAffineTransform(scaleX: 1.18, y: 1.18) : .identity
+            button.accessibilityValue = active ? "Selected destination" : nil
+            if active {
+                button.accessibilityTraits.insert(.selected)
+            } else {
+                button.accessibilityTraits.remove(.selected)
             }
         }
 

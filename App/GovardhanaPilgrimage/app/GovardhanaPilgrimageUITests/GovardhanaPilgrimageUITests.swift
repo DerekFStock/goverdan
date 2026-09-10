@@ -16,6 +16,32 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
         add(screenshot)
     }
 
+    func testSelectedDestinationIsEmphasizedForGoAndDirectPinSelection() {
+        var app = launch()
+        app.buttons["home.map"].tap()
+        XCTAssertTrue(app.navigationBars["Govardhana Map"].waitForExistence(timeout: 8))
+
+        app.buttons["map.places"].tap()
+        let go7 = app.buttons["places.go.7"]
+        reveal(go7, in: app)
+        go7.tap()
+        let selected7 = app.buttons["map.pin.7"]
+        XCTAssertTrue(selected7.waitForExistence(timeout: 5))
+        XCTAssertEqual("Selected destination", selected7.value as? String)
+
+        app.terminate()
+        app = launch()
+        app.buttons["home.map"].tap()
+        XCTAssertTrue(app.navigationBars["Govardhana Map"].waitForExistence(timeout: 5))
+        let pin3 = app.buttons["map.pin.3"]
+        XCTAssertTrue(pin3.waitForExistence(timeout: 5))
+        pin3.tap()
+        XCTAssertTrue(app.navigationBars["Lalitā-kuṇḍa"].waitForExistence(timeout: 5))
+        app.navigationBars["Lalitā-kuṇḍa"].buttons.firstMatch.tap()
+        XCTAssertTrue(app.navigationBars["Govardhana Map"].waitForExistence(timeout: 5))
+        XCTAssertEqual("Selected destination", app.buttons["map.pin.3"].value as? String)
+    }
+
     func testTask020BLongPressSetsManualSimulationAndCanReturnToRealLocation() {
         let app = launch()
         app.buttons["home.map"].tap()
