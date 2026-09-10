@@ -171,8 +171,8 @@ final class FoundationTests: XCTestCase {
     func testTask019ApprovedPlacesSurviveSQLiteAndProjectGenericallyToMap() throws {
         let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
         let places = try repository.pilgrimagePlaces()
-        XCTAssertEqual(20, places.count)
-        XCTAssertEqual(Array(1...20), places.map(\.mapNumber))
+        XCTAssertEqual(25, places.count)
+        XCTAssertEqual(Array(1...25), places.map(\.mapNumber))
         let byNumber = Dictionary(uniqueKeysWithValues: places.map { ($0.mapNumber, $0) })
 
         let santNivas = try XCTUnwrap(byNumber[14])
@@ -207,7 +207,7 @@ final class FoundationTests: XCTestCase {
             return places.first { $0.id == anchorID }?.coordinate != nil
         }.count
         XCTAssertEqual(expectedPresentationCount, presentations.count)
-        XCTAssertEqual(20, presentations.count)
+        XCTAssertEqual(25, presentations.count)
         let approximate14 = try XCTUnwrap(presentations.first { $0.place.mapNumber == 14 })
         XCTAssertTrue(approximate14.isApproximate)
         XCTAssertEqual(13, approximate14.anchor?.mapNumber)
@@ -368,12 +368,12 @@ final class FoundationTests: XCTestCase {
         ), 72.000001)
     }
 
-    func testTask020A4RepositoryLoadsPlacesOneThroughTwenty() throws {
+    func testTask020A5RepositoryLoadsPlacesOneThroughTwentyFive() throws {
         let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
         let places = try repository.pilgrimagePlaces()
         let byNumber = Dictionary(uniqueKeysWithValues: places.map { ($0.mapNumber, $0) })
 
-        for number in 1...20 {
+        for number in 1...25 {
             let place = try XCTUnwrap(byNumber[number])
             let content = try XCTUnwrap(try repository.pilgrimagePlaceContent(placeID: place.id))
             XCTAssertFalse(content.summary.isEmpty)
@@ -479,6 +479,37 @@ final class FoundationTests: XCTestCase {
         let manasi = try XCTUnwrap(try repository.pilgrimagePlaceContent(placeID: manasiPlace.id))
         XCTAssertTrue(manasi.whySacred.contains("boating pastimes"))
         XCTAssertEqual([18, 19], manasi.relatedPlaceIDs.compactMap { id in places.first { $0.id == id }?.mapNumber })
+
+        let expected: [Int: (Double, Double, CoordinateVerificationStatus, CoordinateConfidence)] = [
+            21: (27.4973806, 77.4640917, .verified, .high),
+            22: (27.4973694, 77.4645500, .verified, .high),
+            23: (27.4968194, 77.4643333, .verified, .high),
+            24: (27.4973, 77.4612, .probable, .high),
+            25: (27.49419, 77.46617, .probable, .high),
+        ]
+        for (number, value) in expected {
+            let place = try XCTUnwrap(byNumber[number])
+            XCTAssertEqual(value.0, try XCTUnwrap(place.latitude), accuracy: 0.00000001)
+            XCTAssertEqual(value.1, try XCTUnwrap(place.longitude), accuracy: 0.00000001)
+            XCTAssertEqual(value.2, place.coordinateStatus)
+            XCTAssertEqual(value.3, place.coordinateConfidence)
+        }
+
+        let brahma = try XCTUnwrap(try repository.pilgrimagePlaceContent(placeID: XCTUnwrap(byNumber[21]).id))
+        XCTAssertTrue(brahma.summary.contains("Mahāprabhu bathed"))
+        let manasiDevi = try XCTUnwrap(try repository.pilgrimagePlaceContent(placeID: XCTUnwrap(byNumber[22]).id))
+        XCTAssertTrue(manasiDevi.pilgrimGuidance.contains("Mānasī, Manasā, and Mansa"))
+        let harideva = try XCTUnwrap(try repository.pilgrimagePlaceContent(placeID: XCTUnwrap(byNumber[23]).id))
+        XCTAssertTrue(harideva.lila.contains("direct Gauḍīya pilgrimage destination"))
+        let townPlace = try XCTUnwrap(byNumber[24])
+        XCTAssertTrue(townPlace.verificationNotes.contains("representative map marker"))
+        let town = try XCTUnwrap(try repository.pilgrimagePlaceContent(placeID: townPlace.id))
+        XCTAssertTrue(town.pilgrimGuidance.contains("area marker"))
+        let rnaPlace = try XCTUnwrap(byNumber[25])
+        XCTAssertFalse(rnaPlace.alternateNames.contains { $0.localizedCaseInsensitiveContains("papa") || $0.contains("Pāpa") })
+        let rna = try XCTUnwrap(try repository.pilgrimagePlaceContent(placeID: rnaPlace.id))
+        XCTAssertTrue(rna.references[0].explanation.contains("not a canonical śāstric source"))
+        XCTAssertTrue(rna.pilgrimGuidance.contains("future #31 Pāpa-mocana-kuṇḍa"))
     }
     private func bundledContentURL() throws -> URL {
         try XCTUnwrap(Bundle.main.url(forResource: "radhakunda-content", withExtension: "sqlite"))

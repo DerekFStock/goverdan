@@ -562,3 +562,127 @@ contents:
     related_place_ids:
       - place.mukharavinda-manasi-ganga
       - place.cakra-tirtha
+
+  - place_id: place.brahma-kunda
+    category: Sacred kuṇḍa of Mahāprabhu’s Govardhana pilgrimage
+    summary: Brahma-kuṇḍa is the sacred pond in the Mānasī-gaṅgā and Harideva precinct where Śrī Caitanya Mahāprabhu bathed during His Govardhana pilgrimage.
+    why_sacred: Caitanya-caritāmṛta, Madhya 18.21 directly records that Balabhadra Bhaṭṭācārya cooked at Brahma-kuṇḍa and that Mahāprabhu bathed there and then took His meal. This direct narrative is the primary textual anchor. A further account connecting the kuṇḍa with Brahmā and abhiṣeka belongs to traditional pilgrimage narration rather than established direct evidence in the current project corpus.
+    what_to_see:
+      - Brahma-kuṇḍa itself.
+      - 'Its close relationship with #22 Mānasī-devī Temple and #23 Harideva Temple.'
+      - 'Its place within the wider #20 Mānasī-gaṅgā sacred precinct.'
+    lila: Remember Śrī Caitanya Mahāprabhu bathing here while Balabhadra Bhaṭṭācārya prepared food, and Mahāprabhu taking His meal after bathing during His pilgrimage around Govardhana.
+    pilgrim_guidance: 'Identify the kuṇḍa within the dense Mānasī-gaṅgā and Harideva precinct, then remember Mahāprabhu’s bathing and meal here. Visit #20–23 as distinct but closely connected sacred places.'
+    references:
+      - id: reference.brahma-kunda.caitanya-caritamrta-madhya-18-21
+        source_title: Caitanya-caritāmṛta, Madhya-līlā
+        locus: '18.21'
+        explanation: Directly records Balabhadra Bhaṭṭācārya cooking at Brahma-kuṇḍa and Mahāprabhu bathing and taking His meal there.
+      - id: reference.brahma-kunda.traditional-account
+        source_title: Traditional Brahma-kuṇḍa pilgrimage account
+        locus: Brahmā and abhiṣeka tradition
+        explanation: Preserves the traditional Brahmā and abhiṣeka association; it is not presented as direct evidence from the current compiled primary corpus.
+    related_place_ids:
+      - place.manasiganga
+      - place.manasi-devi-temple
+      - place.harideva-temple
+
+  - place_id: place.manasi-devi-temple
+    category: Sacred Devī shrine of the Mānasī-gaṅgā precinct
+    summary: Mānasī-devī Temple is the Devī shrine associated with the sacred Mānasī-gaṅgā precinct. Local Braj pilgrimage tradition treats the goddess as a protective or presiding Devī of this sacred area.
+    why_sacred: The shrine belongs to the living sacred landscape surrounding Mānasī-gaṅgā and Brahma-kuṇḍa. Pilgrimage tradition preserves the name Mānasī-devī, while modern discussion and institutional geography also use Manasā or Mansa Devī. The project preserves this naming nuance without forcing a simplified historical identification or claiming an unattested Gosvāmī locus.
+    what_to_see:
+      - The small Devī shrine.
+      - 'Its relationship with #21 Brahma-kuṇḍa.'
+      - 'Its place beside the wider #20 Mānasī-gaṅgā precinct.'
+    lila: This is presented as a living sacred Devī shrine of the Mānasī-gaṅgā precinct. The project does not invent a separate Rādhā-Kṛṣṇa līlā for the temple.
+    pilgrim_guidance: 'Honor the shrine as part of the living Mānasī-gaṅgā sacred landscape. Preserve the received Mānasī, Manasā, and Mansa name forms rather than assuming that one modern spelling resolves the shrine’s full historical identity.'
+    references:
+      - id: reference.manasi-devi-temple.traditional-guide
+        source_title: Traditional Govardhana pilgrimage description
+        locus: Mānasī-devī shrine beside Mānasī-gaṅgā
+        explanation: Supports the living pilgrimage identity of the Devī shrine and its relationship to the Mānasī-gaṅgā and Brahma-kuṇḍa precinct.
+      - id: reference.manasi-devi-temple.braj-development-plan
+        source_title: Braj Development Plan
+        locus: Maa Mansa Devi Temple geographic listing
+        explanation: Supports the modern temple location and Mansa naming variant; it is geographic evidence rather than an early sacred textual locus.
+    related_place_ids:
+      - place.manasiganga
+      - place.brahma-kunda
+      - place.harideva-temple
+
+  - place_id: place.harideva-temple
+    category: Harideva deity and Mahāprabhu pilgrimage temple
+    summary: Harideva Temple is one of the principal sacred temples of Govardhana. Śrī Caitanya Mahāprabhu came to Govardhana-grāma, saw Harideva, offered obeisances, danced in ecstasy before Him, and later stayed the night at the temple.
+    why_sacred: Caitanya-caritāmṛta, Madhya 18.17 records Mahāprabhu seeing Harideva, verse 18 glorifies Harideva, verse 19 describes Mahāprabhu dancing before Him, and verse 22 records Mahāprabhu staying the night at the temple. Rūpa Gosvāmī’s Mathurā-māhātmya supplies broader Govardhana pilgrimage context, but the currently compiled 418–423 slice does not directly identify this temple. A tradition that Vajranābha installed Harideva is retained only as traditional pilgrimage narration.
+    what_to_see:
+      - The Harideva deity as the center of darśana.
+      - The temple in which Mahāprabhu is remembered as dancing and staying overnight.
+      - 'Its close relationship with #20 Mānasī-gaṅgā and #21 Brahma-kuṇḍa.'
+    lila: Remember Śrī Caitanya Mahāprabhu beholding Harideva, offering obeisances, and dancing in ecstatic love before the deity. His visit makes this a direct Gauḍīya pilgrimage destination rather than merely a point on the map.
+    pilgrim_guidance: Come for Harideva’s darśana, not simply to reach the coordinate. Remember Mahāprabhu’s dancing before the deity and respect current temple worship and access practices.
+    references:
+      - id: reference.harideva-temple.caitanya-caritamrta-madhya-18-17-22
+        source_title: Caitanya-caritāmṛta, Madhya-līlā
+        locus: 18.17–22
+        explanation: Direct primary narrative of Mahāprabhu seeing and glorifying Harideva, dancing before Him, and staying the night at the temple.
+      - id: reference.harideva-temple.mathura-mahatmya
+        source_title: Rūpa Gosvāmī — Mathurā-māhātmya
+        locus: Govardhana pilgrimage context
+        explanation: Supports broader Govardhana tīrtha and worship context; the currently compiled passages 418–423 do not directly name Harideva Temple, so no local Reader link is asserted.
+      - id: reference.harideva-temple.vajranabha-tradition
+        source_title: Traditional Harideva pilgrimage account
+        locus: Vajranābha installation tradition
+        explanation: Preserves the received installation tradition with explicit traditional-source labeling rather than presenting it as the direct Caitanya-caritāmṛta narrative.
+    related_place_ids:
+      - place.manasiganga
+      - place.brahma-kunda
+      - place.manasi-devi-temple
+      - place.govardhan-town
+
+  - place_id: place.govardhan-town
+    category: Sacred pilgrimage town and Govardhana-grāma
+    summary: Govardhan Town represents the sacred settlement gathered around Girirāja and the Mānasī-gaṅgā and Harideva pilgrimage precinct. This numbered place intentionally represents a town and pilgrimage area rather than one shrine or sacred object.
+    why_sacred: Caitanya-caritāmṛta, Madhya 18.17 explicitly calls the settlement Govardhana-grāma when Mahāprabhu enters the village to see Harideva. Rūpa Gosvāmī’s Mathurā-māhātmya presents Govardhana as an exalted sacred region and pilgrimage setting. The modern settlement continues to hold a dense network of temples, sacred waters, and parikramā activity.
+    what_to_see:
+      - The living Govardhan pilgrimage town as a sacred settlement.
+      - The parikramā lanes passing through the town.
+      - 'The #20 Mānasī-gaṅgā and #23 Harideva precinct.'
+      - 'The transition toward Dāna-ghāṭī and later pilgrimage places beyond the current #1–25 scope.'
+    lila: Mahāprabhu entered Govardhana-grāma during His Govardhana pilgrimage and went to see Harideva. The town is therefore remembered as the living settlement through which the pilgrimage unfolds, not as a single-event monument.
+    pilgrim_guidance: 'Map place #24 is an area marker within Govardhan Town. Arrival means reaching the representative town area; do not expect one exact sacred object at the pin. Use the individual place records for specific nearby shrines and kuṇḍas.'
+    references:
+      - id: reference.govardhan-town.caitanya-caritamrta-madhya-18-17
+        source_title: Caitanya-caritāmṛta, Madhya-līlā
+        locus: '18.17'
+        explanation: Directly refers to Govardhana-grāma as Mahāprabhu enters the settlement to see Harideva.
+      - id: reference.govardhan-town.mathura-mahatmya
+        source_title: Rūpa Gosvāmī — Mathurā-māhātmya
+        locus: Govardhana pilgrimage context
+        explanation: Provides broad primary Gosvāmī context for Govardhana as an exalted pilgrimage region; it is not evidence for the representative modern town coordinate.
+    related_place_ids:
+      - place.manasiganga
+      - place.harideva-temple
+      - place.rna-mocana-kunda
+
+  - place_id: place.rna-mocana-kunda
+    category: Sacred ancestral-obligation kuṇḍa
+    summary: Ṛṇa-mocana-kuṇḍa is a restored sacred pond in Govardhan associated in local pilgrimage tradition with release from obligation or debt, especially ancestral obligation.
+    why_sacred: The Sanskrit word ṛṇa means debt or obligation, while mocana means release or freeing. Local Govardhana tradition connects this place with tarpaṇa and ancestral obligations. Restoration-era reporting transmits an account of Dvārakādhīśa Kṛṣṇa performing tarpaṇa here with Nanda Bābā, Yaśodā, and Dauji, and connects the site with Gayā-tīrtha. These are Braj pilgrimage traditions, not narratives established here from Śrīmad-Bhāgavatam or a Gosvāmī work.
+    what_to_see:
+      - The restored kuṇḍa itself.
+      - The present sacred and restoration setting.
+      - Dvārakādhīśa or tarpaṇa imagery only where it is actually present and identifiable during the visit.
+    lila: Pilgrimage tradition remembers ancestral tarpaṇa here and associates the restored kuṇḍa with release from obligation. The account is preserved as local Braj tradition rather than upgraded into a canonical śāstric episode.
+    pilgrim_guidance: 'Older pilgrimage guides may describe Ṛṇa-mocana-kuṇḍa as lost, dried, or difficult to find because they predate its restoration. This #25 place is strictly distinct from future #31 Pāpa-mocana-kuṇḍa; the names, identities, and coordinates must not be merged.'
+    references:
+      - id: reference.rna-mocana-kunda.restoration-report
+        source_title: Local Ṛṇa-mocana-kuṇḍa restoration report
+        locus: Rediscovery and restoration opposite the Govardhan electricity house
+        explanation: Supports the restored modern site and transmits its tarpaṇa tradition; it is modern restoration and pilgrimage evidence, not a canonical śāstric source.
+      - id: reference.rna-mocana-kunda.older-guide
+        source_title: Older Govardhana pilgrimage guide
+        locus: Historical lost or dried kuṇḍa description
+        explanation: Preserves historical context explaining why older guides may not locate the restored pond; it is not current coordinate evidence.
+    related_place_ids:
+      - place.govardhan-town
