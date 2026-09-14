@@ -572,3 +572,248 @@ places:
       - source_type: PROJECT_RESEARCH
         description: 'Approved project decision treating the restored modern site as PROBABLE/HIGH while preserving strict separation from future #31 Pāpa-mocana-kuṇḍa.'
     content_destination:
+
+  - id: place.dana-ghati-giriraja-mandir
+    map_number: 26
+    canonical_name: Dāna-ghāṭī Girirāja Mandir
+    ascii_name: Dana-ghati Giriraja Mandir
+    alternate_names:
+      - Dana Ghati
+      - Danaghati
+      - Dāna-ghāṭī
+      - Giriraj Ji Maharaj Dāna-ghāṭī Mandir
+      - Giriraj Ji Maharaj Danghati Mandir
+    latitude: 27.4952417
+    longitude: 77.4628528
+    coordinate_status: VERIFIED
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: The Braj Development Plan directly lists the Dāna-ghāṭī Girirāja temple, and current mapping independently agrees with the approved coordinate.
+    provenance:
+      - source_type: OFFICIAL_OR_INSTITUTIONAL_DOCUMENT
+        description: The Braj Development Plan lists Shri Giriraj Ji Maharaj Danghai Temple at approximately 27°29′42.87″N, 77°27′46.27″E.
+      - source_type: MODERN_MAP
+        description: Current mapping independently identifies the major Dāna-ghāṭī Girirāja temple at the approved coordinate.
+      - source_type: PROJECT_RESEARCH
+        description: 'Approved project identification for map place #26.'
+    content_destination:
+
+  - id: place.radharani-footprint
+    map_number: 27
+    canonical_name: Rādhārāṇī’s footprint
+    ascii_name: Radharani's footprint
+    alternate_names:
+      - Rādhā caraṇa-cihna
+      - Radha charan chinha
+      - Rādhā-Kṛṣṇa Caraṇa Śilā
+      - Radha Krishna Charan Shila
+    latitude: 27.4949375
+    longitude: 77.4624375
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: Current mapping identifies a Rādhā-Kṛṣṇa Caraṇa Śilā at the approved location, and traditional pilgrimage descriptions place Rādhārāṇī’s footprint immediately beyond Dāna-ghāṭī. The exact sacred-mark identity remains traditional site identification.
+    provenance:
+      - source_type: PILGRIMAGE_GUIDE
+        description: Traditional Govardhana guides identify a rock here with Rādhārāṇī’s footprint; some local traditions also include Kṛṣṇa’s footprint.
+      - source_type: MODERN_MAP
+        description: Current mapping identifies Shri Radha Krishna Charan Shila at the approved location.
+      - source_type: PROJECT_RESEARCH
+        description: Approved project decision preserving Rādhārāṇī’s footprint as the canonical map identity.
+    content_destination:
+
+  - id: place.laksmi-narayana-temple
+    map_number: 28
+    canonical_name: Lakṣmī-Nārāyaṇa Temple
+    ascii_name: Laksmi-Narayana Temple
+    alternate_names:
+      - Laxmi Narayan Temple
+      - Lakshmi Narayan Temple
+      - Shri Laxmi Narayan Ji Temple
+    latitude: 27.4943861
+    longitude: 77.4636611
+    coordinate_status: VERIFIED
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: The Braj Development Plan contains multiple similarly named Lakṣmī-Nārāyaṇa temples in Govardhan. The approved coordinate is the Shri Laxmi Narayan Ji Temple that fits the Dāna-ghāṭī / Dānī Rāya pilgrimage sequence, not the separate same-name temple farther north.
+    provenance:
+      - source_type: OFFICIAL_OR_INSTITUTIONAL_DOCUMENT
+        description: The Braj Development Plan lists Shri Laxmi Narayan Ji Temple at approximately 27°29′39.79″N, 77°27′49.18″E.
+      - source_type: PILGRIMAGE_GUIDE
+        description: Traditional pilgrimage descriptions place this temple in the Dāna-ghāṭī and Dānī Rāya section.
+      - source_type: PROJECT_RESEARCH
+        description: Approved corrected-coordinate decision preserving the distinction from the separate same-name temple farther north.
+    content_destination:
+
+  - id: place.dani-raya-temple
+    map_number: 29
+    canonical_name: Dānī Rāya Temple
+    ascii_name: Dani Raya Temple
+    alternate_names:
+      - Dani Raya Mandir
+      - Dāni Rāya
+      - Dani Rai Temple
+    latitude: 27.4934375
+    longitude: 77.4613125
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: Current mapping and pilgrimage literature support the Dānī Rāya shrine at the approved location. The shrine belongs to the older dāna-līlā landscape on Govardhana; field verification of the exact respectful access point remains desirable.
+    provenance:
+      - source_type: PILGRIMAGE_GUIDE
+        description: Traditional pilgrimage literature identifies the older Dānī Rāya shrine and preserves a Vajranābha foundation tradition.
+      - source_type: MODERN_MAP
+        description: Current mapping identifies the Dānī Rāya temple at the approved location.
+      - source_type: PROJECT_RESEARCH
+        description: Approved PROBABLE/HIGH identification with an explicit respectful-access caution.
+    content_destination:
+
+  - id: place.iskcon-govardhan
+    map_number: 30
+    canonical_name: ISKCON Govardhan Bhaktivedanta Ashram
+    ascii_name: ISKCON Govardhan Bhaktivedanta Ashram
+    alternate_names:
+      - ISKCON Govardhan
+      - Bhaktivedanta Ashram
+      - Śrīla Prabhupāda’s Palace
+      - Srila Prabhupada's Palace
+    latitude: 27.4690625
+    longitude: 77.4435625
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: The coordinate identifies the present official ISKCON Govardhan Bhaktivedanta Ashram on Aniyor Parikrama Marg. Older pilgrimage literature describes an ISKCON palace/property much nearer Govardhan town and Dāna-nivartana; that discrepancy is preserved as historical/location uncertainty rather than forcing the present institution into the older distance description.
+    provenance:
+      - source_type: MODERN_INSTITUTIONAL_SOURCE
+        description: The official ISKCON Govardhan site identifies the present Bhaktivedanta Ashram and Śrīla Prabhupāda’s Palace on Aniyor Parikrama Marg.
+        source_reference: https://iskcongovardhan.com/about/
+      - source_type: MODERN_MAP
+        description: Current mapping independently supports the approved coordinate.
+      - source_type: PILGRIMAGE_GUIDE
+        description: Older pilgrimage literature describes an ISKCON property much nearer Govardhan town; this is retained as historical location uncertainty.
+      - source_type: PROJECT_RESEARCH
+        description: Approved decision to map the present official institution while preserving the older-guide discrepancy and not inferring route order from map number.
+    content_destination:
+
+  - id: place.papa-mocana-kunda
+    map_number: 31
+    canonical_name: Pāpa-mocana-kuṇḍa
+    ascii_name: Papa-mocana-kunda
+    alternate_names:
+      - Papa Mochan Kund
+      - Papmochana Kunda
+      - Pāpa-mocana
+      - Papa-mocana
+    latitude: 27.4919722
+    longitude: 77.4660000
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: 'Current mapping identifies Pāpa-mocana-kuṇḍa at the approved location, and traditional Govardhana commentary places Pāpa-mocana south of Ṛṇa-mocana. The project preserves Pāpa-mocana as distinct from #25 Ṛṇa-mocana-kuṇḍa.'
+    provenance:
+      - source_type: MODERN_MAP
+        description: Current mapping identifies Pāpa-mocana-kuṇḍa at the approved coordinate.
+      - source_type: GAUDIYA_COMMENTARIAL_TRADITION
+        description: Traditional commentary on Govardhanāśraya-daśakam 4 distinguishes Govardhana’s mocana tīrthas.
+      - source_type: PROJECT_RESEARCH
+        description: 'Approved project decision enforcing the strict distinction between #25 Ṛṇa-mocana-kuṇḍa and #31 Pāpa-mocana-kuṇḍa.'
+    content_destination:
+
+  - id: place.dana-nivartana-kunda
+    map_number: 32
+    canonical_name: Dāna-nivartana-kuṇḍa
+    ascii_name: Dana-nivartana-kunda
+    alternate_names:
+      - Danivartan Kunda
+      - Dana Nivartan Kund
+      - Dāna-nivartana
+    latitude: 27.4850625
+    longitude: 77.4558125
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: Current mapping and traditional pilgrimage descriptions support the approved location for Dāna-nivartana-kuṇḍa. The sacred identity is particularly strong because Raghunātha Dāsa Gosvāmī composed a dedicated Dāna-nivartana-kuṇḍāṣṭakam.
+    provenance:
+      - source_type: PRIMARY_GAUDIYA_TEXT
+        description: Raghunātha Dāsa Gosvāmī’s Dāna-nivartana-kuṇḍāṣṭakam directly establishes the sacred identity and dāna-līlā theme.
+      - source_type: PILGRIMAGE_GUIDE
+        description: Traditional pilgrimage descriptions identify the modern kuṇḍa and explain the reversal or settlement of the tax encounter.
+      - source_type: MODERN_MAP
+        description: Current mapping supports the approved working coordinate.
+      - source_type: PROJECT_RESEARCH
+        description: Approved PROBABLE/HIGH identification preserving a distinct relationship with Dāna-ghāṭī.
+    content_destination:
+
+  - id: place.candra-sarovara
+    map_number: 33
+    canonical_name: Candra-sarovara
+    ascii_name: Candra-sarovara
+    alternate_names:
+      - Chandra Sarovar
+      - Candra Sarovar
+      - Chandra-sarovara
+    latitude: 27.4779639
+    longitude: 77.4698194
+    coordinate_status: VERIFIED
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: The Braj Development Plan directly lists Candra Sarovar, and the location is strongly corroborated by the Parāsolī sacred landscape and pilgrimage tradition.
+    provenance:
+      - source_type: OFFICIAL_OR_INSTITUTIONAL_DOCUMENT
+        description: The Braj Development Plan directly lists Candra Sarovar at the approved location.
+      - source_type: PILGRIMAGE_GUIDE
+        description: Traditional pilgrimage literature identifies Candra-sarovara within the Parāsolī sacred landscape.
+      - source_type: PROJECT_RESEARCH
+        description: Approved VERIFIED/HIGH identification based on institutional geography and corroborating pilgrimage tradition.
+    content_destination:
+
+  - id: place.parasoli
+    map_number: 34
+    canonical_name: Parāsolī
+    ascii_name: Parasoli
+    alternate_names:
+      - Parasoli
+      - Parsauli
+      - Parasauli
+      - Mahmudpur
+      - Mahmoodpur
+    latitude: 27.4784009
+    longitude: 77.4679575
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: Parāsolī is a sacred village/landscape rather than a single object. The approved coordinate is a representative marker within the Parāsolī / Candra-sarovara settlement, not a claim to be the geometric village center or exact location of every līlā feature.
+    provenance:
+      - source_type: PILGRIMAGE_GUIDE
+        description: Traditional pilgrimage literature identifies Parāsolī as the wider sacred village landscape surrounding Candra-sarovara.
+      - source_type: MODERN_MAP
+        description: Modern mapping supports a representative marker within the Parāsolī and Candra-sarovara settlement.
+      - source_type: MODERN_ADMINISTRATIVE_HISTORY
+        description: Mahmudpur or Mahmoodpur was a historical modern name, and Parāsolī was restored as the official name in 2021.
+      - source_type: PROJECT_RESEARCH
+        description: Approved area-marker decision explicitly distinct from the specific Candra-sarovara lake.
+    content_destination:
+
+  - id: place.gauri-kunda
+    map_number: 35
+    canonical_name: Gaurī-kuṇḍa
+    ascii_name: Gauri-kunda
+    alternate_names:
+      - Gauri Kunda
+      - Gauri Kund
+      - Gaurī-tīrtha
+      - Gauri Tirtha
+    latitude: 27.4680694
+    longitude: 77.4471028
+    coordinate_status: VERIFIED
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: The Braj Development Plan directly lists Gaurī-kuṇḍa, and Bhakti-ratnākara explicitly identifies Gaurī-tīrtha in the Govardhana sacred landscape.
+    provenance:
+      - source_type: OFFICIAL_OR_INSTITUTIONAL_DOCUMENT
+        description: The Braj Development Plan directly lists Gaurī-kuṇḍa at the approved location.
+      - source_type: LATER_GAUDIYA_TEXT
+        description: Bhakti-ratnākara 5.630–632 explicitly identifies Gaurī-tīrtha in the Govardhana sacred landscape.
+      - source_type: PROJECT_RESEARCH
+        description: Approved VERIFIED/HIGH identification based on direct pilgrimage geography and textual corroboration.
+    content_destination:

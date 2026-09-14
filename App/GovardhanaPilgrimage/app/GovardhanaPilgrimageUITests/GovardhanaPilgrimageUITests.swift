@@ -272,6 +272,25 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
         ).firstMatch, in: app)
     }
 
+    func testTask020A6DanaGhatiAndGauriKundaOpenWithApprovedContent() {
+        var app = launch()
+        openPlaceDetails(26, in: app)
+        XCTAssertTrue(app.navigationBars["Dāna-ghāṭī Girirāja Mandir"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Major dāna-līlā shrine at Govardhana"].exists)
+        revealForReading(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "playful toll pastime")
+        ).firstMatch, in: app)
+
+        app.terminate()
+        app = launch()
+        openPlaceDetails(35, in: app)
+        XCTAssertTrue(app.navigationBars["Gaurī-kuṇḍa"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Gaurī-pūjā līlā kuṇḍa"].exists)
+        revealForReading(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "Bhakti-ratnākara 5.630–632")
+        ).firstMatch, in: app)
+    }
+
     func testPlaceReferenceReaderRemainsVisibleAndBackReturnsToPlaceDetails() {
         let app = launch()
         app.buttons["home.map"].tap()

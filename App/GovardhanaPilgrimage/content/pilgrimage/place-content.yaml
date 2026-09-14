@@ -686,3 +686,250 @@ contents:
         explanation: Preserves historical context explaining why older guides may not locate the restored pond; it is not current coordinate evidence.
     related_place_ids:
       - place.govardhan-town
+
+  - place_id: place.dana-ghati-giriraja-mandir
+    category: Major dāna-līlā shrine at Govardhana
+    summary: Dāna-ghāṭī is one of the principal līlā-sthalīs of Govardhana, remembered for the playful toll pastime in which Kṛṣṇa and the cowherd boys stop Śrī Rādhā and the sakhīs carrying milk products and demand dāna.
+    why_sacred: 'Raghunātha Dāsa Gosvāmī’s Dāna-keli-cintāmaṇi directly centers the playful toll dispute at the foot of Govardhana, and Rūpa Gosvāmī’s Dāna-keli-kaumudī is a major dramatic treatment of the same līlā. Traditional pilgrimage identifies Dāna-ghāṭī with this pastime. This major shrine remains distinct from the older #29 Dānī Rāya Temple.'
+    what_to_see:
+      - The Dāna-ghāṭī Girirāja shrine.
+      - The current offering and darśana environment.
+      - 'Its relationship with #27 Rādhārāṇī’s footprint and #29 Dānī Rāya Temple.'
+    lila: Kṛṣṇa and the cowherd boys block Rādhā and the sakhīs as they carry milk products and jokingly demand a tax, leading to a witty, prema-filled dispute.
+    pilgrim_guidance: Come for Girirāja darśana while remembering the playful dāna dispute. Keep this principal Dāna-ghāṭī shrine distinct from the older Dānī Rāya shrine nearby.
+    references:
+      - id: reference.dana-ghati.dana-keli-cintamani
+        source_title: Raghunātha Dāsa Gosvāmī — Dāna-keli-cintāmaṇi
+        locus: Dāna-līlā at the foot of Govardhana
+        explanation: Direct early Gauḍīya literary treatment of the playful toll dispute; no local Reader passage is currently compiled.
+      - id: reference.dana-ghati.dana-keli-kaumudi
+        source_title: Rūpa Gosvāmī — Dāna-keli-kaumudī
+        locus: Dāna-līlā drama
+        explanation: Major early Gauḍīya dramatic treatment of the same toll pastime; no local Reader passage is currently compiled.
+    related_place_ids:
+      - place.radharani-footprint
+      - place.dani-raya-temple
+      - place.dana-nivartana-kunda
+
+  - place_id: place.radharani-footprint
+    category: Sacred footprint śilā
+    summary: A Govardhana śilā revered in local Vraja tradition as bearing Śrī Rādhārāṇī’s lotus footprint; some local identification includes Kṛṣṇa’s footprint as well.
+    why_sacred: Pilgrims honor the physical caraṇa-cihna shown on the śilā. Its identification is traditional Vraja sacred-site evidence supported by the present mapped shrine, not a claim that a Gosvāmī text locates this exact modern rock.
+    what_to_see:
+      - The caraṇa śilā presented for worship.
+      - The visible footprint or sacred marks as they are identified at the site today.
+      - 'Its immediate relationship with #26 Dāna-ghāṭī.'
+    lila: The śilā is approached through the living pilgrimage tradition that remembers Śrī Rādhā’s lotus footprint here. The project does not invent a specific textual episode for the exact rock.
+    pilgrim_guidance: 'Identify and honor the actual caraṇa śilā as presented locally. Preserve its traditional-source labeling, and do not confuse this #27 footprint with #12 Kṛṣṇa’s footprint near Śyāma-kuṭī.'
+    references:
+      - id: reference.radharani-footprint.traditional-guide
+        source_title: Traditional Govardhana pilgrimage guide
+        locus: Rādhārāṇī’s footprint beyond Dāna-ghāṭī
+        explanation: Supports the local sacred-mark identification; it is not a direct Gosvāmī textual identification of this exact rock.
+      - id: reference.radharani-footprint.modern-map
+        source_title: Current mapped Rādhā-Kṛṣṇa Caraṇa Śilā
+        locus: Present shrine identification
+        explanation: Corroborates the modern site location and variant local identity, not an ancient textual locus.
+    related_place_ids:
+      - place.dana-ghati-giriraja-mandir
+      - place.dani-raya-temple
+
+  - place_id: place.laksmi-narayana-temple
+    category: Historic Lakṣmī-Nārāyaṇa darśana temple
+    summary: An old Vaiṣṇava temple encountered in the Dāna-ghāṭī section of Govardhana parikramā. Its pilgrim value is darśana and continuity of worship rather than a separately established Rādhā-Kṛṣṇa līlā-sthalī.
+    why_sacred: Lakṣmī-Nārāyaṇa are worshiped here in a living historic temple within Govardhana’s sacred landscape. Current evidence supports the temple identity and location but does not establish a special Gosvāmī passage or distinct līlā for this exact shrine.
+    what_to_see:
+      - The worshiped Lakṣmī-Nārāyaṇa deities.
+      - The historic temple and its living darśana setting.
+      - 'Its place in the #26 Dāna-ghāṭī and #29 Dānī Rāya section.'
+    lila: This is a darśana temple in the continuing Vaiṣṇava life of Govardhana. No separate Rādhā-Kṛṣṇa līlā is assigned without supporting evidence.
+    pilgrim_guidance: Use the corrected Dāna-ghāṭī-area location. Govardhan contains another similarly named Lakṣmī-Nārāyaṇa temple farther north; this record does not refer to that separate shrine.
+    references:
+      - id: reference.laksmi-narayana-temple.pilgrimage-guide
+        source_title: Traditional Govardhana pilgrimage guide
+        locus: Lakṣmī-Nārāyaṇa Temple in the Dāna-ghāṭī section
+        explanation: Supports the pilgrimage identity and sequence of this temple without inventing a separate līlā.
+      - id: reference.laksmi-narayana-temple.braj-development-plan
+        source_title: Braj Development Plan
+        locus: Shri Laxmi Narayan Ji Temple geographic listing
+        explanation: Supports the corrected modern coordinate and distinguishes it from another same-name temple farther north.
+    related_place_ids:
+      - place.dana-ghati-giriraja-mandir
+      - place.dani-raya-temple
+
+  - place_id: place.dani-raya-temple
+    category: Older dāna-līlā shrine
+    summary: Dānī Rāya Temple is an older shrine in the Dāna-ghāṭī sacred landscape associated in pilgrimage tradition with Kṛṣṇa as the playful collector of dāna.
+    why_sacred: Traditional pilgrimage ties the shrine to dāna-līlā and preserves a Vajranābha foundation association as temple tradition rather than independently verified archaeology. The dāna works of Rūpa Gosvāmī and Raghunātha Dāsa Gosvāmī provide the supporting līlā world, but they do not by themselves prove the identity of this modern shrine.
+    what_to_see:
+      - The older Dānī Rāya shrine.
+      - The deity or sacred form presented there for darśana.
+      - 'Its relationship with, and distinction from, #26 Dāna-ghāṭī Girirāja Mandir.'
+    lila: The shrine remembers Kṛṣṇa as Dānī Rāya, the playful toll collector, within the same broad dāna-līlā landscape as Dāna-ghāṭī.
+    pilgrim_guidance: Identify or approach the shrine only by the legitimate established pilgrimage access. The map pin is not permission to step or scramble onto Girirāja.
+    references:
+      - id: reference.dani-raya-temple.traditional-guide
+        source_title: Traditional Dānī Rāya pilgrimage account
+        locus: Older Dānī Rāya shrine and Vajranābha tradition
+        explanation: Supports the local shrine identity and preserves the foundation tradition with appropriate traditional-source labeling.
+      - id: reference.dani-raya-temple.dana-literature
+        source_title: Early Gauḍīya dāna-līlā literature
+        locus: Dāna-keli-kaumudī and Dāna-keli-cintāmaṇi
+        explanation: Supplies direct literary context for dāna-līlā, not direct proof of this particular modern shrine.
+    related_place_ids:
+      - place.dana-ghati-giriraja-mandir
+      - place.radharani-footprint
+      - place.laksmi-narayana-temple
+
+  - place_id: place.iskcon-govardhan
+    category: Modern Gauḍīya pilgrimage ashram and Śrīla Prabhupāda memorial place
+    summary: ISKCON Govardhan Bhaktivedanta Ashram, also known as Śrīla Prabhupāda’s Palace, is a modern Gauḍīya Vaiṣṇava pilgrimage center on Govardhana parikramā.
+    why_sacred: The institution’s official history says an old palace was transferred to ISKCON in 1994 and became known as Śrīla Prabhupāda’s Palace or Bhaktivedanta Ashram. Its account connects the place with Śrīla Prabhupāda’s desire near the end of his life to perform Govardhana parikramā. This is modern Gauḍīya institutional and memorial history, not an ancient Kṛṣṇa-līlā-sthalī.
+    what_to_see:
+      - Śrī Śrī Kṛṣṇa-Balarāma.
+      - Gaura-Nitāi.
+      - Girirāja Govardhana.
+      - Śrīla Prabhupāda’s memorial presence.
+      - The palace and ashram setting.
+    lila: The sacred association is the modern Gauḍīya devotional history of Śrīla Prabhupāda and the continuing worship and service of the ashram. No ancient Kṛṣṇa līlā is assigned to the institution.
+    pilgrim_guidance: Navigate to the present official Bhaktivedanta Ashram on Aniyor Parikrama Marg. Older guides may describe an ISKCON property much nearer Govardhan town and Dāna-nivartana; preserve that discrepancy, and do not infer walking order from map number.
+    references:
+      - id: reference.iskcon-govardhan.official-about
+        source_title: ISKCON Govardhan official history
+        locus: About the Bhaktivedanta Ashram
+        explanation: Supports the 1994 transfer, present institutional identity, Śrīla Prabhupāda memorial association, and worship setting.
+      - id: reference.iskcon-govardhan.official-visitor-information
+        source_title: ISKCON Govardhan official visitor information
+        locus: Contacts and what is inside
+        explanation: Supports the present location and currently described deities and ashram features.
+      - id: reference.iskcon-govardhan.older-guide
+        source_title: Older Govardhana pilgrimage guide
+        locus: Earlier ISKCON palace or property location description
+        explanation: Preserves the historical location discrepancy and is not used to relocate the present official institution.
+    related_place_ids:
+      - place.gauri-kunda
+      - place.dana-nivartana-kunda
+
+  - place_id: place.papa-mocana-kunda
+    category: Sacred purification kuṇḍa
+    summary: 'Pāpa-mocana-kuṇḍa is a Govardhana sacred pond traditionally associated with release from pāpa, sinful reaction or offence. It is distinct from #25 Ṛṇa-mocana-kuṇḍa.'
+    why_sacred: Raghunātha Dāsa Gosvāmī’s Govardhanāśraya-daśakam 4 lists Govardhana’s sacred waters. Traditional commentary distinguishes Pāpa-mocana from Ṛṇa-mocana, and the project preserves the two as separate tīrthas rather than merging ambiguous later wording.
+    what_to_see:
+      - Pāpa-mocana-kuṇḍa itself.
+      - Its present sacred-water setting.
+      - 'Its distinct position south of #25 Ṛṇa-mocana-kuṇḍa in traditional commentary.'
+    lila: Pilgrims remember the kuṇḍa as a place of purification and release from sinful reaction or offence. No more specific episode is asserted without direct evidence.
+    pilgrim_guidance: 'Visit this as #31 Pāpa-mocana-kuṇḍa. Do not merge its name, identity, or coordinate with #25 Ṛṇa-mocana-kuṇḍa.'
+    references:
+      - id: reference.papa-mocana-kunda.govardhanasraya-dasakam-4
+        source_title: Raghunātha Dāsa Gosvāmī — Govardhanāśraya-daśakam
+        locus: Verse 4
+        explanation: Lists Govardhana’s sacred waters; the identification of the individual mocana tīrthas is preserved through traditional commentary.
+      - id: reference.papa-mocana-kunda.commentarial-tradition
+        source_title: Traditional Gauḍīya commentary
+        locus: Govardhanāśraya-daśakam 4 mocana-tīrtha interpretation
+        explanation: Distinguishes Pāpa-mocana from Ṛṇa-mocana rather than merging them.
+    related_place_ids:
+      - place.rna-mocana-kunda
+      - place.dana-nivartana-kunda
+
+  - place_id: place.dana-nivartana-kunda
+    category: Dāna-līlā reversal kuṇḍa
+    summary: Dāna-nivartana-kuṇḍa is a major dāna-līlā site where the playful tax dispute of Dāna-ghāṭī is remembered as reversed, settled, or answered by Śrī Rādhā and the sakhīs.
+    why_sacred: Raghunātha Dāsa Gosvāmī composed the dedicated Dāna-nivartana-kuṇḍāṣṭakam. Its opening verse situates Rādhā and Kṛṣṇa at the foot of Govardhana in a mock dispute over taxation of milk products. Traditional narration explains the reversal or settling of the tax encounter here.
+    what_to_see:
+      - Dāna-nivartana-kuṇḍa itself.
+      - The surrounding Govardhana-foot landscape.
+      - 'The narrative relationship with #26 Dāna-ghāṭī while preserving the two as separate places.'
+    lila: 'At #26 Dāna-ghāṭī, Kṛṣṇa demands tax; at #32 Dāna-nivartana, the playful dispute is remembered as reversed, settled, or answered by Rādhā and the sakhīs.'
+    pilgrim_guidance: Hold this place together with Dāna-ghāṭī in the dāna-līlā narrative, but do not treat the two map places as one site or infer a walking route from their numbers.
+    references:
+      - id: reference.dana-nivartana-kunda.dana-nivartana-kundastakam
+        source_title: Raghunātha Dāsa Gosvāmī — Dāna-nivartana-kuṇḍāṣṭakam
+        locus: Opening verse and complete hymn
+        explanation: Directly establishes the kuṇḍa’s dāna-līlā identity at the foot of Govardhana; no local Reader passage is currently compiled.
+      - id: reference.dana-nivartana-kunda.traditional-account
+        source_title: Traditional Dāna-nivartana pilgrimage account
+        locus: Reversal or settlement of the dāna encounter
+        explanation: Explains the local narrative relationship with Dāna-ghāṭī without collapsing the two locations.
+    related_place_ids:
+      - place.dana-ghati-giriraja-mandir
+      - place.papa-mocana-kunda
+      - place.candra-sarovara
+
+  - place_id: place.candra-sarovara
+    category: Sacred vasanta-rāsa lake and Sūrdās landscape
+    summary: Candra-sarovara is the sacred lake in the Parāsolī landscape associated with the springtime rāsa of Rādhā and Kṛṣṇa. Bhakti-ratnākara remembers Kṛṣṇa resting here after the rāsa. The site later became deeply connected with Sūrdās.
+    why_sacred: Bhakti-ratnākara links Parāsolī with vasanta-rāsa and remembers Kṛṣṇa resting at Candra-sarovara afterward. Govardhanāśraya-daśakam 4 includes a sacred-water reference traditionally interpreted as Candra-sarovara. The explanation that the moon stopped here remains local pilgrimage tradition unless an exact early textual locus is established.
+    what_to_see:
+      - Candra-sarovara itself.
+      - The Sūrdās kuṭīra or samādhi area where it is currently present and source-supported.
+      - 'The broader #34 Parāsolī village landscape surrounding the specific lake.'
+    lila: First remember the springtime rāsa and Kṛṣṇa’s rest at Candra-sarovara in the sacred Parāsolī landscape. Then recognize Sūrdās’s later devotional history as a separate chronological layer rather than part of the rāsa event.
+    pilgrim_guidance: Visit the specific lake while remaining aware of the wider Parāsolī landscape. Keep the early rāsa association and later Sūrdās history distinct in your remembrance.
+    references:
+      - id: reference.candra-sarovara.bhakti-ratnakara
+        source_title: Bhakti-ratnākara
+        locus: Parāsolī vasanta-rāsa and Candra-sarovara resting-place account
+        explanation: Connects the spring rāsa landscape with Kṛṣṇa’s later rest at this specific sarovara.
+      - id: reference.candra-sarovara.govardhanasraya-dasakam-4
+        source_title: Raghunātha Dāsa Gosvāmī — Govardhanāśraya-daśakam
+        locus: Verse 4
+        explanation: Supplies early sacred-water context; the identification as Candra-sarovara follows traditional interpretation.
+      - id: reference.candra-sarovara.surdas-tradition
+        source_title: Sūrdās pilgrimage history
+        locus: Candra-sarovara kuṭīra and samādhi association
+        explanation: Records the later devotional layer and is not merged into the earlier rāsa chronology.
+    related_place_ids:
+      - place.parasoli
+      - place.gauri-kunda
+
+  - place_id: place.parasoli
+    category: Sacred vasanta-rāsa village landscape
+    summary: Parāsolī is the sacred village landscape associated in Bhakti-ratnākara with Rādhā and Kṛṣṇa’s spring rāsa. Candra-sarovara lies within this larger sacred setting.
+    why_sacred: 'Bhakti-ratnākara explicitly places the spring rāsa in Parāsolī. Map place #34 represents the wider village and līlā landscape, while #33 is the specific Candra-sarovara where Kṛṣṇa is remembered as resting afterward. Sūrdās’s later devotional history forms a second chronological layer.'
+    what_to_see:
+      - The living Parāsolī village and wider sacred landscape.
+      - 'The relationship of the village landscape to #33 Candra-sarovara.'
+      - The broader setting remembered for vasanta-rāsa without assigning exact unverified positions to every līlā feature.
+    lila: Bhakti-ratnākara remembers Rādhā and Kṛṣṇa’s spring rāsa in Parāsolī. This wider landscape precedes the remembered rest at Candra-sarovara and remains distinct from the later history of Sūrdās.
+    pilgrim_guidance: 'Map place #34 is a representative village and landscape marker, not one sacred object or the exact location of every līlā feature. Use #33 for the specific Candra-sarovara.'
+    references:
+      - id: reference.parasoli.bhakti-ratnakara
+        source_title: Bhakti-ratnākara
+        locus: Parāsolī vasanta-rāsa account
+        explanation: Directly identifies the wider village landscape with the spring rāsa tradition.
+      - id: reference.parasoli.modern-name-history
+        source_title: Modern Parāsolī administrative history
+        locus: Mahmudpur/Mahmoodpur and 2021 name restoration
+        explanation: Records the secondary modern administrative-name layer, not sacred textual evidence.
+    related_place_ids:
+      - place.candra-sarovara
+      - place.gauri-kunda
+
+  - place_id: place.gauri-kunda
+    category: Gaurī-pūjā līlā kuṇḍa
+    summary: Gaurī-kuṇḍa, also called Gaurī-tīrtha, is a sacred Govardhana site associated with worship of Gaurī Devī and the intimate Rādhā-Kṛṣṇa līlā world dramatized by Rūpa Gosvāmī.
+    why_sacred: Bhakti-ratnākara 5.630–632 explicitly identifies Gaurī-tīrtha. Raghunātha Dāsa Gosvāmī’s Govardhanāśraya-daśakam 4 includes Gaurī among Govardhana’s sacred waters, and Rūpa Gosvāmī’s Vidagdha-mādhava supplies the Gaurī-pūjā dramatic world. Rādhā goes to worship Gaurī, while Kṛṣṇa’s disguised intervention helps prevent Abhimanyu from taking Her away. Candrāvalī’s Gaurī-tīrtha association is preserved as a related traditional layer, not collapsed into the same narrative.
+    what_to_see:
+      - Gaurī-kuṇḍa or Gaurī-tīrtha itself.
+      - The present Gaurī worship setting where it is identifiable.
+      - The wider sacred landscape linking this stop with Candra-sarovara and Parāsolī.
+    lila: Remember Rādhā’s Gaurī worship and Kṛṣṇa’s playful disguised intervention in the dramatic līlā world of Vidagdha-mādhava. Preserve other Gaurī-tīrtha traditions, including Candrāvalī’s association, as related but distinct layers.
+    pilgrim_guidance: Approach this as a Gaurī-pūjā līlā place grounded in several textual layers. Do not force its distinct traditional narratives into one event or infer a route from its map number.
+    references:
+      - id: reference.gauri-kunda.bhakti-ratnakara-5-630-632
+        source_title: Bhakti-ratnākara
+        locus: 5.630–632
+        explanation: Explicitly identifies Gaurī-tīrtha in the Govardhana sacred landscape.
+      - id: reference.gauri-kunda.govardhanasraya-dasakam-4
+        source_title: Raghunātha Dāsa Gosvāmī — Govardhanāśraya-daśakam
+        locus: Verse 4
+        explanation: Includes Gaurī among Govardhana’s sacred waters.
+      - id: reference.gauri-kunda.vidagdha-madhava
+        source_title: Rūpa Gosvāmī — Vidagdha-mādhava
+        locus: Gaurī-pūjā dramatic narrative
+        explanation: Supplies the early Gauḍīya dramatic account of Rādhā’s worship and Kṛṣṇa’s intervention; no local Reader passage is currently compiled.
+    related_place_ids:
+      - place.candra-sarovara
+      - place.parasoli
