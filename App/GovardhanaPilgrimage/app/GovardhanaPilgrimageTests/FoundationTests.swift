@@ -5,6 +5,21 @@ import XCTest
 @testable import GovardhanaPilgrimage
 
 final class FoundationTests: XCTestCase {
+    func testSanskritTextLayoutPreservesAuthoredPadasAndRemovesBlankSerializationLines() {
+        let text = """
+        first pāda
+
+        second pāda
+        third pāda
+
+        fourth pāda
+        """
+        XCTAssertEqual(
+            ["first pāda", "second pāda", "third pāda", "fourth pāda"],
+            SanskritTextLayout.padas(from: text)
+        )
+    }
+
     private final class FixtureLocationProvider: LocationProvider {
         let coordinate: CLLocationCoordinate2D
         init(coordinate: CLLocationCoordinate2D) { self.coordinate = coordinate }

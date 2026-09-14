@@ -719,6 +719,14 @@ struct SourceReaderView: View {
     }
 }
 
+enum SanskritTextLayout {
+    static func padas(from text: String) -> [String] {
+        text.components(separatedBy: .newlines)
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .filter { !$0.isEmpty }
+    }
+}
+
 private struct SourcePassageView: View {
     let passage: SourcePassage
     let targetLabel: String?
@@ -742,16 +750,10 @@ private struct SourcePassageView: View {
                 sourceText("Original", text: originalText)
             }
             if let transliteration = passage.transliteration {
-                sourceText("Transliteration", text: transliteration)
+                sanskritText("Transliteration", text: transliteration)
             }
             if let translation = passage.translation {
                 sourceText("Translation", text: translation)
-            }
-            if let translationStatus = passage.translationStatus {
-                sourceText("Translation status", text: translationStatus.replacingOccurrences(of: "_", with: " ").capitalized)
-            }
-            if let verificationStatus = passage.verificationStatus {
-                sourceText("Text verification", text: verificationStatus.replacingOccurrences(of: "_", with: " ").capitalized)
             }
             if let readingNote = passage.readingNote {
                 sourceText("Reading note", text: readingNote)
@@ -773,6 +775,21 @@ private struct SourcePassageView: View {
         VStack(alignment: .leading, spacing: 5) {
             Text(label).font(.caption.weight(.semibold)).foregroundStyle(.secondary)
             Text(text).font(.body).textSelection(.enabled)
+        }
+    }
+
+    private func sanskritText(_ label: String, text: String) -> some View {
+        VStack(alignment: .leading, spacing: 7) {
+            Text(label).font(.caption.weight(.semibold)).foregroundStyle(.secondary)
+            VStack(alignment: .leading, spacing: 8) {
+                ForEach(Array(SanskritTextLayout.padas(from: text).enumerated()), id: \.offset) { _, pada in
+                    Text(pada)
+                        .font(.body)
+                        .lineSpacing(3)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .textSelection(.enabled)
+                }
+            }
         }
     }
 }

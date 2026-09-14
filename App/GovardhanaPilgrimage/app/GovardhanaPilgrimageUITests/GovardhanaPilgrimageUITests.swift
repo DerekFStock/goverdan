@@ -498,6 +498,10 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
         firstVerse.tap()
         XCTAssertTrue(app.staticTexts["Passage Verse 1"].waitForExistence(timeout: 5))
         XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label CONTAINS %@", "kurvāṇaiḥ śatam āśiṣaṁ")).firstMatch.exists)
+        XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label CONTAINS %@", "svīya-svīya-gaṇaiḥ")).firstMatch.exists)
+        XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label CONTAINS %@", "gāndharvā-giridhāriṇor")).firstMatch.exists)
+        XCTAssertFalse(app.staticTexts["Translation status"].exists)
+        XCTAssertFalse(app.staticTexts["Text verification"].exists)
         XCTAssertEqual("passage.dana-keli-cintamani.1", app.buttons["source.bookmark"].value as? String)
         XCTAssertFalse(app.buttons["Return to Story"].exists)
     }
