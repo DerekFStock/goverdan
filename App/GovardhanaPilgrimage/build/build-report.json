@@ -2,16 +2,16 @@
   "counts": {
     "citations": 12,
     "content_blocks": 8,
-    "editions": 4,
-    "passage_representations": 54,
-    "passages": 54,
+    "editions": 5,
+    "passage_representations": 229,
+    "passages": 229,
     "pilgrimage_place_contents": 35,
     "pilgrimage_places": 35,
     "stories": 1,
     "story_sections": 1,
     "witness_mappings": 0,
     "witnesses": 0,
-    "works": 5
+    "works": 6
   },
   "manifest_id": "manifest.radhakunda-mvp.development-v1",
   "schema_version": 1,
@@ -36,10 +36,10 @@
       "sqlite_autoindex_story_sections_2"
     ],
     "integrity_check": "ok",
-    "logical_content_sha256": "6b416b0a0745051c60b5802a87584faa0e1a51baa81ce6d5085b2fee9d339f3a",
+    "logical_content_sha256": "15870258f3725e809a544515c8c93031edac905279868be4b9f3bd6aafe7b624",
     "schema_version": 7,
-    "search_document_count": 62,
-    "source_fts_result_count": 54,
+    "search_document_count": 237,
+    "source_fts_result_count": 229,
     "story_fts_result_count": 8,
     "tables": [
       "citations",

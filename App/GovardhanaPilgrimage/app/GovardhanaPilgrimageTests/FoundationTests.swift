@@ -565,9 +565,9 @@ final class FoundationTests: XCTestCase {
             try repository.stories()
         )
         let works = try repository.works()
-        XCTAssertEqual(4, works.count)
+        XCTAssertEqual(5, works.count)
         XCTAssertEqual(
-            Set(["work.radha-kundastaka", "work.mathura-mahatmya", "work.radhakunda-manifestation-puranic-unit", "work.srimad-bhagavatam"]),
+            Set(["work.radha-kundastaka", "work.mathura-mahatmya", "work.radhakunda-manifestation-puranic-unit", "work.srimad-bhagavatam", "work.dana-keli-cintamani"]),
             Set(works.map(\.id.rawValue))
         )
         XCTAssertFalse(works.contains { $0.id.rawValue == "work.stavavali" })
@@ -763,6 +763,37 @@ final class FoundationTests: XCTestCase {
         XCTAssertEqual("WORKING_PROJECT", content.passages[0].translationStatus)
     }
 
+    func testDanaKeliCintamaniUsesGenericLibraryReaderAndSearchForAll175Verses() throws {
+        let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
+        let workID = SourceWorkID(rawValue: "work.dana-keli-cintamani")
+        let matchingWorks = try repository.works().filter { $0.id == workID }
+        XCTAssertEqual(1, matchingWorks.count)
+
+        let content = try repository.sourceReaderContent(workID: workID)
+        XCTAssertEqual("Śrī Dāna-keli-cintāmaṇi", content.work.title)
+        XCTAssertEqual("Śrī Raghunātha dāsa Gosvāmī", content.work.author)
+        XCTAssertEqual("A_PRIMARY_GOSVAMI", content.work.sourceLayer)
+        XCTAssertEqual("Govardhana Pilgrimage Project Reading Edition", content.work.preferredEdition.title)
+        XCTAssertEqual(175, content.passages.count)
+        XCTAssertEqual((1...175).map { "Verse \($0)" }, content.passages.map(\.displayLocus))
+        XCTAssertEqual(SourcePassageID(rawValue: "passage.dana-keli-cintamani.1"), content.targetPassageID)
+        XCTAssertEqual(SourcePassageID(rawValue: "passage.dana-keli-cintamani.175"), content.passages.last?.id)
+        XCTAssertTrue(content.passages.allSatisfy { $0.transliteration?.isEmpty == false })
+        XCTAssertTrue(content.passages.allSatisfy { $0.translation?.isEmpty == false })
+        XCTAssertTrue(content.passages.allSatisfy { $0.translationStatus == "WORKING_PROJECT" })
+
+        let sanskritResults = try repository.search("uddāma", in: workID)
+        let englishResults = try repository.search("pollen", in: workID)
+        XCTAssertTrue(sanskritResults.contains { result in
+            if case let .source(_, resultWorkID) = result.target { return resultWorkID == workID }
+            return false
+        })
+        XCTAssertTrue(englishResults.contains { result in
+            if case let .source(_, resultWorkID) = result.target { return resultWorkID == workID }
+            return false
+        })
+    }
+
     func testGlobalFTSSearchReturnsTypedStoryAndSourceResultsWithSnippets() throws {
         let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
         let results = try repository.search("narma-dharmokti", in: nil)
@@ -946,7 +977,7 @@ final class FoundationTests: XCTestCase {
     func testLiveAppContainerInitializes() throws {
         let container = try AppContainer.live()
         XCTAssertEqual("The Story of Śrī Rādhā-kuṇḍa", try container.contentRepository.stories().first?.title)
-        XCTAssertEqual(4, try container.contentRepository.works().count)
+        XCTAssertEqual(5, try container.contentRepository.works().count)
         XCTAssertTrue(container.userStateDatabase.url.lastPathComponent == "user-state.sqlite")
     }
 }

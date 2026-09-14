@@ -696,8 +696,8 @@ class ContentToolingTests(unittest.TestCase):
         self.assertEqual(0, result.report["validation"]["broken_citation_targets"])
         self.assertEqual(0, result.report["validation"]["visible_unverified_citation_targets"])
         self.assertEqual(0, result.report["validation"]["duplicate_canonical_ids"])
-        self.assertEqual(54, len(result.content["passages"]))
-        self.assertEqual(54, len(result.content["passage_representations"]))
+        self.assertEqual(229, len(result.content["passages"]))
+        self.assertEqual(229, len(result.content["passage_representations"]))
         self.assertEqual([], result.content["witnesses"])
         self.assertEqual([], result.content["witness_mappings"])
         self.assertTrue(all("text" not in passage for passage in result.content["passages"]))
@@ -739,6 +739,66 @@ class ContentToolingTests(unittest.TestCase):
         self.assertEqual("background", citation["role"])
         self.assertIsNone(citation["source_passage_id"])
 
+    def test_dana_keli_cintamani_compiles_as_one_complete_searchable_reader_work(self) -> None:
+        result = compile_manifest(self.root, "radhakunda-mvp-development-manifest")
+        work_id = "work.dana-keli-cintamani"
+        edition_id = "edition.dana-keli-cintamani.project-reading-v1"
+        works = [work for work in result.content["works"] if work["id"] == work_id]
+        editions = [edition for edition in result.content["editions"] if edition["work_id"] == work_id]
+        passages = sorted(
+            [passage for passage in result.content["passages"] if passage["work_id"] == work_id],
+            key=lambda passage: passage["order"],
+        )
+        representations = [
+            representation for representation in result.content["passage_representations"]
+            if representation["edition_id"] == edition_id
+        ]
+
+        self.assertEqual(1, len(works))
+        self.assertEqual("Śrī Dāna-keli-cintāmaṇi", works[0]["title"])
+        self.assertEqual(1, len(editions))
+        self.assertTrue(editions[0]["preferred"])
+        self.assertEqual(175, len(passages))
+        self.assertEqual(list(range(1, 176)), [passage["order"] for passage in passages])
+        self.assertEqual([str(number) for number in range(1, 176)], [passage["locus"] for passage in passages])
+        self.assertEqual(
+            [f"passage.dana-keli-cintamani.{number}" for number in range(1, 176)],
+            [passage["id"] for passage in passages],
+        )
+        self.assertEqual(175, len(representations))
+        self.assertTrue(all(representation["transliteration"] for representation in representations))
+        self.assertTrue(all(representation["translation"] for representation in representations))
+        self.assertTrue(all(not representation["commentary"] for representation in representations))
+
+        database_path = self.root / "build/dana-keli-cintamani.sqlite"
+        report = build_sqlite(database_path, result)
+        self.assertEqual("ok", report["integrity_check"])
+        self.assertEqual(0, report["foreign_key_violation_count"])
+        connection = sqlite3.connect(database_path)
+        try:
+            self.assertEqual(
+                175,
+                connection.execute(
+                    "SELECT count(*) FROM source_passages WHERE work_id = ?", (work_id,)
+                ).fetchone()[0],
+            )
+            self.assertTrue(
+                connection.execute(
+                    "SELECT 1 FROM search_documents_fts WHERE search_documents_fts MATCH 'uddāma' "
+                    "AND content_type = 'source_passage' AND target_id LIKE ? LIMIT 1",
+                    ("passage.dana-keli-cintamani.%",),
+                ).fetchone()
+            )
+            self.assertTrue(
+                connection.execute(
+                    "SELECT 1 FROM search_documents_fts WHERE search_documents_fts MATCH 'pollen' "
+                    "AND content_type = 'source_passage' AND target_id LIKE ? LIMIT 1",
+                    ("passage.dana-keli-cintamani.%",),
+                ).fetchone()
+            )
+        finally:
+            connection.close()
+
     def test_real_packages_follow_manifest_source_package_order(self) -> None:
         loaded_packages = []
         original_load_yaml = content_tooling.load_yaml
@@ -757,6 +817,7 @@ class ContentToolingTests(unittest.TestCase):
                 "work.mathura-mahatmya",
                 "work.radhakunda-manifestation-puranic-unit",
                 "work.srimad-bhagavatam",
+                "work.dana-keli-cintamani",
             ],
             loaded_packages,
         )

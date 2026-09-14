@@ -16,7 +16,7 @@ The curator-controlled source handoff remains at:
 ../CODEX_DEVELOPMENT_HANDOFF/content-handoff/
 ```
 
-The neutral fixture remains under `content/fixtures/` for compiler regression tests. The runtime database contains the development-manifest-authorized Rādhā-kuṇḍa slice plus the Task 013 Śrīmad-Bhāgavatam 10.36.1–16 expansion.
+The neutral fixture remains under `content/fixtures/` for compiler regression tests. The runtime database contains the development-manifest-authorized Rādhā-kuṇḍa slice, the Task 013 Śrīmad-Bhāgavatam 10.36.1–16 expansion, and the complete 175-verse Śrī Dāna-keli-cintāmaṇi reader Work.
 
 ## Requirements
 
@@ -41,7 +41,7 @@ xcodebuild -project app/GovardhanaPilgrimage.xcodeproj -scheme GovardhanaPilgrim
 xcodebuild -project app/GovardhanaPilgrimage.xcodeproj -scheme GovardhanaPilgrimage -destination 'platform=iOS Simulator,name=iPhone 16 Pro,OS=18.4' -derivedDataPath build/DerivedData CODE_SIGNING_ALLOWED=NO test
 ```
 
-The generated project targets iOS 18+, uses GRDB.swift as its only external Swift dependency, and bundles `build/radhakunda-content.sqlite` as a read-only resource. The real Story opens through the database-driven TOC. Citations resolve canonical Passage IDs into preferred Edition representations, and the Source Reader supports surrounding reading and exact Return to Story. Optional compiled witness mappings can expose a PDFKit Original Witness viewer at an exact zero-based PDF page index while retaining a separate printed page label. Task 012 proves this only with a neutral fixture; the real development manifest currently compiles zero witnesses and mappings. Library presents the four packaged Works (excluding the metadata-only parent Work). Global and Work-scoped FTS5 search, bookmarks, and semantic reading positions retain the Task 008–009 behavior. User state persists only in `Application Support/user-state.sqlite`; Python remains a development-time compiler and does not ship in the app.
+The generated project targets iOS 18+, uses GRDB.swift as its only external Swift dependency, and bundles `build/radhakunda-content.sqlite` as a read-only resource. The real Story opens through the database-driven TOC. Citations resolve canonical Passage IDs into preferred Edition representations, and the Source Reader supports surrounding reading and exact Return to Story. Optional compiled witness mappings can expose a PDFKit Original Witness viewer at an exact zero-based PDF page index while retaining a separate printed page label. Task 012 proves this only with a neutral fixture; the real development manifest currently compiles zero witnesses and mappings. Library presents the five packaged Works (excluding the metadata-only parent Work). Global and Work-scoped FTS5 search, bookmarks, and semantic reading positions retain the Task 008–009 behavior. User state persists only in `Application Support/user-state.sqlite`; Python remains a development-time compiler and does not ship in the app.
 
 Validation reads the manifest and authoring files without writing build output. Building writes:
 

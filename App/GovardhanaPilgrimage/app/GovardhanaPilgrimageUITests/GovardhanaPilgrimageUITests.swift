@@ -485,6 +485,23 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
         XCTAssertFalse(app.buttons["source.original-witness"].exists)
     }
 
+    func testLibraryOpensDanaKeliCintamaniInGenericSourceReader() {
+        let app = launch()
+        app.buttons["home.library"].tap()
+        XCTAssertTrue(app.navigationBars["Library"].waitForExistence(timeout: 5))
+        let work = app.buttons["library.work.work.dana-keli-cintamani"]
+        reveal(work, in: app)
+        work.tap()
+        XCTAssertTrue(app.navigationBars["Śrī Dāna-keli-cintāmaṇi"].waitForExistence(timeout: 5))
+        let firstVerse = app.buttons["work.toc.passage.passage.dana-keli-cintamani.1"]
+        XCTAssertTrue(firstVerse.waitForExistence(timeout: 5))
+        firstVerse.tap()
+        XCTAssertTrue(app.staticTexts["Passage Verse 1"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label CONTAINS %@", "kurvāṇaiḥ śatam āśiṣaṁ")).firstMatch.exists)
+        XCTAssertEqual("passage.dana-keli-cintamani.1", app.buttons["source.bookmark"].value as? String)
+        XCTAssertFalse(app.buttons["Return to Story"].exists)
+    }
+
     func testSearchBackRestoresExactQueryAndResults() {
         let app = launch()
         app.buttons["home.search"].tap()

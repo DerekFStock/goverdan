@@ -101,12 +101,31 @@ works:
   release_blockers:
   - Review and approve or revise the sixteen working project translations.
   - Preserve this package as a controlled project reading rather than a critical edition claim.
+- id: work.dana-keli-cintamani
+  title: Śrī Dāna-keli-cintāmaṇi
+  short_title: Dāna-keli-cintāmaṇi
+  abbreviation: DKC
+  author: Śrī Raghunātha dāsa Gosvāmī
+  parent_work_id: null
+  source_layer: A_PRIMARY_GOSVAMI
+  preferred_reading_edition: edition.dana-keli-cintamani.project-reading-v1
+  status: NORMALIZED
+  registry_role: PACKAGED_WORK
+  package_file: dana-keli-cintamani/package.yaml
+  provenance_file: dana-keli-cintamani/PROVENANCE.md
+  passage_scope: 1–175
+  development_eligible: true
+  release_eligible: false
+  release_blockers:
+  - Review and approve or revise the 175 working project translations.
+  - Preserve the normalized 1–175 numbering and recheck it against a publication-critical witness before release.
 phase_a:
   packaged_work_ids:
   - work.radha-kundastaka
   - work.mathura-mahatmya
   - work.radhakunda-manifestation-puranic-unit
   - work.srimad-bhagavatam
+  - work.dana-keli-cintamani
   development_ready: true
   release_ready: false
   next_artifact: CODEX_TASK_010 real-content integration after Tasks 001–009 and explicit user approval
@@ -121,8 +140,8 @@ phase_a:
   real_content_integration_status: AUTHORIZED_ONLY_IN_CODEX_TASK_010
   story_metadata_file: story.yaml
 validation:
-  expected_packaged_work_count: 4
-  packaged_work_count: 4
+  expected_packaged_work_count: 5
+  packaged_work_count: 5
   all_packaged_work_ids_unique: true
   all_package_files_exist: true
   all_parent_work_ids_resolve: true
