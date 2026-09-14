@@ -291,6 +291,25 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
         ).firstMatch, in: app)
     }
 
+    func testTask020A7AniyorAndSankarsanaKundaOpenWithApprovedContent() {
+        var app = launch()
+        openPlaceDetails(36, in: app)
+        XCTAssertTrue(app.navigationBars["Aniyor Village"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Annakūṭa village and sacred Govardhana-pūjā landscape"].exists)
+        revealForReading(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "āniaura āniaura")
+        ).firstMatch, in: app)
+
+        app.terminate()
+        app = launch()
+        openPlaceDetails(40, in: app)
+        XCTAssertTrue(app.navigationBars["Saṅkarṣaṇa-kuṇḍa"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Saṅkarṣaṇa/Balarāma sacred kuṇḍa in the Aniyor landscape"].exists)
+        revealForReading(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "Vraja-rīti-cintāmaṇi 3.18")
+        ).firstMatch, in: app)
+    }
+
     func testPlaceReferenceReaderRemainsVisibleAndBackReturnsToPlaceDetails() {
         let app = launch()
         app.buttons["home.map"].tap()

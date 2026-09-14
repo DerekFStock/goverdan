@@ -817,3 +817,137 @@ places:
       - source_type: PROJECT_RESEARCH
         description: Approved VERIFIED/HIGH identification based on direct pilgrimage geography and textual corroboration.
     content_destination:
+
+  - id: place.aniyor-village
+    map_number: 36
+    canonical_name: Aniyor Village
+    ascii_name: Aniyor Village
+    alternate_names:
+      - Aniyor
+      - Aanyor
+      - Anyor
+      - Aniyora
+      - Anyora
+      - Āniyora-grāma
+    latitude: 27.47443
+    longitude: 77.44584
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: Aniyor is a living village and sacred landscape rather than a single point-object. The coordinate is a representative current village marker derived from modern mapping; it must not be presented as the exact Annakūṭa platform, exact place where Girirāja spoke, or exact location of every Aniyor līlā feature.
+    provenance:
+      - source_type: EARLY_GAUDIYA_PILGRIMAGE_TEXT
+        description: Bhakti-ratnākara 5.633–638 directly names Āniyora-grāma, narrates the Govardhana offering and repeated call āniaura āniaura, and identifies the Annakūṭa-sthāna.
+      - source_type: PRIMARY_GOSVAMI_TEXT
+        description: Raghunātha dāsa Gosvāmī’s Vraja-vilāsa-stava 75 directly praises the Annakūṭa sacred event and landscape; it does not independently fix the modern village boundary.
+      - source_type: PRIMARY_SCRIPTURE
+        description: Śrīmad-Bhāgavatam 10.24 supplies the canonical Govardhana-pūjā narrative but does not name modern Aniyor.
+        source_reference: https://vedabase.io/en/library/sb/10/24/
+      - source_type: MODERN_MAP
+        description: Modern OpenStreetMap-derived locality data supports the representative Aanyor village marker, not an exact sacred sub-feature.
+    content_destination:
+
+  - id: place.gopala-raja-temple
+    map_number: 37
+    canonical_name: Gopāla Rāja Temple
+    ascii_name: Gopala Raja Temple
+    alternate_names:
+      - Gopal Raj Temple
+      - Gopala Raj Temple
+      - Gopāla Rāja
+      - Gopal Raja Mandir
+    latitude: 27.4735625
+    longitude: 77.4437344
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: Current mapping identifies Gopala Raja Temple at the approved point on or along Govardhana Hill, while traditional pilgrimage literature identifies the present shrine with the hilltop Gopāla sacred-memory site. Primary Gauḍīya texts strongly establish Gopāla on Govardhana and Raghunātha dāsa Gosvāmī’s Gopāla Rāja on the mountain plateau, but they do not prove that the present temple structure is unchanged from the sixteenth century.
+    provenance:
+      - source_type: PRIMARY_GOSVAMI_TEXT
+        description: Raghunātha dāsa Gosvāmī’s Śrī Gopāla-rāja-stotra 1–15 repeatedly praises Gopāla Rāja shining on the mountain plateau.
+      - source_type: PRIMARY_GAUDIYA_TEXT
+        description: Caitanya-caritāmṛta, Madhya 4 narrates Mādhavendra Purī’s recovery of Gopāla and establishment of His worship on Govardhana.
+        source_reference: https://vedabase.io/en/library/cc/madhya/4/
+      - source_type: PILGRIMAGE_TRADITION
+        description: Traditional Govardhana guides identify the present shrine with the hilltop Gopāla sacred-memory site and report current worship of a Govardhana-śilā; continuity of the present building remains tradition rather than archaeology.
+      - source_type: MODERN_MAP
+        description: Current mapping independently identifies Gopala Raja Temple at the approved coordinate.
+    content_destination:
+
+  - id: place.siva-temple-aniyor
+    map_number: 38
+    canonical_name: Śiva Temple
+    ascii_name: Siva Temple
+    alternate_names:
+      - Shiva Temple
+      - Śiva shrine beside Gopāla Rāja
+      - Govardhana hilltop Śiva shrine
+    coordinate_status: UNVERIFIED
+    coordinate_confidence: UNKNOWN
+    coordinate_accuracy_meters:
+    verification_notes: The controlled pilgrimage list describes an old Śiva temple standing beside Gopāla Rāja Temple atop Govardhana and understands Śiva here as a guardian of Girirāja. A separate independently verified GPS point and a securely established specific Mahādeva name have not yet been recovered. Therefore #38 remains coordinate-less and navigates through #37.
+    navigation_anchor_place_id: place.gopala-raja-temple
+    location_guidance: Navigate to #37 Gopāla Rāja Temple, then identify the traditional Śiva guardian shrine locally beside that sacred area by legitimate access. Reaching #37 is only arrival at the navigation anchor, not exact arrival at #38; do not climb or scramble on Girirāja.
+    provenance:
+      - source_type: PILGRIMAGE_TRADITION
+        description: The traditional numbered Govardhana parikramā guide identifies #38 simply as Śiva Temple beside Gopāla Rāja and remembers Śiva as guardian of Girirāja.
+        source_reference: https://padmanabhdas.wordpress.com/2012/11/
+      - source_type: PROJECT_RESEARCH
+        description: No primary text, independent coordinate, or securely established specific Mahādeva name has been verified; nearby named Śiva listings are not treated as this shrine.
+    content_destination:
+
+  - id: place.balarama-dauji-temple-aniyor
+    map_number: 39
+    canonical_name: Balarāma (Dauji) Temple
+    ascii_name: Balarama (Dauji) Temple
+    alternate_names:
+      - Balarama Dauji Mandir
+      - Dauji Temple, Aniyor
+      - Dauji Mandir, Aniyor
+      - Saṅkarṣaṇa Mandir
+      - Sankarsana Mandir
+    latitude: 27.4725125
+    longitude: 77.4441719
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: Current mapping directly identifies Balarama Dauji Mandir in Aanyor at the approved coordinate, and traditional Govardhana pilgrimage literature independently identifies an Aniyor Balarāma or Dauji temple also called Saṅkarṣaṇa Mandir. The received claims that the deities were installed by Vajranābha and later hidden in Saṅkarṣaṇa-kuṇḍa during the Aurangzeb period remain temple and pilgrimage tradition unless independently verified.
+    provenance:
+      - source_type: MODERN_MAP
+        description: Current mapping identifies Balarama Dauji Mandir at FCFV+2M3 in Aanyor; this is not the famous Dauji Maharaj Temple in Baldeo.
+      - source_type: PILGRIMAGE_TRADITION
+        description: Traditional Govardhana guidance identifies the Aniyor temple, Saṅkarṣaṇa Mandir alias, deity forms, and received Vajranābha installation and later concealment traditions.
+      - source_type: LATER_GAUDIYA_TEXT
+        description: Vraja-rīti-cintāmaṇi 3.10 places Balarāma directly in Govardhana’s sacred landscape but does not prove the modern temple identity.
+      - source_type: PRIMARY_SCRIPTURE
+        description: Śrīmad-Bhāgavatam 10.21.18 glorifies Govardhana’s service to Kṛṣṇa, Balarāma, cows, and cowherd boys; it is broad sacred context rather than temple-identification evidence.
+        source_reference: https://vedabase.io/en/library/sb/10/21/18/
+    content_destination:
+
+  - id: place.sankarsana-kunda
+    map_number: 40
+    canonical_name: Saṅkarṣaṇa-kuṇḍa
+    ascii_name: Sankarsana-kunda
+    alternate_names:
+      - Sankarshan Kund
+      - Sankarsana Kund
+      - Sankarshana Kund
+      - Saṅkarṣaṇānanda-sarovara
+      - Sankarsanananda Sarovar
+    latitude: 27.4709583
+    longitude: 77.4450222
+    coordinate_status: VERIFIED
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: The Braj Development Plan directly lists Sankarshan Kund as BDP_Gvdn_096 at 27°28′15.45″N, 77°26′42.08″E, and current mapping independently identifies the same water body at Aniyor. Viśvanātha Cakravartī’s Vraja-rīti-cintāmaṇi 3.18 directly names Saṅkarṣaṇānanda-sarovara in the southeast portion of Govardhana’s sacred geography and places Gaurī-tīrtha to its east.
+    provenance:
+      - source_type: LATER_GAUDIYA_TEXT
+        description: Vraja-rīti-cintāmaṇi 3.18 directly names Saṅkarṣaṇānanda-sarovara in southeastern Govardhana and places Gaurī-tīrtha to its east; 3.20 relates Saṅkarṣaṇa and Dāna-nivartana kuṇḍas to the Annakūṭa sacred area.
+      - source_type: OFFICIAL_OR_INSTITUTIONAL_DOCUMENT
+        description: The Braj Development Plan records BDP_Gvdn_096 Sankarshan Kund and supplies the approved present water-body coordinate.
+        source_reference: https://www.upbtvp.in/pdf/Braj_Development_plan.pdf
+      - source_type: MODERN_MAP
+        description: Current mapping independently identifies the Aniyor water body as Shankarshan or Sankarshan Kund.
+      - source_type: PROJECT_RESEARCH
+        description: The similarly named Bahulāvana Saṅkarṣaṇa-kuṇḍa and its Bhakti-ratnākara or Skanda Purāṇa evidence are explicitly excluded from this Aniyor place.
+    content_destination:

@@ -933,3 +933,140 @@ contents:
     related_place_ids:
       - place.candra-sarovara
       - place.parasoli
+
+  - place_id: place.aniyor-village
+    category: Annakūṭa village and sacred Govardhana-pūjā landscape
+    summary: 'Aniyor is the sacred village landscape where early Gauḍīya pilgrimage tradition localizes the first Govardhana worship and Annakūṭa offering. Bhakti-ratnākara directly names Āniyora-grāma and explains the village name through Girirāja’s repeated call for more offerings: āniaura āniaura. This is a sacred landscape, not one single shrine.'
+    why_sacred: Bhakti-ratnākara 5.633–638 directly names Aniyor and identifies it as Annakūṭa-sthāna, where Nanda and the cowherds worship Govardhana at Kṛṣṇa’s instruction and Girirāja calls for more. Raghunātha dāsa Gosvāmī’s Vraja-vilāsa-stava 75 gives direct Gosvāmī praise of the Annakūṭa sacred event. Śrīmad-Bhāgavatam 10.24 supplies the canonical Govardhana-pūjā narrative, but it does not name modern Aniyor; Bhakti-ratnākara supplies the explicit localization.
+    what_to_see:
+      - The living village pressed against Girirāja and the surrounding parikramā landscape.
+      - The broader Annakūṭa sacred setting; the map coordinate is a representative area marker, not an exact līlā point.
+      - Traditional pilgrimage features described as bowl-like rock impressions used by the Vrajavāsīs.
+      - The traditional bajanī-śilā, said to ring when gently tapped; no exact GPS pin is asserted here.
+    lila: 'At Kṛṣṇa’s direction, Nanda and the Vrajavāsīs turn from Indra-pūjā and offer their preparations to Govardhana. In Bhakti-ratnākara’s Aniyor localization, Kṛṣṇa consumes the offerings in a great form and Girirāja’s deep voice calls again and again for more: āniaura āniaura. The place is remembered as Annakūṭa-sthāna.'
+    pilgrim_guidance: This marker brings you into the living Aniyor village landscape; it does not mark the exact ancient Annakūṭa platform or every sacred feature. Walk through or view the village respectfully, use individual records for distinct nearby places, and do not step onto or climb Girirāja.
+    references:
+      - id: reference.aniyor-village.bhakti-ratnakara-5-633-638
+        source_title: Bhakti-ratnākara
+        locus: 5.633–638
+        explanation: Directly names Āniyora-grāma, narrates the repeated call for more offerings, and localizes the Annakūṭa place.
+        quotation: āniaura āniaura
+      - id: reference.aniyor-village.vraja-vilasa-stava-75
+        source_title: Raghunātha dāsa Gosvāmī — Vraja-vilāsa-stava
+        locus: Verse 75
+        explanation: Direct Gosvāmī praise of the Annakūṭa sacred event invoked in the same Bhakti-ratnākara passage; it does not fix the modern village boundary.
+      - id: reference.aniyor-village.srimad-bhagavatam-10-24
+        source_title: Śrīmad-Bhāgavatam
+        locus: Canto 10, Chapter 24
+        explanation: Canonical Govardhana-pūjā narrative background; it does not name the modern village Aniyor.
+    related_place_ids:
+      - place.gauri-kunda
+      - place.gopala-raja-temple
+      - place.balarama-dauji-temple-aniyor
+      - place.sankarsana-kunda
+
+  - place_id: place.gopala-raja-temple
+    category: Gopāla Rāja hilltop shrine and Mādhavendra Purī sacred-memory site
+    summary: 'Gopāla Rāja Temple belongs to one of Govardhana’s most important Gopāla traditions. Raghunātha dāsa Gosvāmī’s fifteen-verse Gopāla-rāja-stotra repeatedly presents Gopāla Rāja shining splendidly on the mountain plateau, while Caitanya-caritāmṛta narrates Mādhavendra Purī recovering Gopāla and establishing His worship on Govardhana. The modern shrine is a received pilgrimage identification of that sacred geography, not proof that the present building is unchanged from the sixteenth century.'
+    why_sacred: Śrī Gopāla-rāja-stotra 1–15 provides unusually strong Gosvāmī textual support and repeatedly emphasizes Gopāla Rāja on the giri-paṭṭa, the mountain plateau. Caitanya-caritāmṛta, Madhya 4 narrates Gopāla revealing Himself to Mādhavendra Purī, asking to be recovered, and being established for worship on Govardhana as Giridhārī. Traditional pilgrimage identifies the present shrine with that hilltop sacred memory while keeping architectural continuity a separate, unproven question.
+    what_to_see:
+      - The present Gopāla Rāja shrine within Govardhana’s sacred-hill setting.
+      - The Govardhana-śilā reported as presently worshiped there, where current shrine conditions confirm it.
+      - 'The relationship with #38 Śiva Temple, traditionally described as beside this shrine.'
+    lila: Mādhavendra Purī is directed by Gopāla to recover Him from concealment and establish His worship on Govardhana. Raghunātha’s Gopāla-rāja-stotra later presents Gopāla Rāja shining upon the mountain plateau. The present temple is visited as a living shrine within that received sacred geography.
+    pilgrim_guidance: 'The map pin identifies a sacred-location reference; it is not permission to climb, scramble, or step onto Girirāja. Approach only by an established, locally accepted pilgrimage access. If the shrine cannot be reached without stepping on Girirāja in a way contrary to your devotional practice, take darśana from the legitimate accessible point instead. Keep #37 distinct from the not-yet-authored Gopāla manifestation place #41.'
+    references:
+      - id: reference.gopala-raja-temple.gopala-raja-stotra-1-15
+        source_title: Raghunātha dāsa Gosvāmī — Śrī Gopāla-rāja-stotra
+        locus: Verses 1–15
+        explanation: Dedicated hymn to Gopāla Rāja on the mountain plateau.
+        quotation: Gopāla Rāja shines splendidly on the mountain plateau.
+      - id: reference.gopala-raja-temple.caitanya-caritamrta-madhya-4
+        source_title: Caitanya-caritāmṛta, Madhya-līlā
+        locus: Chapter 4
+        explanation: Mādhavendra Purī, Gopāla’s recovery, hilltop installation, temple worship, and Gopāla’s identity as lifter of Govardhana.
+    related_place_ids:
+      - place.aniyor-village
+      - place.siva-temple-aniyor
+      - place.sankarsana-kunda
+
+  - place_id: place.siva-temple-aniyor
+    category: Traditional Śiva guardian shrine beside Gopāla Rāja
+    summary: Traditional parikramā literature remembers an old Śiva shrine beside Gopāla Rāja Temple and describes Mahādeva here as a guardian of Girirāja. The sacred identity is preserved in the pilgrimage sequence, but the exact independent GPS point and specific temple name remain unverified.
+    why_sacred: The received Govardhana parikramā identification remembers Śiva as guardian of Girirāja and places this shrine immediately with Gopāla Rāja. No primary Gosvāmī or scripture passage has yet been verified as naming this exact present shrine, so unrelated general Śiva theology is not used to manufacture a stronger claim.
+    what_to_see:
+      - Look for the traditional small Śiva guardian shrine immediately beside or associated with the Gopāla Rāja sacred location.
+      - Confirm the exact shrine locally at #37 rather than expecting an independently verified pin.
+      - No specific liṅga, building detail, or Mahādeva proper name is asserted without direct verification.
+    lila: The shrine belongs to the devotional understanding of Mahādeva as guardian of Girirāja. The project has not verified a separate Kṛṣṇa-līlā narrative tied specifically to this shrine.
+    pilgrim_guidance: 'Navigate to #37 Gopāla Rāja Temple. Reaching #37 means At navigation anchor, not Arrived at #38. Locate the shrine by legitimate local guidance beside the #37 sacred area, and do not climb or scramble on Girirāja. The location remains approximate.'
+    references:
+      - id: reference.siva-temple-aniyor.traditional-guide
+        source_title: Traditional numbered Govardhana parikramā guide
+        locus: '#38 Śiva Temple beside Gopāla Rāja'
+        explanation: Traditional site identification; no independently verified exact coordinate or primary-text shrine name is currently established.
+    related_place_ids:
+      - place.gopala-raja-temple
+      - place.aniyor-village
+
+  - place_id: place.balarama-dauji-temple-aniyor
+    category: Balarāma/Saṅkarṣaṇa village temple
+    summary: This is the Aniyor temple of Balarāma, affectionately Dauji and also remembered locally as Saṅkarṣaṇa Mandir. It belongs to the Balarāma and Saṅkarṣaṇa sacred landscape around Aniyor and nearby Saṅkarṣaṇa-kuṇḍa. This is not the large and famous Dauji temple at Baldeo.
+    why_sacred: Current mapping directly identifies the Aniyor Balarāma or Dauji shrine, while pilgrimage tradition supplies the Saṅkarṣaṇa Mandir name and deity description. Vraja-rīti-cintāmaṇi 3.10 places Balarāma directly in Govardhana’s sacred geography, and Śrīmad-Bhāgavatam 10.21.18 gives the broader Kṛṣṇa-Balarāma Govardhana setting. Claims of Vajranābha installation and concealment during the Aurangzeb period remain received temple tradition, not established archaeology or independently verified history.
+    what_to_see:
+      - The Balarāma or Dauji deity in the living Aniyor village temple.
+      - The smaller Kṛṣṇa deity described by pilgrimage tradition, where the current shrine still agrees.
+      - 'The geographic relationship with the separate #40 Saṅkarṣaṇa-kuṇḍa.'
+    lila: Balarāma is Saṅkarṣaṇa, Kṛṣṇa’s elder brother, and this village shrine belongs to a Govardhana landscape in which Gauḍīya texts explicitly remember Balarāma walking upon Girirāja. No temple-specific childhood līlā is invented; the neighboring kuṇḍa separately bears His Saṅkarṣaṇa name.
+    pilgrim_guidance: 'This is the small Aniyor/Govardhana Balarāma (Dauji) Temple, not Shri Dauji Maharaj Temple in Baldeo. Use the exact #39 pin for the Aniyor shrine and keep the temple distinct from #40 Saṅkarṣaṇa-kuṇḍa.'
+    references:
+      - id: reference.balarama-dauji-temple-aniyor.vraja-riti-cintamani-3-10
+        source_title: Viśvanātha Cakravartī — Vraja-rīti-cintāmaṇi
+        locus: '3.10'
+        explanation: Direct Balarāma-on-Govardhana context; not direct proof of the modern #39 temple.
+      - id: reference.balarama-dauji-temple-aniyor.srimad-bhagavatam-10-21-18
+        source_title: Śrīmad-Bhāgavatam
+        locus: 10.21.18
+        explanation: Govardhana’s service to Kṛṣṇa, Balarāma, cows, and cowherd boys; broad sacred context rather than proof of the temple.
+      - id: reference.balarama-dauji-temple-aniyor.traditional-guide
+        source_title: Traditional Aniyor parikramā guide
+        locus: Aniyor Dauji or Saṅkarṣaṇa Mandir
+        explanation: Exact modern temple identification, Saṅkarṣaṇa Mandir alias, deity description, and received Vajranābha installation and concealment traditions.
+    related_place_ids:
+      - place.aniyor-village
+      - place.sankarsana-kunda
+      - place.gopala-raja-temple
+
+  - place_id: place.sankarsana-kunda
+    category: Saṅkarṣaṇa/Balarāma sacred kuṇḍa in the Aniyor landscape
+    summary: Saṅkarṣaṇa-kuṇḍa is a major sacred water body at Aniyor associated with Balarāma as Saṅkarṣaṇa. Its identity is unusually strong because the present water body is directly recorded by the Braj Development Plan and Vraja-rīti-cintāmaṇi independently names Saṅkarṣaṇānanda-sarovara in this southeastern Govardhana sacred geography. It is not merely a modern Balarāma-themed pond.
+    why_sacred: Vraja-rīti-cintāmaṇi 3.18 directly names Saṅkarṣaṇānanda-sarovara and places Gaurī-tīrtha east of it, supporting the #35 and #40 sacred relationship. Verse 3.20 relates Saṅkarṣaṇa and Dāna-nivartana kuṇḍas to the Annakūṭa sacred area. The official Braj Development Plan independently records the present Sankarshan Kund, while neighboring #39 preserves living Balarāma and Saṅkarṣaṇa devotion.
+    what_to_see:
+      - Saṅkarṣaṇa-kuṇḍa itself and its current ghāṭ or restored water-body setting.
+      - The modern large Saṅkarṣaṇa or Hari installation if it remains present; it is a modern devotional layer, not scenery described by Viśvanātha.
+      - 'Nearby #39 Balarāma or Dauji worship and the wider Aniyor village landscape.'
+    lila: Viśvanātha places Saṅkarṣaṇānanda-sarovara directly in Govardhana’s sacred landscape, preserving Balarāma or Saṅkarṣaṇa within the geography around Annakūṭa, Gaurī-tīrtha, and Dāna-nivartana. Later local pilgrimage tradition remembers Balarāma gathering excess stormwater from the Govardhana-lifting līlā here; that later account is not stated in Śrīmad-Bhāgavatam or Vraja-rīti-cintāmaṇi 3.18.
+    pilgrim_guidance: '#40 is the kuṇḍa and water body; #39 is the separate Balarāma or Dauji temple. Reaching one is not arrival at the other. Modern restoration and devotional installations postdate the textual tradition. Approach the water respectfully; no claim about current bathing safety is made.'
+    references:
+      - id: reference.sankarsana-kunda.vraja-riti-cintamani-3-18
+        source_title: Viśvanātha Cakravartī — Vraja-rīti-cintāmaṇi
+        locus: '3.18'
+        explanation: Directly names Saṅkarṣaṇānanda-sarovara in Govardhana’s southeastern sacred geography and places Gaurī-tīrtha east of it.
+        quotation: In the southeastern part of Govardhana is Saṅkarṣaṇānanda-sarovara.
+      - id: reference.sankarsana-kunda.vraja-riti-cintamani-3-20
+        source_title: Viśvanātha Cakravartī — Vraja-rīti-cintāmaṇi
+        locus: '3.20'
+        explanation: Places the Annakūṭa or Ānandarāja sacred area between Saṅkarṣaṇa and Dāna-nivartana kuṇḍas without asserting modern straight-line geometry.
+      - id: reference.sankarsana-kunda.braj-development-plan
+        source_title: Braj Development Plan
+        locus: BDP_Gvdn_096
+        explanation: Direct present water-body identification and official coordinate.
+      - id: reference.sankarsana-kunda.traditional-account
+        source_title: Traditional Govardhana parikramā account
+        locus: Balarāma stormwater tradition
+        explanation: Later local tradition only; it is not the controlling source for the kuṇḍa’s primary textual identity.
+    related_place_ids:
+      - place.gauri-kunda
+      - place.aniyor-village
+      - place.balarama-dauji-temple-aniyor
+      - place.dana-nivartana-kunda
