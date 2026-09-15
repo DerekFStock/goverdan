@@ -310,6 +310,25 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
         ).firstMatch, in: app)
     }
 
+    func testTask020A8GovindaKundaAndDokaDaujiOpenWithApprovedContent() {
+        var app = launch()
+        openPlaceDetails(42, in: app)
+        XCTAssertTrue(app.navigationBars["Govinda-kuṇḍa"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Indra–Surabhi abhiṣeka kuṇḍa and Mādhavendra Purī sacred landscape"].exists)
+        revealForReading(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "Śrīmad-Bhāgavatam 10.27.21–23")
+        ).firstMatch, in: app)
+
+        app.terminate()
+        app = launch()
+        openPlaceDetails(45, in: app)
+        XCTAssertTrue(app.navigationBars["Ḍokā-Daujī Temple"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Balarāma/Daujī sacred-memory shrine on Govardhana"].exists)
+        revealForReading(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "living/local tradition")
+        ).firstMatch, in: app)
+    }
+
     func testPlaceReferenceReaderRemainsVisibleAndBackReturnsToPlaceDetails() {
         let app = launch()
         app.buttons["home.map"].tap()

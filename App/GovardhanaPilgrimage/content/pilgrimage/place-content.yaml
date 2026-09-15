@@ -1070,3 +1070,168 @@ contents:
       - place.aniyor-village
       - place.balarama-dauji-temple-aniyor
       - place.dana-nivartana-kunda
+
+  - place_id: place.gopala-prakata-sthali
+    category: Gopāla manifestation-discovery site of Mādhavendra Purī
+    summary: Gopāla-prakaṭa-sthalī is the received sacred spot where Mādhavendra Purī was shown the hidden Gopāla Deity after Gopāla first approached him as a cowherd boy near Govinda-kuṇḍa. Caitanya-caritāmṛta gives the textually secure narrative, while pilgrimage tradition and current mapping preserve the precise modern marker.
+    why_sacred: 'Caitanya-caritāmṛta Madhya 4 is the primary narrative anchor for Gopāla revealing His hiding place, identifying Himself as the lifter of Govardhana, and asking Mādhavendra Purī to recover Him and establish His worship. Bhakti-ratnākara 5.649–650 corroborates this early Gauḍīya sacred geography. The exact present marker is a living/current localization and is distinct from #37 Gopāla Rāja Temple.'
+    what_to_see:
+      - The small present prakaṭa-sthalī shrine.
+      - The Govardhana and Aanyor hillside setting around the received discovery place.
+      - The site’s simple sacred-memory character; no visible bush, stone, or building is claimed to survive unchanged from Mādhavendra Purī’s time.
+      - 'The relationship with nearby #40 Saṅkarṣaṇa-kuṇḍa and #42 Govinda-kuṇḍa.'
+    lila: After circumambulating Govardhana, Mādhavendra Purī bathed at Govinda-kuṇḍa and rested beneath a tree. A beautiful cowherd boy brought him milk. That night the boy appeared in a dream as Gopāla, revealed the bush where He had been hidden, and asked Mādhavendra Purī to bring the villagers, recover Him, and establish His worship on Govardhana. The villagers cleared a path and uncovered the Deity the next morning.
+    pilgrim_guidance: 'The pin identifies the received prakaṭa-sthalī approach. It is not permission to climb, scramble, or step onto Girirāja. Use only established local pilgrimage access and respect local devotional restrictions. #41 is the discovery/manifestation place; #37 is the separate Gopāla Rāja hilltop worship-memory shrine. Reaching one does not mean the other has been visited.'
+    references:
+      - id: reference.gopala-prakata-sthali.caitanya-caritamrta-madhya-4-21-52
+        source_title: Caitanya-caritāmṛta, Madhya-līlā
+        locus: 4.21–52
+        explanation: Full primary Gauḍīya narrative of Mādhavendra Purī and Gopāla’s discovery; the text does not supply the modern GPS coordinate.
+        quotation: My name is Gopāla. I am the lifter of Govardhana Hill.
+      - id: reference.gopala-prakata-sthali.bhakti-ratnakara-5-649-650
+        source_title: Bhakti-ratnākara
+        locus: 5.649–650
+        explanation: Early Gauḍīya localization of Mādhavendra Purī beneath a tree, Gopāla bringing milk, and Gopāla’s place.
+    related_place_ids:
+      - place.gopala-raja-temple
+      - place.sankarsana-kunda
+      - place.govinda-kunda
+      - place.madhavendra-puri-bhajana-kutira-indra-tila
+
+  - place_id: place.govinda-kunda
+    category: Indra–Surabhi abhiṣeka kuṇḍa and Mādhavendra Purī sacred landscape
+    summary: Govinda-kuṇḍa is one of Govardhana’s most textually secure sacred waters. Śrīmad-Bhāgavatam narrates the abhiṣeka in which Surabhi bathes Kṛṣṇa with milk and Indra bathes Him with heavenly Gaṅgā water, giving Him the name Govinda. Bhakti-ratnākara explicitly localizes that abhiṣeka at Govinda-kuṇḍa, and Caitanya-caritāmṛta later places Mādhavendra Purī here before Gopāla approaches him as a cowherd boy.
+    why_sacred: Śrīmad-Bhāgavatam 10.27.21–23 supplies the canonical Indra and Surabhi abhiṣeka and the name Govinda, but does not itself name this modern water body. Raghunātha dāsa Gosvāmī’s Vraja-vilāsa-stava 74 and Bhakti-ratnākara 5.640–645 provide the direct early Gauḍīya Govinda-kuṇḍa localization. Caitanya-caritāmṛta Madhya 4.23 directly records Mādhavendra Purī bathing and resting here.
+    what_to_see:
+      - The large stepped Govinda-kuṇḍa water body.
+      - The stone ghāṭs as its current physical form, without assuming that all present masonry is ancient.
+      - The western-bank Mādhavendra Purī sacred-memory area where it is currently identifiable.
+      - 'The neighboring #43 Nīpa-kuṇḍa and Rādhā-Govinda shrine cluster and the wider Gopāla landscape.'
+    lila: 'After Indra’s pride is broken in Govardhana-līlā, Surabhi bathes Kṛṣṇa with milk and Indra uses celestial Gaṅgā water; Kṛṣṇa is acclaimed as Govinda. Early Gauḍīya pilgrimage tradition localizes that abhiṣeka here. In a later historical layer, Mādhavendra Purī comes after Govardhana parikramā, bathes, and rests beneath a tree before the cowherd boy Gopāla brings him milk and begins the discovery narrative leading to #41.'
+    pilgrim_guidance: '#42 is the kuṇḍa itself. #44 represents nearby sacred features connected with Mādhavendra Purī and Indra, while #43 is the neighboring Nīpa-kuṇḍa and Rādhā-Govinda cluster. Current water appearance or restoration does not establish the kuṇḍa’s ancient physical form, and no bathing-safety assurance is made.'
+    references:
+      - id: reference.govinda-kunda.srimad-bhagavatam-10-27-21-23
+        source_title: Śrīmad-Bhāgavatam
+        locus: 10.27.21–23
+        explanation: Canonical Surabhi and Indra abhiṣeka and the naming of Kṛṣṇa as Govinda; the Bhāgavatam does not itself name the modern water body Govinda-kuṇḍa.
+      - id: reference.govinda-kunda.vraja-vilasa-stava-74
+        source_title: Raghunātha dāsa Gosvāmī — Vraja-vilāsa-stava
+        locus: Verse 74
+        explanation: Direct Gosvāmī praise of Govinda-kuṇḍa and the abhiṣeka.
+      - id: reference.govinda-kunda.bhakti-ratnakara-5-640-645
+        source_title: Bhakti-ratnākara
+        locus: 5.640–645
+        explanation: Explicit place-name and abhiṣeka localization.
+      - id: reference.govinda-kunda.caitanya-caritamrta-madhya-4-23
+        source_title: Caitanya-caritāmṛta, Madhya-līlā
+        locus: '4.23'
+        explanation: Directly records Mādhavendra Purī bathing and resting at Govinda-kuṇḍa.
+        quotation: Mādhavendra Purī went to Govinda-kuṇḍa and took his bath.
+      - id: reference.govinda-kunda.braj-development-plan
+        source_title: Braj Development Plan
+        locus: BDP_Gvdn_100
+        explanation: Present physical water-body identity and approved coordinate.
+    related_place_ids:
+      - place.gopala-prakata-sthali
+      - place.nipa-kunda-radha-govinda
+      - place.madhavendra-puri-bhajana-kutira-indra-tila
+      - place.sankarsana-kunda
+
+  - place_id: place.nipa-kunda-radha-govinda
+    category: Nīpa-kuṇḍa and Rādhā-Govinda shrine cluster
+    summary: 'This numbered stop contains two nearby but distinct physical features: Nīpa-kuṇḍa and the Rādhā-Govinda Temple. Living parikramā tradition connects the kuṇḍa with Kṛṣṇa, Balarāma, and the cowherd boys taking their meal, while the neighboring temple is a continuing Rādhā-Govinda darśana place. Current mapping confirms both features in the Govinda-kuṇḍa landscape.'
+    why_sacred: 'Living pilgrimage tradition preserves the Nīpa-kuṇḍa meal and leaf-cup remembrance and continuing Rādhā-Govinda worship. Śrīmad-Bhāgavatam 10.21.18–19 supplies only broad Kṛṣṇa, Balarāma, and cowherd Govardhana context. Bhakti-ratnākara 5.630–632 names a Nīpa-kuṇḍa at Gaurī-tīrtha, but that same-name evidence is not currently approved as direct proof for this #43 kuṇḍa.'
+    what_to_see:
+      - Nīpa-kuṇḍa, also locally called Kadamba-kuṇḍa, at the primary arrival marker.
+      - The distinct nearby Rādhā-Govinda Dev Mandir within this combined numbered stop.
+      - 'The physical relationship with #42 Govinda-kuṇḍa.'
+      - The map number represents a small two-feature pilgrimage cluster, not one object with two names.
+    lila: Local parikramā tradition remembers Kṛṣṇa, Balarāma, and the cowherd boys taking their meal at this Nīpa-kuṇḍa and associates the place with leaf cups. This remains a living local sacred association rather than a narrative verified in an early primary text for this exact kuṇḍa. The neighboring Rādhā-Govinda Temple belongs to the living worship layer of the landscape.
+    pilgrim_guidance: 'Navigate to the Nīpa-kuṇḍa pin. The Rādhā-Govinda Temple is a separate nearby feature within the same numbered stop. Treat Kadamba-kuṇḍa as an alternate living name, not a second map number. Do not assume the current water condition represents an earlier form or confuse #43 with the Bhakti-ratnākara Gaurī-tīrtha Nīpa-kuṇḍa without additional evidence.'
+    references:
+      - id: reference.nipa-kunda-radha-govinda.traditional-account
+        source_title: Traditional Nīpa-kuṇḍa pilgrimage account
+        locus: Govinda-kuṇḍa landscape
+        explanation: Exact modern sacred identity, cowherd meal tradition, and leaf-cup remembrance; this is living/local tradition.
+      - id: reference.nipa-kunda-radha-govinda.living-temple
+        source_title: Current Rādhā-Govinda Temple
+        locus: Rādhā-Govinda Dev Mandir near Nīpa-kuṇḍa
+        explanation: Confirms the distinct second feature in the combined stop.
+      - id: reference.nipa-kunda-radha-govinda.srimad-bhagavatam-10-21-18-19
+        source_title: Śrīmad-Bhāgavatam
+        locus: 10.21.18–19
+        explanation: Supporting Govardhana cowherding context; not a direct Nīpa-kuṇḍa identification.
+      - id: reference.nipa-kunda-radha-govinda.bhakti-ratnakara-negative-control
+        source_title: Bhakti-ratnākara
+        locus: 5.630–632
+        explanation: 'Same-name textual evidence at Gaurī-tīrtha; not currently approved as direct evidence for #43.'
+    related_place_ids:
+      - place.govinda-kunda
+      - place.madhavendra-puri-bhajana-kutira-indra-tila
+      - place.gopala-prakata-sthali
+
+  - place_id: place.madhavendra-puri-bhajana-kutira-indra-tila
+    category: Mādhavendra Purī sacred-memory site and Indra-abhiṣeka mound
+    summary: This combined stop preserves two distinct memories beside Govinda-kuṇḍa. Caitanya-caritāmṛta directly says Mādhavendra Purī bathed at Govinda-kuṇḍa and sat beneath a tree, where Gopāla approached him as a cowherd boy carrying milk; the present bhajana-kuṭīra or baithaka memorializes that event. Nearby, local pilgrimage tradition identifies a small mound as Indra-ṭīlā, remembered as Indra’s position during Govinda’s abhiṣeka.
+    why_sacred: The Mādhavendra Purī side has direct Caitanya-caritāmṛta evidence and early Bhakti-ratnākara geographic memory for the milk-bearing cowherd encounter. The Indra side has the canonical abhiṣeka in Śrīmad-Bhāgavatam 10.27.21–23 and early Govinda-kuṇḍa localization through Vraja-vilāsa-stava 74 and Bhakti-ratnākara 5.640–645. The exact mound called Indra-ṭīlā remains a later/local physical localization.
+    what_to_see:
+      - The present Mādhavendra Purī bhajana-kuṭīra or baithaka on the Govinda-kuṇḍa side.
+      - The remembered tree and sitting-place association, without treating the present structure as fifteenth-century architecture.
+      - Indra-ṭīlā if it is currently identifiable through local guidance.
+      - 'Govinda-kuṇḍa, which serves as the navigation anchor for this coordinate-less stop.'
+    lila: After Govardhana parikramā, Mādhavendra Purī bathes in Govinda-kuṇḍa and sits beneath a tree. Gopāla appears as a cowherd boy and brings him milk, then reveals His hidden location in a dream. In a much earlier līlā layer, Surabhi and Indra bathe Kṛṣṇa and He is acclaimed as Govinda. Early Gauḍīya literature localizes the abhiṣeka at Govinda-kuṇḍa; the particular mound called Indra-ṭīlā is its later local physical remembrance.
+    pilgrim_guidance: 'Navigate to #42 Govinda-kuṇḍa. Reaching #42 means At navigation anchor, not Arrived at #44. From the kuṇḍa, use current local guidance to identify the bhajana-kuṭīra or baithaka and Indra-ṭīlā. No independent pin is fabricated for the mound, the present kuṭīra is not claimed as fifteenth-century architecture, and no direction to climb Girirāja is given.'
+    references:
+      - id: reference.madhavendra-puri-bhajana-kutira.caitanya-caritamrta-madhya-4-23-35
+        source_title: Caitanya-caritāmṛta, Madhya-līlā
+        locus: 4.23–35
+        explanation: Direct Mādhavendra Purī at Govinda-kuṇḍa and the cowherd-boy milk encounter.
+        quotation: Mādhavendra Purī went to Govinda-kuṇḍa … He then sat beneath a tree.
+      - id: reference.madhavendra-puri-bhajana-kutira.bhakti-ratnakara-5-649
+        source_title: Bhakti-ratnākara
+        locus: '5.649'
+        explanation: Early geographic memory of Mādhavendra Purī beneath the tree and Gopāla bringing milk.
+      - id: reference.indra-tila.srimad-bhagavatam-10-27-21-23
+        source_title: Śrīmad-Bhāgavatam
+        locus: 10.27.21–23
+        explanation: Canonical Surabhi and Indra abhiṣeka; it does not identify the exact mound.
+      - id: reference.indra-tila.vraja-vilasa-stava-74
+        source_title: Raghunātha dāsa Gosvāmī — Vraja-vilāsa-stava
+        locus: Verse 74
+        explanation: Govinda-kuṇḍa and abhiṣeka sacred geography, not an exact mound coordinate.
+      - id: reference.indra-tila.traditional-identification
+        source_title: Traditional Indra-ṭīlā identification
+        locus: Western Govinda-kuṇḍa sacred landscape
+        explanation: Local physical localization; the canonical texts narrate the abhiṣeka but do not identify this exact mound.
+    related_place_ids:
+      - place.govinda-kunda
+      - place.gopala-prakata-sthali
+      - place.nipa-kunda-radha-govinda
+
+  - place_id: place.doka-dauji-temple
+    category: Balarāma/Daujī sacred-memory shrine on Govardhana
+    summary: Ḍokā-Daujī is a small Balarāma shrine in the Govardhana landscape. Local parikramā tradition remembers Dauji crouching here, intensely watching Kṛṣṇa’s dancing pastimes until His normally fair complexion appeared dark like Kṛṣṇa’s. This living/local tradition explains the shrine’s unusual black Balarāma image and names such as Ḍokā-Daujī or Luk-Luk Dauji; it is not a Bhāgavatam narrative.
+    why_sacred: 'The shrine preserves living Dauji and Balarāma worship and the local black, crouching deity remembrance. Vraja-rīti-cintāmaṇi 3.10 and Śrīmad-Bhāgavatam 10.21.18 supply broad Balarāma-on-Govardhana context only. This is #45, distinct from #39 Aniyor Balarāma Temple and future #46 Balarāma-mukuṭa-śilā.'
+    what_to_see:
+      - The small Dauji shrine.
+      - The black Balarāma or Dauji deity where current worship preserves that form.
+      - The surrounding Govardhana setting.
+      - 'The crown-impression śilā remains future place #46 and is not folded into this stop.'
+    lila: Local tradition remembers Balarāma watching Kṛṣṇa’s dancing or rāsa from this Govardhana vantage point, crouching in absorbed attention and becoming dark in color like His younger brother. The shrine’s black Dauji image embodies this received remembrance. This particular story is not being presented as a direct Śrīmad-Bhāgavatam episode.
+    pilgrim_guidance: 'Do not treat the map pin as permission to climb or step onto Girirāja. Use only legitimate, locally accepted darśana access. If local devotional practice restricts climbing, take darśana from the established accessible point or request help from the pūjārī or local guide. Keep this shrine distinct from #39 and the future #46 crown-impression śilā.'
+    references:
+      - id: reference.doka-dauji-temple.traditional-account
+        source_title: Traditional Ḍokā-Daujī / Balarāma-sthalī account
+        locus: Ḍokā, Dhunke, or Luk-Luk Dauji shrine
+        explanation: Exact modern shrine identity and local līlā remembrance; this is pilgrimage tradition.
+      - id: reference.doka-dauji-temple.vraja-riti-cintamani-3-10
+        source_title: Viśvanātha Cakravartī — Vraja-rīti-cintāmaṇi
+        locus: '3.10'
+        explanation: 'Supporting context; not direct proof of the #45 local story or modern shrine.'
+      - id: reference.doka-dauji-temple.srimad-bhagavatam-10-21-18
+        source_title: Śrīmad-Bhāgavatam
+        locus: 10.21.18
+        explanation: Broad Govardhana/Balarāma context; not the source of the Ḍokā-Daujī rasa-watching tradition.
+    related_place_ids:
+      - place.govinda-kunda
+      - place.balarama-dauji-temple-aniyor
