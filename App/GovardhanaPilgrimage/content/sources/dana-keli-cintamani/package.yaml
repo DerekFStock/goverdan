@@ -1,0 +1,2706 @@
+schema_version: 1
+work:
+  id: work.dana-keli-cintamani
+  title: Śrī Dāna-keli-cintāmaṇi
+  short_title: Dāna-keli-cintāmaṇi
+  abbreviation: DKC
+  author: Śrī Raghunātha dāsa Gosvāmī
+  source_layer: A_PRIMARY_GOSVAMI
+  language: sa
+  status: NORMALIZED
+edition:
+  id: edition.dana-keli-cintamani.project-reading-v1
+  work_id: work.dana-keli-cintamani
+  title: Govardhana Pilgrimage Project Reading Edition
+  representation: normalized_text
+  version: 1.0.0-dev
+  status: NORMALIZED
+  preferred: true
+  source_document: dana-keli-cintamani_-_raghunatha_dasa_gosvamin(1).docx
+  normalization:
+  - Root verses only; source commentary is excluded from the reader work.
+  - Unicode NFC normalization.
+  - One canonical passage per verse, 1–175.
+  - 'The uploaded source DOCX contains a local numbering slip after verse 163: the next six root verses are printed 163,
+    164, 165, 166, 167, 168, followed by 170. The project reader canonicalizes those six sequentially as 164–169, preserving
+    a continuous 1–175 passage sequence. No alternate reader copy is created.'
+  translation_provenance:
+    type: WORKING_PROJECT
+    translator: Govardhana Pilgrimage Project
+    method: Fresh working English translation prepared directly from the normalized Sanskrit root verses.
+    status: PENDING_PROJECT_APPROVAL
+provenance:
+  reader_scope: ONE_CANONICAL_WORK_ONLY
+  commentary_included: false
+  alternate_editions_in_reader: false
+  comparison_witnesses_in_reader: false
+  numbering_note: 'The uploaded source DOCX contains a local numbering slip after verse 163: the next six root verses
+    are printed 163, 164, 165, 166, 167, 168, followed by 170. The project reader canonicalizes those six sequentially
+    as 164–169, preserving a continuous 1–175 passage sequence. No alternate reader copy is created.'
+passages:
+- id: passage.dana-keli-cintamani.1
+  locus: '1'
+  display_locus: Verse 1
+  order: 1
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'kurvāṇaiḥ śatam āśiṣaṁ nija-nija-preyo-jayāyotsukaiḥ
+
+    svīya-svīya-gaṇaiḥ sphuṭaṁ kuṭilayā vācātituṅgī-kṛtaḥ |
+
+    gavyānāṁ nava-dāna-kalpanā-kṛte prauḍhaṁ mithaḥ spardhinor
+
+    gāndharvā-giridhāriṇor giri-taṭe keli-kaliḥ pātu vaḥ ||1||'
+  translation_status: WORKING_PROJECT
+  translation: May the playful quarrel on the slope of Govardhana between Gāndharvā and Giridhārī protect you. Each is
+    surrounded by companions eager for the victory of their own beloved, and the contest is raised ever higher by crooked
+    speech as the two proudly vie over devising a new toll on the dairy goods.
+- id: passage.dana-keli-cintamani.2
+  locus: '2'
+  display_locus: Verse 2
+  order: 2
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'uddāma-narma-rasa-raṅga-taraṅga-kānta-
+
+    rādhā-sarid-giridharārṇava-saṅgamottham |
+
+    śrī-rūpa-cāru-caraṇābja-rajaḥ-prabhāvād
+
+    andho’pi dāna-nava-keli-maṇiṁ cinomi ||2||'
+  translation_status: WORKING_PROJECT
+  translation: Although blind, by the power of the pollen of Śrī Rūpa’s beautiful lotus feet, I gather the ever-new jewel
+    of the dāna pastime, born from the meeting of the river Rādhā and the ocean Giridhārī amid beautiful waves of exalted
+    joking rasa.
+- id: passage.dana-keli-cintamani.3
+  locus: '3'
+  display_locus: Verse 3
+  order: 3
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'sāhārākhyaṁ jayati sadanaṁ gokule gokuleśa-
+
+    bhrātā mantrī vasati sumatis tatra nāmnopanandaḥ |
+
+    tasya śrīman-nikhila-guṇavān sūnur adya subhadro
+
+    bhāryā tasyātula-kulavatī kunda-pūrva-latāste ||3||'
+  translation_status: WORKING_PROJECT
+  translation: In Gokula there shines a dwelling called Sāhāra. There lives the wise Upananda, minister and brother of
+    the lord of Gokula. His splendid son Subhadra, endowed with every virtue, has as his wife the incomparably noble
+    Kunda-pūrva-latā.
+- id: passage.dana-keli-cintamani.4
+  locus: '4'
+  display_locus: Verse 4
+  order: 4
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'puṣpair bhṛṅgair vividha-vihagair bhrāja-ūrvī-ruhāṇāṁ
+
+    ṣaṇḍaiḥ samyag-vilasitatame niṣkuṭe saurabhāḍhye |
+
+    khelantyoru-praṇayam anayā hanta kutrādhunā tau
+
+    kurvāte kiṁ kim iti sumukhī tatra pṛṣṭā vayasyā ||4||'
+  translation_status: WORKING_PROJECT
+  translation: In an exceedingly beautiful, fragrant garden, bright with groves of flowering trees, bees, and many kinds
+    of birds, Sumukhī was asked by her friend, “Where are those two great lovers now, and what are they doing?”
+- id: passage.dana-keli-cintamani.5
+  locus: '5'
+  display_locus: Verse 5
+  order: 5
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'tasyāḥ śrīmad-vadana-kamalāj jalpa-mādhvīka-dhārā-
+
+    syandaṁ rādhā-giri-vara-dhara-praśna-karpūra-kamram |
+
+    pītvānandocchalita-pulakojjṛmbha-sambhāvuka-śrīḥ
+
+    sa tad-vārtāṁ prathayitum athārambham utkā cakāra ||5||'
+  translation_status: WORKING_PROJECT
+  translation: Drinking the stream of honeyed speech flowing from her splendid lotus face—made fragrant like camphor
+    by the question about Rādhā and the lifter of the great hill—she thrilled with rising bliss and eagerly began to
+    tell their story.
+- id: passage.dana-keli-cintamani.6
+  locus: '6'
+  display_locus: Verse 6
+  order: 6
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'śastasyārthe sva-suta-halino mitra-putrāgha-śatror
+
+    apy āsaktyā pratinidhitayā śauriṇā sanniyuktaḥ |
+
+    satraṁ kartuṁ rahasi bhagavān bhāgurir dīkṣito’bhūt
+
+    snehollāsaiḥ saha-muni-gaṇas tatra govinda-kuṇḍe ||6||'
+  translation_status: WORKING_PROJECT
+  translation: For the sake of the sacrifice, Śauri appointed the venerable Bhāguri as his representative, out of affection
+    for his own son Halī and for the son of his friend, the enemy of Agha. Bhāguri became initiated to perform the rite
+    in seclusion at Govinda-kuṇḍa, together with an assembly of sages overflowing with affection.
+- id: passage.dana-keli-cintamani.7
+  locus: '7'
+  display_locus: Verse 7
+  order: 7
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'tasmin satre ruciram aciraṁ navya-gavyaṁ svayaṁ yā
+
+    dhṛtvā nītaṁ śirasi śucayo dadyur abhīra-vāmāḥ |
+
+    tābhyaḥ kāmān atha maṇi-gaṇālaṅkṛtīḥ saubhagaṁ ca
+
+    prītyā satyaṁ sadasi munayo hanta yacchanti sadyaḥ ||7||'
+  translation_status: WORKING_PROJECT
+  translation: At that sacrifice, when the pure cowherd women personally bring fresh dairy products on their heads and
+    offer them, the sages in the assembly lovingly grant them their desires at once—jewelled ornaments, good fortune,
+    and other blessings.
+- id: passage.dana-keli-cintamani.8
+  locus: '8'
+  display_locus: Verse 8
+  order: 8
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'nānā-vṛkṣair madhukara-ruta-syandi-puṣpābhiramyaiḥ
+
+    kuñja-stomair api ca paritas tādṛśair bhrājitasya |
+
+    saurabhyāḍhyaiḥ kumuda-kamalaiḥ sādhu-phullair virājat-
+
+    pānīyasya sva-kṛta-sarasas tīra-kuñje vasantī ||8||'
+  translation_status: WORKING_PROJECT
+  translation: She was staying in a bower on the bank of that lake, whose water shone with fully blossomed, fragrant
+    lotuses and water-lilies, and which was surrounded by many lovely groves and trees dripping with flowers and humming
+    with bees.
+- id: passage.dana-keli-cintamani.9
+  locus: '9'
+  display_locus: Verse 9
+  order: 9
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'śrutvaivaitan nibhṛta-vivṛtiṁ sūkṣmadhī-sārikāsyād
+
+    utkaṇṭhābhis taralita-manāḥ sa-priyāli-gaṇā sā |
+
+    snātvā samyag vividha-vasanair bhūṣaṇair bhūṣitā drāk
+
+    kāśmīrais tat-praṇaya-paṭalair apy alaṁ rūṣitā ca ||9||'
+  translation_status: WORKING_PROJECT
+  translation: As soon as she heard this confidential account from the mouth of the clever śārikā, her mind became restless
+    with longing. Together with her dear companions she bathed, dressed at once in varied garments and ornaments, and
+    was richly adorned with saffron and with the colors of their affection.
+- id: passage.dana-keli-cintamani.10
+  locus: '10'
+  display_locus: Verse 10
+  order: 10
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'kṛtvā pūjām atha dinapateḥ śuddha-bhāvena śuddhā
+
+    baddhākāṅkṣaṁ hṛdaya-gagane goṣṭha-candraṁ smarantī |
+
+    haimaṁ kumbhaṁ nihita-vikasad-gandha-haiyāṅgavīnaṁ
+
+    dhṛtvā prītyā śirasi calitā rādhikā svīya-kuṇḍāt ||10||'
+  translation_status: WORKING_PROJECT
+  translation: Having worshiped the Sun with a pure heart, and remembering the moon of Vraja bound within the sky of
+    her heart, Rādhikā joyfully placed upon her head a golden pot filled with fresh, fragrant ghee and set out from her
+    own kuṇḍa.
+- id: passage.dana-keli-cintamani.11
+  locus: '11'
+  display_locus: Verse 11
+  order: 11
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'smitvā smitvā pathi pathi mithaḥ kurvatī kṛṣṇa-vārtām
+
+    ārtā tasyānavakalanataḥ snigdhatā śāla-bhañjī |
+
+    prema-stomollalita-lalitāṁ narma-phullad-viśākhāṁ
+
+    dṛṣṭvā dṛṣṭvā sudati mumude narma-bhaṅgyā nikāmam ||11||'
+  translation_status: WORKING_PROJECT
+  translation: Again and again she smiled as she went along the road, speaking with her companions about Kṛṣṇa. Pained
+    by not seeing him, she repeatedly looked at Lalitā swelling with love and Viśākhā blossoming with jokes, and the
+    beautiful-toothed girl delighted deeply in their playful gestures.
+- id: passage.dana-keli-cintamani.12
+  locus: '12'
+  display_locus: Verse 12
+  order: 12
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'gandhair bhrājat-kusuma-paṭalī-mṛṣṭa-mādhvīka-mādyad-
+
+    bhrāmyad-bhṛṅga-prakara-vilasac-chākha-śākhi-prapañcaḥ |
+
+    śaṣpaiḥ sāndraiḥ suvalita-bhuvaḥ svādu-sat-kanda-mūlā
+
+    nyañcad-dhvāna-dvija-mṛga-gaṇāś cāru-nānā-phalāni ||12||'
+  translation_status: WORKING_PROJECT
+  translation: There the trees were radiant with clusters of flowers whose fragrance intoxicated swarms of wandering
+    bees; the earth was thick with soft grass and rich in sweet roots and tubers, while birds and deer filled the place
+    with gentle sounds and beautiful fruits hung everywhere.
+- id: passage.dana-keli-cintamani.13
+  locus: '13'
+  display_locus: Verse 13
+  order: 13
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'sthāne sthāne vividha-viṭapi-kroḍa-ratnoru-vedyaḥ
+
+    sthāne sthāne parimala-valad-ratna-siṁhāsanaughaḥ |
+
+    sthāne sthāne vara-jhara-darī-sānavo bhānti yasmin
+
+    śailendraṁ sa giridhara-kara-prāptamānaṁ dadarśa ||13||'
+  translation_status: WORKING_PROJECT
+  translation: At place after place jeweled platforms shone in the hollows of varied trees; at place after place fragrant
+    jeweled thrones appeared; and everywhere were excellent waterfalls, caves, and slopes. She beheld Govardhana, honored
+    by having rested in Giridhārī’s hand.
+- id: passage.dana-keli-cintamani.14
+  locus: '14'
+  display_locus: Verse 14
+  order: 14
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'labdhvā govardhana-girim atha prāpya saurabhya-sāraṁ
+
+    śaśvat prītyā muni-vara-gaṇair datta-gavyā hutīnām |
+
+    ākṛṣṭodyat-sukha-bhara-rasenāśu gantuṁ samutkā
+
+    sthūla-śroṇī-kuca-yuga-bharān mantharā tān nininda ||14||'
+  translation_status: WORKING_PROJECT
+  translation: Reaching Govardhana and catching the exquisite fragrance of the dairy offerings lovingly given again and
+    again by the great sages, she was drawn by the rising taste of joy and became eager to hurry forward; she blamed
+    the slowness caused by the weight of her broad hips and breasts.
+- id: passage.dana-keli-cintamani.15
+  locus: '15'
+  display_locus: Verse 15
+  order: 15
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'jñātvā tāsāṁ gamanam aciraṁ kīra-varyasya vaktrāt
+
+    smitvā narma-priya-sakha-gaṇair āvṛtaḥ sāvadhānaḥ |
+
+    śailendrasyopari parilasann udbhaṭa-śyāma-vedyāṁ
+
+    ghaṭṭī-paṭṭaṁ vidadhad atulaṁ vallabhādhīśa-sūnuḥ ||15||'
+  translation_status: WORKING_PROJECT
+  translation: Learning at once of their approach from the mouth of the foremost parrot, the son of the lord of the cowherds
+    smiled. Surrounded by his joking intimate friends and fully alert, he established an incomparable toll-station upon
+    a prominent dark platform on Govardhana.
+- id: passage.dana-keli-cintamani.16
+  locus: '16'
+  display_locus: Verse 16
+  order: 16
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'smerāṁ surakta-paṭṭa-bhūṣaṇa-bhūṣitāṅgīṁ
+
+    mūrdhnīṁ sphurat-sa-ghṛta-hema-ghāṭīm vahantīm |
+
+    sārdhaṁ tathā-vidha-sakhī-nivahena rādhāṁ
+
+    yāntīṁ marāla-gati-cāru lalāpa paśyan ||16||'
+  translation_status: WORKING_PROJECT
+  translation: Seeing Rādhā approaching with her flock of companions—smiling, her body adorned with brilliant red cloth
+    and ornaments, carrying on her head a shining golden pot of fresh ghee, and moving with the grace of a swan—he addressed
+    her.
+- id: passage.dana-keli-cintamani.17
+  locus: '17'
+  display_locus: Verse 17
+  order: 17
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'agre pūrṇa-vidhuṁ tad-antara-lasad-bandhūka-puṣpa-dvayaṁ
+
+    madhye nistala-dāḍimī-phala-yugaṁ bhaṅgyā prakāśya kṣaṇam |
+
+    man-netrasya cakora-bhṛṅga-śukatām āsādayanty adbhutā
+
+    keyaṁ mām api padminī kṛtavatī raktaṁ marālaṁ drutam ||17||'
+  translation_status: WORKING_PROJECT
+  translation: “Before me is a full moon, within it shine two bandhūka blossoms, and in the middle appear two smooth
+    pomegranates. What astonishing lotus-woman is this, who turns my eyes into cakoras, bees, and parrots, and has suddenly
+    made even me a red swan?”
+- id: passage.dana-keli-cintamani.18
+  locus: '18'
+  display_locus: Verse 18
+  order: 18
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'tato nirīkṣya samyak tāṁ prema-vihvala-mānasaḥ |
+
+    sāśaṅkaṁ paṅkajākṣo’yaṁ sotkaṇṭho’varṇayat punaḥ ||18||'
+  translation_status: WORKING_PROJECT
+  translation: Then, gazing at her carefully, his mind overwhelmed with love, the lotus-eyed one, anxious and eager,
+    described her again.
+- id: passage.dana-keli-cintamani.19
+  locus: '19'
+  display_locus: Verse 19
+  order: 19
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'phulla-campaka-vallikāvalir iyaṁ kiṁ no na sā jaṅgamā
+
+    kiṁ vidyul-latikā-tatir na hi ghane sā khe kṣaṇa-dyotinī |
+
+    kiṁ jyotir-laharī sarin nahi na sā mūrtiṁ vahet tad dhruvaṁ
+
+    jñātaṁ jñātam asau sakhī-kula-vṛtā rādhā sphuṭaṁ prāñcati ||19||'
+  translation_status: WORKING_PROJECT
+  translation: “Is this a row of blossoming campaka creepers? No—they do not move. Is it a mass of lightning-vines? No—lightning
+    flashes only for a moment in the clouds. Is it a river of waves of light? No—a river would not possess such a form.
+    I know, I know! It is plainly Rādhā advancing, surrounded by her circle of friends.”
+- id: passage.dana-keli-cintamani.20
+  locus: '20'
+  display_locus: Verse 20
+  order: 20
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'iyam iha na ca rādhā sā sakhībhiḥ parītā
+
+    viditam idam idānīṁ vastu-tattvaṁ vicārya |
+
+    mama sa-vidham upaiti sphāra-śṛṅgāra-lakṣmīḥ
+
+    saha-kalita-suvarṣmāliṅganādi-kriyābhiḥ ||20||'
+  translation_status: WORKING_PROJECT
+  translation: '“And yet this is not merely Rādhā surrounded by her companions. Having considered the truth, I now understand:
+    the very Goddess of abundant amorous beauty approaches me, accompanied by the arts of embracing this beautiful body
+    and all the rest.”'
+- id: passage.dana-keli-cintamani.21
+  locus: '21'
+  display_locus: Verse 21
+  order: 21
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'gaurī śrī-vṛṣabhānu-vaṁśa-vilasat-kīrti-dhvajā kīrtidā-
+
+    garbhāntaḥ-khani-ratna-kānti-laharī śrīdāma-puṇyānujā |
+
+    prāṇa-preṣṭha-sakhī-nikāya-kumudollāsollasac-candrikā
+
+    mat-prāṇoru-śikhaṇḍi-vāsa-vaḍabhī seyaṁ svayaṁ rādhikā ||21||'
+  translation_status: WORKING_PROJECT
+  translation: “She is the fair banner of fame blazing in the dynasty of Śrī Vṛṣabhānu, a wave of jewel-like radiance
+    from the mine of Kīrtidā’s womb, the blessed younger sister of Śrīdāma, the moonlight that makes the lotuses of her
+    dearest friends bloom, and the very pavilion in which the great peacock of my life resides—she is Rādhikā herself.”
+- id: passage.dana-keli-cintamani.22
+  locus: '22'
+  display_locus: Verse 22
+  order: 22
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'tato govindam ālokya govardhana-śiromaṇim |
+
+    smitvā cāru calāpāṅgī tuṅgavidyedam abravīt ||22||'
+  translation_status: WORKING_PROJECT
+  translation: Then, beholding Govinda, the crest-jewel upon Govardhana, lovely restless-eyed Tuṅgavidyā smiled and spoke
+    these words.
+- id: passage.dana-keli-cintamani.23
+  locus: '23'
+  display_locus: Verse 23
+  order: 23
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'yaḥ kalkanair dadhi-ghaṭaṁ prakaṭaṁ viluṇṭhya
+
+    nītvā pragāḍha-tamasā milito’titṛṣṇaḥ |
+
+    so’yaṁ girīndra-śikharaṁ sphuṭam āruroha
+
+    rādhe tava priya-sakho mahilaika-cauraḥ ||23||'
+  translation_status: WORKING_PROJECT
+  translation: “Rādhe, there is your beloved friend, the lone thief of women! After openly plundering a pot of yogurt
+    with his rogues, carrying it away into deep darkness, and meeting there in great thirst, he has now plainly climbed
+    to the summit of Govardhana.”
+- id: passage.dana-keli-cintamani.24
+  locus: '24'
+  display_locus: Verse 24
+  order: 24
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'mūrtiṁ nirjita-nūtna-nīrada-valad-garvonnatiṁ kaiśavīṁ
+
+    sphūrjad-gopa-vadhū-dhvanad-dhṛti-camū-dhvaṁse smarodyad-gadām |
+
+    vibhrājad-giri-varya-sundara-śiraḥ-paṭṭe sphurantīṁ manāg
+
+    bhaṅgyāliṅgya dṛśā priyāli-valitā rādhāpy adhīrābravīt ||24||'
+  translation_status: WORKING_PROJECT
+  translation: Rādhā, surrounded by her dear companions, embraced with her glance the youthful form of Keśava, whose
+    swelling pride defeats that of a fresh raincloud and whose rising weapon of Love shatters the armies of the cowherd
+    girls’ composure. Seeing him shining upon the beautiful crown of the great hill, she too became impatient and spoke.
+- id: passage.dana-keli-cintamani.25
+  locus: '25'
+  display_locus: Verse 25
+  order: 25
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'kiṁ navyāmbuda eṣa bhavya-vadanāḥ kiṁ nīla-ratnāṅkuraḥ
+
+    kiṁ nīlotpala-navya-mūrtir api kiṁ kastūrikā-vibhramaḥ |
+
+    ās teṣv eṣa na ko’pi hanta yad ayaṁ nas tāpayen nirbharaṁ
+
+    tasmād gokula-candra eva bhavitā śyāmo’dbhuta-kṣmā-dhare ||25||'
+  translation_status: WORKING_PROJECT
+  translation: “Good-faced friends, is that a fresh raincloud? Is it a sprout of blue sapphire? Is it a new embodied
+    blue lotus? Or is it some play of musk? Alas, he can be none of these, for none of them would torment us so completely.
+    Therefore this wondrous dark figure upon the mountain must be the moon of Gokula himself.”
+- id: passage.dana-keli-cintamani.26
+  locus: '26'
+  display_locus: Verse 26
+  order: 26
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'vijita-bha-gaṇa-dīvyat-pūrṇa-śubhrāṁśu-śobhaḥ
+
+    sakhi-nikara-vṛta-śrīr nāpi kṛṣṇendur eṣaḥ |
+
+    ayi pika-madhu-bhṛṅga-smera-mākanda-yuktaḥ
+
+    smara-nṛpatir upetaḥ svena vaḥ sandhi-hetoḥ ||26||'
+  translation_status: WORKING_PROJECT
+  translation: “His beauty defeats the brilliance of the full spotless moon among the stars, yet this is not some dark
+    moon surrounded by a constellation of friends. O girls, accompanied by cuckoos, honey-bees, and smiling mango blossoms,
+    King Love himself has come with his retinue to negotiate peace with you.”
+- id: passage.dana-keli-cintamani.27
+  locus: '27'
+  display_locus: Verse 27
+  order: 27
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'so’yaṁ goṣṭha-mahendra-paṭṭa-mahiṣī-vātsalya-līlākṛtiḥ
+
+    so’yaṁ gopa-mahendra-puṇya-viṭapī-prauḍhāmṛtodyat-phalam |
+
+    so’yaṁ prāṇa-vayasya-jīvita-ghaṭā-rakṣaika-dakṣauṣadhaṁ
+
+    so’yaṁ dhenuka-mardi-jīvita-jhaṣa-sphārāmbudhir mādhavaḥ ||27||'
+  translation_status: WORKING_PROJECT
+  translation: '“This is Mādhava: the very embodiment of the tender play of the crowned queen of Vraja; the fully ripened
+    nectar-fruit of the tree of Nanda Mahārāja’s merit; the one medicine expert in preserving the life-vessels of his
+    intimate friends; and the vast ocean in which the life-fish of the subduer of Dhenuka swims.”'
+- id: passage.dana-keli-cintamani.28
+  locus: '28'
+  display_locus: Verse 28
+  order: 28
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'nirūpyaivaṁ śaśvad giridharam uru-prema-nivahaiḥ
+
+    tadā sāsra-sveda-snapita-śubha-varṣma-smara-vaśā |
+
+    muhuḥ kampāghāta-skhalad-acala-dīvyad-ghṛta-ghaṭīṁ
+
+    dadhārārtyā śaktyā sakhi kara-sarojena sudati ||28||'
+  translation_status: WORKING_PROJECT
+  translation: Thus contemplating Giridhārī again and again, overwhelmed by floods of great love, her beautiful body
+    bathed in tears and perspiration and shaken by Love, the lovely-toothed girl anxiously caught with her lotus hand
+    the shining pot of ghee that repeatedly slipped under the blows of her trembling.
+- id: passage.dana-keli-cintamani.29
+  locus: '29'
+  display_locus: Verse 29
+  order: 29
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'nepathyālīṁ lalita-lalitāṁ dāni-varyocitāṁ tāṁ
+
+    dhṛtvā santaṁ dhvanita-muralī-patra-śṛṅgādi-juṣṭam |
+
+    ghaṭṭī-pālaiḥ kalita-lakuṭair veṣṭitaṁ mitra-vṛndaiḥ
+
+    paśyantyas tāḥ smita-valitayā helayā cāru celuḥ ||29||'
+  translation_status: WORKING_PROJECT
+  translation: The girls saw him wearing an artful costume perfectly suited to the chief toll-collector, furnished with
+    sounding flute, leaf-horn, and other emblems, surrounded by friends and toll-guards bearing staffs. Smiling with
+    graceful disdain, they continued on.
+- id: passage.dana-keli-cintamani.30
+  locus: '30'
+  display_locus: Verse 30
+  order: 30
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'mattās tā madhurair bhāvair madhurā madhumaṅgalaḥ |
+
+    dṛṣṭvā smitvātha sa-krodham uvāca madhumardanam ||30||'
+  translation_status: WORKING_PROJECT
+  translation: Seeing those sweet girls intoxicated by sweet emotions, Madhumaṅgala smiled and then, feigning anger,
+    addressed Madhumardana.
+- id: passage.dana-keli-cintamani.31
+  locus: '31'
+  display_locus: Verse 31
+  order: 31
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'garveṇa phullam adhunā madhunātimattā
+
+    mattālibhiḥ samam amanda-balābalāpi |
+
+    gacchaty asau sphuṭam adatta-karā hi rādhā
+
+    bādhāḥ kathaṁ na hi vayasya balāt karoṣi ||31||'
+  translation_status: WORKING_PROJECT
+  translation: “She is swollen with pride and deeply intoxicated by honey, surrounded by intoxicated bees; though a woman,
+    she is hardly weak. Rādhā is plainly passing without paying the toll. Friend, why do you not stop her by force?”
+- id: passage.dana-keli-cintamani.32
+  locus: '32'
+  display_locus: Verse 32
+  order: 32
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'hariṁ jetuṁ śaktāṁ madana-nṛpateḥ śaktim atulāṁ
+
+    bhramad-ghaṇṭī dhvānaṁ gati-vilasitais tāṁ sa kalayan |
+
+    udañcan mārodyad-bhrama-vikṛtim āguṇṭhya kapaṭān
+
+    mṛṣā roṣād eve sphuṭam idam avādīt sahacarān ||32||'
+  translation_status: WORKING_PROJECT
+  translation: Recognizing her as the incomparable power of King Love, capable even of conquering Hari, and marking the
+    sound of her moving bells and the charm of her gait, he concealed the rising bewilderment produced by Love and, pretending
+    anger, spoke clearly to his companions.
+- id: passage.dana-keli-cintamani.33
+  locus: '33'
+  display_locus: Verse 33
+  order: 33
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'satyaṁ bravīti madhumaṅgala eṣa dhūrtā
+
+    dānaṁ nipātya mama yānti madoru-garvāḥ |
+
+    paśyādya darpam adhunā mama mitra-varga
+
+    gṛhṇāmi dānam acirād aham eka eva ||33||'
+  translation_status: WORKING_PROJECT
+  translation: “Madhumaṅgala speaks the truth. These rogues proudly go on after refusing my toll. Watch my prowess today,
+    friends—I alone shall quickly collect it.”
+- id: passage.dana-keli-cintamani.34
+  locus: '34'
+  display_locus: Verse 34
+  order: 34
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'śṛṅgāni vādayata bho muralīs tathālīḥ
+
+    saṁrakṣata sphuṭam itas tata eva yāntīḥ |
+
+    rādhām ahaṁ kuṭila-yauvata-varya-nāthāṁ
+
+    ruddhāṁ karomi sahasā bhujayor yugena ||34||'
+  translation_status: WORKING_PROJECT
+  translation: “Sound the horns! Play the flutes! Guard the other girls who are going this way and that. I myself shall
+    suddenly restrain Rādhā, mistress of the foremost crooked young women, with both my arms.”
+- id: passage.dana-keli-cintamani.35
+  locus: '35'
+  display_locus: Verse 35
+  order: 35
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'ghaṭṭī-pāla-sahasra-varya subala tvaṁ tāṁ viśākhāṁ haṭhād
+
+    ghaṭṭī-kuṭṭima-paṭṭa-rakṣaka sakhe citrāṁ tvam atrojjvala |
+
+    sabhya-śreṣṭha vasanta campakalatāṁ tvaṁ tuṅgavidyāṁ tathā
+
+    vartma-prekṣaka-lakṣa-dakṣa lalitāṁ tvam kokilāveṣṭaya ||35||'
+  translation_status: WORKING_PROJECT
+  translation: “Subala, best of a thousand toll-guards, seize Viśākhā by force. Ujjvala, friend and guardian of the toll-platform,
+    take Citrā. Vasanta, foremost among courtiers, take Campakalatā and Tuṅgavidyā. Kokila, expert watcher of a hundred
+    thousand roads, surround Lalitā.”
+- id: passage.dana-keli-cintamani.36
+  locus: '36'
+  display_locus: Verse 36
+  order: 36
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'smerair etaiḥ sapadi parito veṣṭyamānābhir ābhir
+
+    vāg-āṭopaiḥ priya-sakha-kuleṣv āśu saṁstambhiteṣu |
+
+    raṅgair bhaṅgyā kuṭila-vacasāṁ rādhayā saṁstuto’sau
+
+    kṛṣṇaḥ kopād iva sakhi tadā garvitaṁ tām avādīt ||36||'
+  translation_status: WORKING_PROJECT
+  translation: At once the smiling girls surrounded them on every side and checked the band of Kṛṣṇa’s dear friends with
+    the force of their words. Amid the sport of crooked speech Rādhā praised him mockingly, and Kṛṣṇa, as if angered,
+    proudly addressed her.
+- id: passage.dana-keli-cintamani.37
+  locus: '37'
+  display_locus: Verse 37
+  order: 37
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'nityaṁ garviṇi vanya-vartmani miṣāt saṅgopya gavyādikaṁ
+
+    vikrīṇāsi śaṭhe tvam atra patitā bhāgyena haste’dya me |
+
+    tvāṁ baddhvoru-manoja-rāja-purato neṣyāmy avaśyaṁ tathā
+
+    prītyā yacchati mahyam eva sa yathā tāruṇya-ratnāni vaḥ ||37||'
+  translation_status: WORKING_PROJECT
+  translation: “Proud girl! Every day on the forest path you deceitfully conceal dairy goods and sell them. Cheat, by
+    good fortune you have fallen into my hands today. I shall surely bind you and take you before the mighty King Love,
+    so that in delight he may give to me alone the jewels of your youth.”
+- id: passage.dana-keli-cintamani.38
+  locus: '38'
+  display_locus: Verse 38
+  order: 38
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'ās tvad-vidhān apy abalā-gaṇān
+
+    kiṁ neṣyāmi tasyoru-nṛpasya pārśve |
+
+    dāsyāmi śikṣām aham eva sākṣāt
+
+    tad-advitīyo vraja-pattane’smin ||38||'
+  translation_status: WORKING_PROJECT
+  translation: “Why should I not take other bands of women like you before that mighty king as well? I myself shall personally
+    teach you a lesson, for in this town of Vraja I am his unrivalled officer.”
+- id: passage.dana-keli-cintamani.39
+  locus: '39'
+  display_locus: Verse 39
+  order: 39
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'badhnāmi tūrṇam anayā vana-mālayā tvāṁ
+
+    mathnāmi hanta daśana-cchadam atra dantaiḥ |
+
+    sandārayāmi kucayor yugalaṁ nakhāstrair
+
+    dānaṁ na cej jhaṭiti yacchasi caurike tvam ||39||'
+  translation_status: WORKING_PROJECT
+  translation: “I shall bind you at once with this forest garland, churn your lip here with my teeth, and tear the pair
+    of your breasts with the weapons of my nails, thief, if you do not quickly pay the toll.”
+- id: passage.dana-keli-cintamani.40
+  locus: '40'
+  display_locus: Verse 40
+  order: 40
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'itthaṁ prajalpa-rabhasāt tarasā tadīya-
+
+    raktāmbarāñcalam analpaka-cañcale’smin |
+
+    dhartuṁ samicchati ruṣā paruṣākṣaraṁ taṁ
+
+    cañcad-dṛg-añcala-kalā sukalā lalāpa ||40||'
+  translation_status: WORKING_PROJECT
+  translation: Speaking wildly in this way, he impetuously tried to seize the edge of her red garment. Then the skillful
+    girl, the corners of her eyes darting, angrily answered him with harsh words.
+- id: passage.dana-keli-cintamani.41
+  locus: '41'
+  display_locus: Verse 41
+  order: 41
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'dūreṣu tiṣṭha na hi māṁ spṛśa dhṛṣṭa dhūrta
+
+    yāntīṁ suyāga-bhavanaṁ vratinīṁ pavitrām |
+
+    spṛṣṭāṁ tavādya marutāpi madīya-gavyaṁ
+
+    śyāmībhavan na bhavitā śubha-yajña-yogyam ||41||'
+  translation_status: WORKING_PROJECT
+  translation: “Stand far away! Do not touch me, insolent rogue. I am a pure vow-observing girl going to the sacrificial
+    hall. If even the wind that has touched you should touch my dairy offering today, it would become dark and no longer
+    be fit for the auspicious sacrifice.”
+- id: passage.dana-keli-cintamani.42
+  locus: '42'
+  display_locus: Verse 42
+  order: 42
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'kāmārṇavocchalita-gharma-jalābheṣekaiḥ
+
+    śuddho’smi kiṁ na kila paśyasi dīrgha-netre |
+
+    tasmāt tvayā saha mahojjvala-nāma-satraṁ
+
+    kartuṁ lasāmi samayā śubha-dharma-patnyā ||42||'
+  translation_status: WORKING_PROJECT
+  translation: “Am I not purified by showers of perspiration rising from the ocean of desire? Can you not see that, long-eyed
+    girl? Therefore I wish to perform with you a great sacrifice called ‘Ujjvala,’ with you suitably acting as my auspicious
+    dharma-wife.”
+- id: passage.dana-keli-cintamani.43
+  locus: '43'
+  display_locus: Verse 43
+  order: 43
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'etāṁ vayasya mṛdu-hṛdya-vacaḥ-prabandha-
+
+    raṅgaiḥ surañjitatarāṁ nitarāṁ vidhāya |
+
+    dānaṁ gṛhāṇa nijam āśv iti kokiloktam
+
+    āśrutya sa-smitam ananta-vicitra-līlaḥ ||43||'
+  translation_status: WORKING_PROJECT
+  translation: Kokila said, “Friend, first charm her completely with the play of soft, heart-pleasing speech, and then
+    quickly take your rightful toll.” Hearing this, he of endlessly varied pastimes smiled.
+- id: passage.dana-keli-cintamani.44
+  locus: '44'
+  display_locus: Verse 44
+  order: 44
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'savyaṁ kareṇa subhaga-savya-kaṭau nidhāyā-
+
+    savyena kṛṣṭa-paṭa-sṛṣṭa-mukhārdha-guṇṭhām
+
+    śīrṣṇi sphuran-nava-ghṛtojjvala-hema-kumbhāṁ
+
+    bhaṅgyā bhramat-smita-dṛśaṁ sa jagāda rādhām ||44||'
+  translation_status: WORKING_PROJECT
+  translation: Placing his left hand upon his handsome left hip, and with the other pulling her cloth so that it veiled
+    half her face, he addressed Rādhā with playful, smiling, wandering eyes as she stood with the golden pot of fresh
+    shining ghee upon her head.
+- id: passage.dana-keli-cintamani.45
+  locus: '45'
+  display_locus: Verse 45
+  order: 45
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'ghaṭṭī-kuṭṭima-sṛṣṭa-paṭṭa-nikaṭe rādhe ghaṭīṁ sthāpaya
+
+    prodyat-saurabha-sadma-padma-pavanaiḥ śrāntiṁ kṣaṇaṁ vāraya |
+
+    dīvyan-navya-sugavya-dāna-vilasal-lekhaṁ muhuḥ kāraya
+
+    krūrasyāli-kulasya dānam acirād ārāt svayaṁ dāpaya ||45||'
+  translation_status: WORKING_PROJECT
+  translation: “Rādhe, set your pot down here beside the raised platform of the toll-station. Rest for a moment in the
+    lotus breezes that are houses of swelling fragrance. Have a brilliant receipt repeatedly drawn up for the toll on
+    these excellent fresh dairy goods, and quickly make this cruel band of friends pay what is due.”
+- id: passage.dana-keli-cintamani.46
+  locus: '46'
+  display_locus: Verse 46
+  order: 46
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'āgaccha he lipi-pate madhumaṅgaleha
+
+    pañjiṁ paṭhan dṛḍha-matiḥ kuru satya-lekham |
+
+    utkoca-lobha-bharato yadi nāśayes tvaṁ
+
+    dravyāṇi me kila tadā bhavitāsi daṇḍyaḥ ||46||'
+  translation_status: WORKING_PROJECT
+  translation: “Come here, Madhumaṅgala, lord of the ledger! Read the register carefully and make a truthful account.
+    If greed for bribes makes you lose any of my property, you yourself will be punished.”
+- id: passage.dana-keli-cintamani.47
+  locus: '47'
+  display_locus: Verse 47
+  order: 47
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'āgaccha kaccham avadhehi vidhehi lekhaṁ
+
+    dānaṁ nu dehi na hi dehi kaliṁ hi rādhe |
+
+    vīṭīṁ ca bhuṅkṣva sarasaṁ kuru vaktra-bimbaṁ
+
+    puṇyāham ācara puraḥ samayaḥ śubho’yam ||47||'
+  translation_status: WORKING_PROJECT
+  translation: “Come close, pay attention, and make the record. Rādhe, either pay the toll or else give me a quarrel!
+    Chew some betel and make your bimba-like face juicy. Perform the auspicious rite—the favorable moment is before us.”
+- id: passage.dana-keli-cintamani.48
+  locus: '48'
+  display_locus: Verse 48
+  order: 48
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'yasya yan niyata-dānam amuṣya
+
+    vastunaḥ sudṛḍham ucyate mayā |
+
+    tat tad eva kila likhyatāṁ tvayā
+
+    yatnato likhana-śūra vayasya ||48||'
+  translation_status: WORKING_PROJECT
+  translation: “Whatever fixed toll I declare for each particular item, write down exactly that, carefully, O heroic
+    scribe and friend.”
+- id: passage.dana-keli-cintamani.49
+  locus: '49'
+  display_locus: Verse 49
+  order: 49
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'gavyasya bhavya-vadane prati pātram atra
+
+    dānaṁ kila prati janaṁ vraja-sundarīṇām |
+
+    vṛndāni pañca vilasan-nava-hīrakāṇāṁ
+
+    yat saubhagādikam alabhyam anena labhyam ||49||'
+  translation_status: WORKING_PROJECT
+  translation: “For each vessel of dairy goods, from each of the beauties of Vraja, the toll is five clusters of brilliant
+    new diamonds—for by such payment one obtains otherwise unattainable good fortune and all that follows from it.”
+- id: passage.dana-keli-cintamani.50
+  locus: '50'
+  display_locus: Verse 50
+  order: 50
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'sīmanta-kānti vilasan-nava-rāga-valgu-
+
+    sindūrayos tapana-kānta-maṇīndra-lakṣam |
+
+    veṇī-varālaka-kulojjvala-kajjalānāṁ
+
+    gārutmatendra-maṇi-mañjula-lakṣa-yugmam ||50||'
+  translation_status: WORKING_PROJECT
+  translation: “For the radiant parting of the hair and its charming fresh vermilion, a hundred thousand splendid sun-gems;
+    for the shining braid, clusters of curls, and black collyrium, two beautiful hundreds of thousands of emerald and
+    sapphire jewels.”
+- id: passage.dana-keli-cintamani.51
+  locus: '51'
+  display_locus: Verse 51
+  order: 51
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'svarṇārdha-candra-nibha-bhāla-talasya subhru
+
+    śubhrāṁśu-kānta-maṇi-lakṣam atuccha-śobham |
+
+    kastūrikā-racita-bhāla-viśeṣakasya
+
+    gārutmatair ghaṭita-candramaso’rbudāni ||51||'
+  translation_status: WORKING_PROJECT
+  translation: “For your forehead, resembling a golden half-moon, a hundred thousand brilliant moonstones of no small
+    beauty; and for the special musk decoration upon that forehead, innumerable moons fashioned from emeralds.”
+- id: passage.dana-keli-cintamani.52
+  locus: '52'
+  display_locus: Verse 52
+  order: 52
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'bhrū-yugmakasya kuṭilasya śarāsanāni
+
+    san-nīla-ratna-racitāny ayutāni pañca |
+
+    karṇa-dvayasya rucirasya manojña-navya-
+
+    vaidūrya-maurva-dṛḍha-sad-guṇa-puñja-puñjāḥ ||52||'
+  translation_status: WORKING_PROJECT
+  translation: “For the pair of your curved brows, fifty thousand bows fashioned from excellent blue gems; and for your
+    beautiful pair of ears, heaps upon heaps of firm, lovely bowstrings made of fresh cat’s-eye jewels.”
+- id: passage.dana-keli-cintamani.53
+  locus: '53'
+  display_locus: Verse 53
+  order: 53
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'kāmaṁ kaṭākṣa-viśikhasya suparṇa-ratna-
+
+    san-nirmitā daśa-lakṣāṇi śarāḥ sutīkṣṇāḥ |
+
+    akṣṇor yugasya subhagasya masāra-sāra-
+
+    nīlotpalāni niyutāni yutāni gandhaiḥ ||53||'
+  translation_status: WORKING_PROJECT
+  translation: “For the arrow of your sidelong glance, a million keen arrows fashioned from fine emeralds; and for your
+    beautiful pair of eyes, millions of fragrant blue lotuses made of the finest dark sapphire.”
+- id: passage.dana-keli-cintamani.54
+  locus: '54'
+  display_locus: Verse 54
+  order: 54
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'kārtasvarair ghaṭita-kīra-kiśora-cañcū-
+
+    puñjaḥ prakṛṣṭa-tila-puṣpa-sunāsikāyāḥ |
+
+    sad-gaṇḍayor madhura-kāñcana-darpaṇānāṁ
+
+    vṛndaṁ nava-sphaṭikato’py ati-cikkanānām ||54||'
+  translation_status: WORKING_PROJECT
+  translation: “For your lovely nose, which surpasses the finest sesame blossom, clusters of young parrot beaks fashioned
+    from refined gold; and for your two cheeks, groups of charming golden mirrors smoother even than fresh crystal.”
+- id: passage.dana-keli-cintamani.55
+  locus: '55'
+  display_locus: Verse 55
+  order: 55
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'sarvopamā-mahima-mardi-mukhasya pūrṇa-
+
+    śubhrāṁśu-lakṣam atha phulla-saroja-lakṣam |
+
+    uddāma-dhāma-maṇi-darpaṇa-lakṣam atra
+
+    sauvarṇam eva cibukasya ca ratna-puñjaḥ ||55||'
+  translation_status: WORKING_PROJECT
+  translation: “For your face, which crushes the pride of every comparison, a hundred thousand full moons, a hundred
+    thousand blossoming lotuses, and a hundred thousand brilliantly radiant jeweled mirrors; and for your chin, a mass
+    of golden jewels.”
+- id: passage.dana-keli-cintamani.56
+  locus: '56'
+  display_locus: Verse 56
+  order: 56
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'bimbādharasya madhurasya surāga-padma-
+
+    rāgaika-padmam iha padma-vara-prabhāyāḥ |
+
+    sampakva-dāḍima-phalojjvala-bīja-nindi-
+
+    dantāvaleḥ śikhara-lakṣam adṛṣṭa-kakṣam ||56||'
+  translation_status: WORKING_PROJECT
+  translation: “For your sweet bimba-red lips, a peerless lotus of deep-red ruby; and for your row of teeth, which shames
+    the shining seeds of a ripe pomegranate, a hundred thousand incomparable jeweled peaks.”
+- id: passage.dana-keli-cintamani.57
+  locus: '57'
+  display_locus: Verse 57
+  order: 57
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'so’yaṁ tvad-vadanāravinda-cibuke kastūrikā-kalpitaḥ
+
+    samyak sundara-bindur indu-vadane niḥsaṅga-bhṛṅgo mataḥ |
+
+    sa smerāṁ mama dṛṅ-milan-madhukarīm āliṅgatu premataḥ
+
+    satyaṁ dānam idaṁ priye nahi paraṁ kiñcin mayā yācyate ||57||'
+  translation_status: WORKING_PROJECT
+  translation: “That beautiful musk dot painted upon the chin of your lotus face, moon-faced girl, seems to me a solitary
+    bee. Let it lovingly embrace the smiling honey-bee of my meeting glance. Truly, beloved, this alone is the toll I
+    ask; I ask nothing else.”
+- id: passage.dana-keli-cintamani.58
+  locus: '58'
+  display_locus: Verse 58
+  order: 58
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'gānāmṛtābdhi-pariveṣaṇa-dakṣa-darvī-
+
+    divyātirakta-rasanā-ramaṇīyatāyāḥ |
+
+    karpūra-sāra-parivāsita-navya-hṛdya-
+
+    mādhvīka-pūrṇa-caṣakāvalir adya sadyaḥ ||58||'
+  translation_status: WORKING_PROJECT
+  translation: “For the beauty of your extraordinarily red tongue, the expert ladle that serves the ocean of nectar-song,
+    let there be at once rows of fresh delightful cups filled with honey and perfumed with the finest camphor.”
+- id: passage.dana-keli-cintamani.59
+  locus: '59'
+  display_locus: Verse 59
+  order: 59
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'phullībhavat-smita-lavasya sutāra-mañju-
+
+    muktā-phalair vihita-kairava-koṭir addhā |
+
+    pīyūṣa-sāra-paripūrita-śātakumbha-
+
+    kumbhāyutaṁ masṛṇa-mañjula-jalpitasya ||59||'
+  translation_status: WORKING_PROJECT
+  translation: “For the slightest blossoming of your smile, ten million night-lotuses fashioned from exquisite pearls;
+    and for your smooth, charming speech, ten thousand golden pots filled to the brim with the essence of nectar.”
+- id: passage.dana-keli-cintamani.60
+  locus: '60'
+  display_locus: Verse 60
+  order: 60
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'śabda-grahoccalita-sundara-śātakumbha-
+
+    tāṭaṅkayor masṛṇa-cumbaka-ratnam ekam |
+
+    nāsāgra-lagna-nava-kāñcana-tantu-baddha-
+
+    muktā-phalasya ruci-visphuritārka-mālāḥ ||60||'
+  translation_status: WORKING_PROJECT
+  translation: “For your beautiful golden earrings, trembling as they catch each sound, one flawless magnet-jewel; and
+    for the pearl bound by a fresh golden thread at the tip of your nose, garlands of blazing suns.”
+- id: passage.dana-keli-cintamani.61
+  locus: '61'
+  display_locus: Verse 61
+  order: 61
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'surabhi-vadana-raṅge mugdha-gandhaṁ yadā te
+
+    sphurita-mṛdula-cālaṁ cāru tāmbūlam utkam |
+
+    naṭati lalita-raṅgais tasya dānaṁ tadānīṁ
+
+    naṭana-bhuvi mad-āsye’py āśu sannartayeti ||61||'
+  translation_status: WORKING_PROJECT
+  translation: “When the lovely betel, softly moving and wonderfully fragrant, dances with graceful play upon the stage
+    of your perfumed mouth, then give it as toll by quickly making it dance also upon the stage of my mouth.”
+- id: passage.dana-keli-cintamani.62
+  locus: '62'
+  display_locus: Verse 62
+  order: 62
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'kambu-śriyā kalita-kaṇṭha-varasya hema-
+
+    śaṅkhāvalir valita-valgu-bhuja-dvayasya |
+
+    svarṇollasan-masṛṇa-mañju-mṛṇāla-pālir
+
+    vaidūrya-paṅkaja-tatiḥ karayor dvayoś ca ||62||'
+  translation_status: WORKING_PROJECT
+  translation: “For your excellent neck, endowed with the beauty of a conch, rows of golden conches; for your two graceful
+    curving arms, rows of smooth shining golden lotus-stalks; and for your two hands, rows of lotuses fashioned from
+    cat’s-eye jewels.”
+- id: passage.dana-keli-cintamani.63
+  locus: '63'
+  display_locus: Verse 63
+  order: 63
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'hastāṅgulī samudayasya manoharasya
+
+    gandhonnataḥ kanaka-bandhura-gandhaphalyaḥ |
+
+    pṛṣṭha-sthalī-puraṭa-sundara-paṭṭikāyāḥ
+
+    kuñje prasūna-śayane svapanādi-keliḥ ||63||'
+  translation_status: WORKING_PROJECT
+  translation: “For the enchanting cluster of your fingers, fragrant golden campaka buds; and for your back, like a beautiful
+    plate of refined gold, the toll is the play of lying down and sleeping upon a flower-bed in a bower.”
+- id: passage.dana-keli-cintamani.64
+  locus: '64'
+  display_locus: Verse 64
+  order: 64
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'matta-dvipendra-mada-gandhita-kumbha-yugma-
+
+    garva-prahāri-kuca-kumba-yugasya tasya |
+
+    haimāni mañju-mukhi dāḍima-bilva-tāla-
+
+    sad-dhāma-nistala-lalāma-phalāni lakṣam ||64||'
+  translation_status: WORKING_PROJECT
+  translation: “For that pair of breasts, which shatters the pride of the fragrant temples of a maddened lordly elephant,
+    O lovely-faced girl, a hundred thousand splendid golden fruits—pomegranates, bilvas, and palmyra fruits.”
+- id: passage.dana-keli-cintamani.65
+  locus: '65'
+  display_locus: Verse 65
+  order: 65
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'madhyaṁ keśarī-varya-madhyam iva yaj jyāyo rasasyāspadaṁ
+
+    vādyat-kiṅkiṇi-rakta-vastra-vilasad-baddhaṁ balī-ḍorakaiḥ |
+
+    tasyorūtkaṭa-dānam apy uru-nṛpād yatnair mayā gopyate
+
+    yady ādau tava nīvi-bandhana-maṇiṁ gūḍhaṁ kare me’rpayeḥ ||65||'
+  translation_status: WORKING_PROJECT
+  translation: “Your waist, like the middle of a noble lion, is the supreme abode of rasa, bound with jingling bells
+    and glowing red cloth. I carefully conceal its exceedingly great toll even from the mighty king, if only you first
+    secretly place in my hand the jewel fastening of your waistband.”
+- id: passage.dana-keli-cintamani.66
+  locus: '66'
+  display_locus: Verse 66
+  order: 66
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'iyaṁ nīvī rādhe nija-niviḍa-bandhaṁ davayitum
+
+    bhavad-bhītyā bhaṅgyā mayi vitanute yācana-vidhim |
+
+    tathā taṁ tūrṇaṁ tvaṁ davaya madanendūdaya-kṛte
+
+    yathāsau tuṣṭyā te karam uru-kaṭau no racayati ||66||'
+  translation_status: WORKING_PROJECT
+  translation: “Rādhe, this girdle of yours, wishing its tight knot to be loosened, makes its request to me by gesture
+    because it fears you. Quickly loosen it for the rising of the moon of Love, so that, delighted, it may allow a hand
+    to rest upon your broad hip.”
+- id: passage.dana-keli-cintamani.67
+  locus: '67'
+  display_locus: Verse 67
+  order: 67
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'nābhi-sphurad-dhrada-tad-utthita-roma-pāli-
+
+    vyāliḥ śiraḥ-sphurita-ratna-sunāyakānām |
+
+    vaidūrya-mañjula-masāra-varābja-rāga-
+
+    ratnāni tāni niyutāni nava-krameṇa ||67||'
+  translation_status: WORKING_PROJECT
+  translation: “For the lake of your navel and the serpent-like line of hairs rising from it, crowned by splendid jeweled
+    leaders, there are millions upon millions of lovely cat’s-eye, sapphire, lotus-ruby, and other jewels, each in its
+    proper order.”
+- id: passage.dana-keli-cintamani.68
+  locus: '68'
+  display_locus: Verse 68
+  order: 68
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'san-nīla-paṭṭa-paṭa-rañjaka-mañju-kāñci-
+
+    sañcāra-cāru-caṭulocca-nitambakasya |
+
+    samprollasat-puraṭa-pīṭha-navārbudāni
+
+    dānīndrakasya mama yogya-varāsanāni ||68||'
+  translation_status: WORKING_PROJECT
+  translation: “For your charming high hips, made restless by the movement of the lovely girdle that colors the fine
+    dark-blue cloth, there are billions of shining golden seats—excellent thrones fit for me, the king of toll-collectors.”
+- id: passage.dana-keli-cintamani.69
+  locus: '69'
+  display_locus: Verse 69
+  order: 69
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'uru-dvayasya kanakaiḥ kṛta-cāru-rambha-
+
+    stambhāvalir dalita-sat-karabha-prabhasya |
+
+    mañjīra-mañjula-raṇac-caraṇāravinda-
+
+    dvandvasya rakta-maṇi-nirmita-pallavāli ||69||'
+  translation_status: WORKING_PROJECT
+  translation: “For your two thighs, whose splendor crushes that of an elephant’s trunk, rows of beautiful plantain pillars
+    made of gold; and for the pair of your lotus feet, sweetly ringing with anklets, rows of tender shoots fashioned
+    from red jewels.”
+- id: passage.dana-keli-cintamani.70
+  locus: '70'
+  display_locus: Verse 70
+  order: 70
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'smara-rasa-maya-rājat-kṣīṇa-tundasya tasya
+
+    ruciratara-taraṅga-prāya-tiryag-valīnām |
+
+    ayi tad-anubhavākhyaṁ ratna-yugmaṁ nakhānāṁ
+
+    udayad-aruṇa-candra-jyotiṣāṁ ratna-candrāḥ ||70||'
+  translation_status: WORKING_PROJECT
+  translation: “For the lovely transverse folds, like graceful waves upon that slender belly radiant with the rasa of
+    Love, O girl, the pair of jewels called their direct experience; and for the nails shining like rising reddish moons,
+    jeweled moons.”
+- id: passage.dana-keli-cintamani.71
+  locus: '71'
+  display_locus: Verse 71
+  order: 71
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'phulla-kāñcana-samudgaka-garva-
+
+    dhvaṁsinos tava vareṇya-jānunoḥ |
+
+    kāñcana-prakaṭitāṁ kaṭa-koṭiṁ
+
+    kāñcana-prakaṭa-dānam anayā ||71||'
+  translation_status: WORKING_PROJECT
+  translation: “For your excellent knees, which destroy the pride of blossoming golden caskets, there is a multitude
+    of gold displayed openly—an openly offered toll of gold.”
+- id: passage.dana-keli-cintamani.72
+  locus: '72'
+  display_locus: Verse 72
+  order: 72
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'hārādy-alaṅkṛti-cayasya manojña-rāśmes
+
+    tvat-sparśa-ratnam atulaṁ mṛdu-kaṇṭha-lagnam |
+
+    tvat-kiṅkiṇī-valaya-nūpura-nikvaṇānāṁ
+
+    kāmaṁ mahonnata-maṇi-dvayam eva hṛdyam ||72||'
+  translation_status: WORKING_PROJECT
+  translation: “For the charming radiance of your necklaces and other ornaments, the incomparable touchstone resting
+    against your soft throat; and for the sounds of your bells, bangles, and anklets, the heart-delighting pair of most
+    exalted jewels.”
+- id: passage.dana-keli-cintamani.73
+  locus: '73'
+  display_locus: Verse 73
+  order: 73
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'san-nīla-rakta-vasana-dvaya-kañcukānāṁ
+
+    prodyat-pravāla-nava-mañju-masāra-mālāḥ |
+
+    tvac-chārikā mṛga-vadhū mahatī mayūrī
+
+    līlābja-nartana-tater vara-ratna-koṭyaḥ ||73||'
+  translation_status: WORKING_PROJECT
+  translation: “For your fine dark-blue and red garments and bodice, fresh garlands of coral and dark-blue gems; and
+    for your śārikā bird, doe, great peahen, and the dancing of your play-lotuses, crores of excellent jewels.”
+- id: passage.dana-keli-cintamani.74
+  locus: '74'
+  display_locus: Verse 74
+  order: 74
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'kāntyā yasya kṣiti-vana-giri-grāma-lokāḥ samastāḥ
+
+    sākṣāj jātāḥ subhaga-vadane hanta jambūnadābhāḥ |
+
+    tasya bhrāmyad-dyuti-bhara-valad-gandhaphaly-āvalīnāṁ
+
+    jaitrasyoccaiḥ kanaka-girayo gaura-varṇasya koṭyaḥ ||74||'
+  translation_status: WORKING_PROJECT
+  translation: “O beautiful-faced girl, by the splendor of that golden complexion the earth, forests, mountains, villages,
+    and all the worlds seem transformed into molten gold. For that victorious fair hue, with its moving radiance and
+    rows of fragrant campaka buds, the toll is millions of golden mountains.”
+- id: passage.dana-keli-cintamani.75
+  locus: '75'
+  display_locus: Verse 75
+  order: 75
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'gaurāṅgānāṁ kamala-ghusṛṇa-prāya-saurabhya-sindhor
+
+    vātenāpi vraja-vanam idaṁ vāsitaṁ tanvatas te |
+
+    etasyānyat kim api na mayā dṛśyate dāna-yogyaṁ
+
+    yātāyātaṁ kuru sakhi sadā dānam etan madīyam ||75||'
+  translation_status: WORKING_PROJECT
+  translation: “The very breeze from the ocean of fragrance of your golden limbs—like lotus and saffron—perfumes this
+    entire forest of Vraja. I see nothing else worthy to serve as toll for it. Therefore, friend, let your continual
+    coming and going itself be the toll that belongs to me.”
+- id: passage.dana-keli-cintamani.76
+  locus: '76'
+  display_locus: Verse 76
+  order: 76
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'masṛṇa-ghusṛṇa-carcā-cāru-kastūrikodyan-
+
+    makara-kamala-vallī-patra-bhaṅgādikānām |
+
+    rati-vitaraṇa-śūrais tat-tad-āmoda-pūraiḥ
+
+    parimalaya mad-aṅgaṁ nityam ity eva dānam ||76||'
+  translation_status: WORKING_PROJECT
+  translation: “With smooth saffron paste and beautiful musk designs—makaras, lotuses, creepers, leaves, and the rest—whose
+    fragrances are heroic in bestowing love, continually perfume my body. That alone is the toll.”
+- id: passage.dana-keli-cintamani.77
+  locus: '77'
+  display_locus: Verse 77
+  order: 77
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'caraṇa-kamala-lākṣāśliṣṭa-saubhāgya-mudrā-
+
+    taṭir ativalate yā hāriṇī hanta tasyāḥ |
+
+    mad-urasi nakharāgrair ardha-candrān parārdhaṁ
+
+    vitara padaka-varyān dānam ārād varoru ||77||'
+  translation_status: WORKING_PROJECT
+  translation: “The rows of auspicious marks made by the lac embracing your lotus feet are irresistibly beautiful. O
+    lovely-thighed girl, as toll give me upon my chest countless half-moons and excellent footprints traced by the tips
+    of your nails.”
+- id: passage.dana-keli-cintamani.78
+  locus: '78'
+  display_locus: Verse 78
+  order: 78
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'dhvānair yasya vipakṣa-lakṣa-hṛdayotkampādi-sampādakair
+
+    ā vaikuṇṭham ajāṇḍā-pālir atulānandaiḥ pariplāvitā |
+
+    prītyā tasya ramādi-vandita-ruteḥ saubhāgya-sad-dundubher
+
+    dānaṁ kañja-maranda-sundarataraṁ gānaṁ tavānandade ||78||'
+  translation_status: WORKING_PROJECT
+  translation: “The sound of your auspicious drum of good fortune makes the hearts of countless rivals tremble and floods
+    the worlds up to Vaikuṇṭha with incomparable joy. O giver of bliss, the toll for that voice, worshiped by Ramā and
+    the others, is your song, sweeter than lotus nectar.”
+- id: passage.dana-keli-cintamani.79
+  locus: '79'
+  display_locus: Verse 79
+  order: 79
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'nāma svastyayanaṁ yad atra vilasat-pīyūṣato’pi priyaṁ
+
+    rādheti prathitaṁ samasta-jagatī-romāñca-sañcārakam |
+
+    tasyāmūlyatarasya dānam aparaṁ yogyaṁ kvacit kiṁ bhavet
+
+    tasmād ujjvala-keli-ratnam atulaṁ rādhe mamādhīyatām ||79||'
+  translation_status: WORKING_PROJECT
+  translation: “The name ‘Rādhā,’ renowned here as an auspicious blessing dearer even than nectar, sends horripilation
+    through the entire universe. What other toll could possibly be worthy of something so priceless? Therefore, Rādhe,
+    let the incomparable jewel of radiant amorous play be entrusted to me.”
+- id: passage.dana-keli-cintamani.80
+  locus: '80'
+  display_locus: Verse 80
+  order: 80
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'dīvyan-mati-prathita-kīrti-tati-pragāḍha-
+
+    citta-prageya-guṇa-geya-guṇotkarāṇām |
+
+    san-mauktika-pravara-hīraka-cāru-nīla-
+
+    ratnojjvalad-vividha-ratna-kulāni kāmam ||80||'
+  translation_status: WORKING_PROJECT
+  translation: “For your brilliant intelligence, celebrated fame, deep heart, praiseworthy qualities, and the entire
+    excellence of virtues sung by those worthy to sing them, let there be heaps of shining jewels—fine pearls, diamonds,
+    sapphires, and many other gems.”
+- id: passage.dana-keli-cintamani.81
+  locus: '81'
+  display_locus: Verse 81
+  order: 81
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'mādyan-mataṅga-gati-nindi-gater anaṅga-
+
+    raṅgasya saṅga-vidhaye kila lagnikāyāḥ |
+
+    tāroru-mauktika-marāla-varālir āli
+
+    māṇikya-pālir atha te kara-cālanānām ||81||'
+  translation_status: WORKING_PROJECT
+  translation: “For your gait, which defeats that of an intoxicated elephant and is the auspicious engagement for union
+    in the theater of Love, O friend, strings of pearl swans; and for the movements of your hands, rows of rubies.”
+- id: passage.dana-keli-cintamani.82
+  locus: '82'
+  display_locus: Verse 82
+  order: 82
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'āyur-yaśo-jaya-vivardhana-randhanodyad-
+
+    uddāma-sauṣṭhava-bharasya tu kalpitaṁ me |
+
+    kāyastha-vartanatayā madhumaṅgalāya
+
+    nityaṁ suśaṣkuli-sukuṇḍalikādi-dānam ||82||'
+  translation_status: WORKING_PROJECT
+  translation: '“For the extraordinary excellence of your cooking, which increases longevity, fame, and victory, I have
+    appointed this toll: every day give Madhumaṅgala, acting as my clerk, fine śaṣkulī cakes, kuṇḍalikās, and similar
+    delicacies.”'
+- id: passage.dana-keli-cintamani.83
+  locus: '83'
+  display_locus: Verse 83
+  order: 83
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'saundarya-hrī-vinaya-paṇḍitatā-suguṇa-
+
+    vaidagdhya-sad-guṇa-tater bhavad-āli-vargaḥ |
+
+    duḥsādhya-māna-vikṛter lalitā tvad-ālī
+
+    tvat-prīti-narma-śubha-karma-tate viśākhā ||83||'
+  translation_status: WORKING_PROJECT
+  translation: “Your circle of friends is a treasury of beauty, modesty, humility, learning, skill, and every noble quality.
+    Your Lalitā is expert in the difficult transformations of māna, while Viśākhā is expert in the auspicious joking
+    arts that nourish your love.”
+- id: passage.dana-keli-cintamani.84
+  locus: '84'
+  display_locus: Verse 84
+  order: 84
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'kāntyātinindita-ramā-śata-lakṣa-kāntes
+
+    tvad-vigrahasya bhavati sudatīṣv amūlyā |
+
+    lakṣmī-sahasra-śatato’py atiramya-goṣṭha-
+
+    rāmā-śiro-vara-maṇes tava vigraho’sau ||84||'
+  translation_status: WORKING_PROJECT
+  translation: “Your own form, whose beauty surpasses hundreds of thousands of goddesses of fortune, is priceless among
+    all lovely women; and you, crest-jewel of the women of Vraja, are more delightful than hundreds of millions of Lakṣmīs.”
+- id: passage.dana-keli-cintamani.85
+  locus: '85'
+  display_locus: Verse 85
+  order: 85
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'tad-vākyam ittham adhikaṁ madhuraṁ niśamya
+
+    rādhā tiraskṛta-sudhātula-sindhu-garvam |
+
+    utphulla-kopa-lalita-smita-narma-ramyaṁ
+
+    bhaṅgyā lalāpa kuṭilaṁ kuṭilaṁ nirīkṣya ||85||'
+  translation_status: WORKING_PROJECT
+  translation: Hearing these words, sweeter beyond measure and humbling the pride of an incomparable ocean of nectar,
+    Rādhā looked crookedly at the crooked one and replied by gesture, beautiful with blossoming anger, gentle smiles,
+    and playful joking.
+- id: passage.dana-keli-cintamani.86
+  locus: '86'
+  display_locus: Verse 86
+  order: 86
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'yāsyāmy ahaṁ nahi pathā rata-hiṇḍakena
+
+    sandūṣitena nitarāṁ sakhi tena tena |
+
+    itthaṁ mad-uktam api naiva niśamya garvād
+
+    ānīya mām iha dadau lalitā kare’sya ||86||'
+  translation_status: WORKING_PROJECT
+  translation: “Friend, I will not go by any path thoroughly polluted by that wandering libertine. I said exactly this,
+    but proud Lalitā would not listen; she brought me here and placed me in his hands.”
+- id: passage.dana-keli-cintamani.87
+  locus: '87'
+  display_locus: Verse 87
+  order: 87
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'evaṁ nigadya sahasā saha sā sakhībhir
+
+    vāmyena kāmyam api tat-kṛta-narma-śarma |
+
+    sannindya vandya-vadanā vidhunā vrajantī
+
+    ruddhā balena vidhunā vidhunā vrajasya ||87||'
+  translation_status: WORKING_PROJECT
+  translation: Speaking so, she suddenly moved away with her companions. By her sweet contrariness she condemned the
+    very joking happiness from him that she secretly desired, but as the worshipable-faced girl departed, the moon of
+    Vraja forcibly stopped her.
+- id: passage.dana-keli-cintamani.88
+  locus: '88'
+  display_locus: Verse 88
+  order: 88
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'śrutvā mukunda-madhura-smita-sikta-narma-
+
+    marma-prabandham atulaṁ kim api smitākṣī |
+
+    antaḥ-sphurat-sukha-bharaṁ pracuraṁ ruṣeva
+
+    saṁruddhya hṛdyam adhikaṁ lalitā lalāpa ||88||'
+  translation_status: WORKING_PROJECT
+  translation: Hearing Mukunda’s incomparable chain of intimate jokes, soaked in sweet smiles, Lalitā’s smiling eyes
+    betrayed her. She restrained the great happiness flashing within her heart as though with anger, and then spoke forcefully.
+- id: passage.dana-keli-cintamani.89
+  locus: '89'
+  display_locus: Verse 89
+  order: 89
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'kasyāpi goṣṭha-nagare dadhi-dugdha-dāna-
+
+    vārtāpi na śruta-carī kim u dṛṣṭa-pūrvā |
+
+    cillābha-varga-patinā yad anena sṛṣṭam
+
+    etat tu vallava-vadhū-kula-luṇṭhanāya ||89||'
+  translation_status: WORKING_PROJECT
+  translation: “In the entire cowherd settlement no one has ever even heard of a toll on yogurt and milk, much less seen
+    one. This is something invented by this chief of the thieves only for plundering the whole clan of cowherd women.”
+- id: passage.dana-keli-cintamani.90
+  locus: '90'
+  display_locus: Verse 90
+  order: 90
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'etasya kṛṣṇa-bhujagasya kaṭhora-bhogāt
+
+    sakhyo yadi svam avituṁ param icchataitat |
+
+    gatvā vrajendra-gṛhiṇī-purato yaśo’sya
+
+    saṅgīyatāṁ tyajati vaḥ sukhito yathaiṣaḥ ||90||'
+  translation_status: WORKING_PROJECT
+  translation: “Friends, if you truly wish to protect yourselves from the hard coils of this black serpent Kṛṣṇa, go
+    before the queen of Vraja and sing his glories there, so that, satisfied, he may finally release you.”
+- id: passage.dana-keli-cintamani.91
+  locus: '91'
+  display_locus: Verse 91
+  order: 91
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'rādhā hṛd-ākūtam agādham īṣad-
+
+    vyaṅgena vijñāya mukunda ārāt |
+
+    pratyekam alpa-smitam atra kṛtvā
+
+    jagāda bhaṅgyā lalitādikās tāḥ ||91||'
+  translation_status: WORKING_PROJECT
+  translation: Mukunda understood, through a slight hint, the unfathomable intention within Rādhā’s heart. Smiling a
+    little at each of them, he then playfully addressed Lalitā and the others.
+- id: passage.dana-keli-cintamani.92
+  locus: '92'
+  display_locus: Verse 92
+  order: 92
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'vidyā-cayasya tava sundari tuṅgavidye
+
+    pratyekam eva kila lakṣa-suvarṇa-dakṣam |
+
+    yat tena tena bhavatī vraja-yauvataṁ taj
+
+    jitvā sphuraty anudinaṁ mada-darpa-dṛptā ||92||'
+  translation_status: WORKING_PROJECT
+  translation: “Beautiful Tuṅgavidyā, each branch of your learning is worth a hundred thousand gold coins. By each of
+    them you conquer the youth of Vraja, and day after day you shine, intoxicated with pride in your excellence.”
+- id: passage.dana-keli-cintamani.93
+  locus: '93'
+  display_locus: Verse 93
+  order: 93
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'citrā sucitra-mṛdu-manda-vacaḥ-prabandho
+
+    hṛdyo na kasya tava sundari bhūtale’smin |
+
+    no cet kathaṁ tam avagamya budhaḥ sudhāyā
+
+    mādhuryam apy anudinaṁ hi tiraskaroti ||93||'
+  translation_status: WORKING_PROJECT
+  translation: “Citrā, beautiful girl, whose heart is not captivated on this earth by your wondrous arrangement of soft,
+    gentle speech? If it were otherwise, why would a wise person, having understood it, reject even the sweetness of
+    nectar every day?”
+- id: passage.dana-keli-cintamani.94
+  locus: '94'
+  display_locus: Verse 94
+  order: 94
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'asmād amuṣya madhurasya na ko’pi dāna-
+
+    yogyaḥ padārtha iha bhāvini dṛśyate yat |
+
+    tasmād idaṁ mṛdula-mañjula-mṛṣṭa-divya-
+
+    bimbādharāmṛtam idaṁ smita-candra-gandhī ||94||'
+  translation_status: WORKING_PROJECT
+  translation: '“For such sweetness I see nothing here fit to be demanded as toll except this: the soft, charming, delicious,
+    divine nectar of your bimba lips, fragrant with your moonlike smile.”'
+- id: passage.dana-keli-cintamani.95
+  locus: '95'
+  display_locus: Verse 95
+  order: 95
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'prāṇāli campakalate tava vahni-tapta-
+
+    jāmbūnada-sphurita-campaka-kampi-kānteḥ |
+
+    śyāmaṁ mad-aṅgam ucitaṁ muditā tayaiva
+
+    san-mālayā madhurayā kila maṇḍayeti ||95||'
+  translation_status: WORKING_PROJECT
+  translation: “Campakalatā, dear friend, your complexion trembles like campaka flowers shining with fire-heated molten
+    gold. Delighted, adorn my dark body with that very sweet and excellent garland.”
+- id: passage.dana-keli-cintamani.96
+  locus: '96'
+  display_locus: Verse 96
+  order: 96
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'yat te mukhasya madhu tan madhurāṅgi narma-
+
+    karpūra-vāsitataraṁ rasa-digdha-mugdham |
+
+    tasyaiva durlabhatarasya paraṁ viśākhe
+
+    dānaṁ tvam eva niyataṁ na paraṁ trilokyām ||96||'
+  translation_status: WORKING_PROJECT
+  translation: “Viśākhe, the honey of your mouth, sweet-limbed girl, is steeped in rasa and made still more fragrant
+    with the camphor of joking. Only you can surely give the supreme toll of that exceedingly rare treasure; no one else
+    in the three worlds can.”
+- id: passage.dana-keli-cintamani.97
+  locus: '97'
+  display_locus: Verse 97
+  order: 97
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'vaidagdhya-narma-rasa-lāsya-vilāsa-hāsa-
+
+    saundarya-sad-guṇa-tater lalite paraṁ te |
+
+    mānoru-śikṣaṇa-vicakṣaṇatādi-kūṭa-
+
+    kāṭhinya-kauśala-parityajanaṁ hi dānam ||97||'
+  translation_status: WORKING_PROJECT
+  translation: '“Lalite, you possess an abundance of skill, joking rasa, dance, play, laughter, beauty, and noble qualities.
+    Your highest toll is this: abandon the hard, intricate expertise by which you are so clever at teaching and sustaining
+    Rādhā’s mighty māna.”'
+- id: passage.dana-keli-cintamani.98
+  locus: '98'
+  display_locus: Verse 98
+  order: 98
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'sudhā-nidhi-sudhā-bharaiḥ kṛta-vicitra-sat-kuṇḍikā-
+
+    spṛhā-śata-visarjaka-sphurita-mādhurī-bindukam |
+
+    tayor vraja-vilāsinor madhura-keli-vārtā-sudhāṁ
+
+    dhayanty api sahasraśaḥ sumukhi naiva tṛptiṁ labhe ||98||'
+  translation_status: WORKING_PROJECT
+  translation: “Beautiful-faced girl, though I drink a thousand times the nectar of the sweet play-talk of those two
+    lovers of Vraja—a drop of whose sweetness makes one cast aside the desire for countless wondrous pools filled with
+    the nectar of an ocean of immortality—I never attain even the slightest satisfaction.”
+- id: passage.dana-keli-cintamani.99
+  locus: '99'
+  display_locus: Verse 99
+  order: 99
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'tasmāt punaḥ punar imaṁ kathayaiva vārtām
+
+    ity adya kundalatayā pratibhāṣyamāṇe |
+
+    santoṣa-sāgara-nimajjana-phulla-roma-
+
+    premārdra-vāg vidhu-mukhī sumukhī babhāṣe ||99||'
+  translation_status: WORKING_PROJECT
+  translation: “Therefore tell me this story again and again.” Thus addressed today by Kundalatā, moon-faced Sumukhī,
+    her hairs blossoming as she plunged into an ocean of delight, spoke with a voice moistened by love.
+- id: passage.dana-keli-cintamani.100
+  locus: '100'
+  display_locus: Verse 100
+  order: 100
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'tadā tad-uktākhila-dāna-vastu-
+
+    jātaṁ niśamyātikuleṣu teṣu |
+
+    hasatsu sarveṣu ca tuṅganarmā
+
+    smitvā sphuṭaṁ vācam uvāca goṣṭhyām ||100||'
+  translation_status: WORKING_PROJECT
+  translation: Then, hearing the entire array of toll-items that had been demanded, while all the groups around them
+    burst into laughter, the one rich in lofty humor smiled and spoke clearly before the assembly.
+- id: passage.dana-keli-cintamani.101
+  locus: '101'
+  display_locus: Verse 101
+  order: 101
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'vittāni yāni madhumaṅgala yācitāni
+
+    tāny āśu neṣyatha kathaṁ bata durbalāḥ stha |
+
+    tasmād gṛhāt śakaṭa-yūtham ihānayadhvaṁ
+
+    śūroṣṭra-sad-vṛṣabha-loka-kharāṁś ca voḍhum ||101||'
+  translation_status: WORKING_PROJECT
+  translation: “Madhumaṅgala, how will these weak girls carry away all the riches you have demanded? Have them bring
+    here from home a whole train of carts, together with camels, strong bulls, men, and donkeys to bear it all.”
+- id: passage.dana-keli-cintamani.102
+  locus: '102'
+  display_locus: Verse 102
+  order: 102
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'tat kṛṣṇa-narma-lapitaṁ lalitaṁ niśamya
+
+    thutkāra-kārakam apīndu-sudhā-pravāhe |
+
+    ānanda-saṁsphurita-sāttvika-bhāva-bhāram
+
+    āguṇṭhya vāmya-madhura-madhurāyatākṣī ||102||'
+  translation_status: WORKING_PROJECT
+  translation: Hearing Kṛṣṇa’s charming joking speech—speech that deserved a contemptuous “thu!” even though it flowed
+    like lunar nectar—the long-eyed girl, sweet in her contrariness, concealed the mass of ecstatic transformations blossoming
+    from her inner joy.
+- id: passage.dana-keli-cintamani.103
+  locus: '103'
+  display_locus: Verse 103
+  order: 103
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'śrīmad-goṣṭha-vaneśvarī-rasa-kalā-līlojjvalan-nāgarī
+
+    bhrājad-goṣṭha-mahendra-nandana-mano-māṇikya-pāṭaccarī |
+
+    prodyat-puṣpa-dhanuḥ-prabandha-vividha-vyākāra-vāg-īśvarī
+
+    gāndharvā giridhāriṇā vivadate vāṅ-nṛtya-vidyā-dharī ||103||'
+  translation_status: WORKING_PROJECT
+  translation: Gāndharvā, radiant heroine of the arts of rasa in the splendid forest of Vraja, thief of the jewel-like
+    mind of the shining son of the lord of the cowherds, sovereign of manifold verbal expressions drawn from the rising
+    flower-bow of Love, now argues with Giridhārī like a celestial mistress of the art of dancing speech.
+- id: passage.dana-keli-cintamani.104
+  locus: '104'
+  display_locus: Verse 104
+  order: 104
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'svāmin nu dāsa-vanitā na vayaṁ bhavāmaś
+
+    candrāvalir na ca vayaṁ na ca padmikā te |
+
+    yad gūḍha-ghora-gahane miṣataḥ karasya
+
+    saṁluṇṭhanāya bhavatā bata rakṣitāḥ smaḥ ||104||'
+  translation_status: WORKING_PROJECT
+  translation: “Sir, we are not your servant-women. We are not Candrāvalī, nor are we your Padmikā. Why then have you
+    stationed yourself in this hidden, fearsome forest under the pretext of a toll, simply so that you may plunder us?”
+- id: passage.dana-keli-cintamani.105
+  locus: '105'
+  display_locus: Verse 105
+  order: 105
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'rādhe mudhā na kuru vāda-vivāda-vṛddhiṁ
+
+    jñātvā hitaṁ mad-uditaṁ mama dehi dānam |
+
+    no cen mahā-madana eṣa niśamya roṣāt
+
+    saṁśāsti vo yadi tadā mama neha doṣaḥ ||105||'
+  translation_status: WORKING_PROJECT
+  translation: “Rādhe, do not uselessly increase this argument and counterargument. Understand what is good for you and
+    pay the toll I have declared. Otherwise, if mighty King Love hears of this and angrily punishes you all, the fault
+    will not be mine.”
+- id: passage.dana-keli-cintamani.106
+  locus: '106'
+  display_locus: Verse 106
+  order: 106
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'mithyaivāyaṁ sṛjati nahi ced dānam etat tato’sau
+
+    preyaś-candrāvali-vara-śiraḥ-śāpam aṅgīkarotu |
+
+    smitvā govardhana-giri-darī-gehinī raṅgiṇītthaṁ
+
+    vācaṁ lāsyaṁ sakhi vidadhati hāsayāmāsa goṣṭhīm ||106||'
+  translation_status: WORKING_PROJECT
+  translation: “If this toll he has invented is not completely false, then let him accept an oath upon the head of his
+    beloved Candrāvalī.” Smiling, the playful mistress of a cave on Govardhana made the whole assembly laugh as she danced
+    with these words.
+- id: passage.dana-keli-cintamani.107
+  locus: '107'
+  display_locus: Verse 107
+  order: 107
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'śuddhā vibhāti ca dhiyā śubhayā viśākhā
+
+    vaidagdhya-narma-nipuṇā bhavad-antaraṅgā |
+
+    tasmāt tayā saha vicārya vicārya-kāryaṁ
+
+    kuryāḥ pramatta-lalitā-matim āśu muñca ||107||'
+  translation_status: WORKING_PROJECT
+  translation: “Viśākhā shines with pure and auspicious intelligence; she is your intimate companion, expert in clever
+    joking. Therefore deliberate with her and do what ought to be done. Quickly abandon the reckless counsel of Lalitā.”
+- id: passage.dana-keli-cintamani.108
+  locus: '108'
+  display_locus: Verse 108
+  order: 108
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'dānīndra-candra bhavataḥ stavato yato’haṁ
+
+    prāptā sukhaṁ tad iha te’pi sukhāni dātrī |
+
+    draṣṭuṁ bhavan-madhura-dhārṣṭya-bhujaṅga-nṛtyam
+
+    utkābhimanyu-garuḍaṁ tarasānayāmi ||108||'
+  translation_status: WORKING_PROJECT
+  translation: “O moon among kings of toll-collectors, I have gained happiness from hearing your praise, so I too shall
+    give you happiness. Eager to watch the sweet dance of the serpent of your audacity, I shall quickly bring the Garuḍa
+    named Abhimanyu.”
+- id: passage.dana-keli-cintamani.109
+  locus: '109'
+  display_locus: Verse 109
+  order: 109
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'evaṁ nigadya rabhasān mahasātihṛdya-
+
+    ramyā mahiṣṭha-guṇa-narmabhir adya sadyaḥ |
+
+    sadmāni padma-vadanā calituṁ samutkā
+
+    ruddhā haṭhena haṭhinā harinā viśākhā ||109||'
+  translation_status: WORKING_PROJECT
+  translation: Having spoken so with force and with exceedingly delightful, splendid qualities and jokes, lotus-faced
+    Viśākhā eagerly began to leave for home, but Hari, stubborn in his insistence, forcibly stopped her.
+- id: passage.dana-keli-cintamani.110
+  locus: '110'
+  display_locus: Verse 110
+  order: 110
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'saṁrakṣya dharmam abalāḥ sa-balād amuṣmāt
+
+    kāmād vimukta-kula-karma-samasta-dharmāt |
+
+    vyāghuṭya yāta gṛham eva satītvavatyaḥ
+
+    kiṁ vā ghaṭīr iha samarpya suyāga-śālam ||110||'
+  translation_status: WORKING_PROJECT
+  translation: “O girls, preserve your dharma from this powerful Kāma who has cast aside all the family duties and every
+    form of dharma! Turn back and go home if you value chastity—or else leave your pots here and proceed to the sacrificial
+    hall.”
+- id: passage.dana-keli-cintamani.111
+  locus: '111'
+  display_locus: Verse 111
+  order: 111
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'citroktam ittham adhigatya ruṣeva tuṅga-
+
+    vidyā jagāda kuṭila-bhruvam unnayantī |
+
+    jātyātibhītatara-gopaka-vākya-mātrān
+
+    mugdhe mudhaiva katham atra bibheṣi citre ||111||'
+  translation_status: WORKING_PROJECT
+  translation: Hearing Citrā’s words, Tuṅgavidyā raised her crooked brows as if angry and said, “Innocent Citrā, why
+    are you so needlessly frightened here merely by the words of a cowherd, terrified of his caste as though it were
+    something formidable?”
+- id: passage.dana-keli-cintamani.112
+  locus: '112'
+  display_locus: Verse 112
+  order: 112
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'rādhā sadā jayati goṣṭha-vanādhināthā
+
+    tasyāḥ pracaṇḍa-sacivā lalitā ca śūrā |
+
+    paśyādya tad-vana-vināśaka-go-karārthaṁ
+
+    baddhvā nayāmi madhumaṅgala-bhaṇḍa-vipram ||112||'
+  translation_status: WORKING_PROJECT
+  translation: '“Rādhā is forever victorious as sovereign of the forests of Vraja, and fierce, heroic Lalitā is her powerful
+    minister. Just watch: today, for the tax due from the cows that damage her forest, I shall bind and carry off this
+    rascal brāhmaṇa Madhumaṅgala.”'
+- id: passage.dana-keli-cintamani.113
+  locus: '113'
+  display_locus: Verse 113
+  order: 113
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'śrutvā tadīya-vacanaṁ madhumaṅgalaṁ taṁ
+
+    bhītyā tadātma-savidhe subalādi-madhye |
+
+    saṅkucya tatra cakitaṁ cakitaṁ vasantaṁ
+
+    caṇḍaṁ jagāda vihasan sakhi kṛṣṇa-candraḥ ||113||'
+  translation_status: WORKING_PROJECT
+  translation: Hearing her words, Madhumaṅgala shrank back in fear near Kṛṣṇa among Subala and the others and stood there
+    trembling. Laughing, the moon of Vraja addressed the fierce girl.
+- id: passage.dana-keli-cintamani.114
+  locus: '114'
+  display_locus: Verse 114
+  order: 114
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'mā bhair mahā-kṣiti-surottama mad-vidhasya
+
+    sākṣād amuṣya narasiṁha-varasya dṛṣṭyā |
+
+    caṇḍī pracaṇḍa-lalitāpi ca tuṅgavidyā
+
+    sā bhairavī drutam apaiṣyati vīta-vastrā ||114||'
+  translation_status: WORKING_PROJECT
+  translation: “Do not fear, O greatest brāhmaṇa! At the very sight of a supreme Narasiṁha like me, even fierce Caṇḍī
+    Lalitā and that Bhairavī Tuṅgavidyā will quickly flee stripped of their courage.”
+- id: passage.dana-keli-cintamani.115
+  locus: '115'
+  display_locus: Verse 115
+  order: 115
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'tūrṇaṁ hiraṇya-kaśipuṁ bhagavan nṛsiṁha
+
+    candrāvalī-kaṭu-kucaṁ nakharair vidārya |
+
+    prahlādam ullasitam āśu kuru tvam ity ā-
+
+    karṇyaiṣa valgu lalitā-lapitaṁ jahāsa ||115||'
+  translation_status: WORKING_PROJECT
+  translation: “Lord Narasiṁha, quickly tear open with your nails the hard breast of Candrāvalī as though it were Hiraṇyakaśipu,
+    and at once make Prahlāda jubilant!” Hearing Lalitā’s charming remark, he laughed.
+- id: passage.dana-keli-cintamani.116
+  locus: '116'
+  display_locus: Verse 116
+  order: 116
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'ced gantum icchasi sakhī-nikareṇa sārdhaṁ
+
+    rādhe samṛddha-dhana-bhūṣaṇa-lobhatas tvam |
+
+    tad gaccha kintu laliteha mamāccha-kacche
+
+    saṁrakṣyatāṁ pratinidhiḥ punar eṣi yāvat ||116||'
+  translation_status: WORKING_PROJECT
+  translation: “Rādhe, if you wish to go with your band of companions out of desire for abundant wealth and ornaments,
+    then go. But let Lalitā remain here with me as your representative until you return.”
+- id: passage.dana-keli-cintamani.117
+  locus: '117'
+  display_locus: Verse 117
+  order: 117
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'pāpena kena mahatā rata-hiṇḍakena
+
+    haste tavaiva vidhinā bata pātitāḥ smaḥ |
+
+    kintv adya paśya tarasā vacasāṁ tavaiṣāṁ
+
+    śāstiṁ prasiddha-lalitāṁ dadatī kilāsmi ||117||'
+  translation_status: WORKING_PROJECT
+  translation: '“By what great sin, O wandering libertine, have we been cast by fate into your very hands? But today
+    just watch: with the force of these words I shall give you the punishment for which Lalitā is famous.”'
+- id: passage.dana-keli-cintamani.118
+  locus: '118'
+  display_locus: Verse 118
+  order: 118
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'iti taṁ pratibhāṣya karkaśaṁ
+
+    lalitā roṣa-kaṣāya-rūṣitā |
+
+    nikaṭe kapaṭaiḥ sakhī-gaṇān
+
+    avadat sundari sā rasonmadā ||118||'
+  translation_status: WORKING_PROJECT
+  translation: Having answered him harshly in this way, Lalitā, reddened by the astringency of anger and intoxicated
+    with rasa, drew her companions close and spoke to them with crafty intent.
+- id: passage.dana-keli-cintamani.119
+  locus: '119'
+  display_locus: Verse 119
+  order: 119
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'āryām ihānayatu tūrṇam itā sudevī
+
+    citrācireṇa kuṭilāṁ jaṭilāṁ sa-putrām |
+
+    vṛndottamaṁ sapadi yajñika-vipram ekam
+
+    ālokituṁ naṭanam asya naṭendra-bhartuḥ ||119||'
+  translation_status: WORKING_PROJECT
+  translation: “Let Sudevī quickly bring Āryā here; let Citrā at once bring crooked Jaṭilā together with her son; and
+    let excellent Vṛndā bring a sacrificial brāhmaṇa, so that they may behold the dance of this lord of dancers.”
+- id: passage.dana-keli-cintamani.120
+  locus: '120'
+  display_locus: Verse 120
+  order: 120
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'itthaṁ tayā lalitayā lapitaṁ sa-roṣam
+
+    ākarṇya goṣṭha-ramaṇī-dhṛta-citta-vṛttiḥ |
+
+    īṣad vihasya dara vīkṣya ca rādhikāṁ tāṁ
+
+    saṁvyājahāra ruciraṁ sakhi goṣṭha-candraḥ ||120||'
+  translation_status: WORKING_PROJECT
+  translation: Hearing Lalitā speak so angrily, the moon of Vraja—whose mind was wholly seized by the women of Vraja—smiled
+    slightly, glanced gently at Rādhikā, and spoke charmingly.
+- id: passage.dana-keli-cintamani.121
+  locus: '121'
+  display_locus: Verse 121
+  order: 121
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'garvād yasya madīya-dānam aniśaṁ yuṣmābhir ullaṅghyate
+
+    manye’haṁ ca tṛṇāya naiva kuṭile dānair alaṁ tasya vaḥ |
+
+    paśyādyaiva tad eva navya-vikasat-tāruṇya-ratno mayā
+
+    vakṣoje paribhūya śūra-lalitāṁ rādhe’dhunā luṇṭhyate ||121||'
+  translation_status: WORKING_PROJECT
+  translation: '“Because in your pride you girls constantly violate the toll that belongs to me and consider me no more
+    than a blade of grass, your ordinary payments are no longer sufficient. Look, Rādhe: today I shall plunder from your
+    breasts that freshly blossoming jewel of youth itself, even after overcoming heroic Lalitā.”'
+- id: passage.dana-keli-cintamani.122
+  locus: '122'
+  display_locus: Verse 122
+  order: 122
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'ity ālapya smara-vilasitaiḥ spraṣṭum utke mukunde
+
+    bhītyevaitās tata ita uta smera-vaktrāravindāḥ |
+
+    krūraṁ tiryaṅ-nayana-naṭanaiḥ śaśvad ālokayantyaḥ
+
+    premāndhās taṁ priya-sakhi rasenāpasasruḥ samantāt ||122||'
+  translation_status: WORKING_PROJECT
+  translation: As Mukunda spoke and eagerly moved to touch them in the sport of Love, the girls scattered here and there
+    as if frightened, their lotus faces smiling. Again and again they shot him cruel sidelong glances; blinded by love,
+    dear friend, they withdrew all around him in the flavor of rasa.
+- id: passage.dana-keli-cintamani.123
+  locus: '123'
+  display_locus: Verse 123
+  order: 123
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'nityaṁ rājānvati janapade divya-gavyopahārair
+
+    yātāyātaṁ vidadhati janā goṣṭhataḥ koṭi-saṅkhyāḥ |
+
+    naitebhyaḥ kiṁ spṛhayati bhavān dānam ādātum etat
+
+    satyaṁ te ced vraja-giri-vane ghaṭṭa-paṭṭādhipatyam ||123||'
+  translation_status: WORKING_PROJECT
+  translation: “Every day, under the king’s protection, people by the millions travel through the district from the cowherd
+    settlement carrying divine dairy offerings. Why do you not desire to take this toll from them, if your lordship over
+    the toll-station in the forest of Govardhana is truly legitimate?”
+- id: passage.dana-keli-cintamani.124
+  locus: '124'
+  display_locus: Verse 124
+  order: 124
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'iti prakaṭa-rādhikā-vacanam ākalayya prabhur
+
+    naṭan-nayana-bhaṅgībhir niṭilam īṣad uccālayan |
+
+    aśeṣa-rasikāgraṇīḥ sukha-bhareṇa rājyan-manās
+
+    tathāpi bahir uddhasann iva jagāda gāndharvikām ||124||'
+  translation_status: WORKING_PROJECT
+  translation: Hearing this open challenge from Rādhikā, the Lord raised his brow slightly while his eyes danced with
+    playful gestures. Though inwardly radiant with delight as the foremost of all connoisseurs of rasa, outwardly he
+    seemed to laugh scornfully and addressed Gāndharvikā.
+- id: passage.dana-keli-cintamani.125
+  locus: '125'
+  display_locus: Verse 125
+  order: 125
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'anyebhyo’pi pramada-madhunā matta-cittāḥ śṛṇudhvaṁ
+
+    gṛhṇāmy etan niravadhi mudā rāja-mārge vrajadbhyaḥ |
+
+    yūyaṁ tyaktvā tad anudivasaṁ gūḍham atrāvrajantīty
+
+    evaṁ śrutvā nija-cara-mukhān manmathaś cakravartī ||125||'
+  translation_status: WORKING_PROJECT
+  translation: '“Listen: I gladly collect this toll without interruption from others who travel the royal road, their
+    minds intoxicated with pleasure. But my own agents reported that you girls avoid it and secretly come here every
+    day. When Emperor Manmatha heard this—”'
+- id: passage.dana-keli-cintamani.126
+  locus: '126'
+  display_locus: Verse 126
+  order: 126
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'mām ānīyāntikam atha ruṣā bhartsayitvā samantād
+
+    ugraṁ dattvā śapatham aham āśikṣitas tena śaśvat |
+
+    tūrṇaṁ gacchan tvam iha sagaṇo ghaṭṭa-vidhvaṁsiṇīs tā
+
+    vadhvā śāstiṁ sapadi vidadhan mat-puraḥ prāpayeti ||126||'
+  translation_status: WORKING_PROJECT
+  translation: '“—he had me brought before him, angrily rebuked me on every side, made me swear a fierce oath, and permanently
+    instructed me: ‘Go quickly with your company, bind those destroyers of the toll-station, punish them immediately,
+    and bring them before me.’”'
+- id: passage.dana-keli-cintamani.127
+  locus: '127'
+  display_locus: Verse 127
+  order: 127
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'tataḥ kumbhān samuttarya nirvṛtā api tāḥ param |
+
+    nirviṇṇā iva bhaṅgyaiva viviśur bhū-bhṛtas tale ||127||'
+  translation_status: WORKING_PROJECT
+  translation: Then the girls set down their pots. Though inwardly completely satisfied, they artfully appeared dejected
+    and entered beneath the shelter of the mountain.
+- id: passage.dana-keli-cintamani.128
+  locus: '128'
+  display_locus: Verse 128
+  order: 128
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'ity-ādi-tan-madhura-keli-vilāsa-vārtā
+
+    pīyūṣam ullasita-karṇa-puṭair nipīya |
+
+    ānandataḥ pulaka-gadgada-rāva-cāru
+
+    saṁvyājahāra mṛdu kundalatā tadānīm ||128||'
+  translation_status: WORKING_PROJECT
+  translation: Having drunk through her delighted ears the nectar of this account of their sweet playful pastimes, Kundalatā’s
+    hairs stood on end with joy and her voice became choked; then she spoke softly.
+- id: passage.dana-keli-cintamani.129
+  locus: '129'
+  display_locus: Verse 129
+  order: 129
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'śaśvat tayor atula-keli-kalāmṛtāni
+
+    kāmaṁ dhayanty api manāg api naimi tṛptiṁ
+
+    tasmāt punaḥ kathaya sundari kiṁ tato’bhūd
+
+    etat tad uktam adhigamya jagāda sā ca ||129||'
+  translation_status: WORKING_PROJECT
+  translation: “Though I continually drink the incomparable nectar of their arts of play, I do not attain even the slightest
+    satisfaction. Therefore, beautiful girl, tell me again—what happened next?” Hearing this, her companion continued.
+- id: passage.dana-keli-cintamani.130
+  locus: '130'
+  display_locus: Verse 130
+  order: 130
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'śrutvā tayor dayita-dāna-vihāra-vārtām
+
+    ārtā tad īkṣitum alakṣitam āgatotkā |
+
+    nāndīmukhī nibhṛta-kuñja-gṛhe praviṣṭā
+
+    dṛṣṭvādbhutaṁ sadasi sādbhutam ājagāma ||130||'
+  translation_status: WORKING_PROJECT
+  translation: Hearing of the beloved pair’s toll pastime and tormented with eagerness to see it, Nāndīmukhī came unseen
+    and entered the secluded bower-house. Beholding the astonishing scene in the assembly, she herself became filled
+    with wonder.
+- id: passage.dana-keli-cintamani.131
+  locus: '131'
+  display_locus: Verse 131
+  order: 131
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'tāṁ vīkṣya tatra sakalāḥ parirabhya kāmam
+
+    āmoditaḥ kathitavatya itaḥ sva-vṛttam |
+
+    kṛṣṇo’pi tal-labhanam āśu vihasya śāsyam
+
+    āśaṁsya dāna-vivṛtaṁ kathayāmbabhūva ||131||'
+  translation_status: WORKING_PROJECT
+  translation: Seeing her there, all the girls embraced her warmly and, delighted, told her what had happened. Kṛṣṇa
+    too laughed at her arrival, predicted what punishment was due, and began explaining the toll in detail.
+- id: passage.dana-keli-cintamani.132
+  locus: '132'
+  display_locus: Verse 132
+  order: 132
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'smitvā rādhām athodvīkṣya muditāṁ rasa-vihvalām |
+
+    sānandaṁ paramānandaṁ mukundaṁ nijagāda sā ||132||'
+  translation_status: WORKING_PROJECT
+  translation: Then Nāndīmukhī smiled, looked up at Rādhā, who was delighted and overwhelmed with rasa, and joyfully
+    addressed Mukunda, the source of supreme bliss.
+- id: passage.dana-keli-cintamani.133
+  locus: '133'
+  display_locus: Verse 133
+  order: 133
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'dāninn adbhuta-vastūnāṁ śrutvā dānam ihādbhutam |
+
+    tad-vākyam anvabhāvīti jīvadbhiḥ kiṁ na dṛśyate ||133||'
+  translation_status: WORKING_PROJECT
+  translation: “O toll-collector! Having heard here this astonishing toll imposed upon astonishing objects, what indeed
+    is there that people who remain alive do not get to witness?”
+- id: passage.dana-keli-cintamani.134
+  locus: '134'
+  display_locus: Verse 134
+  order: 134
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'kulīnā vratinīr etā rahaḥ saṁrakṣatas tava |
+
+    apakīrtir alaṁ vīra bhavitā gokule pure ||134||'
+  translation_status: WORKING_PROJECT
+  translation: “Hero, if you privately detain these noble, vow-observing girls, enormous ill fame will arise for you
+    throughout the town of Gokula.”
+- id: passage.dana-keli-cintamani.135
+  locus: '135'
+  display_locus: Verse 135
+  order: 135
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'kṛtaṁ kartavyam atraiva tad alaṁ narma-khelayā |
+
+    samūhya muñca muñcaitāḥ satraṁ gacchantu satvaram ||135||'
+  translation_status: WORKING_PROJECT
+  translation: “You have done what needed to be done here. Enough of this joking play. Gather yourself and release them—release
+    them so that they may quickly go to the sacrifice.”
+- id: passage.dana-keli-cintamani.136
+  locus: '136'
+  display_locus: Verse 136
+  order: 136
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'sarvāṅgānām upari lasatā laṅgimenottamāṅge-
+
+    nāpi ślāghyaṁ mukha-vidhum imā dyotayantyo’pi dhūrtāḥ |
+
+    tasmān nīcair hṛdayam api yan nābhim ācchadayeṣur
+
+    yatnair baddhas tad iha bhavitā ko’py apūrvaḥ padārthaḥ ||136||'
+  translation_status: WORKING_PROJECT
+  translation: “These clever girls illuminate their moonlike faces with their heads, which shine above all their limbs
+    and are worthy of praise; yet lower down they labor to conceal even the region of the heart and navel. Surely some
+    unprecedented treasure must be bound and hidden there with such care.”
+- id: passage.dana-keli-cintamani.137
+  locus: '137'
+  display_locus: Verse 137
+  order: 137
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'tasmāt pūrvaṁ nibhṛtam anayā sthāna-yugmaṁ prakāśya
+
+    prāyaḥ satyaṁ bhavati nahi vā kāryatāṁ tat-pratītiḥ |
+
+    no ced etad vivṛtim acirāt sūcakāt saṁniśamya
+
+    kruddho’smākaṁ madana-nṛpatir daṇḍam uccair vidhātā ||137||'
+  translation_status: WORKING_PROJECT
+  translation: “Therefore first let those two secluded places be revealed, so that we may determine whether the claim
+    is true. Otherwise, when our spy soon hears the full secret, King Love will become furious and inflict a severe punishment
+    upon us.”
+- id: passage.dana-keli-cintamani.138
+  locus: '138'
+  display_locus: Verse 138
+  order: 138
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'guptīkartuṁ tad api paramaṁ vastu yat tu tvayāhaṁ
+
+    prārthya bhaṅgyā sumati lalite dātum uktvā tad-ardham |
+
+    etat kiṁ syād yad iha vicarel lekhakaḥ sūcako’sau
+
+    rājñaḥ preyān parama-matimān ujjvalaḥ prekṣako’pi ||138||'
+  translation_status: WORKING_PROJECT
+  translation: “Wise Lalite, I asked you by gesture for that supreme hidden treasure, and you agreed to give half of
+    it. What will happen if the king’s beloved, highly intelligent Ujjvala—both recorder and observing spy—wanders here
+    and sees everything?”
+- id: passage.dana-keli-cintamani.139
+  locus: '139'
+  display_locus: Verse 139
+  order: 139
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'anviṣyadbhyāṁ niravadhi mama cchidram ābhyām tad-agre
+
+    vyājād etan-nibhṛta-vivṛtau jñāpitāyām avaśyam |
+
+    tīvro’tyuccair madana-nṛpatir mām itas tvādṛśībhiḥ
+
+    sārdhaṁ baddhvā nibhṛta-tamasi kṣepsyati drāg guhāntaḥ ||139||'
+  translation_status: WORKING_PROJECT
+  translation: “Those two are constantly searching for some fault in me. If this intimate secret is disclosed before
+    them even on a pretext, fierce King Love will surely bind me together with girls like you and immediately throw us
+    into the deepest darkness of a cave.”
+- id: passage.dana-keli-cintamani.140
+  locus: '140'
+  display_locus: Verse 140
+  order: 140
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'iti nāndīmukhīṁ sākṣāc chaṁsite kaṁsa-vidviṣā |
+
+    kapaṭa-krodha-viddhāddhā rādhā mādhavam abravīt ||140||'
+  translation_status: WORKING_PROJECT
+  translation: When the enemy of Kaṁsa openly said this to Nāndīmukhī, Rādhā, pierced through with feigned anger, directly
+    addressed Mādhava.
+- id: passage.dana-keli-cintamani.141
+  locus: '141'
+  display_locus: Verse 141
+  order: 141
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'sad-dharmodyat-kamala-paṭala-prauḍha-rājīva-bandhor
+
+    gopendrasya prathita-tanayaḥ śuddha-rāmānujo’pi |
+
+    duṣṭa-dhvaṁsī svayam api vadasy āśu durbhāṣitaṁ yat
+
+    tat te sevā-kula-phalam idaṁ divya-ghaṭṭīṣu devyāḥ ||141||'
+  translation_status: WORKING_PROJECT
+  translation: “You are the celebrated son of the lord of the cowherds, friend of the mighty lotus-garland of true dharma,
+    and the pure younger brother of Rāma; you yourself destroy the wicked. Yet you suddenly speak such foul words! Is
+    this the fruit of the family’s service at the goddess’s divine toll-stations?”
+- id: passage.dana-keli-cintamani.142
+  locus: '142'
+  display_locus: Verse 142
+  order: 142
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'anyad atra ca yat kiñcin na brūte lajjayā sakhī |
+
+    tac chṛṇu tvam iti vyājāt tuṅgavidyā jagāda tam ||142||'
+  translation_status: WORKING_PROJECT
+  translation: “There is still something more that your friend does not say here because of embarrassment. Listen to
+    that.” With this pretext, Tuṅgavidyā addressed him.
+- id: passage.dana-keli-cintamani.143
+  locus: '143'
+  display_locus: Verse 143
+  order: 143
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'ātma-gahvaram abhaṅga-bhujaṅga
+
+    tvaṁ vraja drutam ito’ticañcala |
+
+    āhituṇḍika varābhimanyukaḥ
+
+    sārthakāhvaya upaiti na yāvat ||143||'
+  translation_status: WORKING_PROJECT
+  translation: “O unbroken serpent, excessively restless one, go quickly from here into your own cave before the excellent
+    snake-charmer Abhimanyu—true to his name—arrives.”
+- id: passage.dana-keli-cintamani.144
+  locus: '144'
+  display_locus: Verse 144
+  order: 144
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'yeṣāṁ bhrāmyati padminī phala-yugaṁ raktaṁ catuṣpaṅkajīṁ
+
+    bandhūke bhramarau vidhūṁś ca dadhatī sārdha-trayoviṁśatim |
+
+    śyāmendoḥ para-puṁsa āvakalanāt phullā bhavet sā sadā
+
+    svīya-svāmi-raver vilokana-bharan-mlānā sphuṭaṁ tāmyati ||144||'
+  translation_status: WORKING_PROJECT
+  translation: “That lotus-woman bears two red fruits, four lotuses, two bandhūka flowers, two bees, and twenty-three
+    and a half moons. At the sight of the dark moon who is another man she always blossoms, but when she sees the sun
+    who is her own husband she plainly withers and suffers.”
+- id: passage.dana-keli-cintamani.145
+  locus: '145'
+  display_locus: Verse 145
+  order: 145
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'iti hari-mukha-padma-kṣveli-saurabhya-sadma-
+
+    prativacana-madhūni prīṇitaitat sabhāni |
+
+    tad atiracita-bādhāpīyam āpīya rādhā
+
+    prakaṭa-rucam udārāṁ vācam ārād uvāca ||145||'
+  translation_status: WORKING_PROJECT
+  translation: These honeyed replies, fragrant with the pollen-play of Hari’s lotus mouth, delighted the entire assembly.
+    Drinking the intoxicating beverage of the obstruction he had created, Rādhā then spoke nearby in a noble and openly
+    brilliant voice.
+- id: passage.dana-keli-cintamani.146
+  locus: '146'
+  display_locus: Verse 146
+  order: 146
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'kumāra bhaja dhīratāṁ na kuru durmadāc cāpalaṁ
+
+    purī nikaṭa-vartinī duradhipo’tra kaṁso balī |
+
+    atas tava hitaṁ bruve vraja-mahendra-sambandhataḥ
+
+    samūhya gahanaṁ vraja prakaṭam atra gāś cāraya ||146||'
+  translation_status: WORKING_PROJECT
+  translation: '“Young man, become steady. Do not act rashly out of arrogance. The city is nearby, and the wicked ruler
+    Kaṁsa is powerful here. Because you are related to the great lord of Vraja, I speak for your welfare: gather yourself,
+    go into the deep forest, and openly tend the cows there.”'
+- id: passage.dana-keli-cintamani.147
+  locus: '147'
+  display_locus: Verse 147
+  order: 147
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'mahā-madana-bhūpater ayam abhinna-dehaḥ svarāṭ
+
+    nṛśaṁsa-nṛpa-jīvitādhika-vayasya-keśy-ādikān |
+
+    vimathya dara-līlayā sphurati yo’tra goṣṭhāntare
+
+    sa eṣa tava kaṁsataḥ sakhi bibheti kiṁ me sakhā ||147||'
+  translation_status: WORKING_PROJECT
+  translation: “This self-sovereign friend of mine is the very embodied form of mighty King Love. Here within Vraja he
+    effortlessly destroyed Keśī and others dearer than life to the cruel king. Friend, why should he fear your Kaṁsa?”
+- id: passage.dana-keli-cintamani.148
+  locus: '148'
+  display_locus: Verse 148
+  order: 148
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'athaiṣa pṛthu-manmatho ya iha tasya sāmāntakaḥ
+
+    sa eva laghu-manmathaḥ param amuṣya kaṁso vaśaḥ |
+
+    ato’sya lipim aṅkitaṁ sapadi tatra nītvā dadan
+
+    nṛpāt kaṭakam ānayan pati-kulāni badhnāmi vaḥ ||148||'
+  translation_status: WORKING_PROJECT
+  translation: “Indeed this expansive Manmatha is that king’s feudatory, while the lesser Manmatha is only a subordinate;
+    even Kaṁsa is under his power. Therefore I shall take a written message there at once, obtain an army from the king,
+    and bind all your husbands.”
+- id: passage.dana-keli-cintamani.149
+  locus: '149'
+  display_locus: Verse 149
+  order: 149
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'itīha madhumaṅgalollasita-vaktra-kañja-skhalad-
+
+    vacaḥ-prasara-sauṣṭhavocchalita-sīdhu-dhārām imām |
+
+    nipīya rabhasonmada-mṛdu dadhāra hāsa-dhvaniṁ
+
+    sadaḥ-sarasi sundarī-rasika-sabhya-bhṛṅgāvalī ||149||'
+  translation_status: WORKING_PROJECT
+  translation: The bee-like connoisseurs seated in that lake-like assembly drank the stream of wine overflowing from
+    the charming flood of words falling from Madhumaṅgala’s blossoming lotus face, and in a surge of delight they let
+    loose gentle peals of laughter.
+- id: passage.dana-keli-cintamani.150
+  locus: '150'
+  display_locus: Verse 150
+  order: 150
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'etat tad uktam adhigatya mṛṣā ruṣā’yaṁ
+
+    vācaṁ rucātirucirām iti tām uvāca |
+
+    dānaṁ na ced dadati me tad imā mayaiva
+
+    sārdhaṁ calantv iha mahā-madanendra-pārśvam ||150||'
+  translation_status: WORKING_PROJECT
+  translation: 'Hearing that speech, Kṛṣṇa feigned anger and addressed her with words radiant with beauty: “If these
+    girls will not pay me the toll, then let them come with me right now before the great King Love.”'
+- id: passage.dana-keli-cintamani.151
+  locus: '151'
+  display_locus: Verse 151
+  order: 151
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'ko vā mahā-manasijaḥ sakhi naiva jāne
+
+    kutrāpi na śruta-caro jagatī-tale’sau |
+
+    mithyaiṣa yan mahima-nāma-balāni tasya
+
+    saṅkīrtayet tad iha vaḥ parihāsa-bhaṅgyaiḥ ||151||'
+  translation_status: WORKING_PROJECT
+  translation: Campakalatā replied, “Who is this great Manasija? Friend, I do not know him, and nowhere on earth have
+    I ever heard of him. It is all false when this fellow, with his joking gestures, loudly proclaims that king’s glory,
+    name, and power to you.”
+- id: passage.dana-keli-cintamani.152
+  locus: '152'
+  display_locus: Verse 152
+  order: 152
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'ity-ādya-campakalatā-lapitaṁ tadānīm
+
+    ākarṇya gokula-vidhur vidhu-vaktra-bimbām |
+
+    rādhāṁ nirīkṣya dara bhāṣitavān sabhāyāṁ
+
+    solluṇṭham indu-vadane madano’dvitīyaḥ ||152||'
+  translation_status: WORKING_PROJECT
+  translation: 'Hearing Campakalatā and the others speak in this way, the moon of Gokula looked at moon-faced Rādhā and
+    then addressed the assembly with gentle sarcasm: “Moon-faced girl, Madana is without a second.”'
+- id: passage.dana-keli-cintamani.153
+  locus: '153'
+  display_locus: Verse 153
+  order: 153
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'atraiva hṛdya-giri-varya-visṛṣṭa-paṭṭa-
+
+    rāṣṭre virājati mahā-madanaḥ sadaiva |
+
+    tat-sevikābhir api yad bhavatībhir evam
+
+    ābhāṣyate tad iha vo mada eva hetuḥ ||153||'
+  translation_status: WORKING_PROJECT
+  translation: “Right here, in this delightful realm upon the plateau granted by the great mountain, mighty Madana eternally
+    reigns. That even you, who are his own serving girls, address him in this way is due only to your pride.”
+- id: passage.dana-keli-cintamani.154
+  locus: '154'
+  display_locus: Verse 154
+  order: 154
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'saṁlabhya satra-sadane gamane’dya bādhāṁ
+
+    rādhā mudhā sphurita-roṣa-rasabhiṣiktā |
+
+    tiryak-sphuran-nayana-nartana-tīvra-bāṇair
+
+    āvidhya kṛṣṇam adhunā madhu-vāg uvāca ||154||'
+  translation_status: WORKING_PROJECT
+  translation: Finding her journey to the sacrificial hall obstructed, Rādhā became anointed with the rasa of feigned
+    anger. Piercing Kṛṣṇa with the sharp arrows of her sidelong dancing eyes, she now spoke honeyed words.
+- id: passage.dana-keli-cintamani.155
+  locus: '155'
+  display_locus: Verse 155
+  order: 155
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'he vīra vallava-vadhū-vadanāravinda-
+
+    mādhvīka-pāna-bharataḥ paramātiśuddha |
+
+    bhāgyāt tvayā saha yayā calitaṁ varākṣyā
+
+    bāḍhaṁ rarakṣa gṛha-dharma-kulāni saiva ||155||'
+  translation_status: WORKING_PROJECT
+  translation: “O hero, supremely pure from drinking so deeply the honey of the lotus faces of cowherd women! Fortunate
+    indeed is the beautiful-eyed girl who goes about with you—surely she has wonderfully protected her household duties
+    and the honor of her family!”
+- id: passage.dana-keli-cintamani.156
+  locus: '156'
+  display_locus: Verse 156
+  order: 156
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'dṛṣṭvā tayoḥ kalim analpa-rasātibaddham
+
+    ācāryayor vividha-narma-kalā-kalāpe |
+
+    śāntīcchayā vinaya-vākya-kulais tato’sau
+
+    nāndīmukhī samabhinandya hariṁ jagāda ||156||'
+  translation_status: WORKING_PROJECT
+  translation: Seeing their quarrel bound ever more tightly with abundant rasa, and seeing these two masters display
+    so many arts of joking, Nāndīmukhī desired peace. Honoring Hari with groups of humble words, she spoke.
+- id: passage.dana-keli-cintamani.157
+  locus: '157'
+  display_locus: Verse 157
+  order: 157
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'dānīndra-māṅgalika-yajña-nimittam etāḥ
+
+    śuddhā nayanti śirasā nava-gavya-kumbhān |
+
+    dharmaṁ nirīkṣya kula-candra vimuñca tasmāt
+
+    kāmaṁ yathā bhavati te yaśasi pracāraḥ ||157||'
+  translation_status: WORKING_PROJECT
+  translation: “O king of toll-collectors, these pure girls carry fresh pots of dairy goods upon their heads for an auspicious
+    sacrifice. Therefore consider dharma, O moon of your family, and release them, so that your fame may spread as widely
+    as you desire.”
+- id: passage.dana-keli-cintamani.158
+  locus: '158'
+  display_locus: Verse 158
+  order: 158
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'girīndra-purataḥ sphuran-nava-sarovarasyonnata-
+
+    prasannatara-vāriṇaḥ kusuma-saṅgha-sad-gandhinaḥ |
+
+    dhvanāḍhya-khaga-saṅginaḥ parita eva sa bhūruhaiḥ
+
+    samṛddham adhikaṁ vanaṁ jayati yatra khelāspade ||158||'
+  translation_status: WORKING_PROJECT
+  translation: Before Govardhana there shines a newly formed lake of deep, exceptionally clear water, fragrant with masses
+    of flowers. All around it is a luxuriant forest rich with trees and filled with the sounds of birds; there lies the
+    playground.
+- id: passage.dana-keli-cintamani.159
+  locus: '159'
+  display_locus: Verse 159
+  order: 159
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'kvacit kvacana sundaraṁ raṇati matta-bhṛṅgāvalī
+
+    madhu-prasara-mandire surabhi-puṣpa-vṛndodare |
+
+    kvacit kvacana kokilāḥ kala-rutāni santanvate
+
+    rasāla-vana-mañjarī-vara-maranda-pānonmadaḥ ||159||'
+  translation_status: WORKING_PROJECT
+  translation: Here and there swarms of intoxicated bees hum beautifully within bowers overflowing with honey and fragrant
+    flowers; here and there cuckoos extend their sweet calls, maddened by drinking the finest nectar of mango-blossoms.
+- id: passage.dana-keli-cintamani.160
+  locus: '160'
+  display_locus: Verse 160
+  order: 160
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'kvacit kvacana kekinaḥ pṛthu naṭanti kecin madāt
+
+    kvacit kvacana kecana pratinadanti cāmodinaḥ |
+
+    kvacit kvacana mādhurī-bhara-rasāla-hṛdyojjvalat-
+
+    phala-prakara-bhakṣaṇe paṭu raṭanti śārī-śukāḥ ||160||'
+  translation_status: WORKING_PROJECT
+  translation: Here and there peacocks dance broadly in intoxication; elsewhere other delighted birds call back to one
+    another. In other places śārikās and parrots cry expertly while eating clusters of luscious, sweet, heart-delighting
+    mango fruits.
+- id: passage.dana-keli-cintamani.161
+  locus: '161'
+  display_locus: Verse 161
+  order: 161
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'śvas tāvad etat saraso nikuñjaṁ
+
+    etāḥ sameṣyanti mahān api tvam |
+
+    tatraiva yuktaṁ tava dānam etat
+
+    samādayiṣyāmy atha lagnikāham ||161||'
+  translation_status: WORKING_PROJECT
+  translation: “Tomorrow these girls will come to the bower beside this lake, and you, great one, should come as well.
+    There I shall properly arrange this toll of yours; I myself will serve as the matchmaker.”
+- id: passage.dana-keli-cintamani.162
+  locus: '162'
+  display_locus: Verse 162
+  order: 162
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'yato’tra nirvartyam idaṁ hi dānaṁ
+
+    girau sthitasyāsya sarovarasya |
+
+    tad-dāna-nirvartanam ity abhikhyā
+
+    bhaviṣyatīty eva hi sā jagāda ||162||'
+  translation_status: WORKING_PROJECT
+  translation: “Because this toll will be brought to completion here, at this lake situated upon the mountain, it will
+    become known by the name Dāna-nirvartana—‘the place where the toll was completed.’” Thus she spoke.
+- id: passage.dana-keli-cintamani.163
+  locus: '163'
+  display_locus: Verse 163
+  order: 163
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'anena tasyā vacanena tena
+
+    vihasya muktāḥ smita-cāru-vaktrāḥ |
+
+    taṁ vīkṣamāṇā nayanāñcalais tāś
+
+    celur mudā yajña-gṛhāya pūrṇāḥ ||163||'
+  translation_status: WORKING_PROJECT
+  translation: At her words they laughed, their lovely faces bright with smiles, and were released. Casting sidelong
+    glances toward him, the girls departed joyfully for the sacrificial hall, their desires fulfilled.
+- id: passage.dana-keli-cintamani.164
+  locus: '164'
+  display_locus: Verse 164
+  order: 164
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'kṛṣṇākṣi-matta-madhupe nija-dṛṣṭi-bhṛṅgīṁ
+
+    bhaṅgyā parisphurad-anaṅga-taraṅgitāṅgī |
+
+    grīvārdha-bhaṅga-ruciraṁ dara yojayantī
+
+    smitvāli-varga-valitā calitātha rādhā ||164||'
+  translation_status: WORKING_PROJECT
+  translation: Her body rippling with waves of Love, Rādhā playfully joined the bee of her own glance to the intoxicated
+    honey-bee of Kṛṣṇa’s eye. Gracefully bending her neck halfway, she smiled and then departed surrounded by her circle
+    of friends.
+- id: passage.dana-keli-cintamani.165
+  locus: '165'
+  display_locus: Verse 165
+  order: 165
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'tadaiva tāsāṁ mukha-paṅkajānāṁ
+
+    smita-sphuran-mañju-maranda-bindum |
+
+    netrānta-vaktreṇa piban nitāntaṁ
+
+    mukunda-bhṛṅgo mudam āpa so’pi ||165||'
+  translation_status: WORKING_PROJECT
+  translation: At that very moment Mukunda, like a bee, drank deeply through the mouth of his sidelong glance the lovely
+    drops of honey from the smiles blossoming upon their lotus faces, and he too attained great delight.
+- id: passage.dana-keli-cintamani.166
+  locus: '166'
+  display_locus: Verse 166
+  order: 166
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'tato vayasyaiḥ saha nāgaro’sau
+
+    govardhanādreḥ śiraso’vataṁsaḥ |
+
+    gāś cārayan dāna-kathāmṛtaṁ tat
+
+    kurvan mitho modam avāpa kṛṣṇaḥ ||166||'
+  translation_status: WORKING_PROJECT
+  translation: Then that refined lover, the crest-ornament upon the summit of Govardhana, went with his intimate friends
+    to tend the cows. Repeatedly exchanging the nectar of the toll-story among themselves, Kṛṣṇa rejoiced.
+- id: passage.dana-keli-cintamani.167
+  locus: '167'
+  display_locus: Verse 167
+  order: 167
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'kāntyā diśo daśa muhur guru gaurayantī
+
+    bhrājad-dṛg-anta-naṭanair atinīlayantī |
+
+    sāpi smitārdha-kalayā pariśuklayantī
+
+    vārtāmṛtair madhurayanty uru-satram āpa ||167||'
+  translation_status: WORKING_PROJECT
+  translation: 'Rādhā too proceeded to the great sacrifice: with her radiance she repeatedly turned the ten directions
+    deeply golden, with the dancing of her brilliant sidelong eyes she made them intensely blue, with a fraction of her
+    smile she whitened them, and with the nectar of her words she made them sweet.'
+- id: passage.dana-keli-cintamani.168
+  locus: '168'
+  display_locus: Verse 168
+  order: 168
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'praṇamya gavyaṁ vinayena divyaṁ
+
+    pradāya tebhyo vara-bhūṣaṇādi |
+
+    saṁlabhya ramyāṇi punaḥ sva-kuṇḍam
+
+    āsādya tās tat-kathayā vijahruḥ ||168||'
+  translation_status: WORKING_PROJECT
+  translation: Bowing respectfully, they offered the divine dairy goods to the sages and received beautiful ornaments
+    and other blessings. Then they returned again to their own kuṇḍa and sported there, delighting in recounting the
+    story of what had happened.
+- id: passage.dana-keli-cintamani.169
+  locus: '169'
+  display_locus: Verse 169
+  order: 169
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'rejus tāḥ prema-saubhāgya-saundaryādi-guṇa-śriyā |
+
+    sārair muni-varāl labdhair bhūṣaṇaiś ca vibhūṣitāḥ ||169||'
+  translation_status: WORKING_PROJECT
+  translation: They shone with the splendor of love, good fortune, beauty, and other virtues, further adorned with the
+    finest ornaments they had received from the foremost sages.
+- id: passage.dana-keli-cintamani.170
+  locus: '170'
+  display_locus: Verse 170
+  order: 170
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'rādhā mahā-prema-rasābhiṣiktā
+
+    smara-kriyā-śāstra-viśāradā sā |
+
+    suvihvalā sāttvika-mukhya-bhāvaiḥ
+
+    priyaṁ jagau prāṇa-sakhī vṛtoccaiḥ ||170||'
+  translation_status: WORKING_PROJECT
+  translation: Rādhā, bathed in the rasa of great prema and expert in the śāstra of Love’s arts, became deeply overwhelmed
+    by the foremost sāttvika-bhāvas. Surrounded by her life-companions, she sang aloud of her beloved.
+- id: passage.dana-keli-cintamani.171
+  locus: '171'
+  display_locus: Verse 171
+  order: 171
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'trailokya-varti-nava-dampati-mūrdhna-ratnaṁ
+
+    dagdha-smarāṅga-ghaṭanonnata-siddha-tantram |
+
+    līlā-vilāsa-nava-sarjana-vedhasaṁ tad
+
+    yugmaṁ na varṇayitum abja-bhavo’pi śaktaḥ ||171||'
+  translation_status: WORKING_PROJECT
+  translation: Not even lotus-born Brahmā is capable of describing that divine pair—the crest-jewel among all newly united
+    couples in the three worlds, the perfected tantra able to restore the burnt body of Smara, and the creator of ever-new
+    forms of playful amorous sport.
+- id: passage.dana-keli-cintamani.172
+  locus: '172'
+  display_locus: Verse 172
+  order: 172
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'iti vilasita-vārtāṁ kundavallī rasāktāṁ
+
+    rahasi pariniśamyānanda-sindhau nimagnā |
+
+    drutam atha nija-sakhyā sā samṛddhā tayāddhā
+
+    tad iha mithuna-ratnaṁ draṣṭum utkā cacāla ||172||'
+  translation_status: WORKING_PROJECT
+  translation: Hearing in seclusion this rasa-filled account from Kundavallī, she plunged into an ocean of bliss. Then,
+    accompanied and enriched by her own companion, she quickly set out, eager to behold that jewel among couples.
+- id: passage.dana-keli-cintamani.173
+  locus: '173'
+  display_locus: Verse 173
+  order: 173
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'dadhy-ādi-dāna-nava-keli-rasābdhi-madhye
+
+    magnaṁ navīna-yuva-ratna-yugaṁ vrajasya |
+
+    narmāli-hṛdyam udita-dyuti-gaura-nīlam
+
+    andho’pi lubdha iva lokitum utsuko’smi ||173||'
+  translation_status: WORKING_PROJECT
+  translation: Though blind, I am eager, like one overcome with longing, to behold Vraja’s youthful jewel-pair—fair and
+    dark, radiant and delightful to their joking companions—immersed in the ocean of ever-new toll pastimes over yogurt
+    and the other goods.
+- id: passage.dana-keli-cintamani.174
+  locus: '174'
+  display_locus: Verse 174
+  order: 174
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'rādhā-mādhavayor dāna-keli-cintāmaṇiṁ girau |
+
+    labdham andhena vīkṣantāṁ śrīmad-rūpa-gaṇāḥ priyāḥ ||174||'
+  translation_status: WORKING_PROJECT
+  translation: May the dear followers of glorious Rūpa behold this Dāna-keli-cintāmaṇi of Rādhā and Mādhava upon Govardhana,
+    found by one who is blind.
+- id: passage.dana-keli-cintamani.175
+  locus: '175'
+  display_locus: Verse 175
+  order: 175
+  verification_status: ROOT_VERSE_EXTRACTED_FROM_SOURCE_DOCX
+  transliteration: 'ādadānas tṛṇaṁ dantair idam yāce punaḥ punaḥ |
+
+    śrīmad-rūpa-padāmbhoja-rajo’haṁ syāṁ bhave bhave ||175||'
+  translation_status: WORKING_PROJECT
+  translation: 'Taking a blade of grass between my teeth, I beg this again and again: birth after birth, may I become
+    the dust of the lotus feet of glorious Rūpa.'

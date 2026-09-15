@@ -572,3 +572,533 @@ places:
       - source_type: PROJECT_RESEARCH
         description: 'Approved project decision treating the restored modern site as PROBABLE/HIGH while preserving strict separation from future #31 Pāpa-mocana-kuṇḍa.'
     content_destination:
+
+  - id: place.dana-ghati-giriraja-mandir
+    map_number: 26
+    canonical_name: Dāna-ghāṭī Girirāja Mandir
+    ascii_name: Dana-ghati Giriraja Mandir
+    alternate_names:
+      - Dana Ghati
+      - Danaghati
+      - Dāna-ghāṭī
+      - Giriraj Ji Maharaj Dāna-ghāṭī Mandir
+      - Giriraj Ji Maharaj Danghati Mandir
+    latitude: 27.4952417
+    longitude: 77.4628528
+    coordinate_status: VERIFIED
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: The Braj Development Plan directly lists the Dāna-ghāṭī Girirāja temple, and current mapping independently agrees with the approved coordinate.
+    provenance:
+      - source_type: OFFICIAL_OR_INSTITUTIONAL_DOCUMENT
+        description: The Braj Development Plan lists Shri Giriraj Ji Maharaj Danghai Temple at approximately 27°29′42.87″N, 77°27′46.27″E.
+      - source_type: MODERN_MAP
+        description: Current mapping independently identifies the major Dāna-ghāṭī Girirāja temple at the approved coordinate.
+      - source_type: PROJECT_RESEARCH
+        description: 'Approved project identification for map place #26.'
+    content_destination:
+
+  - id: place.radharani-footprint
+    map_number: 27
+    canonical_name: Rādhārāṇī’s footprint
+    ascii_name: Radharani's footprint
+    alternate_names:
+      - Rādhā caraṇa-cihna
+      - Radha charan chinha
+      - Rādhā-Kṛṣṇa Caraṇa Śilā
+      - Radha Krishna Charan Shila
+    latitude: 27.4949375
+    longitude: 77.4624375
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: Current mapping identifies a Rādhā-Kṛṣṇa Caraṇa Śilā at the approved location, and traditional pilgrimage descriptions place Rādhārāṇī’s footprint immediately beyond Dāna-ghāṭī. The exact sacred-mark identity remains traditional site identification.
+    provenance:
+      - source_type: PILGRIMAGE_GUIDE
+        description: Traditional Govardhana guides identify a rock here with Rādhārāṇī’s footprint; some local traditions also include Kṛṣṇa’s footprint.
+      - source_type: MODERN_MAP
+        description: Current mapping identifies Shri Radha Krishna Charan Shila at the approved location.
+      - source_type: PROJECT_RESEARCH
+        description: Approved project decision preserving Rādhārāṇī’s footprint as the canonical map identity.
+    content_destination:
+
+  - id: place.laksmi-narayana-temple
+    map_number: 28
+    canonical_name: Lakṣmī-Nārāyaṇa Temple
+    ascii_name: Laksmi-Narayana Temple
+    alternate_names:
+      - Laxmi Narayan Temple
+      - Lakshmi Narayan Temple
+      - Shri Laxmi Narayan Ji Temple
+    latitude: 27.4943861
+    longitude: 77.4636611
+    coordinate_status: VERIFIED
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: The Braj Development Plan contains multiple similarly named Lakṣmī-Nārāyaṇa temples in Govardhan. The approved coordinate is the Shri Laxmi Narayan Ji Temple that fits the Dāna-ghāṭī / Dānī Rāya pilgrimage sequence, not the separate same-name temple farther north.
+    provenance:
+      - source_type: OFFICIAL_OR_INSTITUTIONAL_DOCUMENT
+        description: The Braj Development Plan lists Shri Laxmi Narayan Ji Temple at approximately 27°29′39.79″N, 77°27′49.18″E.
+      - source_type: PILGRIMAGE_GUIDE
+        description: Traditional pilgrimage descriptions place this temple in the Dāna-ghāṭī and Dānī Rāya section.
+      - source_type: PROJECT_RESEARCH
+        description: Approved corrected-coordinate decision preserving the distinction from the separate same-name temple farther north.
+    content_destination:
+
+  - id: place.dani-raya-temple
+    map_number: 29
+    canonical_name: Dānī Rāya Temple
+    ascii_name: Dani Raya Temple
+    alternate_names:
+      - Dani Raya Mandir
+      - Dāni Rāya
+      - Dani Rai Temple
+    latitude: 27.4934375
+    longitude: 77.4613125
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: Current mapping and pilgrimage literature support the Dānī Rāya shrine at the approved location. The shrine belongs to the older dāna-līlā landscape on Govardhana; field verification of the exact respectful access point remains desirable.
+    provenance:
+      - source_type: PILGRIMAGE_GUIDE
+        description: Traditional pilgrimage literature identifies the older Dānī Rāya shrine and preserves a Vajranābha foundation tradition.
+      - source_type: MODERN_MAP
+        description: Current mapping identifies the Dānī Rāya temple at the approved location.
+      - source_type: PROJECT_RESEARCH
+        description: Approved PROBABLE/HIGH identification with an explicit respectful-access caution.
+    content_destination:
+
+  - id: place.iskcon-govardhan
+    map_number: 30
+    canonical_name: ISKCON Govardhan Bhaktivedanta Ashram
+    ascii_name: ISKCON Govardhan Bhaktivedanta Ashram
+    alternate_names:
+      - ISKCON Govardhan
+      - Bhaktivedanta Ashram
+      - Śrīla Prabhupāda’s Palace
+      - Srila Prabhupada's Palace
+    latitude: 27.4690625
+    longitude: 77.4435625
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: The coordinate identifies the present official ISKCON Govardhan Bhaktivedanta Ashram on Aniyor Parikrama Marg. Older pilgrimage literature describes an ISKCON palace/property much nearer Govardhan town and Dāna-nivartana; that discrepancy is preserved as historical/location uncertainty rather than forcing the present institution into the older distance description.
+    provenance:
+      - source_type: MODERN_INSTITUTIONAL_SOURCE
+        description: The official ISKCON Govardhan site identifies the present Bhaktivedanta Ashram and Śrīla Prabhupāda’s Palace on Aniyor Parikrama Marg.
+        source_reference: https://iskcongovardhan.com/about/
+      - source_type: MODERN_MAP
+        description: Current mapping independently supports the approved coordinate.
+      - source_type: PILGRIMAGE_GUIDE
+        description: Older pilgrimage literature describes an ISKCON property much nearer Govardhan town; this is retained as historical location uncertainty.
+      - source_type: PROJECT_RESEARCH
+        description: Approved decision to map the present official institution while preserving the older-guide discrepancy and not inferring route order from map number.
+    content_destination:
+
+  - id: place.papa-mocana-kunda
+    map_number: 31
+    canonical_name: Pāpa-mocana-kuṇḍa
+    ascii_name: Papa-mocana-kunda
+    alternate_names:
+      - Papa Mochan Kund
+      - Papmochana Kunda
+      - Pāpa-mocana
+      - Papa-mocana
+    latitude: 27.4919722
+    longitude: 77.4660000
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: 'Current mapping identifies Pāpa-mocana-kuṇḍa at the approved location, and traditional Govardhana commentary places Pāpa-mocana south of Ṛṇa-mocana. The project preserves Pāpa-mocana as distinct from #25 Ṛṇa-mocana-kuṇḍa.'
+    provenance:
+      - source_type: MODERN_MAP
+        description: Current mapping identifies Pāpa-mocana-kuṇḍa at the approved coordinate.
+      - source_type: GAUDIYA_COMMENTARIAL_TRADITION
+        description: Traditional commentary on Govardhanāśraya-daśakam 4 distinguishes Govardhana’s mocana tīrthas.
+      - source_type: PROJECT_RESEARCH
+        description: 'Approved project decision enforcing the strict distinction between #25 Ṛṇa-mocana-kuṇḍa and #31 Pāpa-mocana-kuṇḍa.'
+    content_destination:
+
+  - id: place.dana-nivartana-kunda
+    map_number: 32
+    canonical_name: Dāna-nivartana-kuṇḍa
+    ascii_name: Dana-nivartana-kunda
+    alternate_names:
+      - Danivartan Kunda
+      - Dana Nivartan Kund
+      - Dāna-nivartana
+    latitude: 27.4850625
+    longitude: 77.4558125
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: Current mapping and traditional pilgrimage descriptions support the approved location for Dāna-nivartana-kuṇḍa. The sacred identity is particularly strong because Raghunātha Dāsa Gosvāmī composed a dedicated Dāna-nivartana-kuṇḍāṣṭakam.
+    provenance:
+      - source_type: PRIMARY_GAUDIYA_TEXT
+        description: Raghunātha Dāsa Gosvāmī’s Dāna-nivartana-kuṇḍāṣṭakam directly establishes the sacred identity and dāna-līlā theme.
+      - source_type: PILGRIMAGE_GUIDE
+        description: Traditional pilgrimage descriptions identify the modern kuṇḍa and explain the reversal or settlement of the tax encounter.
+      - source_type: MODERN_MAP
+        description: Current mapping supports the approved working coordinate.
+      - source_type: PROJECT_RESEARCH
+        description: Approved PROBABLE/HIGH identification preserving a distinct relationship with Dāna-ghāṭī.
+    content_destination:
+
+  - id: place.candra-sarovara
+    map_number: 33
+    canonical_name: Candra-sarovara
+    ascii_name: Candra-sarovara
+    alternate_names:
+      - Chandra Sarovar
+      - Candra Sarovar
+      - Chandra-sarovara
+    latitude: 27.4779639
+    longitude: 77.4698194
+    coordinate_status: VERIFIED
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: The Braj Development Plan directly lists Candra Sarovar, and the location is strongly corroborated by the Parāsolī sacred landscape and pilgrimage tradition.
+    provenance:
+      - source_type: OFFICIAL_OR_INSTITUTIONAL_DOCUMENT
+        description: The Braj Development Plan directly lists Candra Sarovar at the approved location.
+      - source_type: PILGRIMAGE_GUIDE
+        description: Traditional pilgrimage literature identifies Candra-sarovara within the Parāsolī sacred landscape.
+      - source_type: PROJECT_RESEARCH
+        description: Approved VERIFIED/HIGH identification based on institutional geography and corroborating pilgrimage tradition.
+    content_destination:
+
+  - id: place.parasoli
+    map_number: 34
+    canonical_name: Parāsolī
+    ascii_name: Parasoli
+    alternate_names:
+      - Parasoli
+      - Parsauli
+      - Parasauli
+      - Mahmudpur
+      - Mahmoodpur
+    latitude: 27.4784009
+    longitude: 77.4679575
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: Parāsolī is a sacred village/landscape rather than a single object. The approved coordinate is a representative marker within the Parāsolī / Candra-sarovara settlement, not a claim to be the geometric village center or exact location of every līlā feature.
+    provenance:
+      - source_type: PILGRIMAGE_GUIDE
+        description: Traditional pilgrimage literature identifies Parāsolī as the wider sacred village landscape surrounding Candra-sarovara.
+      - source_type: MODERN_MAP
+        description: Modern mapping supports a representative marker within the Parāsolī and Candra-sarovara settlement.
+      - source_type: MODERN_ADMINISTRATIVE_HISTORY
+        description: Mahmudpur or Mahmoodpur was a historical modern name, and Parāsolī was restored as the official name in 2021.
+      - source_type: PROJECT_RESEARCH
+        description: Approved area-marker decision explicitly distinct from the specific Candra-sarovara lake.
+    content_destination:
+
+  - id: place.gauri-kunda
+    map_number: 35
+    canonical_name: Gaurī-kuṇḍa
+    ascii_name: Gauri-kunda
+    alternate_names:
+      - Gauri Kunda
+      - Gauri Kund
+      - Gaurī-tīrtha
+      - Gauri Tirtha
+    latitude: 27.4680694
+    longitude: 77.4471028
+    coordinate_status: VERIFIED
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: The Braj Development Plan directly lists Gaurī-kuṇḍa, and Bhakti-ratnākara explicitly identifies Gaurī-tīrtha in the Govardhana sacred landscape.
+    provenance:
+      - source_type: OFFICIAL_OR_INSTITUTIONAL_DOCUMENT
+        description: The Braj Development Plan directly lists Gaurī-kuṇḍa at the approved location.
+      - source_type: LATER_GAUDIYA_TEXT
+        description: Bhakti-ratnākara 5.630–632 explicitly identifies Gaurī-tīrtha in the Govardhana sacred landscape.
+      - source_type: PROJECT_RESEARCH
+        description: Approved VERIFIED/HIGH identification based on direct pilgrimage geography and textual corroboration.
+    content_destination:
+
+  - id: place.aniyor-village
+    map_number: 36
+    canonical_name: Aniyor Village
+    ascii_name: Aniyor Village
+    alternate_names:
+      - Aniyor
+      - Aanyor
+      - Anyor
+      - Aniyora
+      - Anyora
+      - Āniyora-grāma
+    latitude: 27.47443
+    longitude: 77.44584
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: Aniyor is a living village and sacred landscape rather than a single point-object. The coordinate is a representative current village marker derived from modern mapping; it must not be presented as the exact Annakūṭa platform, exact place where Girirāja spoke, or exact location of every Aniyor līlā feature.
+    provenance:
+      - source_type: EARLY_GAUDIYA_PILGRIMAGE_TEXT
+        description: Bhakti-ratnākara 5.633–638 directly names Āniyora-grāma, narrates the Govardhana offering and repeated call āniaura āniaura, and identifies the Annakūṭa-sthāna.
+      - source_type: PRIMARY_GOSVAMI_TEXT
+        description: Raghunātha dāsa Gosvāmī’s Vraja-vilāsa-stava 75 directly praises the Annakūṭa sacred event and landscape; it does not independently fix the modern village boundary.
+      - source_type: PRIMARY_SCRIPTURE
+        description: Śrīmad-Bhāgavatam 10.24 supplies the canonical Govardhana-pūjā narrative but does not name modern Aniyor.
+        source_reference: https://vedabase.io/en/library/sb/10/24/
+      - source_type: MODERN_MAP
+        description: Modern OpenStreetMap-derived locality data supports the representative Aanyor village marker, not an exact sacred sub-feature.
+    content_destination:
+
+  - id: place.gopala-raja-temple
+    map_number: 37
+    canonical_name: Gopāla Rāja Temple
+    ascii_name: Gopala Raja Temple
+    alternate_names:
+      - Gopal Raj Temple
+      - Gopala Raj Temple
+      - Gopāla Rāja
+      - Gopal Raja Mandir
+    latitude: 27.4735625
+    longitude: 77.4437344
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: Current mapping identifies Gopala Raja Temple at the approved point on or along Govardhana Hill, while traditional pilgrimage literature identifies the present shrine with the hilltop Gopāla sacred-memory site. Primary Gauḍīya texts strongly establish Gopāla on Govardhana and Raghunātha dāsa Gosvāmī’s Gopāla Rāja on the mountain plateau, but they do not prove that the present temple structure is unchanged from the sixteenth century.
+    provenance:
+      - source_type: PRIMARY_GOSVAMI_TEXT
+        description: Raghunātha dāsa Gosvāmī’s Śrī Gopāla-rāja-stotra 1–15 repeatedly praises Gopāla Rāja shining on the mountain plateau.
+      - source_type: PRIMARY_GAUDIYA_TEXT
+        description: Caitanya-caritāmṛta, Madhya 4 narrates Mādhavendra Purī’s recovery of Gopāla and establishment of His worship on Govardhana.
+        source_reference: https://vedabase.io/en/library/cc/madhya/4/
+      - source_type: PILGRIMAGE_TRADITION
+        description: Traditional Govardhana guides identify the present shrine with the hilltop Gopāla sacred-memory site and report current worship of a Govardhana-śilā; continuity of the present building remains tradition rather than archaeology.
+      - source_type: MODERN_MAP
+        description: Current mapping independently identifies Gopala Raja Temple at the approved coordinate.
+    content_destination:
+
+  - id: place.siva-temple-aniyor
+    map_number: 38
+    canonical_name: Śiva Temple
+    ascii_name: Siva Temple
+    alternate_names:
+      - Shiva Temple
+      - Śiva shrine beside Gopāla Rāja
+      - Govardhana hilltop Śiva shrine
+    coordinate_status: UNVERIFIED
+    coordinate_confidence: UNKNOWN
+    coordinate_accuracy_meters:
+    verification_notes: The controlled pilgrimage list describes an old Śiva temple standing beside Gopāla Rāja Temple atop Govardhana and understands Śiva here as a guardian of Girirāja. A separate independently verified GPS point and a securely established specific Mahādeva name have not yet been recovered. Therefore #38 remains coordinate-less and navigates through #37.
+    navigation_anchor_place_id: place.gopala-raja-temple
+    location_guidance: Navigate to #37 Gopāla Rāja Temple, then identify the traditional Śiva guardian shrine locally beside that sacred area by legitimate access. Reaching #37 is only arrival at the navigation anchor, not exact arrival at #38; do not climb or scramble on Girirāja.
+    provenance:
+      - source_type: PILGRIMAGE_TRADITION
+        description: The traditional numbered Govardhana parikramā guide identifies #38 simply as Śiva Temple beside Gopāla Rāja and remembers Śiva as guardian of Girirāja.
+        source_reference: https://padmanabhdas.wordpress.com/2012/11/
+      - source_type: PROJECT_RESEARCH
+        description: No primary text, independent coordinate, or securely established specific Mahādeva name has been verified; nearby named Śiva listings are not treated as this shrine.
+    content_destination:
+
+  - id: place.balarama-dauji-temple-aniyor
+    map_number: 39
+    canonical_name: Balarāma (Dauji) Temple
+    ascii_name: Balarama (Dauji) Temple
+    alternate_names:
+      - Balarama Dauji Mandir
+      - Dauji Temple, Aniyor
+      - Dauji Mandir, Aniyor
+      - Saṅkarṣaṇa Mandir
+      - Sankarsana Mandir
+    latitude: 27.4725125
+    longitude: 77.4441719
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: Current mapping directly identifies Balarama Dauji Mandir in Aanyor at the approved coordinate, and traditional Govardhana pilgrimage literature independently identifies an Aniyor Balarāma or Dauji temple also called Saṅkarṣaṇa Mandir. The received claims that the deities were installed by Vajranābha and later hidden in Saṅkarṣaṇa-kuṇḍa during the Aurangzeb period remain temple and pilgrimage tradition unless independently verified.
+    provenance:
+      - source_type: MODERN_MAP
+        description: Current mapping identifies Balarama Dauji Mandir at FCFV+2M3 in Aanyor; this is not the famous Dauji Maharaj Temple in Baldeo.
+      - source_type: PILGRIMAGE_TRADITION
+        description: Traditional Govardhana guidance identifies the Aniyor temple, Saṅkarṣaṇa Mandir alias, deity forms, and received Vajranābha installation and later concealment traditions.
+      - source_type: LATER_GAUDIYA_TEXT
+        description: Vraja-rīti-cintāmaṇi 3.10 places Balarāma directly in Govardhana’s sacred landscape but does not prove the modern temple identity.
+      - source_type: PRIMARY_SCRIPTURE
+        description: Śrīmad-Bhāgavatam 10.21.18 glorifies Govardhana’s service to Kṛṣṇa, Balarāma, cows, and cowherd boys; it is broad sacred context rather than temple-identification evidence.
+        source_reference: https://vedabase.io/en/library/sb/10/21/18/
+    content_destination:
+
+  - id: place.sankarsana-kunda
+    map_number: 40
+    canonical_name: Saṅkarṣaṇa-kuṇḍa
+    ascii_name: Sankarsana-kunda
+    alternate_names:
+      - Sankarshan Kund
+      - Sankarsana Kund
+      - Sankarshana Kund
+      - Saṅkarṣaṇānanda-sarovara
+      - Sankarsanananda Sarovar
+    latitude: 27.4709583
+    longitude: 77.4450222
+    coordinate_status: VERIFIED
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: The Braj Development Plan directly lists Sankarshan Kund as BDP_Gvdn_096 at 27°28′15.45″N, 77°26′42.08″E, and current mapping independently identifies the same water body at Aniyor. Viśvanātha Cakravartī’s Vraja-rīti-cintāmaṇi 3.18 directly names Saṅkarṣaṇānanda-sarovara in the southeast portion of Govardhana’s sacred geography and places Gaurī-tīrtha to its east.
+    provenance:
+      - source_type: LATER_GAUDIYA_TEXT
+        description: Vraja-rīti-cintāmaṇi 3.18 directly names Saṅkarṣaṇānanda-sarovara in southeastern Govardhana and places Gaurī-tīrtha to its east; 3.20 relates Saṅkarṣaṇa and Dāna-nivartana kuṇḍas to the Annakūṭa sacred area.
+      - source_type: OFFICIAL_OR_INSTITUTIONAL_DOCUMENT
+        description: The Braj Development Plan records BDP_Gvdn_096 Sankarshan Kund and supplies the approved present water-body coordinate.
+        source_reference: https://www.upbtvp.in/pdf/Braj_Development_plan.pdf
+      - source_type: MODERN_MAP
+        description: Current mapping independently identifies the Aniyor water body as Shankarshan or Sankarshan Kund.
+      - source_type: PROJECT_RESEARCH
+        description: The similarly named Bahulāvana Saṅkarṣaṇa-kuṇḍa and its Bhakti-ratnākara or Skanda Purāṇa evidence are explicitly excluded from this Aniyor place.
+    content_destination:
+
+  - id: place.gopala-prakata-sthali
+    map_number: 41
+    canonical_name: Gopāla-prakaṭa-sthalī
+    ascii_name: Gopala-prakata-sthali
+    alternate_names:
+      - Gopala Prakata Sthali
+      - Gopal Prakat Sthal
+      - Gopāla Prakaṭa Sthal
+      - Śrīnāthjī Prakaṭya Sthal
+      - Shrinathji Prakatya Sthal
+    latitude: 27.4716875
+    longitude: 77.4425625
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: Caitanya-caritāmṛta Madhya 4 directly narrates Gopāla revealing to Mādhavendra Purī that He was hidden in a bush near Govardhana and instructing him to recover and install Him on the hill. Current Aanyor mapping and received pilgrimage tradition identify this specific location as Gopāla-prakaṭa-sthalī. The primary text proves the Gopāla-discovery narrative but does not itself provide a modern GPS coordinate, so the exact present marker remains a traditional/current geographic identification rather than a textual coordinate.
+    provenance:
+      - source_type: PRIMARY_GAUDIYA_TEXT
+        description: Caitanya-caritāmṛta, Madhya 4.21–52 gives the complete Mādhavendra Purī and Gopāla discovery narrative, including Gopāla’s hidden location, recovery, and establishment of worship.
+        source_reference: https://vedabase.io/en/library/cc/madhya/4/
+      - source_type: EARLY_GAUDIYA_PILGRIMAGE_TEXT
+        description: Bhakti-ratnākara 5.649–650 preserves the early Gauḍīya sacred geography of Mādhavendra Purī beneath a tree, Gopāla bringing milk, and Gopāla’s place on the mountain.
+      - source_type: PILGRIMAGE_TRADITION
+        description: Living pilgrimage tradition identifies the present prakaṭa-sthalī with Gopāla’s recovery and manifestation.
+      - source_type: MODERN_MAP
+        description: Current mapping identifies Gopala Prakata Sthali at the approved coordinate in Aanyor; it supplies present geographic corroboration, not a textual coordinate.
+    content_destination:
+
+  - id: place.govinda-kunda
+    map_number: 42
+    canonical_name: Govinda-kuṇḍa
+    ascii_name: Govinda-kunda
+    alternate_names:
+      - Govind Kund
+      - Govinda Kund
+      - Govinda Kunda
+      - Govind-kund
+    latitude: 27.4686083
+    longitude: 77.4406417
+    coordinate_status: VERIFIED
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: The Braj Development Plan directly lists Govind Kund as BDP_Gvdn_100 at 27°28′6.99″N, 77°26′26.31″E. Current mapping independently agrees with the same water body. Bhakti-ratnākara 5.640–645 explicitly identifies Govinda-kuṇḍa with Indra’s abhiṣeka of Govinda and quotes Raghunātha dāsa Gosvāmī’s Vraja-vilāsa-stava 74 and a Mathurā-khaṇḍa verse. Thus both present geographic identity and sacred textual identity are unusually strong.
+    provenance:
+      - source_type: OFFICIAL_OR_INSTITUTIONAL_DOCUMENT
+        description: The Braj Development Plan directly records BDP_Gvdn_100 Govind Kund and supplies the approved present water-body coordinate.
+        source_reference: https://www.upbtvp.in/pdf/Braj_Development_plan.pdf
+      - source_type: PRIMARY_SCRIPTURE
+        description: Śrīmad-Bhāgavatam 10.27.18–28 narrates the Surabhi and Indra abhiṣeka and the name Govinda, but does not itself name the modern water body Govinda-kuṇḍa.
+        source_reference: https://vedabase.io/en/library/sb/10/27/
+      - source_type: PRIMARY_GOSVAMI_TEXT
+        description: Raghunātha dāsa Gosvāmī’s Vraja-vilāsa-stava 74 praises the Govinda abhiṣeka and manifestation of Govinda-kuṇḍa.
+      - source_type: EARLY_GAUDIYA_PILGRIMAGE_TEXT
+        description: Bhakti-ratnākara 5.640–645 explicitly names Govinda-kuṇḍa and localizes Indra’s abhiṣeka here.
+      - source_type: PRIMARY_GAUDIYA_TEXT
+        description: Caitanya-caritāmṛta, Madhya 4.23 directly places Mādhavendra Purī bathing and resting at Govinda-kuṇḍa.
+        source_reference: https://vedabase.io/en/library/cc/madhya/4/23/
+    content_destination:
+
+  - id: place.nipa-kunda-radha-govinda
+    map_number: 43
+    canonical_name: Nīpa-kuṇḍa + Rādhā-Govinda Temple
+    ascii_name: Nipa-kunda + Radha-Govinda Temple
+    alternate_names:
+      - Nipa Kunda
+      - Nipa Kund
+      - Kadamba Kunda
+      - Kadamba Kund
+      - Rādhā-Govinda Dev Mandir
+      - Radha Govinda Dev Mandir
+      - Radha Govinda Temple, Aanyor
+    latitude: 27.4681875
+    longitude: 77.4423125
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: 'Current mapping independently identifies both Nipa Kunda and Radha-Govinda Dev Mandir in the Govinda-kuṇḍa/Aanyor cluster, supporting the original pilgrimage map’s decision to treat them as one combined stop. The primary marker is the Nīpa-kuṇḍa arrival point; the nearby temple is a separate physical feature within this one numbered stop. The project has not established that Bhakti-ratnākara 5.630–632’s Nīpa-kuṇḍa at Gaurī-tīrtha is this #43 kuṇḍa.'
+    provenance:
+      - source_type: MODERN_MAP
+        description: Current mapping identifies Nipa Kunda at the primary marker and the nearby Radha-Govinda Dev Mandir at approximately 27.4678125, 77.4419375, establishing a current two-feature cluster.
+      - source_type: PILGRIMAGE_TRADITION
+        description: Living pilgrimage tradition connects this Nīpa-kuṇḍa with a cowherd meal and leaf cups and preserves continuing worship at the neighboring Rādhā-Govinda Temple; these are traditional/local identifications.
+      - source_type: PRIMARY_SCRIPTURE
+        description: Śrīmad-Bhāgavatam 10.21.18–19 supplies supporting Govardhana cowherding context only, not a direct Nīpa-kuṇḍa identification.
+        source_reference: https://vedabase.io/en/library/sb/10/21/18/
+      - source_type: EARLY_GAUDIYA_PILGRIMAGE_TEXT
+        description: 'Bhakti-ratnākara 5.630–632 names a Nīpa-kuṇḍa at Gaurī-tīrtha; this is same-name negative-control evidence and is not approved as direct evidence for #43.'
+    content_destination:
+
+  - id: place.madhavendra-puri-bhajana-kutira-indra-tila
+    map_number: 44
+    canonical_name: Mādhavendra Purī’s bhajana-kuṭīra + Indra-ṭīlā
+    ascii_name: Madhavendra Puri's bhajana-kutira + Indra-tila
+    alternate_names:
+      - Madhavendra Puri Bhajan Kutir
+      - Madhavendra Puri Baithaka
+      - Madhavendra Puri Sitting Place
+      - Indra Tila
+      - Indra-tila
+    coordinate_status: UNVERIFIED
+    coordinate_confidence: UNKNOWN
+    coordinate_accuracy_meters:
+    verification_notes: 'The Mādhavendra Purī association with the bank of Govinda-kuṇḍa is textually strong through Caitanya-caritāmṛta Madhya 4.23 and Bhakti-ratnākara 5.649. The present bhajana-kuṭīra or baithaka is a later physical memorial, while the exact mound called Indra-ṭīlā is a living/local identification. No independently controlled exact coordinate for the combined stop has been established, so #44 remains coordinate-less and navigates through #42.'
+    navigation_anchor_place_id: place.govinda-kunda
+    location_guidance: 'Navigate to #42 Govinda-kuṇḍa, then use current local guidance to identify the bhajana-kuṭīra or baithaka and Indra-ṭīlā. Reaching #42 is only arrival at the navigation anchor, not exact arrival at #44; the location remains approximate.'
+    provenance:
+      - source_type: PRIMARY_GAUDIYA_TEXT
+        description: Caitanya-caritāmṛta, Madhya 4.23–35 directly places Mādhavendra Purī at Govinda-kuṇḍa beneath a tree and narrates the cowherd boy bringing milk.
+        source_reference: https://vedabase.io/en/library/cc/madhya/4/23/
+      - source_type: EARLY_GAUDIYA_PILGRIMAGE_TEXT
+        description: Bhakti-ratnākara 5.649 preserves the early geographic memory of Mādhavendra Purī beneath the tree and Gopāla bringing milk.
+      - source_type: PILGRIMAGE_TRADITION
+        description: Living pilgrimage identifies the present bhajana-kuṭīra or baithaka memorial and the nearby mound called Indra-ṭīlā; the exact mound identification is later/local.
+      - source_type: PRIMARY_SCRIPTURE
+        description: Śrīmad-Bhāgavatam 10.27.21–23 narrates the Surabhi and Indra abhiṣeka but does not identify the exact mound called Indra-ṭīlā.
+        source_reference: https://vedabase.io/en/library/sb/10/27/21/
+    content_destination:
+
+  - id: place.doka-dauji-temple
+    map_number: 45
+    canonical_name: Ḍokā-Daujī Temple
+    ascii_name: Doka-Dauji Temple
+    alternate_names:
+      - Doka Dauji
+      - Doka-dauji Temple
+      - Dhokad Dauji
+      - Dhunke Dauji
+      - Shri Dhunke Dauji Temple
+      - Look Look Dauji
+      - Luk Luk Dauji
+      - Balarāma-sthalī
+      - Balarama Sthali
+    latitude: 27.4656875
+    longitude: 77.4368125
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: 'Current mapping identifies the Doka, Dhokad, Dhunke, or Luk-Luk Dauji shrine at the approved point. The story that Balarāma crouched on Govardhana while watching Kṛṣṇa’s rāsa and became blackish is later/local sacred tradition, not a narrative established in Śrīmad-Bhāgavatam. This place remains distinct from #39 Aniyor Balarāma Temple and future #46 Balarāma-mukuṭa-śilā.'
+    provenance:
+      - source_type: MODERN_MAP
+        description: Current mapping identifies Shri Dhunke Dauji Temple and Luk Luk Dau ji Maharaj at the same present shrine area.
+      - source_type: PILGRIMAGE_TRADITION
+        description: Received parikramā tradition preserves the Doka, Dhokad, Dhunke, or Luk-Luk Dauji names and the black crouching Balarāma sacred remembrance.
+        source_reference: https://www.holydham.com/doka-dauji-balarama-sthali/
+      - source_type: LATER_GAUDIYA_TEXT
+        description: Vraja-rīti-cintāmaṇi 3.10 supplies Balarāma-on-Govardhana context only, not direct proof of this shrine or its local story.
+      - source_type: PRIMARY_SCRIPTURE
+        description: Śrīmad-Bhāgavatam 10.21.18 supplies broad Govardhana and Balarāma context, not the source of the Ḍokā-Daujī rāsa-watching tradition.
+        source_reference: https://vedabase.io/en/library/sb/10/21/18/
+    content_destination:

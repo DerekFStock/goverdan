@@ -205,9 +205,9 @@ class ContentToolingTests(unittest.TestCase):
         self.assertEqual(0, report["foreign_key_violation_count"])
         connection = sqlite3.connect(path)
         try:
-            self.assertEqual(25, connection.execute("SELECT count(*) FROM pilgrimage_places").fetchone()[0])
-            self.assertEqual(82, connection.execute("SELECT count(*) FROM pilgrimage_place_aliases").fetchone()[0])
-            self.assertEqual(69, connection.execute("SELECT count(*) FROM pilgrimage_place_provenance").fetchone()[0])
+            self.assertEqual(45, connection.execute("SELECT count(*) FROM pilgrimage_places").fetchone()[0])
+            self.assertEqual(173, connection.execute("SELECT count(*) FROM pilgrimage_place_aliases").fetchone()[0])
+            self.assertEqual(141, connection.execute("SELECT count(*) FROM pilgrimage_place_provenance").fetchone()[0])
         finally:
             connection.close()
 
@@ -321,8 +321,8 @@ class ContentToolingTests(unittest.TestCase):
     def test_task_019_approved_places_compile_and_sqlite_preserves_anchor(self) -> None:
         result = compile_manifest(self.root, "radhakunda-mvp-development-manifest")
         places = result.content["pilgrimage_places"]
-        self.assertEqual(25, len(places))
-        self.assertEqual(list(range(1, 26)), [place["map_number"] for place in places])
+        self.assertEqual(45, len(places))
+        self.assertEqual(list(range(1, 46)), [place["map_number"] for place in places])
         by_number = {place["map_number"]: place for place in places}
 
         sant_nivas = by_number[14]
@@ -370,7 +370,7 @@ class ContentToolingTests(unittest.TestCase):
         finally:
             connection.close()
 
-    def test_task_020a_5_place_content_is_separate_generic_and_integral(self) -> None:
+    def test_task_020a_6_place_content_is_separate_generic_and_integral(self) -> None:
         result = compile_manifest(self.root, "radhakunda-mvp-development-manifest")
         contents = result.content["pilgrimage_place_contents"]
         self.assertEqual(
@@ -386,6 +386,18 @@ class ContentToolingTests(unittest.TestCase):
                 "place.brahma-kunda", "place.manasi-devi-temple",
                 "place.harideva-temple", "place.govardhan-town",
                 "place.rna-mocana-kunda",
+                "place.dana-ghati-giriraja-mandir", "place.radharani-footprint",
+                "place.laksmi-narayana-temple", "place.dani-raya-temple",
+                "place.iskcon-govardhan", "place.papa-mocana-kunda",
+                "place.dana-nivartana-kunda", "place.candra-sarovara",
+                "place.parasoli", "place.gauri-kunda",
+                "place.aniyor-village", "place.gopala-raja-temple",
+                "place.siva-temple-aniyor", "place.balarama-dauji-temple-aniyor",
+                "place.sankarsana-kunda",
+                "place.gopala-prakata-sthali", "place.govinda-kunda",
+                "place.nipa-kunda-radha-govinda",
+                "place.madhavendra-puri-bhajana-kutira-indra-tila",
+                "place.doka-dauji-temple",
             },
             {item["place_id"] for item in contents},
         )
@@ -402,6 +414,18 @@ class ContentToolingTests(unittest.TestCase):
             "place.brahma-kunda", "place.manasi-devi-temple",
             "place.harideva-temple", "place.govardhan-town",
             "place.rna-mocana-kunda",
+            "place.dana-ghati-giriraja-mandir", "place.radharani-footprint",
+            "place.laksmi-narayana-temple", "place.dani-raya-temple",
+            "place.iskcon-govardhan", "place.papa-mocana-kunda",
+            "place.dana-nivartana-kunda", "place.candra-sarovara",
+            "place.parasoli", "place.gauri-kunda",
+            "place.aniyor-village", "place.gopala-raja-temple",
+            "place.siva-temple-aniyor", "place.balarama-dauji-temple-aniyor",
+            "place.sankarsana-kunda",
+            "place.gopala-prakata-sthali", "place.govinda-kunda",
+            "place.nipa-kunda-radha-govinda",
+            "place.madhavendra-puri-bhajana-kutira-indra-tila",
+            "place.doka-dauji-temple",
         ]:
             item = by_place[place_id]
             for field in ["summary", "why_sacred", "lila", "pilgrim_guidance"]:
@@ -505,6 +529,92 @@ class ContentToolingTests(unittest.TestCase):
         self.assertIn("area marker", by_place["place.govardhan-town"]["pilgrim_guidance"])
         self.assertIn("not a canonical śāstric source", by_place["place.rna-mocana-kunda"]["references"][0]["explanation"])
         self.assertIn("future #31 Pāpa-mocana-kuṇḍa", by_place["place.rna-mocana-kunda"]["pilgrim_guidance"])
+        expected_new_places = {
+            26: (27.4952417, 77.4628528, "VERIFIED", "HIGH"),
+            27: (27.4949375, 77.4624375, "PROBABLE", "HIGH"),
+            28: (27.4943861, 77.4636611, "VERIFIED", "HIGH"),
+            29: (27.4934375, 77.4613125, "PROBABLE", "HIGH"),
+            30: (27.4690625, 77.4435625, "PROBABLE", "HIGH"),
+            31: (27.4919722, 77.466, "PROBABLE", "HIGH"),
+            32: (27.4850625, 77.4558125, "PROBABLE", "HIGH"),
+            33: (27.4779639, 77.4698194, "VERIFIED", "HIGH"),
+            34: (27.4784009, 77.4679575, "PROBABLE", "HIGH"),
+            35: (27.4680694, 77.4471028, "VERIFIED", "HIGH"),
+        }
+        for number, expected in expected_new_places.items():
+            actual = tuple(
+                registry_by_number[number][key]
+                for key in ["latitude", "longitude", "coordinate_status", "coordinate_confidence"]
+            )
+            self.assertEqual(expected, actual)
+        self.assertIn("separate same-name temple farther north", registry_by_number[28]["verification_notes"])
+        self.assertNotEqual(registry_by_number[25]["id"], registry_by_number[31]["id"])
+        self.assertNotEqual(registry_by_number[25]["latitude"], registry_by_number[31]["latitude"])
+        self.assertNotEqual(registry_by_number[26]["id"], registry_by_number[29]["id"])
+        self.assertIn("Older pilgrimage literature", registry_by_number[30]["verification_notes"])
+        self.assertIn("representative marker", registry_by_number[34]["verification_notes"])
+        self.assertIn("Dāna-keli-cintāmaṇi", by_place["place.dana-ghati-giriraja-mandir"]["why_sacred"])
+        self.assertIn("not a claim that a Gosvāmī text", by_place["place.radharani-footprint"]["why_sacred"])
+        self.assertNotIn("climb", by_place["place.dani-raya-temple"]["pilgrim_guidance"].lower())
+        self.assertIn("not an ancient Kṛṣṇa-līlā-sthalī", by_place["place.iskcon-govardhan"]["why_sacred"])
+        self.assertIn("distinct from #25", by_place["place.papa-mocana-kunda"]["summary"])
+        self.assertIn("Dāna-nivartana-kuṇḍāṣṭakam", by_place["place.dana-nivartana-kunda"]["why_sacred"])
+        self.assertIn("separate chronological layer", by_place["place.candra-sarovara"]["lila"])
+        self.assertIn("representative village and landscape marker", by_place["place.parasoli"]["pilgrim_guidance"])
+        self.assertEqual(
+            ["Bhakti-ratnākara", "Raghunātha Dāsa Gosvāmī — Govardhanāśraya-daśakam", "Rūpa Gosvāmī — Vidagdha-mādhava"],
+            [reference["source_title"] for reference in by_place["place.gauri-kunda"]["references"]],
+        )
+        expected_task020a7 = {
+            36: ("place.aniyor-village", 27.47443, 77.44584, "PROBABLE", "HIGH"),
+            37: ("place.gopala-raja-temple", 27.4735625, 77.4437344, "PROBABLE", "HIGH"),
+            39: ("place.balarama-dauji-temple-aniyor", 27.4725125, 77.4441719, "PROBABLE", "HIGH"),
+            40: ("place.sankarsana-kunda", 27.4709583, 77.4450222, "VERIFIED", "HIGH"),
+        }
+        for number, expected in expected_task020a7.items():
+            place = registry_by_number[number]
+            self.assertEqual(expected, tuple(place[key] for key in [
+                "id", "latitude", "longitude", "coordinate_status", "coordinate_confidence",
+            ]))
+        siva = registry_by_number[38]
+        self.assertEqual("place.siva-temple-aniyor", siva["id"])
+        self.assertEqual("Śiva Temple", siva["canonical_name"])
+        self.assertIsNone(siva.get("latitude"))
+        self.assertIsNone(siva.get("longitude"))
+        self.assertEqual(("UNVERIFIED", "UNKNOWN", "place.gopala-raja-temple"), tuple(
+            siva[key] for key in ["coordinate_status", "coordinate_confidence", "navigation_anchor_place_id"]
+        ))
+        self.assertIn("āniaura āniaura", by_place["place.aniyor-village"]["summary"])
+        self.assertIn("not proof that the present building", by_place["place.gopala-raja-temple"]["summary"])
+        self.assertIn("At navigation anchor", by_place["place.siva-temple-aniyor"]["pilgrim_guidance"])
+        self.assertIn("not the large and famous Dauji temple at Baldeo", by_place["place.balarama-dauji-temple-aniyor"]["summary"])
+        self.assertIn("Vraja-rīti-cintāmaṇi 3.18", by_place["place.sankarsana-kunda"]["why_sacred"])
+        expected_task020a8 = {
+            41: ("place.gopala-prakata-sthali", 27.4716875, 77.4425625, "PROBABLE", "HIGH"),
+            42: ("place.govinda-kunda", 27.4686083, 77.4406417, "VERIFIED", "HIGH"),
+            43: ("place.nipa-kunda-radha-govinda", 27.4681875, 77.4423125, "PROBABLE", "HIGH"),
+            45: ("place.doka-dauji-temple", 27.4656875, 77.4368125, "PROBABLE", "HIGH"),
+        }
+        for number, expected in expected_task020a8.items():
+            self.assertEqual(expected, tuple(registry_by_number[number][key] for key in [
+                "id", "latitude", "longitude", "coordinate_status", "coordinate_confidence",
+            ]))
+        stop44 = registry_by_number[44]
+        self.assertIsNone(stop44.get("latitude"))
+        self.assertIsNone(stop44.get("longitude"))
+        self.assertEqual(("UNVERIFIED", "UNKNOWN", "place.govinda-kunda"), tuple(
+            stop44[key] for key in ["coordinate_status", "coordinate_confidence", "navigation_anchor_place_id"]
+        ))
+        self.assertIn("distinct from #37", by_place["place.gopala-prakata-sthali"]["why_sacred"])
+        self.assertIn("does not itself name this modern water body", by_place["place.govinda-kunda"]["why_sacred"])
+        self.assertIn("two nearby but distinct physical features", by_place["place.nipa-kunda-radha-govinda"]["summary"])
+        self.assertIn("not currently approved as direct proof", by_place["place.nipa-kunda-radha-govinda"]["why_sacred"])
+        self.assertIn("At navigation anchor", by_place["place.madhavendra-puri-bhajana-kutira-indra-tila"]["pilgrim_guidance"])
+        self.assertIn("not being presented as a direct Śrīmad-Bhāgavatam episode", by_place["place.doka-dauji-temple"]["lila"])
+        self.assertFalse(any(reference.get("destination") for place_id in [
+            "place.gopala-prakata-sthali", "place.govinda-kunda", "place.nipa-kunda-radha-govinda",
+            "place.madhavendra-puri-bhajana-kutira-indra-tila", "place.doka-dauji-temple",
+        ] for reference in by_place[place_id]["references"]))
         self.assertNotIn("summary", next(
             place for place in result.content["pilgrimage_places"] if place["id"] == "place.kusumasarovara"
         ))
@@ -516,10 +626,10 @@ class ContentToolingTests(unittest.TestCase):
         connection = sqlite3.connect(path)
         try:
             self.assertEqual(7, connection.execute("PRAGMA user_version").fetchone()[0])
-            self.assertEqual(25, connection.execute("SELECT count(*) FROM pilgrimage_place_contents").fetchone()[0])
-            self.assertEqual(84, connection.execute("SELECT count(*) FROM pilgrimage_place_features").fetchone()[0])
-            self.assertEqual(69, connection.execute("SELECT count(*) FROM pilgrimage_place_references").fetchone()[0])
-            self.assertEqual(60, connection.execute("SELECT count(*) FROM pilgrimage_place_relationships").fetchone()[0])
+            self.assertEqual(45, connection.execute("SELECT count(*) FROM pilgrimage_place_contents").fetchone()[0])
+            self.assertEqual(152, connection.execute("SELECT count(*) FROM pilgrimage_place_features").fetchone()[0])
+            self.assertEqual(124, connection.execute("SELECT count(*) FROM pilgrimage_place_references").fetchone()[0])
+            self.assertEqual(115, connection.execute("SELECT count(*) FROM pilgrimage_place_relationships").fetchone()[0])
         finally:
             connection.close()
 
@@ -650,8 +760,8 @@ class ContentToolingTests(unittest.TestCase):
         self.assertEqual(0, result.report["validation"]["broken_citation_targets"])
         self.assertEqual(0, result.report["validation"]["visible_unverified_citation_targets"])
         self.assertEqual(0, result.report["validation"]["duplicate_canonical_ids"])
-        self.assertEqual(54, len(result.content["passages"]))
-        self.assertEqual(54, len(result.content["passage_representations"]))
+        self.assertEqual(229, len(result.content["passages"]))
+        self.assertEqual(229, len(result.content["passage_representations"]))
         self.assertEqual([], result.content["witnesses"])
         self.assertEqual([], result.content["witness_mappings"])
         self.assertTrue(all("text" not in passage for passage in result.content["passages"]))
@@ -693,6 +803,66 @@ class ContentToolingTests(unittest.TestCase):
         self.assertEqual("background", citation["role"])
         self.assertIsNone(citation["source_passage_id"])
 
+    def test_dana_keli_cintamani_compiles_as_one_complete_searchable_reader_work(self) -> None:
+        result = compile_manifest(self.root, "radhakunda-mvp-development-manifest")
+        work_id = "work.dana-keli-cintamani"
+        edition_id = "edition.dana-keli-cintamani.project-reading-v1"
+        works = [work for work in result.content["works"] if work["id"] == work_id]
+        editions = [edition for edition in result.content["editions"] if edition["work_id"] == work_id]
+        passages = sorted(
+            [passage for passage in result.content["passages"] if passage["work_id"] == work_id],
+            key=lambda passage: passage["order"],
+        )
+        representations = [
+            representation for representation in result.content["passage_representations"]
+            if representation["edition_id"] == edition_id
+        ]
+
+        self.assertEqual(1, len(works))
+        self.assertEqual("Śrī Dāna-keli-cintāmaṇi", works[0]["title"])
+        self.assertEqual(1, len(editions))
+        self.assertTrue(editions[0]["preferred"])
+        self.assertEqual(175, len(passages))
+        self.assertEqual(list(range(1, 176)), [passage["order"] for passage in passages])
+        self.assertEqual([str(number) for number in range(1, 176)], [passage["locus"] for passage in passages])
+        self.assertEqual(
+            [f"passage.dana-keli-cintamani.{number}" for number in range(1, 176)],
+            [passage["id"] for passage in passages],
+        )
+        self.assertEqual(175, len(representations))
+        self.assertTrue(all(representation["transliteration"] for representation in representations))
+        self.assertTrue(all(representation["translation"] for representation in representations))
+        self.assertTrue(all(not representation["commentary"] for representation in representations))
+
+        database_path = self.root / "build/dana-keli-cintamani.sqlite"
+        report = build_sqlite(database_path, result)
+        self.assertEqual("ok", report["integrity_check"])
+        self.assertEqual(0, report["foreign_key_violation_count"])
+        connection = sqlite3.connect(database_path)
+        try:
+            self.assertEqual(
+                175,
+                connection.execute(
+                    "SELECT count(*) FROM source_passages WHERE work_id = ?", (work_id,)
+                ).fetchone()[0],
+            )
+            self.assertTrue(
+                connection.execute(
+                    "SELECT 1 FROM search_documents_fts WHERE search_documents_fts MATCH 'uddāma' "
+                    "AND content_type = 'source_passage' AND target_id LIKE ? LIMIT 1",
+                    ("passage.dana-keli-cintamani.%",),
+                ).fetchone()
+            )
+            self.assertTrue(
+                connection.execute(
+                    "SELECT 1 FROM search_documents_fts WHERE search_documents_fts MATCH 'pollen' "
+                    "AND content_type = 'source_passage' AND target_id LIKE ? LIMIT 1",
+                    ("passage.dana-keli-cintamani.%",),
+                ).fetchone()
+            )
+        finally:
+            connection.close()
+
     def test_real_packages_follow_manifest_source_package_order(self) -> None:
         loaded_packages = []
         original_load_yaml = content_tooling.load_yaml
@@ -711,6 +881,7 @@ class ContentToolingTests(unittest.TestCase):
                 "work.mathura-mahatmya",
                 "work.radhakunda-manifestation-puranic-unit",
                 "work.srimad-bhagavatam",
+                "work.dana-keli-cintamani",
             ],
             loaded_packages,
         )

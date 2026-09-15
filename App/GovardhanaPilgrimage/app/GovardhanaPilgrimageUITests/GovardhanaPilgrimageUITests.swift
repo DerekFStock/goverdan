@@ -272,6 +272,63 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
         ).firstMatch, in: app)
     }
 
+    func testTask020A6DanaGhatiAndGauriKundaOpenWithApprovedContent() {
+        var app = launch()
+        openPlaceDetails(26, in: app)
+        XCTAssertTrue(app.navigationBars["Dāna-ghāṭī Girirāja Mandir"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Major dāna-līlā shrine at Govardhana"].exists)
+        revealForReading(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "playful toll pastime")
+        ).firstMatch, in: app)
+
+        app.terminate()
+        app = launch()
+        openPlaceDetails(35, in: app)
+        XCTAssertTrue(app.navigationBars["Gaurī-kuṇḍa"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Gaurī-pūjā līlā kuṇḍa"].exists)
+        revealForReading(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "Bhakti-ratnākara 5.630–632")
+        ).firstMatch, in: app)
+    }
+
+    func testTask020A7AniyorAndSankarsanaKundaOpenWithApprovedContent() {
+        var app = launch()
+        openPlaceDetails(36, in: app)
+        XCTAssertTrue(app.navigationBars["Aniyor Village"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Annakūṭa village and sacred Govardhana-pūjā landscape"].exists)
+        revealForReading(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "āniaura āniaura")
+        ).firstMatch, in: app)
+
+        app.terminate()
+        app = launch()
+        openPlaceDetails(40, in: app)
+        XCTAssertTrue(app.navigationBars["Saṅkarṣaṇa-kuṇḍa"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Saṅkarṣaṇa/Balarāma sacred kuṇḍa in the Aniyor landscape"].exists)
+        revealForReading(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "Vraja-rīti-cintāmaṇi 3.18")
+        ).firstMatch, in: app)
+    }
+
+    func testTask020A8GovindaKundaAndDokaDaujiOpenWithApprovedContent() {
+        var app = launch()
+        openPlaceDetails(42, in: app)
+        XCTAssertTrue(app.navigationBars["Govinda-kuṇḍa"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Indra–Surabhi abhiṣeka kuṇḍa and Mādhavendra Purī sacred landscape"].exists)
+        revealForReading(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "Śrīmad-Bhāgavatam 10.27.21–23")
+        ).firstMatch, in: app)
+
+        app.terminate()
+        app = launch()
+        openPlaceDetails(45, in: app)
+        XCTAssertTrue(app.navigationBars["Ḍokā-Daujī Temple"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Balarāma/Daujī sacred-memory shrine on Govardhana"].exists)
+        revealForReading(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "living/local tradition")
+        ).firstMatch, in: app)
+    }
+
     func testPlaceReferenceReaderRemainsVisibleAndBackReturnsToPlaceDetails() {
         let app = launch()
         app.buttons["home.map"].tap()
@@ -464,6 +521,27 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
         XCTAssertEqual("passage.radha-kundastaka.2", app.buttons["source.bookmark"].value as? String)
         XCTAssertFalse(app.buttons["Return to Story"].exists)
         XCTAssertFalse(app.buttons["source.original-witness"].exists)
+    }
+
+    func testLibraryOpensDanaKeliCintamaniInGenericSourceReader() {
+        let app = launch()
+        app.buttons["home.library"].tap()
+        XCTAssertTrue(app.navigationBars["Library"].waitForExistence(timeout: 5))
+        let work = app.buttons["library.work.work.dana-keli-cintamani"]
+        reveal(work, in: app)
+        work.tap()
+        XCTAssertTrue(app.navigationBars["Śrī Dāna-keli-cintāmaṇi"].waitForExistence(timeout: 5))
+        let firstVerse = app.buttons["work.toc.passage.passage.dana-keli-cintamani.1"]
+        XCTAssertTrue(firstVerse.waitForExistence(timeout: 5))
+        firstVerse.tap()
+        XCTAssertTrue(app.staticTexts["Passage Verse 1"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label CONTAINS %@", "kurvāṇaiḥ śatam āśiṣaṁ")).firstMatch.exists)
+        XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label CONTAINS %@", "svīya-svīya-gaṇaiḥ")).firstMatch.exists)
+        XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label CONTAINS %@", "gāndharvā-giridhāriṇor")).firstMatch.exists)
+        XCTAssertFalse(app.staticTexts["Translation status"].exists)
+        XCTAssertFalse(app.staticTexts["Text verification"].exists)
+        XCTAssertEqual("passage.dana-keli-cintamani.1", app.buttons["source.bookmark"].value as? String)
+        XCTAssertFalse(app.buttons["Return to Story"].exists)
     }
 
     func testSearchBackRestoresExactQueryAndResults() {
