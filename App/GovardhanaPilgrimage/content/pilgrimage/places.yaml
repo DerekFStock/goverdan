@@ -1256,3 +1256,152 @@ places:
         description: Living Braj pilgrimage preserves Lauṭhā Bābā as a cowherd friend waiting in separation for Kṛṣṇa and the shrine’s importance in parikramā.
         source_reference: https://www.brijwale.com/poonchhari-ka-lautha/
     content_destination:
+
+  - id: place.syama-dhaka
+    map_number: 51
+    canonical_name: Śyāma-ḍhāka
+    ascii_name: Syama-dhaka
+    alternate_names:
+      - Shyama Dhak
+      - Syama Dhak
+      - Śyāma Dhāk
+      - Shyam Dhak
+      - Shyama Dhaka
+      - Śyāma-ḍhāk
+      - Shyam Dhak forest
+      - Shyama Dhak Kund
+    latitude: 27.4585625
+    longitude: 77.4164844
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: Bhakti-ratnākara 5.652 directly identifies Śyāma-ḍhāka through an old palāśa tree in a very secluded place. Modern pilgrimage literature locates it west of Pūñcharī/Apsarā-kuṇḍa, and current mapping identifies a Śyāma Dhak sacred-water landscape in the expected area. This coordinate is a representative current landscape marker, not the exact ancient tree or historical forest center.
+    provenance:
+      - source_type: EARLY_GAUDIYA_PILGRIMAGE_TEXT
+        description: Bhakti-ratnākara 5.652 directly names Śyāma-ḍhāka and describes its old palāśa tree and secluded character.
+      - source_type: PILGRIMAGE_GUIDE
+        description: Modern pilgrimage guides locate the secluded Śyāma-ḍhāka forest landscape west of Pūñcharī and Apsarā-kuṇḍa.
+      - source_type: PILGRIMAGE_TRADITION
+        description: Living tradition remembers cowherd play and present forest and sacred-water features here; these details are not retrojected into the early text.
+      - source_type: MODERN_MAP
+        description: Current mapping identifies Shayam Dhak Kund at FC58+CHH, supporting this representative landscape marker.
+    content_destination:
+
+  - id: place.mani-kandali-cave
+    map_number: 52
+    canonical_name: Maṇi-kandalī Cave
+    ascii_name: Mani-kandali Cave
+    alternate_names:
+      - Mani Kandali Cave
+      - Mani Kandali Gufa
+      - Mani Kundali Gufa
+      - Mani Kundali Cave
+      - Maṇi-kuṇḍalī Gufā
+      - Rāghava Paṇḍita’s Cave
+      - Raghava Pandit's Cave
+      - Raghav Pandit Cave
+    latitude: 27.4605375
+    longitude: 77.4311406
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: Bhakti-ratnākara 5.653–656 directly describes Rāghava Paṇḍita’s Govardhana cave and its sacred association. Modern tradition identifies it as Maṇi-kandalī or Maṇi-kuṇḍalī Cave, and current mapping identifies Raghava Pandit’s Cave at this point. The early cave evidence and later received name remain distinct.
+    provenance:
+      - source_type: EARLY_GAUDIYA_PILGRIMAGE_TEXT
+        description: Bhakti-ratnākara 5.653–656 records Rāghava Paṇḍita pointing out his cave and remembering Rādhā-Kṛṣṇa’s Govardhana cave pastimes.
+      - source_type: PRIMARY_GOSVAMI_TEXT
+        description: Vraja-vilāsa-stava 65 praises Govardhana caves as Rādhā-Kṛṣṇa līlā places but does not independently give the name Maṇi-kandalī.
+      - source_type: PILGRIMAGE_TRADITION
+        description: Living tradition supplies the Maṇi-kandalī name, bhajana-site identity, and current access understanding.
+      - source_type: MODERN_MAP
+        description: Current mapping identifies Raghava Pandit’s Cave at FC6J+6F6 in the expected Pūñcharī landscape.
+    content_destination:
+
+  - id: place.nathji-temple-sutalavana
+    map_number: 53
+    canonical_name: Nāthjī Temple
+    ascii_name: Nathji Temple
+    alternate_names:
+      - Nathji Temple
+      - Sri Nathaji Temple
+      - Shri Nath Ji Temple
+      - Shri Nath Ji Temple, Poonchari Ka Lauta
+      - Sutalavana Nathji Temple
+      - Sutala Vana Nathji Temple
+    latitude: 27.4603875
+    longitude: 77.4307344
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: Modern pilgrimage guides place this Nāthjī temple beside the Sutalavana and Maṇi-kandalī Cave landscape, and current mapping identifies the present Poonchhari shrine at this point. It is a later living structure, not the historical Jatipura Śrīnāthjī/Gopāla temple, #37 Gopāla Rāja Temple, #41 Gopāla-prakaṭa-sthalī, or Nāthdwāra.
+    provenance:
+      - source_type: PILGRIMAGE_GUIDE
+        description: Govardhana pilgrimage guides identify the present Sutalavana Nāthjī temple beside the Maṇi-kandalī Cave approach and treat it as a later structure.
+      - source_type: LIVING_DEVOTIONAL_SITE
+        description: Current worship establishes the shrine as the living Nāthjī darśana place in this cluster.
+      - source_type: MODERN_MAP
+        description: Current mapping identifies Shri Nath Ji Temple, Poonchari Ka Lauta at FC6J+575.
+    content_destination:
+
+  - id: place.airavata-footprint
+    map_number: 54
+    canonical_name: Airāvata’s footprint
+    ascii_name: Airavata's footprint
+    alternate_names:
+      - Airavata Footprint
+      - Airawat Footprint
+      - Airāvata-pada
+      - Airavata Pada
+      - Airāvata-pada-cihna
+      - Airavata Footprint Shila
+    latitude: 27.4655625
+    longitude: 77.4362344
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: Bhakti-ratnākara 5.657 directly points out Airāvata’s footprint, Garga-saṁhitā 3.8.10 includes it in Govardhana’s sacred body, and Śrīmad-Bhāgavatam 10.27.22–23 supplies the Airāvata abhiṣeka background. Current mapping independently identifies the living footprint shrine here; the GPS is current-map evidence, not an ancient textual coordinate.
+    provenance:
+      - source_type: EARLY_GAUDIYA_PILGRIMAGE_TEXT
+        description: Bhakti-ratnākara 5.657 directly names Airāvata’s footprint and connects the place with Indra speaking of Kṛṣṇa’s mercy.
+      - source_type: SACRED_GEOGRAPHY_TEXT
+        description: Garga-saṁhitā, Girirāja-khaṇḍa 3.8.10 identifies Airāvata’s footprint as the feet of Govardhana’s sacred body.
+      - source_type: PRIMARY_SCRIPTURE
+        description: Śrīmad-Bhāgavatam 10.27.22–23 establishes Airāvata’s role in the abhiṣeka, not the modern footprint coordinate.
+        source_reference: https://vedabase.io/en/library/sb/10/27/
+      - source_type: PRIMARY_GOSVAMI_TEXT
+        description: Kṛṣṇa-līlā-stava 247–250 synthesizes Indra’s surrender and Airāvata bringing celestial Gaṅgā water.
+      - source_type: MODERN_MAP
+        description: Current mapping identifies Airawat Footprint at FC8P+6FH.
+    content_destination:
+
+  - id: place.indra-puja
+    map_number: 55
+    canonical_name: Indra-pūjā
+    ascii_name: Indra-puja
+    alternate_names:
+      - Indra Puja
+      - Indra Pūjā Shrine
+      - Indra Maan Bhang
+      - Indra Mān-bhaṅga
+      - Indra Maan Bhang Temple
+      - Shri Giriraj Indra Maan Bhang
+      - Indra Repentance Shrine
+    latitude: 27.4655875
+    longitude: 77.4364219
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: Śrīmad-Bhāgavatam 10.27.2–17 securely narrates Indra’s ashamed approach, prayer, surrender, and instruction. Bhakti-ratnākara 5.657 associates Indra and Kṛṣṇa’s mercy with this immediate landscape. Living tradition and current mapping identify the present Indra Mān-bhaṅga shrine here; the Bhāgavatam does not supply its GPS location.
+    provenance:
+      - source_type: PRIMARY_SCRIPTURE
+        description: Śrīmad-Bhāgavatam 10.27.2–17 narrates Indra’s repentance, prayers, surrender, and Kṛṣṇa’s merciful response.
+        source_reference: https://vedabase.io/en/library/sb/10/27/
+      - source_type: PRIMARY_GOSVAMI_TEXT
+        description: Kṛṣṇa-līlā-stava 247–249 summarizes Indra’s crown at Kṛṣṇa’s feet, destruction of pride, and forgiveness.
+      - source_type: EARLY_GAUDIYA_PILGRIMAGE_TEXT
+        description: Bhakti-ratnākara 5.657 gives early geographic support for an Indra-mercy association beside Airāvata’s footprint without naming a temple.
+      - source_type: PILGRIMAGE_TRADITION
+        description: Living pilgrimage tradition identifies the place as Indra-pūjā or Indra Mān-bhaṅga, meaning Indra’s worship and surrender to Kṛṣṇa.
+      - source_type: MODERN_MAP
+        description: Current mapping identifies Indra Maan Bhang Temple at FC8P+6HM.
+    content_destination:

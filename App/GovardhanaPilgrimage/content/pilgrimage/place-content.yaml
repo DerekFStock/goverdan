@@ -1388,3 +1388,146 @@ contents:
       - place.nava-kunda
       - place.apsara-kunda
       - place.nrsimha-temple-punchari
+
+  - place_id: place.syama-dhaka
+    category: Secluded Śyāma-ḍhāka forest and palāśa sacred landscape
+    summary: Śyāma-ḍhāka is a quiet Govardhana sacred landscape directly named by Bhakti-ratnākara. Rāghava Paṇḍita points out an ancient palāśa tree and says people call the secluded place Śyāma-ḍhāka. Later Braj tradition remembers the area as a forest where Kṛṣṇa and the cowherd boys played.
+    why_sacred: Bhakti-ratnākara 5.652 directly preserves the place name, old palāśa tree, and seclusion within Rāghava Paṇḍita’s Govardhana sacred geography. Cowherd-play memories and the present Śyāma Dhak forest and kund landscape belong to later living tradition; no currently visible tree is claimed to be demonstrably the ancient tree.
+    what_to_see:
+      - The living forest or grove environment and its quiet character.
+      - Present Śyāma Dhak sacred-water and baithak features where locally identified.
+      - Palāśa or kadamba vegetation where presently visible, without claiming an ancient tree survives.
+      - The landscape west of the main Pūñcharī cluster.
+    lila: Bhakti-ratnākara remembers Śyāma-ḍhāka as a secluded place marked by an old palāśa tree. In a distinct later/local layer, Braj guides remember Kṛṣṇa and His cowherd friends playing and taking refreshments in this forest.
+    pilgrim_guidance: This pin is an area and representative landscape marker, not a single-object pin. Forest conditions and paths can change; use respectful local guidance to locate current features, and do not climb or step onto Girirāja in search of a tree or landmark.
+    references:
+      - id: reference.syama-dhaka.bhakti-ratnakara-5-652
+        source_title: Bhakti-ratnākara
+        locus: '5.652'
+        explanation: Directly names Śyāma-ḍhāka and describes its ancient palāśa and secluded landscape.
+        quotation: People call this place Śyāma-ḍhāka; it is very secluded.
+      - id: reference.syama-dhaka.living-tradition
+        source_title: Living Śyāma-ḍhāka pilgrimage tradition
+        locus: Śyāma-ḍhāka forest landscape
+        explanation: Preserves the modern forest identity and cowherd-play traditions as later/local evidence.
+    related_place_ids:
+      - place.apsara-kunda
+      - place.punchari-lautha-baba-temple
+
+  - place_id: place.mani-kandali-cave
+    category: Rāghava Paṇḍita’s Govardhana cave and Rādhā-Kṛṣṇa sacred-memory site
+    summary: Maṇi-kandalī Cave is the living pilgrimage identification of the Govardhana cave where Rāghava Paṇḍita performed bhajana. Bhakti-ratnākara gives strong early evidence by recording Rāghava pointing out his own cave and remembering Govardhana’s caves as places of Rādhā-Kṛṣṇa’s pastimes. The specific Maṇi-kandalī name belongs to later received localization.
+    why_sacred: Bhakti-ratnākara 5.653–656 presents Rāghava Paṇḍita’s cave and his delight in Govardhana’s beauty. Vraja-vilāsa-stava 65 praises Govardhana caves as Rādhā-Kṛṣṇa līlā places, while continuing tradition preserves this as Rāghava’s bhajana site. The present cave structure is not claimed to be archaeologically unchanged.
+    what_to_see:
+      - The present cave entrance or sealed cave area from the accepted approach.
+      - The simple Rāghava Paṇḍita sacred-memory setting.
+      - The nearby Nāthjī Temple and surrounding Sutalavana landscape.
+      - External darśana when access is closed or restricted.
+    lila: Rāghava Paṇḍita brings Śrīnivāsa and Narottama to the cave where he stays and contemplates Govardhana’s beauty. The text then praises Govardhana’s caves as places of Rādhā and Kṛṣṇa’s pastimes, in restrained devotional remembrance.
+    pilgrim_guidance: Use the established approach to Rāghava Paṇḍita’s Cave. Do not enter a sealed cave or climb, scrape, or scramble on Girirāja. If access is restricted, take darśana from the accepted external point; the pin identifies mapped access, not permission to explore the mountain.
+    references:
+      - id: reference.mani-kandali-cave.bhakti-ratnakara-5-653-656
+        source_title: Bhakti-ratnākara
+        locus: 5.653–656
+        explanation: Directly identifies Rāghava Paṇḍita’s cave and its Rādhā-Kṛṣṇa cave association.
+        quotation: This is my cave; I stay here.
+      - id: reference.mani-kandali-cave.vraja-vilasa-stava-65
+        source_title: Raghunātha dāsa Gosvāmī — Vraja-vilāsa-stava
+        locus: Verse 65
+        explanation: Praises Govardhana caves as Rādhā-Kṛṣṇa līlā places but does not independently name Maṇi-kandalī.
+      - id: reference.mani-kandali-cave.living-tradition
+        source_title: Living Maṇi-kandalī and Rāghava Cave tradition
+        locus: Sutalavana cave landscape
+        explanation: Supplies the specific received cave name, current localization, and present access understanding.
+    related_place_ids:
+      - place.nathji-temple-sutalavana
+      - place.apsara-kunda
+
+  - place_id: place.nathji-temple-sutalavana
+    category: Living Nāthjī shrine in the Sutalavana and Maṇi-kandalī cluster
+    summary: Nāthjī Temple is the living Kṛṣṇa shrine associated with the Sutalavana–Maṇi-kandalī sacred cluster. It is a present darśana and orientation place beside Rāghava Paṇḍita’s cave landscape. This later devotional structure is not the historical Jatipura Śrīnāthjī/Gopāla temple or the temple at Nāthdwāra.
+    why_sacred: The shrine preserves living Nāthjī worship close to Maṇi-kandalī Cave and serves pilgrims within Sutalavana. No early primary or Gosvāmī text has been verified as naming this exact present temple, and no ancient-building continuity is claimed.
+    what_to_see:
+      - Nāthjī darśana in the simple present temple.
+      - The shrine’s relationship to Sutalavana and the nearby cave approach.
+      - The surrounding forest and sacred landscape without assigning it an invented antiquity.
+    lila: The temple stands in a landscape where Braj tradition remembers Rādhā-Kṛṣṇa’s cave and forest pastimes and Rāghava Paṇḍita’s bhajana. Nāthjī worship is the living devotional layer; no temple-specific ancient Kṛṣṇa līlā is invented.
+    pilgrim_guidance: '#53 is the present Sutalavana/Poonchhari temple and #52 is the separate cave. Use the temple as an orientation landmark, follow ordinary temple etiquette, and do not confuse it with historic Śrīnāthjī sites at Jatipura or Nāthdwāra.'
+    references:
+      - id: reference.nathji-temple-sutalavana.pilgrimage-guide
+        source_title: Modern Govardhana pilgrimage guide
+        locus: Sutalavana, Nāthjī, and Maṇi-kandalī cluster
+        explanation: Identifies this specific later temple and its relationship to the cave.
+      - id: reference.nathji-temple-sutalavana.living-site
+        source_title: Current Shri Nath Ji Temple, Poonchhari Ka Lautha
+        locus: Present Sutalavana shrine
+        explanation: Establishes current shrine identity and coordinate as living devotional-site evidence.
+    related_place_ids:
+      - place.mani-kandali-cave
+      - place.apsara-kunda
+
+  - place_id: place.airavata-footprint
+    category: Airāvata footprint śilā in Govardhana’s Indra-abhiṣeka landscape
+    summary: Airāvata’s footprint is a sacred Govardhana rock feature with strong textual support. Bhakti-ratnākara points it out directly, Garga-saṁhitā includes it in Girirāja’s sacred body, and the Bhāgavatam remembers Airāvata carrying heavenly Gaṅgā water for Kṛṣṇa’s abhiṣeka after Indra’s pride was broken. The present shrine is the living localization of that sacred geography.
+    why_sacred: Bhakti-ratnākara 5.657 directly identifies the footprint; Garga-saṁhitā 3.8.10 describes Airāvata’s footprint as the feet of Govardhana’s personal sacred body. Śrīmad-Bhāgavatam 10.27.22–23 and Kṛṣṇa-līlā-stava 247–250 provide the Airāvata abhiṣeka and Indra-surrender context. No archaeological test is claimed.
+    what_to_see:
+      - The rock or śilā revered as Airāvata’s footprint.
+      - The present modest shrine structure where visible.
+      - The immediately adjacent but separate Indra-pūjā or Indra Mān-bhaṅga shrine.
+      - The surrounding Govardhana setting without conflating this place with future Airāvata-kuṇḍa.
+    lila: After Indra’s pride was broken, he approached Kṛṣṇa in humility. Surabhi performed abhiṣeka with milk, and Airāvata brought celestial Gaṅgā water. Bhakti-ratnākara connects this footprint place with Indra speaking of Kṛṣṇa’s extraordinary mercy.
+    pilgrim_guidance: The pin identifies the present footprint shrine and access. Do not climb onto surrounding Girirāja or step on the footprint śilā. Receive darśana according to local etiquette, and keep #54 and #55 distinct despite their close proximity.
+    references:
+      - id: reference.airavata-footprint.bhakti-ratnakara-5-657
+        source_title: Bhakti-ratnākara
+        locus: '5.657'
+        explanation: Directly names Airāvata’s footprint at Govardhana.
+        quotation: See Airāvata’s footprint.
+      - id: reference.airavata-footprint.garga-3-8-10
+        source_title: Garga-saṁhitā — Girirāja-khaṇḍa
+        locus: '3.8.10'
+        explanation: Identifies Airāvata’s footprint as the feet of Govardhana’s sacred body.
+        quotation: Airāvata’s footprint is His feet.
+      - id: reference.airavata-footprint.srimad-bhagavatam-10-27-22-23
+        source_title: Śrīmad-Bhāgavatam
+        locus: 10.27.22–23
+        explanation: Establishes Airāvata’s role in the abhiṣeka, not the modern footprint location.
+      - id: reference.airavata-footprint.krsna-lila-stava-247-250
+        source_title: Sanātana Gosvāmī — Kṛṣṇa-līlā-stava
+        locus: 247–250
+        explanation: Devotional synthesis of Indra’s surrender, Kṛṣṇa’s forgiveness, and Airāvata’s role.
+    related_place_ids:
+      - place.indra-puja
+      - place.doka-dauji-temple
+
+  - place_id: place.indra-puja
+    category: Indra’s repentance and worship-of-Kṛṣṇa shrine
+    summary: Indra-pūjā is the living Govardhana shrine remembering the moment after Indra’s pride was broken, when the king of heaven approached Kṛṣṇa in shame, bowed at His feet, offered prayers, and begged forgiveness. It does not mean the earlier Vrajavāsī Indra-yajña; it remembers Indra worshiping and surrendering to Kṛṣṇa.
+    why_sacred: Śrīmad-Bhāgavatam 10.27.2–17 narrates Indra’s confession, surrender, and Kṛṣṇa’s mercy and instruction. Kṛṣṇa-līlā-stava 247–249 summarizes his crown touching Kṛṣṇa’s feet and the destruction of pride. Bhakti-ratnākara 5.657 preserves the local Indra-mercy association beside Airāvata’s footprint.
+    what_to_see:
+      - The current Indra Mān-bhaṅga or Indra-pūjā shrine.
+      - The immediately adjacent but separate Airāvata’s footprint shrine.
+      - The Govardhana setting in which humility and mercy are remembered.
+    lila: Indra comes before Kṛṣṇa without pride, bows until his crown touches Kṛṣṇa’s feet, confesses his offense, and takes shelter. Kṛṣṇa explains that stopping the sacrifice was mercy intended to destroy false pride and restores Indra to his duty. Living tradition localizes this repentance and worship beside Airāvata’s footprint.
+    pilgrim_guidance: The pin identifies the current Indra Mān-bhaṅga shrine. Do not climb or scramble on Girirāja, and keep #54 and #55 distinct. Read “Indra-pūjā” as Indra’s worship and surrender to Kṛṣṇa, not as an instruction or claim that the Vrajavāsīs performed the earlier Indra-yajña here.
+    references:
+      - id: reference.indra-puja.srimad-bhagavatam-10-27-2-17
+        source_title: Śrīmad-Bhāgavatam
+        locus: 10.27.2–17
+        explanation: Canonical narration of Indra’s repentance, prayers, surrender, and Kṛṣṇa’s response.
+      - id: reference.indra-puja.krsna-lila-stava-247-249
+        source_title: Sanātana Gosvāmī — Kṛṣṇa-līlā-stava
+        locus: 247–249
+        explanation: Indra’s crown at Kṛṣṇa’s feet, destruction of pride, and forgiveness.
+        quotation: Indra’s crown touched Your feet.
+      - id: reference.indra-puja.bhakti-ratnakara-5-657
+        source_title: Bhakti-ratnākara
+        locus: '5.657'
+        explanation: Early geographic association of Indra and Kṛṣṇa’s mercy in the Airāvata-footprint landscape.
+      - id: reference.indra-puja.living-tradition
+        source_title: Living Indra Mān-bhaṅga and Indra-pūjā tradition
+        locus: Present repentance shrine
+        explanation: Establishes the present shrine identity as Indra worshiping and surrendering to Kṛṣṇa.
+    related_place_ids:
+      - place.airavata-footprint
+      - place.doka-dauji-temple

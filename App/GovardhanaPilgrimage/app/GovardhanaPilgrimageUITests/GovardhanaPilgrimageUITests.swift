@@ -291,6 +291,25 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
         ).firstMatch, in: app)
     }
 
+    func testTask020A10AiravataAndIndraOpenAsDistinctPlaces() {
+        var app = launch()
+        openPlaceDetails(54, in: app)
+        XCTAssertTrue(app.navigationBars["Airāvata’s footprint"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Airāvata footprint śilā in Govardhana’s Indra-abhiṣeka landscape"].exists)
+        revealForReading(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "Bhakti-ratnākara 5.657")
+        ).firstMatch, in: app)
+
+        app.terminate()
+        app = launch()
+        openPlaceDetails(55, in: app)
+        XCTAssertTrue(app.navigationBars["Indra-pūjā"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Indra’s repentance and worship-of-Kṛṣṇa shrine"].exists)
+        revealForReading(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "Indra worshiping and surrendering to Kṛṣṇa")
+        ).firstMatch, in: app)
+    }
+
     func testTask020A7AniyorAndSankarsanaKundaOpenWithApprovedContent() {
         var app = launch()
         openPlaceDetails(36, in: app)
