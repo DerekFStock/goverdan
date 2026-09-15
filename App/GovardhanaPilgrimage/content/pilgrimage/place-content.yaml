@@ -1235,3 +1235,156 @@ contents:
     related_place_ids:
       - place.govinda-kunda
       - place.balarama-dauji-temple-aniyor
+      - place.balarama-mukuta-sila
+
+  - place_id: place.balarama-mukuta-sila
+    category: Balarāma crown-impression Govardhana śilā
+    summary: 'Balarāma-mukuṭa-śilā is a Govardhana rock revered in local parikramā tradition as bearing the impression of Dauji Balarāma’s crown. It is encountered in the same sacred landscape as #45 Ḍokā-Daujī, but the śilā is a distinct pilgrimage feature and keeps its own map number. No primary text has been verified as naming this particular Balarāma crown-impression rock.'
+    why_sacred: 'Living tradition reveres the crown impression and relates it devotionally to #45 Ḍokā-Daujī within Govardhana’s landscape of sacred līlā impressions. Vraja-rīti-cintāmaṇi and Śrīmad-Bhāgavatam supply broader Balarāma-on-Govardhana context only. The Kṛṣṇa mauli-śilā described in Garga-saṁhitā is a same-theme, different-identity negative control—not proof of #46.'
+    what_to_see:
+      - The Govardhana śilā traditionally shown as bearing Balarāma’s crown impression.
+      - 'Its immediate devotional relationship with the separate #45 Dauji shrine.'
+      - The exact field position, appearance, and access conditions must be confirmed locally rather than invented in the app.
+    lila: 'Local parikramā tradition places this śilā within the Balarāma sacred-memory landscape of #45 and venerates its visible mark as the impression of His crown. No separate event beyond that received tradition is asserted.'
+    pilgrim_guidance: 'Navigate to #45 Ḍokā-Daujī Temple. Reaching #45 means At navigation anchor, not Arrived at #46. Identify the crown-impression śilā through legitimate local guidance. Do not step onto, climb, or scramble over Girirāja; if access is locally restricted, take darśana according to local devotional etiquette.'
+    references:
+      - id: reference.balarama-mukuta-sila.traditional-identification
+        source_title: Traditional Balarāma-mukuṭa-śilā identification
+        locus: 'Crown-impression rock beside #45 Ḍokā-Daujī'
+        explanation: Direct living identification of the modern sacred feature; no early textual identification or archaeological authentication is claimed.
+      - id: reference.balarama-mukuta-sila.vraja-riti-cintamani-3-10
+        source_title: Viśvanātha Cakravartī — Vraja-rīti-cintāmaṇi
+        locus: '3.10'
+        explanation: Supporting Balarāma-on-Govardhana context; not direct proof of this crown-impression rock.
+      - id: reference.balarama-mukuta-sila.srimad-bhagavatam-10-21-18
+        source_title: Śrīmad-Bhāgavatam
+        locus: 10.21.18
+        explanation: 'Broad Govardhana/Balarāma context; not a textual identification of #46.'
+      - id: reference.balarama-mukuta-sila.garga-negative-control
+        source_title: Garga-saṁhitā — Girirāja-vibhūti
+        locus: '8.7'
+        explanation: 'Do not equate the Kṛṣṇa mauli-śilā of this verse with #46 Balarāma-mukuṭa-śilā without separate evidence.'
+    related_place_ids:
+      - place.doka-dauji-temple
+
+  - place_id: place.nrsimha-temple-punchari
+    category: Nṛsiṁhadeva shrine in the Pūñcharī sacred cluster
+    summary: The Nṛsiṁha Temple is a living Vaiṣṇava shrine in the Pūñcharī tail-end landscape near Nava/Naval-kuṇḍa and Apsarā-kuṇḍa. Pilgrims come for darśana of Lord Nṛsiṁhadeva, the protector of Prahlāda, within the larger Govardhana parikramā. Its present identity is secure as a living shrine, while its exact historical age and installation history remain unverified questions.
+    why_sacred: 'The shrine preserves living worship of Nṛsiṁhadeva and the canonical remembrance of His protection of Prahlāda. Śrīmad-Bhāgavatam 7.8 establishes the deity’s līlā and theology, not this particular Pūñcharī location. The shrine belongs to the compact pilgrimage cluster with #48 Nava-kuṇḍa and #49 Apsarā-kuṇḍa.'
+    what_to_see:
+      - Darśana of Nṛsiṁhadeva and Prahlāda where the current shrine presents him.
+      - The shrine’s elevated relationship to the nearby kuṇḍa cluster.
+      - Views over the Pūñcharī sacred landscape where legitimately accessible.
+      - No exact age is asserted for the image or building.
+    lila: 'Prahlāda remains fixed in devotion to Nārāyaṇa despite Hiraṇyakaśipu’s persecution, and the Lord manifests as Nṛsiṁha to protect His devotee. This is the canonical līlā of the worshiped deity; the identity and history of this particular Pūñcharī temple come through living pilgrimage tradition and modern geography.'
+    pilgrim_guidance: 'Navigate to #48 Nava-kuṇḍa. Reaching #48 means At navigation anchor, not exact arrival at #47. Ask locally for the established Nṛsiṁha Temple approach and use only constructed or accepted access. Do not scramble on Girirāja or climb an unmarked sacred slope.'
+    references:
+      - id: reference.nrsimha-temple-punchari.srimad-bhagavatam-7-8
+        source_title: Śrīmad-Bhāgavatam
+        locus: '7.8'
+        explanation: Deity and līlā context; not proof of the exact modern temple.
+      - id: reference.nrsimha-temple-punchari.traditional-identification
+        source_title: Traditional Pūñcharī Nṛsiṁha pilgrimage identification
+        locus: Nṛsiṁha shrine near Nava/Naval-kuṇḍa
+        explanation: Exact living shrine identity and relationship to Nava/Naval-kuṇḍa; no unverified age or installation claim is promoted as fact.
+    related_place_ids:
+      - place.nava-kunda
+      - place.apsara-kunda
+      - place.punchari-lautha-baba-temple
+
+  - place_id: place.nava-kunda
+    category: Puccha/Naval sacred kuṇḍa at Govardhana’s tail
+    summary: Nava-kuṇḍa—called Naval Kund in current government and map records—is a principal sacred water at Pūñcharī, the tail end of Girirāja. Garga-saṁhitā directly names Puccha-kuṇḍa as Govardhana’s tail and separately glorifies bathing there. Living pilgrimage tradition identifies the present Nava/Naval kuṇḍa with that Puccha-kuṇḍa sacred geography.
+    why_sacred: Garga-saṁhitā, Girirāja-khaṇḍa 8.11 directly identifies Puccha-kuṇḍa as the tail of Girirāja’s personal sacred body, while 10.24–25 praises the tīrtha. The Braj Development Plan and current maps securely identify the present water body under the name Naval Kund. Living tradition connects those naming layers; later explanations of navala as Kṛṣṇa’s ever-fresh youth remain devotional interpretation.
+    what_to_see:
+      - The present stepped sacred water body and its current ghāṭs.
+      - The wider Pūñcharī tail-end environment.
+      - 'Nearby #47 Nṛsiṁha Temple and the distinct #49 Apsarā-kuṇḍa.'
+      - Current masonry and restoration are not presented as the ancient appearance of the tīrtha.
+    lila: 'In the primary sacred-geography layer, Garga-saṁhitā treats Puccha-kuṇḍa as the tail of Girirāja. In the living layer, the present Naval or Nava kuṇḍa is revered within Pūñcharī’s Kṛṣṇa-līlā landscape, with later tradition associating Naval Kṛṣṇa and ever-fresh spring or rāsa remembrance.'
+    pilgrim_guidance: 'The numbered-list canonical label is Nava-kuṇḍa; government and current maps may say Naval Kund, while local guides may say Navala, Puccha, or Poonchari Kund. These aliases help locate the same present water body. Sacred tīrtha praise is not a present-day bathing-safety guarantee; respect current ghāṭ conditions and local practice.'
+    references:
+      - id: reference.nava-kunda.garga-giriraja-khanda-8-11
+        source_title: Garga-saṁhitā — Girirāja-khaṇḍa
+        locus: '8.11'
+        explanation: Directly identifies Puccha-kuṇḍa as Govardhana’s tail; living tradition connects this sacred geography with the present water body.
+        quotation: Puccha-kuṇḍa is His tail.
+      - id: reference.nava-kunda.garga-giriraja-khanda-10-24-25
+        source_title: Garga-saṁhitā — Girirāja-khaṇḍa
+        locus: 10.24–25
+        explanation: Explicit Govardhana Puccha-kuṇḍa tīrtha praise.
+      - id: reference.nava-kunda.braj-development-plan
+        source_title: Braj Development Plan
+        locus: BDP_Gvdn_104
+        explanation: Direct present water-body identity and coordinate under the name Naval Kund.
+      - id: reference.nava-kunda.living-tradition
+        source_title: Living Nava/Naval/Puccha tradition
+        locus: Pūñcharī tail landscape
+        explanation: Connects the present water body with the received tail tradition and explains modern and local naming.
+    related_place_ids:
+      - place.nrsimha-temple-punchari
+      - place.apsara-kunda
+      - place.punchari-lautha-baba-temple
+
+  - place_id: place.apsara-kunda
+    category: Apsarāvana sacred kuṇḍa at the end of Govardhana
+    summary: Apsarā-kuṇḍa is one of the strongest text-to-landscape identifications in the Pūñcharī cluster. Bhakti-ratnākara directly tells the pilgrim to see Apsarā-kuṇḍa at the end of Govardhana, while Vraja-bhakti-vilāsa preserves Apsarāvana and Apsarā-kuṇḍa in its pilgrimage sequence and ritual remembrance. The present water body is independently documented by the Braj Development Plan and current mapping.
+    why_sacred: Bhakti-ratnākara 5.651 supplies direct place-name and relative-location evidence. Nārāyaṇa Bhaṭṭa’s Vraja-bhakti-vilāsa preserves the Apsarāvana and Apsarā-kuṇḍa pilgrimage and prayer tradition. Present Pūñcharī geography is securely corroborated by official and map sources, while later apsarā dancing, bathing, and rāsa remembrance remains correctly labeled living tradition.
+    what_to_see:
+      - Apsarā-kuṇḍa itself and its present ghāṭ or restored water-body setting.
+      - 'The separate nearby #48 Nava/Naval-kuṇḍa.'
+      - The surrounding Apsarāvana and Pūñcharī sacred landscape where it remains legible.
+      - Present structures are not used to infer the tīrtha’s ancient appearance.
+    lila: Early Gauḍīya and Vraja pilgrimage literature preserves Apsarā-kuṇḍa as a tīrtha at Govardhana’s end and gives it a bathing and prayer tradition. In a later/local layer, living parikramā tradition remembers heavenly apsarās dancing or bathing here and connects the kuṇḍa with rasa-filled remembrance of Rādhā and Kṛṣṇa; no unsupported precise number of apsarās is asserted.
+    pilgrim_guidance: '#49 is this actual water body; #48 Nava/Naval-kuṇḍa is a separate adjacent kuṇḍa. Do not merge them. Sacred bathing traditions are not present-day water-safety guarantees, so use current ghāṭs and local etiquette respectfully.'
+    references:
+      - id: reference.apsara-kunda.bhakti-ratnakara-5-651
+        source_title: Bhakti-ratnākara
+        locus: '5.651'
+        explanation: Directly names Apsarā-kuṇḍa and places it at the end of Govardhana.
+        quotation: See Apsarā-kuṇḍa at the end of Govardhana.
+      - id: reference.apsara-kunda.vraja-bhakti-vilasa
+        source_title: Nārāyaṇa Bhaṭṭa — Vraja-bhakti-vilāsa
+        locus: Apsarāvana parikramā
+        explanation: Lists Apsarāvana and Apsarā-kuṇḍa and preserves its bathing and prayer tradition.
+      - id: reference.apsara-kunda.braj-development-plan
+        source_title: Braj Development Plan
+        locus: BDP_Gvdn_105
+        explanation: Direct present coordinate and water-body identity.
+      - id: reference.apsara-kunda.living-tradition
+        source_title: Living Apsarā-kuṇḍa parikramā tradition
+        locus: Pūñcharī landscape
+        explanation: Preserves later devotional apsarā and rāsa associations without inflating them into primary textual claims.
+    related_place_ids:
+      - place.nava-kunda
+      - place.nrsimha-temple-punchari
+      - place.punchari-lautha-baba-temple
+
+  - place_id: place.punchari-lautha-baba-temple
+    category: Pūñcharī cowherd-friend shrine and parikramā landmark
+    summary: Pūñcharī kā Lauṭhā Bābā Temple is a beloved living shrine at the tail end of Govardhana. Braj parikramā tradition remembers Lauṭhā Bābā as a cowherd friend of Kṛṣṇa who remained in Vraja waiting for his beloved friend to return after Kṛṣṇa left for Mathurā. His waiting is a devotional image of steadfast friendship and separation.
+    why_sacred: Garga-saṁhitā supports Pūñcharī’s sacred identity as Govardhana’s tail landscape but does not name Lauṭhā Bābā. Śrīmad-Bhāgavatam 10.39 provides the canonical Mathurā-departure background but does not identify Lauṭhā as a named cowherd or establish this shrine. His personal story and the shrine’s parikramā importance are preserved through living Braj tradition.
+    what_to_see:
+      - The small Lauṭhā Bābā shrine and deity as currently worshiped.
+      - The main parikramā-road setting.
+      - The visual transition into Govardhana’s Pūñcharī or tail landscape.
+      - 'The relation to the distinct nearby #48 Nava-kuṇḍa and #49 Apsarā-kuṇḍa.'
+    lila: Braj tradition remembers Lauṭhā Bābā as one of Kṛṣṇa’s cowherd friends. When Kṛṣṇa left Vraja for Mathurā, Lauṭhā remained at Pūñcharī waiting for His return; the long wait expresses unbroken sakhya and viraha. This is a living Braj pilgrimage tradition, and the project has not verified Lauṭhā Bābā as a named character in the canonical departure narrative.
+    pilgrim_guidance: 'This living devotional shrine lies directly in the Pūñcharī parikramā landscape. Many local pilgrims treat its darśana as important, but present custom is not turned into mandatory śāstric law. Keep #50 distinct from #48 and #49 even though all three belong to the compact tail cluster.'
+    references:
+      - id: reference.punchari-lautha-baba.garga-tail-context
+        source_title: Garga-saṁhitā — Girirāja-khaṇḍa
+        locus: '8.11'
+        explanation: Puccha-kuṇḍa and tail symbolism establish the Pūñcharī sacred landscape; this text does not name Lauṭhā Bābā.
+      - id: reference.punchari-lautha-baba.srimad-bhagavatam-10-39
+        source_title: Śrīmad-Bhāgavatam
+        locus: '10.39'
+        explanation: Canonical departure context; it does not identify Lauṭhā Bābā or this temple.
+      - id: reference.punchari-lautha-baba.living-tradition
+        source_title: Living Pūñcharī kā Lauṭhā tradition
+        locus: Pūñcharī parikramā shrine
+        explanation: Exact shrine identity, cowherd-friend narrative, waiting-in-separation remembrance, and modern parikramā significance.
+    related_place_ids:
+      - place.nava-kunda
+      - place.apsara-kunda
+      - place.nrsimha-temple-punchari

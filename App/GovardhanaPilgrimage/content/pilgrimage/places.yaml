@@ -1102,3 +1102,157 @@ places:
         description: Śrīmad-Bhāgavatam 10.21.18 supplies broad Govardhana and Balarāma context, not the source of the Ḍokā-Daujī rāsa-watching tradition.
         source_reference: https://vedabase.io/en/library/sb/10/21/18/
     content_destination:
+
+  - id: place.balarama-mukuta-sila
+    map_number: 46
+    canonical_name: Balarāma-mukuṭa-śilā
+    ascii_name: Balarama-mukuta-sila
+    alternate_names:
+      - Balarama Mukut Shila
+      - Balarāma Mukuṭa Śilā
+      - Balarama Crown Shila
+      - Dauji Mukut Shila
+      - Dauji Crown Stone
+    coordinate_status: UNVERIFIED
+    coordinate_confidence: UNKNOWN
+    coordinate_accuracy_meters:
+    verification_notes: 'Traditional Govardhana parikramā descriptions identify a separate Govardhana rock immediately beside the #45 Ḍokā-Daujī sacred area as bearing the impression of Balarāma’s crown. The project has not recovered an independently controlled exact GPS coordinate or an early primary text identifying this exact Balarāma crown-impression rock. Therefore #46 remains coordinate-less and navigates through #45 rather than receiving a fabricated pin.'
+    navigation_anchor_place_id: place.doka-dauji-temple
+    location_guidance: 'Navigate to #45 Ḍokā-Daujī Temple, then identify the crown-impression śilā through legitimate local guidance. Reaching #45 is only arrival at the navigation anchor, not exact arrival at #46. Do not step onto, climb, or scramble over Girirāja.'
+    provenance:
+      - source_type: PILGRIMAGE_TRADITION
+        description: 'Traditional Govardhana guidance directly identifies a separate Balarāma crown-impression rock beside the #45 Dauji sacred area.'
+        source_reference: https://padmanabhdas.wordpress.com/2012/11/
+      - source_type: LATER_GAUDIYA_TEXT
+        description: Vraja-rīti-cintāmaṇi 3.10 supplies Balarāma-on-Govardhana context, not direct proof of this crown-impression rock.
+      - source_type: PRIMARY_SCRIPTURE
+        description: 'Śrīmad-Bhāgavatam 10.21.18 supplies broad Govardhana and Balarāma context, not a textual identification of #46.'
+        source_reference: https://vedabase.io/en/library/sb/10/21/18/
+      - source_type: NEGATIVE_CONTROL
+        description: 'Garga-saṁhitā Girirāja-khaṇḍa 8.7 describes a Kṛṣṇa mauli-śilā; it must not be equated with #46 Balarāma-mukuṭa-śilā without separate evidence.'
+    content_destination:
+
+  - id: place.nrsimha-temple-punchari
+    map_number: 47
+    canonical_name: Nṛsiṁha Temple
+    ascii_name: Nrsimha Temple
+    alternate_names:
+      - Narasimha Temple
+      - Narsingh Temple
+      - Nṛsiṁhadeva Temple
+      - Narasingha Mandira
+      - Punchari Nrsimha Temple
+      - Poonchhari Narasimha Temple
+    coordinate_status: UNVERIFIED
+    coordinate_confidence: UNKNOWN
+    coordinate_accuracy_meters:
+    verification_notes: 'Current mapping and pilgrimage guides independently confirm a Nṛsiṁha shrine in the Pūñcharī cluster near Nava/Naval-kuṇḍa. The project has not secured a controlled exact coordinate for the shrine itself, so #47 remains coordinate-less and navigates through #48 rather than receiving a guessed pin. Claims of great antiquity or installation by Rāmānuja are not treated as established fact.'
+    navigation_anchor_place_id: place.nava-kunda
+    location_guidance: 'Navigate to #48 Nava-kuṇḍa and ask locally for the established Nṛsiṁha Temple approach. Reaching #48 is only arrival at the navigation anchor, not exact arrival at #47. Use constructed or accepted temple access; do not scramble on Girirāja or an unmarked sacred slope.'
+    provenance:
+      - source_type: MODERN_MAP
+        description: Current map data confirms a Narasimha Temple in the Pūñcharī cluster but does not provide a sufficiently controlled project coordinate for the shrine.
+      - source_type: PILGRIMAGE_TRADITION
+        description: Living parikramā guidance identifies the Nṛsiṁha shrine near Nava/Naval-kuṇḍa and its worship of Nṛsiṁhadeva and Prahlāda; age and Rāmānuja-installation claims remain unverified tradition.
+      - source_type: PRIMARY_SCRIPTURE
+        description: Śrīmad-Bhāgavatam 7.8 establishes the Nṛsiṁha and Prahlāda līlā and deity identity, not this specific Pūñcharī temple.
+        source_reference: https://vedabase.io/en/library/sb/7/8/
+    content_destination:
+
+  - id: place.nava-kunda
+    map_number: 48
+    canonical_name: Nava-kuṇḍa
+    ascii_name: Nava-kunda
+    alternate_names:
+      - Nava Kund
+      - Naval Kund
+      - Naval-kuṇḍa
+      - Navala Kund
+      - Navala-kuṇḍa
+      - Navala Kunda
+      - Puccha-kuṇḍa
+      - Puccha Kund
+      - Punchari Kund
+      - Poonchari Kund
+    latitude: 27.4588972
+    longitude: 77.4304361
+    coordinate_status: VERIFIED
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: The Braj Development Plan directly lists BDP_Gvdn_104 Naval Kund at 27°27′32.03″N, 77°25′49.57″E, corresponding to the approved decimal coordinate. Current mapping independently identifies the same Pūñcharī water body. Garga-saṁhitā directly names Puccha-kuṇḍa as Govardhana’s tail and praises bathing there; living tradition identifies the present Nava or Naval kuṇḍa with that sacred geography without pretending the text supplies a modern GPS point.
+    provenance:
+      - source_type: OFFICIAL_OR_INSTITUTIONAL_DOCUMENT
+        description: The Braj Development Plan directly records BDP_Gvdn_104 Naval Kund and supplies the approved present water-body coordinate.
+        source_reference: https://www.upbtvp.in/pdf/Braj_Development_plan.pdf
+      - source_type: MODERN_MAP
+        description: Current mapping independently identifies Naval Kund or Navala Kunda at Pūñcharī.
+      - source_type: SACRED_GEOGRAPHY_TEXT
+        description: Garga-saṁhitā, Girirāja-khaṇḍa 8.11 directly identifies Puccha-kuṇḍa as Govardhana’s tail.
+      - source_type: TIRTHA_MAHATMYA_TEXT
+        description: Garga-saṁhitā, Girirāja-khaṇḍa 10.24–25 praises bathing at Puccha-kuṇḍa on Govardhana.
+      - source_type: PILGRIMAGE_TRADITION
+        description: Living Pūñcharī tradition identifies present Nava or Naval-kuṇḍa with the Puccha-kuṇḍa tail-end sacred landscape; later ever-fresh interpretations remain devotional tradition.
+    content_destination:
+
+  - id: place.apsara-kunda
+    map_number: 49
+    canonical_name: Apsarā-kuṇḍa
+    ascii_name: Apsara-kunda
+    alternate_names:
+      - Apsara Kund
+      - Apsara Kunda
+      - Apsarā Kund
+      - Apsarāvan Kuṇḍa
+      - Apsaravan Kund
+    latitude: 27.4592417
+    longitude: 77.4299333
+    coordinate_status: VERIFIED
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: 'The Braj Development Plan directly lists BDP_Gvdn_105 Apsara Kund at 27°27′33.27″N, 77°25′47.76″E, and current mapping independently identifies the same Pūñcharī water body. Bhakti-ratnākara 5.651 explicitly names Apsarā-kuṇḍa at the end of Govardhana, while Nārāyaṇa Bhaṭṭa’s Vraja-bhakti-vilāsa preserves Apsarāvana and Apsarā-kuṇḍa pilgrimage material. This gives #49 strong agreement between early localization and present geography.'
+    provenance:
+      - source_type: EARLY_GAUDIYA_PILGRIMAGE_TEXT
+        description: Bhakti-ratnākara 5.651 directly names Apsarā-kuṇḍa and places it at the end of Govardhana.
+      - source_type: EARLY_VRAJA_PILGRIMAGE_TEXT
+        description: Nārāyaṇa Bhaṭṭa’s Vraja-bhakti-vilāsa lists Apsarāvana and Apsarā-kuṇḍa and preserves its bathing and prayer tradition.
+      - source_type: OFFICIAL_OR_INSTITUTIONAL_DOCUMENT
+        description: The Braj Development Plan directly records BDP_Gvdn_105 Apsara Kund and supplies the approved present coordinate.
+        source_reference: https://www.upbtvp.in/pdf/Braj_Development_plan.pdf
+      - source_type: MODERN_MAP
+        description: Current mapping independently identifies Apsara Kund in the Pūñcharī cluster.
+      - source_type: PILGRIMAGE_TRADITION
+        description: Later living parikramā tradition preserves apsarā dancing, bathing, and rāsa remembrance; these are not inflated into primary textual claims.
+    content_destination:
+
+  - id: place.punchari-lautha-baba-temple
+    map_number: 50
+    canonical_name: Pūñcharī kā Lauṭhā Bābā Temple
+    ascii_name: Punchari ka Lautha Baba Temple
+    alternate_names:
+      - Poonchhari Ka Lautha Baba Temple
+      - Poonchari Ka Lautha Baba Temple
+      - Punchari Ka Lautha
+      - Puchri Ka Lota
+      - Poonchhari Ka Lota
+      - Lautha Baba Temple
+      - Lautha Baba
+      - Lotha Baba
+      - Lota Baba
+    latitude: 27.4589625
+    longitude: 77.4286094
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: Current mapping consistently identifies the Lauṭhā, Lotha, or Lota Baba shrine on the main Govardhana parikramā road in Pūñcharī. The approved coordinate uses the current FC5H+HCQ location without claiming survey-grade accuracy. Sacred-body texts establish Pūñcharī as Govardhana’s tail landscape, while Lauṭhā Bābā’s personal identity and waiting-for-Kṛṣṇa story belong to living Braj tradition rather than a verified early canonical text.
+    provenance:
+      - source_type: MODERN_MAP
+        description: Current mapping identifies Poonchhari Ka Lautha Baba Temple at FC5H+HCQ, with a neighboring listing corroborating the immediate shrine footprint.
+      - source_type: SACRED_GEOGRAPHY_CONTEXT
+        description: Garga-saṁhitā, Girirāja-khaṇḍa 8.11 supports the Puccha or tail sacred landscape but does not name Lauṭhā Bābā or narrate his story.
+      - source_type: PRIMARY_SCRIPTURE_CONTEXT
+        description: Śrīmad-Bhāgavatam 10.39 supplies canonical departure-to-Mathurā background, not evidence for Lauṭhā Bābā as a named cowherd or for this shrine.
+        source_reference: https://vedabase.io/en/library/sb/10/39/
+      - source_type: PILGRIMAGE_TRADITION
+        description: Living Braj pilgrimage preserves Lauṭhā Bābā as a cowherd friend waiting in separation for Kṛṣṇa and the shrine’s importance in parikramā.
+        source_reference: https://www.brijwale.com/poonchhari-ka-lautha/
+    content_destination:
