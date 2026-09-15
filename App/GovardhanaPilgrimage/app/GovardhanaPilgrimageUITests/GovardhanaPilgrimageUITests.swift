@@ -329,6 +329,25 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
         ).firstMatch, in: app)
     }
 
+    func testTask020A9BalaramaCrownAndApsaraKundaOpenWithApprovedContent() {
+        var app = launch()
+        openPlaceDetails(46, in: app)
+        XCTAssertTrue(app.navigationBars["Balarāma-mukuṭa-śilā"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Balarāma crown-impression Govardhana śilā"].exists)
+        revealForReading(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "At navigation anchor")
+        ).firstMatch, in: app)
+
+        app.terminate()
+        app = launch()
+        openPlaceDetails(49, in: app)
+        XCTAssertTrue(app.navigationBars["Apsarā-kuṇḍa"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Apsarāvana sacred kuṇḍa at the end of Govardhana"].exists)
+        revealForReading(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "Bhakti-ratnākara 5.651")
+        ).firstMatch, in: app)
+    }
+
     func testPlaceReferenceReaderRemainsVisibleAndBackReturnsToPlaceDetails() {
         let app = launch()
         app.buttons["home.map"].tap()
