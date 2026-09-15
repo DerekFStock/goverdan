@@ -1531,3 +1531,175 @@ contents:
     related_place_ids:
       - place.airavata-footprint
       - place.doka-dauji-temple
+
+  - place_id: place.indra-kunda
+    category: Indra repentance sacred-water site
+    summary: 'Indra-kuṇḍa belongs to the same repentance landscape as #55 Indra-pūjā. Canonical texts establish Indra’s humiliation, surrender, and Kṛṣṇa’s forgiveness; living Braj tradition remembers a nearby kuṇḍa formed from Indra’s tears. That origin account is local sacred tradition, not wording from the Bhāgavatam.'
+    why_sacred: 'Śrīmad-Bhāgavatam 10.27.2–17 and Kṛṣṇa-līlā-stava 247–249 preserve Indra’s broken pride, prayers, surrender, and Kṛṣṇa’s mercy. Living tradition connects his tears with this distinct sacred water. Garga-saṁhitā’s Śakra-sarovara is potentially related Indra-named sacred water, but exact identity with #56 remains unresolved.'
+    what_to_see:
+      - The present Indra-kuṇḍa where identified through accepted local guidance.
+      - Its water-body and shrine setting without assumptions about current condition.
+      - The relationship to the separate #55 Indra-pūjā and #54 Airāvata footprint sites.
+    lila: In the canonical layer, Indra approaches Kṛṣṇa ashamed after the Govardhana storm, confesses his pride, and receives mercy. In a distinct living/local layer, Braj tradition remembers his tears in this landscape as forming Indra-kuṇḍa.
+    pilgrim_guidance: 'Navigate to #55 Indra-pūjā. Reaching #55 means At navigation anchor, not exact arrival at #56. Identify the kuṇḍa through accepted local guidance; no offset pin is fabricated, and sacred-water tradition is not a present bathing-safety guarantee.'
+    references:
+      - id: reference.indra-kunda.srimad-bhagavatam-10-27-2-17
+        source_title: Śrīmad-Bhāgavatam
+        locus: 10.27.2–17
+        explanation: Indra’s surrender and Kṛṣṇa’s response; the text does not name this kuṇḍa.
+      - id: reference.indra-kunda.krsna-lila-stava-247-249
+        source_title: Sanātana Gosvāmī — Kṛṣṇa-līlā-stava
+        locus: 247–249
+        explanation: Indra’s crown at Kṛṣṇa’s feet, pride broken, and forgiveness.
+      - id: reference.indra-kunda.garga-sakra-sarovara
+        source_title: Garga-saṁhitā — Girirāja-vibhūti
+        locus: '8.11'
+        explanation: Potentially related Indra-named sacred water; exact identity with #56 remains unresolved.
+      - id: reference.indra-kunda.living-tradition
+        source_title: Living Indra-kuṇḍa tradition
+        locus: Indra Mān-bhaṅga landscape
+        explanation: Supplies the exact modern sacred-water identity and tears tradition as local evidence.
+    related_place_ids:
+      - place.indra-puja
+      - place.airavata-footprint
+      - place.surabhi-kunda
+
+  - place_id: place.surabhi-kunda
+    category: Surabhi sacred kuṇḍa and forgiveness landscape
+    summary: Surabhi-kuṇḍa is one of the best-supported sacred waters in this part of Govardhana. Bhakti-ratnākara directly names it, Vraja-bhakti-vilāsa preserves it in early Vraja pilgrimage tradition, and the Bhāgavatam gives Surabhi’s canonical role in bathing and glorifying Kṛṣṇa after Indra’s pride was broken. The present water body is recorded in the Braj Development Plan.
+    why_sacred: 'Bhakti-ratnākara 5.658 names Surabhi-kuṇḍa, while Vraja-bhakti-vilāsa preserves its tīrtha prayer tradition. Śrīmad-Bhāgavatam 10.27.21–23 and Kṛṣṇa-līlā-stava 249–250 establish Surabhi’s milk abhiṣeka. Living tradition remembers intercession and forgiveness; Parmanand Dāsa’s samādhi is a later devotional layer at #57, not part of #60.'
+    what_to_see:
+      - Surabhi-kuṇḍa and its current sacred-water setting.
+      - The wooded or kadamba landscape where presently visible.
+      - Parmanand Dāsa’s samādhi as a later historical-devotional feature at this stop.
+      - The relationship to the Indra and Airāvata sacred cluster.
+    lila: Surabhi approaches Kṛṣṇa, glorifies Him, and bathes Him with milk. Early pilgrimage texts preserve the kuṇḍa itself, while living tradition remembers Surabhi interceding for Indra and associates this landscape with forgiveness.
+    pilgrim_guidance: '#57 is the kuṇḍa itself, and Parmanand Dāsa’s samādhi remains a feature here rather than at #60. Preserve quiet conduct in the wooded setting; sacred bathing tradition is not a current water-safety guarantee.'
+    references:
+      - id: reference.surabhi-kunda.bhakti-ratnakara-5-658
+        source_title: Bhakti-ratnākara
+        locus: '5.658'
+        explanation: Directly names Surabhi-kuṇḍa.
+        quotation: See Surabhi-kuṇḍa, whose glory is boundless.
+      - id: reference.surabhi-kunda.vraja-bhakti-vilasa
+        source_title: Nārāyaṇa Bhaṭṭa — Vraja-bhakti-vilāsa
+        locus: Surabhi-kuṇḍa pilgrimage and prayer section
+        explanation: Direct early Vraja pilgrimage and bathing-prayer tradition.
+      - id: reference.surabhi-kunda.srimad-bhagavatam-10-27-21-23
+        source_title: Śrīmad-Bhāgavatam
+        locus: 10.27.21–23
+        explanation: Establishes Surabhi’s canonical abhiṣeka, not the modern coordinate.
+      - id: reference.surabhi-kunda.krsna-lila-stava-249-250
+        source_title: Sanātana Gosvāmī — Kṛṣṇa-līlā-stava
+        locus: 249–250
+        explanation: Remembers Govinda, Surabhi’s milk, and Airāvata’s Gaṅgā water.
+      - id: reference.surabhi-kunda.braj-development-plan
+        source_title: Braj Development Plan
+        locus: BDP_Gvdn_107
+        explanation: Present Surabhi-kuṇḍa identity and coordinate.
+    related_place_ids:
+      - place.indra-kunda
+      - place.airavata-footprint
+      - place.airavata-kunda
+      - place.jatipura-samadhi-cluster
+
+  - place_id: place.rudra-kunda-hariju-kunda
+    category: Rudra meditation kuṇḍa and Harijū sacred-water cluster
+    summary: 'This numbered stop preserves two related but distinct physical water bodies. Rudra-kuṇḍa has strong early Gauḍīya support: Bhakti-ratnākara remembers Mahādeva absorbed in meditation on Kṛṣṇa here. Harijū-kuṇḍa is a separate nearby water body preserved through living Braj tradition and officially documented as Hariju/Harji Kund. Their evidence levels remain distinct.'
+    why_sacred: Rudra-kuṇḍa is directly supported by Bhakti-ratnākara 5.659; later tradition remembers Mahādeva’s tears and the Rudana name. Harijū-kuṇḍa is officially documented, while its Harijū-sakhā and Rādhā-Kṛṣṇa bathing associations remain local pilgrimage tradition rather than early textual claims.
+    what_to_see:
+      - 'Rudra-kuṇḍa at the primary map marker: 27.4746611, 77.4409917.'
+      - The current Rudra or Mahādeva shrine where present.
+      - 'Harijū/Harji-kuṇḍa as a separate second water body at 27.4714222, 77.4380889.'
+      - Current ghāṭ and restored landscape layers without inferring their ancient appearance.
+    lila: Bhakti-ratnākara remembers Mahādeva absorbed in meditation on Kṛṣṇa at Rudra-kuṇḍa. Later tradition connects his tears with the Rudana name. Separately, living tradition associates Harijū-kuṇḍa with Harijū sakhā and Rādhā-Kṛṣṇa water pastimes.
+    pilgrim_guidance: Navigate to the Rudra-kuṇḍa primary pin. Harijū-kuṇḍa is a second feature with its own official coordinate; do not mistake one for the other or assume present access matches older descriptions. Sacred-water tradition is not a bathing-safety guarantee.
+    references:
+      - id: reference.rudra-hariju.bhakti-ratnakara-5-659
+        source_title: Bhakti-ratnākara
+        locus: '5.659'
+        explanation: Direct Rudra-kuṇḍa name and Mahādeva meditation association.
+        quotation: Here Mahādeva became absorbed in meditation on Kṛṣṇa.
+      - id: reference.rudra-hariju.braj-development-plan-rudra
+        source_title: Braj Development Plan
+        locus: BDP_Gvdn_111
+        explanation: Official Rudra-kuṇḍa coordinate for the primary marker.
+      - id: reference.rudra-hariju.braj-development-plan-hariju
+        source_title: Braj Development Plan
+        locus: BDP_Gvdn_109
+        explanation: Official coordinate for the separate Harijū/Harji-kuṇḍa secondary feature.
+      - id: reference.rudra-hariju.living-traditions
+        source_title: Living Rudra and Harijū pilgrimage traditions
+        locus: Rudra and Harijū sacred-water landscape
+        explanation: Supplies the later Rudana tears account, Harijū identity, and water-pastime traditions.
+    related_place_ids:
+      - place.surabhi-kunda
+      - place.airavata-kunda
+      - place.jatipura-samadhi-cluster
+
+  - place_id: place.airavata-kunda
+    category: Airāvata sacred kuṇḍa of the Govinda-abhiṣeka landscape
+    summary: Airāvata-kuṇḍa is the living sacred-water memorial of Airāvata’s role in Kṛṣṇa’s Govinda abhiṣeka. The Bhāgavatam securely says Airāvata carried celestial Gaṅgā water in his trunk; living Braj tradition localizes where that water was gathered or stored at this kuṇḍa. The present water body has strong official geographic evidence.
+    why_sacred: Śrīmad-Bhāgavatam 10.27.22–23 and Kṛṣṇa-līlā-stava 250 establish Airāvata’s service in the abhiṣeka. Braj Development Plan BDP_Gvdn_108 establishes the current kuṇḍa identity. The storage or origin explanation is local tradition, not a claim that the Bhāgavatam names Airāvata-kuṇḍa.
+    what_to_see:
+      - Airāvata-kuṇḍa and its current stone or ghāṭ form.
+      - The relationship to the Surabhi and Rudra/Harijū sacred-water cluster.
+      - The nearby but separate #60 memorial landscape.
+      - Current restoration without inferring the kuṇḍa’s ancient form.
+    lila: Airāvata carries heavenly Gaṅgā water in his trunk for Kṛṣṇa’s Govinda abhiṣeka. Living sacred geography remembers that water as gathered or stored at this kuṇḍa; the canonical service and later physical localization remain distinct layers.
+    pilgrim_guidance: '#59 is this water body; #54 is the separate Airāvata footprint śilā. Do not treat them as duplicates. The nearby #60 memorial cluster is a different kind of place, and sacred-water tradition is not a present water-safety guarantee.'
+    references:
+      - id: reference.airavata-kunda.srimad-bhagavatam-10-27-22-23
+        source_title: Śrīmad-Bhāgavatam
+        locus: 10.27.22–23
+        explanation: Airāvata carries celestial Gaṅgā water for Kṛṣṇa’s abhiṣeka; it does not name this kuṇḍa.
+      - id: reference.airavata-kunda.krsna-lila-stava-250
+        source_title: Sanātana Gosvāmī — Kṛṣṇa-līlā-stava
+        locus: '250'
+        explanation: Direct Gosvāmī condensation of Airāvata’s abhiṣeka service.
+        quotation: Heavenly Gaṅgā water brought by Airāvata’s trunk.
+      - id: reference.airavata-kunda.braj-development-plan
+        source_title: Braj Development Plan
+        locus: BDP_Gvdn_108
+        explanation: Present Airāvata-kuṇḍa identity and coordinate.
+      - id: reference.airavata-kunda.living-tradition
+        source_title: Living Airāvata-kuṇḍa tradition
+        locus: Jatipura sacred-water landscape
+        explanation: Supplies the specific gathered or stored-water localization as local tradition.
+    related_place_ids:
+      - place.airavata-footprint
+      - place.surabhi-kunda
+      - place.rudra-kunda-hariju-kunda
+      - place.jatipura-samadhi-cluster
+
+  - place_id: place.jatipura-samadhi-cluster
+    category: Jatipura Vaiṣṇava samādhi and memorial cluster
+    summary: 'The #60 stop is not one tomb but a memorial landscape encountered as the parikramā approaches Jatipura. Jatipura became a major center of Śrīnāthjī and Puṣṭimārga devotion, and many saintly memorials accumulated here. Govind Svāmī’s samādhi near Airāvata-kuṇḍa is one identifiable example, not the sole identity of this cluster.'
+    why_sacred: 'Samādhi is a Vaiṣṇava memorial form, and documentary scholarship identifies Jatipura as a concentrated Puṣṭimārga saint landscape. Govind Svāmī provides one documented example linked with Śrīnāthjī kīrtana. Parmanand Dāsa’s samādhi remains at #57; Vitthalanātha’s samādhi belongs to future #61, and no complete list is fabricated here.'
+    what_to_see:
+      - Several saint memorial or samādhi sites as the parikramā approaches Jatipura.
+      - Govind Svāmī’s samādhi as one identifiable landmark in the wider cluster.
+      - Individually maintained memorials with their own custodians and traditions.
+      - An area and cluster landscape rather than one building or single tomb.
+    lila: This is primarily Vaiṣṇava historical and devotional geography, not a Kṛṣṇa-līlā site in itself. It remembers saints who lived, sang, performed bhajana, and served Śrīnāthjī and Govardhana here, including Govind Svāmī’s place in the Śrīnāthjī kīrtana tradition.
+    pilgrim_guidance: 'Navigate first to #59 Airāvata-kuṇḍa. Reaching #59 means At navigation anchor, not exact arrival at #60. Continue through the Jatipura memorial landscape with local guidance, identify named samādhis before attribution, and maintain quiet, respectful darśana without assuming photography or entry is always appropriate.'
+    references:
+      - id: reference.jatipura-samadhis.master-itinerary
+        source_title: Govardhana master pilgrimage itinerary
+        locus: 'Place #60: Samadhis'
+        explanation: Defines the stop in the plural as a memorial cluster.
+      - id: reference.jatipura-samadhis.parikrama-guide
+        source_title: Modern Govardhana parikramā guide
+        locus: Jatipura approach
+        explanation: Describes numerous samādhis immediately before Jatipura.
+      - id: reference.jatipura-samadhis.landscape-scholarship
+        source_title: Govardhana cultural-landscape scholarship
+        locus: Jatipura memorial landscape
+        explanation: Documents the concentration of Puṣṭimārga saint samādhis at Jatipura.
+      - id: reference.jatipura-samadhis.govind-svami
+        source_title: Govind Svāmī Samādhi documentation
+        locus: Airāvata-kuṇḍa and Jatipura landscape
+        explanation: Establishes one concrete member of the cluster without reducing #60 to a single samādhi.
+    related_place_ids:
+      - place.airavata-kunda
+      - place.surabhi-kunda

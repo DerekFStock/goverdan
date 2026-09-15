@@ -1405,3 +1405,167 @@ places:
       - source_type: MODERN_MAP
         description: Current mapping identifies Indra Maan Bhang Temple at FC8P+6HM.
     content_destination:
+
+  - id: place.indra-kunda
+    map_number: 56
+    canonical_name: Indra-kuṇḍa
+    ascii_name: Indra-kunda
+    alternate_names:
+      - Indra Kund
+      - Indra Kunda
+      - Indra-damana Kunda
+      - Indra Damana Kund
+      - Śakra-kuṇḍa
+      - Shakra Kund
+    latitude:
+    longitude:
+    coordinate_status: UNVERIFIED
+    coordinate_confidence: UNKNOWN
+    coordinate_accuracy_meters:
+    navigation_anchor_place_id: place.indra-puja
+    location_guidance: 'Navigate to #55 Indra-pūjā, then identify the distinct Indra-kuṇḍa through accepted local guidance. Reaching #55 is only arrival at the navigation anchor, not exact arrival at #56.'
+    verification_notes: 'Living Govardhana tradition preserves a distinct Indra-kuṇḍa associated with the Indra Mān-bhaṅga landscape, and current mapping identifies an Indra Kund or Indra-damana site in that cluster. No independently controlled exact coordinate is approved, so #56 remains coordinate-less and navigates through #55 rather than receiving a guessed pin.'
+    provenance:
+      - source_type: PRIMARY_SCRIPTURE_CONTEXT
+        description: Śrīmad-Bhāgavatam 10.27.2–17 establishes Indra’s repentance and Kṛṣṇa’s response but does not name Indra-kuṇḍa.
+        source_reference: https://vedabase.io/en/library/sb/10/27/
+      - source_type: PRIMARY_GOSVAMI_TEXT
+        description: Kṛṣṇa-līlā-stava 247–249 synthesizes Indra’s surrender, broken pride, and forgiveness.
+      - source_type: SACRED_GEOGRAPHY_NEGATIVE_CONTROL
+        description: 'Garga-saṁhitā, Girirāja-vibhūti 8.11 names Śakra-sarovara; exact identity with modern #56 remains unresolved.'
+      - source_type: PILGRIMAGE_TRADITION
+        description: Living tradition identifies the distinct kuṇḍa and preserves the account that Indra’s tears formed it.
+      - source_type: MODERN_MAP
+        description: Current mapping confirms an Indra Kund or Indra-damana identity in the expected cluster but supplies no approved controlled coordinate for this task.
+    content_destination:
+
+  - id: place.surabhi-kunda
+    map_number: 57
+    canonical_name: Surabhi-kuṇḍa
+    ascii_name: Surabhi-kunda
+    alternate_names:
+      - Surabhi Kund
+      - Surbhi Kund
+      - Surbhi Kunda
+      - Surabhi Kunda
+      - Kamadhenu Kund
+      - Kāmadhenu-kuṇḍa
+    latitude: 27.4671250
+    longitude: 77.4362861
+    coordinate_status: VERIFIED
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: The Braj Development Plan directly lists BDP_Gvdn_107 Surbhi Kund at 27°28′1.65″N, 77°26′10.63″E, corresponding to this coordinate, and current mapping independently identifies the same water body. Bhakti-ratnākara 5.658 directly names Surabhi-kuṇḍa, while Śrīmad-Bhāgavatam 10.27.21–23 establishes Surabhi’s canonical abhiṣeka role.
+    provenance:
+      - source_type: OFFICIAL_OR_INSTITUTIONAL_DOCUMENT
+        description: Braj Development Plan BDP_Gvdn_107 Surbhi Kund supplies the approved present water-body coordinate.
+        source_reference: https://www.upbtvp.in/pdf/Braj_Development_plan.pdf
+      - source_type: EARLY_GAUDIYA_PILGRIMAGE_TEXT
+        description: Bhakti-ratnākara 5.658 directly names Surabhi-kuṇḍa and praises its boundless glory.
+      - source_type: EARLY_VRAJA_PILGRIMAGE_TEXT
+        description: Vraja-bhakti-vilāsa explicitly preserves Surabhi-kuṇḍa in its pilgrimage and prayer tradition.
+      - source_type: PRIMARY_SCRIPTURE
+        description: Śrīmad-Bhāgavatam 10.27.21–23 establishes Surabhi’s abhiṣeka of Kṛṣṇa but does not supply the modern coordinate.
+        source_reference: https://vedabase.io/en/library/sb/10/27/
+      - source_type: PRIMARY_GOSVAMI_TEXT
+        description: Kṛṣṇa-līlā-stava 249–250 remembers Govinda, Surabhi’s milk, and Airāvata’s Gaṅgā water.
+      - source_type: PILGRIMAGE_TRADITION
+        description: Living tradition preserves the forgiveness landscape and Parmanand Dāsa’s samādhi as a later devotional layer at this stop.
+      - source_type: MODERN_MAP
+        description: Current mapping independently identifies the present Surabhi Kund water body.
+    content_destination:
+
+  - id: place.rudra-kunda-hariju-kunda
+    map_number: 58
+    canonical_name: Rudra-kuṇḍa + Harijū-kuṇḍa
+    ascii_name: Rudra-kunda + Hariju-kunda
+    alternate_names:
+      - Rudra Kund
+      - Rudana Kund
+      - Rudana-kuṇḍa
+      - Hariju Kund
+      - Harijū Kund
+      - Harji Kund
+      - Hariji Kund
+    latitude: 27.4746611
+    longitude: 77.4409917
+    coordinate_status: VERIFIED
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: 'This combined stop contains two distinct water bodies. Braj Development Plan BDP_Gvdn_111 records Rudra Kund at the primary marker 27.4746611, 77.4409917; BDP_Gvdn_109 records Hariju/Harji Kund separately at 27.4714222, 77.4380889. Bhakti-ratnākara 5.659 directly names Rudra-kuṇḍa and Mahādeva’s meditation there, while Harijū associations remain living tradition.'
+    provenance:
+      - source_type: OFFICIAL_OR_INSTITUTIONAL_DOCUMENT
+        description: Braj Development Plan BDP_Gvdn_111 Rudra Kund supplies the primary coordinate 27.4746611, 77.4409917.
+        source_reference: https://www.upbtvp.in/pdf/Braj_Development_plan.pdf
+      - source_type: OFFICIAL_OR_INSTITUTIONAL_DOCUMENT
+        description: Braj Development Plan BDP_Gvdn_109 Hariju/Harji Kund preserves the separate secondary feature at 27.4714222, 77.4380889.
+        source_reference: https://www.upbtvp.in/pdf/Braj_Development_plan.pdf
+      - source_type: EARLY_GAUDIYA_PILGRIMAGE_TEXT
+        description: Bhakti-ratnākara 5.659 directly names Rudra-kuṇḍa and remembers Mahādeva absorbed in meditation on Kṛṣṇa.
+      - source_type: PILGRIMAGE_TRADITION
+        description: Living Rudra tradition preserves the later Rudana tears account; living Harijū tradition supplies the Harijū-sakhā and water-pastime associations.
+    content_destination:
+
+  - id: place.airavata-kunda
+    map_number: 59
+    canonical_name: Airāvata-kuṇḍa
+    ascii_name: Airavata-kunda
+    alternate_names:
+      - Airavat Kund
+      - Airavata Kund
+      - Airawat Kund
+      - Eravat Kund
+      - Airāvata Kunda
+    latitude: 27.4702389
+    longitude: 77.4386778
+    coordinate_status: VERIFIED
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: Braj Development Plan BDP_Gvdn_108 directly records Airavat Kund at the approved coordinate, corroborated by current mapping. Śrīmad-Bhāgavatam 10.27.22–23 and Kṛṣṇa-līlā-stava 250 establish Airāvata carrying celestial Gaṅgā water; the explanation that it was gathered or stored in this kuṇḍa is living localization rather than Bhāgavatam wording.
+    provenance:
+      - source_type: OFFICIAL_OR_INSTITUTIONAL_DOCUMENT
+        description: Braj Development Plan BDP_Gvdn_108 Airavat Kund supplies the approved present coordinate.
+        source_reference: https://www.upbtvp.in/pdf/Braj_Development_plan.pdf
+      - source_type: PRIMARY_SCRIPTURE
+        description: Śrīmad-Bhāgavatam 10.27.22–23 establishes Airāvata carrying celestial Gaṅgā water for Kṛṣṇa’s abhiṣeka, not the modern kuṇḍa name.
+        source_reference: https://vedabase.io/en/library/sb/10/27/
+      - source_type: PRIMARY_GOSVAMI_TEXT
+        description: Kṛṣṇa-līlā-stava 250 directly remembers heavenly Gaṅgā water brought by Airāvata’s trunk.
+      - source_type: SACRED_GEOGRAPHY_CONTEXT
+        description: 'Garga-saṁhitā 8.10 concerns #54 Airāvata’s footprint and is not evidence for the origin of #59.'
+      - source_type: PILGRIMAGE_TRADITION
+        description: Living tradition localizes Airāvata’s stored or gathered abhiṣeka water at this kuṇḍa.
+      - source_type: MODERN_MAP
+        description: Current mapping independently identifies Airavata Kund at Jatipura.
+    content_destination:
+
+  - id: place.jatipura-samadhi-cluster
+    map_number: 60
+    canonical_name: Samādhis
+    ascii_name: Samadhis
+    alternate_names:
+      - Jatipura Samadhis
+      - Samadhi Cluster
+      - Vaishnava Samadhis
+      - Puṣṭimārga Samādhis
+      - Pushtimarg Samadhis
+      - Govind Svāmī Samādhi cluster
+      - Govind Swami Samadhi area
+    latitude:
+    longitude:
+    coordinate_status: UNVERIFIED
+    coordinate_confidence: UNKNOWN
+    coordinate_accuracy_meters:
+    navigation_anchor_place_id: place.airavata-kunda
+    location_guidance: 'Navigate to #59 Airāvata-kuṇḍa, then continue into the Jatipura memorial landscape using current local guidance. Reaching #59 is arrival at the navigation anchor, not exact arrival at #60.'
+    verification_notes: 'The controlling itinerary labels #60 in the plural as Samadhis, and guides describe many samādhis before Jatipura. Scholarship records a Puṣṭimārga memorial concentration there, with Govind Svāmī’s samādhi as one identifiable example. Because this is a cluster rather than one tomb and no approved centroid exists, #60 remains coordinate-less and anchors through #59.'
+    provenance:
+      - source_type: PILGRIMAGE_LIST
+        description: 'The controlling Govardhana itinerary defines #60 in the plural as Samadhis between #59 and future #61.'
+      - source_type: PILGRIMAGE_GUIDE
+        description: Modern parikramā guidance describes numerous samādhis immediately before Jatipura.
+      - source_type: HISTORICAL_OR_DOCUMENTARY
+        description: Cultural-landscape scholarship documents Jatipura as a major Puṣṭimārga saint-samādhi landscape.
+      - source_type: LIVING_DEVOTIONAL_SITE
+        description: Current documentation identifies Govind Svāmī or Govind Dāsa Samādhi near Airāvata-kuṇḍa as one concrete member of the cluster, not its sole identity.
+    content_destination:
