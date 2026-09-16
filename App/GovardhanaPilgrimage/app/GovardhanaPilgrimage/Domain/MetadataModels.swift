@@ -139,6 +139,20 @@ struct BookmarkRecord: Identifiable, Hashable, Sendable {
     let createdAt: Date
 }
 
+struct VedabaseBookmarkRecord: Identifiable, Hashable, Sendable {
+    let url: URL
+    let title: String
+    let createdAt: Date
+
+    var id: String { url.absoluteString }
+
+    static func isBookmarkable(_ url: URL) -> Bool {
+        url.scheme?.lowercased() == "https"
+            && ["vedabase.io", "www.vedabase.io"].contains(url.host?.lowercased() ?? "")
+            && (url.path == "/en/library" || url.path.hasPrefix("/en/library/"))
+    }
+}
+
 struct StoryOrigin: Hashable, Codable, Sendable {
     let storyID: StoryID
     let sectionID: StorySectionID

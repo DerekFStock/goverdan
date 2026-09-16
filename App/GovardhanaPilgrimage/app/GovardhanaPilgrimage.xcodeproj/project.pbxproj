@@ -28,6 +28,7 @@
 		D008D900778C9A9E20A08B92 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74D79A2A128E43DD59F9D11 /* AppContainer.swift */; };
 		FF33A7F988C1DD513F07E548 /* GovardhanaPilgrimageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112867B021146C26A6735430 /* GovardhanaPilgrimageUITests.swift */; };
 		A12000000000000000000001 /* OriginalWitnessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12000000000000000000002 /* OriginalWitnessView.swift */; };
+		C31000000000000000000001 /* VedabaseReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31000000000000000000002 /* VedabaseReaderView.swift */; };
 		A12000000000000000000003 /* task012-neutral-witness.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A12000000000000000000004 /* task012-neutral-witness.pdf */; };
 		B14000000000000000000001 /* Task014Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14000000000000000000002 /* Task014Map.swift */; };
 		B14000000000000000000003 /* govardhana-offline-style.json in Resources */ = {isa = PBXBuildFile; fileRef = B14000000000000000000004 /* govardhana-offline-style.json */; };
@@ -74,6 +75,7 @@
 		EC93031F975BA495F7A92BF8 /* ContentRepository.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ContentRepository.swift; sourceTree = "<group>"; };
 		F74D79A2A128E43DD59F9D11 /* AppContainer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
 		A12000000000000000000002 /* OriginalWitnessView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OriginalWitnessView.swift; sourceTree = "<group>"; };
+		C31000000000000000000002 /* VedabaseReaderView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VedabaseReaderView.swift; sourceTree = "<group>"; };
 		A12000000000000000000004 /* task012-neutral-witness.pdf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.pdf; name = "task012-neutral-witness.pdf"; path = "../content/fixtures/task012-neutral-witness.pdf"; sourceTree = SOURCE_ROOT; };
 		B14000000000000000000002 /* Task014Map.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Map/Task014Map.swift; sourceTree = "<group>"; };
 		B14000000000000000000004 /* govardhana-offline-style.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ../Resources/Map/govardhana-offline-style.json; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				D6DC1AD0F4AB5360163211B5 /* Home */,
 				387C87C0E706D3437A69E489 /* PlaceholderDestinationView.swift */,
 				A12000000000000000000002 /* OriginalWitnessView.swift */,
+				C31000000000000000000002 /* VedabaseReaderView.swift */,
 				B14000000000000000000002 /* Task014Map.swift */,
 				B14000000000000000000004 /* govardhana-offline-style.json */,
 				B14000000000000000000006 /* govardhana-base.geojson */,
@@ -399,6 +402,7 @@
 				4A87814C3F687A280A70E865 /* PlaceholderDestinationView.swift in Sources */,
 				7046317D36D01D1A8ED1E30E /* AppRoute.swift in Sources */,
 				A12000000000000000000001 /* OriginalWitnessView.swift in Sources */,
+				C31000000000000000000001 /* VedabaseReaderView.swift in Sources */,
 				B14000000000000000000001 /* Task014Map.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

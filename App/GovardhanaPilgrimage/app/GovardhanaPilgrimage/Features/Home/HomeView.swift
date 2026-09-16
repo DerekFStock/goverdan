@@ -21,6 +21,7 @@ struct HomeView: View {
                             destination("Sources", systemImage: "books.vertical", route: .library, identifier: "library")
                             destination("Search", systemImage: "magnifyingglass", route: .search, identifier: "search")
                             destination("Bookmarks", systemImage: "bookmark", route: .bookmarks, identifier: "bookmarks")
+                            destination("Vedabase", systemImage: "globe", route: .vedabase(URL(string: "https://vedabase.io/en/library/")!), identifier: "vedabase")
                         }
                     }
 
@@ -79,7 +80,7 @@ struct HomeView: View {
                 Text("Pilgrimage companion")
                     .font(.headline)
                     .foregroundStyle(AppTheme.forest)
-                Text("Govardhana & Rādhā-kuṇḍa · Offline")
+                Text("Offline pilgrimage · Vedabase online")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             }

@@ -1082,6 +1082,32 @@ final class FoundationTests: XCTestCase {
         XCTAssertTrue(try reopened.bookmarks().isEmpty)
     }
 
+    func testVedabasePageBookmarksSurviveRelaunchAndStaySeparateFromContent() throws {
+        let directory = FileManager.default.temporaryDirectory.appending(path: UUID().uuidString, directoryHint: .isDirectory)
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let databaseURL = directory.appending(path: "user-state.sqlite")
+        let pageURL = try XCTUnwrap(URL(string: "https://vedabase.io/en/library/bg/10/17/"))
+        let unsafeURL = try XCTUnwrap(URL(string: "https://example.com/en/library/bg/10/17/"))
+        XCTAssertTrue(VedabaseBookmarkRecord.isBookmarkable(pageURL))
+        XCTAssertTrue(VedabaseBookmarkRecord.isBookmarkable(URL(string: "https://vedabase.io/en/library/")!))
+        XCTAssertFalse(VedabaseBookmarkRecord.isBookmarkable(unsafeURL))
+
+        let firstSession = try UserStateDatabase(url: databaseURL)
+        try firstSession.saveVedabaseBookmark(url: pageURL, title: "Bg. 10.17")
+        try firstSession.saveVedabaseBookmark(url: pageURL, title: "Bhagavad-gītā 10.17")
+        XCTAssertThrowsError(try firstSession.saveVedabaseBookmark(url: unsafeURL, title: "Not Vedabase"))
+
+        let reopened = try UserStateDatabase(url: databaseURL)
+        let records = try reopened.vedabaseBookmarks()
+        XCTAssertEqual(1, records.count)
+        XCTAssertEqual(pageURL, records.first?.url)
+        XCTAssertEqual("Bhagavad-gītā 10.17", records.first?.title)
+        XCTAssertTrue(try reopened.bookmarks().isEmpty)
+        try reopened.removeVedabaseBookmark(url: pageURL)
+        XCTAssertTrue(try UserStateDatabase(url: databaseURL).vedabaseBookmarks().isEmpty)
+    }
+
     func testUserStateOperationsDoNotMutateGeneratedContentDatabase() throws {
         let contentURL = try bundledContentURL()
         let contentBefore = try Data(contentsOf: contentURL)
@@ -1091,6 +1117,10 @@ final class FoundationTests: XCTestCase {
         let userState = try UserStateDatabase(url: directory.appending(path: "user-state.sqlite"))
 
         try userState.saveBookmark(.source(SourcePassageID(rawValue: "passage.fixture.2")))
+        try userState.saveVedabaseBookmark(
+            url: try XCTUnwrap(URL(string: "https://vedabase.io/en/library/bg/10/17/")),
+            title: "Bg. 10.17"
+        )
         try userState.saveWorkPosition(
             WorkReadingPosition(
                 workID: SourceWorkID(rawValue: "work.fixture"),

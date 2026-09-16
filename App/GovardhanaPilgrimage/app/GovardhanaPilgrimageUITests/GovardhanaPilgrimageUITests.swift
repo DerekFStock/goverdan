@@ -2,6 +2,34 @@ import XCTest
 
 @MainActor
 final class GovardhanaPilgrimageUITests: XCTestCase {
+    func testVedabaseReaderBookmarksAndReopensCurrentPage() {
+        let app = launch()
+        app.buttons["home.vedabase"].tap()
+        XCTAssertTrue(app.navigationBars["Vedabase"].waitForExistence(timeout: 5))
+        let bookmark = app.buttons["vedabase.bookmark"]
+        XCTAssertTrue(bookmark.waitForExistence(timeout: 5))
+        XCTAssertTrue(app.navigationBars["Vedabase"].buttons["vedabase.bookmark"].exists)
+        XCTAssertFalse(app.buttons["vedabase.back"].exists)
+        XCTAssertFalse(app.buttons["vedabase.forward"].exists)
+        XCTAssertFalse(app.buttons["vedabase.reload"].exists)
+        XCTAssertTrue(bookmark.isEnabled)
+        if bookmark.label == "Remove Bookmark" { bookmark.tap() }
+        XCTAssertEqual("Bookmark Page", bookmark.label)
+        bookmark.tap()
+        XCTAssertEqual("Remove Bookmark", bookmark.label)
+
+        app.navigationBars["Vedabase"].buttons.firstMatch.tap()
+        app.buttons["home.bookmarks"].tap()
+        let saved = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@", "bookmarks.vedabase.")).firstMatch
+        XCTAssertTrue(saved.waitForExistence(timeout: 5))
+        saved.tap()
+        XCTAssertTrue(app.navigationBars["Vedabase"].waitForExistence(timeout: 5))
+        let reopenedBookmark = app.buttons["vedabase.bookmark"]
+        XCTAssertTrue(reopenedBookmark.waitForExistence(timeout: 5))
+        XCTAssertEqual("Remove Bookmark", reopenedBookmark.label)
+        reopenedBookmark.tap()
+    }
+
     func testTask014OfflineMapRendersAllFixturePins() {
         let app = launch()
         app.buttons["home.map"].tap()
