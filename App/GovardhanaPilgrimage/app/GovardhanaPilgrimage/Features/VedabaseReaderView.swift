@@ -9,8 +9,6 @@ struct VedabaseReaderView: View {
     @State private var webView = WKWebView()
     @State private var currentURL: URL?
     @State private var pageTitle = "Vedabase"
-    @State private var canGoBack = false
-    @State private var canGoForward = false
     @State private var loadError: String?
 
     init(initialURL: URL, model: AppModel) {
@@ -26,36 +24,6 @@ struct VedabaseReaderView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            HStack(spacing: 20) {
-                Button { webView.goBack() } label: { Image(systemName: "chevron.left") }
-                    .disabled(!canGoBack)
-                    .accessibilityLabel("Previous Vedabase page")
-                    .accessibilityIdentifier("vedabase.back")
-                Button { webView.goForward() } label: { Image(systemName: "chevron.right") }
-                    .disabled(!canGoForward)
-                    .accessibilityLabel("Next Vedabase page")
-                    .accessibilityIdentifier("vedabase.forward")
-                Button { webView.reload() } label: { Image(systemName: "arrow.clockwise") }
-                    .accessibilityLabel("Reload Vedabase page")
-                    .accessibilityIdentifier("vedabase.reload")
-                Spacer()
-                Button {
-                    if let bookmarkableURL {
-                        model.toggleVedabaseBookmark(url: bookmarkableURL, title: pageTitle)
-                    }
-                } label: {
-                    Label(
-                        bookmarkableURL.map { model.isVedabaseBookmarked($0) } == true ? "Remove Bookmark" : "Bookmark Page",
-                        systemImage: bookmarkableURL.map { model.isVedabaseBookmarked($0) } == true ? "bookmark.fill" : "bookmark"
-                    )
-                }
-                .disabled(bookmarkableURL == nil)
-                .accessibilityIdentifier("vedabase.bookmark")
-                .accessibilityValue(pageTitle)
-            }
-            .padding(.horizontal)
-            .padding(.vertical, 10)
-
             if let loadError {
                 HStack {
                     Text(loadError).font(.caption)
@@ -72,14 +40,27 @@ struct VedabaseReaderView: View {
                 initialURL: initialURL,
                 currentURL: $currentURL,
                 pageTitle: $pageTitle,
-                canGoBack: $canGoBack,
-                canGoForward: $canGoForward,
                 loadError: $loadError
             )
             .accessibilityIdentifier("vedabase.webview")
         }
         .navigationTitle("Vedabase")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    if let bookmarkableURL {
+                        model.toggleVedabaseBookmark(url: bookmarkableURL, title: pageTitle)
+                    }
+                } label: {
+                    Image(systemName: bookmarkableURL.map { model.isVedabaseBookmarked($0) } == true ? "bookmark.fill" : "bookmark")
+                }
+                .disabled(bookmarkableURL == nil)
+                .accessibilityLabel(bookmarkableURL.map { model.isVedabaseBookmarked($0) } == true ? "Remove Bookmark" : "Bookmark Page")
+                .accessibilityIdentifier("vedabase.bookmark")
+                .accessibilityValue(pageTitle)
+            }
+        }
     }
 }
 
@@ -88,8 +69,6 @@ private struct VedabaseWebView: UIViewRepresentable {
     let initialURL: URL
     @Binding var currentURL: URL?
     @Binding var pageTitle: String
-    @Binding var canGoBack: Bool
-    @Binding var canGoForward: Bool
     @Binding var loadError: String?
 
     func makeCoordinator() -> Coordinator { Coordinator(self) }
@@ -173,8 +152,6 @@ private struct VedabaseWebView: UIViewRepresentable {
             } else {
                 parent.pageTitle = "Vedabase reading"
             }
-            parent.canGoBack = webView.canGoBack
-            parent.canGoForward = webView.canGoForward
         }
 
         func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {

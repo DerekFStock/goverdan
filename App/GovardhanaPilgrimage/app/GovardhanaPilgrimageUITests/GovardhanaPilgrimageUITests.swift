@@ -8,6 +8,10 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
         XCTAssertTrue(app.navigationBars["Vedabase"].waitForExistence(timeout: 5))
         let bookmark = app.buttons["vedabase.bookmark"]
         XCTAssertTrue(bookmark.waitForExistence(timeout: 5))
+        XCTAssertTrue(app.navigationBars["Vedabase"].buttons["vedabase.bookmark"].exists)
+        XCTAssertFalse(app.buttons["vedabase.back"].exists)
+        XCTAssertFalse(app.buttons["vedabase.forward"].exists)
+        XCTAssertFalse(app.buttons["vedabase.reload"].exists)
         XCTAssertTrue(bookmark.isEnabled)
         if bookmark.label == "Remove Bookmark" { bookmark.tap() }
         XCTAssertEqual("Bookmark Page", bookmark.label)
