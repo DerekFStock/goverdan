@@ -186,8 +186,8 @@ final class FoundationTests: XCTestCase {
     func testTask019ApprovedPlacesSurviveSQLiteAndProjectGenericallyToMap() throws {
         let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
         let places = try repository.pilgrimagePlaces()
-        XCTAssertEqual(55, places.count)
-        XCTAssertEqual(Array(1...55), places.map(\.mapNumber))
+        XCTAssertEqual(60, places.count)
+        XCTAssertEqual(Array(1...60), places.map(\.mapNumber))
         let byNumber = Dictionary(uniqueKeysWithValues: places.map { ($0.mapNumber, $0) })
 
         let santNivas = try XCTUnwrap(byNumber[14])
@@ -222,7 +222,7 @@ final class FoundationTests: XCTestCase {
             return places.first { $0.id == anchorID }?.coordinate != nil
         }.count
         XCTAssertEqual(expectedPresentationCount, presentations.count)
-        XCTAssertEqual(55, presentations.count)
+        XCTAssertEqual(60, presentations.count)
         let approximate14 = try XCTUnwrap(presentations.first { $0.place.mapNumber == 14 })
         XCTAssertTrue(approximate14.isApproximate)
         XCTAssertEqual(13, approximate14.anchor?.mapNumber)
@@ -383,12 +383,12 @@ final class FoundationTests: XCTestCase {
         ), 72.000001)
     }
 
-    func testTask020A10RepositoryLoadsPlacesOneThroughFiftyFive() throws {
+    func testTask020A11RepositoryLoadsPlacesOneThroughSixty() throws {
         let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
         let places = try repository.pilgrimagePlaces()
         let byNumber = Dictionary(uniqueKeysWithValues: places.map { ($0.mapNumber, $0) })
 
-        for number in 1...55 {
+        for number in 1...60 {
             let place = try XCTUnwrap(byNumber[number])
             let content = try XCTUnwrap(try repository.pilgrimagePlaceContent(placeID: place.id))
             XCTAssertFalse(content.summary.isEmpty)
@@ -527,6 +527,9 @@ final class FoundationTests: XCTestCase {
             53: (27.4603875, 77.4307344, .probable, .high),
             54: (27.4655625, 77.4362344, .probable, .high),
             55: (27.4655875, 77.4364219, .probable, .high),
+            57: (27.4671250, 77.4362861, .verified, .high),
+            58: (27.4746611, 77.4409917, .verified, .high),
+            59: (27.4702389, 77.4386778, .verified, .high),
         ]
         for (number, value) in expected {
             let place = try XCTUnwrap(byNumber[number])
@@ -654,6 +657,29 @@ final class FoundationTests: XCTestCase {
         XCTAssertNotEqual(byNumber[54]?.coordinate?.latitude, byNumber[55]?.coordinate?.latitude)
         XCTAssertNotEqual(byNumber[54]?.coordinate?.longitude, byNumber[55]?.coordinate?.longitude)
         XCTAssertTrue(([syamaDhaka, cave, nathji, airavata, indra].flatMap(\.references)).allSatisfy { $0.destination == nil })
+        let indraKundaPlace = try XCTUnwrap(byNumber[56])
+        XCTAssertNil(indraKundaPlace.coordinate)
+        XCTAssertEqual(55, indraKundaPlace.navigationAnchorPlaceID.flatMap { id in places.first { $0.id == id } }?.mapNumber)
+        let indraKunda = try XCTUnwrap(try repository.pilgrimagePlaceContent(placeID: indraKundaPlace.id))
+        XCTAssertTrue(indraKunda.whySacred.contains("exact identity with #56 remains unresolved"))
+        XCTAssertTrue(indraKunda.pilgrimGuidance.contains("At navigation anchor"))
+        let surabhi = try XCTUnwrap(try repository.pilgrimagePlaceContent(placeID: XCTUnwrap(byNumber[57]).id))
+        XCTAssertTrue(surabhi.references.contains { $0.locus == "BDP_Gvdn_107" })
+        XCTAssertTrue(surabhi.pilgrimGuidance.contains("Parmanand Dāsa’s samādhi remains a feature here"))
+        let rudraHariju = try XCTUnwrap(try repository.pilgrimagePlaceContent(placeID: XCTUnwrap(byNumber[58]).id))
+        XCTAssertTrue(rudraHariju.summary.contains("two related but distinct physical water bodies"))
+        XCTAssertTrue(rudraHariju.whatToSee.contains { $0.contains("27.4714222, 77.4380889") })
+        let airavataKunda = try XCTUnwrap(try repository.pilgrimagePlaceContent(placeID: XCTUnwrap(byNumber[59]).id))
+        XCTAssertTrue(airavataKunda.whySacred.contains("Bhāgavatam names Airāvata-kuṇḍa"))
+        let samadhisPlace = try XCTUnwrap(byNumber[60])
+        XCTAssertNil(samadhisPlace.coordinate)
+        XCTAssertEqual(59, samadhisPlace.navigationAnchorPlaceID.flatMap { id in places.first { $0.id == id } }?.mapNumber)
+        let samadhis = try XCTUnwrap(try repository.pilgrimagePlaceContent(placeID: samadhisPlace.id))
+        XCTAssertTrue(samadhis.summary.contains("not one tomb but a memorial landscape"))
+        XCTAssertTrue(samadhis.whySacred.contains("Parmanand Dāsa’s samādhi remains at #57"))
+        XCTAssertTrue(samadhis.whySacred.contains("future #61"))
+        XCTAssertTrue(samadhis.pilgrimGuidance.contains("At navigation anchor"))
+        XCTAssertTrue(([indraKunda, surabhi, rudraHariju, airavataKunda, samadhis].flatMap(\.references)).allSatisfy { $0.destination == nil })
     }
     private func bundledContentURL() throws -> URL {
         try XCTUnwrap(Bundle.main.url(forResource: "radhakunda-content", withExtension: "sqlite"))

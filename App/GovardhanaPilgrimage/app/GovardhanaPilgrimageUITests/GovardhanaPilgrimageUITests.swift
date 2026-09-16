@@ -310,6 +310,33 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
         ).firstMatch, in: app)
     }
 
+    func testTask020A11AnchorsCombinedWatersAndSamadhiCluster() {
+        var app = launch()
+        openPlaceDetails(56, in: app)
+        XCTAssertTrue(app.navigationBars["Indra-kuṇḍa"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Indra repentance sacred-water site"].exists)
+        revealForReading(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "At navigation anchor")
+        ).firstMatch, in: app)
+
+        app.terminate()
+        app = launch()
+        openPlaceDetails(58, in: app)
+        XCTAssertTrue(app.navigationBars["Rudra-kuṇḍa + Harijū-kuṇḍa"].waitForExistence(timeout: 5))
+        revealForReading(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "two related but distinct physical water bodies")
+        ).firstMatch, in: app)
+
+        app.terminate()
+        app = launch()
+        openPlaceDetails(60, in: app)
+        XCTAssertTrue(app.navigationBars["Samādhis"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Jatipura Vaiṣṇava samādhi and memorial cluster"].exists)
+        revealForReading(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "At navigation anchor")
+        ).firstMatch, in: app)
+    }
+
     func testTask020A7AniyorAndSankarsanaKundaOpenWithApprovedContent() {
         var app = launch()
         openPlaceDetails(36, in: app)
