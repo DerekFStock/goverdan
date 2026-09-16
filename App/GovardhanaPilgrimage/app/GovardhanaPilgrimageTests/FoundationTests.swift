@@ -186,8 +186,8 @@ final class FoundationTests: XCTestCase {
     func testTask019ApprovedPlacesSurviveSQLiteAndProjectGenericallyToMap() throws {
         let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
         let places = try repository.pilgrimagePlaces()
-        XCTAssertEqual(65, places.count)
-        XCTAssertEqual(Array(1...65), places.map(\.mapNumber))
+        XCTAssertEqual(71, places.count)
+        XCTAssertEqual(Array(1...71), places.map(\.mapNumber))
         let byNumber = Dictionary(uniqueKeysWithValues: places.map { ($0.mapNumber, $0) })
 
         let santNivas = try XCTUnwrap(byNumber[14])
@@ -222,7 +222,7 @@ final class FoundationTests: XCTestCase {
             return places.first { $0.id == anchorID }?.coordinate != nil
         }.count
         XCTAssertEqual(expectedPresentationCount, presentations.count)
-        XCTAssertEqual(65, presentations.count)
+        XCTAssertEqual(71, presentations.count)
         let approximate14 = try XCTUnwrap(presentations.first { $0.place.mapNumber == 14 })
         XCTAssertTrue(approximate14.isApproximate)
         XCTAssertEqual(13, approximate14.anchor?.mapNumber)
@@ -384,12 +384,12 @@ final class FoundationTests: XCTestCase {
     }
 
     @MainActor
-    func testTask020A12RepositoryLoadsPlacesOneThroughSixtyFive() throws {
+    func testTask020A13RepositoryLoadsCompleteSeventyOnePlaces() throws {
         let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
         let places = try repository.pilgrimagePlaces()
         let byNumber = Dictionary(uniqueKeysWithValues: places.map { ($0.mapNumber, $0) })
 
-        for number in 1...65 {
+        for number in 1...71 {
             let place = try XCTUnwrap(byNumber[number])
             let content = try XCTUnwrap(try repository.pilgrimagePlaceContent(placeID: place.id))
             XCTAssertFalse(content.summary.isEmpty)
@@ -536,6 +536,11 @@ final class FoundationTests: XCTestCase {
             63: (27.4745500, 77.4418800, .probable, .high),
             64: (27.4835125, 77.4311406, .probable, .high),
             65: (27.4865000, 77.4265300, .probable, .high),
+            66: (27.4884375, 77.4487344, .probable, .high),
+            67: (27.5075500, 77.4301000, .probable, .high),
+            68: (27.5197000, 77.4536300, .probable, .high),
+            69: (27.5138694, 77.4766528, .verified, .high),
+            71: (27.5254125, 77.4891094, .probable, .high),
         ]
         for (number, value) in expected {
             let place = try XCTUnwrap(byNumber[number])
@@ -712,6 +717,48 @@ final class FoundationTests: XCTestCase {
             XCTAssertEqual(place.id, GeoMath.nearest(to: try XCTUnwrap(place.coordinate), places: places)?.id)
         }
         XCTAssertNotEqual(byNumber[64]?.id, byNumber[65]?.id)
+        let vilachu = try XCTUnwrap(try repository.pilgrimagePlaceContent(placeID: XCTUnwrap(byNumber[66]).id))
+        XCTAssertTrue(vilachu.pilgrimGuidance.contains("practical arrival point"))
+        XCTAssertTrue(vilachu.pilgrimGuidance.contains("not the exact Vilachu-kuṇḍa centroid"))
+        XCTAssertTrue(vilachu.lila.contains("living pilgrimage tradition"))
+        XCTAssertNotEqual(byNumber[66]?.id, byNumber[23]?.id)
+        let sakhi = try XCTUnwrap(try repository.pilgrimagePlaceContent(placeID: XCTUnwrap(byNumber[67]).id))
+        XCTAssertTrue(sakhi.summary.contains("Bhakti-ratnākara 5.748–752"))
+        XCTAssertTrue(sakhi.summary.contains("Candrāvalī"))
+        XCTAssertTrue(sakhi.pilgrimGuidance.contains("not direct proof"))
+        let nima = try XCTUnwrap(try repository.pilgrimagePlaceContent(placeID: XCTUnwrap(byNumber[68]).id))
+        XCTAssertTrue(nima.summary.contains("5.778"))
+        XCTAssertTrue(nima.whySacred.contains("1841"))
+        XCTAssertTrue(nima.whySacred.contains("sectarian tradition"))
+        let uddhavaKunda = try XCTUnwrap(try repository.pilgrimagePlaceContent(placeID: XCTUnwrap(byNumber[69]).id))
+        XCTAssertTrue(uddhavaKunda.summary.contains("10.47.61"))
+        XCTAssertTrue(uddhavaKunda.summary.contains("does not name the modern water body"))
+        XCTAssertTrue(uddhavaKunda.references.contains { $0.locus == "BDP_Gvdn_123a" })
+        XCTAssertNotEqual(byNumber[69]?.id, byNumber[6]?.id)
+        let sivaKhariPlace = try XCTUnwrap(byNumber[70])
+        XCTAssertNil(sivaKhariPlace.coordinate)
+        XCTAssertEqual(.unverified, sivaKhariPlace.coordinateStatus)
+        XCTAssertEqual(.unknown, sivaKhariPlace.coordinateConfidence)
+        XCTAssertEqual(byNumber[71]?.id, sivaKhariPlace.navigationAnchorPlaceID)
+        XCTAssertTrue(sivaKhariPlace.alternateNames.contains("Śivakhora"))
+        let sivaKhari = try XCTUnwrap(try repository.pilgrimagePlaceContent(placeID: sivaKhariPlace.id))
+        XCTAssertTrue(sivaKhari.summary.contains("Bhakti-ratnākara 5.587"))
+        XCTAssertTrue(sivaKhari.summary.contains("variant"))
+        XCTAssertTrue(sivaKhari.pilgrimGuidance.contains("At navigation anchor"))
+        let matha = try XCTUnwrap(try repository.pilgrimagePlaceContent(placeID: XCTUnwrap(byNumber[71]).id))
+        XCTAssertTrue(matha.summary.contains("Rādhā-kuṇḍa, not Govardhan town"))
+        XCTAssertTrue(matha.summary.contains("1934"))
+        XCTAssertTrue(matha.summary.contains("04-11-1935"))
+        XCTAssertTrue(matha.summary.contains("Śrīman Mahāprabhu"))
+        XCTAssertTrue(matha.whySacred.contains("final numbered landmark"))
+        XCTAssertTrue(([vilachu, sakhi, nima, uddhavaKunda, sivaKhari, matha].flatMap(\.references)).allSatisfy { $0.destination == nil })
+        model.navigate(to: sivaKhariPlace)
+        XCTAssertEqual(70, model.activeDestination.mapNumber)
+        XCTAssertEqual(71, model.activeNavigationAnchor?.mapNumber)
+        XCTAssertEqual(byNumber[71]?.coordinate?.latitude, model.navigationCoordinate?.latitude)
+        model.sample = .init(coordinate: try XCTUnwrap(byNumber[71]?.coordinate), horizontalAccuracy: 1,
+                             timestamp: Date(timeIntervalSince1970: 123), course: 0, speed: 0)
+        XCTAssertEqual(.navigationAnchorArrival, model.arrivalPresentationState)
     }
     private func bundledContentURL() throws -> URL {
         try XCTUnwrap(Bundle.main.url(forResource: "radhakunda-content", withExtension: "sqlite"))

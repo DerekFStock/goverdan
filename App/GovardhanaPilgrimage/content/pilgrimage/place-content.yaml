@@ -1862,3 +1862,195 @@ contents:
       - place.jatipura-village
       - place.gopala-raja-temple
       - place.gopala-prakata-sthali
+
+  - place_id: place.vilachu-kunda
+    category: Vilachu/Bilchhu sacred kund and Bichua-Bihari līlā cluster
+    summary: 'Vilachu-kuṇḍa, also called Bilchhu or Bichua Kund, is a Govardhana sacred-water place associated in living Braj tradition with Rādhā’s lost toe-ring and Kṛṣṇa finding it. Entwistle documents the kund and Bilchhubihari shrine. The map point is a practical arrival marker at the Bichua Bihari temple cluster, not a measured kund center.'
+    why_sacred: 'The documented Bilchhu/Bilchhukund identity, Bilchhubihari worship, and Rādhā-Kṛṣṇa ornament tradition make this a living pilgrimage place. A separate Harideva-discovery tradition is also recorded, but it does not establish that #66 and #23 Harideva Temple are one physical site or prove an archaeological event.'
+    what_to_see:
+      - The current Bichua/Bilchhu-Bihari shrine at the practical arrival marker.
+      - The nearby kund or sacred-water landscape where it can be identified locally; its exact center is not mapped here.
+      - The surrounding Govardhana field and village setting without entering private agricultural land.
+    lila: 'Living Braj pilgrimage tradition remembers Rādhā losing a bichua or toe-ring while bathing and Kṛṣṇa finding it, giving the Bichua/Bilchhu name a devotional explanation. This ornament episode is living pilgrimage tradition, not a direct Śrīmad-Bhāgavatam narrative.'
+    pilgrim_guidance: '#66 leads to Bichua Bihari Temple as a practical arrival point, not the exact Vilachu-kuṇḍa centroid. Ask locally for the surviving water body, respect private fields and current shrine practice, and do not infer bathing safety. #23 Harideva Temple is a different numbered destination in Govardhan town.'
+    references:
+      - id: reference.vilachu-kunda.entwistle
+        source_title: Entwistle — Bilchhuban / Bilchhukund
+        locus: Jatipura–Govardhan pilgrimage survey
+        explanation: Documents the kund, Bilchhubihari shrine, and toe-ring and Harideva traditions without proving an ancient event.
+      - id: reference.vilachu-kunda.living-tradition
+        source_title: Living Vilachu/Bichua tradition
+        locus: Vilachu-kuṇḍa sacred-water landscape
+        explanation: Rādhā-Kṛṣṇa ornament story and current pilgrimage identity.
+      - id: reference.vilachu-kunda.current-map
+        source_title: Current Bichua Bihari Temple mapping
+        locus: FCQX+9FH
+        explanation: Practical shrine-cluster arrival coordinate, not a kund-centroid survey.
+    related_place_ids:
+      - place.harideva-temple
+      - place.jatipura-village
+      - place.sakhi-sthali
+
+  - place_id: place.sakhi-sthali
+    category: Candrāvalī and Uddhava sacred village landscape
+    summary: 'Bhakti-ratnākara 5.748–752 directly names Sakhī-sthalī as Candrāvalī’s village, says it was then called Sakhī-kharā, remembers Uddhava speaking Kṛṣṇa-kathā here, and recalls Kṛṣṇa and Balarāma’s cowherd play nearby. Modern Sakarwa is used as a representative village-landscape marker, not an exact ancient residence.'
+    why_sacred: 'Candrāvalī and the Uddhava account are anchored in early Gauḍīya pilgrimage text. Later Sakhī-vana, Sakhī-kuṇḍa, and Candrāvalī shrine traditions enrich the living landscape; specific claims such as sixty-four sakhīs creating the pond remain pilgrimage tradition. Older māhātmya connections reported by scholarship are not given unverified verse citations.'
+    what_to_see:
+      - Sakarwa/Sakhī-sthalī as a living village and Govardhana-side landscape.
+      - Sakhī-kuṇḍa and Candrāvalī markers where currently identified through local guidance.
+      - The surrounding rural setting without treating one present structure as an ancient residence.
+    lila: 'Bhakti-ratnākara remembers Candrāvalī at Sakhī-sthalī, Uddhava seated here speaking of Kṛṣṇa, and Kṛṣṇa and Balarāma playing with the cowherd boys in the surrounding landscape. Later traditions expand the sakhī sacred geography; they should not displace this direct early evidence.'
+    pilgrim_guidance: '#67 is an area/representative Sakarwa village marker. Locate any kuṇḍa or shrine with current local guidance and respect residential and agricultural land. Bhakti-ratnākara 5.749 places Uddhava at Sakhī-sthalī; it is not direct proof that he sat at modern #69 Uddhava-kuṇḍa.'
+    references:
+      - id: reference.sakhi-sthali.bhakti-ratnakara-5-748-752
+        source_title: Bhakti-ratnākara
+        locus: 5.748–752
+        explanation: Direct Sakhī-sthalī, Candrāvalī, Uddhava and cowherd-play localization; 5.749 belongs to this village.
+        quotation: This is Sakhī-sthalī village, the residence of Candrāvalī.
+      - id: reference.sakhi-sthali.entwistle
+        source_title: Early māhātmya traditions reported by Entwistle
+        locus: Sakhī-sthalī pilgrimage survey
+        explanation: Reports older Uddhava and sakhī sacred-place traditions without an unchecked local verse quote.
+      - id: reference.sakhi-sthali.living-tradition
+        source_title: Living Sakhī-sthalī tradition
+        locus: Sakarwa/Sakhī-sthalī
+        explanation: Candrāvalī, Sakhī-kuṇḍa and current sacred markers.
+      - id: reference.sakhi-sthali.geography
+        source_title: Current Sakarwa village geography
+        locus: Representative village point
+        explanation: Present area marker, not an ancient building coordinate.
+    related_place_ids:
+      - place.vilachu-kunda
+      - place.uddhava-kunda
+      - place.nima-gaon
+
+  - place_id: place.nima-gaon
+    category: Early Nīma-grāma and living Nimbārka pilgrimage village
+    summary: 'Bhakti-ratnākara 5.778 directly names Nīma-grāma. Modern Neemgaon/Nībgaon later became an important Nimbārka Sampradāya village, where tradition remembers Nimbārkācārya residing. The early place-name and later sectarian biography are distinct evidence layers; the pin is a representative village point.'
+    why_sacred: 'The early Gauḍīya place-name is directly attested. Entwistle documents the later Nimbārka landscape, including a Sudarśanajī temple built in 1841 and Sudarśana Kund/Nimbārka Sarovar. Nimbārkācārya’s residence in a now-vanished cave remains sectarian tradition, not a cave archaeologically identified here or a claim made by Bhakti-ratnākara.'
+    what_to_see:
+      - The living Nībgaon/Neemgaon village and publicly accessible Nimbārka-related temple.
+      - Sudarśana Kund or Nimbārka Sarovar where currently identified.
+      - Current sampradāya markers without searching private land for a supposed cave.
+    lila: 'This page primarily preserves early pilgrimage geography and later Nimbārka institutional history, not a specific canonical Kṛṣṇa-līlā at a fixed GPS point. Bhakti-ratnākara names the village; the Nimbārka residence and cave account belongs to later sectarian remembrance.'
+    pilgrim_guidance: '#68 is a representative village/area marker, not a cave or temple-door coordinate. Use public village roads and current local guidance for temple and sarovar access, observe maṭha etiquette, and do not search private property for the vanished cave. This is a Govardhana-area village, not a Rādhā-kuṇḍa micro-site.'
+    references:
+      - id: reference.nima-gaon.bhakti-ratnakara-5-777-780
+        source_title: Bhakti-ratnākara
+        locus: 5.777–780
+        explanation: Verse 5.778 directly names Nīma-grāma; it does not make a Nimbārka cave claim.
+        quotation: This place is known by the name Nīma-grāma.
+      - id: reference.nima-gaon.entwistle
+        source_title: Entwistle — Nimgaon
+        locus: Nimbārka pilgrimage landscape
+        explanation: Documents Nimbārka tradition, the 1841 temple, and Sudarśana Kund/Nimbārka Sarovar.
+      - id: reference.nima-gaon.nimbarka-tradition
+        source_title: Living Nimbārka tradition
+        locus: Neemgaon
+        explanation: Sectarian memory of Nimbārkācārya and a no-longer-visible cave.
+      - id: reference.nima-gaon.geography
+        source_title: Current Nībgaon geography
+        locus: Representative village point
+        explanation: Present area marker rather than historic cave position.
+    related_place_ids:
+      - place.sakhi-sthali
+      - place.uddhava-kunda
+      - place.kusumasarovara
+
+  - place_id: place.uddhava-kunda
+    category: Uddhava sacred kuṇḍa of humility before the gopīs’ prema
+    summary: 'Uddhava-kuṇḍa is a Govardhana sacred-water place west of Kusuma-sarovara. Śrīmad-Bhāgavatam 10.47.61 gives the heart of Uddhava’s spiritual transformation: he longs to become even a shrub or creeper in Vraja to receive the gopīs’ foot-dust. Later Braj tradition localizes his continuing presence around this kund; the canonical verse does not name the modern water body.'
+    why_sacred: 'Uddhava’s humility before gopī-prema is canonical. Later Bhagavata-māhātmya and Vajranābha/Dvārakā-queens traditions connect his continuing presence and consolation with this Govardhana landscape. Entwistle documents the Uddhava shrine/baithak, and Braj Development Plan BDP_Gvdn_123a identifies the present kund. #67 Sakhī-sthalī preserves a separate direct Uddhava verse.'
+    what_to_see:
+      - Uddhava-kuṇḍa and its current ghāṭ or restored masonry, without assuming the fabric is ancient.
+      - Uddhava Bihari shrine and baithak where currently accessible.
+      - Sacred grass or creeper symbolism and the nearby Kusuma-sarovara landscape.
+    lila: 'Uddhava comes to Vraja with Kṛṣṇa’s message and encounters a love that humbles his learning and prestige. He prays for the lowly place of vegetation receiving the gopīs’ foot-dust. Later sacred geography places his continuing presence and Vajranābha/queens remembrance at this kund; these are distinct layers.'
+    pilgrim_guidance: 'Use the official #69 kund coordinate. #6 Uddhava Temple is a separate numbered record, and Bhakti-ratnākara 5.749 directly concerns #67 Sakhī-sthalī, not this kund. Observe the quiet shrine setting. Sacred bathing tradition does not guarantee present water safety.'
+    references:
+      - id: reference.uddhava-kunda.srimad-bhagavatam-10-47-61
+        source_title: Śrīmad-Bhāgavatam
+        locus: 10.47.61
+        explanation: Uddhava’s aspiration for the gopīs’ foot-dust; not proof of the modern kund name or coordinate.
+      - id: reference.uddhava-kunda.bhagavata-mahatmya
+        source_title: Bhagavata-māhātmya / Vajranābha-Uddhava tradition
+        locus: Govardhana-area Uddhava sacred geography
+        explanation: Later presence and manifestation tradition; no unverified precise Purāṇic verse is assigned.
+      - id: reference.uddhava-kunda.entwistle
+        source_title: Entwistle — Uddhav Kund
+        locus: West of Kusuma Sarovar
+        explanation: Established pilgrimage identity, shrine and baithak geography.
+      - id: reference.uddhava-kunda.braj-development-plan
+        source_title: Braj Development Plan
+        locus: BDP_Gvdn_123a
+        explanation: Official present Uddhav Kund coordinate and complex.
+    related_place_ids:
+      - place.kusumasarovara
+      - place.uddhava-temple
+      - place.sakhi-sthali
+      - place.siva-khari
+
+  - place_id: place.siva-khari
+    category: Early Śivakhora and modern Siva-kharī sacred pond at Rādhā-kuṇḍa’s western entrance
+    summary: 'Śiva-kharī is the present parikramā name for the small sacred pond also remembered as Śivakhora. Bhakti-ratnākara 5.587 directly names Śivakhora among Rādhā-kuṇḍa-area ponds. Later Braj traditions tell variant stories of a she-jackal receiving mercy in Rādhā’s domain. The early place-name is secure; the detailed later stories are not treated as one verified Purāṇic account.'
+    why_sacred: 'Bhakti-ratnākara names Śivakhora beside Bhānukhora; modern Gauḍīya guidance identifies the continuing site as Siva Khari/Siva Pushkarani. Living jackal stories emphasize Rādhā’s mercy but differ in detail. A nearby Rāmeśvara Śiva shrine is also remembered locally; neither it nor the jackal account proves a single definitive etymology of the pond name.'
+    what_to_see:
+      - The small Siva Khari/Śivakhora pond at the western Rādhā-kuṇḍa approach, identified with current local guidance.
+      - The tiny Rāmeśvara shrine where currently preserved.
+      - The relationship to the separate #71 Gauḍīya Maṭha navigation anchor without assuming present masonry is ancient.
+    lila: 'The early pilgrimage text names Śivakhora as a sacred pond. In one later tradition Rādhā protects a distressed she-jackal and grants mercy; in another, a she-jackal dies and a gopī form is revealed after local rites. These are variant living tellings of sanctity in Rādhā’s domain, not a directly verified Padma Purāṇa verse in this project.'
+    pilgrim_guidance: 'Navigate to #71 Rādhā-Kuñjabihārī Gauḍīya Maṭha, then use current local or parikramā guidance for the nearby pond. At #71 the app correctly says At navigation anchor, not Arrived at #70. The exact #70 pond coordinate is unresolved; no turn-by-turn path or bathing-safety claim is made.'
+    references:
+      - id: reference.siva-khari.bhakti-ratnakara-5-587
+        source_title: Bhakti-ratnākara
+        locus: '5.587'
+        explanation: Direct Śivakhora place-name, not a jackal-story verse.
+        quotation: These are the two kuṇḍas Śivakhora and Bhānukhora.
+      - id: reference.siva-khari.gaudiya-guide
+        source_title: Modern Gauḍīya Vraja-maṇḍala parikramā guide
+        locus: Western Rādhā-kuṇḍa approach
+        explanation: Connects early Śivakhora with the current Siva Khari/Siva Pushkarani pond.
+      - id: reference.siva-khari.jackal-traditions
+        source_title: Living Rādhā mercy traditions
+        locus: Śiva-kharī
+        explanation: Multiple she-jackal tellings; no single unverified Purāṇic wording is adopted.
+      - id: reference.siva-khari.current-map
+        source_title: Current Siva Khari Pushkarani mapping
+        locus: Rādhā-kuṇḍa western entrance
+        explanation: Present place identity without a controlled exact coordinate.
+    related_place_ids:
+      - place.uddhava-kunda
+      - place.radha-kunjabihari-gaudiya-matha
+      - place.radhakunda
+
+  - place_id: place.radha-kunjabihari-gaudiya-matha
+    category: Modern Gauḍīya Maṭha and final landmark of the 71-place Govardhana registry
+    summary: 'Rādhā-Kuñjabihārī Gauḍīya Maṭha stands at Rādhā-kuṇḍa, not Govardhan town, and embodies a modern Gauḍīya layer of Govardhana pilgrimage. Gaudiya Mission records its foundation in 1934 and the installation of Śrī Rādhā-Kuñja Vihārī and Śrīman Mahāprabhu on 4 November 1935 (04-11-1935). The historical 71-place map ends with this maṭha.'
+    why_sacred: 'The maṭha belongs to Bhaktisiddhānta Sarasvatī’s Gauḍīya missionary legacy and living worship of Śrī Rādhā-Kuñja Vihārī and Śrīman Mahāprabhu. Its importance is twentieth-century institutional history and its role as the final numbered landmark of the old Govardhana list, not an invented ancient Kṛṣṇa-līlā at this building.'
+    what_to_see:
+      - Śrī Rādhā-Kuñjabihārī and Śrīman Mahāprabhu in the maṭha’s living worship.
+      - The current maṭha/temple complex at the approved Rādhā-kuṇḍa marker.
+      - The western Rādhā-kuṇḍa setting and nearby separate #70 Śiva-kharī pond.
+    lila: 'This stop preserves modern Gauḍīya institutional history rather than an ancient līlā-sthalī. The 1934 foundation and 4 November 1935 deity installation are separate documented events within the Rādhā-kuṇḍa pilgrimage revival and preaching culture.'
+    pilgrim_guidance: '#71 is at Rādhā-kuṇḍa, not Govardhan town. Observe current maṭha etiquette and confirm darśana access locally; opening hours are not hard-coded. #70 Śiva-kharī is a separate pond using this maṭha as its navigation anchor. Being the last historical map number does not end app navigation or create a route.'
+    references:
+      - id: reference.radha-kunjabihari-matha.gaudiya-mission
+        source_title: Gaudiya Mission chronology
+        locus: 1934 foundation; 4 November 1935 deity installation
+        explanation: Primary institutional record distinguishing foundation and installation at Rādhā-kuṇḍa.
+      - id: reference.radha-kunjabihari-matha.gaudiya-institution
+        source_title: Gauḍīya institutional pilgrimage tradition
+        locus: Śrī Kuñjabihārī Maṭha
+        explanation: Bhaktisiddhānta Sarasvatī connection and Deity identities.
+      - id: reference.radha-kunjabihari-matha.parikrama
+        source_title: Modern Vraja-parikramā accounts
+        locus: Rādhā-kuṇḍa final landmark
+        explanation: Historic itinerary role, not prescribed app route geometry.
+      - id: reference.radha-kunjabihari-matha.current-map
+        source_title: Shree Shree Kunjbihari Goudiya Math current listing
+        locus: GFGQ+5J9, Radha Kund
+        explanation: Practical marker at the exact current listing, not another similarly named nearby maṭha.
+    related_place_ids:
+      - place.siva-khari
+      - place.radhakunda
+      - place.syamakunda
