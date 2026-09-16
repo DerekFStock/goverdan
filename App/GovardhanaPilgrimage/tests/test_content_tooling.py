@@ -205,9 +205,9 @@ class ContentToolingTests(unittest.TestCase):
         self.assertEqual(0, report["foreign_key_violation_count"])
         connection = sqlite3.connect(path)
         try:
-            self.assertEqual(60, connection.execute("SELECT count(*) FROM pilgrimage_places").fetchone()[0])
-            self.assertEqual(274, connection.execute("SELECT count(*) FROM pilgrimage_place_aliases").fetchone()[0])
-            self.assertEqual(209, connection.execute("SELECT count(*) FROM pilgrimage_place_provenance").fetchone()[0])
+            self.assertEqual(65, connection.execute("SELECT count(*) FROM pilgrimage_places").fetchone()[0])
+            self.assertEqual(318, connection.execute("SELECT count(*) FROM pilgrimage_place_aliases").fetchone()[0])
+            self.assertEqual(230, connection.execute("SELECT count(*) FROM pilgrimage_place_provenance").fetchone()[0])
         finally:
             connection.close()
 
@@ -321,8 +321,8 @@ class ContentToolingTests(unittest.TestCase):
     def test_task_019_approved_places_compile_and_sqlite_preserves_anchor(self) -> None:
         result = compile_manifest(self.root, "radhakunda-mvp-development-manifest")
         places = result.content["pilgrimage_places"]
-        self.assertEqual(60, len(places))
-        self.assertEqual(list(range(1, 61)), [place["map_number"] for place in places])
+        self.assertEqual(65, len(places))
+        self.assertEqual(list(range(1, 66)), [place["map_number"] for place in places])
         by_number = {place["map_number"]: place for place in places}
 
         sant_nivas = by_number[14]
@@ -407,6 +407,8 @@ class ContentToolingTests(unittest.TestCase):
                 "place.indra-kunda", "place.surabhi-kunda",
                 "place.rudra-kunda-hariju-kunda", "place.airavata-kunda",
                 "place.jatipura-samadhi-cluster",
+                "place.mukharavinda-vitthalanatha-samadhi", "place.dandavat-sila",
+                "place.jatipura-village", "place.gulala-kunda", "place.gantholi",
             },
             {item["place_id"] for item in contents},
         )
@@ -444,6 +446,8 @@ class ContentToolingTests(unittest.TestCase):
             "place.indra-kunda", "place.surabhi-kunda",
             "place.rudra-kunda-hariju-kunda", "place.airavata-kunda",
             "place.jatipura-samadhi-cluster",
+            "place.mukharavinda-vitthalanatha-samadhi", "place.dandavat-sila",
+            "place.jatipura-village", "place.gulala-kunda", "place.gantholi",
         ]:
             item = by_place[place_id]
             for field in ["summary", "why_sacred", "lila", "pilgrim_guidance"]:
@@ -696,7 +700,29 @@ class ContentToolingTests(unittest.TestCase):
             "place.indra-kunda", "place.surabhi-kunda", "place.rudra-kunda-hariju-kunda",
             "place.airavata-kunda", "place.jatipura-samadhi-cluster",
         ] for reference in by_place[place_id]["references"]))
-        self.assertEqual(60, max(registry_by_number))
+        expected_task020a12 = {
+            61: ("place.mukharavinda-vitthalanatha-samadhi", 27.4732917, 77.4425139, "VERIFIED", "HIGH"),
+            62: ("place.dandavat-sila", 27.4742625, 77.4433594, "PROBABLE", "HIGH"),
+            63: ("place.jatipura-village", 27.4745500, 77.4418800, "PROBABLE", "HIGH"),
+            64: ("place.gulala-kunda", 27.4835125, 77.4311406, "PROBABLE", "HIGH"),
+            65: ("place.gantholi", 27.4865000, 77.4265300, "PROBABLE", "HIGH"),
+        }
+        for number, expected in expected_task020a12.items():
+            self.assertEqual(expected, tuple(registry_by_number[number][key] for key in [
+                "id", "latitude", "longitude", "coordinate_status", "coordinate_confidence",
+            ]))
+        mukharavinda = by_place["place.mukharavinda-vitthalanatha-samadhi"]
+        self.assertIn("27.4734125, 77.4425156", mukharavinda["what_to_see"][1])
+        self.assertIn("not #18", mukharavinda["pilgrim_guidance"])
+        self.assertIn("Do not climb", mukharavinda["pilgrim_guidance"])
+        self.assertIn("not a scriptural or automatic guarantee", by_place["place.dandavat-sila"]["why_sacred"])
+        self.assertIn("representative village/area marker", by_place["place.jatipura-village"]["pilgrim_guidance"])
+        self.assertIn("living tradition", by_place["place.gulala-kunda"]["why_sacred"])
+        self.assertIn("temporarily", by_place["place.gantholi"]["summary"])
+        self.assertIn("place.gulala-kunda", by_place["place.gantholi"]["related_place_ids"])
+        self.assertFalse(any(reference.get("destination") for number in expected_task020a12
+                             for reference in by_place[registry_by_number[number]["id"]]["references"]))
+        self.assertEqual(65, max(registry_by_number))
         for number, expected in {
             48: ("place.nava-kunda", 27.4588972, 77.4304361, "VERIFIED", "HIGH"),
             49: ("place.apsara-kunda", 27.4592417, 77.4299333, "VERIFIED", "HIGH"),
@@ -742,10 +768,10 @@ class ContentToolingTests(unittest.TestCase):
         connection = sqlite3.connect(path)
         try:
             self.assertEqual(7, connection.execute("PRAGMA user_version").fetchone()[0])
-            self.assertEqual(60, connection.execute("SELECT count(*) FROM pilgrimage_place_contents").fetchone()[0])
-            self.assertEqual(208, connection.execute("SELECT count(*) FROM pilgrimage_place_features").fetchone()[0])
-            self.assertEqual(177, connection.execute("SELECT count(*) FROM pilgrimage_place_references").fetchone()[0])
-            self.assertEqual(155, connection.execute("SELECT count(*) FROM pilgrimage_place_relationships").fetchone()[0])
+            self.assertEqual(65, connection.execute("SELECT count(*) FROM pilgrimage_place_contents").fetchone()[0])
+            self.assertEqual(225, connection.execute("SELECT count(*) FROM pilgrimage_place_features").fetchone()[0])
+            self.assertEqual(195, connection.execute("SELECT count(*) FROM pilgrimage_place_references").fetchone()[0])
+            self.assertEqual(172, connection.execute("SELECT count(*) FROM pilgrimage_place_relationships").fetchone()[0])
         finally:
             connection.close()
 
