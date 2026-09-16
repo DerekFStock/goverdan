@@ -13,4 +13,5 @@ enum AppRoute: Hashable, Sendable {
     case originalWitness(OriginalWitnessMapping)
     case search
     case bookmarks
+    case vedabase(URL)
 }

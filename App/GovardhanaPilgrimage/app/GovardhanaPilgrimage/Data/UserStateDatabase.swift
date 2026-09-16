@@ -52,6 +52,13 @@ struct UserStateDatabase {
                 unique: true
             )
         }
+        migrator.registerMigration("v4-vedabase-bookmarks") { database in
+            try database.create(table: "vedabase_bookmarks") { table in
+                table.column("url", .text).primaryKey()
+                table.column("title", .text).notNull()
+                table.column("created_at", .datetime).notNull()
+            }
+        }
         try migrator.migrate(writer)
     }
 
@@ -203,6 +210,38 @@ struct UserStateDatabase {
         }
     }
 
+    func saveVedabaseBookmark(url: URL, title: String) throws {
+        guard VedabaseBookmarkRecord.isBookmarkable(url) else {
+            throw VedabaseBookmarkError.invalidURL
+        }
+        let displayTitle = title.trimmingCharacters(in: .whitespacesAndNewlines)
+        try writer.write { database in
+            try database.execute(
+                sql: "INSERT INTO vedabase_bookmarks(url, title, created_at) VALUES (?, ?, ?) ON CONFLICT(url) DO UPDATE SET title = excluded.title",
+                arguments: [url.absoluteString, displayTitle.isEmpty ? "Vedabase reading" : displayTitle, Date()]
+            )
+        }
+    }
+
+    func removeVedabaseBookmark(url: URL) throws {
+        try writer.write { database in
+            try database.execute(sql: "DELETE FROM vedabase_bookmarks WHERE url = ?", arguments: [url.absoluteString])
+        }
+    }
+
+    func vedabaseBookmarks() throws -> [VedabaseBookmarkRecord] {
+        try writer.read { database in
+            try Row.fetchAll(
+                database,
+                sql: "SELECT url, title, created_at FROM vedabase_bookmarks ORDER BY created_at DESC"
+            ).compactMap { row in
+                let urlString: String = row["url"]
+                guard let url = URL(string: urlString), VedabaseBookmarkRecord.isBookmarkable(url) else { return nil }
+                return VedabaseBookmarkRecord(url: url, title: row["title"], createdAt: row["created_at"])
+            }
+        }
+    }
+
     private func bookmarkValues(
         for target: BookmarkTarget
     ) -> (id: String, type: String, targetID: String, storyID: String?, sectionID: String?) {
@@ -219,4 +258,10 @@ struct UserStateDatabase {
             return ("source:\(passageID.rawValue)", "source_passage", passageID.rawValue, nil, nil)
         }
     }
+}
+
+enum VedabaseBookmarkError: LocalizedError {
+    case invalidURL
+
+    var errorDescription: String? { "Only Vedabase library pages can be bookmarked." }
 }

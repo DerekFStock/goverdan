@@ -36,6 +36,8 @@ struct DestinationView: View {
             SearchView(model: model)
         case .bookmarks:
             BookmarksView(model: model)
+        case let .vedabase(url):
+            VedabaseReaderView(initialURL: url, model: model)
         }
     }
 
@@ -62,11 +64,11 @@ struct BookmarksView: View {
 
     var body: some View {
         Group {
-            if model.bookmarks.isEmpty {
+            if model.bookmarks.isEmpty && model.vedabaseBookmarks.isEmpty {
                 ContentUnavailableView(
                     "No Bookmarks",
                     systemImage: "bookmark",
-                    description: Text("Bookmark a Story position or canonical source Passage while reading.")
+                    description: Text("Bookmark a Story position, source Passage, or Vedabase page while reading.")
                 )
             } else {
                 List {
@@ -90,6 +92,23 @@ struct BookmarksView: View {
                                 .accessibilityIdentifier("bookmarks.item.\(bookmark.id)")
                             }
                             .onDelete { model.removeBookmarks(at: $0, from: sourceBookmarks) }
+                        }
+                    }
+                    if !model.vedabaseBookmarks.isEmpty {
+                        Section("Vedabase") {
+                            ForEach(model.vedabaseBookmarks) { bookmark in
+                                NavigationLink(value: AppRoute.vedabase(bookmark.url)) {
+                                    VStack(alignment: .leading, spacing: 4) {
+                                        Text(bookmark.title).font(.headline)
+                                        Text(bookmark.url.absoluteString)
+                                            .font(.caption)
+                                            .foregroundStyle(.secondary)
+                                            .lineLimit(1)
+                                    }
+                                }
+                                .accessibilityIdentifier("bookmarks.vedabase.\(bookmark.id)")
+                            }
+                            .onDelete(perform: model.removeVedabaseBookmarks)
                         }
                     }
                 }

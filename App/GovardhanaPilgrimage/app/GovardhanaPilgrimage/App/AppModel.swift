@@ -13,6 +13,7 @@ final class AppModel {
     private(set) var storyPosition: StoryReadingPosition?
     private(set) var workPositions: [SourceWorkID: WorkReadingPosition] = [:]
     private(set) var bookmarks: [BookmarkRecord] = []
+    private(set) var vedabaseBookmarks: [VedabaseBookmarkRecord] = []
     private(set) var pilgrimagePlaces: [PilgrimagePlace] = []
     var navigationPath: [AppRoute] = []
     private(set) var sourceExcursion: SourceExcursion?
@@ -26,6 +27,7 @@ final class AppModel {
             works = try container.contentRepository.works()
             pilgrimagePlaces = try container.contentRepository.pilgrimagePlaces()
             bookmarks = try container.userStateDatabase.bookmarks()
+            vedabaseBookmarks = try container.userStateDatabase.vedabaseBookmarks()
             for work in works {
                 workPositions[work.id] = try container.userStateDatabase.workPosition(workID: work.id)
             }
@@ -117,6 +119,36 @@ final class AppModel {
 
     func removeBookmarks(at offsets: IndexSet, from records: [BookmarkRecord]) {
         for index in offsets { toggleBookmark(records[index].target) }
+    }
+
+    func isVedabaseBookmarked(_ url: URL) -> Bool {
+        vedabaseBookmarks.contains { $0.url == url }
+    }
+
+    func toggleVedabaseBookmark(url: URL, title: String) {
+        guard let container else { return }
+        do {
+            if isVedabaseBookmarked(url) {
+                try container.userStateDatabase.removeVedabaseBookmark(url: url)
+            } else {
+                try container.userStateDatabase.saveVedabaseBookmark(url: url, title: title)
+            }
+            vedabaseBookmarks = try container.userStateDatabase.vedabaseBookmarks()
+        } catch {
+            errorMessage = error.localizedDescription
+        }
+    }
+
+    func removeVedabaseBookmarks(at offsets: IndexSet) {
+        guard let container else { return }
+        do {
+            for index in offsets {
+                try container.userStateDatabase.removeVedabaseBookmark(url: vedabaseBookmarks[index].url)
+            }
+            vedabaseBookmarks = try container.userStateDatabase.vedabaseBookmarks()
+        } catch {
+            errorMessage = error.localizedDescription
+        }
     }
 
     func beginSourceExcursion(_ excursion: SourceExcursion) {
