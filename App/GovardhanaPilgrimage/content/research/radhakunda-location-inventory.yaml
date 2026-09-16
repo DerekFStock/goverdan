@@ -1,0 +1,1470 @@
+schema_version: 1
+inventory:
+  id: inventory.radhakunda-micro.development-v1
+  status: RESEARCH
+  scope: Rādhā-kuṇḍa and Śyāma-kuṇḍa physical precinct and related textual geography
+  runtime_compilation: false
+  public_numbering: none
+  source_controls:
+    - 01_Radhakunda_Research_Dossier_v0.4.docx
+    - RK-02_Radhakunda_Nitya-lila_and_Sacred_Geography_Research_Ledger_v0.2.docx
+    - RK-03_Radhakunda_People_of_the_Landscape_Research_Ledger_v0.3.docx
+    - RK-04_Radhakunda_Caitanya_Gosvamis_and_Gaudiya_History_Research_Ledger_v0.3.docx
+    - TASK_021A_1_Radhakunda_Shymakunda_Master_Location_Inventory_Map_Spec.md
+  research_aids:
+    - https://www.upbtvp.in/pdf/Braj_Development_plan.pdf
+    - https://www.brajrasik.org/photo/5dff219fc40a27006408fe06/checkout-map-of-radha-kund-goverdhan-to-visit-important-leela-sthalis
+    - vraja_mandala_parikrama_2ed.pdf
+  physical_planning_note: >-
+    The Braj Development Plan treats the twin-kuṇḍa precinct as linked physical heritage:
+    heritage-walk and pedestrian development, historic linkage among Rādhā-kuṇḍa,
+    Śyāma-kuṇḍa, Lalitā-kuṇḍa and Mohana-kuṇḍa, Lalitā conservation, Mohana
+    revitalization and Śyāma rejuvenation. This is present planning geography,
+    not evidence for nitya-līlā locations or historical building continuity.
+  note: Research IDs and proposed IDs are not public map numbers or compiled runtime identities.
+
+locations:
+  - research_id: RK-01
+    canonical_name: Rādhā-kuṇḍa
+    ascii_name: Radha-kunda
+    alternate_names: ["Radha Kund"]
+    place_type: CORE_WATER
+    map_collection: RADHA_KUNDA_MICRO
+    existing_place_id: place.radhakunda
+    physical_mapping_status: EXISTING_RUNTIME_PLACE
+    local_display_code: RK-01
+    marker_semantics: WATER_BODY
+    evidence_layers: [NITYA_LILA_TEXTUAL, EARLY_PILGRIMAGE_LOCALIZATION, HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: PRIMARY_GOSVAMI, locus: "Rādhā-kuṇḍāṣṭaka and Govinda-līlāmṛta 7", claim: "Eternal sacred-water and service geography; not a GPS witness."}
+      - {layer: OFFICIAL_PHYSICAL, locus: "Braj Development Plan Rādhā-kuṇḍa precinct", claim: "Present heritage-water context and proposed linkages."}
+    modern_locator_notes: ["Existing #1 runtime point is a working marker; water geometry and arrival access need separate control."]
+    continuity_status: PROBABLE_CONTINUITY
+    confidence: HIGH
+    map_priority: CORE
+    content_priority: CORE
+    implementation_wave: A
+    unresolved_questions: ["Which water-body geometry and public arrival point should replace or supplement the working marker?"]
+
+  - research_id: RK-02
+    canonical_name: Śyāma-kuṇḍa / Kṛṣṇa-kuṇḍa
+    ascii_name: Syama-kunda / Krsna-kunda
+    alternate_names: ["Śyāma-kuṇḍa", "Kṛṣṇa-kuṇḍa", "Ariṣṭa-kuṇḍa"]
+    place_type: CORE_WATER
+    map_collection: RADHA_KUNDA_MICRO
+    existing_place_id: place.syamakunda
+    physical_mapping_status: EXISTING_RUNTIME_PLACE
+    local_display_code: RK-02
+    marker_semantics: WATER_BODY
+    evidence_layers: [NITYA_LILA_TEXTUAL, EARLY_PILGRIMAGE_LOCALIZATION, HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: PRIMARY_GOSVAMI, locus: "Govinda-līlāmṛta 7", claim: "Twin-kuṇḍa and Śyāma/Ariṣṭa sacred geography with its own naming history."}
+      - {layer: MODERN_MAP, locus: "OpenStreetMap water-body geometry", claim: "Approximate present center near 27.5252, 77.4925; not a surveyed arrival point."}
+    modern_locator_notes: ["Reuse #2; retain Śyāma, Kṛṣṇa and Ariṣṭa name chronology rather than flattening it."]
+    continuity_status: PROBABLE_CONTINUITY
+    confidence: HIGH
+    map_priority: CORE
+    content_priority: CORE
+    implementation_wave: A
+    unresolved_questions: ["Normalize current water outline and a safe public arrival point separately."]
+
+  - research_id: RK-03
+    canonical_name: Saṅgama meeting point and causeway
+    ascii_name: Sangama meeting point and causeway
+    alternate_names: ["Saṅgama", "Saṅgama Ghāṭ", "twin-kuṇḍa setu"]
+    place_type: MICRO_GEOGRAPHY_CONNECTION
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.sangama
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-03
+    marker_semantics: CONNECTION_AREA
+    evidence_layers: [NITYA_LILA_TEXTUAL, HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: PRIMARY_GOSVAMI, locus: "Govinda-līlāmṛta 7.6", claim: "Textual junction and ornate setu; modern construction continuity is unproved."}
+    modern_locator_notes: ["Present pedestrian causeway/bridge geometry must be surveyed; one point versus short area or line is undecided."]
+    continuity_status: UNRESOLVED
+    confidence: MEDIUM
+    map_priority: CORE
+    content_priority: CORE
+    implementation_wave: B
+    unresolved_questions: ["Identify exact present causeway geometry., Decide whether Saṅgama Ghāṭ is a child approach rather than a second pin."]
+
+  - research_id: RK-04
+    canonical_name: Lalitā-kuṇḍa
+    ascii_name: Lalita-kunda
+    alternate_names: ["Lalita Kund"]
+    place_type: SUBSIDIARY_KUNDA
+    map_collection: RADHA_KUNDA_MICRO
+    existing_place_id: place.lalitakunda
+    physical_mapping_status: EXISTING_RUNTIME_PLACE
+    local_display_code: RK-04
+    marker_semantics: WATER_BODY
+    evidence_layers: [NITYA_LILA_TEXTUAL, HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: MODERN_MAP, locus: "OpenStreetMap geometry", claim: "Approximate present center near 27.5262, 77.4931."}
+      - {layer: OFFICIAL_PHYSICAL, locus: "Braj Development Plan", claim: "Separate Lalitā-kuṇḍa conservation/linkage target."}
+    modern_locator_notes: ["Reuse #3; do not add a duplicate micro marker."]
+    continuity_status: PROBABLE_CONTINUITY
+    confidence: HIGH
+    map_priority: CORE
+    content_priority: CORE
+    implementation_wave: A
+    unresolved_questions: ["Verify precise water outline and access independent of textual Lalitā sector."]
+
+  - research_id: RK-05
+    canonical_name: Mohana-kuṇḍa
+    ascii_name: Mohana-kunda
+    alternate_names: ["Mohan Kund"]
+    place_type: SUBSIDIARY_KUNDA
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.mohana-kunda
+    physical_mapping_status: MAP_NOW_AREA
+    local_display_code: RK-05
+    marker_semantics: WATER_BODY
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: MODERN_MAP, locus: "OpenStreetMap way 430061166", claim: "Present water-body geometry; approximate center 27.52528, 77.49404."}
+      - {layer: OFFICIAL_PHYSICAL, locus: "Braj Development Plan", claim: "Mohan Kund restoration and historic-linkage target."}
+    modern_locator_notes: ["Normalize OSM water geometry before compiling any exact point; not authored as runtime here."]
+    continuity_status: PRESENT_SITE_ONLY
+    confidence: HIGH
+    map_priority: HIGH
+    content_priority: HIGH
+    implementation_wave: A
+    unresolved_questions: ["Which edge or public approach is the best pilgrim arrival point?"]
+
+  - research_id: RK-06
+    canonical_name: Mālyahāri-kuṇḍa
+    ascii_name: Malyahari-kunda
+    alternate_names: ["Mālihāri-kuṇḍa", "Malyahari Kund"]
+    place_type: SUBSIDIARY_KUNDA_LILA_SITE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.malyahari-kunda
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-06
+    marker_semantics: WATER_BODY_UNLOCATED
+    evidence_layers: [EARLY_PILGRIMAGE_LOCALIZATION]
+    source_notes:
+      - {layer: EARLY_VRAJA_PILGRIMAGE, locus: "Bhakti-ratnākara 5.585–586", claim: "Directly names Mālyahāri-kuṇḍa and refers to Muktā-caritra for the pearl pastime."}
+    modern_locator_notes: ["Present water/shrine coordinate and spelling variants require reconciliation."]
+    continuity_status: UNRESOLVED
+    confidence: MEDIUM
+    map_priority: HIGH
+    content_priority: HIGH
+    implementation_wave: B
+    unresolved_questions: ["Which current water body survives?, Which Mālyahāri/Mālihāri spelling belongs to the present site?"]
+
+  - research_id: RK-07
+    canonical_name: Nārāyaṇa-kuṇḍa
+    ascii_name: Narayana-kunda
+    alternate_names: ["Narayana Kund"]
+    place_type: SUBSIDIARY_KUNDA
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.narayana-kunda
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-07
+    marker_semantics: WATER_BODY_UNLOCATED
+    evidence_layers: [EARLY_PILGRIMAGE_LOCALIZATION, HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: SCHOLARLY_SECONDARY, locus: "Entwistle pilgrimage inventory", claim: "Later documented Nārāyaṇa-kuṇḍa identity."}
+    continuity_status: UNRESOLVED
+    confidence: LOW
+    map_priority: MEDIUM
+    content_priority: MEDIUM
+    implementation_wave: B
+    unresolved_questions: ["Confirm exact current identity and coordinate independently."]
+
+  - research_id: RK-08
+    canonical_name: Bhānukhora
+    ascii_name: Bhanukhora
+    alternate_names: ["Bhānu-khora"]
+    place_type: SUBSIDIARY_KUNDA_SACRED_WATER
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.bhanukhora
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-08
+    marker_semantics: WATER_BODY_UNLOCATED
+    evidence_layers: [EARLY_PILGRIMAGE_LOCALIZATION]
+    source_notes:
+      - {layer: EARLY_VRAJA_PILGRIMAGE, locus: "Bhakti-ratnākara 5.587", claim: "Directly names Bhānukhora beside Śivakhora."}
+    continuity_status: UNRESOLVED
+    confidence: MEDIUM
+    map_priority: MEDIUM
+    content_priority: MEDIUM
+    implementation_wave: B
+    unresolved_questions: ["Identify current pond and relationship to the western parikramā lanes."]
+
+  - research_id: RK-09
+    canonical_name: Śivakhora / Śiva-kharī
+    ascii_name: Sivakhora / Siva-khari
+    alternate_names: ["Siva Khari", "Siva Pushkarani"]
+    place_type: SUBSIDIARY_KUNDA
+    map_collection: RADHA_KUNDA_MICRO
+    existing_place_id: place.siva-khari
+    physical_mapping_status: DUPLICATE_CANDIDATE_RECONCILE
+    local_display_code: RK-09
+    marker_semantics: REUSE_EXISTING_AFTER_RECONCILIATION
+    evidence_layers: [EARLY_PILGRIMAGE_LOCALIZATION, HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: EARLY_VRAJA_PILGRIMAGE, locus: "Bhakti-ratnākara 5.587", claim: "Direct Śivakhora name, not a jackal-story verse."}
+      - {layer: LATER_GAUDIYA, locus: "modern parikramā guides", claim: "Śivakhora/Siva Khari continuity at western Rādhā-kuṇḍa approach."}
+    modern_locator_notes: ["Existing #70 remains coordinate-less and anchored to #71; no second pin."]
+    continuity_status: PROBABLE_CONTINUITY
+    confidence: MEDIUM
+    map_priority: HIGH
+    content_priority: HIGH
+    implementation_wave: B
+    unresolved_questions: ["Confirm exact equivalence and pond coordinate before reusing or refining #70."]
+
+  - research_id: RK-10
+    canonical_name: Aṣṭa-sakhī kuñja system
+    ascii_name: Asta-sakhi kunja system
+    alternate_names: ["Eight sakhī groves"]
+    place_type: NITYA_LILA_SYSTEM
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.concept.ashta-sakhi-system
+    physical_mapping_status: TEXTUAL_ONLY_NO_PHYSICAL_PIN
+    local_display_code: RK-10
+    marker_semantics: TEXTUAL_ONLY_ANNOTATION
+    evidence_layers: [NITYA_LILA_TEXTUAL]
+    source_notes:
+      - {layer: PRIMARY_GOSVAMI, locus: "Govinda-līlāmṛta 7.27–101", claim: "Eight-direction aṣṭa-sakhī mandala; not a modern cadastral map."}
+      - {layer: PRIMARY_GOSVAMI, locus: "Kṛṣṇa-bhāvanāmṛta 14.10", claim: "Corresponding textual directional order."}
+    continuity_status: TEXTUAL_GEOGRAPHY_ONLY
+    confidence: HIGH
+    map_priority: DO_NOT_PIN
+    content_priority: LATER
+    implementation_wave: C
+    unresolved_questions: ["Whether a future non-navigation compass overlay would clarify the textual system."]
+
+  - research_id: RK-11
+    canonical_name: Priya-narma-sakhā kuñjas around Śyāma-kuṇḍa
+    ascii_name: Priya-narma-sakha kunjas around Syama-kunda
+    alternate_names: ["Sakhā-kuñja system"]
+    place_type: NITYA_LILA_SYSTEM
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.concept.sakha-kunja-system
+    physical_mapping_status: TEXTUAL_ONLY_NO_PHYSICAL_PIN
+    local_display_code: RK-11
+    marker_semantics: TEXTUAL_ONLY_ANNOTATION
+    evidence_layers: [NITYA_LILA_TEXTUAL]
+    source_notes:
+      - {layer: PRIMARY_GOSVAMI, locus: "Govinda-līlāmṛta 7.111–117", claim: "Textual kuñja system of Subala, Madhumaṅgala, Ujjvala, Arjuna, Gandharva, Vidagdha, Bhṛṅga and Kokila."}
+    continuity_status: TEXTUAL_GEOGRAPHY_ONLY
+    confidence: HIGH
+    map_priority: DO_NOT_PIN
+    content_priority: LATER
+    implementation_wave: C
+    unresolved_questions: ["How to visualize the system without implying GPS identities."]
+
+  - research_id: RK-12
+    canonical_name: Jhūlana-tala / Kṛṣṇa-vaṭa / Śyāma-vaṭa
+    ascii_name: Jhulana-tala / Krsna-vata / Syama-vata
+    alternate_names: ["Swing-site tree"]
+    place_type: SACRED_TREE_SWING_SITE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.jhulana-tala
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-12
+    marker_semantics: TREE_OR_SITE_UNLOCATED
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: SCHOLARLY_SECONDARY, locus: "Entwistle Puṣṭimārga survey", claim: "Swing-site traditions and later patronage."}
+    continuity_status: UNRESOLVED
+    confidence: LOW
+    map_priority: MEDIUM
+    content_priority: MEDIUM
+    implementation_wave: B
+    unresolved_questions: ["Reconcile names, tree survival and public access."]
+
+  - research_id: RK-13
+    canonical_name: Five Pāṇḍava trees / Pañca-Pāṇḍava Ghāṭ complex
+    ascii_name: Five Pandava trees / Panca-Pandava Ghat complex
+    alternate_names: ["Pañca-Pāṇḍava", "Pāṇḍava trees"]
+    place_type: SACRED_TREES_GHAT
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.panca-pandava-complex
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-13
+    marker_semantics: COMBINED_SITE_UNLOCATED
+    evidence_layers: [EARLY_PILGRIMAGE_LOCALIZATION, HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: EARLY_VRAJA_PILGRIMAGE, locus: "Bhakti-ratnākara 5.600", claim: "Five Pāṇḍavas in tree form at Mānasa-pāvana."}
+      - {layer: EARLY_VRAJA_PILGRIMAGE, locus: "Bhakti-ratnākara 5.549–553", claim: "Raghunātha/Pāṇḍava-tree restoration memory; not archaeology."}
+    continuity_status: PROBABLE_CONTINUITY
+    confidence: MEDIUM
+    map_priority: HIGH
+    content_priority: HIGH
+    implementation_wave: B
+    unresolved_questions: ["Which present trees or ghāṭ markers are historically continuous?, Should this be a child of Mānasa-pāvana Ghāṭ?"]
+
+  - research_id: RK-14
+    canonical_name: Rāja-kadamba crown-mark tree
+    ascii_name: Raja-kadamba crown-mark tree
+    alternate_names: ["Raja Kadamba"]
+    place_type: SACRED_TREE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.raja-kadamba
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-14
+    marker_semantics: DISPUTED_TREE_NO_PIN
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: PILGRIMAGE_TRADITION, locus: "competing Rāja-kadamba localizations", claim: "Present tree identity is disputed."}
+    continuity_status: DISPUTED_OR_MULTIPLE
+    confidence: LOW
+    map_priority: LATER
+    content_priority: LATER
+    implementation_wave: C
+    unresolved_questions: ["Resolve competing tree/site traditions before any pin."]
+
+  - research_id: RK-15
+    canonical_name: Girirāja-jihvā / Jihvā-śilā
+    ascii_name: Giriraja-jihva / Jihva-sila
+    alternate_names: ["Jihvā Mandir"]
+    place_type: SACRED_SILA_SHRINE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.giriraja-jihva
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-15
+    marker_semantics: SHRINE_UNLOCATED
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: PILGRIMAGE_TRADITION, locus: "present Jihvā shrine guides", claim: "Living shrine identity; older textual locus for exact footprint remains unproved."}
+    continuity_status: LIVING_TRADITION_ONLY
+    confidence: MEDIUM
+    map_priority: HIGH
+    content_priority: HIGH
+    implementation_wave: B
+    unresolved_questions: ["Capture a controlled current entrance point and distinguish shrine from older textual geography."]
+
+  - research_id: RK-16
+    canonical_name: Raghunātha dāsa Gosvāmī bhajana-kuṭīra
+    ascii_name: Raghunatha dasa Gosvami bhajana-kutira
+    alternate_names: ["Raghunath das Goswami bhajan sthali"]
+    place_type: GOSVAMI_BHAJAN_SITE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.raghunatha-dasa-bhajana-kutira
+    physical_mapping_status: MAP_NOW_PRACTICAL_ARRIVAL
+    local_display_code: RK-16
+    marker_semantics: PRACTICAL_ARRIVAL
+    plus_code: GFGR+6QP
+    evidence_layers: [EARLY_PILGRIMAGE_LOCALIZATION, HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: EARLY_VRAJA_PILGRIMAGE, locus: "Bhakti-ratnākara 5.554–561", claim: "Early Raghunātha kuṭīra tradition; not proof of surviving masonry."}
+      - {layer: MODERN_MAP, locus: "Raghunath das Goswami bhajan sthali GFGR+6QP", claim: "Current practical arrival listing."}
+    continuity_status: PROBABLE_CONTINUITY
+    confidence: MEDIUM
+    map_priority: CORE
+    content_priority: CORE
+    implementation_wave: A
+    unresolved_questions: ["Verify the exact public entrance and overlap with Viśvanātha kuṭīra listing at the same plus code."]
+
+  - research_id: RK-17
+    canonical_name: Raghunātha dāsa Gosvāmī samādhi
+    ascii_name: Raghunatha dasa Gosvami samadhi
+    alternate_names: ["Raghunath Das Goswami Samadhi Mandir"]
+    place_type: SAMADHI
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.raghunatha-dasa-samadhi
+    physical_mapping_status: MAP_NOW_EXACT
+    local_display_code: RK-17
+    marker_semantics: EXACT_PRESENT_SHRINE
+    plus_code: GFGR+7GG
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: MODERN_MAP, locus: "Sreepad Raghunath Das Goswami Samadhi Mandir GFGR+7GG", claim: "Present separate living samādhi site."}
+    continuity_status: STRONG_CONTINUITY
+    confidence: HIGH
+    map_priority: CORE
+    content_priority: CORE
+    implementation_wave: A
+    unresolved_questions: ["Reconcile its memorial relationship to the Three Goswami Samādhi complex without collapsing both pins."]
+
+  - research_id: RK-18
+    canonical_name: Kṛṣṇadāsa Kavirāja bhajana-kuṭīra and samādhi traditions
+    ascii_name: Krsnadasa Kaviraja bhajana-kutira and samadhi
+    alternate_names: ["Krishnadas Kaviraj bhajan kutir"]
+    place_type: GOSVAMI_BHAJAN_SITE_SAMADHI
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.krsnadasa-kaviraja-site-complex
+    physical_mapping_status: DUPLICATE_CANDIDATE_RECONCILE
+    local_display_code: RK-18
+    marker_semantics: SPLIT_COMPOUND_CANDIDATE
+    plus_code: GFGR+7R2
+    evidence_layers: [EARLY_PILGRIMAGE_LOCALIZATION, HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: HISTORICAL_DOCUMENT, locus: "Entwistle report of 1637 dwelling document", claim: "Historical dwelling evidence; present footprint continuity remains open."}
+      - {layer: MODERN_MAP, locus: "Bhajan Kutir of Krishnadas Kaviraja Goswami GFGR+7R2", claim: "Current kuṭīra locator; samādhi associated with another complex."}
+    continuity_status: DISPUTED_OR_MULTIPLE
+    confidence: MEDIUM
+    map_priority: CORE
+    content_priority: CORE
+    implementation_wave: B
+    unresolved_questions: ["Separate current bhajana-kuṭīra entrance from samādhi feature in Three Goswami complex."]
+
+  - research_id: RK-19
+    canonical_name: Raghunātha Bhaṭṭa samādhi
+    ascii_name: Raghunatha Bhatta samadhi
+    alternate_names: ["Raghunatha Bhatta Goswami memorial"]
+    place_type: SAMADHI
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.feature.raghunatha-bhatta-samadhi
+    physical_mapping_status: CHILD_FEATURE_DO_NOT_DUPLICATE
+    local_display_code: RK-19
+    marker_semantics: CHILD_OF_SAMADHI_COMPLEX
+    parent_research_id: RK-SAM-01
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: PILGRIMAGE_TRADITION, locus: "Three Goswami Samādhi complex", claim: "Present Raghunātha Bhaṭṭa memorial within the shared complex."}
+    continuity_status: LIVING_TRADITION_ONLY
+    confidence: MEDIUM
+    map_priority: HIGH
+    content_priority: HIGH
+    implementation_wave: B
+    unresolved_questions: ["Is there an independently meaningful entrance or only a child memorial?"]
+
+  - research_id: RK-20
+    canonical_name: Gopāla Bhaṭṭa Gosvāmī bhajana-kuṭīra
+    ascii_name: Gopala Bhatta Gosvami bhajana-kutira
+    alternate_names: ["Srila Gopala Bhatta Goswami Bhajana Kutir"]
+    place_type: GOSVAMI_BHAJAN_SITE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.gopala-bhatta-bhajana-kutira
+    physical_mapping_status: MAP_NOW_EXACT
+    local_display_code: RK-20
+    marker_semantics: EXACT_PRESENT_SHRINE
+    plus_code: GFGR+6M8
+    evidence_layers: [EARLY_PILGRIMAGE_LOCALIZATION, HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: EARLY_VRAJA_PILGRIMAGE, locus: "Bhakti-ratnākara 5.602", claim: "Direct early attestation of a Gopāla Bhaṭṭa kuṭīra, not present-building age."}
+      - {layer: MODERN_MAP, locus: "Srila Gopala Bhatta Goswami Bhajana Kutir GFGR+6M8", claim: "Current physical shrine locator."}
+    continuity_status: PROBABLE_CONTINUITY
+    confidence: MEDIUM
+    map_priority: CORE
+    content_priority: CORE
+    implementation_wave: A
+    unresolved_questions: ["Verify exact public entrance and whether current fabric has any documented continuity."]
+
+  - research_id: RK-21
+    canonical_name: Jīva Gosvāmī ghāṭ, baithak and bhajana-kuṭīra complex
+    ascii_name: Jiva Gosvami site complex
+    alternate_names: ["Jiva Goswami Bhajan Kutir", "Jīva Ghāṭ"]
+    place_type: GOSVAMI_SITE_COMPLEX
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.jiva-gosvami-site
+    physical_mapping_status: MAP_NOW_PRACTICAL_ARRIVAL
+    local_display_code: RK-21
+    marker_semantics: PRACTICAL_ARRIVAL_COMBINED_SITE
+    plus_code: GFGV+C5F
+    evidence_layers: [EARLY_PILGRIMAGE_LOCALIZATION, HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: HISTORICAL_DOCUMENT, locus: "Raghunātha–Jīva property tradition and later documents", claim: "Property/institutional ties; not proof of permanent Jīva residence."}
+      - {layer: MODERN_MAP, locus: "Jiva Goswami Bhajan Kutir GFGV+C5F", claim: "Present shrine arrival listing."}
+    continuity_status: DISPUTED_OR_MULTIPLE
+    confidence: MEDIUM
+    map_priority: HIGH
+    content_priority: HIGH
+    implementation_wave: A
+    unresolved_questions: ["Separate ghāṭ, baithak, kuṭīra and property claims before treating them as one physical object."]
+
+  - research_id: RK-22
+    canonical_name: Mahāprabhu baithak, Tamāla tree and temple
+    ascii_name: Mahaprabhu baithak Tamala tree and temple
+    alternate_names: ["Caitanya Mahaprabhu baithak"]
+    place_type: CAITANYA_SITE_COMPLEX
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.mahaprabhu-baithak
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-22
+    marker_semantics: COMBINED_SITE_UNLOCATED
+    evidence_layers: [EARLY_PILGRIMAGE_LOCALIZATION, HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: PRIMARY_GAUDIYA, locus: "Caitanya-caritāmṛta Madhya 18", claim: "Mahāprabhu at Arit and twin-kuṇḍa recognition; does not name the exact current baithak footprint."}
+      - {layer: PILGRIMAGE_TRADITION, locus: "living baithak and tamāla site", claim: "Later physical localization."}
+    continuity_status: PROBABLE_CONTINUITY
+    confidence: MEDIUM
+    map_priority: CORE
+    content_priority: CORE
+    implementation_wave: B
+    unresolved_questions: ["Capture controlled current entrance and distinguish tree, temple and baithak."]
+
+  - research_id: RK-23
+    canonical_name: Jāhnavā Ghāṭ and baithak
+    ascii_name: Jahnava Ghat and baithak
+    alternate_names: ["Mā Jāhnavā Ghāṭ"]
+    place_type: GAUDIYA_HISTORICAL_SITE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.jahnava-ghat-complex
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-23
+    marker_semantics: GHAT_BAITHAK_UNLOCATED
+    evidence_layers: [EARLY_PILGRIMAGE_LOCALIZATION, HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: EARLY_VRAJA_PILGRIMAGE, locus: "Bhakti-ratnākara Jāhnavā visit", claim: "Multi-day Rādhā-kuṇḍa visit; does not name the modern northern ghāṭ."}
+      - {layer: PILGRIMAGE_TRADITION, locus: "present Jāhnavā Ghāṭ", claim: "Later northern-bank localization and differing tree-species traditions."}
+    continuity_status: PROBABLE_CONTINUITY
+    confidence: MEDIUM
+    map_priority: CORE
+    content_priority: CORE
+    implementation_wave: B
+    unresolved_questions: ["Resolve ghāṭ/baithak entrance, Rādhā-Gopīnātha relationship and kadamba/bakula/tamāla variants."]
+
+  - research_id: RK-24
+    canonical_name: Nityānanda Prabhu baithak in Gopīnātha temple
+    ascii_name: Nityananda Prabhu baithak in Gopinatha temple
+    alternate_names: ["Nityananda baithak"]
+    place_type: GAUDIYA_MEMORIAL
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.nityananda-baithak
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-24
+    marker_semantics: POSSIBLE_CHILD_FEATURE
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: PILGRIMAGE_TRADITION, locus: "local Gopīnātha temple guide", claim: "Nityānanda baithak remembrance; relationship to RK-27 unverified."}
+    continuity_status: UNRESOLVED
+    confidence: LOW
+    map_priority: MEDIUM
+    content_priority: MEDIUM
+    implementation_wave: B
+    unresolved_questions: ["Is this a child feature of RK-27 or a separate entrance?"]
+
+  - research_id: RK-25
+    canonical_name: Mādhavendra Purī baithak / Vyāsa Gherā
+    ascii_name: Madhavendra Puri baithak / Vyasa Ghera
+    alternate_names: ["Vyāsa Gherā Ghāṭ"]
+    place_type: GAUDIYA_MEMORIAL
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.madhavendra-puri-baithak
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-25
+    marker_semantics: BAITHAK_UNLOCATED
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: PILGRIMAGE_TRADITION, locus: "Vyāsa Gherā guide tradition", claim: "Later Mādhavendra Purī memorial identity."}
+    continuity_status: LIVING_TRADITION_ONLY
+    confidence: LOW
+    map_priority: MEDIUM
+    content_priority: MEDIUM
+    implementation_wave: B
+    unresolved_questions: ["Find entrance, ghāṭ relation and earliest source."]
+
+  - research_id: RK-26
+    canonical_name: Vallabhācārya baithak south of Śyāma-kuṇḍa
+    ascii_name: Vallabhacarya baithak south of Syama-kunda
+    alternate_names: ["Vallabha baithak"]
+    place_type: PUSTIMARG_MEMORIAL
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.vallabhacarya-baithak
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-26
+    marker_semantics: BAITHAK_UNLOCATED
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: SCHOLARLY_SECONDARY, locus: "Entwistle Puṣṭimārga survey", claim: "Living baithak tradition south of Śyāma-kuṇḍa."}
+    continuity_status: LIVING_TRADITION_ONLY
+    confidence: MEDIUM
+    map_priority: MEDIUM
+    content_priority: MEDIUM
+    implementation_wave: B
+    unresolved_questions: ["Identify exact current compound and public access."]
+
+  - research_id: RK-27
+    canonical_name: Śrī Jāhnavā Mandir / Rādhā-Gopīnātha
+    ascii_name: Jahnava Mandir / Radha-Gopinatha
+    alternate_names: ["Radha Gopinath temple"]
+    place_type: TEMPLE_GAUDIYA_HISTORICAL_SITE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.radha-gopinatha-temple
+    physical_mapping_status: MAP_NOW_EXACT
+    local_display_code: RK-27
+    marker_semantics: EXACT_PRESENT_TEMPLE
+    plus_code: GFGR+QC5
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: MODERN_MAP, locus: "Radha Gopinath temple GFGR+QC5", claim: "Current Rādhā-kuṇḍa temple listing, not the Vṛndāvana namesake."}
+    continuity_status: PRESENT_SITE_ONLY
+    confidence: HIGH
+    map_priority: CORE
+    content_priority: CORE
+    implementation_wave: A
+    unresolved_questions: ["Confirm Jāhnavā Ghāṭ/baithak as nearby child features rather than importing Vṛndāvana temple history."]
+
+  - research_id: RK-28
+    canonical_name: Rādhā-Ramaṇa temple at Rādhā-kuṇḍa
+    ascii_name: Radha-Ramana temple at Radha-kunda
+    alternate_names: ["Radharamana temple"]
+    place_type: TEMPLE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.radha-ramana-temple
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-28
+    marker_semantics: TEMPLE_UNLOCATED
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: PILGRIMAGE_TRADITION, locus: "Rādhā-kuṇḍa temple inventory", claim: "Local namesake, not automatically the Vṛndāvana Rādhā-Ramaṇa temple."}
+    continuity_status: UNRESOLVED
+    confidence: LOW
+    map_priority: MEDIUM
+    content_priority: MEDIUM
+    implementation_wave: B
+    unresolved_questions: ["Identify exact current local temple and provenance."]
+
+  - research_id: RK-29
+    canonical_name: Rādhā-Govinda temple at Rādhā-kuṇḍa
+    ascii_name: Radha-Govinda temple at Radha-kunda
+    alternate_names: ["Radha Govind Mandir"]
+    place_type: TEMPLE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.radha-govinda-temple
+    physical_mapping_status: MAP_NOW_EXACT
+    local_display_code: RK-29
+    marker_semantics: EXACT_PRESENT_TEMPLE
+    plus_code: GFGR+9MQ
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: MODERN_MAP, locus: "Radha Govind Mandir GFGR+9MQ", claim: "Current Rādhā-kuṇḍa temple listing."}
+    continuity_status: PRESENT_SITE_ONLY
+    confidence: HIGH
+    map_priority: CORE
+    content_priority: CORE
+    implementation_wave: A
+    unresolved_questions: ["Keep separate from Vṛndāvana Govindadeva and Govinda-kuṇḍa #42/#43 sites."]
+
+  - research_id: RK-30
+    canonical_name: Rādhā-Dāmodara temple at Rādhā-kuṇḍa
+    ascii_name: Radha-Damodara temple at Radha-kunda
+    alternate_names: ["Radha Damodara Mandir"]
+    place_type: TEMPLE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.radha-damodara-temple
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-30
+    marker_semantics: TEMPLE_UNLOCATED
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: PILGRIMAGE_TRADITION, locus: "Rādhā-kuṇḍa local temple list", claim: "Local temple identity; Vṛndāvana namesake history is not imported."}
+    continuity_status: UNRESOLVED
+    confidence: LOW
+    map_priority: MEDIUM
+    content_priority: MEDIUM
+    implementation_wave: B
+    unresolved_questions: ["Identify current physical temple and documentary continuity."]
+
+  - research_id: RK-31
+    canonical_name: Madanamohana temple at Rādhā-kuṇḍa
+    ascii_name: Madanamohana temple at Radha-kunda
+    alternate_names: ["Madan Mohan temple"]
+    place_type: TEMPLE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.madanamohana-temple
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-31
+    marker_semantics: TEMPLE_UNLOCATED
+    evidence_layers: [EARLY_PILGRIMAGE_LOCALIZATION, HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: EARLY_VRAJA_PILGRIMAGE, locus: "Nārāyaṇa Bhaṭṭa candidate evidence", claim: "Possible earlier local deity tradition, not present-building proof."}
+    continuity_status: UNRESOLVED
+    confidence: LOW
+    map_priority: HIGH
+    content_priority: HIGH
+    implementation_wave: B
+    unresolved_questions: ["Locate Rādhā-kuṇḍa temple and distinguish Vṛndāvana Madanamohana."]
+
+  - research_id: RK-32
+    canonical_name: Gopīnātha temple at Rādhā-kuṇḍa
+    ascii_name: Gopinatha temple at Radha-kunda
+    alternate_names: ["Gopinath Mandir"]
+    place_type: TEMPLE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.gopinatha-candidate
+    physical_mapping_status: DUPLICATE_CANDIDATE_RECONCILE
+    local_display_code: RK-32
+    marker_semantics: POSSIBLE_DUPLICATE_TEMPLE
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: PILGRIMAGE_TRADITION, locus: "local Gopīnātha temple lists", claim: "Likely overlap with RK-27 Rādhā-Gopīnātha complex."}
+    continuity_status: DISPUTED_OR_MULTIPLE
+    confidence: LOW
+    map_priority: HIGH
+    content_priority: HIGH
+    implementation_wave: B
+    unresolved_questions: ["Prove whether RK-27 and RK-32 are one temple before compiling any second pin."]
+
+  - research_id: RK-33
+    canonical_name: Śyāmasundara temple
+    ascii_name: Syamasundara temple
+    alternate_names: ["Shyamasundar Mandir"]
+    place_type: TEMPLE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.syamasundara-temple
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-33
+    marker_semantics: TEMPLE_UNLOCATED
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: PILGRIMAGE_TRADITION, locus: "local Rādhā-kuṇḍa temple inventory", claim: "Named living temple candidate."}
+    continuity_status: UNRESOLVED
+    confidence: LOW
+    map_priority: MEDIUM
+    content_priority: MEDIUM
+    implementation_wave: B
+    unresolved_questions: ["Find exact current temple and source history."]
+
+  - research_id: RK-34
+    canonical_name: Rādhā-Vinoda temple traditions
+    ascii_name: Radha-Vinoda temple traditions
+    alternate_names: ["Radha Vinod Mandir"]
+    place_type: TEMPLE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.radha-vinoda-candidate
+    physical_mapping_status: DUPLICATE_CANDIDATE_RECONCILE
+    local_display_code: RK-34
+    marker_semantics: MULTIPLE_SITE_CANDIDATE
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: SCHOLARLY_SECONDARY, locus: "dossier patronage traditions", claim: "Multiple traditions may refer to different sites."}
+    continuity_status: DISPUTED_OR_MULTIPLE
+    confidence: LOW
+    map_priority: MEDIUM
+    content_priority: MEDIUM
+    implementation_wave: B
+    unresolved_questions: ["Enumerate distinct present temples before one or more pins are authorized."]
+
+  - research_id: RK-35
+    canonical_name: Rādhāvallabha temple at Rādhā-kuṇḍa
+    ascii_name: Radhavallabha temple at Radha-kunda
+    alternate_names: ["Radha Vallabh temple"]
+    place_type: TEMPLE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.radhavallabha-temple
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-35
+    marker_semantics: TEMPLE_UNLOCATED
+    evidence_layers: [EARLY_PILGRIMAGE_LOCALIZATION, HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: EARLY_VRAJA_PILGRIMAGE, locus: "earlier deity references in dossier", claim: "Deity evidence may precede present building; continuity unproved."}
+    continuity_status: UNRESOLVED
+    confidence: LOW
+    map_priority: MEDIUM
+    content_priority: MEDIUM
+    implementation_wave: B
+    unresolved_questions: ["Locate current building and distinguish deity history from structure age."]
+
+  - research_id: RK-36
+    canonical_name: Bihārījī temple
+    ascii_name: Bihariji temple
+    alternate_names: ["Bihari Ji Mandir"]
+    place_type: TEMPLE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.bihariji-temple
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-36
+    marker_semantics: TEMPLE_UNLOCATED
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: HISTORICAL_DOCUMENT, locus: "1637 Bihārījī kuñja report", claim: "Historic kuñja evidence; not automatic present-temple footprint identity."}
+    continuity_status: UNRESOLVED
+    confidence: LOW
+    map_priority: MEDIUM
+    content_priority: MEDIUM
+    implementation_wave: B
+    unresolved_questions: ["Locate current temple and test relation to the 1637 kuñja."]
+
+  - research_id: RK-37
+    canonical_name: Aṣṭa-sakhī temple
+    ascii_name: Asta-sakhi temple
+    alternate_names: ["Eight sakhī temple"]
+    place_type: TEMPLE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.ashta-sakhi-temple
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-37
+    marker_semantics: TEMPLE_UNLOCATED
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: PILGRIMAGE_TRADITION, locus: "local temple guides", claim: "Later physical temple, not RK-10 eternal directional kuñja system."}
+    continuity_status: PRESENT_SITE_ONLY
+    confidence: LOW
+    map_priority: MEDIUM
+    content_priority: MEDIUM
+    implementation_wave: B
+    unresolved_questions: ["Find current temple point without projecting textual sectors onto its parcel."]
+
+  - research_id: RK-38
+    canonical_name: Sītānātha temple
+    ascii_name: Sitanatha temple
+    alternate_names: ["Sitanath Mandir"]
+    place_type: TEMPLE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.sitanatha-temple
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-38
+    marker_semantics: TEMPLE_UNLOCATED
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: PILGRIMAGE_TRADITION, locus: "local temple inventory", claim: "Named candidate requiring current physical verification."}
+    continuity_status: UNRESOLVED
+    confidence: LOW
+    map_priority: MEDIUM
+    content_priority: MEDIUM
+    implementation_wave: B
+    unresolved_questions: ["Identify exact current shrine and access."]
+
+  - research_id: RK-39
+    canonical_name: Rādhā-Mādhava temple / Śrīnivāsa Ācārya kuñja
+    ascii_name: Radha-Madhava temple / Srinivasa Acarya kunja
+    alternate_names: ["Srinivasa kunja"]
+    place_type: TEMPLE_GAUDIYA_HISTORICAL_SITE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.radha-madhava-srinivasa-site
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-39
+    marker_semantics: POSSIBLE_COMBINED_SITE
+    evidence_layers: [EARLY_PILGRIMAGE_LOCALIZATION, HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: EARLY_VRAJA_PILGRIMAGE, locus: "Śrīnivāsa pilgrimage tradition", claim: "Historical Gauḍīya association; temple and kuñja may be separate physical objects."}
+    continuity_status: UNRESOLVED
+    confidence: LOW
+    map_priority: MEDIUM
+    content_priority: MEDIUM
+    implementation_wave: B
+    unresolved_questions: ["Disambiguate temple from kuñja and determine current points."]
+
+  - research_id: RK-40
+    canonical_name: Jagannātha temple
+    ascii_name: Jagannatha temple
+    alternate_names: ["Jagannath Mandir"]
+    place_type: TEMPLE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.jagannatha-temple
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-40
+    marker_semantics: TEMPLE_UNLOCATED
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: PILGRIMAGE_TRADITION, locus: "modern parikramā guides", claim: "Jagannātha temple named on walking route; exact current point unresolved."}
+    continuity_status: LIVING_TRADITION_ONLY
+    confidence: LOW
+    map_priority: MEDIUM
+    content_priority: MEDIUM
+    implementation_wave: B
+    unresolved_questions: ["Locate and verify current temple."]
+
+  - research_id: RK-41
+    canonical_name: Rādhākānta temple
+    ascii_name: Radhakanta temple
+    alternate_names: ["Radha Kanta Mandir"]
+    place_type: TEMPLE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.radhakanta-temple
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-41
+    marker_semantics: TEMPLE_UNLOCATED
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: PILGRIMAGE_TRADITION, locus: "local temple inventory", claim: "Present-name candidate requiring site control."}
+    continuity_status: UNRESOLVED
+    confidence: LOW
+    map_priority: MEDIUM
+    content_priority: MEDIUM
+    implementation_wave: B
+    unresolved_questions: ["Identify exact current temple."]
+
+  - research_id: RK-42
+    canonical_name: Gaura-Nitāi / Caitanya temples
+    ascii_name: Gaura-Nitai / Caitanya temples
+    alternate_names: ["Gaura Nitai temples"]
+    place_type: TEMPLE_GROUP
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.gaura-nitai-temple-group
+    physical_mapping_status: DUPLICATE_CANDIDATE_RECONCILE
+    local_display_code: RK-42
+    marker_semantics: MULTIPLE_SITE_CANDIDATE
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: PILGRIMAGE_TRADITION, locus: "multiple local temple listings", claim: "Group label likely spans several current temples."}
+    continuity_status: DISPUTED_OR_MULTIPLE
+    confidence: LOW
+    map_priority: LATER
+    content_priority: LATER
+    implementation_wave: B
+    unresolved_questions: ["Enumerate individual shrines; never create one generic group pin."]
+
+  - research_id: RK-43
+    canonical_name: Bankhaṇḍī Mahādeva
+    ascii_name: Bankhandi Mahadeva
+    alternate_names: ["Bankhandi Shiva"]
+    place_type: SIVA_SHRINE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.bankhandi-mahadeva
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-43
+    marker_semantics: SHRINE_UNLOCATED
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: PILGRIMAGE_TRADITION, locus: "kṣetra-pāla sacred geography", claim: "Living Śiva-shrine candidate, not the whole seven-shrine system."}
+    continuity_status: LIVING_TRADITION_ONLY
+    confidence: MEDIUM
+    map_priority: HIGH
+    content_priority: HIGH
+    implementation_wave: B
+    unresolved_questions: ["Capture controlled present shrine coordinate."]
+
+  - research_id: RK-44
+    canonical_name: Seven Mahādevas / kṣetra-pālas
+    ascii_name: Seven Mahadevas / ksetra-palas
+    alternate_names: ["Seven Shiva protectors"]
+    place_type: PROTECTIVE_SACRED_GEOGRAPHY_SYSTEM
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.concept.seven-mahadevas
+    physical_mapping_status: TEXTUAL_ONLY_NO_PHYSICAL_PIN
+    local_display_code: RK-44
+    marker_semantics: COLLECTION_NO_PIN
+    evidence_layers: [EARLY_PILGRIMAGE_LOCALIZATION]
+    source_notes:
+      - {layer: PILGRIMAGE_TRADITION, locus: "seven kṣetra-pāla traditions", claim: "Collection requiring separately evidenced member shrines."}
+    continuity_status: UNRESOLVED
+    confidence: MEDIUM
+    map_priority: DO_NOT_PIN
+    content_priority: LATER
+    implementation_wave: C
+    unresolved_questions: ["Enumerate seven individual current shrines before physical mapping."]
+
+  - research_id: RK-45
+    canonical_name: Rāsa-maṇḍalas
+    ascii_name: Rasa-mandalas
+    alternate_names: ["Rasa circles"]
+    place_type: LILA_SITE_SYSTEM
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.concept.rasa-mandalas
+    physical_mapping_status: TEXTUAL_ONLY_NO_PHYSICAL_PIN
+    local_display_code: RK-45
+    marker_semantics: COLLECTION_NO_PIN
+    evidence_layers: [EARLY_PILGRIMAGE_LOCALIZATION]
+    source_notes:
+      - {layer: PILGRIMAGE_TRADITION, locus: "modern rāsa-maṇḍala guides", claim: "Multiple distinct sacred sites, not one generic GPS point."}
+    continuity_status: UNRESOLVED
+    confidence: MEDIUM
+    map_priority: DO_NOT_PIN
+    content_priority: LATER
+    implementation_wave: C
+    unresolved_questions: ["Identify each named physical rāsa-maṇḍala before any pin."]
+
+  - research_id: RK-SAM-01
+    canonical_name: Three Goswami Samādhi complex
+    ascii_name: Three Goswami Samadhi complex
+    alternate_names: ["Three Goswami Samadhi Mandir"]
+    place_type: SAMADHI_COMPLEX
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.three-goswami-samadhi
+    physical_mapping_status: MAP_NOW_EXACT
+    local_display_code: RK-SAM-01
+    marker_semantics: EXACT_PRESENT_COMPOUND
+    plus_code: GFGR+6PG
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: MODERN_MAP, locus: "Three Goswami Samadhi Mandir GFGR+6PG", claim: "Current shared memorial complex."}
+    continuity_status: PRESENT_SITE_ONLY
+    confidence: HIGH
+    map_priority: CORE
+    content_priority: CORE
+    implementation_wave: A
+    unresolved_questions: ["Reconcile Raghunātha Bhaṭṭa and Kṛṣṇadāsa memorial features with RK-17 separate Raghunātha dāsa samādhi."]
+
+  - research_id: RK-KUT-01
+    canonical_name: Viśvanātha Cakravartī Ṭhākura bhajana-kuṭīra
+    ascii_name: Visvanatha Cakravarti Thakura bhajana-kutira
+    alternate_names: ["Vishvanath Chakravarti bhajan kutir"]
+    place_type: BHAJAN_KUTIRA
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.visvanatha-cakravarti-bhajana-kutira
+    physical_mapping_status: MAP_NOW_PRACTICAL_ARRIVAL
+    local_display_code: RK-KUT-01
+    marker_semantics: PRACTICAL_ARRIVAL_POSSIBLE_SHARED_COMPOUND
+    plus_code: GFGR+6QP
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: MODERN_MAP, locus: "Srila Vishvanath Chakravarti Thakur bhajan kutir GFGR+6QP", claim: "Current listing shares a plus code with RK-16 and requires compound reconciliation."}
+    continuity_status: DISPUTED_OR_MULTIPLE
+    confidence: MEDIUM
+    map_priority: HIGH
+    content_priority: HIGH
+    implementation_wave: B
+    unresolved_questions: ["Are RK-16 and this kuṭīra independently accessible buildings or one mapped compound?"]
+
+  - research_id: RK-KUT-02
+    canonical_name: Bhaktivinoda Ṭhākura bhajana-kuṭīra / memorial
+    ascii_name: Bhaktivinoda Thakura bhajana-kutira / memorial
+    alternate_names: ["Bhaktivinoda bhajan kutir"]
+    place_type: MODERN_GAUDIYA_MEMORIAL
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.bhaktivinoda-bhajana-kutira
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-KUT-02
+    marker_semantics: MEMORIAL_UNLOCATED
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: PILGRIMAGE_TRADITION, locus: "modern Gauḍīya parikramā guides", claim: "Living Bhaktivinoda memorial site; exact locator not yet controlled."}
+    continuity_status: LIVING_TRADITION_ONLY
+    confidence: LOW
+    map_priority: HIGH
+    content_priority: HIGH
+    implementation_wave: B
+    unresolved_questions: ["Find current entrance and clarify Bhaktisiddhānta residence/memorial relationship."]
+
+  - research_id: RK-INST-01
+    canonical_name: Rādhā-Kuñjabihārī Gauḍīya Maṭha
+    ascii_name: Radha-Kunjabihari Gaudiya Matha
+    alternate_names: []
+    place_type: INSTITUTIONAL_SITE
+    map_collection: RADHA_KUNDA_MICRO
+    existing_place_id: place.radha-kunjabihari-gaudiya-matha
+    physical_mapping_status: EXISTING_RUNTIME_PLACE
+    local_display_code: RK-INST-01
+    marker_semantics: EXISTING_INSTITUTION
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: MODERN_MAP, locus: "Existing Govardhana registry #71", claim: "Reuses the already compiled institutional place; this inventory creates no second marker."}
+    continuity_status: PRESENT_SITE_ONLY
+    confidence: HIGH
+    map_priority: HIGH
+    content_priority: HIGH
+    implementation_wave: A
+    unresolved_questions: ["How should the shared map present this existing marker alongside later micro-sites without duplication?"]
+
+# Ghāṭs are a distinct research register, not an automatic runtime pin list.
+# The single shared Saṅgama record carries both bank approaches.
+ghats:
+  - research_id: RK-GH-01
+    canonical_name: Jhūlana-tala
+    ascii_name: Jhulana-tala
+    alternate_names: ["Jhūlana-tala Ghāṭ"]
+    place_type: GHAT_CANDIDATE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.ghat.jhulana-tala
+    physical_mapping_status: DUPLICATE_CANDIDATE_RECONCILE
+    local_display_code: RK-GH-01
+    marker_semantics: POSSIBLE_CHILD_FEATURE
+    bank_side: RADHA_KUNDA
+    parent_research_id: RK-12
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes: [{layer: PILGRIMAGE_TRADITION, locus: "Rādhā-kuṇḍa ghāṭ lists", claim: "Jhūlana-tala name; relationship to RK-12 swing site unresolved."}]
+    continuity_status: UNRESOLVED
+    confidence: LOW
+    map_priority: LATER
+    content_priority: LATER
+    implementation_wave: B
+    unresolved_questions: ["Bank point, signage, earliest source, RK-12 relationship and separate-pin need."]
+
+  - research_id: RK-GH-02
+    canonical_name: Rādhākānta Ghāṭ
+    ascii_name: Radhakanta Ghat
+    alternate_names: ["Radha Kanta Ghat"]
+    place_type: GHAT_CANDIDATE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.ghat.radhakanta
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-GH-02
+    marker_semantics: GHAT_UNLOCATED
+    bank_side: RADHA_KUNDA
+    related_research_id: RK-41
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes: [{layer: PILGRIMAGE_TRADITION, locus: "Rādhā-kuṇḍa ghāṭ lists", claim: "Named Rādhākānta approach; current physical point unverified."}]
+    continuity_status: UNRESOLVED
+    confidence: LOW
+    map_priority: LATER
+    content_priority: LATER
+    implementation_wave: B
+    unresolved_questions: ["Bank point, signage, earliest source, RK-41 temple relation and separate-pin need."]
+
+  - research_id: RK-GH-03
+    canonical_name: Go-ghāṭ
+    ascii_name: Go-ghat
+    alternate_names: ["Go Ghat"]
+    place_type: GHAT_CANDIDATE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.ghat.go-ghat
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-GH-03
+    marker_semantics: GHAT_UNLOCATED
+    bank_side: RADHA_KUNDA
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes: [{layer: PILGRIMAGE_TRADITION, locus: "Rādhā-kuṇḍa ghāṭ lists", claim: "Named bank access requiring field control."}]
+    continuity_status: UNRESOLVED
+    confidence: LOW
+    map_priority: LATER
+    content_priority: LATER
+    implementation_wave: B
+    unresolved_questions: ["Bank point, signage, earliest source, adjacent site and separate-pin need."]
+
+  - research_id: RK-GH-04
+    canonical_name: Mā Jāhnavā Ghāṭ
+    ascii_name: Ma Jahnava Ghat
+    alternate_names: ["Jāhnavā Ghāṭ"]
+    place_type: GHAT_CANDIDATE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.ghat.jahnava
+    physical_mapping_status: CHILD_FEATURE_DO_NOT_DUPLICATE
+    local_display_code: RK-GH-04
+    marker_semantics: CHILD_OF_HISTORICAL_SITE
+    bank_side: RADHA_KUNDA
+    parent_research_id: RK-23
+    evidence_layers: [EARLY_PILGRIMAGE_LOCALIZATION, HISTORICAL_PRESENT_PHYSICAL]
+    source_notes: [{layer: PILGRIMAGE_TRADITION, locus: "northern-bank Jāhnavā Ghāṭ", claim: "Present name is later localization; Jāhnavā's visit is earlier attested but does not name this ghāṭ."}]
+    continuity_status: PROBABLE_CONTINUITY
+    confidence: MEDIUM
+    map_priority: HIGH
+    content_priority: HIGH
+    implementation_wave: B
+    unresolved_questions: ["Exact bank point, signage, earliest ghāṭ-name source and RK-23/RK-27 relation."]
+
+  - research_id: RK-GH-05
+    canonical_name: Dāsa Gosvāmī Ghāṭ
+    ascii_name: Dasa Gosvami Ghat
+    alternate_names: ["Das Goswami Ghat"]
+    place_type: GHAT_CANDIDATE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.ghat.dasa-gosvami
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-GH-05
+    marker_semantics: GHAT_UNLOCATED
+    bank_side: RADHA_KUNDA
+    related_research_id: RK-16
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes: [{layer: PILGRIMAGE_TRADITION, locus: "Rādhā-kuṇḍa ghāṭ lists", claim: "Raghunātha dāsa-associated ghāṭ name; exact relation to kuṭīra unresolved."}]
+    continuity_status: UNRESOLVED
+    confidence: LOW
+    map_priority: HIGH
+    content_priority: HIGH
+    implementation_wave: B
+    unresolved_questions: ["Bank point, signage, earliest source, RK-16 relation and separate-pin need."]
+
+  - research_id: RK-GH-06
+    canonical_name: Govinda Ghāṭ
+    ascii_name: Govinda Ghat
+    alternate_names: ["Govind Ghat"]
+    place_type: GHAT_CANDIDATE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.ghat.govinda
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-GH-06
+    marker_semantics: GHAT_UNLOCATED
+    bank_side: RADHA_KUNDA
+    related_research_id: RK-29
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes: [{layer: PILGRIMAGE_TRADITION, locus: "Rādhā-kuṇḍa ghāṭ lists", claim: "Govinda bank name not automatically the local temple entrance."}]
+    continuity_status: UNRESOLVED
+    confidence: LOW
+    map_priority: LATER
+    content_priority: LATER
+    implementation_wave: B
+    unresolved_questions: ["Bank point, signage, earliest source, RK-29 relation and separate-pin need."]
+
+  - research_id: RK-GH-07
+    canonical_name: Saṅgama Ghāṭ
+    ascii_name: Sangama Ghat
+    alternate_names: ["Twin-kuṇḍa meeting ghāṭ"]
+    place_type: SHARED_GHAT_CANDIDATE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.ghat.sangama
+    physical_mapping_status: CHILD_FEATURE_DO_NOT_DUPLICATE
+    local_display_code: RK-GH-07
+    marker_semantics: SHARED_BANK_APPROACH
+    bank_side: BOTH_RADHA_AND_SYAMA_KUNDA
+    parent_research_id: RK-03
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes: [{layer: PILGRIMAGE_TRADITION, locus: "both kuṇḍa perimeter lists", claim: "One shared Saṅgama physical entity with bank-specific approach contexts, not two unrelated pins."}]
+    continuity_status: UNRESOLVED
+    confidence: MEDIUM
+    map_priority: CORE
+    content_priority: HIGH
+    implementation_wave: B
+    unresolved_questions: ["Exact present approach geometry, signage, earliest ghāṭ name and RK-03 representation."]
+
+  - research_id: RK-GH-08
+    canonical_name: Rāsbārī Ghāṭ
+    ascii_name: Rasbari Ghat
+    alternate_names: ["Rasbari Ghat"]
+    place_type: GHAT_CANDIDATE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.ghat.rasbari
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-GH-08
+    marker_semantics: GHAT_UNLOCATED
+    bank_side: RADHA_KUNDA
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes: [{layer: PILGRIMAGE_TRADITION, locus: "Rādhā-kuṇḍa ghāṭ lists", claim: "Named perimeter site; physical point unverified."}]
+    continuity_status: UNRESOLVED
+    confidence: LOW
+    map_priority: LATER
+    content_priority: LATER
+    implementation_wave: B
+    unresolved_questions: ["Bank point, signage, earliest source, adjacent site and separate-pin need."]
+
+  - research_id: RK-GH-09
+    canonical_name: Mānasa-pāvana Ghāṭ
+    ascii_name: Manasa-pavana Ghat
+    alternate_names: ["Manasa Pavana"]
+    place_type: GHAT_CANDIDATE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.ghat.manasa-pavana
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-GH-09
+    marker_semantics: GHAT_UNLOCATED
+    bank_side: SYAMA_KUNDA
+    related_research_id: RK-13
+    evidence_layers: [NITYA_LILA_TEXTUAL, EARLY_PILGRIMAGE_LOCALIZATION, HISTORICAL_PRESENT_PHYSICAL]
+    source_notes:
+      - {layer: EARLY_VRAJA_PILGRIMAGE, locus: "Bhakti-ratnākara 5.599–601", claim: "Subala's kuñja and Mānasa-pāvana north of Śyāma-kuṇḍa; five Pāṇḍava trees and Śrīnivāsa/Narottama bathing."}
+      - {layer: PRIMARY_GOSVAMI, locus: "Govinda-līlāmṛta 7.114", claim: "Subalānandadā/Mānasa-pāvana in Vāyu or north-west textual direction; do not force centimeter-level agreement."}
+    continuity_status: PROBABLE_CONTINUITY
+    confidence: MEDIUM
+    map_priority: CORE
+    content_priority: CORE
+    implementation_wave: B
+    unresolved_questions: ["Exact current ghāṭ point, signage, RK-13 relationship and separate-pin value."]
+
+  - research_id: RK-GH-10
+    canonical_name: Pañca-Pāṇḍava Ghāṭ
+    ascii_name: Panca-Pandava Ghat
+    alternate_names: ["Five Pandava Ghat"]
+    place_type: GHAT_CANDIDATE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.ghat.panca-pandava
+    physical_mapping_status: CHILD_FEATURE_DO_NOT_DUPLICATE
+    local_display_code: RK-GH-10
+    marker_semantics: CHILD_OF_TREE_COMPLEX
+    bank_side: SYAMA_KUNDA
+    parent_research_id: RK-13
+    evidence_layers: [EARLY_PILGRIMAGE_LOCALIZATION, HISTORICAL_PRESENT_PHYSICAL]
+    source_notes: [{layer: EARLY_VRAJA_PILGRIMAGE, locus: "Bhakti-ratnākara 5.600", claim: "Five Pāṇḍavas as trees at Mānasa-pāvana; present ghāṭ point still needs control."}]
+    continuity_status: PROBABLE_CONTINUITY
+    confidence: MEDIUM
+    map_priority: HIGH
+    content_priority: HIGH
+    implementation_wave: B
+    unresolved_questions: ["Exact bank point, surviving tree claims, signage and separate-pin need."]
+
+  - research_id: RK-GH-11
+    canonical_name: Rādhāvallabha Ghāṭ
+    ascii_name: Radhavallabha Ghat
+    alternate_names: ["Radha Vallabh Ghat"]
+    place_type: GHAT_CANDIDATE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.ghat.radhavallabha
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-GH-11
+    marker_semantics: GHAT_UNLOCATED
+    bank_side: SYAMA_KUNDA
+    related_research_id: RK-35
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes: [{layer: PILGRIMAGE_TRADITION, locus: "Śyāma-kuṇḍa ghāṭ lists", claim: "Ghāṭ name may relate to local temple; separate point unresolved."}]
+    continuity_status: UNRESOLVED
+    confidence: LOW
+    map_priority: LATER
+    content_priority: LATER
+    implementation_wave: B
+    unresolved_questions: ["Bank point, signage, earliest source, RK-35 relation and separate-pin need."]
+
+  - research_id: RK-GH-12
+    canonical_name: Rājbārī Ghāṭ
+    ascii_name: Rajbari Ghat
+    alternate_names: []
+    place_type: GHAT_CANDIDATE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.ghat.rajbari
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-GH-12
+    marker_semantics: GHAT_UNLOCATED
+    bank_side: SYAMA_KUNDA
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes: [{layer: PILGRIMAGE_TRADITION, locus: "Śyāma-kuṇḍa ghāṭ list", claim: "Named ghāṭ candidate; exact present approach unverified."}]
+    continuity_status: UNRESOLVED
+    confidence: LOW
+    map_priority: LATER
+    content_priority: LATER
+    implementation_wave: B
+    unresolved_questions: ["Coordinate, signage, earliest attestation, adjacent site, separate-pin value."]
+
+  - research_id: RK-GH-13
+    canonical_name: Nandinī Gherā Ghāṭ
+    ascii_name: Nandini Ghera Ghat
+    alternate_names: []
+    place_type: GHAT_CANDIDATE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.ghat.nandini-ghera
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-GH-13
+    marker_semantics: GHAT_UNLOCATED
+    bank_side: SYAMA_KUNDA
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes: [{layer: PILGRIMAGE_TRADITION, locus: "Śyāma-kuṇḍa ghāṭ list", claim: "Named ghāṭ candidate; distinct physical access needs verification."}]
+    continuity_status: UNRESOLVED
+    confidence: LOW
+    map_priority: LATER
+    content_priority: LATER
+    implementation_wave: B
+    unresolved_questions: ["Coordinate, signage, earliest attestation, adjacent site, separate-pin value."]
+
+  - research_id: RK-GH-14
+    canonical_name: Jīva Gosvāmī Ghāṭ
+    ascii_name: Jiva Gosvami Ghat
+    alternate_names: []
+    place_type: GHAT_CANDIDATE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.ghat.jiva-gosvami
+    physical_mapping_status: CHILD_FEATURE_DO_NOT_DUPLICATE
+    local_display_code: RK-GH-14
+    marker_semantics: CHILD_OF_SITE
+    bank_side: SYAMA_KUNDA
+    parent_research_id: RK-21
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes: [{layer: PILGRIMAGE_TRADITION, locus: "Jīva Gosvāmī ghāṭ and bhajana-site tradition", claim: "Relationship to RK-21 must be reconciled before a separate pin."}]
+    continuity_status: UNRESOLVED
+    confidence: LOW
+    map_priority: LATER
+    content_priority: LATER
+    implementation_wave: B
+    unresolved_questions: ["Coordinate, signage, earliest attestation, RK-21 physical boundary, separate-pin need."]
+
+  - research_id: RK-GH-15
+    canonical_name: Ghanā-Mādhava Gherā Ghāṭ
+    ascii_name: Ghana-Madhava Ghera Ghat
+    alternate_names: []
+    place_type: GHAT_CANDIDATE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.ghat.ghana-madhava-ghera
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-GH-15
+    marker_semantics: GHAT_UNLOCATED
+    bank_side: SYAMA_KUNDA
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes: [{layer: PILGRIMAGE_TRADITION, locus: "Śyāma-kuṇḍa ghāṭ list", claim: "Named candidate without verified present point."}]
+    continuity_status: UNRESOLVED
+    confidence: LOW
+    map_priority: LATER
+    content_priority: LATER
+    implementation_wave: B
+    unresolved_questions: ["Coordinate, signage, earliest attestation, adjacent site, separate-pin value."]
+
+  - research_id: RK-GH-16
+    canonical_name: Gayā Ghāṭ
+    ascii_name: Gaya Ghat
+    alternate_names: []
+    place_type: GHAT_CANDIDATE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.ghat.gaya
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-GH-16
+    marker_semantics: GHAT_UNLOCATED
+    bank_side: SYAMA_KUNDA
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes: [{layer: PILGRIMAGE_TRADITION, locus: "Śyāma-kuṇḍa ghāṭ list", claim: "Named candidate without verified present point."}]
+    continuity_status: UNRESOLVED
+    confidence: LOW
+    map_priority: LATER
+    content_priority: LATER
+    implementation_wave: B
+    unresolved_questions: ["Coordinate, signage, earliest attestation, adjacent site, separate-pin value."]
+
+  - research_id: RK-GH-17
+    canonical_name: Vyāsa Gherā Ghāṭ
+    ascii_name: Vyasa Ghera Ghat
+    alternate_names: []
+    place_type: GHAT_CANDIDATE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.ghat.vyasa-ghera
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-GH-17
+    marker_semantics: GHAT_UNLOCATED
+    bank_side: SYAMA_KUNDA
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes: [{layer: PILGRIMAGE_TRADITION, locus: "Śyāma-kuṇḍa ghāṭ list", claim: "Named candidate without verified present point."}]
+    continuity_status: UNRESOLVED
+    confidence: LOW
+    map_priority: LATER
+    content_priority: LATER
+    implementation_wave: B
+    unresolved_questions: ["Coordinate, signage, earliest attestation, adjacent site, separate-pin value."]
+
+  - research_id: RK-GH-18
+    canonical_name: Aṣṭa-sakhī Ghāṭ
+    ascii_name: Asta-sakhi Ghat
+    alternate_names: []
+    place_type: GHAT_CANDIDATE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.ghat.asta-sakhi
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-GH-18
+    marker_semantics: GHAT_UNLOCATED
+    bank_side: SYAMA_KUNDA
+    evidence_layers: [NITYA_LILA_TEXTUAL, HISTORICAL_PRESENT_PHYSICAL]
+    source_notes: [{layer: PRIMARY_GOSVAMI, locus: "Govinda-līlāmṛta 7.27–101", claim: "Aṣṭa-sakhī textual geography does not itself locate a present ghāṭ."}]
+    continuity_status: UNRESOLVED
+    confidence: LOW
+    map_priority: LATER
+    content_priority: HIGH
+    implementation_wave: B
+    unresolved_questions: ["Coordinate, signage, earliest ghāṭ attestation, RK-10 relationship, separate-pin value."]
+
+  - research_id: RK-GH-19
+    canonical_name: Tamāla-tala
+    ascii_name: Tamala-tala
+    alternate_names: []
+    place_type: GHAT_CANDIDATE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.ghat.tamala-tala
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-GH-19
+    marker_semantics: GHAT_UNLOCATED
+    bank_side: SYAMA_KUNDA
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes: [{layer: PILGRIMAGE_TRADITION, locus: "Śyāma-kuṇḍa ghāṭ list", claim: "Tamāla-tala is a named candidate; tree and access continuity unverified."}]
+    continuity_status: UNRESOLVED
+    confidence: LOW
+    map_priority: LATER
+    content_priority: LATER
+    implementation_wave: B
+    unresolved_questions: ["Coordinate, signage, tree claim, earliest source, separate-pin value."]
+
+  - research_id: RK-GH-20
+    canonical_name: Pāśā-khelā
+    ascii_name: Pasa-khela
+    alternate_names: []
+    place_type: GHAT_CANDIDATE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.ghat.pasa-khela
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-GH-20
+    marker_semantics: GHAT_UNLOCATED
+    bank_side: SYAMA_KUNDA
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes: [{layer: PILGRIMAGE_TRADITION, locus: "Śyāma-kuṇḍa ghāṭ list", claim: "Named candidate; present access and exact site unverified."}]
+    continuity_status: UNRESOLVED
+    confidence: LOW
+    map_priority: LATER
+    content_priority: LATER
+    implementation_wave: B
+    unresolved_questions: ["Coordinate, signage, earliest attestation, adjacent site, separate-pin value."]
+
+  - research_id: RK-GH-21
+    canonical_name: Madanamohana Ghāṭ
+    ascii_name: Madanamohana Ghat
+    alternate_names: []
+    place_type: GHAT_CANDIDATE
+    map_collection: RADHA_KUNDA_MICRO
+    proposed_place_id: place.rk.ghat.madanamohana
+    physical_mapping_status: VERIFY_BEFORE_MAPPING
+    local_display_code: RK-GH-21
+    marker_semantics: GHAT_UNLOCATED
+    bank_side: SYAMA_KUNDA
+    evidence_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    source_notes: [{layer: PILGRIMAGE_TRADITION, locus: "Śyāma-kuṇḍa ghāṭ list", claim: "Named candidate; temple relationship unresolved."}]
+    continuity_status: UNRESOLVED
+    confidence: LOW
+    map_priority: LATER
+    content_priority: LATER
+    implementation_wave: B
+    unresolved_questions: ["Coordinate, signage, earliest attestation, adjacent temple, separate-pin value."]
