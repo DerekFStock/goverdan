@@ -1703,3 +1703,162 @@ contents:
     related_place_ids:
       - place.airavata-kunda
       - place.surabhi-kunda
+
+  - place_id: place.mukharavinda-vitthalanatha-samadhi
+    category: Girirāja Mukhāravinda and Viṭṭhalanātha memorial complex
+    summary: 'At Jatipura, Girirāja is worshiped as Mukhāravinda—His lotus face or mouth. Garga-saṁhitā places Govardhana’s mouth in the Annakūṭa landscape; living Puṣṭimārga tradition identifies the present Jatipura rock with that sacred feature. Viṭṭhalanātha’s samādhi stands nearby as a distinct saint memorial within the same numbered stop.'
+    why_sacred: 'Garga-saṁhitā 3.8.4 gives the Govardhana-mouth sacred geography, while Śrīmad-Bhāgavatam 10.24.35–36 supplies broader Kṛṣṇa/Govardhana worship context. Established milk and bhoga worship honors Girirāja here as a sacred person. Viṭṭhalanātha, or Gusāinjī, helped organize Gopāla/Śrīnāthjī service; Bhakti-ratnākara 5.804–818 witnesses his service connection in the Gāṅṭholī sequence, not the location of this samādhi. The present memorial location is preserved by living Puṣṭimārga tradition.'
+    what_to_see:
+      - Girirāja Mukhāravinda at the primary Jatipura marker, where milk and bhoga worship is practiced under current shrine rules.
+      - 'Viṭṭhalanātha’s samādhi in the neighboring memorial complex at approximately 27.4734125, 77.4425156; it is not the Mukhāravinda rock.'
+      - Vallabhācārya’s nearby baithak as a separate memorial object, not another name for the samādhi.
+      - The historic Śrīnāthjī temple landscape above Jatipura as orientation only, not a destination requiring a climb onto Girirāja.
+    lila: 'The early sacred-geography layer remembers Govardhana’s mouth at the Annakūṭa landscape. Living pilgrimage identifies and worships the present Jatipura Mukhāravinda as that mouth. A separate historical-devotional layer remembers Viṭṭhalanātha and the Puṣṭimārga service of Gopāla/Śrīnāthjī at his nearby samādhi.'
+    pilgrim_guidance: 'Use established shrine access and current temple rules for milk or bhoga offerings. Do not climb onto Girirāja to seek the historic hilltop temple. Treat Viṭṭhalanātha’s samādhi and Vallabhācārya’s baithak as distinct saint memorials. This #61 Jatipura Mukhāravinda is not #18 Mānasī-gaṅgā Mukhāravinda.'
+    references:
+      - id: reference.jatipura-mukharavinda.garga-3-8-4
+        source_title: Garga-saṁhitā — Girirāja-khaṇḍa
+        locus: '3.8.4'
+        explanation: Govardhana’s mouth and Annakūṭa sacred geography; the present rock is a living localization.
+        quotation: Below Śṛṅgāra-maṇḍala is Govardhana’s mouth.
+      - id: reference.jatipura-mukharavinda.srimad-bhagavatam-10-24
+        source_title: Śrīmad-Bhāgavatam
+        locus: 10.24.35–36
+        explanation: Broad Kṛṣṇa/Govardhana identity during worship, not the modern Jatipura shrine name.
+      - id: reference.jatipura-mukharavinda.bhakti-ratnakara-5-804-818
+        source_title: Bhakti-ratnākara
+        locus: 5.804–818
+        explanation: Viṭṭhalanātha’s Gopāla-sevā connection in the Gāṅṭholī sequence; not direct evidence for this samādhi location.
+      - id: reference.jatipura-mukharavinda.entwistle
+        source_title: Entwistle — Jatipura Girirāja Mukhāravinda
+        locus: Jatipura pilgrimage survey
+        explanation: Documents the lotus-face rock, Bhoga-śilā and Pūjanī-śilā names, and milk/food worship.
+      - id: reference.jatipura-mukharavinda.braj-development-plan
+        source_title: Braj Development Plan
+        locus: BDP_Gvdn_117
+        explanation: Official present Mukhāravinda shrine coordinate.
+      - id: reference.jatipura-mukharavinda.vitthalanatha-samadhi
+        source_title: Living Viṭṭhalanātha Samādhi tradition
+        locus: Jatipura memorial complex
+        explanation: Identifies the neighboring Viṭṭhalanātha samādhi as a distinct memorial feature.
+    related_place_ids:
+      - place.dandavat-sila
+      - place.jatipura-village
+      - place.gopala-raja-temple
+      - place.gopala-prakata-sthali
+
+  - place_id: place.dandavat-sila
+    category: Govardhana śilā of repentance and daṇḍavat
+    summary: 'Daṇḍavat-śilā is a revered Govardhana stone at Jatipura where pilgrims and temple servants offer prostrations in humility and repentance, especially for inadvertently stepping upon Girirāja in service or parikramā. It is a distinct stop from the nearby Mukhāravinda.'
+    why_sacred: 'Entwistle documented a round stone below the Śrīnāthjī temple receiving milk anointing and prostrations as contrition. Living pilgrimage tradition also remembers seven circumambulations with daṇḍavats. That practice is a prayer for forgiveness, not a scriptural or automatic guarantee of absolution.'
+    what_to_see:
+      - The decorated or worshiped Govardhana śilā in its small shrine setting.
+      - Milk or other anointing where currently permitted by local practice.
+      - Its relation to the Jatipura Mukhāravinda and Śrīnāthjī service landscape.
+    lila: 'This is a devotional-practice site rather than a distinct Kṛṣṇa-līlā episode. Bowing here expresses reverence for Girirāja as a living sacred person and repentance for accidental offenses.'
+    pilgrim_guidance: 'Bow respectfully; do not step over or on the śilā. If offering circumambulations or full daṇḍavats, follow current local practice and avoid obstructing others. This custom does not give permission to step on Girirāja elsewhere. #62 remains separate from #61.'
+    references:
+      - id: reference.dandavat-sila.entwistle
+        source_title: Entwistle — Dandauti Sila
+        locus: Jatipura pilgrimage survey
+        explanation: Documents the established śilā and contrition/prostration custom.
+      - id: reference.dandavat-sila.living-tradition
+        source_title: Living Jatipura Daṇḍavat-śilā tradition
+        locus: Daṇḍavat-śilā
+        explanation: Seven-round and daṇḍavat practice as contemporary prayer for forgiveness.
+    related_place_ids:
+      - place.mukharavinda-vitthalanatha-samadhi
+      - place.jatipura-village
+
+  - place_id: place.jatipura-village
+    category: Living Śrīnāthjī / Girirāja pilgrimage village
+    summary: 'Jatipura is a living village at the foot of Girirāja, shaped by Gopāla/Śrīnāthjī worship and Puṣṭimārga service. Mukhāravinda worship, memorials, baithaks, kīrtana, and Annakūṭa culture coexist with ordinary residential life. This page orients pilgrims to the village rather than duplicating a single shrine.'
+    why_sacred: 'The village has a deep Gopāla/Śrīnāthjī service history and remains central to Govardhana parikramā. Gopālapura is a remembered name linked with Gopāla. Popular tradition explains Jatipura as Yati-pura, “the settlement of the yati,” but different devotional traditions identify that yati differently; this is not a settled documentary etymology.'
+    what_to_see:
+      - The Mukhāravinda area and its separate #61 detail page.
+      - Daṇḍavat-śilā as distinct #62.
+      - The Śrīnāthjī temple landscape, Vallabha and Viṭṭhalanātha memorials, and active sevā streets where publicly accessible.
+      - The relationship of village life to Girirāja, rather than any invented village boundary.
+    lila: 'Jatipura is primarily living devotional and historical sacred geography: generations of Vaiṣṇava sevā, Gopāla/Śrīnāthjī worship, Annakūṭa offerings, and kīrtana at the foot of Govardhana. It is not one isolated Kṛṣṇa-līlā site.'
+    pilgrim_guidance: '#63 is a representative village/area marker, not an exact shrine or boundary. Use #61 and #62 for site-specific guidance, respect residential and private temple thresholds, and do not treat map-number order as a route through private lanes. Crowds and traffic may be heavy on parikramā or festival days.'
+    references:
+      - id: reference.jatipura-village.entwistle
+        source_title: Entwistle — Jatipura and Śrīnāthjī landscape
+        locus: Jatipura pilgrimage survey
+        explanation: Historical development, pilgrimage centrality, and Puṣṭimārga service context.
+      - id: reference.jatipura-village.name-tradition
+        source_title: Living Gopālapura and Yatipura tradition
+        locus: Jatipura village
+        explanation: Sacred village identity and variant traditional name explanations.
+      - id: reference.jatipura-village.geography
+        source_title: Current Jatipura village geography
+        locus: Representative village point
+        explanation: Modern geographic basis for the area marker, not a cadastral boundary.
+    related_place_ids:
+      - place.mukharavinda-vitthalanatha-samadhi
+      - place.dandavat-sila
+      - place.gulala-kunda
+      - place.gantholi
+
+  - place_id: place.gulala-kunda
+    category: Rādhā-Kṛṣṇa Holī līlā kuṇḍa
+    summary: 'Bhakti-ratnākara 5.799–802 makes Gulāla-kuṇḍa an unusually well-described Holī site: after Rādhā and Kṛṣṇa play, a sakhī secretly ties Their garments, and the resulting knot is woven into the early explanation of nearby Gāṅṭholī’s name. The text explicitly names Gulāla-kuṇḍa in the same sequence.'
+    why_sacred: 'The early Gauḍīya account directly joins Rādhā-Kṛṣṇa Holī, phāgu colors, the playful garment knot, Gulāla-kuṇḍa, and Gāṅṭholī. Living pilgrimage remembers spring celebration and nearby Puṣṭimārga baithak traditions. Reports that the present water visibly turns red are living tradition, not a promised observation.'
+    what_to_see:
+      - Gulāla-kuṇḍa and its current ghāṭ or enclosure.
+      - Nearby Vallabhācārya or Śrīnāthjī baithak places where currently identifiable and open.
+      - The devotional setting of Holī observances and its relation to separate #65 Gāṅṭholī village.
+    lila: 'Rādhā and Kṛṣṇa sit together after playing Holī. A sakhī secretly knots Their garments; when They rise, the knot is discovered, the sakhīs laugh, and the embarrassed Divine Couple become the center of more playful phāgu. Bhakti-ratnākara preserves this as the early pilgrimage explanation for Gāṅṭholī.'
+    pilgrim_guidance: '#64 is the kuṇḍa; #65 is the wider village. Festival conditions may differ greatly from ordinary days. Do not throw colors on pilgrims, temple objects, or water outside an authorized local observance. Sacred bathing tradition is not a current water-safety guarantee; follow normal baithak and temple etiquette.'
+    references:
+      - id: reference.gulala-kunda.bhakti-ratnakara-5-799-802
+        source_title: Bhakti-ratnākara
+        locus: 5.799–802
+        explanation: Direct Holī, garment-knot, Gāṅṭholī-name, and Gulāla-kuṇḍa narrative.
+        quotation: A sakhī secretly tied Their garments together.
+      - id: reference.gulala-kunda.entwistle
+        source_title: Entwistle — Gulal Kund and Gantholi
+        locus: Gulal Kund pilgrimage description
+        explanation: Documents established Holī pilgrimage and place-name tradition.
+      - id: reference.gulala-kunda.living-tradition
+        source_title: Living Gulāla-kuṇḍa tradition
+        locus: Gulāla-kuṇḍa spring observance
+        explanation: Contemporary Holī and baithak customs; red-water claims remain unverified tradition.
+    related_place_ids:
+      - place.gantholi
+      - place.jatipura-village
+      - place.rudra-kunda-hariju-kunda
+
+  - place_id: place.gantholi
+    category: Holī, Gopāla and Mahāprabhu sacred village
+    summary: 'Gāṅṭholī joins two strong early Gauḍīya sacred histories. Bhakti-ratnākara explains its name through a sakhī tying Rādhā and Kṛṣṇa’s garments during Holī and directly names Gulāla-kuṇḍa. Caitanya-caritāmṛta records Gopāla being moved here temporarily and Śrī Caitanya Mahāprabhu coming to the village for His darśana.'
+    why_sacred: 'Bhakti-ratnākara 5.797–818 preserves the Holī knot, Gulāla-kuṇḍa, and Gopāla/Viṭṭhalanātha service history. Caitanya-caritāmṛta Madhya 18.29–41 directly tells of Gopāla’s temporary residence in Gāṅṭhuli-grāma and Mahāprabhu’s visit, kīrtana, and darśana. These texts anchor the sacred landscape, not the exact position of the historic brāhmaṇa house.'
+    what_to_see:
+      - The living Gāṅṭholī village landscape at a representative area marker.
+      - Gulāla-kuṇḍa at its separate #64 point.
+      - Recognized public Gopāla or Śrīnāthjī memory sites and baithaks where currently preserved, without assuming a private house is publicly accessible.
+    lila: 'In the Holī layer, the sakhīs’ garment knot gives the early pilgrimage explanation of Gāṅṭholī’s name. In the Gopāla/Mahāprabhu layer, Gopāla is moved from Govardhana for safety and stays here temporarily; Mahāprabhu comes for darśana and spends days chanting and dancing before Him before Gopāla returns to His own temple.'
+    pilgrim_guidance: '#65 is a representative village marker, not the exact historic brāhmaṇa house or Gopāla’s permanent hilltop temple. Visit recognized public shrines for darśana, respect residential life, and use #64 for the kuṇḍa itself. Map-number sequence is not yet a walking route.'
+    references:
+      - id: reference.gantholi.bhakti-ratnakara-5-797-818
+        source_title: Bhakti-ratnākara
+        locus: 5.797–818
+        explanation: Village-name Holī tradition, Gulāla-kuṇḍa, Gopāla, and Viṭṭhalanātha history.
+      - id: reference.gantholi.caitanya-caritamrta-madhya-18
+        source_title: Caitanya-caritāmṛta — Madhya-līlā
+        locus: 18.29–41
+        explanation: Gopāla moved to Gāṅṭholī and Mahāprabhu came for darśana.
+        quotation: Śrī Caitanya Mahāprabhu then went to Gāṅṭhuli-grāma and saw Lord Gopāla.
+      - id: reference.gantholi.entwistle
+        source_title: Entwistle — Gantholi and Tod ko Ghano
+        locus: Gāṅṭholī pilgrimage landscape
+        explanation: Documentary comparison of Gopāla/Śrīnāthjī location traditions.
+      - id: reference.gantholi.geography
+        source_title: Current Gāṅṭholī village geography
+        locus: Representative village point
+        explanation: Modern geographic basis for an area marker, not the precise historical residence.
+    related_place_ids:
+      - place.gulala-kunda
+      - place.jatipura-village
+      - place.gopala-raja-temple
+      - place.gopala-prakata-sthali

@@ -1569,3 +1569,162 @@ places:
       - source_type: LIVING_DEVOTIONAL_SITE
         description: Current documentation identifies Govind Svāmī or Govind Dāsa Samādhi near Airāvata-kuṇḍa as one concrete member of the cluster, not its sole identity.
     content_destination:
+
+  - id: place.mukharavinda-vitthalanatha-samadhi
+    map_number: 61
+    canonical_name: Mukhāravinda + Viṭṭhalanātha’s samādhi
+    ascii_name: Mukharavinda + Vitthalanatha's samadhi
+    alternate_names:
+      - Jatipura Mukharvind
+      - Giriraj Ji Mukharvind
+      - Giriraj Mukharavinda
+      - Girirajji Mukharvind
+      - Śṛṅga-sthalī
+      - Sringa Sthali
+      - Bhoga-śilā
+      - Bhog Shila
+      - Pūjanī-śilā
+      - Pujani Shila
+      - Viṭṭhalanātha Samādhi
+      - Vitthalnath Samadhi
+      - Gusainji Samadhi
+      - Shri Vitthalanath Ji Samadhi
+    latitude: 27.4732917
+    longitude: 77.4425139
+    coordinate_status: VERIFIED
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: 'Braj Development Plan BDP_Gvdn_117 records Shri Giriraj Ji Mukharvind Temple at the approved primary coordinate, corroborated by current mapping. Garga-saṁhitā 3.8.4 identifies Govardhana’s mouth in the Annakūṭa landscape; identifying the present Jatipura rock as that mouth is living pilgrimage localization, not ancient GPS proof. Viṭṭhalanātha’s samādhi is a neighboring memorial at approximately 27.4734125, 77.4425156, not the same ritual object as Vallabhācārya’s baithak.'
+    provenance:
+      - source_type: SACRED_GEOGRAPHY_TEXT
+        description: Garga-saṁhitā, Girirāja-khaṇḍa 3.8.4 places Govardhana’s mouth below Śṛṅgāra-maṇḍala in the Annakūṭa landscape; it does not identify modern masonry or an exact GPS point.
+      - source_type: PRIMARY_SCRIPTURE_CONTEXT
+        description: Śrīmad-Bhāgavatam 10.24.35–36 gives broad Kṛṣṇa/Govardhana worship context, not the modern Jatipura shrine name.
+        source_reference: https://vedabase.io/en/library/sb/10/24/
+      - source_type: HISTORICAL_OR_DOCUMENTARY
+        description: Entwistle documents the Jatipura lotus-face rock, milk and food offerings, and its Bhoga-śilā and Pūjanī-śilā names.
+      - source_type: OFFICIAL_OR_INSTITUTIONAL_DOCUMENT
+        description: Braj Development Plan BDP_Gvdn_117 supplies the Mukhāravinda primary coordinate 27.4732917, 77.4425139.
+        source_reference: https://www.upbtvp.in/pdf/Braj_Development_plan.pdf
+      - source_type: EARLY_GAUDIYA_HISTORICAL_DEVOTIONAL
+        description: Bhakti-ratnākara 5.804–818 witnesses Viṭṭhalanātha’s Gopāla-sevā connection in the Gāṅṭholī sequence, not his present samādhi location.
+      - source_type: LIVING_DEVOTIONAL_SITE
+        description: Puṣṭimārga tradition preserves the present Mukhāravinda and nearby Viṭṭhalanātha samādhi; the memorial complex is separately located at approximately 27.4734125, 77.4425156.
+      - source_type: MODERN_MAP
+        description: Current mapping independently identifies the Mukhāravinda shrine and neighboring Viṭṭhalanātha/Vallabha memorial complex.
+    content_destination:
+
+  - id: place.dandavat-sila
+    map_number: 62
+    canonical_name: Daṇḍavat-śilā
+    ascii_name: Dandavat-sila
+    alternate_names:
+      - Dandavati Shila
+      - Dandavat Shila
+      - Dandauti Sila
+      - Dandauti Shila
+      - Dandavata Sila
+      - Daṇḍavat Śilā
+      - Giriraj Ji Dandavati Shila
+    latitude: 27.4742625
+    longitude: 77.4433594
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: 'Entwistle documents a round Govardhana stone in the Jatipura parikramā path beneath the Śrīnāthjī temple receiving prostrations in contrition for stepping on Girirāja. Current mapping identifies Shree Giriraj Ji Dandavati Shila at FCFV+P85; the approved coordinate is the plus-code center. Seven circumambulations with daṇḍavats are a living practice, not a direct Bhāgavatam injunction or automatic guarantee.'
+    provenance:
+      - source_type: HISTORICAL_OR_DOCUMENTARY
+        description: Entwistle documents the round Dandauti Sila, milk anointing, and contrition/prostration custom below the Śrīnāthjī temple.
+      - source_type: PILGRIMAGE_TRADITION
+        description: Living Jatipura practice remembers seven circumambulations with daṇḍavats as prayer for forgiveness, not automatic absolution.
+      - source_type: MODERN_MAP
+        description: Shree Giriraj Ji Dandavati Shila at FCFV+P85 supplies the approved plus-code-center coordinate.
+    content_destination:
+
+  - id: place.jatipura-village
+    map_number: 63
+    canonical_name: Jatipura Village
+    ascii_name: Jatipura Village
+    alternate_names:
+      - Jatipura
+      - Jati Pura
+      - Jatipur
+      - Yatipura
+      - Yati Pura
+      - Gopālapura
+      - Gopalpur
+      - Gopal Pura
+      - Gopālapur
+    latitude: 27.4745500
+    longitude: 77.4418800
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: 'Current OSM-derived geography supplies a representative Jatipura village point, not a boundary or single shrine. Documentary and living traditions establish the village as a Śrīnāthjī/Puṣṭimārga service center. Gopālapura and Yatipura name explanations are traditional; different tellings identify the yati differently, so no one etymology is asserted as historical certainty.'
+    provenance:
+      - source_type: MODERN_GEOGRAPHIC_SOURCE
+        description: Current OSM-derived village geography supplies the representative point 27.4745500, 77.4418800.
+      - source_type: HISTORICAL_OR_DOCUMENTARY
+        description: Entwistle documents Jatipura’s Śrīnāthjī service, Puṣṭimārga institutions, pilgrimage feasts, and Gopālapura/Jatipura traditions.
+      - source_type: PILGRIMAGE_TRADITION
+        description: Gopālapura remembers Gopāla/Śrīnāthjī worship; Yatipura or Yati-pura is a variant traditional name whose yati is identified differently in devotional tellings.
+    content_destination:
+
+  - id: place.gulala-kunda
+    map_number: 64
+    canonical_name: Gulāla-kuṇḍa
+    ascii_name: Gulala-kunda
+    alternate_names:
+      - Gulal Kund
+      - Gulal Kunda
+      - Gulāl-kuṇḍa
+      - Gulal Kund Gantholi
+      - Gulal Kund Ganthauli
+      - Phāgu-kuṇḍa
+    latitude: 27.4835125
+    longitude: 77.4311406
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: 'Bhakti-ratnākara 5.799–802 directly narrates the Holī garment-knot pastime and names Gulāla-kuṇḍa in explaining Gāṅṭholī. Current mapping identifies Gulal Kund, Gantholi at FCMJ+CF2; the approved point is the plus-code center. Claims that the present water physically turns red each spring remain living tradition, not an observed or early-text fact.'
+    provenance:
+      - source_type: EARLY_GAUDIYA_PILGRIMAGE_TEXT
+        description: Bhakti-ratnākara 5.799–802 directly names Gulāla-kuṇḍa and recounts Rādhā-Kṛṣṇa Holī and the sakhīs’ garment knot.
+      - source_type: HISTORICAL_OR_DOCUMENTARY
+        description: Entwistle documents Gulal Kund beside the Gāṅṭholī road and established Holī pilgrimage practice.
+      - source_type: PILGRIMAGE_TRADITION
+        description: Living traditions preserve spring color-play, nearby baithak observances, and reports of red water; current water color is not asserted as a fact.
+      - source_type: MODERN_MAP
+        description: Gulal Kund, Gantholi at FCMJ+CF2 supplies the approved plus-code-center coordinate.
+    content_destination:
+
+  - id: place.gantholi
+    map_number: 65
+    canonical_name: Gāṅṭholī
+    ascii_name: Gantholi
+    alternate_names:
+      - Gantholi
+      - Ganthauli
+      - Gantholi Village
+      - Gāṭhulī
+      - Gāṭhuli
+      - Gāṅṭhuli-grāma
+      - Gathuli
+      - Gatholi
+    latitude: 27.4865000
+    longitude: 77.4265300
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: 'Bhakti-ratnākara 5.797–818 preserves the Holī garment-knot explanation of Gāṅṭholī, names Gulāla-kuṇḍa, and records Gopāla’s temporary stay with Viṭṭhalanātha connected to service. Caitanya-caritāmṛta Madhya 18.29–41 independently records Gopāla moved to Gāṅṭhuli-grāma and Mahāprabhu arriving for darśana. The coordinate is a representative modern village marker, not the exact historic residence.'
+    provenance:
+      - source_type: EARLY_GAUDIYA_PILGRIMAGE_TEXT
+        description: Bhakti-ratnākara 5.797–818 preserves the Holī knot/name story, Gulāla-kuṇḍa, and Gopāla/Viṭṭhalanātha sacred history.
+      - source_type: PRIMARY_GAUDIYA_TEXT
+        description: Caitanya-caritāmṛta Madhya 18.29–41 records Gopāla’s temporary move to Gāṅṭholī and Mahāprabhu’s visit for darśana.
+        source_reference: https://vedabase.io/en/library/cc/madhya/18/
+      - source_type: HISTORICAL_OR_DOCUMENTARY
+        description: Entwistle documents Gāṅṭholī’s Gopāla/Śrīnāthjī pilgrimage memory and compares the local traditions.
+      - source_type: MODERN_GEOGRAPHIC_SOURCE
+        description: Current OSM-derived geography supplies representative Gāṅṭholī village point 27.4865000, 77.4265300.
+    content_destination:

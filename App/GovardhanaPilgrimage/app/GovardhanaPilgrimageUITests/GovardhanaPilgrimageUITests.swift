@@ -365,6 +365,47 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
         ).firstMatch, in: app)
     }
 
+    func testTask020A12JatipuraAndGantholiDetails() {
+        var app = launch()
+        openPlaceDetails(61, in: app)
+        XCTAssertTrue(app.navigationBars["Mukhāravinda + Viṭṭhalanātha’s samādhi"].waitForExistence(timeout: 5))
+        revealForReading(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "His lotus face or mouth")
+        ).firstMatch, in: app)
+        revealForReading(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "distinct saint memorial")
+        ).firstMatch, in: app)
+        revealForReading(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "not #18 Mānasī-gaṅgā Mukhāravinda")
+        ).firstMatch, in: app)
+
+        app.terminate()
+        app = launch()
+        openPlaceDetails(62, in: app)
+        XCTAssertTrue(app.navigationBars["Daṇḍavat-śilā"].waitForExistence(timeout: 5))
+        revealForReading(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "prostrations in humility and repentance")
+        ).firstMatch, in: app)
+        revealForReading(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "not a scriptural or automatic guarantee")
+        ).firstMatch, in: app)
+
+        app.terminate()
+        app = launch()
+        openPlaceDetails(65, in: app)
+        XCTAssertTrue(app.navigationBars["Gāṅṭholī"].waitForExistence(timeout: 5))
+        revealForReading(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "Mahāprabhu coming to the village")
+        ).firstMatch, in: app)
+        revealForReading(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "representative village marker")
+        ).firstMatch, in: app)
+        let gulalaLink = app.buttons["#64 Gulāla-kuṇḍa"]
+        reveal(gulalaLink, in: app, attempts: 30)
+        gulalaLink.tap()
+        XCTAssertTrue(app.navigationBars["Gulāla-kuṇḍa"].waitForExistence(timeout: 5))
+    }
+
     func testTask020A7AniyorAndSankarsanaKundaOpenWithApprovedContent() {
         var app = launch()
         openPlaceDetails(36, in: app)
