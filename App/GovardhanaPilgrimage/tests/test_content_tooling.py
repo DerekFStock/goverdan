@@ -205,9 +205,9 @@ class ContentToolingTests(unittest.TestCase):
         self.assertEqual(0, report["foreign_key_violation_count"])
         connection = sqlite3.connect(path)
         try:
-            self.assertEqual(65, connection.execute("SELECT count(*) FROM pilgrimage_places").fetchone()[0])
-            self.assertEqual(318, connection.execute("SELECT count(*) FROM pilgrimage_place_aliases").fetchone()[0])
-            self.assertEqual(230, connection.execute("SELECT count(*) FROM pilgrimage_place_provenance").fetchone()[0])
+            self.assertEqual(71, connection.execute("SELECT count(*) FROM pilgrimage_places").fetchone()[0])
+            self.assertEqual(365, connection.execute("SELECT count(*) FROM pilgrimage_place_aliases").fetchone()[0])
+            self.assertEqual(254, connection.execute("SELECT count(*) FROM pilgrimage_place_provenance").fetchone()[0])
         finally:
             connection.close()
 
@@ -321,8 +321,8 @@ class ContentToolingTests(unittest.TestCase):
     def test_task_019_approved_places_compile_and_sqlite_preserves_anchor(self) -> None:
         result = compile_manifest(self.root, "radhakunda-mvp-development-manifest")
         places = result.content["pilgrimage_places"]
-        self.assertEqual(65, len(places))
-        self.assertEqual(list(range(1, 66)), [place["map_number"] for place in places])
+        self.assertEqual(71, len(places))
+        self.assertEqual(list(range(1, 72)), [place["map_number"] for place in places])
         by_number = {place["map_number"]: place for place in places}
 
         sant_nivas = by_number[14]
@@ -409,6 +409,8 @@ class ContentToolingTests(unittest.TestCase):
                 "place.jatipura-samadhi-cluster",
                 "place.mukharavinda-vitthalanatha-samadhi", "place.dandavat-sila",
                 "place.jatipura-village", "place.gulala-kunda", "place.gantholi",
+                "place.vilachu-kunda", "place.sakhi-sthali", "place.nima-gaon",
+                "place.uddhava-kunda", "place.siva-khari", "place.radha-kunjabihari-gaudiya-matha",
             },
             {item["place_id"] for item in contents},
         )
@@ -448,6 +450,8 @@ class ContentToolingTests(unittest.TestCase):
             "place.jatipura-samadhi-cluster",
             "place.mukharavinda-vitthalanatha-samadhi", "place.dandavat-sila",
             "place.jatipura-village", "place.gulala-kunda", "place.gantholi",
+            "place.vilachu-kunda", "place.sakhi-sthali", "place.nima-gaon",
+            "place.uddhava-kunda", "place.siva-khari", "place.radha-kunjabihari-gaudiya-matha",
         ]:
             item = by_place[place_id]
             for field in ["summary", "why_sacred", "lila", "pilgrim_guidance"]:
@@ -722,7 +726,53 @@ class ContentToolingTests(unittest.TestCase):
         self.assertIn("place.gulala-kunda", by_place["place.gantholi"]["related_place_ids"])
         self.assertFalse(any(reference.get("destination") for number in expected_task020a12
                              for reference in by_place[registry_by_number[number]["id"]]["references"]))
-        self.assertEqual(65, max(registry_by_number))
+        expected_task020a13 = {
+            66: ("place.vilachu-kunda", 27.4884375, 77.4487344, "PROBABLE", "HIGH"),
+            67: ("place.sakhi-sthali", 27.50755, 77.4301, "PROBABLE", "HIGH"),
+            68: ("place.nima-gaon", 27.5197, 77.45363, "PROBABLE", "HIGH"),
+            69: ("place.uddhava-kunda", 27.5138694, 77.4766528, "VERIFIED", "HIGH"),
+            71: ("place.radha-kunjabihari-gaudiya-matha", 27.5254125, 77.4891094, "PROBABLE", "HIGH"),
+        }
+        for number, expected in expected_task020a13.items():
+            self.assertEqual(expected, tuple(registry_by_number[number][key] for key in [
+                "id", "latitude", "longitude", "coordinate_status", "coordinate_confidence",
+            ]))
+        siva = registry_by_number[70]
+        self.assertEqual("place.siva-khari", siva["id"])
+        self.assertIsNone(siva.get("latitude"))
+        self.assertIsNone(siva.get("longitude"))
+        self.assertEqual(("UNVERIFIED", "UNKNOWN", "place.radha-kunjabihari-gaudiya-matha"), tuple(
+            siva[key] for key in ["coordinate_status", "coordinate_confidence", "navigation_anchor_place_id"]
+        ))
+        self.assertIn("Śivakhora", siva["alternate_names"])
+        self.assertIn("At navigation anchor", siva["location_guidance"])
+        self.assertIn("practical arrival", by_place["place.vilachu-kunda"]["pilgrim_guidance"])
+        self.assertIn("not the exact Vilachu-kuṇḍa centroid", by_place["place.vilachu-kunda"]["pilgrim_guidance"])
+        self.assertIn("not a direct Śrīmad-Bhāgavatam narrative", by_place["place.vilachu-kunda"]["lila"])
+        self.assertNotEqual(registry_by_number[66]["id"], registry_by_number[23]["id"])
+        self.assertIn("Bhakti-ratnākara 5.748–752", by_place["place.sakhi-sthali"]["summary"])
+        self.assertIn("not direct proof", by_place["place.sakhi-sthali"]["pilgrim_guidance"])
+        self.assertIn("representative", by_place["place.sakhi-sthali"]["pilgrim_guidance"])
+        self.assertIn("Bhakti-ratnākara 5.778", by_place["place.nima-gaon"]["summary"])
+        self.assertIn("1841", by_place["place.nima-gaon"]["why_sacred"])
+        self.assertIn("sectarian tradition", by_place["place.nima-gaon"]["why_sacred"])
+        self.assertIn("representative", by_place["place.nima-gaon"]["pilgrim_guidance"])
+        self.assertIn("10.47.61", by_place["place.uddhava-kunda"]["summary"])
+        self.assertIn("does not name the modern water body", by_place["place.uddhava-kunda"]["summary"])
+        self.assertIn("BDP_Gvdn_123a", [ref["locus"] for ref in by_place["place.uddhava-kunda"]["references"]])
+        self.assertNotEqual(registry_by_number[69]["id"], registry_by_number[6]["id"])
+        self.assertIn("Bhakti-ratnākara 5.587", by_place["place.siva-khari"]["summary"])
+        self.assertIn("variant", by_place["place.siva-khari"]["summary"])
+        self.assertIn("At navigation anchor", by_place["place.siva-khari"]["pilgrim_guidance"])
+        matha = by_place["place.radha-kunjabihari-gaudiya-matha"]
+        self.assertIn("Rādhā-kuṇḍa, not Govardhan town", matha["summary"])
+        self.assertIn("1934", matha["summary"])
+        self.assertIn("04-11-1935", matha["summary"])
+        self.assertIn("Śrīman Mahāprabhu", matha["summary"])
+        self.assertIn("final numbered landmark", matha["why_sacred"])
+        self.assertFalse(any(ref.get("destination") for number in range(66, 72)
+                             for ref in by_place[registry_by_number[number]["id"]]["references"]))
+        self.assertEqual(71, max(registry_by_number))
         for number, expected in {
             48: ("place.nava-kunda", 27.4588972, 77.4304361, "VERIFIED", "HIGH"),
             49: ("place.apsara-kunda", 27.4592417, 77.4299333, "VERIFIED", "HIGH"),
@@ -768,10 +818,10 @@ class ContentToolingTests(unittest.TestCase):
         connection = sqlite3.connect(path)
         try:
             self.assertEqual(7, connection.execute("PRAGMA user_version").fetchone()[0])
-            self.assertEqual(65, connection.execute("SELECT count(*) FROM pilgrimage_place_contents").fetchone()[0])
-            self.assertEqual(225, connection.execute("SELECT count(*) FROM pilgrimage_place_features").fetchone()[0])
-            self.assertEqual(195, connection.execute("SELECT count(*) FROM pilgrimage_place_references").fetchone()[0])
-            self.assertEqual(172, connection.execute("SELECT count(*) FROM pilgrimage_place_relationships").fetchone()[0])
+            self.assertEqual(71, connection.execute("SELECT count(*) FROM pilgrimage_place_contents").fetchone()[0])
+            self.assertEqual(243, connection.execute("SELECT count(*) FROM pilgrimage_place_features").fetchone()[0])
+            self.assertEqual(218, connection.execute("SELECT count(*) FROM pilgrimage_place_references").fetchone()[0])
+            self.assertEqual(191, connection.execute("SELECT count(*) FROM pilgrimage_place_relationships").fetchone()[0])
         finally:
             connection.close()
 

@@ -1728,3 +1728,187 @@ places:
       - source_type: MODERN_GEOGRAPHIC_SOURCE
         description: Current OSM-derived geography supplies representative Gāṅṭholī village point 27.4865000, 77.4265300.
     content_destination:
+
+  - id: place.vilachu-kunda
+    map_number: 66
+    canonical_name: Vilachu-kuṇḍa
+    ascii_name: Vilachu-kunda
+    alternate_names:
+      - Vilachu Kund
+      - Vilāchu-kuṇḍa
+      - Bilchhu Kund
+      - Bilchhukund
+      - Bilchu Kund
+      - Bichua Kund
+      - Vilāsa-kuṇḍa
+      - Vilasa Kund
+      - Vilāsa-vana
+      - Bilasban
+      - Bilchhubihari
+    latitude: 27.4884375
+    longitude: 77.4487344
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: 'Entwistle documents Bilchhu/Bilchhukund between Jatipura and Govardhan, the adjacent Bilchhubihari temple, and living toe-ring and Harideva-discovery traditions. Current mapping identifies Shree Bichua Bihari Ji Mandir Gowardhan at FCQX+9FH. The approved plus-code center is a practical arrival point at that shrine cluster, not a controlled geometric center of the kund.'
+    provenance:
+      - source_type: HISTORICAL_OR_DOCUMENTARY
+        description: Entwistle documents Bilchhu/Bilchhukund, the Bilchhubihari shrine, and the toe-ring and Harideva traditions; the latter are not archaeological proof of #23 Harideva Temple identity.
+      - source_type: PILGRIMAGE_TRADITION
+        description: Living Braj tradition remembers Kṛṣṇa finding Rādhā’s lost bichua or toe-ring in this sacred-water landscape.
+      - source_type: MODERN_MAP
+        description: Shree Bichua Bihari Ji Mandir Gowardhan at FCQX+9FH supplies the approved practical-arrival point 27.4884375, 77.4487344, not the kund centroid.
+    content_destination:
+
+  - id: place.sakhi-sthali
+    map_number: 67
+    canonical_name: Sakhī-sthalī
+    ascii_name: Sakhi-sthali
+    alternate_names:
+      - Sakhi Sthali
+      - Sakhisthali
+      - Sakhī-sthalī-grāma
+      - Sakhikhara
+      - Sakhī-kharā
+      - Sakhikara
+      - Sakhi-Thara
+      - Sakarwa
+      - Sakhī-vana
+      - Sakhi Vana
+    latitude: 27.5075500
+    longitude: 77.4301000
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: 'Bhakti-ratnākara 5.748 directly names Sakhī-sthalī-grāma as Candrāvalī’s residence and gives Sakhī-kharā as its then-current name; 5.749 places Uddhava speaking Kṛṣṇa-kathā here. Entwistle identifies Sakarwa/Sakhikara as the likely continuing landscape. The coordinate is a representative modern Sakarwa village point, not an exact early sacred-feature location.'
+    provenance:
+      - source_type: EARLY_GAUDIYA_PILGRIMAGE_TEXT
+        description: Bhakti-ratnākara 5.748–752 directly names Sakhī-sthalī, Candrāvalī, Uddhava at this village, and nearby Kṛṣṇa-Balarāma cowherd play; 5.749 is not a direct Uddhava-kuṇḍa verse.
+      - source_type: HISTORICAL_OR_DOCUMENTARY
+        description: Entwistle identifies Sakarwa/Sakhikara with the likely Sakhī-sthalī landscape and reports older māhātmya traditions without a controlled local verse citation.
+      - source_type: PILGRIMAGE_TRADITION
+        description: Living Braj guidance preserves Candrāvalī, Sakhī-kuṇḍa and Sakhī-vana associations; specific pond-origin numerology remains tradition.
+      - source_type: MODERN_GEOGRAPHIC_SOURCE
+        description: Current Sakarwa geography supplies representative village point 27.5075500, 77.4301000.
+    content_destination:
+
+  - id: place.nima-gaon
+    map_number: 68
+    canonical_name: Nīma Gaon
+    ascii_name: Nima Gaon
+    alternate_names:
+      - Nima Gaon
+      - Nīma-grāma
+      - Nima Gram
+      - Nimgaon
+      - Neemgaon
+      - Nibgaon
+      - Nībgaon
+    latitude: 27.5197000
+    longitude: 77.4536300
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: 'Bhakti-ratnākara 5.778 directly names Nīma-grāma. Current Nībgaon/Neemgaon is the representative modern village point. Entwistle documents later Nimbārka Sampradāya significance, a Sudarśanajī temple built in 1841, and Sudarśana Kund/Nimbārka Sarovar. Nimbārkācārya’s residence and vanished cave are received sectarian traditions, not independently established medieval biography or a mapped cave.'
+    provenance:
+      - source_type: EARLY_GAUDIYA_PILGRIMAGE_TEXT
+        description: Bhakti-ratnākara 5.777–780 directly names Nīma-grāma in 5.778; it does not say Nimbārka lived in a cave here.
+      - source_type: HISTORICAL_OR_DOCUMENTARY
+        description: Entwistle documents Nimbārka association, Sudarśanajī temple construction in 1841, and Sudarśana Kund/Nimbārka Sarovar.
+      - source_type: SECTARIAN_PILGRIMAGE_TRADITION
+        description: Living Nimbārka tradition remembers the ācārya residing in a cave no longer visible; this is not an archaeologically identified site.
+      - source_type: MODERN_GEOGRAPHIC_SOURCE
+        description: Current Nībgaon/Neemgaon geography supplies representative village point 27.5197000, 77.4536300.
+    content_destination:
+
+  - id: place.uddhava-kunda
+    map_number: 69
+    canonical_name: Uddhava-kuṇḍa
+    ascii_name: Uddhava-kunda
+    alternate_names:
+      - Uddhava Kund
+      - Uddhav Kund
+      - Uddhava Kunda
+      - Uddhav Kunda
+    latitude: 27.5138694
+    longitude: 77.4766528
+    coordinate_status: VERIFIED
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: 'Braj Development Plan BDP_Gvdn_123a directly locates Uddhav Kund at the approved coordinate west of Kusuma-sarovara, independently corroborated by current mapping. Śrīmad-Bhāgavatam 10.47.61 gives Uddhava’s aspiration for the gopīs’ foot-dust, not the modern kund name or coordinate. Later Bhagavata-māhātmya/Vajranābha traditions localize Uddhava in this landscape. Bhakti-ratnākara 5.749 belongs to #67 Sakhī-sthalī, not directly to this kund.'
+    provenance:
+      - source_type: PRIMARY_SCRIPTURE_CONTEXT
+        description: Śrīmad-Bhāgavatam 10.47.61 records Uddhava’s aspiration to become vegetation in Vraja for the gopīs’ foot-dust, not the modern kund identity.
+        source_reference: https://vedabase.io/en/library/sb/10/47/61/
+      - source_type: PURANIC_MAHATMYA_TRADITION
+        description: Later Bhagavata-māhātmya/Vajranābha and Dvārakā-queens traditions connect Uddhava’s presence with the Govardhana sacred landscape; no unverified precise verse is assigned.
+      - source_type: HISTORICAL_OR_DOCUMENTARY
+        description: Entwistle documents Uddhava Kund west of Kusuma Sarovar and its baithak/shrine complex.
+      - source_type: OFFICIAL_OR_INSTITUTIONAL_DOCUMENT
+        description: Braj Development Plan BDP_Gvdn_123a gives the approved Uddhav Kund coordinate 27.5138694, 77.4766528 and documents its current complex.
+        source_reference: https://www.upbtvp.in/pdf/Braj_Development_plan.pdf
+      - source_type: MODERN_MAP
+        description: Current mapping independently identifies Uddhav Kund at the approved point.
+    content_destination:
+
+  - id: place.siva-khari
+    map_number: 70
+    canonical_name: Śiva-kharī
+    ascii_name: Siva-khari
+    alternate_names:
+      - Siva Khari
+      - Siva Khari Kunda
+      - Siva Pushkarani
+      - Śiva Puṣkaraṇī
+      - Śivakhora
+      - Sivakhora
+      - Shiva Khari
+      - Shiva Khari Pushkarani
+    latitude:
+    longitude:
+    coordinate_status: UNVERIFIED
+    coordinate_confidence: UNKNOWN
+    coordinate_accuracy_meters:
+    navigation_anchor_place_id: place.radha-kunjabihari-gaudiya-matha
+    location_guidance: 'Navigate to #71 Rādhā-Kuñjabihārī Gauḍīya Maṭha at Rādhā-kuṇḍa, then identify the nearby Śiva-kharī pond on the western parikramā approach with current local guidance. Reaching #71 means At navigation anchor, not exact arrival at #70. No precise pond coordinate or turn-by-turn path is claimed.'
+    verification_notes: 'Bhakti-ratnākara 5.587 directly names Śivakhora among Rādhā-kuṇḍa-area ponds. Modern Gauḍīya parikramā guides connect it with Siva Khari/Siva Pushkarani, and current mapping identifies Siva Khari Pushkarani. No controlled pond coordinate is available, so this record remains coordinate-less and navigates through #71. Later jackal narratives have variants and no directly verified Padma Purāṇa locus in this project.'
+    provenance:
+      - source_type: EARLY_GAUDIYA_PILGRIMAGE_TEXT
+        description: Bhakti-ratnākara 5.585–587 directly names Śivakhora and Bhānukhora, without narrating a jackal story in that verse.
+      - source_type: GAUDIYA_PILGRIMAGE_GUIDE
+        description: Modern Gauḍīya parikramā guidance identifies Śivakhora with the Rādhā-kuṇḍa western-entrance Siva Khari/Siva Pushkarani pond.
+      - source_type: PILGRIMAGE_TRADITION
+        description: Later variant she-jackal accounts share a Rādhā-mercy theme; no one detailed variant or unverified Purāṇic verse is treated as canonical.
+      - source_type: MODERN_MAP
+        description: Current mapping identifies Siva Khari Pushkarani but supplies no project-controlled exact coordinate.
+    content_destination:
+
+  - id: place.radha-kunjabihari-gaudiya-matha
+    map_number: 71
+    canonical_name: Rādhā-Kuñjabihārī Gauḍīya Maṭha
+    ascii_name: Radha-Kunjabihari Gaudiya Matha
+    alternate_names:
+      - Radha Kunjabihari Gaudiya Math
+      - Radha-Kunjabihari Gaudiya Matha
+      - Sri Kunjabihari Matha
+      - Sri Kunja Behari Math
+      - Shree Shree Kunjbihari Goudiya Math
+      - Sri Radha Kunjabihari Gaudiya Matha
+      - Śrī Kuñjabihārī Maṭha
+    latitude: 27.5254125
+    longitude: 77.4891094
+    coordinate_status: PROBABLE
+    coordinate_confidence: HIGH
+    coordinate_accuracy_meters:
+    verification_notes: 'The original 71-place map ends with this Rādhā-kuṇḍa maṭha, not a site in Govardhan town. Gaudiya Mission chronology records the foundation of Sri Kunja Behari Math at Radha Kunda in 1934 and deity installation on 4 November 1935. Current mapping identifies Shree Shree Kunjbihari Goudiya Math at GFGQ+5J9; the approved plus-code center is a present institution marker, not an ancient Kṛṣṇa-līlā coordinate.'
+    provenance:
+      - source_type: MODERN_INSTITUTIONAL_PRIMARY_SOURCE
+        description: Gaudiya Mission chronology records the Rādhā-kuṇḍa foundation in 1934 and Śrī Rādhā-Kuñja Vihārī/Śrīman Mahāprabhu deity installation on 4 November 1935.
+        source_reference: https://gaudiyamission.org/chronology/
+      - source_type: GAUDIYA_INSTITUTIONAL_SOURCE
+        description: Gauḍīya institutional pilgrimage sources associate the maṭha and deities with Bhaktisiddhānta Sarasvatī’s missionary legacy.
+      - source_type: PILGRIMAGE_GUIDE
+        description: Modern parikramā accounts remember the maṭha as the final landmark before reaching/completing the Rādhā-kuṇḍa end of the historic 71-place list, not a prescribed app route.
+      - source_type: MODERN_MAP
+        description: Shree Shree Kunjbihari Goudiya Math at GFGQ+5J9, Radha Kund supplies approved present marker 27.5254125, 77.4891094; nearby similar-named maṭhas are not merged.
+    content_destination:

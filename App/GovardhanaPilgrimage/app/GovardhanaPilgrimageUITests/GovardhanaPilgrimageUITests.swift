@@ -406,6 +406,51 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
         XCTAssertTrue(app.navigationBars["Gulāla-kuṇḍa"].waitForExistence(timeout: 5))
     }
 
+    func testTask020A13FinalRegistryMarkerTypesAndAnchor() {
+        var app = launch()
+        openPlaceDetails(66, in: app)
+        XCTAssertTrue(app.navigationBars["Vilachu-kuṇḍa"].waitForExistence(timeout: 5))
+        revealForReading(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "practical arrival marker")
+        ).firstMatch, in: app)
+        revealForReading(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "not the exact Vilachu-kuṇḍa centroid")
+        ).firstMatch, in: app)
+
+        app.terminate()
+        app = launch()
+        openPlaceDetails(69, in: app)
+        XCTAssertTrue(app.navigationBars["Uddhava-kuṇḍa"].waitForExistence(timeout: 5))
+        revealForReading(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "Śrīmad-Bhāgavatam 10.47.61")
+        ).firstMatch, in: app)
+        revealForReading(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "#6 Uddhava Temple is a separate numbered record")
+        ).firstMatch, in: app)
+
+        app.terminate()
+        app = launch()
+        openPlaceDetails(70, in: app)
+        XCTAssertTrue(app.navigationBars["Śiva-kharī"].waitForExistence(timeout: 5))
+        revealForReading(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "At navigation anchor")
+        ).firstMatch, in: app)
+
+        app.terminate()
+        app = launch()
+        openPlaceDetails(71, in: app)
+        XCTAssertTrue(app.navigationBars["Rādhā-Kuñjabihārī Gauḍīya Maṭha"].waitForExistence(timeout: 5))
+        revealForReading(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "Rādhā-kuṇḍa, not Govardhan town")
+        ).firstMatch, in: app)
+        revealForReading(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "foundation in 1934")
+        ).firstMatch, in: app)
+        revealForReading(app.descendants(matching: .any).matching(
+            NSPredicate(format: "label CONTAINS %@", "4 November 1935")
+        ).firstMatch, in: app)
+    }
+
     func testTask020A7AniyorAndSankarsanaKundaOpenWithApprovedContent() {
         var app = launch()
         openPlaceDetails(36, in: app)
@@ -523,7 +568,7 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
         XCTAssertTrue(app.navigationBars["Govardhana Map"].waitForExistence(timeout: 8))
         app.buttons["map.places"].tap()
         let details = app.buttons["places.details.\(number)"]
-        reveal(details, in: app)
+        reveal(details, in: app, attempts: 20)
         details.tap()
     }
 
