@@ -1,0 +1,15 @@
+# Three existing kuṇḍas: controlled water-geometry review
+
+Research snapshot: 2026-09-17. This is **not** a production geometry, navigation, or arrival-point change. Complete, ordered source-node rings and metadata are in the [research YAML](../content/research/radhakunda-three-kunda-controlled-geometries.yaml) and [research GeoJSON](../content/research/radhakunda-three-kunda-controlled-geometries.geojson).
+
+| Existing place ID | OSM water way (v1, changeset 29850243) | Geometry | Unique / stored vertices | Bounding box `[west, south, east, north]` | Existing point | Attribution | Decision |
+| --- | --- | --- | ---: | --- | --- | --- | --- |
+| `place.radhakunda` | [335571302](https://www.openstreetmap.org/way/335571302), Radha Kund | Closed simple polygon | 16 / 17 | `[77.4908475, 27.5246231, 77.4918439, 27.5256634]` | Inside; provisional fixture, no independently documented arrival meaning | © OpenStreetMap contributors; ODbL 1.0 | `CONTROLLED_GEOMETRY_READY` |
+| `place.syamakunda` | [335571305](https://www.openstreetmap.org/way/335571305), Shyama Kunda | Closed simple polygon | 16 / 17 | `[77.4917621, 27.5246623, 77.4932980, 27.5257390]` | Inside; provisional fixture, no independently documented arrival meaning | © OpenStreetMap contributors; ODbL 1.0 | `CONTROLLED_GEOMETRY_READY` |
+| `place.lalitakunda` | [335571300](https://www.openstreetmap.org/way/335571300), Lalita Kunda | Closed simple polygon | 12 / 13 | `[77.4929360, 27.5261084, 77.4932541, 27.5263572]` | Inside; provisional fixture, no independently documented arrival meaning | © OpenStreetMap contributors; ODbL 1.0 | `CONTROLLED_GEOMETRY_READY` |
+
+The three complete OSM way objects and ordered node coordinates were retrieved from each way's `/full.json` API endpoint, not traced from a rendered map. All three are tagged `natural=water`, `water=lake`, and separately named. The surrounding OSM water-way query also returned Mohana Kund (way 430061166) and two unnamed ways (430061164 and 430061165). The three proposed rings are mutually non-overlapping and not nested in Mohana; overlapping bounding boxes alone do not merge Rādhā with Śyāma or Lalitā with Mohana. The nearby Saṅgama does not authorize a combined polygon.
+
+`CONTROLLED_GEOMETRY_READY` means that a later, separately authorized production proposal may use each outline as **present-day water-body evidence**. It does not change the existing point, certify a public approach or safe shoreline, or make polygon vertices/centroids into arrival locations. The existing points were recorded as provisional Task 014 development fixtures, with no independent arrival meaning. All three source ways were last revised in 2015, so field confirmation of current edges and access remains advisable before any access or arrival claim.
+
+These modern community-mapped water outlines say nothing conclusive about early historical shorelines or nitya-līlā textual geography. Those remain separate evidence layers. If reused in production, comply with [OpenStreetMap's ODbL and attribution requirements](https://www.openstreetmap.org/copyright).
