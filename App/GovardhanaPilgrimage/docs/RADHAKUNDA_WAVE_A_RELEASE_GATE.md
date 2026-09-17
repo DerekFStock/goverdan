@@ -36,3 +36,7 @@ The [controlled evidence package](../content/research/radhakunda-wave-a-controll
 ## Task 021A.4 subsequent authorization
 
 Task 021A.4 authorized production ingestion of **RK-05 alone**, as an unnumbered non-navigable water polygon. The original release-gate decisions above remain the research history; the later explicit authorization does not upgrade a water edge, entrance, or any other candidate. The app retains 71 numbered Govardhana places and adds one unnumbered Rādhā-kuṇḍa micro-place (72 total). RK-17, RK-27, RK-29, RK-SAM-01, every other Wave A candidate, and Waves B/C remain blocked. No public arrival point has been accepted.
+
+## Task 021A.6 subsequent geometry authorization
+
+Task 021A.5 documented the three existing kuṇḍas' separate [controlled OSM water polygons](RADHAKUNDA_THREE_KUNDA_GEOMETRY_REVIEW.md). Task 021A.6 then authorized their production **water-outline geometry only** for existing IDs `place.radhakunda`, `place.syamakunda`, and `place.lalitakunda`. There are now four production water polygons, including Mohana-kuṇḍa, but still 72 places and 71 numbered Govardhana places. Existing numbered points and navigation behavior are unchanged; none is promoted to a verified entrance. Polygon edges, bathing access, and public approaches still need field confirmation. RK-17, RK-27, RK-29, RK-SAM-01, all other Wave A records, and Waves B/C remain blocked.

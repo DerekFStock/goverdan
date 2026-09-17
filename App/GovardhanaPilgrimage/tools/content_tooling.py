@@ -341,9 +341,18 @@ def validate_pilgrimage_geometry(document: dict[str, Any], places: list[dict[str
         if place is None or place_id in seen:
             raise ContentValidationError(f"Unknown or duplicate Pilgrimage geometry place: {place_id}")
         seen.add(place_id)
-        if place.get("collection") != "RADHA_KUNDA_MICRO" or properties.get("collection") != place["collection"]:
+        collection = place.get("collection", "GOVARDHANA_NUMBERED")
+        if properties.get("collection") != collection:
             raise ContentValidationError(f"Geometry collection disagrees with place: {place_id}")
-        if feature.get("geometry", {}).get("type") != "Polygon" or properties.get("geometry_type") != place.get("geometry_type"):
+        if collection == "GOVARDHANA_NUMBERED":
+            if place.get("geometry_type", "POINT") != "POINT" or properties.get("map_number") != place["map_number"]:
+                raise ContentValidationError(f"Numbered point identity disagrees with geometry: {place_id}")
+        elif collection == "RADHA_KUNDA_MICRO":
+            if place.get("geometry_type") != "WATER_BODY_POLYGON" or properties.get("map_number") is not None:
+                raise ContentValidationError(f"Micro-place identity disagrees with geometry: {place_id}")
+        else:
+            raise ContentValidationError(f"Unsupported geometry collection: {place_id}")
+        if feature.get("geometry", {}).get("type") != "Polygon" or properties.get("geometry_type") != "WATER_BODY_POLYGON":
             raise ContentValidationError(f"Geometry type disagrees with place: {place_id}")
         if properties.get("coordinate_semantics") != "POLYGON_VERTEX" or properties.get("navigation_authorized") is not False or properties.get("arrival_authorized") is not False:
             raise ContentValidationError(f"Geometry could imply arrival/navigation: {place_id}")
@@ -383,7 +392,7 @@ def validate_pilgrimage_geometry(document: dict[str, Any], places: list[dict[str
             "arrival_authorized": False,
         })
     required = {place["id"] for place in places if place.get("collection") == "RADHA_KUNDA_MICRO"}
-    if seen != required:
+    if not required.issubset(seen):
         raise ContentValidationError(f"Micro-place geometry coverage mismatch: {sorted(required - seen)}")
     return features
 

@@ -269,6 +269,10 @@ struct PilgrimagePlaceGeometry: Hashable, Sendable {
     let labelMinZoom: Double
     let vertices: [PilgrimagePolygonVertex]
     let sourceID: String
+    let sourceURL: String
+    let sourceVersion: Int?
+    let sourceChangeset: Int?
+    let sourceRetrievedOn: String
     let attribution: String
 }
 

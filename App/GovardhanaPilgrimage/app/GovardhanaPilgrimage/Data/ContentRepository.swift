@@ -155,6 +155,10 @@ struct SQLiteContentRepository: ContentRepository {
                         labelMinZoom: geometryRow["label_min_zoom"],
                         vertices: vertices,
                         sourceID: geometryRow["source_id"],
+                        sourceURL: geometryRow["source_url"],
+                        sourceVersion: geometryRow["source_version"],
+                        sourceChangeset: geometryRow["source_changeset"],
+                        sourceRetrievedOn: geometryRow["source_retrieved_on"],
                         attribution: geometryRow["attribution"]
                     )
                 } else {

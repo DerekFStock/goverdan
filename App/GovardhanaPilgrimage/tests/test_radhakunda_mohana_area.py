@@ -45,8 +45,8 @@ class MohanaAreaTests(unittest.TestCase):
 
     def test_polygon_is_exact_controlled_source_not_research_runtime_file(self):
         self.assertNotEqual(PRODUCTION_GEOMETRY, RESEARCH_GEOMETRY)
-        self.assertEqual(1, len(self.production["features"]))
-        feature = self.production["features"][0]
+        self.assertEqual(4, len(self.production["features"]))
+        feature = next(item for item in self.production["features"] if item["properties"]["place_id"] == "place.rk.mohana-kunda")
         research = self.research["features"][0]
         ring = feature["geometry"]["coordinates"][0]
         self.assertEqual(research["geometry"]["coordinates"][0], ring)
