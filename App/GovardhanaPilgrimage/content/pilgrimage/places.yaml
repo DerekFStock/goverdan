@@ -1912,3 +1912,25 @@ places:
       - source_type: MODERN_MAP
         description: Shree Shree Kunjbihari Goudiya Math at GFGQ+5J9, Radha Kund supplies approved present marker 27.5254125, 77.4891094; nearby similar-named maṭhas are not merged.
     content_destination:
+
+  - id: place.rk.mohana-kunda
+    map_number:
+    collection: RADHA_KUNDA_MICRO
+    geometry_type: WATER_BODY_POLYGON
+    coordinate_semantics: POLYGON_VERTEX
+    map_visibility: PRECINCT_ONLY
+    navigation_eligible: false
+    canonical_name: Mohana-kuṇḍa
+    ascii_name: Mohana-kunda
+    alternate_names:
+      - Mohana Kund
+      - Mohan Kunda
+    coordinate_status: UNVERIFIED
+    coordinate_confidence: UNKNOWN
+    coordinate_accuracy_meters:
+    verification_notes: The controlled OSM polygon represents a water area only. No entrance, safe edge, practical approach, arrival point, or navigation coordinate has been verified.
+    provenance:
+      - source_type: OPENSTREETMAP_ODBL
+        description: Water polygon from OpenStreetMap way 430061166 version 2, changeset 67612276, retrieved 2026-09-17. © OpenStreetMap contributors; ODbL 1.0. All coordinates are polygon vertices, not arrival points.
+        source_reference: https://www.openstreetmap.org/way/430061166
+    content_destination:

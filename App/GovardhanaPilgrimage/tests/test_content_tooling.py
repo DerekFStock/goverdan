@@ -154,7 +154,7 @@ class ContentToolingTests(unittest.TestCase):
         self.assertEqual(0, report["foreign_key_violation_count"])
         connection = sqlite3.connect(path)
         try:
-            self.assertEqual(8, connection.execute("PRAGMA user_version").fetchone()[0])
+            self.assertEqual(9, connection.execute("PRAGMA user_version").fetchone()[0])
             self.assertEqual(3, connection.execute("SELECT count(*) FROM source_passages").fetchone()[0])
             self.assertEqual(5, connection.execute("SELECT count(*) FROM story_blocks").fetchone()[0])
         finally:
@@ -206,9 +206,10 @@ class ContentToolingTests(unittest.TestCase):
         self.assertEqual(0, report["foreign_key_violation_count"])
         connection = sqlite3.connect(path)
         try:
-            self.assertEqual(71, connection.execute("SELECT count(*) FROM pilgrimage_places").fetchone()[0])
-            self.assertEqual(365, connection.execute("SELECT count(*) FROM pilgrimage_place_aliases").fetchone()[0])
-            self.assertEqual(254, connection.execute("SELECT count(*) FROM pilgrimage_place_provenance").fetchone()[0])
+            self.assertEqual(72, connection.execute("SELECT count(*) FROM pilgrimage_places").fetchone()[0])
+            self.assertEqual(71, connection.execute("SELECT count(*) FROM pilgrimage_places WHERE map_number IS NOT NULL").fetchone()[0])
+            self.assertEqual(367, connection.execute("SELECT count(*) FROM pilgrimage_place_aliases").fetchone()[0])
+            self.assertEqual(255, connection.execute("SELECT count(*) FROM pilgrimage_place_provenance").fetchone()[0])
         finally:
             connection.close()
 
@@ -322,8 +323,8 @@ class ContentToolingTests(unittest.TestCase):
     def test_task_019_approved_places_compile_and_sqlite_preserves_anchor(self) -> None:
         result = compile_manifest(self.root, "radhakunda-mvp-development-manifest")
         places = result.content["pilgrimage_places"]
-        self.assertEqual(71, len(places))
-        self.assertEqual(list(range(1, 72)), [place["map_number"] for place in places])
+        self.assertEqual(72, len(places))
+        self.assertEqual(list(range(1, 72)), [place["map_number"] for place in places if place["map_number"] is not None])
         by_number = {place["map_number"]: place for place in places}
 
         sant_nivas = by_number[14]
@@ -412,6 +413,7 @@ class ContentToolingTests(unittest.TestCase):
                 "place.jatipura-village", "place.gulala-kunda", "place.gantholi",
                 "place.vilachu-kunda", "place.sakhi-sthali", "place.nima-gaon",
                 "place.uddhava-kunda", "place.siva-khari", "place.radha-kunjabihari-gaudiya-matha",
+                "place.rk.mohana-kunda",
             },
             {item["place_id"] for item in contents},
         )
@@ -773,7 +775,7 @@ class ContentToolingTests(unittest.TestCase):
         self.assertIn("final numbered landmark", matha["why_sacred"])
         self.assertFalse(any(ref.get("destination") for number in range(66, 72)
                              for ref in by_place[registry_by_number[number]["id"]]["references"]))
-        self.assertEqual(71, max(registry_by_number))
+        self.assertEqual(71, max(number for number in registry_by_number if number is not None))
         for number, expected in {
             48: ("place.nava-kunda", 27.4588972, 77.4304361, "VERIFIED", "HIGH"),
             49: ("place.apsara-kunda", 27.4592417, 77.4299333, "VERIFIED", "HIGH"),
@@ -818,9 +820,9 @@ class ContentToolingTests(unittest.TestCase):
         self.assertEqual(0, report["foreign_key_violation_count"])
         connection = sqlite3.connect(path)
         try:
-            self.assertEqual(8, connection.execute("PRAGMA user_version").fetchone()[0])
-            self.assertEqual(71, connection.execute("SELECT count(*) FROM pilgrimage_place_contents").fetchone()[0])
-            self.assertEqual(243, connection.execute("SELECT count(*) FROM pilgrimage_place_features").fetchone()[0])
+            self.assertEqual(9, connection.execute("PRAGMA user_version").fetchone()[0])
+            self.assertEqual(72, connection.execute("SELECT count(*) FROM pilgrimage_place_contents").fetchone()[0])
+            self.assertEqual(244, connection.execute("SELECT count(*) FROM pilgrimage_place_features").fetchone()[0])
             self.assertEqual(218, connection.execute("SELECT count(*) FROM pilgrimage_place_references").fetchone()[0])
             self.assertEqual(191, connection.execute("SELECT count(*) FROM pilgrimage_place_relationships").fetchone()[0])
         finally:
@@ -1222,7 +1224,7 @@ class ContentToolingTests(unittest.TestCase):
                     (f'"{query}"',),
                 ).fetchall()
                 self.assertEqual([("person.lalita-sakhi",)], rows)
-            self.assertEqual(71, connection.execute("SELECT count(*) FROM pilgrimage_places").fetchone()[0])
+            self.assertEqual(72, connection.execute("SELECT count(*) FROM pilgrimage_places").fetchone()[0])
         finally:
             connection.close()
 

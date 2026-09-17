@@ -133,11 +133,11 @@ class ControlledEvidenceTests(unittest.TestCase):
             if record["public_approach_evidence"] == "NONE_CONTROLLED" or "UNVERIFIED" in record["access_status"]:
                 self.assertNotEqual("CONTROLLED_FEATURE_AND_APPROACH", record["eligibility_decision"])
 
-    def test_runtime_stays_seventy_one_and_ignores_research(self):
+    def test_runtime_has_only_the_separately_authorized_area(self):
         places = yaml.safe_load(REGISTRY.read_text(encoding="utf-8"))["places"]
-        self.assertEqual(71, len(places))
-        self.assertEqual(list(range(1, 72)), sorted(place["map_number"] for place in places))
-        self.assertFalse(any(place["id"].startswith("place.rk.") for place in places))
+        self.assertEqual(72, len(places))
+        self.assertEqual(list(range(1, 72)), sorted(place["map_number"] for place in places if place["map_number"] is not None))
+        self.assertEqual(["place.rk.mohana-kunda"], [place["id"] for place in places if place["id"].startswith("place.rk.")])
         for path in (ROOT / "content/manifests").glob("*"):
             if path.is_file():
                 contents = path.read_text(encoding="utf-8")
@@ -145,9 +145,9 @@ class ControlledEvidenceTests(unittest.TestCase):
                 self.assertNotIn(GEOJSON.name, contents)
         with sqlite3.connect(SQLITE) as db:
             rows = db.execute("SELECT id, map_number FROM pilgrimage_places").fetchall()
-            self.assertEqual(71, len(rows))
-            self.assertEqual(list(range(1, 72)), sorted(number for _, number in rows))
-            self.assertFalse(any(place_id.startswith("place.rk.") for place_id, _ in rows))
+            self.assertEqual(72, len(rows))
+            self.assertEqual(list(range(1, 72)), sorted(number for _, number in rows if number is not None))
+            self.assertEqual([("place.rk.mohana-kunda", None)], [(place_id, number) for place_id, number in rows if place_id.startswith("place.rk.")])
             self.assertEqual("ok", db.execute("PRAGMA integrity_check").fetchone()[0])
             self.assertEqual([], db.execute("PRAGMA foreign_key_check").fetchall())
 

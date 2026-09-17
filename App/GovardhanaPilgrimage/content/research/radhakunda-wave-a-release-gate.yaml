@@ -18,6 +18,7 @@ gate:
     - HOLD_ACCESS_VERIFICATION
     - NOT_ELIGIBLE
   note: A conditional area classification is not authorization to compile a place. A plus code, water centroid, or early textual locus is not a controlled public arrival point.
+  subsequent_authorization: Task 021A.4 separately authorized RK-05 alone as an unnumbered, non-navigable production water polygon. This research gate does not release any other record or any arrival point.
 
 decisions:
   - research_id: RK-01

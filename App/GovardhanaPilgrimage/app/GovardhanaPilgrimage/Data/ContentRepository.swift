@@ -115,7 +115,7 @@ struct SQLiteContentRepository: ContentRepository {
         try database.reader.read { db in
             try Row.fetchAll(
                 db,
-                sql: "SELECT * FROM pilgrimage_places ORDER BY map_number"
+                sql: "SELECT * FROM pilgrimage_places ORDER BY map_number IS NULL, map_number, canonical_name"
             ).map { row in
                 let placeID: String = row["id"]
                 let aliases = try String.fetchAll(
@@ -134,6 +134,32 @@ struct SQLiteContentRepository: ContentRepository {
                         sourceReference: evidence["source_reference"]
                     )
                 }
+                let geometryRow = try Row.fetchOne(
+                    db,
+                    sql: "SELECT * FROM pilgrimage_place_geometries WHERE place_id = ?",
+                    arguments: [placeID]
+                )
+                let geometry: PilgrimagePlaceGeometry?
+                if let geometryRow {
+                    let vertices = try Row.fetchAll(
+                        db,
+                        sql: "SELECT longitude, latitude FROM pilgrimage_place_geometry_vertices WHERE place_id = ? ORDER BY vertex_index",
+                        arguments: [placeID]
+                    ).map { vertex in
+                        PilgrimagePolygonVertex(longitude: vertex["longitude"], latitude: vertex["latitude"])
+                    }
+                    geometry = PilgrimagePlaceGeometry(
+                        geometryType: geometryRow["geometry_type"],
+                        coordinateSemantics: geometryRow["coordinate_semantics"],
+                        minZoom: geometryRow["min_zoom"],
+                        labelMinZoom: geometryRow["label_min_zoom"],
+                        vertices: vertices,
+                        sourceID: geometryRow["source_id"],
+                        attribution: geometryRow["attribution"]
+                    )
+                } else {
+                    geometry = nil
+                }
                 guard
                     let status = CoordinateVerificationStatus(rawValue: row["coordinate_status"]),
                     let confidence = CoordinateConfidence(rawValue: row["coordinate_confidence"])
@@ -150,6 +176,12 @@ struct SQLiteContentRepository: ContentRepository {
                 return PilgrimagePlace(
                     id: PilgrimagePlaceID(rawValue: placeID),
                     mapNumber: row["map_number"],
+                    collection: row["collection"],
+                    geometryType: row["geometry_type"],
+                    coordinateSemantics: row["coordinate_semantics"],
+                    mapVisibility: row["map_visibility"],
+                    navigationEligible: row["navigation_eligible"],
+                    geometry: geometry,
                     canonicalName: row["canonical_name"],
                     asciiName: row["ascii_name"],
                     alternateNames: aliases,

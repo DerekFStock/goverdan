@@ -74,7 +74,7 @@ struct PersonDetailView: View {
                                             PlaceDetailView(place: place, allPlaces: model.pilgrimagePlaces, model: model)
                                         } label: {
                                             VStack(alignment: .leading, spacing: 4) {
-                                                Text("#\(place.mapNumber) \(place.canonicalName)").font(.headline)
+                                                Text(place.mapNumber.map { "#\($0) \(place.canonicalName)" } ?? place.canonicalName).font(.headline)
                                                 Text(relationship.explanation).font(.subheadline)
                                                 Text("Evidence \(relationship.sourceLayer) · \(relationship.verificationStatus)")
                                                     .font(.caption).foregroundStyle(.secondary)

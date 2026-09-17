@@ -5,6 +5,48 @@ import XCTest
 @testable import GovardhanaPilgrimage
 
 final class FoundationTests: XCTestCase {
+    @MainActor
+    func testTask021A4AreaOnlyPlaceCannotEnterPointNavigation() throws {
+        let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
+        let places = try repository.pilgrimagePlaces()
+        let area = try XCTUnwrap(places.first { $0.id.rawValue == "place.rk.mohana-kunda" })
+        let geometry = try XCTUnwrap(area.geometry)
+        XCTAssertEqual(72, places.count)
+        XCTAssertEqual(71, places.compactMap(\.mapNumber).count)
+        XCTAssertNil(area.mapNumber)
+        XCTAssertNil(area.coordinate)
+        XCTAssertNil(area.navigationAnchorPlaceID)
+        XCTAssertFalse(area.navigationEligible)
+        XCTAssertEqual("RADHA_KUNDA_MICRO", area.collection)
+        XCTAssertEqual("WATER_BODY_POLYGON", geometry.geometryType)
+        XCTAssertEqual("POLYGON_VERTEX", geometry.coordinateSemantics)
+        XCTAssertEqual(81, geometry.vertices.count)
+        XCTAssertEqual(geometry.vertices.first, geometry.vertices.last)
+        XCTAssertFalse(PilgrimageAreaMapProjection.isVisible(area, zoomLevel: 13))
+        XCTAssertTrue(PilgrimageAreaMapProjection.isVisible(area, zoomLevel: geometry.minZoom))
+        XCTAssertFalse(PilgrimageAreaMapProjection.showsLabel(area, zoomLevel: geometry.minZoom - 0.1))
+        XCTAssertTrue(PilgrimageAreaMapProjection.showsLabel(area, zoomLevel: geometry.minZoom))
+        XCTAssertTrue(PilgrimageAreaMapProjection.showsLabel(area, zoomLevel: geometry.labelMinZoom))
+        let labelCoordinate = try XCTUnwrap(PilgrimageAreaMapProjection.labelCoordinate(area))
+        XCTAssertGreaterThan(labelCoordinate.latitude, geometry.vertices.map(\.latitude).min()!)
+        XCTAssertLessThan(labelCoordinate.latitude, geometry.vertices.map(\.latitude).max()!)
+        XCTAssertEqual(area.id, PilgrimageAreaMapProjection.selectedPlace(featurePlaceID: area.id.rawValue, areas: places)?.id)
+        XCTAssertFalse(PilgrimageMapProjection.presentations(for: places).contains { $0.place.id == area.id })
+        XCTAssertFalse(PilgrimagePlaceNavigation.rows(for: places).first { $0.place.id == area.id }!.place.navigationEligible)
+        let model = PilgrimageMapModel(places: places)
+        let priorDestination = model.activeDestination
+        let priorRecenter = model.shouldRecenter
+        let priorSample = model.sample?.coordinate
+        model.navigate(to: area)
+        XCTAssertEqual(priorDestination, model.activeDestination)
+        XCTAssertEqual(priorRecenter, model.shouldRecenter)
+        XCTAssertEqual(priorSample?.latitude, model.sample?.coordinate.latitude)
+        XCTAssertNotEqual(area.id, model.nearest?.id)
+        XCTAssertNil(model.places.first { $0.id == area.id }?.coordinate)
+        XCTAssertTrue(geometry.attribution.contains("OpenStreetMap"))
+        XCTAssertEqual("OSM-WAY-430061166-V2", geometry.sourceID)
+    }
+
     func testSanskritTextLayoutPreservesAuthoredPadasAndRemovesBlankSerializationLines() {
         let text = """
         first pāda
@@ -94,7 +136,7 @@ final class FoundationTests: XCTestCase {
         let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
         let allPlaces = try repository.pilgrimagePlaces()
         let places = allPlaces.filter { [1, 2, 3, 20].contains($0.mapNumber) }
-        XCTAssertEqual([1, 2, 3, 20], places.map(\.mapNumber))
+        XCTAssertEqual([1, 2, 3, 20], places.compactMap(\.mapNumber))
         XCTAssertEqual(
             ["place.radhakunda", "place.syamakunda", "place.lalitakunda", "place.manasiganga"],
             places.map(\.id.rawValue)
@@ -112,7 +154,7 @@ final class FoundationTests: XCTestCase {
         let places = try repository.pilgrimagePlaces()
         XCTAssertEqual(
             [1, 2, 3, 4, 5, 6, 7, 8, 20],
-            places.filter { [1, 2, 3, 4, 5, 6, 7, 8, 20].contains($0.mapNumber) }.map(\.mapNumber)
+            places.filter { [1, 2, 3, 4, 5, 6, 7, 8, 20].contains($0.mapNumber) }.compactMap(\.mapNumber)
         )
         let expected: [Int: (String, Double, Double, CoordinateVerificationStatus, CoordinateConfidence)] = [
             4: ("place.mukharai", 27.51031, 77.49956, .probable, .medium),
@@ -121,8 +163,8 @@ final class FoundationTests: XCTestCase {
             7: ("place.asoka-vana", 27.5111752, 77.4785779, .probable, .high),
             8: ("place.narada-kunda", 27.50819, 77.47980, .probable, .high),
         ]
-        for place in places where expected[place.mapNumber] != nil {
-            let value = try XCTUnwrap(expected[place.mapNumber])
+        for place in places where expected[place.mapNumber ?? -1] != nil {
+            let value = try XCTUnwrap(expected[place.mapNumber ?? -1])
             XCTAssertEqual(value.0, place.id.rawValue)
             XCTAssertEqual(value.1, try XCTUnwrap(place.latitude), accuracy: 0.00000001)
             XCTAssertEqual(value.2, try XCTUnwrap(place.longitude), accuracy: 0.00000001)
@@ -143,9 +185,9 @@ final class FoundationTests: XCTestCase {
     func testTask017CoordinateLessPlacesUseAnchoredPresentationAndStayOutOfGeoCalculations() throws {
         let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
         let allPlaces = try repository.pilgrimagePlaces()
-        let places = allPlaces.filter { (1...13).contains($0.mapNumber) || $0.mapNumber == 20 }
-        XCTAssertEqual(Array(1...13) + [20], places.map(\.mapNumber))
-        let byNumber = Dictionary(uniqueKeysWithValues: places.map { ($0.mapNumber, $0) })
+        let places = allPlaces.filter { (1...13).contains($0.mapNumber ?? -1) || $0.mapNumber == 20 }
+        XCTAssertEqual(Array(1...13) + [20], places.compactMap(\.mapNumber))
+        let byNumber = Dictionary(uniqueKeysWithValues: places.compactMap { place in place.mapNumber.map { ($0, place) } })
         for number in [10, 12] {
             let place = try XCTUnwrap(byNumber[number])
             XCTAssertNil(place.latitude)
@@ -186,9 +228,9 @@ final class FoundationTests: XCTestCase {
     func testTask019ApprovedPlacesSurviveSQLiteAndProjectGenericallyToMap() throws {
         let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
         let places = try repository.pilgrimagePlaces()
-        XCTAssertEqual(71, places.count)
-        XCTAssertEqual(Array(1...71), places.map(\.mapNumber))
-        let byNumber = Dictionary(uniqueKeysWithValues: places.map { ($0.mapNumber, $0) })
+        XCTAssertEqual(72, places.count)
+        XCTAssertEqual(Array(1...71), places.compactMap(\.mapNumber))
+        let byNumber = Dictionary(uniqueKeysWithValues: places.compactMap { place in place.mapNumber.map { ($0, place) } })
 
         let santNivas = try XCTUnwrap(byNumber[14])
         XCTAssertNil(santNivas.latitude)
@@ -250,7 +292,7 @@ final class FoundationTests: XCTestCase {
     func testTask017PilgrimageNavigationPreservesLocationSourceAndDistinguishesAnchorArrival() throws {
         let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
         let places = try repository.pilgrimagePlaces()
-        let byNumber = Dictionary(uniqueKeysWithValues: places.map { ($0.mapNumber, $0) })
+        let byNumber = Dictionary(uniqueKeysWithValues: places.compactMap { place in place.mapNumber.map { ($0, place) } })
         let model = PilgrimageMapModel(places: places)
         let original = LocationSample(
             coordinate: .init(latitude: 27.525256, longitude: 77.491353),
@@ -301,7 +343,7 @@ final class FoundationTests: XCTestCase {
     func testTask018MapLabelPriorityAndCompactApproximateCard() throws {
         let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
         let places = try repository.pilgrimagePlaces()
-        let byNumber = Dictionary(uniqueKeysWithValues: places.map { ($0.mapNumber, $0) })
+        let byNumber = Dictionary(uniqueKeysWithValues: places.compactMap { place in place.mapNumber.map { ($0, place) } })
         let presentations = PilgrimageMapProjection.presentations(for: places)
         let presentationByNumber = Dictionary(uniqueKeysWithValues: presentations.map { ($0.place.mapNumber, $0) })
 
@@ -341,7 +383,7 @@ final class FoundationTests: XCTestCase {
     func testAdaptivePilgrimageLabelsAndApproximateOffsetsRespondToZoom() throws {
         let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
         let places = try repository.pilgrimagePlaces()
-        let byNumber = Dictionary(uniqueKeysWithValues: places.map { ($0.mapNumber, $0) })
+        let byNumber = Dictionary(uniqueKeysWithValues: places.compactMap { place in place.mapNumber.map { ($0, place) } })
         let presentations = PilgrimageMapProjection.presentations(for: places)
         let byPresentationNumber = Dictionary(uniqueKeysWithValues: presentations.map { ($0.place.mapNumber, $0) })
         let target13 = try XCTUnwrap(byNumber[13])
@@ -387,7 +429,7 @@ final class FoundationTests: XCTestCase {
     func testTask020A13RepositoryLoadsCompleteSeventyOnePlaces() throws {
         let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
         let places = try repository.pilgrimagePlaces()
-        let byNumber = Dictionary(uniqueKeysWithValues: places.map { ($0.mapNumber, $0) })
+        let byNumber = Dictionary(uniqueKeysWithValues: places.compactMap { place in place.mapNumber.map { ($0, place) } })
 
         for number in 1...71 {
             let place = try XCTUnwrap(byNumber[number])

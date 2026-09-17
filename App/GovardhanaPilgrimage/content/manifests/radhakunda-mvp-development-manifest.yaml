@@ -118,6 +118,12 @@ compile_sequence:
   target_path: content/people/lalita-sakhi/package.yaml
   required: true
   development_eligible: true
+- order: 16
+  role: PILGRIMAGE_PLACE_GEOMETRY
+  file: pilgrimage-place-geometries.geojson
+  target_path: content/pilgrimage/place-geometries.geojson
+  required: true
+  development_eligible: true
 non_runtime_assets:
 - role: SOURCE_PROVENANCE
   file: govinda-lilamrta_PROVENANCE.md

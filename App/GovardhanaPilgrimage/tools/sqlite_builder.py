@@ -11,12 +11,12 @@ from typing import Any
 from content_tooling import BuildResult, ContentValidationError
 
 
-SCHEMA_VERSION = 8
+SCHEMA_VERSION = 9
 DATABASE_FILENAME = "radhakunda-content.sqlite"
 
 SCHEMA_SQL = """
 PRAGMA foreign_keys = ON;
-PRAGMA user_version = 8;
+PRAGMA user_version = 9;
 
 CREATE TABLE package_metadata (
     key TEXT PRIMARY KEY NOT NULL,
@@ -158,7 +158,12 @@ CREATE TABLE images (
 
 CREATE TABLE pilgrimage_places (
     id TEXT PRIMARY KEY NOT NULL,
-    map_number INTEGER NOT NULL UNIQUE CHECK (map_number > 0),
+    map_number INTEGER UNIQUE CHECK (map_number > 0),
+    collection TEXT NOT NULL CHECK (collection IN ('GOVARDHANA_NUMBERED', 'RADHA_KUNDA_MICRO')),
+    geometry_type TEXT NOT NULL CHECK (geometry_type IN ('POINT', 'WATER_BODY_POLYGON')),
+    coordinate_semantics TEXT NOT NULL,
+    map_visibility TEXT NOT NULL CHECK (map_visibility IN ('ALL_ZOOMS', 'PRECINCT_ONLY')),
+    navigation_eligible INTEGER NOT NULL CHECK (navigation_eligible IN (0, 1)),
     canonical_name TEXT NOT NULL CHECK (length(trim(canonical_name)) > 0),
     ascii_name TEXT,
     latitude REAL CHECK (latitude BETWEEN -90 AND 90),
@@ -174,7 +179,37 @@ CREATE TABLE pilgrimage_places (
     CHECK ((latitude IS NULL) = (longitude IS NULL)),
     CHECK (latitude IS NOT NULL OR coordinate_status = 'UNVERIFIED'),
     CHECK (navigation_anchor_place_id IS NULL OR navigation_anchor_place_id <> id),
-    CHECK ((content_destination_kind IS NULL) = (content_destination_id IS NULL))
+    CHECK ((content_destination_kind IS NULL) = (content_destination_id IS NULL)),
+    CHECK ((collection = 'GOVARDHANA_NUMBERED' AND map_number IS NOT NULL AND geometry_type = 'POINT') OR
+           (collection = 'RADHA_KUNDA_MICRO' AND map_number IS NULL AND geometry_type = 'WATER_BODY_POLYGON' AND
+            coordinate_semantics = 'POLYGON_VERTEX' AND navigation_eligible = 0 AND latitude IS NULL AND
+            longitude IS NULL AND navigation_anchor_place_id IS NULL AND map_visibility = 'PRECINCT_ONLY'))
+) WITHOUT ROWID;
+
+CREATE TABLE pilgrimage_place_geometries (
+    place_id TEXT PRIMARY KEY NOT NULL REFERENCES pilgrimage_places(id),
+    geometry_type TEXT NOT NULL CHECK (geometry_type = 'WATER_BODY_POLYGON'),
+    coordinate_semantics TEXT NOT NULL CHECK (coordinate_semantics = 'POLYGON_VERTEX'),
+    visibility TEXT NOT NULL CHECK (visibility = 'PRECINCT_ONLY'),
+    min_zoom REAL NOT NULL CHECK (min_zoom >= 14 AND min_zoom <= 20),
+    label_min_zoom REAL NOT NULL CHECK (label_min_zoom >= min_zoom AND label_min_zoom <= 20),
+    source_id TEXT NOT NULL,
+    source_url TEXT NOT NULL,
+    source_version INTEGER,
+    source_changeset INTEGER,
+    source_retrieved_on TEXT NOT NULL,
+    attribution TEXT NOT NULL,
+    navigation_authorized INTEGER NOT NULL DEFAULT 0 CHECK (navigation_authorized = 0),
+    arrival_authorized INTEGER NOT NULL DEFAULT 0 CHECK (arrival_authorized = 0)
+) WITHOUT ROWID;
+
+CREATE TABLE pilgrimage_place_geometry_vertices (
+    place_id TEXT NOT NULL REFERENCES pilgrimage_place_geometries(place_id),
+    vertex_index INTEGER NOT NULL CHECK (vertex_index >= 0),
+    longitude REAL NOT NULL CHECK (longitude BETWEEN -180 AND 180),
+    latitude REAL NOT NULL CHECK (latitude BETWEEN -90 AND 90),
+    coordinate_semantics TEXT NOT NULL CHECK (coordinate_semantics = 'POLYGON_VERTEX'),
+    PRIMARY KEY (place_id, vertex_index)
 ) WITHOUT ROWID;
 
 CREATE TABLE pilgrimage_place_aliases (
@@ -435,10 +470,13 @@ def _insert_content(connection: sqlite3.Connection, result: BuildResult) -> None
     )
     pilgrimage_places = content.get("pilgrimage_places", [])
     connection.executemany(
-        "INSERT INTO pilgrimage_places(id, map_number, canonical_name, ascii_name, latitude, longitude, coordinate_status, coordinate_confidence, coordinate_accuracy_meters, verification_notes, navigation_anchor_place_id, location_guidance, content_destination_kind, content_destination_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        "INSERT INTO pilgrimage_places(id, map_number, collection, geometry_type, coordinate_semantics, map_visibility, navigation_eligible, canonical_name, ascii_name, latitude, longitude, coordinate_status, coordinate_confidence, coordinate_accuracy_meters, verification_notes, navigation_anchor_place_id, location_guidance, content_destination_kind, content_destination_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
         [
             (
-                item["id"], item["map_number"], item["canonical_name"], item.get("ascii_name"),
+                item["id"], item["map_number"], item.get("collection", "GOVARDHANA_NUMBERED"),
+                item.get("geometry_type", "POINT"), item.get("coordinate_semantics", "EXISTING_WORKING_POINT"),
+                item.get("map_visibility", "ALL_ZOOMS"), int(item.get("navigation_eligible", True)),
+                item["canonical_name"], item.get("ascii_name"),
                 item.get("latitude"), item.get("longitude"), item["coordinate_status"],
                 item["coordinate_confidence"], item.get("coordinate_accuracy_meters"),
                 item["verification_notes"],
@@ -447,6 +485,24 @@ def _insert_content(connection: sqlite3.Connection, result: BuildResult) -> None
                 item.get("content_destination", {}).get("id") if item.get("content_destination") else None,
             )
             for item in pilgrimage_places
+        ],
+    )
+    geometries = content.get("pilgrimage_place_geometries", [])
+    connection.executemany(
+        "INSERT INTO pilgrimage_place_geometries(place_id, geometry_type, coordinate_semantics, visibility, min_zoom, label_min_zoom, source_id, source_url, source_version, source_changeset, source_retrieved_on, attribution, navigation_authorized, arrival_authorized) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        [
+            (item["place_id"], item["geometry_type"], item["coordinate_semantics"], item["visibility"],
+             item["min_zoom"], item["label_min_zoom"], item["source_id"], item["source_url"],
+             item["source_version"], item["source_changeset"], item["source_retrieved_on"],
+             item["attribution"], 0, 0)
+            for item in geometries
+        ],
+    )
+    connection.executemany(
+        "INSERT INTO pilgrimage_place_geometry_vertices(place_id, vertex_index, longitude, latitude, coordinate_semantics) VALUES (?, ?, ?, ?, ?)",
+        [
+            (item["place_id"], index, pair[0], pair[1], item["coordinate_semantics"])
+            for item in geometries for index, pair in enumerate(item["vertices"])
         ],
     )
     connection.executemany(
