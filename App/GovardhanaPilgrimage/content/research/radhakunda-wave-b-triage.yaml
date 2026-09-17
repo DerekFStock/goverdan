@@ -1,0 +1,124 @@
+schema_version: 1
+package_id: research.radhakunda-wave-b-triage
+scope: RESEARCH_ONLY_NOT_RUNTIME_INPUT
+inventory: content/research/radhakunda-location-inventory.yaml
+starting_main_commit: 0f06793
+reviewed_on: '2026-09-17'
+production_ingestion_authorized: false
+coordinate_policy: No coordinates are created or approved here. Textual loci, plus codes, approximate listings, and map labels are leads, never controlled public arrival points.
+evidence_policy: Inventory notes are classified, not independently reverified in this task. Controlled-source acquisition and field checks belong to a separately authorized evidence task.
+selected_next_cohort: [RK-03, RK-15, RK-22, RK-GH-09]
+records:
+  - research_id: RK-03
+    status: NEXT_COHORT_CANDIDATE
+    representation: APPROXIMATE_AREA
+    navigation: FIELD_VERIFICATION_REQUIRED
+    confidence: MEDIUM
+    pilgrim_value: HIGH
+    physical_identifiability: PRESENT_FEATURE_LEAD
+    location_evidence: TEXT_AND_TRADITION_ONLY
+    note: The twin-kuṇḍa crossing is central to pilgrimage, but textual Saṅgama and present causeway geometry must not be equated without evidence.
+    inclusion_reason: High-value connector between the two mapped lakes; a present crossing can be investigated as one physical feature without a new ghāṭ pin.
+    evidence_available: Govinda-līlāmṛta 7.6 textual junction; inventory notes a present pedestrian crossing as an unverified physical lead.
+    missing_evidence: [Controlled present crossing feature and revision, bank-side photographs or survey, RK-GH-07 relationship, public passage and safe approach.]
+    fieldwork_expected: true
+    acceptance_conditions: [Keep the two water polygons distinct., Resolve one crossing versus Saṅgama Ghāṭ child approaches., Document an accessible public passage before any navigable target., Do not claim continuity of the ornate textual setu.]
+
+  - {research_id: RK-06, status: CONTROLLED_SOURCE_DISCOVERY_NEEDED, representation: WATER_BODY_POLYGON, navigation: FIELD_VERIFICATION_REQUIRED, confidence: MEDIUM, pilgrim_value: HIGH, physical_identifiability: UNRESOLVED, location_evidence: TEXT_AND_TRADITION_ONLY, note: "Mālyahāri pearl-pastime tradition is important, but the surviving water body and spelling are not controlled."}
+  - {research_id: RK-07, status: DEFER_LOW_CONFIDENCE, representation: WATER_BODY_POLYGON, navigation: FIELD_VERIFICATION_REQUIRED, confidence: LOW, pilgrim_value: MEDIUM, physical_identifiability: UNRESOLVED, location_evidence: TEXT_AND_TRADITION_ONLY, note: "Nārāyaṇa-kuṇḍa has no independent current feature or coordinate in the inventory."}
+  - {research_id: RK-08, status: CONTROLLED_SOURCE_DISCOVERY_NEEDED, representation: WATER_BODY_POLYGON, navigation: FIELD_VERIFICATION_REQUIRED, confidence: MEDIUM, pilgrim_value: MEDIUM, physical_identifiability: UNRESOLVED, location_evidence: TEXT_AND_TRADITION_ONLY, note: "Bhānukhora is textually named near Śivakhora; a present pond has not been identified."}
+  - {research_id: RK-09, status: DUPLICATE_OR_EXISTING_PLACE_CANDIDATE, representation: RELATIONSHIP_ONLY, navigation: FIELD_VERIFICATION_REQUIRED, confidence: MEDIUM, pilgrim_value: HIGH, physical_identifiability: UNRESOLVED, location_evidence: TEXT_AND_TRADITION_ONLY, note: "Reconcile with existing coordinate-less #70 place.siva-khari; never add a second pin from the name alone."}
+  - {research_id: RK-12, status: FIELD_VERIFICATION_REQUIRED, representation: POINT, navigation: FIELD_VERIFICATION_REQUIRED, confidence: LOW, pilgrim_value: MEDIUM, physical_identifiability: UNRESOLVED, location_evidence: TEXT_AND_TRADITION_ONLY, note: "Swing-site names, surviving tree, and public approach all need on-site control."}
+  - {research_id: RK-13, status: PARENT_CHILD_RECONCILIATION_REQUIRED, representation: RELATIONSHIP_ONLY, navigation: DISPLAY_ONLY, confidence: MEDIUM, pilgrim_value: HIGH, physical_identifiability: UNRESOLVED, location_evidence: TEXT_AND_TRADITION_ONLY, note: "Five Pāṇḍava trees and ghāṭ may be children of Mānasa-pāvana; no independent pin is justified."}
+
+  - research_id: RK-15
+    status: NEXT_COHORT_CANDIDATE
+    representation: POINT
+    navigation: FIELD_VERIFICATION_REQUIRED
+    confidence: MEDIUM
+    pilgrim_value: HIGH
+    physical_identifiability: PRESENT_FEATURE_LEAD
+    location_evidence: PILGRIMAGE_TRADITION_ONLY
+    note: Living Girirāja-jihvā shrine identity is useful to pilgrims; historical footprint and public doorway remain unproved.
+    inclusion_reason: A discrete shrine can be investigated independently of the held Wave A compounds and adds a different kind of sacred-place context beyond the lakes.
+    evidence_available: Inventory records a living Jihvā-śilā shrine tradition, without an approved current entrance point.
+    missing_evidence: [Dated current shrine identity and signage, auditable feature or institutional source, public doorway and approach, distinction from older textual locus.]
+    fieldwork_expected: true
+    acceptance_conditions: [Verify the present shrine and public access independently., Record a controlled point only if its physical meaning is explicit., Keep historical/textual associations distinct from present building claims.]
+
+  - {research_id: RK-18, status: IDENTITY_RECONCILIATION_REQUIRED, representation: RELATIONSHIP_ONLY, navigation: FIELD_VERIFICATION_REQUIRED, confidence: MEDIUM, pilgrim_value: HIGH, physical_identifiability: UNRESOLVED, location_evidence: APPROXIMATE_LISTING_ONLY, note: "The kuṭīra listing does not resolve its entrance or its samādhi relationship to held RK-SAM-01; plus code is not an arrival point."}
+  - {research_id: RK-19, status: PARENT_CHILD_RECONCILIATION_REQUIRED, representation: RELATIONSHIP_ONLY, navigation: DISPLAY_ONLY, confidence: MEDIUM, pilgrim_value: HIGH, physical_identifiability: RELATIONSHIP_ONLY, location_evidence: PILGRIMAGE_TRADITION_ONLY, note: "Raghunātha Bhaṭṭa memorial is a child of the held Three Goswami compound unless a separate entrance is established."}
+
+  - research_id: RK-22
+    status: NEXT_COHORT_CANDIDATE
+    representation: POINT
+    navigation: FIELD_VERIFICATION_REQUIRED
+    confidence: MEDIUM
+    pilgrim_value: HIGH
+    physical_identifiability: PRESENT_FEATURE_LEAD
+    location_evidence: PILGRIMAGE_TRADITION_ONLY
+    note: Mahāprabhu baithak, tree, and temple are a high-value present complex lead, not proof of the exact historical footprint.
+    inclusion_reason: Directly connects the twin-kuṇḍa story with Gauḍīya pilgrimage; its present compound can be investigated without resolving RK-27 or RK-SAM-01.
+    evidence_available: Inventory distinguishes earlier Caitanya recognition tradition from later physical baithak localization.
+    missing_evidence: [Current compound identity and operator, dated signage or institutional source, public entrance, tree-temple-baithak parent/child layout, earliest physical-localization source.]
+    fieldwork_expected: true
+    acceptance_conditions: [Identify one present parent site before considering child features., Verify public entrance separately from textual association., Do not present current tree or building as proven sixteenth-century fabric.]
+
+  - {research_id: RK-23, status: IDENTITY_RECONCILIATION_REQUIRED, representation: RELATIONSHIP_ONLY, navigation: FIELD_VERIFICATION_REQUIRED, confidence: MEDIUM, pilgrim_value: HIGH, physical_identifiability: UNRESOLVED, location_evidence: PILGRIMAGE_TRADITION_ONLY, note: "Jāhnavā visit is attested, but modern ghāṭ and baithak localization depends on unresolved RK-27 temple and tree-name relationships."}
+  - {research_id: RK-24, status: PARENT_CHILD_RECONCILIATION_REQUIRED, representation: RELATIONSHIP_ONLY, navigation: DISPLAY_ONLY, confidence: LOW, pilgrim_value: MEDIUM, physical_identifiability: RELATIONSHIP_ONLY, location_evidence: PILGRIMAGE_TRADITION_ONLY, note: "Nityānanda baithak may be a child feature inside held RK-27; no independent entrance is known."}
+  - {research_id: RK-25, status: CONTROLLED_SOURCE_DISCOVERY_NEEDED, representation: POINT, navigation: FIELD_VERIFICATION_REQUIRED, confidence: LOW, pilgrim_value: MEDIUM, physical_identifiability: UNRESOLVED, location_evidence: PILGRIMAGE_TRADITION_ONLY, note: "Mādhavendra Purī memorial, Vyāsa Gherā relation, and present entrance are not controlled."}
+  - {research_id: RK-26, status: CONTROLLED_SOURCE_DISCOVERY_NEEDED, representation: POINT, navigation: FIELD_VERIFICATION_REQUIRED, confidence: MEDIUM, pilgrim_value: MEDIUM, physical_identifiability: PRESENT_FEATURE_LEAD, location_evidence: PILGRIMAGE_TRADITION_ONLY, note: "Living Vallabhācārya baithak tradition has a broad south-of-Śyāma-kuṇḍa location, not a verified compound or public entrance."}
+  - {research_id: RK-28, status: CONTROLLED_SOURCE_DISCOVERY_NEEDED, representation: POINT, navigation: FIELD_VERIFICATION_REQUIRED, confidence: LOW, pilgrim_value: MEDIUM, physical_identifiability: UNRESOLVED, location_evidence: PILGRIMAGE_TRADITION_ONLY, note: "Local Rādhā-Ramaṇa temple must be distinguished from its Vṛndāvana namesake."}
+  - {research_id: RK-30, status: CONTROLLED_SOURCE_DISCOVERY_NEEDED, representation: POINT, navigation: FIELD_VERIFICATION_REQUIRED, confidence: LOW, pilgrim_value: MEDIUM, physical_identifiability: UNRESOLVED, location_evidence: PILGRIMAGE_TRADITION_ONLY, note: "Local Rādhā-Dāmodara temple identity and continuity need a current source; Vṛndāvana history is not transferred."}
+  - {research_id: RK-31, status: CONTROLLED_SOURCE_DISCOVERY_NEEDED, representation: POINT, navigation: FIELD_VERIFICATION_REQUIRED, confidence: LOW, pilgrim_value: HIGH, physical_identifiability: UNRESOLVED, location_evidence: TEXT_AND_TRADITION_ONLY, note: "Madanamohana deity tradition is not proof of the current temple or its entrance; distinguish Vṛndāvana namesake."}
+  - {research_id: RK-32, status: DUPLICATE_OR_EXISTING_PLACE_CANDIDATE, representation: RELATIONSHIP_ONLY, navigation: DISPLAY_ONLY, confidence: LOW, pilgrim_value: HIGH, physical_identifiability: RELATIONSHIP_ONLY, location_evidence: PILGRIMAGE_TRADITION_ONLY, note: "Likely overlaps held RK-27 Rādhā-Gopīnātha; do not create a second temple pin."}
+  - {research_id: RK-33, status: CONTROLLED_SOURCE_DISCOVERY_NEEDED, representation: POINT, navigation: FIELD_VERIFICATION_REQUIRED, confidence: LOW, pilgrim_value: MEDIUM, physical_identifiability: UNRESOLVED, location_evidence: PILGRIMAGE_TRADITION_ONLY, note: "Śyāmasundara temple is a named candidate without controlled current building or access."}
+  - {research_id: RK-34, status: IDENTITY_RECONCILIATION_REQUIRED, representation: NO_MAP_FEATURE, navigation: NON_PHYSICAL, confidence: LOW, pilgrim_value: MEDIUM, physical_identifiability: UNRESOLVED, location_evidence: PILGRIMAGE_TRADITION_ONLY, note: "Rādhā-Vinoda names may denote multiple present sites; enumerate identities before locating any one."}
+  - {research_id: RK-35, status: CONTROLLED_SOURCE_DISCOVERY_NEEDED, representation: POINT, navigation: FIELD_VERIFICATION_REQUIRED, confidence: LOW, pilgrim_value: MEDIUM, physical_identifiability: UNRESOLVED, location_evidence: TEXT_AND_TRADITION_ONLY, note: "Rādhāvallabha deity evidence does not verify a current temple footprint or doorway."}
+  - {research_id: RK-36, status: CONTROLLED_SOURCE_DISCOVERY_NEEDED, representation: POINT, navigation: FIELD_VERIFICATION_REQUIRED, confidence: LOW, pilgrim_value: MEDIUM, physical_identifiability: UNRESOLVED, location_evidence: TEXT_AND_TRADITION_ONLY, note: "Bihārījī temple and older kuñja tradition must be tied to a current physical building before mapping."}
+  - {research_id: RK-37, status: CONTROLLED_SOURCE_DISCOVERY_NEEDED, representation: POINT, navigation: FIELD_VERIFICATION_REQUIRED, confidence: LOW, pilgrim_value: MEDIUM, physical_identifiability: UNRESOLVED, location_evidence: PILGRIMAGE_TRADITION_ONLY, note: "Current Aṣṭa-sakhī temple is not the nitya-līlā directional kuñja system; source its building separately."}
+  - {research_id: RK-38, status: CONTROLLED_SOURCE_DISCOVERY_NEEDED, representation: POINT, navigation: FIELD_VERIFICATION_REQUIRED, confidence: LOW, pilgrim_value: MEDIUM, physical_identifiability: UNRESOLVED, location_evidence: PILGRIMAGE_TRADITION_ONLY, note: "Sītānātha shrine needs present identity, signage, and access evidence."}
+  - {research_id: RK-39, status: PARENT_CHILD_RECONCILIATION_REQUIRED, representation: RELATIONSHIP_ONLY, navigation: FIELD_VERIFICATION_REQUIRED, confidence: LOW, pilgrim_value: MEDIUM, physical_identifiability: RELATIONSHIP_ONLY, location_evidence: TEXT_AND_TRADITION_ONLY, note: "Rādhā-Mādhava temple and Śrīnivāsa kuñja may be separate features; resolve compound structure first."}
+  - {research_id: RK-40, status: CONTROLLED_SOURCE_DISCOVERY_NEEDED, representation: POINT, navigation: FIELD_VERIFICATION_REQUIRED, confidence: LOW, pilgrim_value: MEDIUM, physical_identifiability: UNRESOLVED, location_evidence: PILGRIMAGE_TRADITION_ONLY, note: "Jagannātha temple is on a walking-route tradition but has no controlled point."}
+  - {research_id: RK-41, status: CONTROLLED_SOURCE_DISCOVERY_NEEDED, representation: POINT, navigation: FIELD_VERIFICATION_REQUIRED, confidence: LOW, pilgrim_value: MEDIUM, physical_identifiability: UNRESOLVED, location_evidence: PILGRIMAGE_TRADITION_ONLY, note: "Rādhākānta temple needs exact building/access evidence and RK-GH-02 relationship."}
+  - {research_id: RK-42, status: IDENTITY_RECONCILIATION_REQUIRED, representation: NO_MAP_FEATURE, navigation: NON_PHYSICAL, confidence: LOW, pilgrim_value: LOW, physical_identifiability: UNRESOLVED, location_evidence: PILGRIMAGE_TRADITION_ONLY, note: "Gaura-Nitāi/Caitanya group label spans potentially several temples; one generic pin would mislead."}
+  - {research_id: RK-43, status: CONTROLLED_SOURCE_DISCOVERY_NEEDED, representation: POINT, navigation: FIELD_VERIFICATION_REQUIRED, confidence: MEDIUM, pilgrim_value: HIGH, physical_identifiability: PRESENT_FEATURE_LEAD, location_evidence: PILGRIMAGE_TRADITION_ONLY, note: "Living Bankhaṇḍī Mahādeva shrine is a promising later candidate, but current coordinate and public entrance lack control."}
+  - {research_id: RK-KUT-01, status: IDENTITY_RECONCILIATION_REQUIRED, representation: RELATIONSHIP_ONLY, navigation: FIELD_VERIFICATION_REQUIRED, confidence: MEDIUM, pilgrim_value: HIGH, physical_identifiability: UNRESOLVED, location_evidence: APPROXIMATE_LISTING_ONLY, note: "Shared plus code with blocked RK-16 cannot establish two independently accessible kuṭīras or any arrival point."}
+  - {research_id: RK-KUT-02, status: CONTROLLED_SOURCE_DISCOVERY_NEEDED, representation: POINT, navigation: FIELD_VERIFICATION_REQUIRED, confidence: LOW, pilgrim_value: HIGH, physical_identifiability: UNRESOLVED, location_evidence: PILGRIMAGE_TRADITION_ONLY, note: "Bhaktivinoda memorial identity is valued but lacks controlled present entrance and relationship to Bhaktisiddhānta residence."}
+
+  - {research_id: RK-GH-01, status: PARENT_CHILD_RECONCILIATION_REQUIRED, representation: RELATIONSHIP_ONLY, navigation: DISPLAY_ONLY, confidence: LOW, pilgrim_value: LOW, physical_identifiability: RELATIONSHIP_ONLY, location_evidence: PILGRIMAGE_TRADITION_ONLY, note: "Jhūlana-tala ghāṭ may duplicate or be a child of RK-12; independent bank point unproved."}
+  - {research_id: RK-GH-02, status: PARENT_CHILD_RECONCILIATION_REQUIRED, representation: RELATIONSHIP_ONLY, navigation: FIELD_VERIFICATION_REQUIRED, confidence: LOW, pilgrim_value: LOW, physical_identifiability: RELATIONSHIP_ONLY, location_evidence: PILGRIMAGE_TRADITION_ONLY, note: "Rādhākānta Ghāṭ may be related to RK-41 temple; no separate approach is established."}
+  - {research_id: RK-GH-03, status: FIELD_VERIFICATION_REQUIRED, representation: GHAT_EDGE_OR_SEGMENT, navigation: FIELD_VERIFICATION_REQUIRED, confidence: LOW, pilgrim_value: LOW, physical_identifiability: UNRESOLVED, location_evidence: PILGRIMAGE_TRADITION_ONLY, note: "Go-ghāṭ has a name but no verified bank edge, sign, or safe approach."}
+  - {research_id: RK-GH-04, status: PARENT_CHILD_RECONCILIATION_REQUIRED, representation: RELATIONSHIP_ONLY, navigation: FIELD_VERIFICATION_REQUIRED, confidence: MEDIUM, pilgrim_value: HIGH, physical_identifiability: RELATIONSHIP_ONLY, location_evidence: PILGRIMAGE_TRADITION_ONLY, note: "Mā Jāhnavā Ghāṭ is later localization; reconcile with RK-23 and held RK-27 before any independent pin."}
+  - {research_id: RK-GH-05, status: PARENT_CHILD_RECONCILIATION_REQUIRED, representation: RELATIONSHIP_ONLY, navigation: FIELD_VERIFICATION_REQUIRED, confidence: LOW, pilgrim_value: HIGH, physical_identifiability: RELATIONSHIP_ONLY, location_evidence: PILGRIMAGE_TRADITION_ONLY, note: "Dāsa Gosvāmī Ghāṭ relation to held RK-16 must be resolved; no bank point or separate-pin value is established."}
+  - {research_id: RK-GH-06, status: PARENT_CHILD_RECONCILIATION_REQUIRED, representation: RELATIONSHIP_ONLY, navigation: FIELD_VERIFICATION_REQUIRED, confidence: LOW, pilgrim_value: LOW, physical_identifiability: RELATIONSHIP_ONLY, location_evidence: PILGRIMAGE_TRADITION_ONLY, note: "Govinda Ghāṭ may relate to held RK-29 temple; neither identity nor separate approach is controlled."}
+  - {research_id: RK-GH-07, status: PARENT_CHILD_RECONCILIATION_REQUIRED, representation: RELATIONSHIP_ONLY, navigation: FIELD_VERIFICATION_REQUIRED, confidence: MEDIUM, pilgrim_value: HIGH, physical_identifiability: RELATIONSHIP_ONLY, location_evidence: PILGRIMAGE_TRADITION_ONLY, note: "One shared Saṅgama candidate with bank-specific approaches; research with RK-03 but do not create a second cohort pin."}
+  - {research_id: RK-GH-08, status: DEFER_LOW_CONFIDENCE, representation: GHAT_EDGE_OR_SEGMENT, navigation: FIELD_VERIFICATION_REQUIRED, confidence: LOW, pilgrim_value: LOW, physical_identifiability: UNRESOLVED, location_evidence: PILGRIMAGE_TRADITION_ONLY, note: "Rāsbārī Ghāṭ lacks a controlled present edge and distinct pilgrim value."}
+
+  - research_id: RK-GH-09
+    status: NEXT_COHORT_CANDIDATE
+    representation: GHAT_EDGE_OR_SEGMENT
+    navigation: FIELD_VERIFICATION_REQUIRED
+    confidence: MEDIUM
+    pilgrim_value: HIGH
+    physical_identifiability: PRESENT_FEATURE_LEAD
+    location_evidence: TEXT_AND_TRADITION_ONLY
+    note: Mānasa-pāvana is a major devotional ghāṭ tradition; present bank access and RK-13/RK-GH-10 relationships remain to be controlled.
+    inclusion_reason: High-value bathing and Gauḍīya history site on the twin-kuṇḍa precinct; its bank location and related tree/ghāṭ features form one coherent evidence question.
+    evidence_available: Inventory records Subala/Mānasa-pāvana and Śrīnivāsa/Narottama associations, but not a verified present approach.
+    missing_evidence: [Dated current ghāṭ name/sign, controlled bank-side feature and revision, safe public approach, RK-13 and RK-GH-10 parent/child relationship, textual-source chronology.]
+    fieldwork_expected: true
+    acceptance_conditions: [Identify the present ghāṭ edge without deriving an arrival point from water geometry., Resolve the Five Pāṇḍava trees and ghāṭ as possible child features., Separate early textual localization from present bank signage., Require a verified public approach before navigation.]
+
+  - {research_id: RK-GH-10, status: PARENT_CHILD_RECONCILIATION_REQUIRED, representation: RELATIONSHIP_ONLY, navigation: DISPLAY_ONLY, confidence: MEDIUM, pilgrim_value: HIGH, physical_identifiability: RELATIONSHIP_ONLY, location_evidence: PILGRIMAGE_TRADITION_ONLY, note: "Pañca-Pāṇḍava Ghāṭ is a child candidate of RK-13/Mānasa-pāvana; no second pin from the name alone."}
+  - {research_id: RK-GH-11, status: PARENT_CHILD_RECONCILIATION_REQUIRED, representation: RELATIONSHIP_ONLY, navigation: FIELD_VERIFICATION_REQUIRED, confidence: LOW, pilgrim_value: LOW, physical_identifiability: RELATIONSHIP_ONLY, location_evidence: PILGRIMAGE_TRADITION_ONLY, note: "Rādhāvallabha Ghāṭ may share identity/access with RK-35 temple; separate bank feature unproved."}
+  - {research_id: RK-GH-12, status: DEFER_LOW_CONFIDENCE, representation: GHAT_EDGE_OR_SEGMENT, navigation: FIELD_VERIFICATION_REQUIRED, confidence: LOW, pilgrim_value: LOW, physical_identifiability: UNRESOLVED, location_evidence: PILGRIMAGE_TRADITION_ONLY, note: "Rājbārī Ghāṭ has no controlled present bank point, signage, or separate-site case."}
+  - {research_id: RK-GH-13, status: DEFER_LOW_CONFIDENCE, representation: GHAT_EDGE_OR_SEGMENT, navigation: FIELD_VERIFICATION_REQUIRED, confidence: LOW, pilgrim_value: LOW, physical_identifiability: UNRESOLVED, location_evidence: PILGRIMAGE_TRADITION_ONLY, note: "Nandinī Gherā Ghāṭ lacks controlled access and distinct feature evidence."}
+  - {research_id: RK-GH-14, status: PARENT_CHILD_RECONCILIATION_REQUIRED, representation: RELATIONSHIP_ONLY, navigation: DISPLAY_ONLY, confidence: LOW, pilgrim_value: LOW, physical_identifiability: RELATIONSHIP_ONLY, location_evidence: PILGRIMAGE_TRADITION_ONLY, note: "Jīva Gosvāmī Ghāṭ remains child/reconciliation candidate of held RK-21, not an independent pin."}
+  - {research_id: RK-GH-15, status: DEFER_LOW_CONFIDENCE, representation: GHAT_EDGE_OR_SEGMENT, navigation: FIELD_VERIFICATION_REQUIRED, confidence: LOW, pilgrim_value: LOW, physical_identifiability: UNRESOLVED, location_evidence: PILGRIMAGE_TRADITION_ONLY, note: "Ghanā-Mādhava Gherā Ghāṭ lacks controlled present location and access."}
+  - {research_id: RK-GH-16, status: DEFER_LOW_CONFIDENCE, representation: GHAT_EDGE_OR_SEGMENT, navigation: FIELD_VERIFICATION_REQUIRED, confidence: LOW, pilgrim_value: LOW, physical_identifiability: UNRESOLVED, location_evidence: PILGRIMAGE_TRADITION_ONLY, note: "Gayā Ghāṭ lacks controlled present location and access."}
+  - {research_id: RK-GH-17, status: DEFER_LOW_CONFIDENCE, representation: GHAT_EDGE_OR_SEGMENT, navigation: FIELD_VERIFICATION_REQUIRED, confidence: LOW, pilgrim_value: LOW, physical_identifiability: UNRESOLVED, location_evidence: PILGRIMAGE_TRADITION_ONLY, note: "Vyāsa Gherā Ghāṭ lacks controlled present location and access."}
+  - {research_id: RK-GH-18, status: TEXTUAL_ONLY_NO_PHYSICAL_PIN, representation: NO_MAP_FEATURE, navigation: NON_PHYSICAL, confidence: LOW, pilgrim_value: LOW, physical_identifiability: UNRESOLVED, location_evidence: TEXT_AND_TRADITION_ONLY, note: "Aṣṭa-sakhī textual geography does not locate a current ghāṭ; retain the association without a physical pin unless independent present evidence emerges."}
+  - {research_id: RK-GH-19, status: FIELD_VERIFICATION_REQUIRED, representation: GHAT_EDGE_OR_SEGMENT, navigation: FIELD_VERIFICATION_REQUIRED, confidence: LOW, pilgrim_value: LOW, physical_identifiability: UNRESOLVED, location_evidence: PILGRIMAGE_TRADITION_ONLY, note: "Tamāla-tala tree continuity and current bank access require on-site verification."}
+  - {research_id: RK-GH-20, status: DEFER_LOW_CONFIDENCE, representation: GHAT_EDGE_OR_SEGMENT, navigation: FIELD_VERIFICATION_REQUIRED, confidence: LOW, pilgrim_value: LOW, physical_identifiability: UNRESOLVED, location_evidence: PILGRIMAGE_TRADITION_ONLY, note: "Pāśā-khelā has no verified present site, bank access, or distinct-feature case."}
+  - {research_id: RK-GH-21, status: PARENT_CHILD_RECONCILIATION_REQUIRED, representation: RELATIONSHIP_ONLY, navigation: FIELD_VERIFICATION_REQUIRED, confidence: LOW, pilgrim_value: LOW, physical_identifiability: RELATIONSHIP_ONLY, location_evidence: PILGRIMAGE_TRADITION_ONLY, note: "Madanamohana Ghāṭ must be reconciled with RK-31 temple and a separate bank approach."}
