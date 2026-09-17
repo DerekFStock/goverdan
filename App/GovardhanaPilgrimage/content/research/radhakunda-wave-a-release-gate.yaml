@@ -1,0 +1,321 @@
+schema_version: 1
+gate:
+  id: gate.radhakunda-wave-a.development-v1
+  status: RESEARCH_RELEASE_GATE
+  reviewed_on: "2026-09-17"
+  starting_main_commit: 8172bbb
+  inventory: content/research/radhakunda-location-inventory.yaml
+  runtime_compilation: false
+  public_numbering: none
+  new_production_ingestion_authorized: false
+  evidence_scope: Repository inventory, existing place registry, and Task 021A.1 source notes; external map listings were not independently rechecked for this gate.
+  decision_statuses:
+    - REUSE_EXISTING_NO_NEW_ID
+    - ELIGIBLE_AFTER_COORDINATE_CONTROL
+    - ELIGIBLE_AS_AREA_NOT_ARRIVAL
+    - HOLD_IDENTITY_RECONCILIATION
+    - HOLD_COMPOUND_RECONCILIATION
+    - HOLD_ACCESS_VERIFICATION
+    - NOT_ELIGIBLE
+  note: A conditional area classification is not authorization to compile a place. A plus code, water centroid, or early textual locus is not a controlled public arrival point.
+
+decisions:
+  - research_id: RK-01
+    place_id: place.radhakunda
+    canonical_name: Rādhā-kuṇḍa
+    current_physical_mapping_status: EXISTING_RUNTIME_PLACE
+    decision_status: REUSE_EXISTING_NO_NEW_ID
+    approved_marker_semantics: EXISTING_RUNTIME_WATER_MARKER
+    identity_disposition: Reuse existing map place 1; do not create a micro-place duplicate.
+    coordinate_geometry_disposition:
+      feature: WORKING_WATER_MARKER
+      source: Existing Govardhana registry place 1, PROJECT_FIXTURE provenance
+      source_reference: content/pilgrimage/places.yaml
+      source_retrieved_on: null
+      control: PROVISIONAL_FIELD_UNVERIFIED
+      navigation_use: EXISTING_RUNTIME_BEHAVIOR_ONLY
+    arrival_anchor_disposition: Existing working point is not a verified public water-edge approach; no replacement approved.
+    evidence_summary: Gosvāmī texts support sacred identity; current registry point and Braj planning context support only working physical representation.
+    source_layers: [NITYA_LILA_TEXTUAL, EARLY_PILGRIMAGE_LOCALIZATION, HISTORICAL_PRESENT_PHYSICAL]
+    confidence: {identity: HIGH, arrival: LOW}
+    relationships: [{research_id: RK-02, type: TWIN_WATER_BODY}]
+    blockers: []
+    required_verification: [Control water geometry separately from a safe public edge or entrance.]
+    recommended_next_action: Keep map place 1; review geometry and access as an improvement to that ID only.
+    later_production_ingestion_authorized: false
+    editorial_rationale: Existing canonical identity resolves duplication; this gate grants no coordinate upgrade.
+
+  - research_id: RK-02
+    place_id: place.syamakunda
+    canonical_name: Śyāma-kuṇḍa / Kṛṣṇa-kuṇḍa
+    current_physical_mapping_status: EXISTING_RUNTIME_PLACE
+    decision_status: REUSE_EXISTING_NO_NEW_ID
+    approved_marker_semantics: EXISTING_RUNTIME_WATER_MARKER
+    identity_disposition: Reuse existing map place 2 and retain the Śyāma/Kṛṣṇa/Ariṣṭa naming chronology.
+    coordinate_geometry_disposition:
+      feature: WORKING_WATER_MARKER
+      source: Existing Govardhana registry place 2, PROJECT_FIXTURE provenance; inventory notes approximate OSM water center
+      source_reference: content/pilgrimage/places.yaml
+      source_retrieved_on: null
+      control: PROVISIONAL_FIELD_UNVERIFIED
+      navigation_use: EXISTING_RUNTIME_BEHAVIOR_ONLY
+    arrival_anchor_disposition: Separate safe public edge or entrance has not been controlled.
+    evidence_summary: Textual twin-kuṇḍa identity and current water-body mapping are distinct evidence; the existing marker is provisional.
+    source_layers: [NITYA_LILA_TEXTUAL, EARLY_PILGRIMAGE_LOCALIZATION, HISTORICAL_PRESENT_PHYSICAL]
+    confidence: {identity: HIGH, arrival: LOW}
+    relationships: [{research_id: RK-01, type: TWIN_WATER_BODY}]
+    blockers: []
+    required_verification: [Control the water outline and safe public arrival separately.]
+    recommended_next_action: Keep map place 2; improve geometry and arrival only through a later reviewed update.
+    later_production_ingestion_authorized: false
+    editorial_rationale: A second Śyāma-kuṇḍa pin would duplicate existing identity.
+
+  - research_id: RK-04
+    place_id: place.lalitakunda
+    canonical_name: Lalitā-kuṇḍa
+    current_physical_mapping_status: EXISTING_RUNTIME_PLACE
+    decision_status: REUSE_EXISTING_NO_NEW_ID
+    approved_marker_semantics: EXISTING_RUNTIME_WATER_MARKER
+    identity_disposition: Reuse existing map place 3; do not equate the present water parcel with a textual Lalitā sector.
+    coordinate_geometry_disposition:
+      feature: WORKING_WATER_MARKER
+      source: Existing Govardhana registry place 3, PROJECT_FIXTURE provenance; inventory notes approximate OSM center
+      source_reference: content/pilgrimage/places.yaml
+      source_retrieved_on: null
+      control: PROVISIONAL_FIELD_UNVERIFIED
+      navigation_use: EXISTING_RUNTIME_BEHAVIOR_ONLY
+    arrival_anchor_disposition: Exact water edge and safe public approach require separate verification.
+    evidence_summary: Current water identity and Braj Development Plan conservation/linkage evidence do not survey a pilgrim entrance.
+    source_layers: [NITYA_LILA_TEXTUAL, HISTORICAL_PRESENT_PHYSICAL]
+    confidence: {identity: HIGH, arrival: LOW}
+    relationships: []
+    blockers: []
+    required_verification: [Control water outline and accessible edge independently of textual geography.]
+    recommended_next_action: Keep map place 3; review geometry and public arrival as an existing-place refinement.
+    later_production_ingestion_authorized: false
+    editorial_rationale: The current place ID already carries the physical site; no duplicate is warranted.
+
+  - research_id: RK-05
+    place_id: place.rk.mohana-kunda
+    canonical_name: Mohana-kuṇḍa
+    current_physical_mapping_status: MAP_NOW_AREA
+    decision_status: ELIGIBLE_AS_AREA_NOT_ARRIVAL
+    approved_marker_semantics: WATER_BODY_AREA_ONLY_NO_ARRIVAL
+    identity_disposition: Retain one proposed present water-body identity; do not merge it with a neighboring kuṇḍa.
+    coordinate_geometry_disposition:
+      feature: WATER_BODY_POLYGON_LEAD_NOT_COMPILED
+      source: OpenStreetMap way 430061166 as recorded in Task 021A.1 inventory; Braj Development Plan corroborates a Mohan Kund planning target
+      source_reference: OpenStreetMap way 430061166, as cited by inventory RK-05
+      source_retrieved_on: null
+      control: APPROXIMATE_FIELD_UNVERIFIED
+      navigation_use: AREA_VISUALIZATION_ONLY_AFTER_GEOMETRY_CONTROL
+    arrival_anchor_disposition: NOT_AUTHORIZED; neither polygon centroid nor approximate center is a safe edge, entrance, or navigation destination.
+    evidence_summary: Current water-body identity has an OSM geometry lead and planning corroboration; no public approach is controlled.
+    source_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    confidence: {identity: HIGH, arrival: UNVERIFIED}
+    relationships: [{research_id: RK-02, type: PRECINCT_NEIGHBOR_NOT_SHARED_ARRIVAL}]
+    blockers: []
+    required_verification: [Retrieve and archive the exact OSM water geometry with date and license before area ingestion., Separately verify an accessible water edge or public entrance before any arrival behavior.]
+    recommended_next_action: Prepare an area-only geometry package for a separately authorized ingestion task; keep arrival disabled.
+    later_production_ingestion_authorized: false
+    editorial_rationale: An area classification is supported; a centroid must not become an exact arrival marker.
+
+  - research_id: RK-16
+    place_id: place.rk.raghunatha-dasa-bhajana-kutira
+    canonical_name: Raghunātha dāsa Gosvāmī bhajana-kuṭīra
+    current_physical_mapping_status: MAP_NOW_PRACTICAL_ARRIVAL
+    decision_status: HOLD_IDENTITY_RECONCILIATION
+    approved_marker_semantics: NO_PUBLIC_MARKER
+    identity_disposition: Retain proposed ID provisionally; determine whether RK-16 and RK-KUT-01 are separate features or one compound.
+    coordinate_geometry_disposition:
+      feature: PLUS_CODE_LISTING_ONLY
+      source: Inventory modern-map lead GFGR+6QP, also assigned to Viśvanātha Cakravartī kuṭīra
+      source_reference: content/research/radhakunda-location-inventory.yaml
+      source_retrieved_on: null
+      control: INFERRED_FIELD_UNVERIFIED
+      navigation_use: NOT_AUTHORIZED
+    arrival_anchor_disposition: No independently verified entrance or approach for this identity.
+    evidence_summary: Bhakti-ratnākara 5.554–561 supports an early Raghunātha kuṭīra tradition, not surviving masonry or a distinct present entrance.
+    source_layers: [EARLY_PILGRIMAGE_LOCALIZATION, HISTORICAL_PRESENT_PHYSICAL]
+    confidence: {identity: MEDIUM, arrival: UNVERIFIED}
+    relationships: [{research_id: RK-KUT-01, type: SHARED_PLUS_CODE_RECONCILIATION_CANDIDATE}]
+    blockers: [GFGR+6QP is shared with RK-KUT-01., Separate physical identity and access are unproved.]
+    required_verification: [Field-check labels and footprints for both traditions., Determine one compound versus distinct structures and public entrances., Do not infer architectural continuity from the old text.]
+    recommended_next_action: Resolve the shared-plus-code identity before considering any marker.
+    later_production_ingestion_authorized: false
+    editorial_rationale: A map listing cannot establish two independently navigable kuṭīras.
+
+  - research_id: RK-17
+    place_id: place.rk.raghunatha-dasa-samadhi
+    canonical_name: Raghunātha dāsa Gosvāmī samādhi
+    current_physical_mapping_status: MAP_NOW_EXACT
+    decision_status: HOLD_ACCESS_VERIFICATION
+    approved_marker_semantics: NO_PUBLIC_MARKER
+    identity_disposition: Retain separate proposed samādhi ID; do not merge with RK-SAM-01.
+    coordinate_geometry_disposition:
+      feature: PLUS_CODE_LISTING_ONLY
+      source: Inventory modern-map lead GFGR+7GG for a separate Raghunātha dāsa samādhi
+      source_reference: content/research/radhakunda-location-inventory.yaml
+      source_retrieved_on: null
+      control: APPROXIMATE_FIELD_UNVERIFIED
+      navigation_use: NOT_AUTHORIZED
+    arrival_anchor_disposition: Public entrance and exact shrine feature are not independently controlled.
+    evidence_summary: Contemporary listing suggests a separate living memorial; plus code alone does not verify its entrance or feature point.
+    source_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    confidence: {identity: HIGH, arrival: UNVERIFIED}
+    relationships: [{research_id: RK-SAM-01, type: DISTINCT_MEMORIAL_ASSOCIATION}]
+    blockers: [No controlled latitude/longitude or feature geometry., Public approach and marker meaning unverified.]
+    required_verification: [Confirm the distinct shrine identity on site., Capture sourced feature geometry and an identifiable public approach., Record whether a marker represents shrine or entrance.]
+    recommended_next_action: Potential first new cohort after all access and coordinate controls pass.
+    later_production_ingestion_authorized: false
+    editorial_rationale: Strong memorial identity does not turn a plus-code center into an exact arrival point.
+
+  - research_id: RK-20
+    place_id: place.rk.gopala-bhatta-bhajana-kutira
+    canonical_name: Gopāla Bhaṭṭa Gosvāmī bhajana-kuṭīra
+    current_physical_mapping_status: MAP_NOW_EXACT
+    decision_status: HOLD_ACCESS_VERIFICATION
+    approved_marker_semantics: NO_PUBLIC_MARKER
+    identity_disposition: Retain proposed present-site ID; separate current shrine identification from claims about historic fabric.
+    coordinate_geometry_disposition:
+      feature: PLUS_CODE_LISTING_ONLY
+      source: Inventory modern-map lead GFGR+6M8
+      source_reference: content/research/radhakunda-location-inventory.yaml
+      source_retrieved_on: null
+      control: APPROXIMATE_FIELD_UNVERIFIED
+      navigation_use: NOT_AUTHORIZED
+    arrival_anchor_disposition: Public entrance and independent feature point are not controlled.
+    evidence_summary: Bhakti-ratnākara 5.602 attests the kuṭīra tradition; the current listing does not date surviving architecture.
+    source_layers: [EARLY_PILGRIMAGE_LOCALIZATION, HISTORICAL_PRESENT_PHYSICAL]
+    confidence: {identity: MEDIUM, arrival: UNVERIFIED}
+    relationships: []
+    blockers: [Public entrance not verified., Present-site identity and claims about surviving historic fabric have not been cleanly separated.]
+    required_verification: [Control present shrine coordinate and legitimate entrance., Document current fabric separately from early textual attestation.]
+    recommended_next_action: Hold from first ingestion; review entrance and site identity before reconsideration.
+    later_production_ingestion_authorized: false
+    editorial_rationale: Early kuṭīra attestation is not proof that present masonry is original.
+
+  - research_id: RK-21
+    place_id: place.rk.jiva-gosvami-site
+    canonical_name: Jīva Gosvāmī ghāṭ, baithak and bhajana-kuṭīra complex
+    current_physical_mapping_status: MAP_NOW_PRACTICAL_ARRIVAL
+    decision_status: HOLD_COMPOUND_RECONCILIATION
+    approved_marker_semantics: NO_PUBLIC_MARKER
+    identity_disposition: Retain provisional parent ID while ghāṭ, baithak, kuṭīra and property traditions are separated.
+    coordinate_geometry_disposition:
+      feature: PLUS_CODE_LISTING_ONLY
+      source: Inventory modern-map lead GFGV+C5F for Jīva Gosvāmī bhajana-kuṭīra
+      source_reference: content/research/radhakunda-location-inventory.yaml
+      source_retrieved_on: null
+      control: APPROXIMATE_FIELD_UNVERIFIED
+      navigation_use: NOT_AUTHORIZED
+    arrival_anchor_disposition: No verified compound boundary, public approach or feature-specific entrance.
+    evidence_summary: A current kuṭīra listing and property tradition do not establish one undifferentiated physical object or permanent Jīva residence.
+    source_layers: [EARLY_PILGRIMAGE_LOCALIZATION, HISTORICAL_PRESENT_PHYSICAL]
+    confidence: {identity: MEDIUM, arrival: UNVERIFIED}
+    relationships: [{research_id: RK-GH-14, type: CHILD_RECONCILIATION_CANDIDATE}]
+    blockers: [Compound structure and physical boundaries unresolved., RK-GH-14 has no independently verified point or separate-pin value.]
+    required_verification: [Compare one parent with child features, one practical arrival with described features, and independently justified separate places., Verify ghāṭ and shrine points, signage, ownership/access and source layers separately.]
+    recommended_next_action: Keep RK-GH-14 as child candidate; decide compound model before any runtime ID or pin.
+    later_production_ingestion_authorized: false
+    editorial_rationale: One plus-code listing cannot collapse four different kinds of evidence or authorize a ghāṭ pin.
+
+  - research_id: RK-27
+    place_id: place.rk.radha-gopinatha-temple
+    canonical_name: Śrī Jāhnavā Mandir / Rādhā-Gopīnātha
+    current_physical_mapping_status: MAP_NOW_EXACT
+    decision_status: HOLD_ACCESS_VERIFICATION
+    approved_marker_semantics: NO_PUBLIC_MARKER
+    identity_disposition: Retain proposed local temple ID; do not import Vṛndāvana namesake history or collapse RK-23/RK-32 without proof.
+    coordinate_geometry_disposition:
+      feature: PLUS_CODE_LISTING_ONLY
+      source: Inventory modern-map lead GFGR+QC5 for Rādhā-kuṇḍa temple
+      source_reference: content/research/radhakunda-location-inventory.yaml
+      source_retrieved_on: null
+      control: APPROXIMATE_FIELD_UNVERIFIED
+      navigation_use: NOT_AUTHORIZED
+    arrival_anchor_disposition: Temple feature and publicly accessible entrance have not been independently controlled.
+    evidence_summary: Current listing distinguishes a local temple, but Jāhnavā ghāṭ/baithak and generic Gopīnātha relationships remain research questions.
+    source_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    confidence: {identity: HIGH, arrival: UNVERIFIED}
+    relationships: [{research_id: RK-23, type: RELATED_SITE_UNRESOLVED}, {research_id: RK-32, type: POSSIBLE_DUPLICATE_UNRESOLVED}]
+    blockers: [No controlled temple/entrance coordinate., RK-23 and RK-32 relationships need identity review before child claims.]
+    required_verification: [Verify present temple name/signage and public approach., Control a sourced feature or entrance point., Keep Vṛndāvana history and adjacent ghāṭ claims separate.]
+    recommended_next_action: Potential first new cohort only after coordinate, access and local identity checks.
+    later_production_ingestion_authorized: false
+    editorial_rationale: A contemporary plus code does not verify an exact public temple marker.
+
+  - research_id: RK-29
+    place_id: place.rk.radha-govinda-temple
+    canonical_name: Rādhā-Govinda temple at Rādhā-kuṇḍa
+    current_physical_mapping_status: MAP_NOW_EXACT
+    decision_status: HOLD_ACCESS_VERIFICATION
+    approved_marker_semantics: NO_PUBLIC_MARKER
+    identity_disposition: Retain proposed Rādhā-kuṇḍa temple ID; distinguish Vṛndāvana namesake and existing Govinda-kuṇḍa-cluster map place 43.
+    coordinate_geometry_disposition:
+      feature: PLUS_CODE_LISTING_ONLY
+      source: Inventory modern-map lead GFGR+9MQ for local temple
+      source_reference: content/research/radhakunda-location-inventory.yaml
+      source_retrieved_on: null
+      control: APPROXIMATE_FIELD_UNVERIFIED
+      navigation_use: NOT_AUTHORIZED
+    arrival_anchor_disposition: Public entrance and exact temple feature are not controlled.
+    evidence_summary: Contemporary temple listing is a present-site lead; similar names elsewhere are negative identity controls.
+    source_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    confidence: {identity: HIGH, arrival: UNVERIFIED}
+    relationships: [{place_id: place.nipa-kunda-radha-govinda, type: DISTINCT_NAMESAKE_NOT_DUPLICATE}]
+    blockers: [No controlled local-temple feature coordinate or public entrance.]
+    required_verification: [Verify Rādhā-kuṇḍa address and signage., Capture sourced feature and public approach separately., Do not borrow Vṛndāvana or map place 43 provenance.]
+    recommended_next_action: Potential first new cohort only after site-specific coordinate and access control.
+    later_production_ingestion_authorized: false
+    editorial_rationale: Name agreement is insufficient to inherit another temple's history or point.
+
+  - research_id: RK-SAM-01
+    place_id: place.rk.three-goswami-samadhi
+    canonical_name: Three Goswami Samādhi complex
+    current_physical_mapping_status: MAP_NOW_EXACT
+    decision_status: HOLD_ACCESS_VERIFICATION
+    approved_marker_semantics: NO_PUBLIC_MARKER
+    identity_disposition: Retain proposed compound ID distinct from RK-17; constituent memorials are child candidates, not automatic pins.
+    coordinate_geometry_disposition:
+      feature: PLUS_CODE_LISTING_ONLY
+      source: Inventory modern-map lead GFGR+6PG for shared memorial complex
+      source_reference: content/research/radhakunda-location-inventory.yaml
+      source_retrieved_on: null
+      control: APPROXIMATE_FIELD_UNVERIFIED
+      navigation_use: NOT_AUTHORIZED
+    arrival_anchor_disposition: Compound boundary, public entrance and individual memorial positions require control.
+    evidence_summary: Current shared-complex listing is not an exact entrance; the separate Raghunātha dāsa samādhi remains another identity.
+    source_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    confidence: {identity: HIGH, arrival: UNVERIFIED}
+    relationships: [{research_id: RK-17, type: DISTINCT_MEMORIAL_ASSOCIATION}, {research_id: RK-19, type: CHILD_MEMORIAL_CANDIDATE}]
+    blockers: [No controlled compound entrance or geometry., Constituent memorial relationship needs on-site labeling.]
+    required_verification: [Confirm named memorials and separate RK-17 identity., Capture compound geometry, entrance and safe public approach., Decide whether child features merit detail-only representation.]
+    recommended_next_action: Potential first new cohort as one compound after coordinate and access controls pass.
+    later_production_ingestion_authorized: false
+    editorial_rationale: A compound marker is not equivalent to each memorial and must not absorb RK-17.
+
+  - research_id: RK-INST-01
+    place_id: place.radha-kunjabihari-gaudiya-matha
+    canonical_name: Rādhā-Kuñjabihārī Gauḍīya Maṭha
+    current_physical_mapping_status: EXISTING_RUNTIME_PLACE
+    decision_status: REUSE_EXISTING_NO_NEW_ID
+    approved_marker_semantics: EXISTING_RUNTIME_INSTITUTION_MARKER
+    identity_disposition: Reuse existing map place 71; no second institutional marker.
+    coordinate_geometry_disposition:
+      feature: EXISTING_INSTITUTION_WORKING_POINT
+      source: Existing Govardhana registry place 71, modern-map plus-code-center provenance GFGQ+5J9
+      source_reference: content/pilgrimage/places.yaml
+      source_retrieved_on: null
+      control: PROBABLE_FIELD_UNVERIFIED
+      navigation_use: EXISTING_RUNTIME_BEHAVIOR_ONLY
+    arrival_anchor_disposition: Existing map place 71 marker is already an app navigation anchor for coordinate-less map place 70; no new entrance claim approved.
+    evidence_summary: Institutional chronology and current map listing support the present maṭha identity, not ancient līlā geography.
+    source_layers: [HISTORICAL_PRESENT_PHYSICAL]
+    confidence: {identity: HIGH, arrival: MEDIUM}
+    relationships: [{research_id: RK-09, type: EXISTING_NAVIGATION_ANCHOR_FOR}]
+    blockers: []
+    required_verification: [Verify precise public entrance before any navigation upgrade.]
+    recommended_next_action: Keep map place 71 and its existing map place 70 anchor relationship; revisit entrance accuracy separately.
+    later_production_ingestion_authorized: false
+    editorial_rationale: Existing runtime identity and numbering take precedence over a duplicate micro-place.

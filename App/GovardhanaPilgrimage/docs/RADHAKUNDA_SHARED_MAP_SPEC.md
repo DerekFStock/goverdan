@@ -33,7 +33,24 @@ Future collection filters may offer `All`, `Govardhana`, and `Rādhā-kuṇḍa`
 
 ## Reconciliation and release gates
 
-The preliminary Wave A set consists of existing RK-01/02/04, RK-16/17/20/21/27/29, plus RK-SAM-01 and RK-INST-01. “Wave A” is a research priority, not an instruction to ingest all eleven immediately. Before any new marker, check its exact location or practical arrival, identity, provenance, access, parent/child relationship, and whether an existing runtime ID already covers it. RK-09 must reconcile with `place.siva-khari`; RK-10/11 remain textual-only. RK-13, RK-GH-09/10, and the shared Saṅgama ghāṭ require combined-site decisions. RK-16 and RK-KUT-01 share a current plus code and may be one compound. RK-17 is distinct from the three-Gosvāmī memorial complex, but related features require careful labels.
+Wave A contains exactly these **12 research identities**, matching the inventory and the [release gate](RADHAKUNDA_WAVE_A_RELEASE_GATE.md):
+
+| Research ID | Site |
+| --- | --- |
+| RK-01 | Rādhā-kuṇḍa |
+| RK-02 | Śyāma-kuṇḍa / Kṛṣṇa-kuṇḍa |
+| RK-04 | Lalitā-kuṇḍa |
+| RK-05 | Mohana-kuṇḍa |
+| RK-16 | Raghunātha dāsa Gosvāmī bhajana-kuṭīra |
+| RK-17 | Raghunātha dāsa Gosvāmī samādhi |
+| RK-20 | Gopāla Bhaṭṭa Gosvāmī bhajana-kuṭīra |
+| RK-21 | Jīva Gosvāmī site complex |
+| RK-27 | Śrī Jāhnavā Mandir / Rādhā-Gopīnātha |
+| RK-29 | Rādhā-Govinda temple at Rādhā-kuṇḍa |
+| RK-SAM-01 | Three Goswami Samādhi complex |
+| RK-INST-01 | Rādhā-Kuñjabihārī Gauḍīya Maṭha |
+
+“Wave A” means **research priority, not automatic authorization for production ingestion**. The release-gate decisions supersede inventory labels such as `MAP_NOW_EXACT` as production decisions. Before any new marker, check its exact location or practical arrival, identity, provenance, access, parent/child relationship, and whether an existing runtime ID already covers it. RK-05 is a water-body **area** candidate, not an arrival point. RK-09 must reconcile with `place.siva-khari`; RK-10/11 remain textual-only. RK-13, RK-GH-09/10, and the shared Saṅgama ghāṭ require combined-site decisions. RK-16 and RK-KUT-01 share a current plus code and may be one compound. RK-17 is distinct from the three-Gosvāmī memorial complex, but related features require careful labels.
 
 Treat all ghāṭs as candidates, not automatic pins. Saṅgama occurs in lists for both banks, so RK-GH-07 is one candidate with two bank approaches, not two independent places. Verify a bank-side point, signage, earliest attestation, neighboring temple/kuṭīra, and separate-pin value before runtime mapping. Waves B and C keep unresolved and textual candidates visible for research without crowding the production map.
 
