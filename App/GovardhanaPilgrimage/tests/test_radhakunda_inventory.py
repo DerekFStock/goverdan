@@ -59,8 +59,8 @@ class RadhakundaInventoryTests(unittest.TestCase):
             if item["physical_mapping_status"] == "TEXTUAL_ONLY_NO_PHYSICAL_PIN":
                 self.assertIsNone(item.get("latitude"), item["research_id"])
                 self.assertIsNone(item.get("longitude"), item["research_id"])
-        self.assertEqual(71, len(self.registry["places"]))
-        self.assertEqual(list(range(1, 72)), sorted(place["map_number"] for place in self.registry["places"]))
+        self.assertEqual(72, len(self.registry["places"]))
+        self.assertEqual(list(range(1, 72)), sorted(place["map_number"] for place in self.registry["places"] if place["map_number"] is not None))
 
     def test_reconciliation_and_textual_geography(self):
         expected_existing = {

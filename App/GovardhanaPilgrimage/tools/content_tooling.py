@@ -219,16 +219,35 @@ def validate_pilgrimage_places(document: dict[str, Any], label: str) -> list[dic
         place_id = place["id"]
         map_number = place["map_number"]
         canonical_name = place["canonical_name"]
+        collection = place.get("collection", "GOVARDHANA_NUMBERED")
+        geometry_type = place.get("geometry_type", "POINT")
+        navigation_eligible = place.get("navigation_eligible", True)
+        if collection not in {"GOVARDHANA_NUMBERED", "RADHA_KUNDA_MICRO"}:
+            raise ContentValidationError(f"Pilgrimage Place '{place_id}' has invalid collection")
+        if geometry_type not in {"POINT", "WATER_BODY_POLYGON"}:
+            raise ContentValidationError(f"Pilgrimage Place '{place_id}' has invalid geometry_type")
+        if not isinstance(navigation_eligible, bool):
+            raise ContentValidationError(f"Pilgrimage Place '{place_id}' has invalid navigation_eligible")
         if not isinstance(place_id, str) or not place_id:
             raise ContentValidationError("Pilgrimage Place ID must be a non-empty string")
         if place_id in seen_ids:
             raise ContentValidationError(f"Duplicate Pilgrimage Place ID: {place_id}")
         seen_ids.add(place_id)
-        if not isinstance(map_number, int) or isinstance(map_number, bool) or map_number < 1:
-            raise ContentValidationError(f"Pilgrimage Place '{place_id}' has invalid map_number")
-        if map_number in seen_numbers:
-            raise ContentValidationError(f"Duplicate Pilgrimage Place map_number: {map_number}")
-        seen_numbers.add(map_number)
+        if collection == "GOVARDHANA_NUMBERED":
+            if not isinstance(map_number, int) or isinstance(map_number, bool) or map_number < 1:
+                raise ContentValidationError(f"Pilgrimage Place '{place_id}' has invalid map_number")
+            if map_number in seen_numbers:
+                raise ContentValidationError(f"Duplicate Pilgrimage Place map_number: {map_number}")
+            seen_numbers.add(map_number)
+            if geometry_type != "POINT":
+                raise ContentValidationError(f"Numbered Pilgrimage Place '{place_id}' must be a point")
+        else:
+            if map_number is not None or geometry_type == "POINT" or navigation_eligible:
+                raise ContentValidationError(f"Micro-place '{place_id}' must be unnumbered, area-only, and non-navigable")
+            if place.get("coordinate_semantics") != "POLYGON_VERTEX" or place.get("map_visibility") != "PRECINCT_ONLY":
+                raise ContentValidationError(f"Micro-place '{place_id}' has invalid area semantics")
+            if place.get("latitude") is not None or place.get("longitude") is not None or place.get("navigation_anchor_place_id") is not None:
+                raise ContentValidationError(f"Micro-place '{place_id}' cannot have an arrival or navigation coordinate")
         if not isinstance(canonical_name, str) or not canonical_name.strip():
             raise ContentValidationError(f"Pilgrimage Place '{place_id}' has an empty canonical_name")
         normalized_name = canonical_name.casefold()
@@ -306,6 +325,67 @@ def validate_pilgrimage_places(document: dict[str, Any], label: str) -> list[dic
                 f"Pilgrimage Place '{place['id']}' navigation anchor '{anchor_id}' has no coordinate"
             )
     return places
+
+
+def validate_pilgrimage_geometry(document: dict[str, Any], places: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Project only declared area geometry, never infer a destination from its vertices."""
+    if document.get("type") != "FeatureCollection" or not isinstance(document.get("features"), list):
+        raise ContentValidationError("Pilgrimage geometry must be a GeoJSON FeatureCollection")
+    by_id = {place["id"]: place for place in places}
+    features: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for feature in document["features"]:
+        properties = feature.get("properties", {})
+        place_id = properties.get("place_id")
+        place = by_id.get(place_id)
+        if place is None or place_id in seen:
+            raise ContentValidationError(f"Unknown or duplicate Pilgrimage geometry place: {place_id}")
+        seen.add(place_id)
+        if place.get("collection") != "RADHA_KUNDA_MICRO" or properties.get("collection") != place["collection"]:
+            raise ContentValidationError(f"Geometry collection disagrees with place: {place_id}")
+        if feature.get("geometry", {}).get("type") != "Polygon" or properties.get("geometry_type") != place.get("geometry_type"):
+            raise ContentValidationError(f"Geometry type disagrees with place: {place_id}")
+        if properties.get("coordinate_semantics") != "POLYGON_VERTEX" or properties.get("navigation_authorized") is not False or properties.get("arrival_authorized") is not False:
+            raise ContentValidationError(f"Geometry could imply arrival/navigation: {place_id}")
+        if properties.get("visibility") != "PRECINCT_ONLY":
+            raise ContentValidationError(f"Geometry visibility is not precinct-only: {place_id}")
+        min_zoom, label_min_zoom = properties.get("min_zoom"), properties.get("label_min_zoom")
+        if not isinstance(min_zoom, (int, float)) or not isinstance(label_min_zoom, (int, float)) or not 14 <= min_zoom <= label_min_zoom <= 20:
+            raise ContentValidationError(f"Invalid area zoom controls: {place_id}")
+        if not all(properties.get(key) for key in ("source_id", "source_url", "source_retrieved_on", "attribution")):
+            raise ContentValidationError(f"Area geometry lacks provenance: {place_id}")
+        rings = feature["geometry"].get("coordinates")
+        if not isinstance(rings, list) or len(rings) != 1 or not isinstance(rings[0], list) or len(rings[0]) < 4:
+            raise ContentValidationError(f"Invalid area polygon ring: {place_id}")
+        ring = rings[0]
+        if ring[0] != ring[-1] or len(set(tuple(pair) for pair in ring)) != len(ring) - 1:
+            raise ContentValidationError(f"Area polygon is open or repeats vertices: {place_id}")
+        for pair in ring:
+            if not isinstance(pair, list) or len(pair) != 2 or any(not isinstance(v, (int, float)) or isinstance(v, bool) or not math.isfinite(v) for v in pair):
+                raise ContentValidationError(f"Invalid area polygon coordinate: {place_id}")
+            if not (-180 <= pair[0] <= 180 and -90 <= pair[1] <= 90):
+                raise ContentValidationError(f"Out-of-range area polygon coordinate: {place_id}")
+        features.append({
+            "place_id": place_id,
+            "geometry_type": properties["geometry_type"],
+            "coordinate_semantics": properties["coordinate_semantics"],
+            "visibility": properties["visibility"],
+            "min_zoom": min_zoom,
+            "label_min_zoom": label_min_zoom,
+            "source_id": properties["source_id"],
+            "source_url": properties["source_url"],
+            "source_version": properties.get("source_version"),
+            "source_changeset": properties.get("source_changeset"),
+            "source_retrieved_on": properties["source_retrieved_on"],
+            "attribution": properties["attribution"],
+            "vertices": ring,
+            "navigation_authorized": False,
+            "arrival_authorized": False,
+        })
+    required = {place["id"] for place in places if place.get("collection") == "RADHA_KUNDA_MICRO"}
+    if seen != required:
+        raise ContentValidationError(f"Micro-place geometry coverage mismatch: {sorted(required - seen)}")
+    return features
 
 
 def validate_pilgrimage_place_contents(document: dict[str, Any], label: str) -> list[dict[str, Any]]:
@@ -571,6 +651,9 @@ def compile_development_manifest(root: Path, manifest_path: Path) -> BuildResult
     pilgrimage_content_entries = [
         item for item in manifest["compile_sequence"] if item.get("role") == "PILGRIMAGE_PLACE_CONTENT"
     ]
+    pilgrimage_geometry_entries = [
+        item for item in manifest["compile_sequence"] if item.get("role") == "PILGRIMAGE_PLACE_GEOMETRY"
+    ]
     people_registry_entries = [
         item for item in manifest["compile_sequence"] if item.get("role") == "PEOPLE_REGISTRY"
     ]
@@ -615,6 +698,14 @@ def compile_development_manifest(root: Path, manifest_path: Path) -> BuildResult
         raise ContentValidationError("PILGRIMAGE_PLACE_CONTENT must be required and development eligible")
     pilgrimage_place_contents = validate_pilgrimage_place_contents(
         load_yaml(root / pilgrimage_content_entry["target_path"]), "Pilgrimage Place Content"
+    )
+    if len(pilgrimage_geometry_entries) != 1:
+        raise ContentValidationError("Development manifest must declare exactly one PILGRIMAGE_PLACE_GEOMETRY")
+    geometry_entry = pilgrimage_geometry_entries[0]
+    if geometry_entry.get("required") is not True or geometry_entry.get("development_eligible") is not True:
+        raise ContentValidationError("PILGRIMAGE_PLACE_GEOMETRY must be required and development eligible")
+    pilgrimage_geometries = validate_pilgrimage_geometry(
+        load_json(root / geometry_entry["target_path"]), pilgrimage_places
     )
     declared_work_ids = [item.get("work_id") for item in source_entries]
     duplicate_work_ids = sorted(
@@ -920,7 +1011,8 @@ def compile_development_manifest(root: Path, manifest_path: Path) -> BuildResult
         "passage_representations": sorted(representations, key=lambda item: item["id"]),
         "witnesses": [],
         "witness_mappings": [],
-        "pilgrimage_places": sorted(pilgrimage_places, key=lambda item: item["map_number"]),
+        "pilgrimage_places": sorted(pilgrimage_places, key=lambda item: (item["map_number"] is None, item["map_number"] or 0)),
+        "pilgrimage_place_geometries": sorted(pilgrimage_geometries, key=lambda item: item["place_id"]),
         "pilgrimage_place_contents": sorted(pilgrimage_place_contents, key=lambda item: item["place_id"]),
         **people_content,
     }

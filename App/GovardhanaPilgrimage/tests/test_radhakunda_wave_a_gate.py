@@ -100,7 +100,10 @@ class RadhakundaWaveAGateTests(unittest.TestCase):
                 self.assertEqual("REUSE_EXISTING_NO_NEW_ID", item["decision_status"])
             else:
                 proposed.append(place_id)
-                self.assertNotIn(place_id, registry_ids)
+                if research_id == "RK-05":
+                    self.assertIn(place_id, registry_ids)  # Task 021A.4 area-only exception.
+                else:
+                    self.assertNotIn(place_id, registry_ids)
             inventory_record = next(record for record in self.wave_a if record["research_id"] == research_id)
             self.assertEqual(place_id, inventory_record.get("existing_place_id") or inventory_record["proposed_place_id"])
         self.assertEqual(len(proposed), len(set(proposed)))
@@ -152,18 +155,18 @@ class RadhakundaWaveAGateTests(unittest.TestCase):
                 self.assertNotEqual("NO_PUBLIC_MARKER", item["approved_marker_semantics"])
                 self.assertTrue(item["evidence_summary"] and item["source_layers"])
 
-    def test_runtime_registry_and_sqlite_remain_unchanged_seventy_one(self):
+    def test_runtime_registry_retains_seventy_one_numbered_places(self):
         registry_places = self.registry["places"]
-        self.assertEqual(71, len(registry_places))
-        self.assertEqual(list(range(1, 72)), sorted(place["map_number"] for place in registry_places))
+        self.assertEqual(72, len(registry_places))
+        self.assertEqual(list(range(1, 72)), sorted(place["map_number"] for place in registry_places if place["map_number"] is not None))
         registry_ids = {place["id"] for place in registry_places}
         connection = sqlite3.connect(SQLITE)
         try:
             runtime = connection.execute("SELECT id, map_number FROM pilgrimage_places").fetchall()
-            self.assertEqual(71, len(runtime))
+            self.assertEqual(72, len(runtime))
             self.assertEqual(registry_ids, {place_id for place_id, _ in runtime})
-            self.assertEqual(list(range(1, 72)), sorted(number for _, number in runtime))
-            self.assertFalse(any(place_id.startswith("place.rk.") for place_id, _ in runtime))
+            self.assertEqual(list(range(1, 72)), sorted(number for _, number in runtime if number is not None))
+            self.assertEqual([("place.rk.mohana-kunda", None)], [(place_id, number) for place_id, number in runtime if place_id.startswith("place.rk.")])
             self.assertEqual("ok", connection.execute("PRAGMA integrity_check").fetchone()[0])
             self.assertEqual([], connection.execute("PRAGMA foreign_key_check").fetchall())
         finally:

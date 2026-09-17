@@ -257,6 +257,21 @@ struct PilgrimagePlaceProvenance: Hashable, Sendable {
     let sourceReference: String?
 }
 
+struct PilgrimagePolygonVertex: Hashable, Sendable {
+    let longitude: Double
+    let latitude: Double
+}
+
+struct PilgrimagePlaceGeometry: Hashable, Sendable {
+    let geometryType: String
+    let coordinateSemantics: String
+    let minZoom: Double
+    let labelMinZoom: Double
+    let vertices: [PilgrimagePolygonVertex]
+    let sourceID: String
+    let attribution: String
+}
+
 enum PilgrimageContentDestination: Hashable, Sendable {
     case storySection(StorySectionID)
     case sourcePassage(SourcePassageID)
@@ -264,7 +279,13 @@ enum PilgrimageContentDestination: Hashable, Sendable {
 
 struct PilgrimagePlace: Identifiable, Hashable, Sendable {
     let id: PilgrimagePlaceID
-    let mapNumber: Int
+    let mapNumber: Int?
+    let collection: String
+    let geometryType: String
+    let coordinateSemantics: String
+    let mapVisibility: String
+    let navigationEligible: Bool
+    let geometry: PilgrimagePlaceGeometry?
     let canonicalName: String
     let asciiName: String?
     let alternateNames: [String]

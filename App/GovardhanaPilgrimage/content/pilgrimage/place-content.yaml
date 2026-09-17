@@ -2054,3 +2054,14 @@ contents:
       - place.siva-khari
       - place.radhakunda
       - place.syamakunda
+
+  - place_id: place.rk.mohana-kunda
+    category: Unnumbered Rādhā-kuṇḍa water area
+    summary: Mohana-kuṇḍa is a present water body in the Rādhā-kuṇḍa precinct. Its mapped outline identifies the water area, not an entrance or recommended approach. A safe public access point has not yet been verified.
+    why_sacred: No devotional or historical claim is asserted by this physical-area record.
+    what_to_see:
+      - The present water area represented by the mapped outline; no public edge has been verified.
+    lila: No līlā or precise historical association is asserted by this physical-area record.
+    pilgrim_guidance: The polygon is for map identification only. It is not a navigation target or an arrival point; seek current local guidance before approaching the water.
+    references: []
+    related_place_ids: []

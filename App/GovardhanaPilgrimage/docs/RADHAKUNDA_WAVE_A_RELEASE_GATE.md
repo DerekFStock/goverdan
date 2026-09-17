@@ -32,3 +32,7 @@ Task 021A.2 originally used only repository evidence; Task 021A.3 independently 
 ## Task 021A.3 outcome
 
 The [controlled evidence package](../content/research/radhakunda-wave-a-controlled-evidence.yaml) covers only these five records. RK-05 is **area-only**; RK-17, RK-27, and RK-SAM-01 need field verification; RK-29 has a supported local identity but no controlled location or public approach. No reviewed site has a controlled public entrance. Use the [field checklist](RADHAKUNDA_WAVE_A_FIELD_VERIFICATION_CHECKLIST.md) before proposing any later production ingestion. No RK-16/20/21, Wave B/C, new public numbering, routes, or automatic ghāṭ pins are included.
+
+## Task 021A.4 subsequent authorization
+
+Task 021A.4 authorized production ingestion of **RK-05 alone**, as an unnumbered non-navigable water polygon. The original release-gate decisions above remain the research history; the later explicit authorization does not upgrade a water edge, entrance, or any other candidate. The app retains 71 numbered Govardhana places and adds one unnumbered Rādhā-kuṇḍa micro-place (72 total). RK-17, RK-27, RK-29, RK-SAM-01, every other Wave A candidate, and Waves B/C remain blocked. No public arrival point has been accepted.
