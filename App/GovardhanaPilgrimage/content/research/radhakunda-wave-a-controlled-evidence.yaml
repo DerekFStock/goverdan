@@ -1,0 +1,290 @@
+schema_version: 1
+package_id: research.radhakunda-wave-a-controlled-evidence
+scope: RESEARCH_ONLY_NOT_RUNTIME_INPUT
+reviewed_on: "2026-09-17"
+starting_main_commit: d2a5e1e
+public_numbering: none
+production_ingestion_authorized: false
+coordinate_policy: All coordinates require an explicit meaning; no coordinate in this package authorizes navigation or arrival.
+geometry_file: content/research/radhakunda-wave-a-controlled-evidence.geojson
+records:
+  - research_id: RK-05
+    place_id: place.rk.mohana-kunda
+    canonical_name: Mohana-kuṇḍa
+    evidence_review_date: "2026-09-17"
+    acquisition_method: Remote OSM API object inspection and comparison with neighboring named water objects
+    physical_feature_type: WATER_BODY
+    identity_evidence: OSM way 430061166 is currently tagged natural=water and name=Mohana Kund; this is a modern mapped identity, not a textual GPS witness.
+    feature_location_evidence: Closed 80-unique-vertex polygon of OSM way 430061166, version 2; full ring preserved in the research-only GeoJSON.
+    public_approach_evidence: NONE_CONTROLLED
+    access_status: WATER_EDGE_AND_PUBLIC_APPROACH_UNVERIFIED
+    coordinate_meaning: POLYGON_VERTEX
+    precision_uncertainty: Community-mapped water outline, not a field survey or controlled public edge.
+    sources:
+      - source_id: OSM-WAY-430061166-V2
+        publisher: OpenStreetMap contributors
+        title: Mohana Kund water polygon
+        stable_reference: https://www.openstreetmap.org/way/430061166
+        retrieval_endpoint: https://api.openstreetmap.org/api/0.6/way/430061166/full
+        retrieved_on: "2026-09-17"
+        version: 2
+        changeset: 67612276
+        object_timestamp: "2019-02-27T10:20:07Z"
+        supports: Present mapped water identity, tags, and complete polygon geometry only.
+        independent_of: Internal inventory lead; the same OSM object is not independent corroboration of itself.
+        limitations: Community-edited outline is not a surveyed public edge, entrance, or safe arrival point.
+        license: ODbL 1.0
+        attribution: © OpenStreetMap contributors; https://www.openstreetmap.org/copyright
+      - source_id: OSM-WAY-335571300-V1
+        publisher: OpenStreetMap contributors
+        title: Lalita Kunda named water object
+        stable_reference: https://www.openstreetmap.org/way/335571300
+        retrieved_on: "2026-09-17"
+        version: 1
+        changeset: 29850243
+        supports: A separately named Lalita Kunda water object in the vicinity.
+        independent_of: No; same contributor platform, used for name/neighbor conflict check only.
+        limitations: Name and object do not prove surveyed parcel boundaries or public access.
+        license: ODbL 1.0
+        attribution: © OpenStreetMap contributors; https://www.openstreetmap.org/copyright
+      - source_id: OSM-WAY-335571305-V1
+        publisher: OpenStreetMap contributors
+        title: Shyama Kunda named water object
+        stable_reference: https://www.openstreetmap.org/way/335571305
+        retrieved_on: "2026-09-17"
+        version: 1
+        changeset: 29850243
+        supports: A separately named Shyama Kunda water object in the vicinity.
+        independent_of: No; same contributor platform, used for name/neighbor conflict check only.
+        limitations: Name and object do not prove surveyed parcel boundaries or public access.
+        license: ODbL 1.0
+        attribution: © OpenStreetMap contributors; https://www.openstreetmap.org/copyright
+    geometry:
+      source_id: OSM-WAY-430061166-V2
+      geojson_feature_id: RK-05
+      coordinate_meaning: POLYGON_VERTEX
+      vertex_count_unique: 80
+      ring_coordinate_count: 81
+      bbox_lon_lat: [77.4929354, 27.5234252, 77.4951433, 27.5271270]
+      tags: {name: Mohana Kund, "name:en": Mohana Kund, natural: water}
+      control_status: CONTROLLED_WATER_AREA_ONLY
+      precision_uncertainty: OSM community geometry; not independently surveyed in field.
+      navigation_authorized: false
+      arrival_authorized: false
+    relationship_checks:
+      - RK-02 Śyāma-kuṇḍa and RK-04 Lalitā-kuṇḍa are nearby separately named OSM water objects; do not borrow their edges or arrival anchors.
+    conflicting_evidence: No contradictory name found in inspected OSM tags; the prior approximate center is not a controlled entrance.
+    negative_findings:
+      - No sourced public water edge, gate, walkway access point, or safe approach was established.
+      - OSM polygon does not establish an exact pilgrim arrival location.
+    remaining_blockers: [Field-check a safe publicly accessible edge or entrance before any navigation or arrival semantics.]
+    eligibility_decision: CONTROLLED_AREA_ONLY
+    recommended_later_marker_semantics: Water-body polygon only; no pin-as-arrival, distance-to-entrance, geofence, or navigation target.
+
+  - research_id: RK-17
+    place_id: place.rk.raghunatha-dasa-samadhi
+    canonical_name: Raghunātha dāsa Gosvāmī samādhi
+    evidence_review_date: "2026-09-17"
+    acquisition_method: Remote first-party site account, pilgrimage guide, and OSM object review
+    physical_feature_type: SAMADHI_SHRINE_CANDIDATE
+    identity_evidence: A separate OSM building is named for Raghunātha dāsa, but a first-party local maintenance account also identifies his platform inside Teen Goswami Mandir.
+    feature_location_evidence: OSM way 335571304 is a named building lead; its geometry is withheld from this package because which memorial it denotes is unresolved.
+    public_approach_evidence: NONE_CONTROLLED
+    access_status: IDENTITY_RELATIONSHIP_AND_ENTRANCE_UNVERIFIED
+    sources:
+      - source_id: OSM-WAY-335571304-V1
+        publisher: OpenStreetMap contributors
+        title: Samadhi Raghunath das goswami building
+        stable_reference: https://www.openstreetmap.org/way/335571304
+        retrieval_endpoint: https://api.openstreetmap.org/api/0.6/way/335571304/full
+        retrieved_on: "2026-09-17"
+        version: 1
+        changeset: 29850243
+        object_timestamp: "2015-03-30T13:22:53Z"
+        supports: A separately named mapped building lead, not verified shrine identity or entrance.
+        independent_of: Radharani.com and Holy Dham accounts; mapping origin not independently verified.
+        limitations: Old community mapping; label could denote a distinct shrine or an overlapping memorial tradition.
+        license: ODbL 1.0
+        attribution: © OpenStreetMap contributors; https://www.openstreetmap.org/copyright
+      - source_id: RADHASEVA-TEEN-GOSWAMI-20260917
+        publisher: Radharani.com / RadhaSeva
+        title: Teen Goswami Mandir cleaning account
+        stable_reference: https://www.radharani.com/copy-of-manasa-pavana-ghat
+        retrieved_on: "2026-09-17"
+        version: No public revision identifier
+        supports: Local maintained compound has a Raghunātha dāsa platform among three memorial platforms.
+        independent_of: OSM map data; Holy Dham publication independence not established.
+        limitations: Does not supply surveyed distinct-shrine position, compound plan, or public entrance coordinate.
+        license: Citation only; reuse rights not stated.
+        attribution: Radharani.com / RadhaSeva
+      - source_id: HOLYDHAM-RADHAKUNDA-20260917
+        publisher: Holy Dham
+        title: Radha Kunda and Shyama Kunda pilgrimage guide
+        stable_reference: https://www.holydham.com/radha-kunda-and-shyama-kunda/
+        retrieved_on: "2026-09-17"
+        version: No public revision identifier
+        supports: Walking narrative separately mentions a Raghunātha dāsa memorial association at Rādhā-Gopīnātha and at Three Samadhis.
+        independent_of: Not demonstrated; used as a conflicting guide lead, not coordinate control.
+        limitations: Narrative may refer to multiple memorial forms or duplicate traditions; no controlled entrances.
+        license: Citation only; reuse rights not stated.
+        attribution: Holy Dham
+    coordinates: []
+    coordinate_meaning: null
+    precision_uncertainty: No coordinate accepted; OSM geometry and plus-code centers remain unverified leads.
+    relationship_checks: [Maintain RK-17 and RK-SAM-01 as separate research IDs; determine whether physically separate shrines, constituent platforms, or overlapping labels.]
+    conflicting_evidence: OSM has a separately named building, while RadhaSeva places a Raghunātha dāsa platform inside the Three Goswami compound; Holy Dham lists multiple memorial associations.
+    negative_findings: [No site signage photograph, exact shrine identification, distinct entrance, or public approach controlled.]
+    remaining_blockers: [Resolve RK-17 versus RK-SAM-01 physical relationship on site., Verify shrine and entrance separately.]
+    eligibility_decision: FIELD_VERIFICATION_REQUIRED
+    recommended_later_marker_semantics: No public marker until relationship and entrance are resolved; a constituent platform may be a child feature.
+
+  - research_id: RK-27
+    place_id: place.rk.radha-gopinatha-temple
+    canonical_name: Śrī Jāhnavā Mandir / Rādhā-Gopīnātha
+    evidence_review_date: "2026-09-17"
+    acquisition_method: Remote pilgrimage-guide and inventory identity review
+    physical_feature_type: TEMPLE_CANDIDATE
+    identity_evidence: Holy Dham describes a local Rādhā-Gopīnātha temple and a Jāhnavā-associated baithak, but the combined Śrī Jāhnavā Mandir name is not confirmed by a present sign or first-party local temple document.
+    feature_location_evidence: No controlled site-specific temple point; inventory plus code GFGR+QC5 is a lead only.
+    public_approach_evidence: Guide describes a walk, not a measured/public entrance point; adjacent ghāṭ is not presumed to be the temple entrance.
+    access_status: LOCAL_NAME_FEATURE_AND_ENTRANCE_UNVERIFIED
+    sources:
+      - source_id: HOLYDHAM-RADHAKUNDA-20260917
+        publisher: Holy Dham
+        title: Radha Kunda and Shyama Kunda pilgrimage guide
+        stable_reference: https://www.holydham.com/radha-kunda-and-shyama-kunda/
+        retrieved_on: "2026-09-17"
+        version: No public revision identifier
+        supports: Local Rādhā-Gopīnātha and Jāhnavā baithak/ghāṭ are mentioned in walking context.
+        independent_of: Inventory listing independence not established.
+        limitations: Two similarly named temple mentions in one guide create location ambiguity; no photographed sign, boundary, or surveyed door.
+        license: Citation only; reuse rights not stated.
+        attribution: Holy Dham
+      - source_id: INVENTORY-RK27-D2A5E1E
+        publisher: Project research inventory
+        title: RK-27 inventory record
+        stable_reference: content/research/radhakunda-location-inventory.yaml#RK-27
+        retrieved_on: "2026-09-17"
+        version: d2a5e1e
+        supports: Prior candidate identity and GFGR+QC5 listing lead only.
+        independent_of: No; synthesized research record.
+        limitations: Plus-code center cannot establish a temple entrance.
+        license: Project research metadata
+        attribution: Govardhana Pilgrimage project
+    coordinates: []
+    coordinate_meaning: null
+    precision_uncertainty: No accepted coordinate; local-name and physical-feature conflation unresolved.
+    relationship_checks: [RK-23 Jāhnavā baithak is not assumed identical., RK-32 generic Gopīnātha is not assumed separate or duplicate., Vṛndāvana Rādhā-Gopīnātha history is not transferred., Adjacent ghāṭ is not the temple doorway.]
+    conflicting_evidence: Guide contains more than one Rādhā-Gopīnātha temple mention in its walking sequence; local alias/signage relationship remains unclear.
+    negative_findings: [No present sign documenting both names., No controlled temple point or public entrance.]
+    remaining_blockers: [Photograph current sign and entrance., Reconcile RK-23 and RK-32 physical relationships.]
+    eligibility_decision: FIELD_VERIFICATION_REQUIRED
+    recommended_later_marker_semantics: No marker until local temple identity and public approach are controlled.
+
+  - research_id: RK-29
+    place_id: place.rk.radha-govinda-temple
+    canonical_name: Rādhā-Govinda temple at Rādhā-kuṇḍa
+    evidence_review_date: "2026-09-17"
+    acquisition_method: Remote first-party maintenance-project and pilgrimage-guide review
+    physical_feature_type: TEMPLE
+    identity_evidence: RadhaSeva identifies a maintained local Radha Govinda Mandir; Holy Dham places a Radha Govinda temple in its Rādhā-kuṇḍa walking account.
+    feature_location_evidence: No controlled temple footprint or point; inventory GFGR+9MQ is a listing lead only.
+    public_approach_evidence: NONE_CONTROLLED
+    access_status: SITE_IDENTITY_SUPPORTED_ENTRANCE_UNVERIFIED
+    sources:
+      - source_id: RADHASEVA-PROJECTS-20260917
+        publisher: Radharani.com / RadhaSeva
+        title: RadhaSeva projects — Radha Govinda Mandir
+        stable_reference: https://www.radharani.com/projects
+        retrieved_on: "2026-09-17"
+        version: No public revision identifier
+        supports: Present local temple identity and maintenance activity.
+        independent_of: Holy Dham guide; common local tradition possible.
+        limitations: No georeferenced entrance or feature geometry.
+        license: Citation only; reuse rights not stated.
+        attribution: Radharani.com / RadhaSeva
+      - source_id: HOLYDHAM-RADHAKUNDA-20260917
+        publisher: Holy Dham
+        title: Radha Kunda and Shyama Kunda pilgrimage guide
+        stable_reference: https://www.holydham.com/radha-kunda-and-shyama-kunda/
+        retrieved_on: "2026-09-17"
+        version: No public revision identifier
+        supports: Local Rādhā-Govinda temple in walking context near the Three Samadhis.
+        independent_of: Radharani.com editorial independence not established.
+        limitations: Relative walking prose is not an entrance coordinate.
+        license: Citation only; reuse rights not stated.
+        attribution: Holy Dham
+      - source_id: INVENTORY-RK29-D2A5E1E
+        publisher: Project research inventory
+        title: RK-29 inventory record
+        stable_reference: content/research/radhakunda-location-inventory.yaml#RK-29
+        retrieved_on: "2026-09-17"
+        version: d2a5e1e
+        supports: Existing local listing lead GFGR+9MQ and namesake warning.
+        independent_of: No; synthesized record.
+        limitations: Plus-code center is not a public approach or feature point.
+        license: Project research metadata
+        attribution: Govardhana Pilgrimage project
+    coordinates: []
+    coordinate_meaning: null
+    precision_uncertainty: No accepted coordinate.
+    relationship_checks: [Distinct from Vṛndāvana Govindadeva., Distinct from place.nipa-kunda-radha-govinda at map number 43 in the Govinda-kuṇḍa cluster., Distinct from Govinda-kuṇḍa water body and other generic Rādhā-Govinda names.]
+    conflicting_evidence: No direct conflict established; name collision creates a misidentification risk.
+    negative_findings: [No sourced Rādhā-kuṇḍa temple feature point, sign photograph, or public doorway.]
+    remaining_blockers: [Field-control local sign, feature, and public approach independently.]
+    eligibility_decision: IDENTITY_CONFIRMED_LOCATION_UNCONTROLLED
+    recommended_later_marker_semantics: No public marker until feature and approach are separately verified.
+
+  - research_id: RK-SAM-01
+    place_id: place.rk.three-goswami-samadhi
+    canonical_name: Three Goswami Samādhi complex
+    evidence_review_date: "2026-09-17"
+    acquisition_method: Remote first-party local maintenance account and pilgrimage-guide review
+    physical_feature_type: MEMORIAL_COMPOUND
+    identity_evidence: RadhaSeva describes a maintained Teen Goswami Mandir with three memorial platforms, one named for Raghunātha dāsa.
+    feature_location_evidence: First-party account describes a local alley and proximity to Rādhā-Govinda, not a surveyed compound boundary.
+    public_approach_evidence: Descriptive alley is not a controlled entrance or guaranteed public access.
+    access_status: COMPOUND_ENTRANCE_AND_CONSTITUENT_RELATIONSHIP_UNVERIFIED
+    sources:
+      - source_id: RADHASEVA-TEEN-GOSWAMI-20260917
+        publisher: Radharani.com / RadhaSeva
+        title: Teen Goswami Mandir cleaning account
+        stable_reference: https://www.radharani.com/copy-of-manasa-pavana-ghat
+        retrieved_on: "2026-09-17"
+        version: No public revision identifier
+        supports: Present maintained three-platform compound and approximate relation to local Rādhā-Govinda temple.
+        independent_of: OSM object; Holy Dham editorial independence not established.
+        limitations: No exact public doorway, boundary, or proof that RK-17 is another structure.
+        license: Citation only; reuse rights not stated.
+        attribution: Radharani.com / RadhaSeva
+      - source_id: HOLYDHAM-RADHAKUNDA-20260917
+        publisher: Holy Dham
+        title: Radha Kunda and Shyama Kunda pilgrimage guide
+        stable_reference: https://www.holydham.com/radha-kunda-and-shyama-kunda/
+        retrieved_on: "2026-09-17"
+        version: No public revision identifier
+        supports: Three Samadhis is a local pilgrim site and one associated memorial is Raghunātha dāsa.
+        independent_of: Radharani.com editorial independence not established.
+        limitations: Cannot establish separate RK-17 memorial versus constituent platform.
+        license: Citation only; reuse rights not stated.
+        attribution: Holy Dham
+      - source_id: INVENTORY-RKSAM01-D2A5E1E
+        publisher: Project research inventory
+        title: RK-SAM-01 inventory record
+        stable_reference: content/research/radhakunda-location-inventory.yaml#RK-SAM-01
+        retrieved_on: "2026-09-17"
+        version: d2a5e1e
+        supports: Prior GFGR+6PG complex listing lead and proposed distinct research ID.
+        independent_of: No; synthesized record.
+        limitations: Plus-code center does not establish a boundary, doorway, or separate memorial identity.
+        license: Project research metadata
+        attribution: Govardhana Pilgrimage project
+    coordinates: []
+    coordinate_meaning: null
+    precision_uncertainty: No accepted coordinate.
+    relationship_checks: [Keep research ID distinct from RK-17 pending physical verification., Three constituent platforms are child features, not three public pins., Confirm relation to Rādhā-Govinda temple without assuming one shared entrance.]
+    conflicting_evidence: RadhaSeva places Raghunātha dāsa inside the Three Goswami compound while the prior inventory treated RK-17 as a distinct memorial identity; both could be true if multiple memorial forms exist, but not proven.
+    negative_findings: [No controlled compound geometry or public entrance., No evidence supporting separate public pins for constituent platforms.]
+    remaining_blockers: [On-site identity/compound reconciliation with RK-17., Photograph sign and entrance; capture distinct feature and public approach if they exist.]
+    eligibility_decision: FIELD_VERIFICATION_REQUIRED
+    recommended_later_marker_semantics: One compound detail candidate only after reconciliation; no constituent pins.

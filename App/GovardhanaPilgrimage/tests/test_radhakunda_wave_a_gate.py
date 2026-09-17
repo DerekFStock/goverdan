@@ -130,7 +130,8 @@ class RadhakundaWaveAGateTests(unittest.TestCase):
         for research_id in POTENTIAL_FIRST_COHORT:
             item = self.by_id[research_id]
             with self.subTest(research_id=research_id):
-                self.assertEqual("HOLD_ACCESS_VERIFICATION", item["decision_status"])
+                expected = "HOLD_IDENTITY_RECONCILIATION" if research_id in {"RK-17", "RK-SAM-01"} else "HOLD_ACCESS_VERIFICATION"
+                self.assertEqual(expected, item["decision_status"])
                 self.assertEqual("NO_PUBLIC_MARKER", item["approved_marker_semantics"])
                 self.assertTrue(item["blockers"])
                 self.assertIn("FIELD_UNVERIFIED", item["coordinate_geometry_disposition"]["control"])
