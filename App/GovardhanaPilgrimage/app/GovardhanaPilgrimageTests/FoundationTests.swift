@@ -773,9 +773,9 @@ final class FoundationTests: XCTestCase {
             try repository.stories()
         )
         let works = try repository.works()
-        XCTAssertEqual(5, works.count)
+        XCTAssertEqual(7, works.count)
         XCTAssertEqual(
-            Set(["work.radha-kundastaka", "work.mathura-mahatmya", "work.radhakunda-manifestation-puranic-unit", "work.srimad-bhagavatam", "work.dana-keli-cintamani"]),
+            Set(["work.radha-kundastaka", "work.mathura-mahatmya", "work.radhakunda-manifestation-puranic-unit", "work.srimad-bhagavatam", "work.dana-keli-cintamani", "work.radha-krsna-ganoddesa-dipika", "work.govinda-lilamrta"]),
             Set(works.map(\.id.rawValue))
         )
         XCTAssertFalse(works.contains { $0.id.rawValue == "work.stavavali" })
@@ -1161,6 +1161,89 @@ final class FoundationTests: XCTestCase {
         XCTAssertTrue(try reopened.bookmarks().isEmpty)
     }
 
+    func testPeopleRepositoryUsesOneCanonicalPersonAndExactSourceTargets() throws {
+        let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
+        let people = try repository.people()
+        XCTAssertEqual(1, people.count)
+        let person = try XCTUnwrap(people.first)
+        XCTAssertEqual("person.lalita-sakhi", person.id.rawValue)
+        XCTAssertEqual(.vrajaAssociate, person.kind)
+        let sections = try repository.personSections(personID: person.id)
+        XCTAssertEqual(9, sections.count)
+        for section in sections {
+            XCTAssertFalse(try repository.personBlocks(sectionID: section.id).isEmpty)
+        }
+        let blocks = try sections.flatMap { try repository.personBlocks(sectionID: $0.id) }
+        XCTAssertEqual(14, blocks.count)
+        XCTAssertEqual(22, blocks.flatMap(\.citations).count)
+        XCTAssertTrue(try repository.personPlaceRelationships(personID: person.id).isEmpty)
+        let first = try XCTUnwrap(blocks.first)
+        XCTAssertEqual(
+            .range(start: SourcePassageID(rawValue: "passage.radha-krsna-ganoddesa-dipika.79"),
+                   end: SourcePassageID(rawValue: "passage.radha-krsna-ganoddesa-dipika.80")),
+            first.citations.first?.target
+        )
+        let source = try repository.sourceReaderContent(targetPassageID: SourcePassageID(rawValue: "passage.radha-krsna-ganoddesa-dipika.79"))
+        XCTAssertEqual(16, source.passages.count)
+        XCTAssertNotNil(source.passages.first?.translation)
+        XCTAssertTrue(source.work.preferredEdition.translationProvenance?.contains("Gauḍīya Vedānta Publications") == true)
+        let episode = try repository.sourceReaderContent(targetPassageID: SourcePassageID(rawValue: "passage.govinda-lilamrta.5.78"))
+        XCTAssertEqual(1, episode.passages.count)
+        XCTAssertEqual("WORKING_PROJECT", episode.passages.first?.translationStatus)
+    }
+
+    func testPeopleAliasesSearchAsOneCanonicalResultAndWorkScopeExcludesPeople() throws {
+        let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
+        for alias in ["Lalita", "Lalitā", "Lalitā-devī", "Anurādhā"] {
+            let people = try repository.search(alias, in: nil).filter {
+                if case .person = $0.target { return true }
+                return false
+            }
+            XCTAssertEqual(1, people.count, "Alias \(alias) should yield one Person result")
+            XCTAssertEqual(.person(PersonID(rawValue: "person.lalita-sakhi")), people.first?.target)
+        }
+        let scoped = try repository.search("Lalitā", in: SourceWorkID(rawValue: "work.radha-krsna-ganoddesa-dipika"))
+        XCTAssertFalse(scoped.contains { if case .person = $0.target { return true }; return false })
+    }
+
+    @MainActor
+    func testPersonSourceExcursionReturnsToExactSemanticBlock() throws {
+        let model = AppModel()
+        let position = PersonReadingPosition(personID: PersonID(rawValue: "person.lalita-sakhi"),
+                                             sectionID: PersonSectionID(rawValue: "person-section.lalita.names"),
+                                             blockID: PersonBlockID(rawValue: "person-block.lalita.technical-terms"))
+        let passage = SourcePassageID(rawValue: "passage.radha-krsna-ganoddesa-dipika.81")
+        let excursion = PersonSourceExcursion(origin: position,
+                                              citationID: CitationID(rawValue: "citation.person.lalita.technical-terms"),
+                                              citedPassageID: passage, currentPassageID: passage)
+        model.navigationPath = [.people, .person(personID: position.personID, blockID: position.blockID),
+                                .personSource(excursion)]
+        model.beginPersonSourceExcursion(excursion)
+        model.updatePersonSourceExcursion(currentPassageID: SourcePassageID(rawValue: "passage.radha-krsna-ganoddesa-dipika.82"))
+        XCTAssertEqual("passage.radha-krsna-ganoddesa-dipika.82", model.personSourceExcursion?.currentPassageID.rawValue)
+        model.returnToPerson(from: excursion)
+        XCTAssertEqual(position, model.personPositions[position.personID])
+        XCTAssertEqual([.people, .person(personID: position.personID, blockID: position.blockID)], model.navigationPath)
+    }
+
+    func testPersonPositionAndBookmarkSurviveColdUserStateRelaunch() throws {
+        let directory = FileManager.default.temporaryDirectory.appending(path: UUID().uuidString, directoryHint: .isDirectory)
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let url = directory.appending(path: "user-state.sqlite")
+        let position = PersonReadingPosition(personID: PersonID(rawValue: "person.lalita-sakhi"),
+                                             sectionID: PersonSectionID(rawValue: "person-section.lalita.services"),
+                                             blockID: PersonBlockID(rawValue: "person-block.lalita.supervision"))
+        let first = try UserStateDatabase(url: url)
+        try first.savePersonPosition(position)
+        try first.saveBookmark(.person(position))
+        let reopened = try UserStateDatabase(url: url)
+        XCTAssertEqual(position, try reopened.personPosition(personID: position.personID))
+        XCTAssertEqual([.person(position)], try reopened.bookmarks().map(\.target))
+        try reopened.removeBookmark(.person(position))
+        XCTAssertTrue(try UserStateDatabase(url: url).bookmarks().isEmpty)
+    }
+
     func testVedabasePageBookmarksSurviveRelaunchAndStaySeparateFromContent() throws {
         let directory = FileManager.default.temporaryDirectory.appending(path: UUID().uuidString, directoryHint: .isDirectory)
         try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
@@ -1215,7 +1298,7 @@ final class FoundationTests: XCTestCase {
     func testLiveAppContainerInitializes() throws {
         let container = try AppContainer.live()
         XCTAssertEqual("The Story of Śrī Rādhā-kuṇḍa", try container.contentRepository.stories().first?.title)
-        XCTAssertEqual(5, try container.contentRepository.works().count)
+        XCTAssertEqual(7, try container.contentRepository.works().count)
         XCTAssertTrue(container.userStateDatabase.url.lastPathComponent == "user-state.sqlite")
     }
 }

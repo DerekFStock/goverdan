@@ -1,0 +1,13 @@
+schema_version: 1
+people:
+  - id: person.lalita-sakhi
+    person_kind: vraja_associate
+    canonical_name: Lalitā-sakhī
+    sort_name: Lalita-sakhi
+    descriptor: Foremost of Śrī Rādhā’s eight principal sakhīs
+    aliases:
+      - Lalita
+      - Lalitā
+      - Lalitā-devī
+      - Anurādhā
+    published: true

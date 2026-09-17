@@ -1,0 +1,54 @@
+schema_version: 1
+work:
+  id: work.govinda-lilamrta
+  title: Śrī Govinda-līlāmṛtam
+  short_title: Govinda-līlāmṛta
+  abbreviation: GL
+  author: Śrī Kṛṣṇadāsa Kavirāja Gosvāmī
+  parent_work_id: null
+  source_layer: A_PRIMARY_GOSVAMI
+  language: sa
+  status: NORMALIZED
+edition:
+  id: edition.govinda-lilamrta.project-reading-v1
+  work_id: work.govinda-lilamrta
+  title: Govardhana Pilgrimage Project Reading
+  representation: normalized_text
+  version: 1.0.0
+  status: NORMALIZED
+  preferred: true
+  text_provenance:
+    primary_witness:
+      title: Govinda-līlāmṛtam, mūla-mātram
+      file_name: govinda-lilamrtam (mula-matram)_-_krsnadasa_kaviraja.docx
+      source_location: Fifth sarga, verse 78
+    corroborating_witness:
+      title: Govinda-līlāmṛta with Sadānanda-vidhāyinī commentary
+      file_name: govinda-lilamrita (sargas 1 to 14)_-_krsnadasa_kaviraja_-_commentary 2.docx
+      source_location: Fifth sarga, verse 78 and its gloss
+    normalization:
+      - Unicode NFC and pāda lineation for Source Reader.
+      - The mūla text joins kastūryālī; the commentary witness segments kastūry-ālī. The project reading follows the commentary segmentation without claiming a substantive variant.
+  translation_provenance:
+    type: WORKING_PROJECT
+    translator: Rādhā-kuṇḍa project research ledger
+    source_document: RK-03_Radhakunda_People_of_the_Landscape_Research_Ledger_v0.3.docx
+    source_location: Tulasī service-network entry, Govinda-līlāmṛta 5.78
+    note: Existing research rendering is concise, not a publication-approved full literal translation; preserve WORKING_PROJECT status.
+passages:
+  - id: passage.govinda-lilamrta.5.78
+    locus: 5.78
+    display_locus: 5.78
+    order: 578
+    verification_status: VERIFIED
+    translation_status: WORKING_PROJECT
+    translation_note: Concise existing research-ledger rendering; not a full literal translation or final publication text.
+    reading_note: The mūla transcription has kastūryālī; the commentary witness segments kastūry-ālī. The commentary gloss explicitly attributes the instruction to Lalitā and identifies Vṛndā learning the meeting-grove from Subala.
+    transliteration: |
+      mālām etāṁ tulasi haraye vīṭikāś copahṛtya
+      jñātvā vṛndā subala-mukhataḥ keli-saṅketa-kuñjam |
+      āgacchatāśu tvam iti lalitā-preritādāya tāntāḥ
+      kastūry-ālī-sahita-tulasī kṛṣṇa-pārśvaṁ pratasthe ||5.78||
+    translation: >-
+      Lalitā sends Tulasī with Kastūrī to Kṛṣṇa carrying a garland and betel,
+      while the appointed play-grove is coordinated through Vṛndā and Subala.

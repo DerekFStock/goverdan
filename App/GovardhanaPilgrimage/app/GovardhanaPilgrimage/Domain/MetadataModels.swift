@@ -116,9 +116,72 @@ struct WorkReadingPosition: Equatable, Sendable {
     let passageID: SourcePassageID
 }
 
+enum PersonKind: String, Hashable, Sendable {
+    case vrajaAssociate = "vraja_associate"
+    case gaudiyaTeacher = "gaudiya_teacher"
+
+    var displayName: String {
+        switch self {
+        case .vrajaAssociate: "Vraja associate"
+        case .gaudiyaTeacher: "Gauḍīya teacher"
+        }
+    }
+}
+
+struct PersonSummary: Identifiable, Hashable, Sendable {
+    let id: PersonID
+    let kind: PersonKind
+    let name: String
+    let descriptor: String
+}
+
+struct PersonSection: Identifiable, Hashable, Sendable {
+    let id: PersonSectionID
+    let personID: PersonID
+    let title: String
+    let order: Int
+}
+
+struct PersonBlock: Identifiable, Hashable, Sendable {
+    let id: PersonBlockID
+    let sectionID: PersonSectionID
+    let order: Int
+    let type: StoryBlockType
+    let text: String
+    let citations: [PersonCitationRow]
+}
+
+struct PersonCitationRow: Identifiable, Hashable, Sendable {
+    let id: CitationID
+    let blockID: PersonBlockID
+    let target: StoryCitationTarget
+    let label: String
+    let sourceLayer: String
+
+    var passageID: SourcePassageID { target.startPassageID }
+}
+
+struct PersonReadingPosition: Hashable, Sendable {
+    let personID: PersonID
+    let sectionID: PersonSectionID
+    let blockID: PersonBlockID
+}
+
+struct PersonPlaceRelationship: Identifiable, Hashable, Sendable {
+    let id: String
+    let personID: PersonID
+    let placeID: PilgrimagePlaceID
+    let type: String
+    let explanation: String
+    let sourceLayer: String
+    let verificationStatus: String
+    let caution: String?
+}
+
 enum SearchResultTarget: Hashable, Sendable {
     case story(storyID: StoryID, sectionID: StorySectionID, blockID: StoryBlockID)
     case source(passageID: SourcePassageID, workID: SourceWorkID)
+    case person(PersonID)
 }
 
 struct SearchResult: Identifiable, Hashable, Sendable {
@@ -131,6 +194,7 @@ struct SearchResult: Identifiable, Hashable, Sendable {
 enum BookmarkTarget: Hashable, Sendable {
     case story(StoryReadingPosition)
     case source(SourcePassageID)
+    case person(PersonReadingPosition)
 }
 
 struct BookmarkRecord: Identifiable, Hashable, Sendable {
@@ -162,6 +226,13 @@ struct StoryOrigin: Hashable, Codable, Sendable {
 
 struct SourceExcursion: Hashable, Codable, Sendable {
     let origin: StoryOrigin
+    let citedPassageID: SourcePassageID
+    var currentPassageID: SourcePassageID
+}
+
+struct PersonSourceExcursion: Hashable, Sendable {
+    let origin: PersonReadingPosition
+    let citationID: CitationID
     let citedPassageID: SourcePassageID
     var currentPassageID: SourcePassageID
 }

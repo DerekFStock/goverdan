@@ -35,6 +35,7 @@
 		B14000000000000000000005 /* govardhana-base.geojson in Resources */ = {isa = PBXBuildFile; fileRef = B14000000000000000000006 /* govardhana-base.geojson */; };
 		B14000000000000000000007 /* MapLibre in Frameworks */ = {isa = PBXBuildFile; productRef = B14000000000000000000008 /* MapLibre */; };
 		C20000000000000000000001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C20000000000000000000002 /* Assets.xcassets */; };
+		C22000000000000000000001 /* PeopleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22000000000000000000002 /* PeopleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		B14000000000000000000004 /* govardhana-offline-style.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ../Resources/Map/govardhana-offline-style.json; sourceTree = "<group>"; };
 		B14000000000000000000006 /* govardhana-base.geojson */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ../Resources/Map/govardhana-base.geojson; sourceTree = "<group>"; };
 		C20000000000000000000002 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C22000000000000000000002 /* PeopleView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PeopleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +213,7 @@
 			children = (
 				D6DC1AD0F4AB5360163211B5 /* Home */,
 				387C87C0E706D3437A69E489 /* PlaceholderDestinationView.swift */,
+				C22000000000000000000002 /* PeopleView.swift */,
 				A12000000000000000000002 /* OriginalWitnessView.swift */,
 				C31000000000000000000002 /* VedabaseReaderView.swift */,
 				B14000000000000000000002 /* Task014Map.swift */,
@@ -400,6 +403,7 @@
 				0C79FB9B83E476B99049E57C /* MetadataModels.swift in Sources */,
 				84A59DE5BF6E5277F238E3E8 /* HomeView.swift in Sources */,
 				4A87814C3F687A280A70E865 /* PlaceholderDestinationView.swift in Sources */,
+				C22000000000000000000001 /* PeopleView.swift in Sources */,
 				7046317D36D01D1A8ED1E30E /* AppRoute.swift in Sources */,
 				A12000000000000000000001 /* OriginalWitnessView.swift in Sources */,
 				C31000000000000000000001 /* VedabaseReaderView.swift in Sources */,

@@ -13,6 +13,8 @@ from typing import Any
 
 import yaml
 
+from people_tooling import project_people
+
 
 class ContentValidationError(ValueError):
     """Raised when authored content violates the Task 001 contract."""
@@ -569,6 +571,35 @@ def compile_development_manifest(root: Path, manifest_path: Path) -> BuildResult
     pilgrimage_content_entries = [
         item for item in manifest["compile_sequence"] if item.get("role") == "PILGRIMAGE_PLACE_CONTENT"
     ]
+    people_registry_entries = [
+        item for item in manifest["compile_sequence"] if item.get("role") == "PEOPLE_REGISTRY"
+    ]
+    person_entries = [
+        item for item in manifest["compile_sequence"] if item.get("role") == "PERSON_PACKAGE"
+    ]
+    if len(people_registry_entries) != 1:
+        raise ContentValidationError("Development manifest must declare exactly one PEOPLE_REGISTRY")
+    people_registry_entry = people_registry_entries[0]
+    if people_registry_entry.get("required") is not True or people_registry_entry.get("development_eligible") is not True:
+        raise ContentValidationError("PEOPLE_REGISTRY must be required and development eligible")
+    declared_person_paths = {(root / item["target_path"]).resolve() for item in person_entries}
+    undeclared_person_paths = sorted(
+        path for path in (content_root / "people").glob("*/package.yaml")
+        if path.resolve() not in declared_person_paths
+    )
+    if undeclared_person_paths:
+        raise ContentValidationError(f"Undeclared People package: {undeclared_person_paths[0].relative_to(root)}")
+    person_packages = []
+    for item in person_entries:
+        person_id = item.get("person_id")
+        if not isinstance(person_id, str) or not person_id:
+            raise ContentValidationError("PERSON_PACKAGE entry is missing person_id")
+        if item.get("required") is not True or item.get("development_eligible") is not True:
+            raise ContentValidationError(f"PERSON_PACKAGE is not development eligible: {person_id}")
+        package = load_yaml(root / item["target_path"])
+        if package.get("person_id") != person_id:
+            raise ContentValidationError(f"PERSON_PACKAGE identity mismatch: {person_id}")
+        person_packages.append(package)
     if len(pilgrimage_entries) != 1:
         raise ContentValidationError("Development manifest must declare exactly one PILGRIMAGE_PLACE_REGISTRY")
     pilgrimage_entry = pilgrimage_entries[0]
@@ -839,6 +870,18 @@ def compile_development_manifest(root: Path, manifest_path: Path) -> BuildResult
             raise ContentValidationError(f"Pilgrimage Place '{place['id']}' references a missing Source Passage")
 
     place_ids = {item["id"] for item in pilgrimage_places}
+    try:
+        people_content = project_people(
+            load_yaml(root / people_registry_entry["target_path"]),
+            person_packages,
+            [item["person_id"] for item in person_entries],
+            passage_by_id,
+            place_ids,
+        )
+    except ValueError as error:
+        raise ContentValidationError(str(error)) from error
+    if [item["person_id"] for item in person_packages] != [item["person_id"] for item in person_entries]:
+        raise ContentValidationError("PERSON_PACKAGE order or identity disagreement")
     content_place_ids = {item["place_id"] for item in pilgrimage_place_contents}
     missing_content_places = sorted(content_place_ids - place_ids)
     if missing_content_places:
@@ -879,6 +922,7 @@ def compile_development_manifest(root: Path, manifest_path: Path) -> BuildResult
         "witness_mappings": [],
         "pilgrimage_places": sorted(pilgrimage_places, key=lambda item: item["map_number"]),
         "pilgrimage_place_contents": sorted(pilgrimage_place_contents, key=lambda item: item["place_id"]),
+        **people_content,
     }
     counts = {key: len(value) for key, value in content.items() if isinstance(value, list)}
     report = {

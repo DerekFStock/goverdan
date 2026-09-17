@@ -1,0 +1,9 @@
+# Rādhā-kṛṣṇa-gaṇoddeśa-dīpikā — People milestone provenance
+
+The Task 022 development package contains only Rūpa Gosvāmī's Bṛhad-bhāga verses 79–82 and 129–140. Canonical Passage identity follows the printed verse number; 133 and 134 remain whole-verse Passage IDs even though the consulted English printing discusses 133a with 132, 133b with 134a, and 134b with 135–136.
+
+Sanskrit/IAST was checked visually against *Śrī Rādhā-kṛṣṇa-gaṇoddeśa-dīpikā*, Gauḍīya Vedānta Publications (2010), printed pages 20–21 and 34–37 (local PDF pages 46–47 and 60–63), and against the project implementation guide. The project guide's verse 82 reads `śāradyāṁ`, whereas the 2010 printing reads `sāradyāṁ` and names `Sāradī` in its English rendering. The authored reading follows the guide, with the variant left explicit; it is not a critical-edition decision.
+
+The PDF is a research witness, not bundled as an Original PDF Witness and not mapped to Source Reader pages in this task. The project owner explicitly approved using its English translation verbatim with attribution. The English reading is from the Gauḍīya Vedānta Publications 2010 edition, translated from the Hindi edition of Śrī Śrīmad Bhaktivedānta Nārāyaṇa Gosvāmī Mahārāja; that edition states a Creative Commons Attribution-No Derivative Works 3.0 Unported license. The printed edition combines some half-verse groups in one English paragraph, so those paragraphs are preserved intact once at the first applicable Passage and subsequent Passages direct the reader there. This is an editorial representation choice, not a new translation.
+
+The cited Sanskrit passages are development-verified, not publication-critical collation. The source layer is A (Gosvāmī text); neither nitya-līlā description nor this witness establishes any modern map coordinate.

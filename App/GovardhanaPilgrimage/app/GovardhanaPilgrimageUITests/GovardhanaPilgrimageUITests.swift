@@ -579,9 +579,59 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
         XCTAssertTrue(app.buttons["home.library"].exists)
         XCTAssertTrue(app.buttons["home.search"].exists)
         XCTAssertTrue(app.buttons["home.bookmarks"].exists)
+        XCTAssertTrue(app.buttons["home.people"].exists)
         XCTAssertTrue(app.staticTexts[storyTitle].exists)
         XCTAssertTrue(app.staticTexts["Twenty-Verse Rādhā-kuṇḍa Manifestation Account"].exists)
         XCTAssertFalse(app.staticTexts["Śrīmad-Bhāgavatam 10.36"].exists)
+    }
+
+    func testPeopleLalitaSourceExcursionReturnsToExactArticleBlock() {
+        let app = launch()
+        let peopleTile = app.buttons["home.people"]
+        reveal(peopleTile, in: app)
+        peopleTile.tap()
+        XCTAssertTrue(app.navigationBars["People of Vraja"].waitForExistence(timeout: 5))
+        let entry = app.buttons["people.item.person.lalita-sakhi"]
+        XCTAssertTrue(entry.waitForExistence(timeout: 5))
+        entry.tap()
+        XCTAssertTrue(app.navigationBars["Lalitā-sakhī"].waitForExistence(timeout: 5))
+        app.buttons["person.contents"].tap()
+        app.buttons["At a Glance"].tap()
+        let origin = app.descendants(matching: .any)["person.block.person-block.lalita.orientation"]
+        XCTAssertTrue(origin.waitForExistence(timeout: 5))
+        let citation = app.buttons["person.citation.citation.person.lalita.orientation-identity"]
+        reveal(citation, in: app)
+        citation.tap()
+        XCTAssertTrue(app.staticTexts["Passage Verse 79"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["source.return-to-person"].waitForExistence(timeout: 5))
+        app.buttons["source.return-to-person"].tap()
+        XCTAssertTrue(app.navigationBars["Lalitā-sakhī"].waitForExistence(timeout: 5))
+        XCTAssertTrue(origin.waitForExistence(timeout: 5))
+    }
+
+    func testPeopleSearchAliasAndBookmarkSurviveColdRelaunch() {
+        let app = launch()
+        app.buttons["home.search"].tap()
+        let field = app.searchFields.firstMatch
+        field.tap()
+        field.typeText("Anurādhā\n")
+        let result = app.buttons["search.result.search.person.person.lalita-sakhi"]
+        XCTAssertTrue(result.waitForExistence(timeout: 5))
+        XCTAssertEqual(1, app.buttons.matching(identifier: "search.result.search.person.person.lalita-sakhi").count)
+        result.tap()
+        XCTAssertTrue(app.navigationBars["Lalitā-sakhī"].waitForExistence(timeout: 5))
+        let bookmark = app.buttons["person.bookmark"]
+        XCTAssertTrue(bookmark.waitForExistence(timeout: 5))
+        if bookmark.label == "Remove Bookmark" { bookmark.tap() }
+        bookmark.tap()
+        app.terminate()
+        app.launch()
+        app.buttons["home.bookmarks"].tap()
+        let saved = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@", "bookmarks.item.person:")).firstMatch
+        XCTAssertTrue(saved.waitForExistence(timeout: 5))
+        saved.tap()
+        XCTAssertTrue(app.navigationBars["Lalitā-sakhī"].waitForExistence(timeout: 5))
+        app.buttons["person.bookmark"].tap()
     }
 
     func testNeutralMappedPassageOpensExactWitnessAndBackRestoresNormalizedPassage() throws {

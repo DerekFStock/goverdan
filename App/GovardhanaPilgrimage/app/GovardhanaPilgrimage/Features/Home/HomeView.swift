@@ -19,6 +19,9 @@ struct HomeView: View {
                                 destination("Story", systemImage: "book.pages", route: .storyTOC(story.id), identifier: "story")
                             }
                             destination("Sources", systemImage: "books.vertical", route: .library, identifier: "library")
+                            if !model.people.isEmpty {
+                                destination("People", systemImage: "person.2", route: .people, identifier: "people")
+                            }
                             destination("Search", systemImage: "magnifyingglass", route: .search, identifier: "search")
                             destination("Bookmarks", systemImage: "bookmark", route: .bookmarks, identifier: "bookmarks")
                             destination("Vedabase", systemImage: "globe", route: .vedabase(URL(string: "https://vedabase.io/en/library/")!), identifier: "vedabase")

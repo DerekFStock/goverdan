@@ -65,31 +65,68 @@ compile_sequence:
   development_eligible: true
   release_eligible: false
 - order: 8
+  role: SOURCE_PACKAGE
+  work_id: work.radha-krsna-ganoddesa-dipika
+  file: radha-krsna-ganoddesa-dipika.yaml
+  target_path: content/sources/radha-krsna-ganoddesa-dipika/package.yaml
+  required: true
+  development_eligible: true
+  release_eligible: false
+- order: 9
+  role: SOURCE_PACKAGE
+  work_id: work.govinda-lilamrta
+  file: govinda-lilamrta.yaml
+  target_path: content/sources/govinda-lilamrta/package.yaml
+  required: true
+  development_eligible: true
+  release_eligible: false
+- order: 10
   role: CITATION_MAP
   file: radhakunda-manifestation-citation-map.yaml
   target_path: content/metadata/radhakunda-manifestation-citation-map.yaml
   story_section_id: story.radhakunda.manifestation
   required: true
-- order: 9
+- order: 11
   role: STORY_SECTION
   file: 03-manifestation.md
   target_path: content/stories/radhakunda/03-manifestation.md
   story_section_id: story.radhakunda.manifestation
   required: true
   renderable: true
-- order: 10
+- order: 12
   role: PILGRIMAGE_PLACE_REGISTRY
   file: govardhana-pilgrimage-places.yaml
   target_path: content/pilgrimage/places.yaml
   required: true
   development_eligible: true
-- order: 11
+- order: 13
   role: PILGRIMAGE_PLACE_CONTENT
   file: govardhana-pilgrimage-place-content.yaml
   target_path: content/pilgrimage/place-content.yaml
   required: true
   development_eligible: true
+- order: 14
+  role: PEOPLE_REGISTRY
+  file: people-registry.yaml
+  target_path: content/people/registry.yaml
+  required: true
+  development_eligible: true
+- order: 15
+  role: PERSON_PACKAGE
+  person_id: person.lalita-sakhi
+  file: lalita-sakhi.yaml
+  target_path: content/people/lalita-sakhi/package.yaml
+  required: true
+  development_eligible: true
 non_runtime_assets:
+- role: SOURCE_PROVENANCE
+  file: govinda-lilamrta_PROVENANCE.md
+  required_for_runtime: false
+  target_path: content/sources/govinda-lilamrta/PROVENANCE.md
+- role: SOURCE_PROVENANCE
+  file: radha-krsna-ganoddesa-dipika_PROVENANCE.md
+  required_for_runtime: false
+  target_path: content/sources/radha-krsna-ganoddesa-dipika/PROVENANCE.md
 - role: SOURCE_PROVENANCE
   file: dana-keli-cintamani_PROVENANCE.md
   required_for_runtime: false
@@ -127,6 +164,8 @@ runtime_contract:
   - work.radhakunda-manifestation-puranic-unit
   - work.srimad-bhagavatam
   - work.dana-keli-cintamani
+  - work.radha-krsna-ganoddesa-dipika
+  - work.govinda-lilamrta
   expected_content_block_ids:
   - rk-manifestation-block-01-dharma-challenge
   - rk-manifestation-block-02-krsna-manifests-pond
@@ -155,8 +194,8 @@ release_blockers:
 - Twenty-Verse Sanskrit still requires publication-critical collation against a stable printed/manuscript witness.
 - Exact Purāṇa/recension of the Twenty-Verse unit remains unresolved.
 validation:
-  expected_runtime_file_count: 11
-  expected_source_package_count: 5
+  expected_runtime_file_count: 15
+  expected_source_package_count: 7
   expected_story_section_count: 1
   expected_content_block_count: 8
   development_gate_passed: true
@@ -173,6 +212,8 @@ authoring_serialization_contract:
   - radhakunda-manifestation-puranic-unit.yaml
   - srimad-bhagavatam-10.36.yaml
   - dana-keli-cintamani.yaml
+  - radha-krsna-ganoddesa-dipika.yaml
+  - govinda-lilamrta.yaml
   authoring_form: COMPACT_PASSAGE_RECORDS
   rule: The top-level passages[] records are compact human-authoring records, not the runtime domain serialization.
     The compiler MUST split each record into an edition-independent canonical Passage and one edition-owned Passage

@@ -1,0 +1,216 @@
+schema_version: 1
+person_id: person.lalita-sakhi
+sections:
+  - id: person-section.lalita.at-a-glance
+    title: At a Glance
+    blocks:
+      - id: person-block.lalita.orientation
+        type: paragraph
+        text: >-
+          Lalitā-sakhī is foremost among Śrī Rādhā’s eight principal sakhīs.
+          Rūpa Gosvāmī describes her as Rādhā’s elder and deeply devoted friend:
+          bold in speech, attentive to Rādhā’s loving mood, and skilled in arranging
+          both meetings and loving quarrels.
+        citations:
+          - id: citation.person.lalita.orientation-identity
+            start_passage_id: passage.radha-krsna-ganoddesa-dipika.79
+            end_passage_id: passage.radha-krsna-ganoddesa-dipika.80
+            source_layer: A
+          - id: citation.person.lalita.orientation-services
+            start_passage_id: passage.radha-krsna-ganoddesa-dipika.129
+            end_passage_id: passage.radha-krsna-ganoddesa-dipika.133
+            source_layer: A
+  - id: person-section.lalita.names
+    title: Names and Definitions
+    blocks:
+      - id: person-block.lalita.names
+        type: paragraph
+        text: >-
+          The text calls her Lalitā-devī and also names her Anurādhā. Sakhī means
+          a female friend or confidante in this devotional setting; she is one of
+          the eight principal sakhīs named together by Rūpa Gosvāmī. No lexical
+          derivation of “Lalitā” is asserted here.
+        citations:
+          - id: citation.person.lalita.names-eight
+            source_passage_id: passage.radha-krsna-ganoddesa-dipika.79
+            source_layer: A
+          - id: citation.person.lalita.names-anuradha
+            source_passage_id: passage.radha-krsna-ganoddesa-dipika.81
+            source_layer: A
+      - id: person-block.lalita.technical-terms
+        type: paragraph
+        text: >-
+          Verse 81 describes Lalitā as vāma-prakharā: a left-wing disposition
+          connected with the nourishment of māna, and a bold or sharp-spoken
+          disposition. These are distinct technical qualities, not simply
+          “anger.” The same verse compares her complexion to gorocanā and her
+          clothing to a peacock’s tail.
+        citations:
+          - id: citation.person.lalita.technical-terms
+            source_passage_id: passage.radha-krsna-ganoddesa-dipika.81
+            source_layer: A
+  - id: person-section.lalita.place-among-sakhis
+    title: Her Place Among the Sakhīs
+    blocks:
+      - id: person-block.lalita.eight
+        type: paragraph
+        text: >-
+          The eight named companions are Lalitā, Viśākhā, Citrā, Campakavallikā,
+          Tuṅgavidyā, Indulekhā, Raṅgadevī, and Sudevī. Lalitā is named first
+          and explicitly called foremost among them.
+        citations:
+          - id: citation.person.lalita.eight-names
+            source_passage_id: passage.radha-krsna-ganoddesa-dipika.79
+            source_layer: A
+          - id: citation.person.lalita.eight-foremost
+            source_passage_id: passage.radha-krsna-ganoddesa-dipika.80
+            source_layer: A
+      - id: person-block.lalita.leadership
+        type: paragraph
+        text: >-
+          In the later service description, Rūpa Gosvāmī calls her the principal
+          supervisor among the parama-preṣṭha sakhīs. Verses 137–138 describe
+          companions serving under her guidance, including Ratnaprabhā and Ratikalā.
+        citations:
+          - id: citation.person.lalita.leadership
+            source_passage_id: passage.radha-krsna-ganoddesa-dipika.129
+            source_layer: A
+          - id: citation.person.lalita.guided-sakhis
+            start_passage_id: passage.radha-krsna-ganoddesa-dipika.137
+            end_passage_id: passage.radha-krsna-ganoddesa-dipika.138
+            source_layer: A
+  - id: person-section.lalita.mood
+    title: Her Mood and Character
+    blocks:
+      - id: person-block.lalita.moods
+        type: paragraph
+        text: >-
+          Lalitā understands the moods of Rādhā and Kṛṣṇa and is described as
+          arranging both union and loving conflict. In that service she may speak
+          forcefully on Rādhā’s behalf; verses 131–133 describe the changing
+          dynamics of quarrel, māna, and reconciliation.
+        citations:
+          - id: citation.person.lalita.moods-130
+            source_passage_id: passage.radha-krsna-ganoddesa-dipika.130
+            source_layer: A
+          - id: citation.person.lalita.moods-131-133
+            start_passage_id: passage.radha-krsna-ganoddesa-dipika.131
+            end_passage_id: passage.radha-krsna-ganoddesa-dipika.133
+            source_layer: A
+  - id: person-section.lalita.services
+    title: Her Services and Skills
+    blocks:
+      - id: person-block.lalita.flower-services
+        type: paragraph
+        text: >-
+          The text names her expertise with flower ornaments, parasols, beds,
+          and secluded places for intimate conversation, as well as riddles and
+          related arts. Its later verses enumerate many forms of flower ornament.
+        citations:
+          - id: citation.person.lalita.flower-skills
+            start_passage_id: passage.radha-krsna-ganoddesa-dipika.133
+            end_passage_id: passage.radha-krsna-ganoddesa-dipika.134
+            source_layer: A
+          - id: citation.person.lalita.flower-forms
+            start_passage_id: passage.radha-krsna-ganoddesa-dipika.139
+            end_passage_id: passage.radha-krsna-ganoddesa-dipika.140
+            source_layer: A
+      - id: person-block.lalita.supervision
+        type: paragraph
+        text: >-
+          Verses 134–136 describe Lalitā’s supervision of tāmbūla service,
+          work in the Madanonmādinī garden, care of flower and betel vines and
+          betel-nut trees, and groups of forest-service attendants.
+        citations:
+          - id: citation.person.lalita.supervision
+            start_passage_id: passage.radha-krsna-ganoddesa-dipika.134
+            end_passage_id: passage.radha-krsna-ganoddesa-dipika.136
+            source_layer: A
+  - id: person-section.lalita.lila
+    title: Lalitā in the Līlā
+    blocks:
+      - id: person-block.lalita.lila-5-78
+        type: paragraph
+        text: >-
+          In Govinda-līlāmṛta 5.78, Lalitā sends Tulasī with a garland and
+          betel for Kṛṣṇa and asks her to return quickly. Vṛndā learns the
+          appointed meeting-grove from Subala, while Tulasī sets out for
+          Kṛṣṇa with Kastūrī. The episode shows Lalitā giving a concrete
+          service instruction; the text does not assign a modern location
+          to this scene.
+        citations:
+          - id: citation.person.lalita.lila-5-78
+            source_passage_id: passage.govinda-lilamrta.5.78
+            source_layer: A
+  - id: person-section.lalita.relationships
+    title: Relationships
+    blocks:
+      - id: person-block.lalita.radha
+        type: paragraph
+        text: >-
+          Rūpa Gosvāmī calls Śrī Rādhā her dear friend and says Lalitā is
+          twenty-seven days older than her. This is a textual relationship, not
+          a claim about a modern calendar date.
+        citations:
+          - id: citation.person.lalita.radha
+            source_passage_id: passage.radha-krsna-ganoddesa-dipika.80
+            source_layer: A
+      - id: person-block.lalita.family
+        type: paragraph
+        text: >-
+          In this textual account, her mother is named Śāradī, her father
+          Viśoka, and her husband Bhairava, who is described as a friend of
+          Govardhana Gopa. These names are not links to unpublished People pages.
+        citations:
+          - id: citation.person.lalita.family
+            source_passage_id: passage.radha-krsna-ganoddesa-dipika.82
+            source_layer: A
+  - id: person-section.lalita.witnesses
+    title: Textual Witnesses
+    blocks:
+      - id: person-block.lalita.source-spine
+        type: paragraph
+        text: >-
+          The initial source spine is Rūpa Gosvāmī’s
+          Rādhā-kṛṣṇa-gaṇoddeśa-dīpikā, Bṛhad-bhāga. Verses 79–82 describe
+          identity and relationships; verses 129–140 describe leadership,
+          mood, service, and flower work. Each linked locus opens the canonical
+          Sanskrit Passage in the offline Source Reader.
+        citations:
+          - id: citation.person.lalita.spine-identity
+            start_passage_id: passage.radha-krsna-ganoddesa-dipika.79
+            end_passage_id: passage.radha-krsna-ganoddesa-dipika.82
+            source_layer: A
+          - id: citation.person.lalita.spine-service
+            start_passage_id: passage.radha-krsna-ganoddesa-dipika.129
+            end_passage_id: passage.radha-krsna-ganoddesa-dipika.140
+            source_layer: A
+  - id: person-section.lalita.source-notes
+    title: Source Notes
+    blocks:
+      - id: person-block.lalita.variant
+        type: paragraph
+        text: >-
+          For verse 82, the project guide reads śāradyāṁ, while the inspected
+          2010 printing reads sāradyāṁ. This unresolved difference is recorded
+          rather than silently harmonized. The descriptions of mood and service
+          belong to a Gosvāmī text; they do not establish a present-day coordinate.
+        citations:
+          - id: citation.person.lalita.variant
+            source_passage_id: passage.radha-krsna-ganoddesa-dipika.82
+            source_layer: A
+          - id: citation.person.lalita.source-caution
+            source_passage_id: passage.radha-krsna-ganoddesa-dipika.130
+            source_layer: A
+      - id: person-block.lalita.lila-source-note
+        type: paragraph
+        text: >-
+          The Govinda-līlāmṛta mūla transcription joins kastūryālī, whereas
+          the inspected commentary witness segments kastūry-ālī. Its existing
+          English research rendering is marked WORKING_PROJECT rather than a
+          final literary translation.
+        citations:
+          - id: citation.person.lalita.lila-source-note
+            source_passage_id: passage.govinda-lilamrta.5.78
+            source_layer: A
+place_relationships: []

@@ -18,6 +18,12 @@ struct DestinationView: View {
             )
         case let .sourcePassage(excursion):
             SourceReaderView(context: .story(excursion), model: model)
+        case .people:
+            PeopleView(model: model)
+        case let .person(personID, blockID):
+            PersonDetailView(personID: personID, initialBlockID: blockID, model: model)
+        case let .personSource(excursion):
+            SourceReaderView(context: .person(excursion), model: model)
         case .library:
             LibraryView(model: model)
         case let .libraryWork(workID):
@@ -62,6 +68,10 @@ struct BookmarksView: View {
         model.bookmarks.filter { if case .source = $0.target { return true }; return false }
     }
 
+    private var personBookmarks: [BookmarkRecord] {
+        model.bookmarks.filter { if case .person = $0.target { return true }; return false }
+    }
+
     var body: some View {
         Group {
             if model.bookmarks.isEmpty && model.vedabaseBookmarks.isEmpty {
@@ -92,6 +102,17 @@ struct BookmarksView: View {
                                 .accessibilityIdentifier("bookmarks.item.\(bookmark.id)")
                             }
                             .onDelete { model.removeBookmarks(at: $0, from: sourceBookmarks) }
+                        }
+                    }
+                    if !personBookmarks.isEmpty {
+                        Section("People") {
+                            ForEach(personBookmarks) { bookmark in
+                                NavigationLink(value: route(for: bookmark.target)) {
+                                    bookmarkRow(bookmark.target)
+                                }
+                                .accessibilityIdentifier("bookmarks.item.\(bookmark.id)")
+                            }
+                            .onDelete { model.removeBookmarks(at: $0, from: personBookmarks) }
                         }
                     }
                     if !model.vedabaseBookmarks.isEmpty {
@@ -128,6 +149,8 @@ struct BookmarksView: View {
             )
         case let .source(passageID):
             .bookmarkSource(passageID)
+        case let .person(position):
+            .person(personID: position.personID, blockID: position.blockID)
         }
     }
 
@@ -154,6 +177,13 @@ struct BookmarksView: View {
                 }
             } else {
                 Text("Source Passage unavailable")
+            }
+        case let .person(position):
+            let name = model.people.first { $0.id == position.personID }?.name ?? "Person"
+            let title = model.personSections(for: position.personID).first { $0.id == position.sectionID }?.title
+            VStack(alignment: .leading, spacing: 4) {
+                Text(name).font(.headline)
+                if let title { Text(title).foregroundStyle(.secondary) }
             }
         }
     }
@@ -297,6 +327,10 @@ struct SearchView: View {
         results.filter { if case .source = $0.target { return true }; return false }
     }
 
+    private var personResults: [SearchResult] {
+        results.filter { if case .person = $0.target { return true }; return false }
+    }
+
     private var workTitle: String? { model.works.first { $0.id == workID }?.title }
 
     var body: some View {
@@ -315,6 +349,11 @@ struct SearchView: View {
             if !sourceResults.isEmpty {
                 Section("Sources") {
                     ForEach(sourceResults) { result in resultRow(result) }
+                }
+            }
+            if !personResults.isEmpty {
+                Section("People") {
+                    ForEach(personResults) { result in resultRow(result) }
                 }
             }
         }
@@ -344,6 +383,8 @@ struct SearchView: View {
             .storySection(storyID: storyID, sectionID: sectionID, blockID: blockID)
         case let .source(passageID, _):
             .searchSource(passageID)
+        case let .person(personID):
+            .person(personID: personID, blockID: nil)
         }
     }
 
@@ -554,6 +595,7 @@ private struct StoryBlockView: View {
 
 enum SourceReaderContext: Hashable, Sendable {
     case story(SourceExcursion)
+    case person(PersonSourceExcursion)
     case library(workID: SourceWorkID, passageID: SourcePassageID)
     case search(passageID: SourcePassageID)
     case bookmark(passageID: SourcePassageID)
@@ -561,6 +603,7 @@ enum SourceReaderContext: Hashable, Sendable {
     var entryPassageID: SourcePassageID {
         switch self {
         case let .story(excursion): excursion.citedPassageID
+        case let .person(excursion): excursion.citedPassageID
         case let .library(_, passageID): passageID
         case let .search(passageID): passageID
         case let .bookmark(passageID): passageID
@@ -570,6 +613,7 @@ enum SourceReaderContext: Hashable, Sendable {
     var targetLabel: String {
         switch self {
         case .story: "Cited passage"
+        case .person: "Cited passage"
         case .library: "Current passage"
         case .search: "Search result"
         case .bookmark: "Bookmarked passage"
@@ -592,8 +636,15 @@ struct SourceReaderView: View {
 
     private var content: SourceReaderContent? { model.sourceReaderContent(for: context.entryPassageID) }
     private var originSectionTitle: String? {
-        guard case let .story(excursion) = context else { return nil }
-        return model.storySections.first { $0.id == excursion.origin.sectionID }?.title
+        switch context {
+        case let .story(excursion):
+            return model.storySections.first { $0.id == excursion.origin.sectionID }?.title
+        case let .person(excursion):
+            return model.personSections(for: excursion.origin.personID)
+                .first { $0.id == excursion.origin.sectionID }?.title
+        case .library, .search, .bookmark:
+            return nil
+        }
     }
 
     var body: some View {
@@ -626,6 +677,8 @@ struct SourceReaderView: View {
                     switch context {
                     case .story:
                         model.updateSourceExcursion(currentPassageID: passage.id)
+                    case .person:
+                        model.updatePersonSourceExcursion(currentPassageID: passage.id)
                     case let .library(workID, _):
                         model.saveWorkPosition(workID: workID, passageID: passage.id)
                     case .search, .bookmark:
@@ -635,6 +688,8 @@ struct SourceReaderView: View {
                 .onAppear {
                     if case let .story(excursion) = context {
                         model.beginSourceExcursion(excursion)
+                    } else if case let .person(excursion) = context {
+                        model.beginPersonSourceExcursion(excursion)
                     } else if case let .library(workID, passageID) = context {
                         model.saveWorkPosition(workID: workID, passageID: passageID)
                     }
@@ -642,6 +697,8 @@ struct SourceReaderView: View {
                         await Task.yield()
                         let passageID: SourcePassageID
                         if case let .story(excursion) = context {
+                            passageID = excursion.currentPassageID
+                        } else if case let .person(excursion) = context {
                             passageID = excursion.currentPassageID
                         } else {
                             passageID = context.entryPassageID
@@ -659,6 +716,14 @@ struct SourceReaderView: View {
                             .accessibilityIdentifier("source.return-to-story")
                         }
                     }
+                    if case let .person(excursion) = context {
+                        ToolbarItem(placement: .topBarLeading) {
+                            Button("Return to Person", systemImage: "arrow.uturn.backward") {
+                                model.returnToPerson(from: excursion)
+                            }
+                            .accessibilityIdentifier("source.return-to-person")
+                        }
+                    }
                     ToolbarItemGroup(placement: .topBarTrailing) {
                         Menu("Contents", systemImage: "list.bullet") {
                             ForEach(content.passages) { passage in
@@ -666,6 +731,8 @@ struct SourceReaderView: View {
                                     switch context {
                                     case .story:
                                         model.updateSourceExcursion(currentPassageID: passage.id)
+                                    case .person:
+                                        model.updatePersonSourceExcursion(currentPassageID: passage.id)
                                     case let .library(workID, _):
                                         model.saveWorkPosition(workID: workID, passageID: passage.id)
                                     case .search:
@@ -723,6 +790,7 @@ struct SourceReaderView: View {
             }
             .onDisappear {
                 if case let .story(excursion) = context { model.endSourceExcursion(excursion) }
+                if case let .person(excursion) = context { model.endPersonSourceExcursion(excursion) }
             }
             .sheet(isPresented: $showingDetails) {
                 SourceDetailsView(work: content.work)

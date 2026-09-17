@@ -2,6 +2,11 @@ import Foundation
 import GRDB
 
 protocol ContentRepository: Sendable {
+    func people() throws -> [PersonSummary]
+    func personSections(personID: PersonID) throws -> [PersonSection]
+    func personBlocks(sectionID: PersonSectionID) throws -> [PersonBlock]
+    func personPlaceRelationships(personID: PersonID) throws -> [PersonPlaceRelationship]
+    func personPlaceRelationships(placeID: PilgrimagePlaceID) throws -> [PersonPlaceRelationship]
     func pilgrimagePlaces() throws -> [PilgrimagePlace]
     func pilgrimagePlaceContent(placeID: PilgrimagePlaceID) throws -> PilgrimagePlaceContent?
     func stories() throws -> [StorySummary]
@@ -18,6 +23,93 @@ protocol ContentRepository: Sendable {
 
 struct SQLiteContentRepository: ContentRepository {
     let database: ContentDatabase
+
+    func people() throws -> [PersonSummary] {
+        try database.reader.read { db in
+            try Row.fetchAll(db, sql: "SELECT id, person_kind, canonical_name, descriptor FROM people WHERE published = 1 ORDER BY sort_name")
+                .map { row in
+                    let rawKind: String = row["person_kind"]
+                    guard let kind = PersonKind(rawValue: rawKind) else {
+                        throw ContentRepositoryError.invalidPersonKind(rawKind)
+                    }
+                    return PersonSummary(id: PersonID(rawValue: row["id"]), kind: kind,
+                                         name: row["canonical_name"], descriptor: row["descriptor"])
+                }
+        }
+    }
+
+    func personSections(personID: PersonID) throws -> [PersonSection] {
+        try database.reader.read { db in
+            try Row.fetchAll(db, sql: "SELECT id, person_id, title, sort_order FROM person_sections WHERE person_id = ? ORDER BY sort_order",
+                             arguments: [personID.rawValue]).map { row in
+                PersonSection(id: PersonSectionID(rawValue: row["id"]), personID: PersonID(rawValue: row["person_id"]),
+                              title: row["title"], order: row["sort_order"])
+            }
+        }
+    }
+
+    func personBlocks(sectionID: PersonSectionID) throws -> [PersonBlock] {
+        try database.reader.read { db in
+            try Row.fetchAll(db, sql: "SELECT id, section_id, sort_order, block_type, text FROM person_blocks WHERE section_id = ? ORDER BY sort_order",
+                             arguments: [sectionID.rawValue]).map { row in
+                let rawType: String = row["block_type"]
+                guard let type = StoryBlockType(rawValue: rawType) else {
+                    throw ContentRepositoryError.unsupportedStoryBlockType(rawType)
+                }
+                let blockID = PersonBlockID(rawValue: row["id"])
+                let citations = try Row.fetchAll(db, sql: """
+                    SELECT c.id, c.source_passage_id, c.start_passage_id, c.end_passage_id, c.source_layer,
+                           w.title, start.canonical_locus AS start_locus, start.display_locus AS start_display,
+                           end.canonical_locus AS end_locus
+                    FROM person_citations c
+                    JOIN source_passages start ON start.id = COALESCE(c.source_passage_id, c.start_passage_id)
+                    LEFT JOIN source_passages end ON end.id = c.end_passage_id
+                    JOIN source_works w ON w.id = start.work_id
+                    WHERE c.content_block_id = ? ORDER BY c.sort_order
+                    """, arguments: [blockID.rawValue]).map { citation -> PersonCitationRow in
+                    let sourceID: String? = citation["source_passage_id"]
+                    let startID: String? = citation["start_passage_id"]
+                    let endID: String? = citation["end_passage_id"]
+                    let target: StoryCitationTarget
+                    let locus: String
+                    if let sourceID {
+                        target = .singleton(SourcePassageID(rawValue: sourceID))
+                        let display: String? = citation["start_display"]
+                        locus = display ?? citation["start_locus"]
+                    } else if let startID, let endID {
+                        target = .range(start: SourcePassageID(rawValue: startID), end: SourcePassageID(rawValue: endID))
+                        locus = "Verses \(Self.compactRangeLocus(start: citation["start_locus"], end: citation["end_locus"]))"
+                    } else {
+                        throw ContentRepositoryError.invalidCitationTarget(CitationID(rawValue: citation["id"]))
+                    }
+                    return PersonCitationRow(id: CitationID(rawValue: citation["id"]), blockID: blockID,
+                                             target: target, label: "\(citation["title"] as String) \(locus)",
+                                             sourceLayer: citation["source_layer"])
+                }
+                return PersonBlock(id: blockID, sectionID: PersonSectionID(rawValue: row["section_id"]),
+                                   order: row["sort_order"], type: type, text: row["text"], citations: citations)
+            }
+        }
+    }
+
+    func personPlaceRelationships(personID: PersonID) throws -> [PersonPlaceRelationship] {
+        try relationships(sql: "SELECT * FROM person_place_relationships WHERE person_id = ? ORDER BY id", argument: personID.rawValue)
+    }
+
+    func personPlaceRelationships(placeID: PilgrimagePlaceID) throws -> [PersonPlaceRelationship] {
+        try relationships(sql: "SELECT * FROM person_place_relationships WHERE place_id = ? ORDER BY id", argument: placeID.rawValue)
+    }
+
+    private func relationships(sql: String, argument: String) throws -> [PersonPlaceRelationship] {
+        try database.reader.read { db in
+            try Row.fetchAll(db, sql: sql, arguments: [argument]).map { row in
+                PersonPlaceRelationship(id: row["id"], personID: PersonID(rawValue: row["person_id"]),
+                                        placeID: PilgrimagePlaceID(rawValue: row["place_id"]), type: row["relationship_type"],
+                                        explanation: row["explanation"], sourceLayer: row["source_layer"],
+                                        verificationStatus: row["verification_status"], caution: row["caution"])
+            }
+        }
+    }
 
     func pilgrimagePlaces() throws -> [PilgrimagePlace] {
         try database.reader.read { db in
@@ -415,6 +507,8 @@ struct SQLiteContentRepository: ContentRepository {
                         passageID: SourcePassageID(rawValue: targetID),
                         workID: SourceWorkID(rawValue: sourceWorkID)
                     )
+                case "person":
+                    target = .person(PersonID(rawValue: targetID))
                 default:
                     return nil
                 }
@@ -464,6 +558,7 @@ struct SQLiteContentRepository: ContentRepository {
 }
 
 enum ContentRepositoryError: LocalizedError {
+    case invalidPersonKind(String)
     case invalidPilgrimagePlace(String)
     case unsupportedStoryBlockType(String)
     case citationNotFound(CitationID)
@@ -474,6 +569,7 @@ enum ContentRepositoryError: LocalizedError {
 
     var errorDescription: String? {
         switch self {
+        case let .invalidPersonKind(kind): "Unsupported Person kind: \(kind)"
         case let .invalidPilgrimagePlace(id): "Invalid compiled Pilgrimage Place: \(id)"
         case let .unsupportedStoryBlockType(type): "Unsupported Story block type: \(type)"
         case let .citationNotFound(id): "Citation not found: \(id.rawValue)"

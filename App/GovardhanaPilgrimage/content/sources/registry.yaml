@@ -119,6 +119,42 @@ works:
   release_blockers:
   - Review and approve or revise the 175 working project translations.
   - Preserve the normalized 1–175 numbering and recheck it against a publication-critical witness before release.
+- id: work.radha-krsna-ganoddesa-dipika
+  title: Śrī Rādhā-kṛṣṇa-gaṇoddeśa-dīpikā
+  short_title: Rādhā-kṛṣṇa-gaṇoddeśa-dīpikā
+  abbreviation: RKGD
+  author: Śrī Rūpa Gosvāmī
+  parent_work_id: null
+  source_layer: A_PRIMARY_GOSVAMI
+  preferred_reading_edition: edition.radha-krsna-ganoddesa-dipika.project-reading-v1
+  status: NORMALIZED
+  registry_role: PACKAGED_WORK
+  package_file: radha-krsna-ganoddesa-dipika/package.yaml
+  provenance_file: radha-krsna-ganoddesa-dipika/PROVENANCE.md
+  passage_scope: 79–82 and 129–140
+  development_eligible: true
+  release_eligible: false
+  release_blockers:
+  - Complete publication-critical Sanskrit collation and final editorial review of the English reading.
+  - Review the verse 82 śāradyāṁ/sāradyāṁ variant against additional witnesses.
+- id: work.govinda-lilamrta
+  title: Śrī Govinda-līlāmṛtam
+  short_title: Govinda-līlāmṛta
+  abbreviation: GL
+  author: Śrī Kṛṣṇadāsa Kavirāja Gosvāmī
+  parent_work_id: null
+  source_layer: A_PRIMARY_GOSVAMI
+  preferred_reading_edition: edition.govinda-lilamrta.project-reading-v1
+  status: NORMALIZED
+  registry_role: PACKAGED_WORK
+  package_file: govinda-lilamrta/package.yaml
+  provenance_file: govinda-lilamrta/PROVENANCE.md
+  passage_scope: 5.78 only
+  development_eligible: true
+  release_eligible: false
+  release_blockers:
+  - Review the concise WORKING_PROJECT English research rendering for eventual publication.
+  - Complete publication-critical collation against stable printed witnesses.
 phase_a:
   packaged_work_ids:
   - work.radha-kundastaka
@@ -126,6 +162,8 @@ phase_a:
   - work.radhakunda-manifestation-puranic-unit
   - work.srimad-bhagavatam
   - work.dana-keli-cintamani
+  - work.radha-krsna-ganoddesa-dipika
+  - work.govinda-lilamrta
   development_ready: true
   release_ready: false
   next_artifact: CODEX_TASK_010 real-content integration after Tasks 001–009 and explicit user approval
@@ -140,8 +178,8 @@ phase_a:
   real_content_integration_status: AUTHORIZED_ONLY_IN_CODEX_TASK_010
   story_metadata_file: story.yaml
 validation:
-  expected_packaged_work_count: 5
-  packaged_work_count: 5
+  expected_packaged_work_count: 7
+  packaged_work_count: 7
   all_packaged_work_ids_unique: true
   all_package_files_exist: true
   all_parent_work_ids_resolve: true

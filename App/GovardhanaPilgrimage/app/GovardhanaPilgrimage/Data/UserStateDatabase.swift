@@ -59,6 +59,11 @@ struct UserStateDatabase {
                 table.column("created_at", .datetime).notNull()
             }
         }
+        migrator.registerMigration("v5-person-bookmarks") { database in
+            try database.alter(table: "bookmarks") { table in
+                table.add(column: "person_id", .text)
+            }
+        }
         try migrator.migrate(writer)
     }
 
@@ -147,16 +152,42 @@ struct UserStateDatabase {
         }
     }
 
+    func savePersonPosition(_ position: PersonReadingPosition) throws {
+        try writer.write { database in
+            try database.execute(sql: """
+                INSERT INTO reading_positions(target_type, target_id, position_id, section_id, block_id, updated_at)
+                VALUES ('person', ?, ?, ?, ?, ?)
+                ON CONFLICT(target_type, target_id) DO UPDATE SET
+                    position_id = excluded.position_id,
+                    section_id = excluded.section_id,
+                    block_id = excluded.block_id,
+                    updated_at = excluded.updated_at
+                """, arguments: [position.personID.rawValue, position.blockID.rawValue,
+                                   position.sectionID.rawValue, position.blockID.rawValue, Date()])
+        }
+    }
+
+    func personPosition(personID: PersonID) throws -> PersonReadingPosition? {
+        try writer.read { database in
+            guard let row = try Row.fetchOne(database, sql: """
+                SELECT section_id, block_id FROM reading_positions WHERE target_type = 'person' AND target_id = ?
+                """, arguments: [personID.rawValue]),
+                  let sectionID: String = row["section_id"], let blockID: String = row["block_id"] else { return nil }
+            return PersonReadingPosition(personID: personID, sectionID: PersonSectionID(rawValue: sectionID),
+                                         blockID: PersonBlockID(rawValue: blockID))
+        }
+    }
+
     func saveBookmark(_ target: BookmarkTarget) throws {
         let values = bookmarkValues(for: target)
         try writer.write { database in
             try database.execute(
                 sql: """
-                    INSERT INTO bookmarks(id, target_type, target_id, story_id, section_id, created_at)
-                    VALUES (?, ?, ?, ?, ?, ?)
+                    INSERT INTO bookmarks(id, target_type, target_id, story_id, person_id, section_id, created_at)
+                    VALUES (?, ?, ?, ?, ?, ?, ?)
                     ON CONFLICT(target_type, target_id) DO NOTHING
                     """,
-                arguments: [values.id, values.type, values.targetID, values.storyID, values.sectionID, Date()]
+                arguments: [values.id, values.type, values.targetID, values.storyID, values.personID, values.sectionID, Date()]
             )
         }
     }
@@ -175,7 +206,7 @@ struct UserStateDatabase {
         try writer.read { database in
             try Row.fetchAll(
                 database,
-                sql: "SELECT id, target_type, target_id, story_id, section_id, created_at FROM bookmarks ORDER BY created_at DESC"
+                sql: "SELECT id, target_type, target_id, story_id, person_id, section_id, created_at FROM bookmarks ORDER BY created_at DESC"
             ).compactMap { row in
                 let id: String = row["id"]
                 let type: String = row["target_type"]
@@ -203,6 +234,16 @@ struct UserStateDatabase {
                         target: .source(SourcePassageID(rawValue: targetID)),
                         createdAt: createdAt
                     )
+                case "person":
+                    guard let personID: String = row["person_id"], let sectionID: String = row["section_id"] else {
+                        return nil
+                    }
+                    return BookmarkRecord(id: id,
+                                          target: .person(PersonReadingPosition(
+                                            personID: PersonID(rawValue: personID),
+                                            sectionID: PersonSectionID(rawValue: sectionID),
+                                            blockID: PersonBlockID(rawValue: targetID))),
+                                          createdAt: createdAt)
                 default:
                     return nil
                 }
@@ -244,7 +285,7 @@ struct UserStateDatabase {
 
     private func bookmarkValues(
         for target: BookmarkTarget
-    ) -> (id: String, type: String, targetID: String, storyID: String?, sectionID: String?) {
+    ) -> (id: String, type: String, targetID: String, storyID: String?, personID: String?, sectionID: String?) {
         switch target {
         case let .story(position):
             return (
@@ -252,10 +293,14 @@ struct UserStateDatabase {
                 "story",
                 position.blockID.rawValue,
                 position.storyID.rawValue,
+                nil,
                 position.sectionID.rawValue
             )
         case let .source(passageID):
-            return ("source:\(passageID.rawValue)", "source_passage", passageID.rawValue, nil, nil)
+            return ("source:\(passageID.rawValue)", "source_passage", passageID.rawValue, nil, nil, nil)
+        case let .person(position):
+            return ("person:\(position.blockID.rawValue)", "person", position.blockID.rawValue,
+                    nil, position.personID.rawValue, position.sectionID.rawValue)
         }
     }
 }

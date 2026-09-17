@@ -7,6 +7,8 @@ final class AppModel {
     private(set) var container: AppContainer?
     private(set) var stories: [StorySummary] = []
     private(set) var works: [SourceWorkSummary] = []
+    private(set) var people: [PersonSummary] = []
+    private(set) var personPositions: [PersonID: PersonReadingPosition] = [:]
     private(set) var storySections: [StorySectionSummary] = []
     private(set) var storyBlocks: [StorySectionID: [StoryBlock]] = [:]
     private(set) var storyCitations: [StoryBlockID: [StoryCitationRow]] = [:]
@@ -17,6 +19,7 @@ final class AppModel {
     private(set) var pilgrimagePlaces: [PilgrimagePlace] = []
     var navigationPath: [AppRoute] = []
     private(set) var sourceExcursion: SourceExcursion?
+    private(set) var personSourceExcursion: PersonSourceExcursion?
     private(set) var errorMessage: String?
 
     init() {
@@ -25,6 +28,10 @@ final class AppModel {
             self.container = container
             stories = try container.contentRepository.stories()
             works = try container.contentRepository.works()
+            people = try container.contentRepository.people()
+            for person in people {
+                personPositions[person.id] = try container.userStateDatabase.personPosition(personID: person.id)
+            }
             pilgrimagePlaces = try container.contentRepository.pilgrimagePlaces()
             bookmarks = try container.userStateDatabase.bookmarks()
             vedabaseBookmarks = try container.userStateDatabase.vedabaseBookmarks()
@@ -67,6 +74,52 @@ final class AppModel {
 
     func pilgrimagePlaceContent(for placeID: PilgrimagePlaceID) -> PilgrimagePlaceContent? {
         try? container?.contentRepository.pilgrimagePlaceContent(placeID: placeID)
+    }
+
+    func personSections(for personID: PersonID) -> [PersonSection] {
+        (try? container?.contentRepository.personSections(personID: personID)) ?? []
+    }
+
+    func personBlocks(for sectionID: PersonSectionID) -> [PersonBlock] {
+        (try? container?.contentRepository.personBlocks(sectionID: sectionID)) ?? []
+    }
+
+    func personPlaceRelationships(for personID: PersonID) -> [PersonPlaceRelationship] {
+        (try? container?.contentRepository.personPlaceRelationships(personID: personID)) ?? []
+    }
+
+    func personPlaceRelationships(for placeID: PilgrimagePlaceID) -> [PersonPlaceRelationship] {
+        (try? container?.contentRepository.personPlaceRelationships(placeID: placeID)) ?? []
+    }
+
+    func savePersonPosition(_ position: PersonReadingPosition) {
+        guard personPositions[position.personID] != position, let container else { return }
+        do {
+            try container.userStateDatabase.savePersonPosition(position)
+            personPositions[position.personID] = position
+        } catch {
+            errorMessage = error.localizedDescription
+        }
+    }
+
+    func beginPersonSourceExcursion(_ excursion: PersonSourceExcursion) {
+        personSourceExcursion = excursion
+    }
+
+    func updatePersonSourceExcursion(currentPassageID: SourcePassageID) {
+        personSourceExcursion?.currentPassageID = currentPassageID
+    }
+
+    func endPersonSourceExcursion(_ excursion: PersonSourceExcursion) {
+        guard personSourceExcursion?.origin == excursion.origin else { return }
+        personSourceExcursion = nil
+    }
+
+    func returnToPerson(from fallback: PersonSourceExcursion) {
+        let origin = (personSourceExcursion ?? fallback).origin
+        savePersonPosition(origin)
+        navigationPath = [.people, .person(personID: origin.personID, blockID: origin.blockID)]
+        personSourceExcursion = nil
     }
 
     func saveWorkPosition(workID: SourceWorkID, passageID: SourcePassageID) {

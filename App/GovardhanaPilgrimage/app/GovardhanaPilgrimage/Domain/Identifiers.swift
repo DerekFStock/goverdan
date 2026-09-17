@@ -46,3 +46,18 @@ struct PilgrimagePlaceID: CanonicalIdentifier {
     let rawValue: String
     init(rawValue: String) { self.rawValue = rawValue }
 }
+
+struct PersonID: CanonicalIdentifier {
+    let rawValue: String
+    init(rawValue: String) { self.rawValue = rawValue }
+}
+
+struct PersonSectionID: CanonicalIdentifier {
+    let rawValue: String
+    init(rawValue: String) { self.rawValue = rawValue }
+}
+
+struct PersonBlockID: CanonicalIdentifier {
+    let rawValue: String
+    init(rawValue: String) { self.rawValue = rawValue }
+}

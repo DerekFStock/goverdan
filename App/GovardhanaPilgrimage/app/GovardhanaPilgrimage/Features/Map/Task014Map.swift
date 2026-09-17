@@ -567,6 +567,22 @@ struct PlaceDetailView: View {
                         }
                     }
                 }
+                let relatedPeople = model.personPlaceRelationships(for: place.id)
+                if !relatedPeople.isEmpty {
+                    Section("People") {
+                        ForEach(relatedPeople) { relationship in
+                            if let person = model.people.first(where: { $0.id == relationship.personID }) {
+                                NavigationLink(value: AppRoute.person(personID: person.id, blockID: nil)) {
+                                    VStack(alignment: .leading, spacing: 4) {
+                                        Text(person.name).font(.headline)
+                                        Text(relationship.explanation).font(.subheadline)
+                                    }
+                                }
+                                .accessibilityIdentifier("place.person.\(person.id.rawValue)")
+                            }
+                        }
+                    }
+                }
             } else {
                 Section("Pilgrim Guide") {
                     Text("Pilgrim-facing guide content has not yet been authored for this place.")

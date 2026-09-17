@@ -4,6 +4,9 @@ enum AppRoute: Hashable, Sendable {
     case storyTOC(StoryID)
     case storySection(storyID: StoryID, sectionID: StorySectionID, blockID: StoryBlockID?)
     case sourcePassage(SourceExcursion)
+    case people
+    case person(personID: PersonID, blockID: PersonBlockID?)
+    case personSource(PersonSourceExcursion)
     case library
     case libraryWork(SourceWorkID)
     case librarySource(workID: SourceWorkID, passageID: SourcePassageID)

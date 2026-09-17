@@ -24,6 +24,7 @@ from content_tooling import (  # noqa: E402
 )
 import content_tooling  # noqa: E402
 from sqlite_builder import build_sqlite, inspect_database  # noqa: E402
+from people_tooling import project_people  # noqa: E402
 
 
 class ContentToolingTests(unittest.TestCase):
@@ -153,7 +154,7 @@ class ContentToolingTests(unittest.TestCase):
         self.assertEqual(0, report["foreign_key_violation_count"])
         connection = sqlite3.connect(path)
         try:
-            self.assertEqual(7, connection.execute("PRAGMA user_version").fetchone()[0])
+            self.assertEqual(8, connection.execute("PRAGMA user_version").fetchone()[0])
             self.assertEqual(3, connection.execute("SELECT count(*) FROM source_passages").fetchone()[0])
             self.assertEqual(5, connection.execute("SELECT count(*) FROM story_blocks").fetchone()[0])
         finally:
@@ -817,7 +818,7 @@ class ContentToolingTests(unittest.TestCase):
         self.assertEqual(0, report["foreign_key_violation_count"])
         connection = sqlite3.connect(path)
         try:
-            self.assertEqual(7, connection.execute("PRAGMA user_version").fetchone()[0])
+            self.assertEqual(8, connection.execute("PRAGMA user_version").fetchone()[0])
             self.assertEqual(71, connection.execute("SELECT count(*) FROM pilgrimage_place_contents").fetchone()[0])
             self.assertEqual(243, connection.execute("SELECT count(*) FROM pilgrimage_place_features").fetchone()[0])
             self.assertEqual(218, connection.execute("SELECT count(*) FROM pilgrimage_place_references").fetchone()[0])
@@ -952,8 +953,8 @@ class ContentToolingTests(unittest.TestCase):
         self.assertEqual(0, result.report["validation"]["broken_citation_targets"])
         self.assertEqual(0, result.report["validation"]["visible_unverified_citation_targets"])
         self.assertEqual(0, result.report["validation"]["duplicate_canonical_ids"])
-        self.assertEqual(229, len(result.content["passages"]))
-        self.assertEqual(229, len(result.content["passage_representations"]))
+        self.assertEqual(246, len(result.content["passages"]))
+        self.assertEqual(246, len(result.content["passage_representations"]))
         self.assertEqual([], result.content["witnesses"])
         self.assertEqual([], result.content["witness_mappings"])
         self.assertTrue(all("text" not in passage for passage in result.content["passages"]))
@@ -1061,7 +1062,7 @@ class ContentToolingTests(unittest.TestCase):
 
         def recording_load_yaml(path: Path) -> dict:
             value = original_load_yaml(path)
-            if path.name == "package.yaml":
+            if path.name == "package.yaml" and "work" in value:
                 loaded_packages.append(value["work"]["id"])
             return value
 
@@ -1074,6 +1075,8 @@ class ContentToolingTests(unittest.TestCase):
                 "work.radhakunda-manifestation-puranic-unit",
                 "work.srimad-bhagavatam",
                 "work.dana-keli-cintamani",
+                "work.radha-krsna-ganoddesa-dipika",
+                "work.govinda-lilamrta",
             ],
             loaded_packages,
         )
@@ -1179,6 +1182,132 @@ class ContentToolingTests(unittest.TestCase):
         checksum["radhakunda-manifestation-puranic-unit.yaml"] = hashlib.sha256(package_path.read_bytes()).hexdigest()
         checksum_path.write_text(json.dumps(checksum, indent=2) + "\n", encoding="utf-8")
         with self.assertRaisesRegex(ContentValidationError, "Visible unverified citation targets"):
+            compile_manifest(self.root, "radhakunda-mvp-development-manifest")
+
+    def people_inputs(self) -> tuple[dict, dict, dict, set[str]]:
+        registry = yaml.safe_load((self.root / "content/people/registry.yaml").read_text(encoding="utf-8"))
+        package = yaml.safe_load((self.root / "content/people/lalita-sakhi/package.yaml").read_text(encoding="utf-8"))
+        result = compile_manifest(self.root, "radhakunda-mvp-development-manifest")
+        passages = {item["id"]: item for item in result.content["passages"]}
+        places = {item["id"] for item in result.content["pilgrimage_places"]}
+        return registry, package, passages, places
+
+    def test_people_one_entry_precise_passages_and_single_fts_identity(self) -> None:
+        result = compile_manifest(self.root, "radhakunda-mvp-development-manifest")
+        self.assertEqual(["person.lalita-sakhi"], [item["id"] for item in result.content["people"]])
+        self.assertEqual(9, len(result.content["person_sections"]))
+        self.assertEqual(14, len(result.content["person_blocks"]))
+        self.assertEqual(22, len(result.content["person_citations"]))
+        self.assertEqual([], result.content["person_place_relationships"])
+        self.assertEqual(
+            "passage.govinda-lilamrta.5.78",
+            next(item for item in result.content["person_citations"]
+                 if item["id"] == "citation.person.lalita.lila-5-78")["source_passage_id"],
+        )
+        episode_representation = next(item for item in result.content["passage_representations"]
+                                      if item["passage_id"] == "passage.govinda-lilamrta.5.78")
+        self.assertEqual("WORKING_PROJECT", episode_representation["source_notes"]["translation_status"])
+        loci = [item["locus"] for item in sorted(result.content["passages"], key=lambda item: item["order"])
+                if item["work_id"] == "work.radha-krsna-ganoddesa-dipika"]
+        self.assertEqual([str(i) for i in [79, 80, 81, 82, *range(129, 141)]], loci)
+        path = self.root / "build/people.sqlite"
+        report = build_sqlite(path, result)
+        self.assertEqual("ok", report["integrity_check"])
+        self.assertEqual(0, report["foreign_key_violation_count"])
+        connection = sqlite3.connect(path)
+        try:
+            for query in ("Lalita", "Lalitā", "Lalitā-devī", "Anurādhā"):
+                rows = connection.execute(
+                    "SELECT target_id FROM search_documents_fts WHERE search_documents_fts MATCH ? AND content_type='person'",
+                    (f'"{query}"',),
+                ).fetchall()
+                self.assertEqual([("person.lalita-sakhi",)], rows)
+            self.assertEqual(71, connection.execute("SELECT count(*) FROM pilgrimage_places").fetchone()[0])
+        finally:
+            connection.close()
+
+    def test_people_negative_validation_and_fixture_place_link(self) -> None:
+        registry, package, passages, places = self.people_inputs()
+        def project() -> dict:
+            return project_people(registry, [package], ["person.lalita-sakhi"], passages, places)
+
+        self.assertEqual(1, len(project()["people"]))
+        duplicate_registry = copy.deepcopy(registry["people"][0])
+        registry["people"].append(duplicate_registry)
+        with self.assertRaisesRegex(ValueError, "Duplicate person IDs"):
+            project()
+        registry["people"].pop()
+
+        registry["people"][0]["aliases"].append("Lalitā")
+        with self.assertRaisesRegex(ValueError, "Duplicate person aliases"):
+            project()
+        registry["people"][0]["aliases"].pop()
+
+        block = package["sections"][0]["blocks"][0]
+        original_target = block["citations"][0]["start_passage_id"]
+        block["citations"][0]["start_passage_id"] = "passage.missing"
+        with self.assertRaisesRegex(ValueError, "Missing Passage target"):
+            project()
+        block["citations"][0]["start_passage_id"] = original_target
+
+        original_type = block["type"]
+        block["type"] = "quotation"
+        with self.assertRaisesRegex(ValueError, "Quotation lacks provenance"):
+            project()
+        block["type"] = original_type
+
+        package["sections"][1]["blocks"][0]["id"] = block["id"]
+        with self.assertRaisesRegex(ValueError, "Duplicate person content-block IDs"):
+            project()
+        package["sections"][1]["blocks"][0]["id"] = "person-block.lalita.names"
+
+        # Deliberately fictional relationship for fixture-only integrity proof; never installed.
+        package["place_relationships"] = [{
+            "id": "fixture.person-place.lalita",
+            "place_id": "place.lalitakunda",
+            "relationship_type": "textual_association",
+            "explanation": "Fixture-only relationship; not a production scholarly claim.",
+            "citation_ids": ["citation.person.lalita.names-anuradha"],
+            "source_layer": "A", "verification_status": "VERIFIED",
+        }]
+        fixture_links = project()["person_place_relationships"]
+        self.assertEqual(1, len(fixture_links))
+        fixture_result = compile_manifest(self.root, "radhakunda-mvp-development-manifest")
+        fixture_result.content["person_place_relationships"] = fixture_links
+        fixture_path = self.root / "build/fixture-person-place.sqlite"
+        fixture_report = build_sqlite(fixture_path, fixture_result)
+        self.assertEqual("ok", fixture_report["integrity_check"])
+        self.assertEqual(0, fixture_report["foreign_key_violation_count"])
+        connection = sqlite3.connect(fixture_path)
+        try:
+            self.assertEqual(("person.lalita-sakhi", "place.lalitakunda"), connection.execute(
+                "SELECT person_id, place_id FROM person_place_relationships"
+            ).fetchone())
+            self.assertEqual("citation.person.lalita.names-anuradha", connection.execute(
+                "SELECT citation_id FROM person_place_citations"
+            ).fetchone()[0])
+        finally:
+            connection.close()
+        package["place_relationships"][0]["place_id"] = "place.missing"
+        with self.assertRaisesRegex(ValueError, "Unknown person-place target"):
+            project()
+        package["place_relationships"][0]["place_id"] = "place.lalitakunda"
+        package["place_relationships"][0]["source_layer"] = None
+        with self.assertRaisesRegex(ValueError, "lacks evidence layer"):
+            project()
+
+    def test_undeclared_people_package_and_manifest_identity_fail(self) -> None:
+        package_path = self.root / "content/people/lalita-sakhi/package.yaml"
+        extra = self.root / "content/people/undeclared/package.yaml"
+        extra.parent.mkdir(parents=True)
+        shutil.copyfile(package_path, extra)
+        with self.assertRaisesRegex(ContentValidationError, "Undeclared People package"):
+            compile_manifest(self.root, "radhakunda-mvp-development-manifest")
+        extra.unlink()
+        package = yaml.safe_load(package_path.read_text(encoding="utf-8"))
+        package["person_id"] = "person.other"
+        package_path.write_text(yaml.safe_dump(package, allow_unicode=True, sort_keys=False), encoding="utf-8")
+        with self.assertRaisesRegex(ContentValidationError, "PERSON_PACKAGE identity mismatch"):
             compile_manifest(self.root, "radhakunda-mvp-development-manifest")
 
 

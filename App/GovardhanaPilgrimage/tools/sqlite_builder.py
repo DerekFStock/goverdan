@@ -11,12 +11,12 @@ from typing import Any
 from content_tooling import BuildResult, ContentValidationError
 
 
-SCHEMA_VERSION = 7
+SCHEMA_VERSION = 8
 DATABASE_FILENAME = "radhakunda-content.sqlite"
 
 SCHEMA_SQL = """
 PRAGMA foreign_keys = ON;
-PRAGMA user_version = 7;
+PRAGMA user_version = 8;
 
 CREATE TABLE package_metadata (
     key TEXT PRIMARY KEY NOT NULL,
@@ -231,10 +231,75 @@ CREATE TABLE pilgrimage_place_relationships (
     CHECK (place_id <> related_place_id)
 ) WITHOUT ROWID;
 
+CREATE TABLE people (
+    id TEXT PRIMARY KEY NOT NULL,
+    person_kind TEXT NOT NULL CHECK (person_kind IN ('vraja_associate', 'gaudiya_teacher')),
+    canonical_name TEXT NOT NULL,
+    sort_name TEXT NOT NULL,
+    descriptor TEXT NOT NULL,
+    published INTEGER NOT NULL CHECK (published IN (0, 1))
+) WITHOUT ROWID;
+
+CREATE TABLE person_aliases (
+    person_id TEXT NOT NULL REFERENCES people(id),
+    alias TEXT NOT NULL,
+    PRIMARY KEY (person_id, alias)
+) WITHOUT ROWID;
+
+CREATE TABLE person_sections (
+    id TEXT PRIMARY KEY NOT NULL,
+    person_id TEXT NOT NULL REFERENCES people(id),
+    title TEXT NOT NULL,
+    sort_order INTEGER NOT NULL,
+    UNIQUE (person_id, sort_order)
+) WITHOUT ROWID;
+
+CREATE TABLE person_blocks (
+    id TEXT PRIMARY KEY NOT NULL,
+    section_id TEXT NOT NULL REFERENCES person_sections(id),
+    sort_order INTEGER NOT NULL,
+    block_type TEXT NOT NULL CHECK (block_type IN ('paragraph', 'quotation', 'verse')),
+    text TEXT NOT NULL,
+    UNIQUE (section_id, sort_order)
+) WITHOUT ROWID;
+
+CREATE TABLE person_citations (
+    id TEXT PRIMARY KEY NOT NULL,
+    content_block_id TEXT NOT NULL REFERENCES person_blocks(id),
+    source_passage_id TEXT REFERENCES source_passages(id),
+    start_passage_id TEXT REFERENCES source_passages(id),
+    end_passage_id TEXT REFERENCES source_passages(id),
+    role TEXT NOT NULL,
+    source_layer TEXT NOT NULL CHECK (source_layer IN ('A', 'B', 'C', 'D')),
+    sort_order INTEGER NOT NULL,
+    CHECK (
+        (source_passage_id IS NOT NULL AND start_passage_id IS NULL AND end_passage_id IS NULL)
+        OR (source_passage_id IS NULL AND start_passage_id IS NOT NULL AND end_passage_id IS NOT NULL)
+    )
+) WITHOUT ROWID;
+
+CREATE TABLE person_place_relationships (
+    id TEXT PRIMARY KEY NOT NULL,
+    person_id TEXT NOT NULL REFERENCES people(id),
+    place_id TEXT NOT NULL REFERENCES pilgrimage_places(id),
+    relationship_type TEXT NOT NULL CHECK (relationship_type IN
+        ('lila_participant', 'residence_tradition', 'service_location', 'textual_association')),
+    explanation TEXT NOT NULL,
+    source_layer TEXT NOT NULL CHECK (source_layer IN ('A', 'B', 'C', 'D')),
+    verification_status TEXT NOT NULL CHECK (verification_status IN ('VERIFIED', 'APP_READY')),
+    caution TEXT
+) WITHOUT ROWID;
+
+CREATE TABLE person_place_citations (
+    relationship_id TEXT NOT NULL REFERENCES person_place_relationships(id),
+    citation_id TEXT NOT NULL REFERENCES person_citations(id),
+    PRIMARY KEY (relationship_id, citation_id)
+) WITHOUT ROWID;
+
 CREATE TABLE search_documents (
     rowid INTEGER PRIMARY KEY,
     id TEXT NOT NULL UNIQUE,
-    content_type TEXT NOT NULL CHECK (content_type IN ('story_block', 'source_passage')),
+    content_type TEXT NOT NULL CHECK (content_type IN ('story_block', 'source_passage', 'person')),
     target_id TEXT NOT NULL,
     title TEXT NOT NULL,
     body TEXT NOT NULL
@@ -442,6 +507,43 @@ def _insert_content(connection: sqlite3.Connection, result: BuildResult) -> None
         ],
     )
 
+    connection.executemany(
+        "INSERT INTO people(id, person_kind, canonical_name, sort_name, descriptor, published) VALUES (?, ?, ?, ?, ?, ?)",
+        [(item["id"], item["person_kind"], item["canonical_name"], item["sort_name"],
+          item["descriptor"], int(item["published"])) for item in content.get("people", [])],
+    )
+    connection.executemany(
+        "INSERT INTO person_aliases(person_id, alias) VALUES (?, ?)",
+        [(item["person_id"], item["alias"]) for item in content.get("person_aliases", [])],
+    )
+    connection.executemany(
+        "INSERT INTO person_sections(id, person_id, title, sort_order) VALUES (?, ?, ?, ?)",
+        [(item["id"], item["person_id"], item["title"], item["order"])
+         for item in content.get("person_sections", [])],
+    )
+    connection.executemany(
+        "INSERT INTO person_blocks(id, section_id, sort_order, block_type, text) VALUES (?, ?, ?, ?, ?)",
+        [(item["id"], item["section_id"], item["order"], item["block_type"], item["text"])
+         for item in content.get("person_blocks", [])],
+    )
+    connection.executemany(
+        "INSERT INTO person_citations(id, content_block_id, source_passage_id, start_passage_id, end_passage_id, role, source_layer, sort_order) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+        [(item["id"], item["content_block_id"], item.get("source_passage_id"),
+          item.get("start_passage_id"), item.get("end_passage_id"), item["role"],
+          item["source_layer"], item["order"]) for item in content.get("person_citations", [])],
+    )
+    connection.executemany(
+        "INSERT INTO person_place_relationships(id, person_id, place_id, relationship_type, explanation, source_layer, verification_status, caution) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+        [(item["id"], item["person_id"], item["place_id"], item["relationship_type"],
+          item["explanation"], item["source_layer"], item["verification_status"],
+          item.get("caution")) for item in content.get("person_place_relationships", [])],
+    )
+    connection.executemany(
+        "INSERT INTO person_place_citations(relationship_id, citation_id) VALUES (?, ?)",
+        [(item["id"], citation_id) for item in content.get("person_place_relationships", [])
+         for citation_id in item["citation_ids"]],
+    )
+
     story_by_section = {item["id"]: item["story_id"] for item in content["story_sections"]}
     story_by_id = {item["id"]: item for item in content["stories"]}
     search_rows: list[tuple[str, str, str, str, str]] = []
@@ -463,6 +565,24 @@ def _insert_content(connection: sqlite3.Connection, result: BuildResult) -> None
                 f"{work['title']} {passage['locus']}", representation.get("search_text", representation["text"])
             )
         )
+    aliases_by_person: dict[str, list[str]] = {}
+    for item in content.get("person_aliases", []):
+        aliases_by_person.setdefault(item["person_id"], []).append(item["alias"])
+    sections_by_person: dict[str, list[dict[str, Any]]] = {}
+    for section in content.get("person_sections", []):
+        sections_by_person.setdefault(section["person_id"], []).append(section)
+    blocks_by_section: dict[str, list[dict[str, Any]]] = {}
+    for block in content.get("person_blocks", []):
+        blocks_by_section.setdefault(block["section_id"], []).append(block)
+    for person in content.get("people", []):
+        if not person["published"]:
+            continue
+        body = "\n".join([
+            person["canonical_name"], person["descriptor"], *aliases_by_person.get(person["id"], []),
+            *(text for section in sections_by_person.get(person["id"], [])
+              for text in [section["title"], *(block["text"] for block in blocks_by_section.get(section["id"], []))]),
+        ])
+        search_rows.append((f"search.person.{person['id']}", "person", person["id"], person["canonical_name"], body))
     search_rows.sort(key=lambda row: row[0])
     connection.executemany(
         "INSERT INTO search_documents(id, content_type, target_id, title, body) VALUES (?, ?, ?, ?, ?)", search_rows

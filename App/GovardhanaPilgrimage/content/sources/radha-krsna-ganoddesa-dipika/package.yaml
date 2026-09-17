@@ -1,0 +1,238 @@
+schema_version: 1
+work:
+  id: work.radha-krsna-ganoddesa-dipika
+  title: Śrī Rādhā-kṛṣṇa-gaṇoddeśa-dīpikā
+  short_title: Rādhā-kṛṣṇa-gaṇoddeśa-dīpikā
+  abbreviation: RKGD
+  author: Śrī Rūpa Gosvāmī
+  parent_work_id: null
+  source_layer: A_PRIMARY_GOSVAMI
+  language: sa
+  status: NORMALIZED
+edition:
+  id: edition.radha-krsna-ganoddesa-dipika.project-reading-v1
+  work_id: work.radha-krsna-ganoddesa-dipika
+  title: Govardhana Pilgrimage Project Sanskrit Reading
+  representation: normalized_text
+  version: 1.0.0
+  status: NORMALIZED
+  preferred: true
+  text_provenance:
+    primary_witness:
+      title: Śrī Rādhā-kṛṣṇa-gaṇoddeśa-dīpikā, Bṛhad-bhāga
+      publisher: Gauḍīya Vedānta Publications
+      publication_year: 2010
+      file_name: radha_krsna_ganodesha_dipika_ed1.pdf
+      source_location: Printed pages 20–21 and 34–37; PDF pages 46–47 and 60–63
+    normalization:
+      - Unicode NFC and IAST diacritics; verse boundaries preserved.
+      - Verse 82 follows the implementation guide's śāradyāṁ; the inspected 2010 printing reads sāradyāṁ and Sāradī. This variant is unresolved.
+      - Printed half-verse transitions 133a/133b and 134a/134b remain noted; canonical Passage IDs remain whole verses.
+  translation_provenance:
+    type: APPROVED_PUBLISHED_SOURCE
+    translator: Gauḍīya Vedānta Publications English edition, translated from the Hindi edition of Śrī Śrīmad Bhaktivedānta Nārāyaṇa Gosvāmī Mahārāja
+    publication: Śrī Rādhā-kṛṣṇa-gaṇoddeśa-dīpikā (Gauḍīya Vedānta Publications, 2010)
+    license: Creative Commons Attribution-No Derivative Works 3.0 Unported
+    source_location: Printed pages 20–21 and 34–37; PDF pages 46–47 and 60–63
+    note: English passages are transcribed without editorial rewriting. Where the edition prints one translation for a multi-verse or half-verse span, the complete paragraph appears once at its first applicable canonical Passage; following Passages carry a reading note.
+passages:
+  - id: passage.radha-krsna-ganoddesa-dipika.79
+    locus: '79'
+    display_locus: Verse 79
+    order: 79
+    verification_status: VERIFIED
+    transliteration: |
+      lalitā ca viśākhā ca citrā campakavallikā
+      tuṅgavidyendulekhā ca raṅgadevī sudevikā ||79||
+    translation: >-
+      The eight most exalted sakhīs are Lalitā, Viśākhā, Citrā,
+      Campakalatā, Tuṅgavidyā, Indulekhā, Raṅgadevī and Sudevī.
+  - id: passage.radha-krsna-ganoddesa-dipika.80
+    locus: '80'
+    display_locus: Verse 80
+    order: 80
+    verification_status: VERIFIED
+    transliteration: |
+      tatrādyā lalitā-devī syād aṣṭāsu varīyasī
+      priya-sakhyā bhavej jyeṣṭhā saptaviṁśati-vāsaraiḥ ||80||
+    translation: >-
+      Śrī Lalitā-devī is the foremost amongst these eight variṣṭha
+      sakhīs. She is twenty-seven days older than her dear friend Śrī Rādhā.
+  - id: passage.radha-krsna-ganoddesa-dipika.81
+    locus: '81'
+    display_locus: Verse 81
+    order: 81
+    verification_status: VERIFIED
+    transliteration: |
+      anurādhātayā khyātā vāma-prakharatāṁ gatā
+      gorocanā-nibhāṅgī sā śikhi-piccha-nibhāmbarā ||81||
+    translation: >-
+      Śrī Lalitā is renowned by the name Anurādhā. She is decorated
+      by the qualities of both a vāmā nāyikā and prakharā nāyikā
+      (heroine). Lalitā’s bodily complexion resembles bright yellow
+      gorocanā and her attire has the colour of a peacock’s tail.
+  - id: passage.radha-krsna-ganoddesa-dipika.82
+    locus: '82'
+    display_locus: Verse 82
+    order: 82
+    verification_status: VERIFIED
+    reading_note: The implementation guide reads śāradyāṁ, while the inspected 2010 printing reads sāradyāṁ. The name should not be silently harmonized.
+    transliteration: |
+      jātā mātari śāradyāṁ pitur eṣā viśokataḥ
+      patir bhairava-nāmāsyāḥ sakhā govardhanasya yaḥ ||82||
+    translation: >-
+      Śrī Lalitā’s mother’s name is Sāradī and her father’s is Viśoka.
+      Her husband, whose name is Bhairava, is a friend of Govardhana Gopa.
+  - id: passage.radha-krsna-ganoddesa-dipika.129
+    locus: '129'
+    display_locus: Verse 129
+    order: 129
+    verification_status: VERIFIED
+    transliteration: |
+      tathāpi parama-preṣṭha-sakhyaḥ śreṣṭhatayoditāḥ
+      sarvatra lalitā-devī paramādhyakṣatāṁ gatā ||129||
+    translation: >-
+      The parama-preṣṭha sakhīs are considered to be the most prominent
+      of all the niyuktā sakhīs. Śrī Lalitā-devī is even the leader of all
+      the parama-preṣṭha sakhīs.
+  - id: passage.radha-krsna-ganoddesa-dipika.130
+    locus: '130'
+    display_locus: Verse 130
+    order: 130
+    verification_status: VERIFIED
+    transliteration: |
+      svīkṛtākhilabhāveyaṁ sandhi-vigrahiṇī matā
+      aparādhyati rādhāyai mādhave kvāpi daivataḥ ||130||
+    translation: >-
+      Śrī Lalitā knows perfectly well all of Śrī Rādhā’s and Śrī
+      Kṛṣṇa’s transcendental emotions. She arranges both Their meetings
+      and loving quarrels. Because she is in Śrī Rādhā’s party, she
+      sometimes suddenly even offends Mādhava.
+  - id: passage.radha-krsna-ganoddesa-dipika.131
+    locus: '131'
+    display_locus: Verse 131
+    order: 131
+    verification_status: VERIFIED
+    transliteration: |
+      caṇḍimnā kuñcita-mukhī sakhī-dyutibhir-āvṛtā
+      vigrahe prauḍhi-vāde ca prativākyopapattiṣu ||131||
+    translation: >-
+      When loving quarrels as well as arrogant words, retorts and arguments
+      take place, Śrī Lalitā sometimes becomes filled with great anger,
+      and sometimes, when her sentiments become one with Śrī Rādhā’s, she
+      lowers her face [accepting Rādhā’s mood]. At that time, she becomes
+      covered by her friend Śrī Rādhā’s effulgent complexion, which is like
+      molten gold, although her own complexion resembles gorocanā.
+  - id: passage.radha-krsna-ganoddesa-dipika.132
+    locus: '132'
+    display_locus: Verse 132
+    order: 132
+    verification_status: VERIFIED
+    transliteration: |
+      pratibhām upalabdhābhir dhatte vigraham āgrahāt
+      āyāti sandhi-samaye taṭastheva sthitā svayam ||132||
+    translation_note: The 2010 edition prints one English paragraph for verses 132–133a; it is retained here in full.
+    translation: >-
+      Sometimes at the time of loving quarrels, nava-navonmeṣa-śālinī
+      Śrī Lalitā zealously incites Śrī Rādhā’s jealous anger (māna) by
+      giving Her the right intelligence for that occasion. Sometimes,
+      together with Bhagavatī Paurṇamāsī and others, she herself arranges
+      [Śrī Rādhā’s] meetings with Kṛṣṇa, but when the time of meeting
+      comes, she becomes indifferent.
+  - id: passage.radha-krsna-ganoddesa-dipika.133
+    locus: '133'
+    display_locus: Verse 133
+    order: 133
+    verification_status: VERIFIED
+    reading_note: The 2010 printed translation treats the first half with verse 132. Its full English paragraph for verse 133b–134a appears here.
+    transliteration: |
+      bhagavaty ādibhir dvārair yuktā sandhiṁ karoty asau
+      pauṣpāṇāṁ maṇḍanaṁ chatraṁ śayanothāna-veśmanām ||133||
+    translation: >-
+      Śrī Lalitā is expert in making ornaments, parasols and beds out of
+      flowers as well as constructing secluded places suitable for intimate
+      conversations. She is also skilful in magic and making riddles.
+  - id: passage.radha-krsna-ganoddesa-dipika.134
+    locus: '134'
+    display_locus: Verse 134
+    order: 134
+    verification_status: VERIFIED
+    reading_note: The 2010 printed translation treats the first half with verse 133b. Its full English paragraph for verses 134b–136 appears here.
+    transliteration: |
+      nirmitāv indrajālādeḥ prahelyāñcātikovidā
+      tāmbūle ’dhikṛtā yāḥ syur asyās tu dāsikāś ca yāḥ ||134||
+    translation: >-
+      Śrī Lalitā is the supervisor of the maidservants who perform
+      tāmbula-sevā; of the kinnara-kiśorīs engaged in the Madanonmādinī
+      Garden; of the maidservants who protect flower vines, betel vines as
+      well as betel nut trees; of the vana-devīs (forest goddesses); and
+      even of those maidens who are esteemed in venerable groups.
+  - id: passage.radha-krsna-ganoddesa-dipika.135
+    locus: '135'
+    display_locus: Verse 135
+    order: 135
+    verification_status: VERIFIED
+    transliteration: |
+      madanonmādinī vāṭyāṁ yāḥ kinnara-kiśorikāḥ
+      prasūna-vallī-tāmbūla-vallī-pūga-drumeṣu ca ||135||
+    reading_note: The approved 2010 English translation for verses 134b–136 appears in full with Verse 134 above.
+  - id: passage.radha-krsna-ganoddesa-dipika.136
+    locus: '136'
+    display_locus: Verse 136
+    order: 136
+    verification_status: VERIFIED
+    transliteration: |
+      sakhyaś ca vana-devyaś ca varā mānyopajīvinām
+      yāḥ kanyakāḥ syuḥ sarvāsu tāsv evādhyakṣatāṁ gatā ||136||
+    reading_note: The approved 2010 English translation for verses 134b–136 appears in full with Verse 134 above.
+  - id: passage.radha-krsna-ganoddesa-dipika.137
+    locus: '137'
+    display_locus: Verse 137
+    order: 137
+    verification_status: VERIFIED
+    transliteration: |
+      ratnalekhādayo ’ṣṭau yāḥ priya-sakhyo ’nukīrttitāḥ
+      sarvatra lalitā-devyās tā jñeyāḥ pratyantarāḥ ||137||
+    translation: >-
+      The previously described eight dear sakhīs of the vara group, like
+      Ratnalekhā, are always completely submissive to Śrī Lalitā-devī.
+  - id: passage.radha-krsna-ganoddesa-dipika.138
+    locus: '138'
+    display_locus: Verse 138
+    order: 138
+    verification_status: VERIFIED
+    transliteration: |
+      ratnaprabhā-ratikale tatrāpy aṣṭāsu viśrute
+      guṇa-saundarya-vaidagdhī-mādhurībhir upāgate ||138||
+    translation: >-
+      Of the eight sakhīs that serve under the guidance of Śrī Lalitā,
+      Ratnaprabhā and Ratikalā are well-known and are endowed with good
+      qualities, beauty, dexterity, charm and so forth.
+  - id: passage.radha-krsna-ganoddesa-dipika.139
+    locus: '139'
+    display_locus: Verse 139
+    order: 139
+    verification_status: VERIFIED
+    transliteration: |
+      kirīṭaṁ bālapāśyā ca karṇapūro lalāṭikā
+      graiveyakāṅgade kāñcī-kaṭake maṇi-bandhanī ||139||
+    translation_note: The 2010 edition prints one English paragraph for verses 139–140; it is retained here in full.
+    translation: >-
+      There are numerous varieties of ornaments made of flowers: crowns
+      (kirīṭas), hair bands (bāla-pāśyās), ear ornaments (karṇapūras),
+      forehead decorations (lalāṭikās), necklaces (graiveyakas), upper arm
+      bracelets (aṅgadas), waistbelts (kāñcīs), ankle bells (kaṭakas),
+      bangles (maṇi-bandhanīs), feet decorations (haṁsakas), bodices
+      (kañculīs) and many others. In their forms, varieties and so forth,
+      the ornaments made of flowers are no less than the ornaments made of
+      jewels, gold and other precious metals.
+  - id: passage.radha-krsna-ganoddesa-dipika.140
+    locus: '140'
+    display_locus: Verse 140
+    order: 140
+    verification_status: VERIFIED
+    transliteration: |
+      haṁsakaḥ kañculītyādi vividhaṁ puṣpa-maṇḍanam
+      maṇi-svarṇādi-kḷptasya maṇḍanasyātra yādṛśaḥ
+      ākāraś ca prakāraś ca kausumasya ca tādṛśaḥ ||140||
+    reading_note: The approved 2010 English translation for verses 139–140 appears in full with Verse 139 above.
