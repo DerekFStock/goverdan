@@ -1,0 +1,133 @@
+schema_version: 1
+package_id: research.radhakunda-three-kunda-controlled-geometries
+scope: RESEARCH_ONLY_NOT_RUNTIME_INPUT
+retrieved_on: '2026-09-17'
+production_ingestion_authorized: false
+geojson_file: content/research/radhakunda-three-kunda-controlled-geometries.geojson
+coordinate_order: [longitude, latitude]
+coordinate_policy: Polygon vertices describe mapped present-day water only; none describes an entrance, safe edge, navigation target, or arrival point.
+source_method: Independently retrieved complete OSM way/full.json objects, including ordered way node IDs and each node's coordinate; did not trace a rendered map.
+source_provider: OpenStreetMap contributors
+source_license: ODbL 1.0
+source_attribution: © OpenStreetMap contributors; https://www.openstreetmap.org/copyright
+evidence_layers:
+  present_physical_geography: These community-mapped outlines are evidence only for currently mapped water bodies.
+  historical_geography: No historical shoreline is established by these objects.
+  nitya_lila_textual_geography: No eternal-līlā boundary is established by these objects.
+neighborhood_review:
+  retrieval_endpoint: https://api.openstreetmap.org/api/0.6/map.json?bbox=77.489,27.523,77.497,27.529
+  inspected_water_way_ids: [335571300, 335571302, 335571305, 430061164, 430061165, 430061166]
+  separately_named_mohana_way_id: 430061166
+  finding: The three named candidate rings are separate, non-overlapping polygons; none is nested in another or in Mohana-kuṇḍa. Rādhā and Śyāma bounding boxes overlap, but their actual rings do not. The two unnamed water ways are not alternative identities for the three named rings.
+  limitation: OSM is a community-edited source, not independent field confirmation; all three named objects were last revised in 2015.
+records:
+  - place_id: place.radhakunda
+    canonical_name: Rādhā-kuṇḍa
+    decision: CONTROLLED_GEOMETRY_READY
+    decision_scope: Future water-polygon proposal only; production ingestion and navigation changes remain unauthorized.
+    source:
+      provider: OpenStreetMap contributors
+      feature_id: way/335571302
+      stable_reference: https://www.openstreetmap.org/way/335571302
+      full_feature_endpoint: https://api.openstreetmap.org/api/0.6/way/335571302/full.json
+      retrieved_on: '2026-09-17'
+      version: 1
+      changeset: 29850243
+      timestamp: '2015-03-30T13:22:53Z'
+      tags: {name: Radha Kund, natural: water, water: lake}
+      license: ODbL 1.0
+      attribution: © OpenStreetMap contributors; https://www.openstreetmap.org/copyright
+      ordered_node_ids: [3426690342, 3426690326, 3426690327, 3426690324, 3426690325, 3426690320, 3426690321, 3426690328, 3426690335, 3426690351, 3426690346, 3426690345, 3426690343, 3426690349, 3426690348, 3426690344, 3426690342]
+    geometry:
+      semantics: WATER_BODY_POLYGON
+      coordinate_semantics: POLYGON_VERTEX
+      geojson_feature_id: place.radhakunda
+      unique_vertex_count: 16
+      stored_coordinate_count: 17
+      bbox_lon_lat: [77.4908475, 27.5246231, 77.4918439, 27.5256634]
+      valid_simple_ring: true
+      closed: true
+      water_body_identity: Named Radha Kund and tagged natural=water; separate from the named Shyama Kunda ring.
+    existing_point:
+      longitude: 77.491353
+      latitude: 27.525256
+      relationship: INSIDE_POLYGON
+      coordinate_status: PROVISIONAL
+      independently_documented_arrival_meaning: false
+      note: The existing point is a Task 014 development fixture, not a verified access or arrival location; retain it unchanged.
+    conflict_review: No duplicate, overlap, nesting, or conflicting named water ring found in the inspected neighborhood. The Śyāma ring adjoins the area but remains distinct; no Saṅgama merger is inferred.
+    limitations: Community-mapped 2015 water outline is not a surveyed shoreline; current edge and public access require field verification before any arrival/access assertion.
+
+  - place_id: place.syamakunda
+    canonical_name: Śyāma-kuṇḍa
+    decision: CONTROLLED_GEOMETRY_READY
+    decision_scope: Future water-polygon proposal only; production ingestion and navigation changes remain unauthorized.
+    source:
+      provider: OpenStreetMap contributors
+      feature_id: way/335571305
+      stable_reference: https://www.openstreetmap.org/way/335571305
+      full_feature_endpoint: https://api.openstreetmap.org/api/0.6/way/335571305/full.json
+      retrieved_on: '2026-09-17'
+      version: 1
+      changeset: 29850243
+      timestamp: '2015-03-30T13:22:53Z'
+      tags: {name: Shyama Kunda, natural: water, water: lake}
+      license: ODbL 1.0
+      attribution: © OpenStreetMap contributors; https://www.openstreetmap.org/copyright
+      ordered_node_ids: [3426690340, 3426690339, 3426690336, 3426690322, 3426690323, 3426690337, 3426690338, 3426690332, 3426690331, 3426690329, 3426690330, 3426690333, 3426690334, 3426690347, 3426690354, 3426690341, 3426690340]
+    geometry:
+      semantics: WATER_BODY_POLYGON
+      coordinate_semantics: POLYGON_VERTEX
+      geojson_feature_id: place.syamakunda
+      unique_vertex_count: 16
+      stored_coordinate_count: 17
+      bbox_lon_lat: [77.4917621, 27.5246623, 77.4932980, 27.5257390]
+      valid_simple_ring: true
+      closed: true
+      water_body_identity: Named Shyama Kunda and tagged natural=water; separate from the named Radha Kund ring.
+    existing_point:
+      longitude: 77.492500
+      latitude: 27.525200
+      relationship: INSIDE_POLYGON
+      coordinate_status: PROVISIONAL
+      independently_documented_arrival_meaning: false
+      note: The existing point is a Task 014 development fixture, not a verified access or arrival location; retain it unchanged.
+    conflict_review: No duplicate, overlap, nesting, or conflicting named water ring found in the inspected neighborhood. Rādhā's overlapping bounding box does not imply a merged water body.
+    limitations: Community-mapped 2015 water outline is not a surveyed shoreline; current edge and public access require field verification before any arrival/access assertion.
+
+  - place_id: place.lalitakunda
+    canonical_name: Lalitā-kuṇḍa
+    decision: CONTROLLED_GEOMETRY_READY
+    decision_scope: Future water-polygon proposal only; production ingestion and navigation changes remain unauthorized.
+    source:
+      provider: OpenStreetMap contributors
+      feature_id: way/335571300
+      stable_reference: https://www.openstreetmap.org/way/335571300
+      full_feature_endpoint: https://api.openstreetmap.org/api/0.6/way/335571300/full.json
+      retrieved_on: '2026-09-17'
+      version: 1
+      changeset: 29850243
+      timestamp: '2015-03-30T13:22:53Z'
+      tags: {name: Lalita Kunda, natural: water, water: lake}
+      license: ODbL 1.0
+      attribution: © OpenStreetMap contributors; https://www.openstreetmap.org/copyright
+      ordered_node_ids: [3426690367, 3426690365, 3426690366, 3426690363, 3426690361, 3426690359, 3426690356, 3426690358, 3426690357, 3426690360, 3426690362, 3426690364, 3426690367]
+    geometry:
+      semantics: WATER_BODY_POLYGON
+      coordinate_semantics: POLYGON_VERTEX
+      geojson_feature_id: place.lalitakunda
+      unique_vertex_count: 12
+      stored_coordinate_count: 13
+      bbox_lon_lat: [77.4929360, 27.5261084, 77.4932541, 27.5263572]
+      valid_simple_ring: true
+      closed: true
+      water_body_identity: Named Lalita Kunda and tagged natural=water; not the larger separately named Mohana Kund polygon.
+    existing_point:
+      longitude: 77.493100
+      latitude: 27.526200
+      relationship: INSIDE_POLYGON
+      coordinate_status: PROVISIONAL
+      independently_documented_arrival_meaning: false
+      note: The existing point is a Task 014 development fixture, not a verified access or arrival location; retain it unchanged.
+    conflict_review: No duplicate, overlap, nesting, or conflicting named water ring found in the inspected neighborhood. Mohana-kuṇḍa is a distinct OSM way 430061166, and its bounding box overlaps Lalitā's but its water ring does not.
+    limitations: Community-mapped 2015 water outline is not a surveyed shoreline; current edge and public access require field verification before any arrival/access assertion.
