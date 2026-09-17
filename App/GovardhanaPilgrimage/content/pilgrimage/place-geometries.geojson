@@ -25,7 +25,7 @@
         "geometry_type": "WATER_BODY_POLYGON",
         "coordinate_semantics": "POLYGON_VERTEX",
         "min_zoom": 15,
-        "label_min_zoom": 16.2,
+        "label_min_zoom": 15,
         "map_number": null,
         "visibility": "PRECINCT_ONLY"
       },

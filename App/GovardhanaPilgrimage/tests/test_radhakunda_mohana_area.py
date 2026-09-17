@@ -63,7 +63,7 @@ class MohanaAreaTests(unittest.TestCase):
         self.assertEqual("WATER_BODY_POLYGON", props["geometry_type"])
         self.assertEqual("PRECINCT_ONLY", props["visibility"])
         self.assertGreaterEqual(props["min_zoom"], 15)
-        self.assertGreater(props["label_min_zoom"], props["min_zoom"])
+        self.assertEqual(props["label_min_zoom"], props["min_zoom"])
         self.assertFalse(props["navigation_authorized"])
         self.assertFalse(props["arrival_authorized"])
         self.assertEqual("OSM-WAY-430061166-V2", props["source_id"])
@@ -90,7 +90,7 @@ class MohanaAreaTests(unittest.TestCase):
                 "SELECT source_id, source_version, source_changeset, min_zoom, label_min_zoom, navigation_authorized, arrival_authorized "
                 "FROM pilgrimage_place_geometries WHERE place_id = 'place.rk.mohana-kunda'"
             ).fetchone()
-            self.assertEqual(("OSM-WAY-430061166-V2", 2, 67612276, 15.0, 16.2, 0, 0), geometry)
+            self.assertEqual(("OSM-WAY-430061166-V2", 2, 67612276, 15.0, 15.0, 0, 0), geometry)
             vertices = db.execute(
                 "SELECT longitude, latitude, coordinate_semantics FROM pilgrimage_place_geometry_vertices "
                 "WHERE place_id = 'place.rk.mohana-kunda' ORDER BY vertex_index"

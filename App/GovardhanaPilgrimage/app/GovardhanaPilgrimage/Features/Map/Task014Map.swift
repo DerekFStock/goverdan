@@ -86,6 +86,30 @@ enum PilgrimageAreaMapProjection {
         return zoomLevel >= geometry.labelMinZoom
     }
 
+    // A display-only point inside the water polygon, never a navigation coordinate.
+    static func labelCoordinate(_ area: PilgrimagePlace) -> CLLocationCoordinate2D? {
+        guard let vertices = area.geometry?.vertices, vertices.count >= 4,
+              let minLatitude = vertices.map(\.latitude).min(),
+              let maxLatitude = vertices.map(\.latitude).max() else { return nil }
+        let latitude = (minLatitude + maxLatitude) / 2
+        var intersections: [Double] = []
+        for index in 0..<(vertices.count - 1) {
+            let start = vertices[index]
+            let end = vertices[index + 1]
+            guard (start.latitude <= latitude && latitude < end.latitude) ||
+                  (end.latitude <= latitude && latitude < start.latitude) else { continue }
+            let fraction = (latitude - start.latitude) / (end.latitude - start.latitude)
+            intersections.append(start.longitude + fraction * (end.longitude - start.longitude))
+        }
+        intersections.sort()
+        guard intersections.count >= 2 else { return nil }
+        let spans = stride(from: 0, to: intersections.count - 1, by: 2).map {
+            (intersections[$0], intersections[$0 + 1])
+        }
+        guard let span = spans.max(by: { $0.1 - $0.0 < $1.1 - $1.0 }) else { return nil }
+        return CLLocationCoordinate2D(latitude: latitude, longitude: (span.0 + span.1) / 2)
+    }
+
     static func selectedPlace(featurePlaceID: String, areas: [PilgrimagePlace]) -> PilgrimagePlace? {
         areas.first { $0.id.rawValue == featurePlaceID && $0.geometry != nil }
     }
@@ -708,6 +732,18 @@ private final class BasemapLabelAnnotation: MLNPointAnnotation {
     required init?(coder: NSCoder) { nil }
 }
 
+private final class AreaLabelAnnotation: MLNPointAnnotation {
+    let place: PilgrimagePlace
+    init?(place: PilgrimagePlace) {
+        guard let coordinate = PilgrimageAreaMapProjection.labelCoordinate(place) else { return nil }
+        self.place = place
+        super.init()
+        self.coordinate = coordinate
+        title = place.canonicalName
+    }
+    required init?(coder: NSCoder) { nil }
+}
+
 private final class AccessibleAnnotationView: MLNAnnotationView {
     var activate: (() -> Void)?
     override func accessibilityActivate() -> Bool {
@@ -737,6 +773,7 @@ struct OfflineMapLibreView: UIViewRepresentable {
         map.logoView.isHidden = true
         map.setCenter(.init(latitude: 27.5252, longitude: 77.4920), zoomLevel: 15.4, animated: false)
         map.addAnnotations(presentations.map(PlaceAnnotation.init))
+        map.addAnnotations(areas.compactMap { AreaLabelAnnotation(place: $0) })
         let areaTap = UITapGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.handleAreaTap(_:)))
         areaTap.cancelsTouchesInView = false
         map.addGestureRecognizer(areaTap)
@@ -756,6 +793,7 @@ struct OfflineMapLibreView: UIViewRepresentable {
         context.coordinator.parent = self
         context.coordinator.updateUser(sample)
         context.coordinator.updatePlaceLabels(in: map)
+        context.coordinator.updateAreaLabels(in: map)
         context.coordinator.updateAreaSelection(in: map)
         if context.coordinator.lastRecenter != recenterToken, let recenterCoordinate {
             context.coordinator.lastRecenter = recenterToken
@@ -849,12 +887,6 @@ struct OfflineMapLibreView: UIViewRepresentable {
                 selected.lineWidth = NSExpression(forConstantValue: 4)
                 selected.isVisible = false
                 style.addLayer(selected)
-                let label = MLNSymbolStyleLayer(identifier: Self.areaLayerID(area, suffix: "label"), source: source)
-                label.minimumZoomLevel = Float(geometry.labelMinZoom)
-                label.text = NSExpression(forKeyPath: "name")
-                label.textFontSize = NSExpression(forConstantValue: 12)
-                label.textColor = NSExpression(forConstantValue: UIColor(red: 0.10, green: 0.31, blue: 0.42, alpha: 1))
-                style.addLayer(label)
             }
         }
 
@@ -918,6 +950,29 @@ struct OfflineMapLibreView: UIViewRepresentable {
         }
 
         func mapView(_ mapView: MLNMapView, viewFor annotation: MLNAnnotation) -> MLNAnnotationView? {
+            if let areaLabel = annotation as? AreaLabelAnnotation {
+                let label = UILabel()
+                label.text = areaLabel.place.canonicalName
+                label.font = .systemFont(ofSize: 12, weight: .semibold)
+                label.textColor = UIColor(red: 0.10, green: 0.31, blue: 0.42, alpha: 1)
+                label.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.88)
+                label.layer.cornerRadius = 5
+                label.clipsToBounds = true
+                label.textAlignment = .center
+                label.sizeToFit()
+                label.frame = CGRect(x: 0, y: 0, width: label.bounds.width + 14, height: label.bounds.height + 8)
+                let view = AccessibleAnnotationView(reuseIdentifier: "pilgrimage-area-label")
+                view.frame = label.bounds
+                view.addSubview(label)
+                view.activate = { [weak self] in self?.parent.onSelect(areaLabel.place) }
+                let button = UIButton(frame: view.bounds)
+                button.accessibilityIdentifier = "map.area-label.\(areaLabel.place.id.rawValue)"
+                button.accessibilityLabel = "\(areaLabel.place.canonicalName), water area"
+                button.addAction(UIAction { [weak self] _ in self?.parent.onSelect(areaLabel.place) }, for: .touchUpInside)
+                view.addSubview(button)
+                view.isHidden = !PilgrimageAreaMapProjection.showsLabel(areaLabel.place, zoomLevel: mapView.zoomLevel)
+                return view
+            }
             if let labelAnnotation = annotation as? BasemapLabelAnnotation {
                 let label = UILabel()
                 label.text = labelAnnotation.displayName
@@ -1011,10 +1066,20 @@ struct OfflineMapLibreView: UIViewRepresentable {
 
         func mapView(_ mapView: MLNMapView, didSelect annotation: MLNAnnotation) {
             if let place = (annotation as? PlaceAnnotation)?.place { parent.onSelect(place) }
+            if let place = (annotation as? AreaLabelAnnotation)?.place { parent.onSelect(place) }
         }
 
         func mapView(_ mapView: MLNMapView, regionDidChangeAnimated animated: Bool) {
             updatePlaceLabels(in: mapView)
+            updateAreaLabels(in: mapView)
+        }
+
+        func updateAreaLabels(in mapView: MLNMapView) {
+            for annotation in mapView.annotations ?? [] {
+                guard let areaLabel = annotation as? AreaLabelAnnotation,
+                      let view = mapView.view(for: annotation) else { continue }
+                view.isHidden = !PilgrimageAreaMapProjection.showsLabel(areaLabel.place, zoomLevel: mapView.zoomLevel)
+            }
         }
 
         func updatePlaceLabels(in mapView: MLNMapView) {
