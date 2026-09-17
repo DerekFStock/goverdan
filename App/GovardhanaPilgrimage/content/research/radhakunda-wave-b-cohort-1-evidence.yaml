@@ -1,0 +1,151 @@
+task: TASK_021A_8
+scope: RESEARCH_ONLY_NOT_RUNTIME_INPUT
+retrieved_on: 2026-09-17
+production_ingestion_authorized: false
+selected_research_ids: [RK-03, RK-15, RK-22, RK-GH-09]
+source_catalog:
+  - id: INVENTORY
+    title: Rādhā-kuṇḍa master location inventory
+    provider: Govardhana Pilgrimage project
+    reference: content/research/radhakunda-location-inventory.yaml
+    retrieved_on: 2026-09-17
+    published_or_revised_on: null
+    claim: Existing textual loci, identities, warnings, and unresolved relationships for the four records.
+    feature_id_or_revision: main@c6d6583
+    license_attribution: Internal project research; retain provenance and do not republish as independently verified field evidence.
+    limitations: Research inventory is not a surveyed present-day entrance or feature geometry.
+  - id: TRIAGE
+    title: Wave B triage
+    provider: Govardhana Pilgrimage project
+    reference: content/research/radhakunda-wave-b-triage.yaml
+    retrieved_on: 2026-09-17
+    published_or_revised_on: null
+    claim: Four selected cohort records and the outstanding relationship and access questions.
+    feature_id_or_revision: main@c6d6583
+    license_attribution: Internal project research.
+    limitations: Candidate selection is not production eligibility.
+  - id: OSM_NEIGHBORHOOD
+    title: OpenStreetMap API 0.6 map extract, twin-kuṇḍa neighborhood
+    provider: OpenStreetMap contributors
+    reference: https://api.openstreetmap.org/api/0.6/map.json?bbox=77.488,27.521,77.498,27.530
+    retrieved_on: 2026-09-17
+    published_or_revised_on: null
+    claim: The inspected extract names separate Rādhā-kuṇḍa and Śyāma-kuṇḍa water ways, but supplies no specifically named, controlled feature or entrance for these four candidate records.
+    feature_id_or_revision: 'water ways 335571302 v1 and 335571305 v1; bbox query is a snapshot, not a permanent site survey'
+    license_attribution: © OpenStreetMap contributors; ODbL 1.0, https://www.openstreetmap.org/copyright
+    limitations: Incomplete community mapping; unnamed streets and paths cannot be assigned a sacred identity or public-access status by proximity. This negative result applies only to this extract and retrieval date.
+  - id: HOLY_DHAM
+    title: Radha Kunda and Shyama Kunda
+    provider: Holy Dham
+    reference: https://www.holydham.com/radha-kunda-and-shyama-kunda/
+    retrieved_on: 2026-09-17
+    published_or_revised_on: null
+    claim: Describes a stone path with slits where the waters meet; a platform with a tamāla tree and footprints called Mahāprabhu's Baithaka/Tamala Tala; and Gopī-kūpa as a separate well associated with the Jihvā-śilā story.
+    feature_id_or_revision: page sections 'Pathway between Radha Kunda and Shyama Kunda', 'Mahaprabhu’s Baithaka', and 'Gopi Kupa'
+    license_attribution: Holy Dham copyright; cite URL, do not copy image or guide prose into the app.
+    limitations: Undated pilgrimage guide, no controlled feature coordinates, present entrance survey, access guarantee, or proof of historical continuity. Its directions are not a current safe-route assessment.
+  - id: BRAJ_RAS_JIHVA
+    title: Gopi Kupa Divine Pastimes – Radha Kund, Goverdhan
+    provider: Braj Ras
+    reference: https://www.brajrasik.org/articles/5a024e6759e8c72a534d85d6/gopi-kupa-divine-pastimes-goverdhan
+    retrieved_on: 2026-09-17
+    published_or_revised_on: 2017-11-08
+    claim: Reports the tradition that a śilā was found at Gopī-kūpa and worshipped in a temple near the Govindadeva temple entrance, where it is said to remain visible.
+    feature_id_or_revision: article URL identifier 5a024e6759e8c72a534d85d6
+    license_attribution: Braj Ras copyright; cite URL, do not reproduce text or imagery.
+    limitations: Pilgrimage account, not current signage, independently verified object identity, precise temple entrance, access hours, or permission to photograph.
+  - id: NATHDWARA_NAMESAKE
+    title: Radha Krishna Kund Baithakji
+    provider: Nathdwara.in
+    reference: https://www.nathdwara.in/radhkrishna_baithkaji.php
+    retrieved_on: 2026-09-17
+    published_or_revised_on: null
+    claim: Documents a Rādhā-kuṇḍa 'Mahāprabhuji Baithakji' associated with Vallabhācārya; it is a namesake that must not be merged with the Caitanya/Tamala Tala site.
+    feature_id_or_revision: page title and article body
+    license_attribution: Nathdwara.in copyright; cite URL, do not reuse imagery.
+    limitations: Distinguishes a naming risk but does not establish the location, entrance, or relationship of the Caitanya baithak.
+  - id: VRINDAVAN_TODAY_GHAT
+    title: Centuries Old 'Kalpa Vriksha' Sadhu at Shyamkunda
+    provider: Vrindavan Today
+    reference: https://vrindavantoday.in/400-years-old-sadhu-at-shyamakund/
+    retrieved_on: 2026-09-17
+    published_or_revised_on: 2023-02-13
+    claim: Reports a living pilgrimage tradition at Mānasa-pāvana Ghāṭ involving a pīlu tree at Śyāma-kuṇḍa.
+    feature_id_or_revision: dated article
+    license_attribution: Vrindavan Today copyright; cite URL, do not reuse photographs.
+    limitations: Reported tree age and sacred continuity are devotional claims; article does not give surveyed ghāṭ edges, sign text, or safe public arrival.
+  - id: GUTIKA_GHAT
+    title: 93–105 Vrinda's arrangements
+    provider: Bhakti Yoga und Christentum
+    reference: https://bhakti-yoga-und-christentum4.webnode.page/93-105-vrinda-s-arrangements/
+    retrieved_on: 2026-09-17
+    published_or_revised_on: null
+    claim: Commentary says the name 'Manasa Pavana' is inscribed in sandstone at a northwestern Śyāma-kuṇḍa ghāṭ beside Pañca-Pāṇḍava trees.
+    feature_id_or_revision: commentary to verse 98
+    license_attribution: Site copyright; cite URL, do not reproduce text or images.
+    limitations: Undated textual commentary and claimed inscription, not a dated sign photograph, controlled edge geometry, or verified public approach; directional texts elsewhere differ.
+records:
+  - research_id: RK-03
+    name: Saṅgama crossing
+    source_ids: [INVENTORY, TRIAGE, OSM_NEIGHBORHOOD, HOLY_DHAM]
+    claims:
+      present_physical_identity: Guide describes a stone path with water-mixing slits between the two separate kuṇḍas; bridge versus causeway versus walkway construction is unconfirmed.
+      present_access: A pedestrian approach is described, but present public passage, safety, stairs, and boundaries have not been verified.
+      historical_identification: No evidence proves continuity of the present construction with an earlier setu.
+      textual_or_lila_significance: Govinda-līlāmṛta 7.6 concerns a textual junction and ornate setu, not a survey of present construction.
+      devotional_practice: Pilgrimage guide recognizes the meeting of the waters; no current access practice was independently verified.
+    geometry_negative_finding: No source identifies a controlled crossing line or entrance; unnamed OSM highway ways cannot be assigned to RK-03.
+    recommended_representation: CROSSING_LINE_IF_SURVEYED; otherwise relationship between distinct water polygons, without merging them.
+    navigation_recommendation: NOT_ELIGIBLE
+    relationships: 'RK-GH-07 is the shared Saṅgama Ghāṭ/bank-approach question, not a second automatic pin; relate both water polygons without combining their rings.'
+    decision: FIELD_VERIFICATION_REQUIRED
+    required_field_observations: [Photograph both ends and full crossing from safe public ground., Record sign text and whether this is one crossing or an adjacent named ghāṭ., Record GPS only at safe publicly accessible ends., Confirm current pedestrian access and steps or barriers.]
+    production_acceptance_conditions: [Control the physical crossing geometry and source revision., Confirm publicly safe passage or a safe approach point., Resolve RK-GH-07 as same feature, adjacent child, or distinct tradition., Keep Rādhā and Śyāma water polygons distinct.]
+  - research_id: RK-15
+    name: Girirāja-jihvā / Jihvā-śilā
+    source_ids: [INVENTORY, TRIAGE, OSM_NEIGHBORHOOD, HOLY_DHAM, BRAJ_RAS_JIHVA]
+    claims:
+      present_physical_identity: Pilgrimage account places worshipped śilā in a temple near Govindadeva; Gopī-kūpa is a separate well tied to the discovery tradition.
+      present_access: No controlled public doorway, opening information, or photography policy was found.
+      historical_identification: The discovery and placement account is a living tradition, not independent proof of object provenance or exact older footprint.
+      textual_or_lila_significance: Girirāja-jihvā identification belongs to shrine tradition; it does not locate a point within the building.
+      devotional_practice: Account says the śilā is still worshipped and visible; current practice requires confirmation.
+    geometry_negative_finding: No controlled shrine building, doorway, or sacred-object coordinate in inspected sources; Gopī-kūpa and similarly named Govardhana-śilās cannot substitute.
+    recommended_representation: Public temple entrance point if independently controlled; sacred object as description or child inside compound, not a guessed point.
+    navigation_recommendation: NOT_ELIGIBLE
+    relationships: 'Verify exact temple/compound identity and relation to Govindadeva; keep Gopī-kūpa and other Govardhana-śilā sites separate.'
+    decision: HOLD_ACCESS_VERIFICATION
+    required_field_observations: [Photograph temple and sign from public way., Identify exact public doorway and GPS there., Record whether object is inside a larger compound., Ask about public opening and photography restrictions without entering restricted areas.]
+    production_acceptance_conditions: [Corroborate current Jihvā name and correct temple independently., Control an actual public entrance., Document object versus building versus compound and access restrictions., Do not map an interior object from an entrance coordinate.]
+  - research_id: RK-22
+    name: Mahāprabhu baithak / Tamala Tala
+    source_ids: [INVENTORY, TRIAGE, OSM_NEIGHBORHOOD, HOLY_DHAM, NATHDWARA_NAMESAKE]
+    claims:
+      present_physical_identity: Guide identifies a Śyāma-kuṇḍa-bank platform with tamāla tree and enshrined footprints as Caitanya Mahāprabhu's Baithaka/Tamala Tala; a separate temple or enclosing compound is not resolved.
+      present_access: Guide follows a perimeter path, but no controlled entrance, current public-access rule, or safe arrival point was found.
+      historical_identification: Caitanya-caritāmṛta Madhya 18 places Mahāprabhu at the twin kuṇḍas; it does not identify a present platform, tree, or building footprint.
+      textual_or_lila_significance: Later pilgrimage localization associates this bank-side platform with Mahāprabhu's recognition of the kuṇḍas.
+      devotional_practice: Footprints and tree are described as present shrine features; botanical and historical continuity are not established.
+    geometry_negative_finding: No controlled platform, compound boundary, doorway, or tree feature was found in inspected geodata.
+    recommended_representation: One parent baithak site, with platform/tree/footprints/temple treated as possible children or descriptive parts after field reconciliation; no separate pins by name alone.
+    navigation_recommendation: NOT_ELIGIBLE
+    relationships: 'Disambiguate Caitanya/Tamala Tala from the Vallabhācārya Mahāprabhuji Baithakji namesake at Rādhā-kuṇḍa.'
+    decision: HOLD_IDENTITY_RECONCILIATION
+    required_field_observations: [Photograph exact sign and wide platform/tree/temple context., Record which named feature contains which and any operator name., GPS at a safe public approach or actual doorway., Record access hours or barriers., Do not claim tree age or continuity from appearance.]
+    production_acceptance_conditions: [Verify current Caitanya-specific identity and rule out namesake confusion., Establish one parent and child/descriptive relationships., Control a safe approach or entrance., Choose point versus compound polygon only from surveyed physical evidence.]
+  - research_id: RK-GH-09
+    name: Mānasa-pāvana Ghāṭ
+    source_ids: [INVENTORY, TRIAGE, OSM_NEIGHBORHOOD, VRINDAVAN_TODAY_GHAT, GUTIKA_GHAT]
+    claims:
+      present_physical_identity: Sources associate a named ghāṭ, possible sandstone name, and pīlu tree with the northwestern Śyāma-kuṇḍa bank; the exact current steps/edge are not controlled.
+      present_access: No surveyed dry-land approach, public-access status, or safe arrival point was found.
+      historical_identification: Bhakti-ratnākara 5.599–601 associates Mānasa-pāvana, the five Pāṇḍava trees, and bathing traditions; present trees or masonry are not proven historically continuous.
+      textual_or_lila_significance: Govinda-līlāmṛta 7.114 concerns Subalānandadā/Mānasa-pāvana in textual geography; directional variants cannot fix a modern coordinate.
+      devotional_practice: A dated 2023 report describes living attention to a pīlu tree at the ghāṭ, without proving its age.
+    geometry_negative_finding: No controlled named ghāṭ edge, steps, or safe land-side approach in inspected sources; water-ring vertices cannot be promoted to an arrival point.
+    recommended_representation: Named GHAT_EDGE or step segment if surveyed, with a separately verified dry-land public approach; Pañca-Pāṇḍava features initially relational.
+    navigation_recommendation: NOT_ELIGIBLE
+    relationships: 'Reconcile RK-13 five-Pāṇḍava trees and RK-GH-10 Pañca-Pāṇḍava Ghāṭ as possible children/adjacent features; do not create automatic duplicate pins.'
+    decision: HOLD_PARENT_CHILD_RECONCILIATION
+    required_field_observations: [Photograph bank and any sandstone inscription from a safe public path., Identify dry-land approach and GPS there, never in water., Photograph relation of steps, pīlu tree, and any five-Pāṇḍava markers., Record public access and whether ghāṭ names designate one or adjoining edges.]
+    production_acceptance_conditions: [Control the currently named ghāṭ edge or steps and exact sign., Verify a safe public land-side approach independently., Resolve RK-13/RK-GH-10 relationship and any namesake., Never use a water-edge coordinate as an arrival point.]
