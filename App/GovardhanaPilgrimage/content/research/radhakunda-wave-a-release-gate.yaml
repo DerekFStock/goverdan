@@ -8,7 +8,7 @@ gate:
   runtime_compilation: false
   public_numbering: none
   new_production_ingestion_authorized: false
-  evidence_scope: Repository inventory, existing place registry, and Task 021A.1 source notes; external map listings were not independently rechecked for this gate.
+  evidence_scope: Task 021A.2 reviewed repository inventory and registry; Task 021A.3 independently retrieved source evidence for RK-05, RK-17, RK-27, RK-29, and RK-SAM-01 only. No field entrances were verified.
   decision_statuses:
     - REUSE_EXISTING_NO_NEW_ID
     - ELIGIBLE_AFTER_COORDINATE_CONTROL
@@ -103,19 +103,19 @@ decisions:
     approved_marker_semantics: WATER_BODY_AREA_ONLY_NO_ARRIVAL
     identity_disposition: Retain one proposed present water-body identity; do not merge it with a neighboring kuṇḍa.
     coordinate_geometry_disposition:
-      feature: WATER_BODY_POLYGON_LEAD_NOT_COMPILED
-      source: OpenStreetMap way 430061166 as recorded in Task 021A.1 inventory; Braj Development Plan corroborates a Mohan Kund planning target
-      source_reference: OpenStreetMap way 430061166, as cited by inventory RK-05
-      source_retrieved_on: null
-      control: APPROXIMATE_FIELD_UNVERIFIED
-      navigation_use: AREA_VISUALIZATION_ONLY_AFTER_GEOMETRY_CONTROL
+      feature: CONTROLLED_RESEARCH_WATER_POLYGON_NOT_COMPILED
+      source: OSM-WAY-430061166-V2 in Task 021A.3 evidence package; no public edge or entrance controlled
+      source_reference: OpenStreetMap way 430061166; content/research/radhakunda-wave-a-controlled-evidence.geojson#RK-05
+      source_retrieved_on: "2026-09-17"
+      control: CONTROLLED_WATER_AREA_ONLY
+      navigation_use: AREA_VISUALIZATION_ONLY_AFTER_SEPARATE_PRODUCTION_AUTHORIZATION
     arrival_anchor_disposition: NOT_AUTHORIZED; neither polygon centroid nor approximate center is a safe edge, entrance, or navigation destination.
-    evidence_summary: Current water-body identity has an OSM geometry lead and planning corroboration; no public approach is controlled.
+    evidence_summary: Task 021A.3 archived the complete OSM water polygon under ODbL; no public approach is controlled.
     source_layers: [HISTORICAL_PRESENT_PHYSICAL]
     confidence: {identity: HIGH, arrival: UNVERIFIED}
     relationships: [{research_id: RK-02, type: PRECINCT_NEIGHBOR_NOT_SHARED_ARRIVAL}]
     blockers: []
-    required_verification: [Retrieve and archive the exact OSM water geometry with date and license before area ingestion., Separately verify an accessible water edge or public entrance before any arrival behavior.]
+    required_verification: [Exact OSM water geometry is archived in the Task 021A.3 research-only evidence package; separately authorize any later area ingestion., Separately verify an accessible water edge or public entrance before any arrival behavior.]
     recommended_next_action: Prepare an area-only geometry package for a separately authorized ingestion task; keep arrival disabled.
     later_production_ingestion_authorized: false
     editorial_rationale: An area classification is supported; a centroid must not become an exact arrival marker.
@@ -149,9 +149,9 @@ decisions:
     place_id: place.rk.raghunatha-dasa-samadhi
     canonical_name: Raghunātha dāsa Gosvāmī samādhi
     current_physical_mapping_status: MAP_NOW_EXACT
-    decision_status: HOLD_ACCESS_VERIFICATION
+    decision_status: HOLD_IDENTITY_RECONCILIATION
     approved_marker_semantics: NO_PUBLIC_MARKER
-    identity_disposition: Retain separate proposed samādhi ID; do not merge with RK-SAM-01.
+    identity_disposition: Retain separate research ID; physical distinctness from RK-SAM-01 is disputed and must not be presumed or merged without field evidence.
     coordinate_geometry_disposition:
       feature: PLUS_CODE_LISTING_ONLY
       source: Inventory modern-map lead GFGR+7GG for a separate Raghunātha dāsa samādhi
@@ -160,15 +160,19 @@ decisions:
       control: APPROXIMATE_FIELD_UNVERIFIED
       navigation_use: NOT_AUTHORIZED
     arrival_anchor_disposition: Public entrance and exact shrine feature are not independently controlled.
-    evidence_summary: Contemporary listing suggests a separate living memorial; plus code alone does not verify its entrance or feature point.
+    evidence_summary: OSM-WAY-335571304-V1 names a Raghunātha dāsa building, but RADHASEVA-TEEN-GOSWAMI-20260917 identifies his memorial platform inside Teen Goswami Mandir; HOLYDHAM-RADHAKUNDA-20260917 also lists multiple memorial associations. Physical distinctness remains unproved.
     source_layers: [HISTORICAL_PRESENT_PHYSICAL]
     confidence: {identity: HIGH, arrival: UNVERIFIED}
-    relationships: [{research_id: RK-SAM-01, type: DISTINCT_MEMORIAL_ASSOCIATION}]
-    blockers: [No controlled latitude/longitude or feature geometry., Public approach and marker meaning unverified.]
-    required_verification: [Confirm the distinct shrine identity on site., Capture sourced feature geometry and an identifiable public approach., Record whether a marker represents shrine or entrance.]
-    recommended_next_action: Potential first new cohort after all access and coordinate controls pass.
+    relationships: [{research_id: RK-SAM-01, type: PHYSICAL_DISTINCTNESS_DISPUTED}]
+    blockers: [Physical relationship to RK-SAM-01 is unresolved., No accepted feature/entrance coordinate or public approach.]
+    required_verification: [Compare OSM-WAY-335571304-V1 with RADHASEVA-TEEN-GOSWAMI-20260917 and HOLYDHAM-RADHAKUNDA-20260917 on site., Confirm whether a separate shrine and entrance exist., Capture sourced feature and public approach separately.]
+    recommended_next_action: Hold until the memorial/compound relationship and public approach are field-verified.
     later_production_ingestion_authorized: false
-    editorial_rationale: Strong memorial identity does not turn a plus-code center into an exact arrival point.
+    editorial_rationale: Task 021A.3 found conflicting physical-identity evidence; a plus-code center or old OSM building outline cannot settle it.
+    decision_change:
+      from: HOLD_ACCESS_VERIFICATION
+      to: HOLD_IDENTITY_RECONCILIATION
+      supporting_source_ids: [OSM-WAY-335571304-V1, RADHASEVA-TEEN-GOSWAMI-20260917, HOLYDHAM-RADHAKUNDA-20260917]
 
   - research_id: RK-20
     place_id: place.rk.gopala-bhatta-bhajana-kutira
@@ -274,9 +278,9 @@ decisions:
     place_id: place.rk.three-goswami-samadhi
     canonical_name: Three Goswami Samādhi complex
     current_physical_mapping_status: MAP_NOW_EXACT
-    decision_status: HOLD_ACCESS_VERIFICATION
+    decision_status: HOLD_IDENTITY_RECONCILIATION
     approved_marker_semantics: NO_PUBLIC_MARKER
-    identity_disposition: Retain proposed compound ID distinct from RK-17; constituent memorials are child candidates, not automatic pins.
+    identity_disposition: Retain proposed compound research ID distinct from RK-17; whether RK-17 is physically separate or a constituent memorial is unresolved.
     coordinate_geometry_disposition:
       feature: PLUS_CODE_LISTING_ONLY
       source: Inventory modern-map lead GFGR+6PG for shared memorial complex
@@ -285,15 +289,19 @@ decisions:
       control: APPROXIMATE_FIELD_UNVERIFIED
       navigation_use: NOT_AUTHORIZED
     arrival_anchor_disposition: Compound boundary, public entrance and individual memorial positions require control.
-    evidence_summary: Current shared-complex listing is not an exact entrance; the separate Raghunātha dāsa samādhi remains another identity.
+    evidence_summary: RADHASEVA-TEEN-GOSWAMI-20260917 describes three memorial platforms in Teen Goswami Mandir, including Raghunātha dāsa; this conflicts with the prior assumption of a physically separate RK-17 memorial. A separate structure may exist but is unproved.
     source_layers: [HISTORICAL_PRESENT_PHYSICAL]
     confidence: {identity: HIGH, arrival: UNVERIFIED}
-    relationships: [{research_id: RK-17, type: DISTINCT_MEMORIAL_ASSOCIATION}, {research_id: RK-19, type: CHILD_MEMORIAL_CANDIDATE}]
-    blockers: [No controlled compound entrance or geometry., Constituent memorial relationship needs on-site labeling.]
-    required_verification: [Confirm named memorials and separate RK-17 identity., Capture compound geometry, entrance and safe public approach., Decide whether child features merit detail-only representation.]
-    recommended_next_action: Potential first new cohort as one compound after coordinate and access controls pass.
+    relationships: [{research_id: RK-17, type: PHYSICAL_DISTINCTNESS_DISPUTED}, {research_id: RK-19, type: CHILD_MEMORIAL_CANDIDATE}]
+    blockers: [No controlled compound entrance or geometry., RK-17 physical distinction versus constituent platform is disputed.]
+    required_verification: [Compare RADHASEVA-TEEN-GOSWAMI-20260917 with OSM-WAY-335571304-V1 and HOLYDHAM-RADHAKUNDA-20260917 on site., Photograph compound sign and entrance., Decide whether child features merit detail-only representation.]
+    recommended_next_action: Hold until RK-17 relationship and compound access are field-verified.
     later_production_ingestion_authorized: false
-    editorial_rationale: A compound marker is not equivalent to each memorial and must not absorb RK-17.
+    editorial_rationale: Task 021A.3 found a constituent Raghunātha dāsa platform claim; physical relationship to RK-17 needs field reconciliation before any marker.
+    decision_change:
+      from: HOLD_ACCESS_VERIFICATION
+      to: HOLD_IDENTITY_RECONCILIATION
+      supporting_source_ids: [RADHASEVA-TEEN-GOSWAMI-20260917, OSM-WAY-335571304-V1, HOLYDHAM-RADHAKUNDA-20260917]
 
   - research_id: RK-INST-01
     place_id: place.radha-kunjabihari-gaudiya-matha
