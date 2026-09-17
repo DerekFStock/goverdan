@@ -6,6 +6,64 @@ import XCTest
 
 final class FoundationTests: XCTestCase {
     @MainActor
+    func testTask021A6ExistingKundaPointsAndSeparateWaterPolygons() throws {
+        let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
+        let places = try repository.pilgrimagePlaces()
+        XCTAssertEqual(72, places.count)
+        XCTAssertEqual(71, places.compactMap(\.mapNumber).count)
+        XCTAssertEqual(4, places.compactMap(\.geometry).count)
+        let areas = places.filter { $0.geometry != nil }
+        let expected: [(String, Int, Double, Double, Int, String)] = [
+            ("place.radhakunda", 1, 27.525256, 77.491353, 17, "OSM-WAY-335571302-V1"),
+            ("place.syamakunda", 2, 27.525200, 77.492500, 17, "OSM-WAY-335571305-V1"),
+            ("place.lalitakunda", 3, 27.526200, 77.493100, 13, "OSM-WAY-335571300-V1"),
+        ]
+        let presentations = PilgrimageMapProjection.presentations(for: places)
+        XCTAssertEqual(71, presentations.count)
+        let model = PilgrimageMapModel(places: places)
+        for (placeID, number, latitude, longitude, vertexCount, sourceID) in expected {
+            let place = try XCTUnwrap(places.first { $0.id.rawValue == placeID })
+            let geometry = try XCTUnwrap(place.geometry)
+            XCTAssertEqual(number, place.mapNumber)
+            XCTAssertEqual("POINT", place.geometryType)
+            XCTAssertEqual("ALL_ZOOMS", place.mapVisibility)
+            XCTAssertTrue(place.navigationEligible)
+            XCTAssertEqual(latitude, place.latitude)
+            XCTAssertEqual(longitude, place.longitude)
+            XCTAssertEqual(vertexCount, geometry.vertices.count)
+            XCTAssertEqual("WATER_BODY_POLYGON", geometry.geometryType)
+            XCTAssertEqual("POLYGON_VERTEX", geometry.coordinateSemantics)
+            XCTAssertEqual(sourceID, geometry.sourceID)
+            XCTAssertEqual("https://www.openstreetmap.org/way/\(sourceID.components(separatedBy: "-")[2])", geometry.sourceURL)
+            XCTAssertEqual(1, geometry.sourceVersion)
+            XCTAssertEqual(29850243, geometry.sourceChangeset)
+            XCTAssertEqual("2026-09-17", geometry.sourceRetrievedOn)
+            XCTAssertTrue(geometry.attribution.contains("ODbL"))
+            XCTAssertFalse(PilgrimageAreaMapProjection.isVisible(place, zoomLevel: 14.9))
+            XCTAssertTrue(PilgrimageAreaMapProjection.isVisible(place, zoomLevel: 15))
+            XCTAssertFalse(PilgrimageAreaMapProjection.showsLabel(place, zoomLevel: 20))
+            XCTAssertEqual(place.id, PilgrimageAreaMapProjection.selectedPlace(featurePlaceID: placeID, areas: areas)?.id)
+            XCTAssertEqual(1, presentations.filter { $0.place.id == place.id }.count)
+            XCTAssertEqual(place.id, presentations.first { $0.place.id == place.id }?.place.id)
+            XCTAssertTrue(PilgrimageAreaMapProjection.highlightsOutline(place, selectedAreaID: place.id))
+            XCTAssertEqual(1, areas.filter { PilgrimageAreaMapProjection.highlightsOutline($0, selectedAreaID: place.id) }.count)
+            let priorSample = model.sample?.coordinate
+            let priorSource = model.source
+            model.navigate(to: place)
+            XCTAssertEqual(priorSource, model.source)
+            XCTAssertEqual(priorSample?.latitude, model.sample?.coordinate.latitude)
+            XCTAssertEqual(priorSample?.longitude, model.sample?.coordinate.longitude)
+            XCTAssertEqual(place.id, model.activeDestination.id)
+            XCTAssertEqual(latitude, model.navigationCoordinate?.latitude)
+            XCTAssertEqual(longitude, model.navigationCoordinate?.longitude)
+        }
+        let mohana = try XCTUnwrap(places.first { $0.id.rawValue == "place.rk.mohana-kunda" })
+        XCTAssertNil(mohana.mapNumber)
+        XCTAssertTrue(PilgrimageAreaMapProjection.showsLabel(mohana, zoomLevel: 15))
+        XCTAssertFalse(presentations.contains { $0.place.id == mohana.id })
+    }
+
+    @MainActor
     func testTask021A4AreaOnlyPlaceCannotEnterPointNavigation() throws {
         let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
         let places = try repository.pilgrimagePlaces()

@@ -360,6 +360,124 @@
           ]
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "id": "place.radhakunda",
+      "properties": {
+        "place_id": "place.radhakunda",
+        "geometry_meaning": "POLYGON_VERTEX",
+        "navigation_authorized": false,
+        "arrival_authorized": false,
+        "source_id": "OSM-WAY-335571302-V1",
+        "source_retrieved_on": "2026-09-17",
+        "source_object_timestamp": "2015-03-30T13:22:53Z",
+        "source_url": "https://www.openstreetmap.org/way/335571302",
+        "source_version": 1,
+        "source_changeset": 29850243,
+        "control_status": "CONTROLLED_WATER_AREA_ONLY",
+        "name": "Radha Kund",
+        "attribution": "© OpenStreetMap contributors; ODbL 1.0",
+        "collection": "GOVARDHANA_NUMBERED",
+        "geometry_type": "WATER_BODY_POLYGON",
+        "coordinate_semantics": "POLYGON_VERTEX",
+        "min_zoom": 15,
+        "label_min_zoom": 15,
+        "map_number": 1,
+        "visibility": "PRECINCT_ONLY"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [77.4908475, 27.5254081], [77.4911535, 27.5247495],
+          [77.4911957, 27.5247649], [77.4912121, 27.5247295],
+          [77.4912530, 27.5247444], [77.4913094, 27.5246231],
+          [77.4913738, 27.5246467], [77.4913134, 27.5247766],
+          [77.4918439, 27.5249705], [77.4915219, 27.5256634],
+          [77.4912243, 27.5255546], [77.4912528, 27.5254933],
+          [77.4911548, 27.5254575], [77.4910782, 27.5256223],
+          [77.4910003, 27.5255939], [77.4910519, 27.5254828],
+          [77.4908475, 27.5254081]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "place.syamakunda",
+      "properties": {
+        "place_id": "place.syamakunda",
+        "geometry_meaning": "POLYGON_VERTEX",
+        "navigation_authorized": false,
+        "arrival_authorized": false,
+        "source_id": "OSM-WAY-335571305-V1",
+        "source_retrieved_on": "2026-09-17",
+        "source_object_timestamp": "2015-03-30T13:22:53Z",
+        "source_url": "https://www.openstreetmap.org/way/335571305",
+        "source_version": 1,
+        "source_changeset": 29850243,
+        "control_status": "CONTROLLED_WATER_AREA_ONLY",
+        "name": "Shyama Kunda",
+        "attribution": "© OpenStreetMap contributors; ODbL 1.0",
+        "collection": "GOVARDHANA_NUMBERED",
+        "geometry_type": "WATER_BODY_POLYGON",
+        "coordinate_semantics": "POLYGON_VERTEX",
+        "min_zoom": 15,
+        "label_min_zoom": 15,
+        "map_number": 2,
+        "visibility": "PRECINCT_ONLY"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [77.4917621, 27.5252106], [77.4918436, 27.5250377],
+          [77.4922872, 27.5249902], [77.4922543, 27.5246623],
+          [77.4923467, 27.5246659], [77.4924022, 27.5250030],
+          [77.4926015, 27.5250030], [77.4926755, 27.5248609],
+          [77.4928686, 27.5248590], [77.4928830, 27.5248262],
+          [77.4929508, 27.5248317], [77.4929713, 27.5249283],
+          [77.4931007, 27.5249483], [77.4932980, 27.5255751],
+          [77.4926570, 27.5257390], [77.4921968, 27.5254056],
+          [77.4917621, 27.5252106]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "place.lalitakunda",
+      "properties": {
+        "place_id": "place.lalitakunda",
+        "geometry_meaning": "POLYGON_VERTEX",
+        "navigation_authorized": false,
+        "arrival_authorized": false,
+        "source_id": "OSM-WAY-335571300-V1",
+        "source_retrieved_on": "2026-09-17",
+        "source_object_timestamp": "2015-03-30T13:22:53Z",
+        "source_url": "https://www.openstreetmap.org/way/335571300",
+        "source_version": 1,
+        "source_changeset": 29850243,
+        "control_status": "CONTROLLED_WATER_AREA_ONLY",
+        "name": "Lalita Kunda",
+        "attribution": "© OpenStreetMap contributors; ODbL 1.0",
+        "collection": "GOVARDHANA_NUMBERED",
+        "geometry_type": "WATER_BODY_POLYGON",
+        "coordinate_semantics": "POLYGON_VERTEX",
+        "min_zoom": 15,
+        "label_min_zoom": 15,
+        "map_number": 3,
+        "visibility": "PRECINCT_ONLY"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [77.4930235, 27.5263572], [77.4930027, 27.5263163],
+          [77.4929749, 27.5263274], [77.4929360, 27.5262512],
+          [77.4929701, 27.5262375], [77.4929474, 27.5261932],
+          [77.4931589, 27.5261084], [77.4931755, 27.5261408],
+          [77.4932008, 27.5261307], [77.4932541, 27.5262353],
+          [77.4932245, 27.5262471], [77.4932370, 27.5262716],
+          [77.4930235, 27.5263572]
+        ]]
+      }
     }
   ]
 }

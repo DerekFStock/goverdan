@@ -77,12 +77,13 @@ enum PilgrimageMapProjection {
 
 enum PilgrimageAreaMapProjection {
     static func isVisible(_ area: PilgrimagePlace, zoomLevel: Double) -> Bool {
-        guard let geometry = area.geometry, area.mapVisibility == "PRECINCT_ONLY" else { return false }
+        guard let geometry = area.geometry, geometry.geometryType == "WATER_BODY_POLYGON" else { return false }
         return zoomLevel >= geometry.minZoom
     }
 
     static func showsLabel(_ area: PilgrimagePlace, zoomLevel: Double) -> Bool {
-        guard let geometry = area.geometry else { return false }
+        // Numbered places already have a point pin and name label.
+        guard area.mapNumber == nil, let geometry = area.geometry else { return false }
         return zoomLevel >= geometry.labelMinZoom
     }
 
@@ -112,6 +113,10 @@ enum PilgrimageAreaMapProjection {
 
     static func selectedPlace(featurePlaceID: String, areas: [PilgrimagePlace]) -> PilgrimagePlace? {
         areas.first { $0.id.rawValue == featurePlaceID && $0.geometry != nil }
+    }
+
+    static func highlightsOutline(_ area: PilgrimagePlace, selectedAreaID: PilgrimagePlaceID?) -> Bool {
+        area.id == selectedAreaID
     }
 }
 
@@ -656,11 +661,24 @@ struct PlaceDetailView: View {
                     LabeledContent("Confidence", value: place.coordinateConfidence.rawValue)
                     if let latitude = place.latitude, let longitude = place.longitude {
                         LabeledContent("Coordinate", value: String(format: "%.6f, %.6f", latitude, longitude))
-                    } else if let geometry = place.geometry {
-                        LabeledContent("Geometry", value: "\(geometry.geometryType) · \(geometry.coordinateSemantics)")
+                    } else if place.geometry != nil {
+                        LabeledContent("Coordinate", value: "No navigation point established")
                         LabeledContent("Navigation", value: "Unavailable — water area only")
                     } else {
                         LabeledContent("Coordinate", value: "Not yet established")
+                    }
+                    if let geometry = place.geometry {
+                        LabeledContent("Mapped water outline", value: geometry.geometryType.replacingOccurrences(of: "_", with: " ").capitalized)
+                        LabeledContent("Outline source", value: geometry.sourceID)
+                        LabeledContent("Source version", value: geometry.sourceVersion.map(String.init) ?? "Unspecified")
+                        LabeledContent("Source changeset", value: geometry.sourceChangeset.map(String.init) ?? "Unspecified")
+                        LabeledContent("Retrieved", value: geometry.sourceRetrievedOn)
+                        if let url = URL(string: geometry.sourceURL) {
+                            Link("Open water-outline source", destination: url)
+                        }
+                        Text(geometry.attribution).font(.caption).foregroundStyle(.secondary)
+                        Text("The outline represents mapped water only, not a public entrance or bathing access point. Present edges and access require field confirmation.")
+                            .font(.caption).foregroundStyle(.secondary)
                     }
                     if let anchor = place.navigationAnchorPlaceID {
                         LabeledContent("Navigation anchor", value: anchor.rawValue)
@@ -735,7 +753,8 @@ private final class BasemapLabelAnnotation: MLNPointAnnotation {
 private final class AreaLabelAnnotation: MLNPointAnnotation {
     let place: PilgrimagePlace
     init?(place: PilgrimagePlace) {
-        guard let coordinate = PilgrimageAreaMapProjection.labelCoordinate(place) else { return nil }
+        guard place.mapNumber == nil,
+              let coordinate = PilgrimageAreaMapProjection.labelCoordinate(place) else { return nil }
         self.place = place
         super.init()
         self.coordinate = coordinate
@@ -817,6 +836,11 @@ struct OfflineMapLibreView: UIViewRepresentable {
         @objc func handleAreaTap(_ recognizer: UITapGestureRecognizer) {
             guard recognizer.state == .ended, let map else { return }
             let point = recognizer.location(in: map)
+            // Let numbered pin buttons win when a pin sits over its own water polygon.
+            if (map.annotations ?? []).contains(where: { annotation in
+                guard annotation is PlaceAnnotation, let view = map.view(for: annotation) else { return false }
+                return view.convert(view.bounds, to: map).contains(point)
+            }) { return }
             let layerIDs = Set(parent.areas.compactMap { area -> String? in
                 guard PilgrimageAreaMapProjection.isVisible(area, zoomLevel: map.zoomLevel) else { return nil }
                 return Self.areaLayerID(area, suffix: "fill")
@@ -894,7 +918,7 @@ struct OfflineMapLibreView: UIViewRepresentable {
             guard let style = mapView.style else { return }
             for area in parent.areas {
                 style.layer(withIdentifier: Self.areaLayerID(area, suffix: "selected"))?.isVisible =
-                    area.id == parent.selectedAreaID
+                    PilgrimageAreaMapProjection.highlightsOutline(area, selectedAreaID: parent.selectedAreaID)
             }
         }
 

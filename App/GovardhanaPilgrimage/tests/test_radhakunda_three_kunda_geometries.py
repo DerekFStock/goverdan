@@ -163,12 +163,15 @@ class ThreeKundaGeometryEvidenceTests(unittest.TestCase):
                 with self.subTest(first=first, second=second):
                     self.assertFalse(polygons_conflict(rings[first], rings[second]))
 
-    def test_runtime_database_remains_at_prior_counts_and_integrity(self):
+    def test_runtime_database_has_only_the_four_authorized_water_polygons(self):
         with sqlite3.connect(DATABASE) as db:
             self.assertEqual(72, db.execute("SELECT count(*) FROM pilgrimage_places").fetchone()[0])
             self.assertEqual(71, db.execute("SELECT count(*) FROM pilgrimage_places WHERE map_number IS NOT NULL").fetchone()[0])
-            self.assertEqual(1, db.execute("SELECT count(*) FROM pilgrimage_place_geometries").fetchone()[0])
-            self.assertEqual([("place.rk.mohana-kunda",)], db.execute("SELECT place_id FROM pilgrimage_place_geometries").fetchall())
+            self.assertEqual(4, db.execute("SELECT count(*) FROM pilgrimage_place_geometries").fetchone()[0])
+            self.assertEqual(
+                {"place.rk.mohana-kunda", *EXPECTED},
+                {row[0] for row in db.execute("SELECT place_id FROM pilgrimage_place_geometries")},
+            )
             self.assertEqual("ok", db.execute("PRAGMA integrity_check").fetchone()[0])
             self.assertEqual([], db.execute("PRAGMA foreign_key_check").fetchall())
 
