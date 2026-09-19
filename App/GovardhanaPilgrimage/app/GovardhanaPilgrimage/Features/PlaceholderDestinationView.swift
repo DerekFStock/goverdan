@@ -255,6 +255,22 @@ struct WorkDetailView: View {
     @State private var showingDetails = false
 
     private var content: SourceReaderContent? { model.sourceReaderContent(for: workID) }
+    private func chapters(in passages: [SourcePassage]) -> [SourcePassage] {
+        var seen = Set<Int>()
+        return passages.filter { passage in
+            guard let number = passage.chapterNumber else { return false }
+            return seen.insert(number).inserted
+        }
+    }
+
+    private func supplementalPassages(in passages: [SourcePassage]) -> [SourcePassage] {
+        var seen = Set<String>()
+        return passages.filter { passage in
+            guard let kind = passage.sectionKind,
+                  ["FRONT_MATTER", "INVOCATION", "APPENDIX"].contains(kind) else { return false }
+            return seen.insert(kind).inserted
+        }
+    }
 
     var body: some View {
         if let content, let beginning = content.passages.first?.id {
@@ -262,6 +278,14 @@ struct WorkDetailView: View {
                 Section {
                     VStack(alignment: .leading, spacing: 6) {
                         if let author = content.work.author { Text(author).font(.headline) }
+                        if !chapters(in: content.passages).isEmpty {
+                            Text("A twenty-chapter meditation on the full eightfold daily pastimes of Śrī Śrī Rādhā-Kṛṣṇa.")
+                                .foregroundStyle(.secondary)
+                            Text("English translation; translator not identified in supplied file. Paragraph numbers are reader anchors, not canonical verse numbers.")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                                .accessibilityIdentifier("work.source-note")
+                        }
                         if let layer = content.work.sourceLayer {
                             Text(layer.replacingOccurrences(of: "_", with: " ").capitalized)
                                 .foregroundStyle(.secondary)
@@ -286,13 +310,37 @@ struct WorkDetailView: View {
                         .accessibilityIdentifier("work.search")
                 }
 
-                Section("Table of Contents") {
-                    ForEach(content.passages) { passage in
-                        NavigationLink(
-                            "Passage \(passage.displayLocus)",
-                            value: AppRoute.librarySource(workID: workID, passageID: passage.id)
-                        )
-                        .accessibilityIdentifier("work.toc.passage.\(passage.id.rawValue)")
+                if chapters(in: content.passages).isEmpty {
+                    Section("Table of Contents") {
+                        ForEach(content.passages) { passage in
+                            NavigationLink(
+                                "Passage \(passage.displayLocus)",
+                                value: AppRoute.librarySource(workID: workID, passageID: passage.id)
+                            )
+                            .accessibilityIdentifier("work.toc.passage.\(passage.id.rawValue)")
+                        }
+                    }
+                } else {
+                    ForEach(Dictionary(grouping: chapters(in: content.passages), by: { $0.timeRange ?? "Other" })
+                        .sorted { ($0.value.first?.chapterNumber ?? 0) < ($1.value.first?.chapterNumber ?? 0) }, id: \.key) { group in
+                        Section(group.key) {
+                            ForEach(group.value) { passage in
+                                NavigationLink(
+                                    "Chapter \(passage.chapterNumber ?? 0): \(passage.chapterTitle ?? "")",
+                                    value: AppRoute.librarySource(workID: workID, passageID: passage.id)
+                                )
+                                .accessibilityIdentifier("work.toc.chapter.\(passage.chapterNumber ?? 0)")
+                            }
+                        }
+                    }
+                    Section("Front Matter and Appendix") {
+                        ForEach(supplementalPassages(in: content.passages)) { passage in
+                            NavigationLink(
+                                passage.sectionKind == "FRONT_MATTER" ? "Translator's Preface" :
+                                    passage.sectionKind == "INVOCATION" ? "Invocation" : "Cast of Characters",
+                                value: AppRoute.librarySource(workID: workID, passageID: passage.id)
+                            )
+                        }
                     }
                 }
             }
@@ -635,6 +683,14 @@ struct SourceReaderView: View {
     }
 
     private var content: SourceReaderContent? { model.sourceReaderContent(for: context.entryPassageID) }
+    private func contentsEntries(_ passages: [SourcePassage]) -> [SourcePassage] {
+        guard passages.contains(where: { $0.chapterNumber != nil }) else { return passages }
+        var seen = Set<Int>()
+        return passages.filter { passage in
+            guard let chapter = passage.chapterNumber else { return false }
+            return seen.insert(chapter).inserted
+        }
+    }
     private var originSectionTitle: String? {
         switch context {
         case let .story(excursion):
@@ -726,8 +782,8 @@ struct SourceReaderView: View {
                     }
                     ToolbarItemGroup(placement: .topBarTrailing) {
                         Menu("Contents", systemImage: "list.bullet") {
-                            ForEach(content.passages) { passage in
-                                Button("Passage \(passage.displayLocus)") {
+                            ForEach(contentsEntries(content.passages)) { passage in
+                                Button(passage.chapterNumber.map { "Chapter \($0): \(passage.chapterTitle ?? "")" } ?? "Passage \(passage.displayLocus)") {
                                     switch context {
                                     case .story:
                                         model.updateSourceExcursion(currentPassageID: passage.id)
@@ -820,8 +876,19 @@ private struct SourcePassageView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
+            if passage.chapterPassageNumber == 1, let chapterNumber = passage.chapterNumber {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Chapter \(chapterNumber)")
+                        .font(.title2.bold())
+                        .accessibilityAddTraits(.isHeader)
+                    if let chapterTitle = passage.chapterTitle { Text(chapterTitle).font(.headline) }
+                    if let timeRange = passage.timeRange { Text(timeRange).font(.subheadline).foregroundStyle(.secondary) }
+                }
+                .accessibilityElement(children: .combine)
+                .accessibilityLabel("Chapter \(chapterNumber), \(passage.chapterTitle ?? ""), \(passage.timeRange ?? "")")
+            }
             HStack {
-                Text("Passage \(passage.displayLocus)")
+                Text(passage.chapterPassageNumber.map { "Passage \($0)" } ?? "Passage \(passage.displayLocus)")
                     .font(.headline)
                     .accessibilityAddTraits(.isHeader)
                 Spacer()

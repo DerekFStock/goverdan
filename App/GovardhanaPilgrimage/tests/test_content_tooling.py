@@ -1025,7 +1025,8 @@ class ContentToolingTests(unittest.TestCase):
             [passage["id"] for passage in passages],
         )
         self.assertEqual(175, len(representations))
-        self.assertTrue(all(representation["transliteration"] for representation in representations))
+        self.assertTrue(all(not representation["original_text"] for representation in representations))
+        self.assertTrue(all(not representation["transliteration"] for representation in representations))
         self.assertTrue(all(representation["translation"] for representation in representations))
         self.assertTrue(all(not representation["commentary"] for representation in representations))
 
@@ -1041,7 +1042,7 @@ class ContentToolingTests(unittest.TestCase):
                     "SELECT count(*) FROM source_passages WHERE work_id = ?", (work_id,)
                 ).fetchone()[0],
             )
-            self.assertTrue(
+            self.assertIsNone(
                 connection.execute(
                     "SELECT 1 FROM search_documents_fts WHERE search_documents_fts MATCH 'uddāma' "
                     "AND content_type = 'source_passage' AND target_id LIKE ? LIMIT 1",

@@ -155,6 +155,25 @@ works:
   release_blockers:
   - Review the concise WORKING_PROJECT English research rendering for eventual publication.
   - Complete publication-critical collation against stable printed witnesses.
+- id: work.krishna-bhavanamrita
+  title: Kṛṣṇa-bhāvanāmṛta-mahākāvya
+  short_title: Kṛṣṇa-bhāvanāmṛta
+  abbreviation: KBA
+  author: Śrī Viśvanātha Cakravartī Ṭhākura
+  parent_work_id: null
+  source_layer: A_PRIMARY_GOSVAMI
+  preferred_reading_edition: edition.krishna-bhavanamrita.english-supplied-witness-v1
+  status: PRIVATE_RESEARCH
+  registry_role: PACKAGED_WORK
+  package_file: krishna-bhavanamrita/package.yaml
+  provenance_file: krishna-bhavanamrita/PROVENANCE.md
+  passage_scope: Complete English translation; 20 chapters and 712 chapter-body reader passages
+  development_eligible: true
+  release_eligible: false
+  release_blockers:
+  - Identify the translator of the supplied English witness.
+  - Confirm publication and distribution rights before any public release.
+  - Preserve paragraph anchors as reader locators; do not represent them as Sanskrit verse numbers.
 phase_a:
   packaged_work_ids:
   - work.radha-kundastaka
@@ -164,6 +183,7 @@ phase_a:
   - work.dana-keli-cintamani
   - work.radha-krsna-ganoddesa-dipika
   - work.govinda-lilamrta
+  - work.krishna-bhavanamrita
   development_ready: true
   release_ready: false
   next_artifact: CODEX_TASK_010 real-content integration after Tasks 001–009 and explicit user approval
@@ -178,8 +198,8 @@ phase_a:
   real_content_integration_status: AUTHORIZED_ONLY_IN_CODEX_TASK_010
   story_metadata_file: story.yaml
 validation:
-  expected_packaged_work_count: 7
-  packaged_work_count: 7
+  expected_packaged_work_count: 8
+  packaged_work_count: 8
   all_packaged_work_ids_unique: true
   all_package_files_exist: true
   all_parent_work_ids_resolve: true

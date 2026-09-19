@@ -773,6 +773,40 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
         XCTAssertFalse(app.buttons["Return to Story"].exists)
     }
 
+    func testKrishnaBhavanamritaLandingChaptersAndEnglishReader() {
+        let app = launch()
+        app.buttons["home.library"].tap()
+        XCTAssertTrue(app.navigationBars["Library"].waitForExistence(timeout: 5))
+        let work = app.buttons["library.work.work.krishna-bhavanamrita"]
+        reveal(work, in: app)
+        work.tap()
+        XCTAssertTrue(app.navigationBars["Kṛṣṇa-bhāvanāmṛta-mahākāvya"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label CONTAINS %@", "translator not identified")).firstMatch.exists)
+        attachScreenshot("KBA work landing", app: app)
+
+        let chapterNine = app.buttons["work.toc.chapter.9"]
+        reveal(chapterNine, in: app)
+        XCTAssertTrue(chapterNine.waitForExistence(timeout: 5))
+        attachScreenshot("KBA chapter list", app: app)
+        chapterNine.tap()
+
+        XCTAssertTrue(app.staticTexts["Chapter 9"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Flowerplays and Loveplays"].exists)
+        XCTAssertTrue(app.staticTexts["10:48 a.m.–3:36 p.m."].exists)
+        XCTAssertTrue(app.staticTexts["Passage 1"].exists)
+        XCTAssertFalse(app.staticTexts["Original"].exists)
+        XCTAssertFalse(app.staticTexts["Transliteration"].exists)
+        XCTAssertEqual("passage.krishna-bhavanamrita.kba.ch09.p001", app.buttons["source.bookmark"].value as? String)
+        attachScreenshot("KBA chapter 9 exact passage", app: app)
+    }
+
+    private func attachScreenshot(_ name: String, app: XCUIApplication) {
+        let attachment = XCTAttachment(screenshot: app.screenshot())
+        attachment.name = name
+        attachment.lifetime = .keepAlways
+        add(attachment)
+    }
+
     func testSearchBackRestoresExactQueryAndResults() {
         let app = launch()
         app.buttons["home.search"].tap()

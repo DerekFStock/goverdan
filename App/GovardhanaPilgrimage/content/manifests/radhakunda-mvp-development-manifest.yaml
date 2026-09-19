@@ -81,50 +81,62 @@ compile_sequence:
   development_eligible: true
   release_eligible: false
 - order: 10
+  role: SOURCE_PACKAGE
+  work_id: work.krishna-bhavanamrita
+  file: krishna-bhavanamrita.yaml
+  target_path: content/sources/krishna-bhavanamrita/package.yaml
+  required: true
+  development_eligible: true
+  release_eligible: false
+- order: 11
   role: CITATION_MAP
   file: radhakunda-manifestation-citation-map.yaml
   target_path: content/metadata/radhakunda-manifestation-citation-map.yaml
   story_section_id: story.radhakunda.manifestation
   required: true
-- order: 11
+- order: 12
   role: STORY_SECTION
   file: 03-manifestation.md
   target_path: content/stories/radhakunda/03-manifestation.md
   story_section_id: story.radhakunda.manifestation
   required: true
   renderable: true
-- order: 12
+- order: 13
   role: PILGRIMAGE_PLACE_REGISTRY
   file: govardhana-pilgrimage-places.yaml
   target_path: content/pilgrimage/places.yaml
   required: true
   development_eligible: true
-- order: 13
+- order: 14
   role: PILGRIMAGE_PLACE_CONTENT
   file: govardhana-pilgrimage-place-content.yaml
   target_path: content/pilgrimage/place-content.yaml
   required: true
   development_eligible: true
-- order: 14
+- order: 15
   role: PEOPLE_REGISTRY
   file: people-registry.yaml
   target_path: content/people/registry.yaml
   required: true
   development_eligible: true
-- order: 15
+- order: 16
   role: PERSON_PACKAGE
   person_id: person.lalita-sakhi
   file: lalita-sakhi.yaml
   target_path: content/people/lalita-sakhi/package.yaml
   required: true
   development_eligible: true
-- order: 16
+- order: 17
   role: PILGRIMAGE_PLACE_GEOMETRY
   file: pilgrimage-place-geometries.geojson
   target_path: content/pilgrimage/place-geometries.geojson
   required: true
   development_eligible: true
 non_runtime_assets:
+- role: SOURCE_PROVENANCE
+  file: krishna-bhavanamrita_PROVENANCE.md
+  required_for_runtime: false
+  target_path: content/sources/krishna-bhavanamrita/PROVENANCE.md
 - role: SOURCE_PROVENANCE
   file: govinda-lilamrta_PROVENANCE.md
   required_for_runtime: false
@@ -172,6 +184,7 @@ runtime_contract:
   - work.dana-keli-cintamani
   - work.radha-krsna-ganoddesa-dipika
   - work.govinda-lilamrta
+  - work.krishna-bhavanamrita
   expected_content_block_ids:
   - rk-manifestation-block-01-dharma-challenge
   - rk-manifestation-block-02-krsna-manifests-pond
@@ -200,8 +213,8 @@ release_blockers:
 - Twenty-Verse Sanskrit still requires publication-critical collation against a stable printed/manuscript witness.
 - Exact Purāṇa/recension of the Twenty-Verse unit remains unresolved.
 validation:
-  expected_runtime_file_count: 15
-  expected_source_package_count: 7
+  expected_runtime_file_count: 16
+  expected_source_package_count: 8
   expected_story_section_count: 1
   expected_content_block_count: 8
   development_gate_passed: true

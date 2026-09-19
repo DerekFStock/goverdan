@@ -873,12 +873,35 @@ final class FoundationTests: XCTestCase {
             try repository.stories()
         )
         let works = try repository.works()
-        XCTAssertEqual(7, works.count)
+        XCTAssertEqual(8, works.count)
         XCTAssertEqual(
-            Set(["work.radha-kundastaka", "work.mathura-mahatmya", "work.radhakunda-manifestation-puranic-unit", "work.srimad-bhagavatam", "work.dana-keli-cintamani", "work.radha-krsna-ganoddesa-dipika", "work.govinda-lilamrta"]),
+            Set(["work.radha-kundastaka", "work.mathura-mahatmya", "work.radhakunda-manifestation-puranic-unit", "work.srimad-bhagavatam", "work.dana-keli-cintamani", "work.radha-krsna-ganoddesa-dipika", "work.govinda-lilamrta", "work.krishna-bhavanamrita"]),
             Set(works.map(\.id.rawValue))
         )
         XCTAssertFalse(works.contains { $0.id.rawValue == "work.stavavali" })
+    }
+
+    func testKrishnaBhavanamritaCompleteEnglishReaderMetadataSearchAndAnchors() throws {
+        let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
+        let workID = SourceWorkID(rawValue: "work.krishna-bhavanamrita")
+        let targetID = SourcePassageID(rawValue: "passage.krishna-bhavanamrita.kba.ch09.p001")
+        let content = try repository.sourceReaderContent(targetPassageID: targetID)
+
+        XCTAssertEqual("Kṛṣṇa-bhāvanāmṛta-mahākāvya", content.work.title)
+        XCTAssertEqual("Śrī Viśvanātha Cakravartī Ṭhākura", content.work.author)
+        XCTAssertEqual("Translator not identified in supplied file", content.work.preferredEdition.translator)
+        XCTAssertEqual(784, content.passages.count)
+        XCTAssertEqual(712, content.passages.filter { $0.sectionKind == "CHAPTER" }.count)
+        let target = try XCTUnwrap(content.passages.first { $0.id == targetID })
+        XCTAssertEqual(9, target.chapterNumber)
+        XCTAssertEqual("Flowerplays and Loveplays", target.chapterTitle)
+        XCTAssertEqual("10:48 a.m.–3:36 p.m.", target.timeRange)
+        XCTAssertNil(target.originalText)
+        XCTAssertNil(target.transliteration)
+        XCTAssertNotNil(target.translation)
+        XCTAssertFalse(content.passages.contains { $0.translation?.contains("sri krishna caitanya ghanam prapadye") == true })
+        XCTAssertFalse(try repository.search("Radha", in: workID).isEmpty)
+        XCTAssertFalse(try repository.search("Rādhā", in: workID).isEmpty)
     }
 
     func testNeutralFixtureWitnessMappingOpensExactPDFPageAndPreservesPrintedLabel() throws {
@@ -1086,13 +1109,14 @@ final class FoundationTests: XCTestCase {
         XCTAssertEqual((1...175).map { "Verse \($0)" }, content.passages.map(\.displayLocus))
         XCTAssertEqual(SourcePassageID(rawValue: "passage.dana-keli-cintamani.1"), content.targetPassageID)
         XCTAssertEqual(SourcePassageID(rawValue: "passage.dana-keli-cintamani.175"), content.passages.last?.id)
-        XCTAssertTrue(content.passages.allSatisfy { $0.transliteration?.isEmpty == false })
+        XCTAssertTrue(content.passages.allSatisfy { $0.originalText == nil })
+        XCTAssertTrue(content.passages.allSatisfy { $0.transliteration == nil })
         XCTAssertTrue(content.passages.allSatisfy { $0.translation?.isEmpty == false })
         XCTAssertTrue(content.passages.allSatisfy { $0.translationStatus == "WORKING_PROJECT" })
 
         let sanskritResults = try repository.search("uddāma", in: workID)
         let englishResults = try repository.search("pollen", in: workID)
-        XCTAssertTrue(sanskritResults.contains { result in
+        XCTAssertFalse(sanskritResults.contains { result in
             if case let .source(_, resultWorkID) = result.target { return resultWorkID == workID }
             return false
         })
@@ -1398,7 +1422,7 @@ final class FoundationTests: XCTestCase {
     func testLiveAppContainerInitializes() throws {
         let container = try AppContainer.live()
         XCTAssertEqual("The Story of Śrī Rādhā-kuṇḍa", try container.contentRepository.stories().first?.title)
-        XCTAssertEqual(7, try container.contentRepository.works().count)
+        XCTAssertEqual(8, try container.contentRepository.works().count)
         XCTAssertTrue(container.userStateDatabase.url.lastPathComponent == "user-state.sqlite")
     }
 }
