@@ -881,7 +881,8 @@ def compile_development_manifest(root: Path, manifest_path: Path) -> BuildResult
                 for key in (
                     "reading_note", "translation_note", "translation_status", "source_notes", "rupa_attribution",
                     "section_kind", "chapter_number", "chapter_title", "source_chapter_title", "time_range",
-                    "passage_kind", "witness_locator", "canonical_verse",
+                    "passage_kind", "witness_locator", "canonical_verse", "chapter_passage_number",
+                    "verse_start", "verse_end", "note_presentation", "search_aliases",
                 )
                 if key in authored
             }
@@ -896,7 +897,13 @@ def compile_development_manifest(root: Path, manifest_path: Path) -> BuildResult
                     "translation": authored.get("translation"),
                     "commentary": authored.get("commentary"),
                     "source_notes": source_notes or None,
-                    "search_text": representation_text,
+                    "search_text": "\n\n".join(filter(None, (
+                        representation_text,
+                        authored.get("translation_note"),
+                        authored.get("reading_note"),
+                        authored.get("chapter_title"),
+                        authored.get("search_aliases"),
+                    ))),
                 }
             )
 

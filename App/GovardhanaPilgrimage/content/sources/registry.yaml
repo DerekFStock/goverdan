@@ -173,6 +173,24 @@ works:
   release_blockers:
   - Identify the translator of the supplied English witness.
   - Confirm publication and distribution rights before any public release.
+- id: work.vraja-riti-cintamani
+  title: Vraja-rīti-cintāmaṇi
+  short_title: Vraja-rīti-cintāmaṇi
+  abbreviation: VRC
+  author: Śrī Viśvanātha Cakravartī Ṭhākura
+  parent_work_id: null
+  source_layer: A_PRIMARY_GOSVAMI
+  preferred_reading_edition: edition.vraja-riti-cintamani.english-supplied-witness-v1
+  status: PRIVATE_RESEARCH
+  registry_role: PACKAGED_WORK
+  package_file: vraja-riti-cintamani/package.yaml
+  provenance_file: vraja-riti-cintamani/PROVENANCE.md
+  passage_scope: Complete English translation; 3 chapters, 234 canonical verses in 231 reader passages
+  development_eligible: true
+  release_eligible: false
+  release_blockers:
+  - Identify the translator, edition, and publisher of the supplied English witness.
+  - Confirm publication and distribution rights before any public release.
   - Preserve paragraph anchors as reader locators; do not represent them as Sanskrit verse numbers.
 phase_a:
   packaged_work_ids:

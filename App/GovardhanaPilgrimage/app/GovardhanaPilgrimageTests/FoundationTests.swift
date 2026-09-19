@@ -873,9 +873,9 @@ final class FoundationTests: XCTestCase {
             try repository.stories()
         )
         let works = try repository.works()
-        XCTAssertEqual(8, works.count)
+        XCTAssertEqual(9, works.count)
         XCTAssertEqual(
-            Set(["work.radha-kundastaka", "work.mathura-mahatmya", "work.radhakunda-manifestation-puranic-unit", "work.srimad-bhagavatam", "work.dana-keli-cintamani", "work.radha-krsna-ganoddesa-dipika", "work.govinda-lilamrta", "work.krishna-bhavanamrita"]),
+            Set(["work.radha-kundastaka", "work.mathura-mahatmya", "work.radhakunda-manifestation-puranic-unit", "work.srimad-bhagavatam", "work.dana-keli-cintamani", "work.radha-krsna-ganoddesa-dipika", "work.govinda-lilamrta", "work.krishna-bhavanamrita", "work.vraja-riti-cintamani"]),
             Set(works.map(\.id.rawValue))
         )
         XCTAssertFalse(works.contains { $0.id.rawValue == "work.stavavali" })
@@ -902,6 +902,37 @@ final class FoundationTests: XCTestCase {
         XCTAssertFalse(content.passages.contains { $0.translation?.contains("sri krishna caitanya ghanam prapadye") == true })
         XCTAssertFalse(try repository.search("Radha", in: workID).isEmpty)
         XCTAssertFalse(try repository.search("Rādhā", in: workID).isEmpty)
+    }
+
+    func testVrajaRitiCintamaniCompleteEnglishReaderRangesNotesSearchAndAnchors() throws {
+        let repository = SQLiteContentRepository(database: try ContentDatabase(url: bundledContentURL()))
+        let workID = SourceWorkID(rawValue: "work.vraja-riti-cintamani")
+        let targetID = SourcePassageID(rawValue: "passage.vraja-riti-cintamani.vrc.3.29")
+        let content = try repository.sourceReaderContent(targetPassageID: targetID)
+
+        XCTAssertEqual("Vraja-rīti-cintāmaṇi", content.work.title)
+        XCTAssertEqual("Śrī Viśvanātha Cakravartī Ṭhākura", content.work.author)
+        XCTAssertEqual(231, content.passages.count)
+        XCTAssertEqual(targetID, content.targetPassageID)
+        XCTAssertEqual("passage.vraja-riti-cintamani.vrc.1.1", content.passages.first?.id.rawValue)
+        XCTAssertEqual("passage.vraja-riti-cintamani.vrc.3.60", content.passages.last?.id.rawValue)
+        XCTAssertTrue(content.passages.allSatisfy { $0.originalText == nil && $0.transliteration == nil })
+        XCTAssertTrue(content.passages.allSatisfy { $0.translation?.isEmpty == false })
+
+        let range = try XCTUnwrap(content.passages.first { $0.id.rawValue.hasSuffix("vrc.2.7-10") })
+        XCTAssertEqual("2.7-10", range.canonicalLocus)
+        XCTAssertEqual(7, range.verseStart)
+        XCTAssertEqual(10, range.verseEnd)
+        XCTAssertEqual("verse_range_translation", range.passageKind)
+
+        let notes = content.passages.filter { $0.translationNote != nil }
+        XCTAssertEqual(3, notes.count)
+        XCTAssertEqual("collapsed", notes.first { $0.canonicalLocus == "1.87" }?.notePresentation)
+        XCTAssertEqual("alternative", notes.first { $0.canonicalLocus == "3.8" }?.notePresentation)
+
+        for query in ["Radha-kunda", "Rādhā-kuṇḍa", "Vrndavana", "Vṛndāvana", "Nandisvara", "Nandīśvara", "Braj"] {
+            XCTAssertFalse(try repository.search(query, in: workID).isEmpty, query)
+        }
     }
 
     func testNeutralFixtureWitnessMappingOpensExactPDFPageAndPreservesPrintedLabel() throws {
@@ -1422,7 +1453,7 @@ final class FoundationTests: XCTestCase {
     func testLiveAppContainerInitializes() throws {
         let container = try AppContainer.live()
         XCTAssertEqual("The Story of Śrī Rādhā-kuṇḍa", try container.contentRepository.stories().first?.title)
-        XCTAssertEqual(8, try container.contentRepository.works().count)
+        XCTAssertEqual(9, try container.contentRepository.works().count)
         XCTAssertTrue(container.userStateDatabase.url.lastPathComponent == "user-state.sqlite")
     }
 }
