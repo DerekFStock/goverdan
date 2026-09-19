@@ -1,0 +1,14 @@
+{
+  "type": "FeatureCollection",
+  "scope": "RESEARCH_ONLY_NOT_RUNTIME_INPUT",
+  "task": "TASK_021A_8",
+  "retrieved_on": "2026-09-17",
+  "navigation_eligible": false,
+  "negative_findings": {
+    "RK-03": "No controlled, identity-linked crossing geometry or public approach found.",
+    "RK-15": "No controlled shrine, compound, or doorway geometry found.",
+    "RK-22": "No controlled Caitanya baithak platform, compound, or entrance geometry found.",
+    "RK-GH-09": "No controlled named ghāṭ edge, steps, or dry-land approach geometry found."
+  },
+  "features": []
+}
