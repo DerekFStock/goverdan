@@ -1080,6 +1080,8 @@ class ContentToolingTests(unittest.TestCase):
                 "work.dana-keli-cintamani",
                 "work.radha-krsna-ganoddesa-dipika",
                 "work.govinda-lilamrta",
+                "work.krishna-bhavanamrita",
+                "work.vraja-riti-cintamani",
             ],
             loaded_packages,
         )

@@ -272,16 +272,38 @@ struct WorkDetailView: View {
         }
     }
 
+    private var orientation: String? {
+        switch workID.rawValue {
+        case "work.krishna-bhavanamrita":
+            "A twenty-chapter meditation on the full eightfold daily pastimes of Śrī Śrī Rādhā-Kṛṣṇa."
+        case "work.vraja-riti-cintamani":
+            "The Cintāmaṇi Jewel of Vraja — a three-chapter meditation on the people, natural environment, and sacred geography of Vraja, culminating in Govardhana and Rādhā-kuṇḍa."
+        default: nil
+        }
+    }
+
+    private var sourceNote: String? {
+        switch workID.rawValue {
+        case "work.krishna-bhavanamrita":
+            "English translation; translator not identified in supplied file. Paragraph numbers are reader anchors, not canonical verse numbers."
+        case "work.vraja-riti-cintamani":
+            "Complete English translation; translator not identified in supplied file. Canonical verse numbers are preserved."
+        default: nil
+        }
+    }
+
     var body: some View {
         if let content, let beginning = content.passages.first?.id {
             List {
                 Section {
                     VStack(alignment: .leading, spacing: 6) {
                         if let author = content.work.author { Text(author).font(.headline) }
-                        if !chapters(in: content.passages).isEmpty {
-                            Text("A twenty-chapter meditation on the full eightfold daily pastimes of Śrī Śrī Rādhā-Kṛṣṇa.")
+                        if let orientation {
+                            Text(orientation)
                                 .foregroundStyle(.secondary)
-                            Text("English translation; translator not identified in supplied file. Paragraph numbers are reader anchors, not canonical verse numbers.")
+                        }
+                        if let sourceNote {
+                            Text(sourceNote)
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
                                 .accessibilityIdentifier("work.source-note")
@@ -321,7 +343,7 @@ struct WorkDetailView: View {
                         }
                     }
                 } else {
-                    ForEach(Dictionary(grouping: chapters(in: content.passages), by: { $0.timeRange ?? "Other" })
+                    ForEach(Dictionary(grouping: chapters(in: content.passages), by: { $0.timeRange ?? "Chapters" })
                         .sorted { ($0.value.first?.chapterNumber ?? 0) < ($1.value.first?.chapterNumber ?? 0) }, id: \.key) { group in
                         Section(group.key) {
                             ForEach(group.value) { passage in
@@ -888,7 +910,9 @@ private struct SourcePassageView: View {
                 .accessibilityLabel("Chapter \(chapterNumber), \(passage.chapterTitle ?? ""), \(passage.timeRange ?? "")")
             }
             HStack {
-                Text(passage.chapterPassageNumber.map { "Passage \($0)" } ?? "Passage \(passage.displayLocus)")
+                Text(passage.passageKind?.hasPrefix("verse") == true
+                    ? "Verse \(passage.displayLocus)"
+                    : passage.chapterPassageNumber.map { "Passage \($0)" } ?? "Passage \(passage.displayLocus)")
                     .font(.headline)
                     .accessibilityAddTraits(.isHeader)
                 Spacer()
@@ -908,6 +932,16 @@ private struct SourcePassageView: View {
             }
             if let translation = passage.translation {
                 sourceText("Translation", text: translation)
+            }
+            if let translationNote = passage.translationNote {
+                if passage.notePresentation == "collapsed" {
+                    DisclosureGroup("Witness note") {
+                        Text(translationNote).font(.body).textSelection(.enabled).padding(.top, 5)
+                    }
+                    .accessibilityIdentifier("source.witness-note.collapsed")
+                } else {
+                    sourceText(passage.notePresentation == "alternative" ? "Alternative reading" : "Witness note", text: translationNote)
+                }
             }
             if let readingNote = passage.readingNote {
                 sourceText("Reading note", text: readingNote)

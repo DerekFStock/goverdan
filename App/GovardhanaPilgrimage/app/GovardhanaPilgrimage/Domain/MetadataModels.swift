@@ -87,11 +87,16 @@ struct SourcePassage: Identifiable, Hashable, Sendable {
     let verificationStatus: String?
     let translationStatus: String?
     let readingNote: String?
+    let translationNote: String?
+    let notePresentation: String?
     let sectionKind: String?
     let chapterNumber: Int?
     let chapterTitle: String?
     let timeRange: String?
     let passageKind: String?
+    let authoredChapterPassageNumber: Int?
+    let verseStart: Int?
+    let verseEnd: Int?
 
     var readerLabel: String {
         if let chapterNumber, let chapterTitle {
@@ -101,6 +106,7 @@ struct SourcePassage: Identifiable, Hashable, Sendable {
     }
 
     var chapterPassageNumber: Int? {
+        if let authoredChapterPassageNumber { return authoredChapterPassageNumber }
         guard let match = id.rawValue.range(of: #"\.p(\d{3})$"#, options: .regularExpression) else { return nil }
         return Int(id.rawValue[match].dropFirst(2))
     }

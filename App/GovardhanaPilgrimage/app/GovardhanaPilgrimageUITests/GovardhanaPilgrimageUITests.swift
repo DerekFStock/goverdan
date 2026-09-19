@@ -764,9 +764,8 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
         XCTAssertTrue(firstVerse.waitForExistence(timeout: 5))
         firstVerse.tap()
         XCTAssertTrue(app.staticTexts["Passage Verse 1"].waitForExistence(timeout: 5))
-        XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label CONTAINS %@", "kurvāṇaiḥ śatam āśiṣaṁ")).firstMatch.exists)
-        XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label CONTAINS %@", "svīya-svīya-gaṇaiḥ")).firstMatch.exists)
-        XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label CONTAINS %@", "gāndharvā-giridhāriṇor")).firstMatch.exists)
+        XCTAssertFalse(app.staticTexts["Transliteration"].exists)
+        XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label CONTAINS %@", "May the playful quarrel")).firstMatch.exists)
         XCTAssertFalse(app.staticTexts["Translation status"].exists)
         XCTAssertFalse(app.staticTexts["Text verification"].exists)
         XCTAssertEqual("passage.dana-keli-cintamani.1", app.buttons["source.bookmark"].value as? String)
@@ -798,6 +797,27 @@ final class GovardhanaPilgrimageUITests: XCTestCase {
         XCTAssertFalse(app.staticTexts["Transliteration"].exists)
         XCTAssertEqual("passage.krishna-bhavanamrita.kba.ch09.p001", app.buttons["source.bookmark"].value as? String)
         attachScreenshot("KBA chapter 9 exact passage", app: app)
+    }
+
+    func testVrajaRitiCintamaniLandingChaptersAndEnglishReader() {
+        let app = launch()
+        app.buttons["home.library"].tap()
+        let work = app.buttons["library.work.work.vraja-riti-cintamani"]
+        reveal(work, in: app)
+        work.tap()
+        XCTAssertTrue(app.navigationBars["Vraja-rīti-cintāmaṇi"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label CONTAINS %@", "The Cintāmaṇi Jewel of Vraja")).firstMatch.exists)
+        attachScreenshot("VRC work landing and chapters", app: app)
+
+        let chapterThree = app.buttons["work.toc.chapter.3"]
+        reveal(chapterThree, in: app)
+        chapterThree.tap()
+        XCTAssertTrue(app.staticTexts["Chapter 3"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Govardhana and Its Sacred Landscape"].exists)
+        XCTAssertTrue(app.staticTexts["Verse 3.1"].exists)
+        XCTAssertFalse(app.staticTexts["Transliteration"].exists)
+        XCTAssertEqual("passage.vraja-riti-cintamani.vrc.3.1", app.buttons["source.bookmark"].value as? String)
+        attachScreenshot("VRC chapter 3 English reader", app: app)
     }
 
     private func attachScreenshot(_ name: String, app: XCUIApplication) {
