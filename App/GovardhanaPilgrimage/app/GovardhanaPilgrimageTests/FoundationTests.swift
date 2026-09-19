@@ -1109,13 +1109,14 @@ final class FoundationTests: XCTestCase {
         XCTAssertEqual((1...175).map { "Verse \($0)" }, content.passages.map(\.displayLocus))
         XCTAssertEqual(SourcePassageID(rawValue: "passage.dana-keli-cintamani.1"), content.targetPassageID)
         XCTAssertEqual(SourcePassageID(rawValue: "passage.dana-keli-cintamani.175"), content.passages.last?.id)
-        XCTAssertTrue(content.passages.allSatisfy { $0.transliteration?.isEmpty == false })
+        XCTAssertTrue(content.passages.allSatisfy { $0.originalText == nil })
+        XCTAssertTrue(content.passages.allSatisfy { $0.transliteration == nil })
         XCTAssertTrue(content.passages.allSatisfy { $0.translation?.isEmpty == false })
         XCTAssertTrue(content.passages.allSatisfy { $0.translationStatus == "WORKING_PROJECT" })
 
         let sanskritResults = try repository.search("uddāma", in: workID)
         let englishResults = try repository.search("pollen", in: workID)
-        XCTAssertTrue(sanskritResults.contains { result in
+        XCTAssertFalse(sanskritResults.contains { result in
             if case let .source(_, resultWorkID) = result.target { return resultWorkID == workID }
             return false
         })

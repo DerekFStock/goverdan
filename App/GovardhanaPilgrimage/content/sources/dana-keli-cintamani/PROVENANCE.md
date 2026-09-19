@@ -15,11 +15,11 @@ The Sanskrit root text was extracted from the user-supplied file:
 `dana-keli-cintamani_-_raghunatha_dasa_gosvamin(1).docx`
 
 The DOCX contains both root verses and commentary. Only paragraphs explicitly styled as root verse quotations
-were extracted into the reader corpus. Commentary remains outside the runtime Work.
+were used to prepare the working English translation. Sanskrit and commentary remain outside the runtime Work.
 
 ## Canonical passage scope
 
-- 175 root verses
+- 175 English verse translations
 - `passage.dana-keli-cintamani.1` through `passage.dana-keli-cintamani.175`
 - one preferred reading edition:
   `edition.dana-keli-cintamani.project-reading-v1`
@@ -38,5 +38,5 @@ being represented as a publication-critical translation.
 
 ## Runtime intent
 
-The app should expose one Library/Source Reader entry titled **Dāna-keli-cintāmaṇi** with verses 1–175.
+The app should expose one English-only Library/Source Reader entry titled **Dāna-keli-cintāmaṇi** with verses 1–175.
 No witness selector, edition selector, parallel-text comparison, or commentary selector is required.
