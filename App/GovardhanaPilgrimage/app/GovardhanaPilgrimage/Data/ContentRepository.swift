@@ -456,7 +456,12 @@ struct SQLiteContentRepository: ContentRepository {
                     translation: row["translation"],
                     verificationStatus: row["verification_status"],
                     translationStatus: noteValues?["translation_status"] as? String,
-                    readingNote: noteValues?["reading_note"] as? String
+                    readingNote: noteValues?["reading_note"] as? String,
+                    sectionKind: noteValues?["section_kind"] as? String,
+                    chapterNumber: noteValues?["chapter_number"] as? Int,
+                    chapterTitle: noteValues?["chapter_title"] as? String,
+                    timeRange: noteValues?["time_range"] as? String,
+                    passageKind: noteValues?["passage_kind"] as? String
                 )
             }
             guard passages.contains(where: { $0.id == targetPassageID }) else {

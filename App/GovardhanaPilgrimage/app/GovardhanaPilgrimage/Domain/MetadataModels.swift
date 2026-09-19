@@ -87,6 +87,23 @@ struct SourcePassage: Identifiable, Hashable, Sendable {
     let verificationStatus: String?
     let translationStatus: String?
     let readingNote: String?
+    let sectionKind: String?
+    let chapterNumber: Int?
+    let chapterTitle: String?
+    let timeRange: String?
+    let passageKind: String?
+
+    var readerLabel: String {
+        if let chapterNumber, let chapterTitle {
+            return "Chapter \(chapterNumber), passage \(chapterPassageNumber ?? order): \(chapterTitle)"
+        }
+        return displayLocus
+    }
+
+    var chapterPassageNumber: Int? {
+        guard let match = id.rawValue.range(of: #"\.p(\d{3})$"#, options: .regularExpression) else { return nil }
+        return Int(id.rawValue[match].dropFirst(2))
+    }
 }
 
 struct SourceReaderContent: Hashable, Sendable {

@@ -878,7 +878,11 @@ def compile_development_manifest(root: Path, manifest_path: Path) -> BuildResult
             suffix = passage["id"].removeprefix("passage.")
             source_notes = {
                 key: authored[key]
-                for key in ("reading_note", "translation_note", "translation_status", "source_notes", "rupa_attribution")
+                for key in (
+                    "reading_note", "translation_note", "translation_status", "source_notes", "rupa_attribution",
+                    "section_kind", "chapter_number", "chapter_title", "source_chapter_title", "time_range",
+                    "passage_kind", "witness_locator", "canonical_verse",
+                )
                 if key in authored
             }
             representations.append(

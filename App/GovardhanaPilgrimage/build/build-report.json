@@ -2,9 +2,9 @@
   "counts": {
     "citations": 12,
     "content_blocks": 8,
-    "editions": 7,
-    "passage_representations": 246,
-    "passages": 246,
+    "editions": 8,
+    "passage_representations": 1030,
+    "passages": 1030,
     "people": 1,
     "person_aliases": 4,
     "person_blocks": 14,
@@ -18,7 +18,7 @@
     "story_sections": 1,
     "witness_mappings": 0,
     "witnesses": 0,
-    "works": 8
+    "works": 9
   },
   "manifest_id": "manifest.radhakunda-mvp.development-v1",
   "schema_version": 1,
@@ -45,10 +45,10 @@
       "sqlite_autoindex_story_sections_2"
     ],
     "integrity_check": "ok",
-    "logical_content_sha256": "c3068b36334b7137d0b209a4a98216b616ef1f3a773b31a2be2d4b1b692209f7",
+    "logical_content_sha256": "98a251b8e1da9a32030506a8fed52567cab8d0403dc9b5a1f563c1b43a8d3472",
     "schema_version": 9,
-    "search_document_count": 255,
-    "source_fts_result_count": 246,
+    "search_document_count": 1039,
+    "source_fts_result_count": 1030,
     "story_fts_result_count": 8,
     "tables": [
       "citations",
